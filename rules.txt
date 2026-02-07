@@ -1,0 +1,9 @@
+* VERY IMPORTANT NOTE [I'M USING THE LATEST DART AND LATEST FLUTTER VERSION, PLEASE USE THE BEST PRACTICE FOR BETTER CODE]
+
+* VERY IMPORTANT NOTE [IN EXAMPLES, PLEASE FOLLOW THE BEST PRACTICE FOR BETTER CODE AT "https://dart.dev/effective-dart", PLEASE FORMAT THE EXAMPLES AS A FORMATTED DART CODE]
+
+add "Why design patterns?"
+- Avoid reinventing the wheel
+- Improve code readability, maintainability, scalability, testability, reusability, flexibility, extensibility, performance, security, reliability, efficiency, simplicity and 
+- Communication between developers, using a common vocabulary
+- Leverage the power of Object-Oriented Programming (OOP)
