@@ -121,42 +121,42 @@ class _TechniqueTile extends StatelessWidget {
 
     showDialog(
       context: context,
-      builder: (context) => AppDialog(
-        title: Text(title),
-        content: SizedBox(
-          width: .maxFinite,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: .min,
-              crossAxisAlignment: .start,
-              children: [
-                Text(
-                  l10n.refactoringTip,
-                  textDirection: BidiUtil.getDirection(l10n.refactoringTip),
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  "Before",
-                  style: TextStyle(fontWeight: .bold, color: Colors.red[700]),
-                ),
-                CodeBlock(code: before, codeQuality: .bad),
-                const SizedBox(height: 16),
-                Text(
-                  "After",
-                  style: TextStyle(fontWeight: .bold, color: Colors.green[700]),
-                ),
-                CodeBlock(code: after),
-              ],
+      builder: (context) {
+        return AppDialog(
+          title: Text(title),
+          content: SizedBox(
+            width: .maxFinite,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: .min,
+                crossAxisAlignment: .start,
+                children: [
+                  Text(
+                    l10n.refactoringTip,
+                    textDirection: BidiUtil.getDirection(l10n.refactoringTip),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    "Before",
+                    style: TextStyle(fontWeight: .bold, color: Colors.red[700]),
+                  ),
+                  CodeBlock(code: before, codeQuality: .bad),
+                  const SizedBox(height: 16),
+                  Text(
+                    "After",
+                    style: TextStyle(
+                      fontWeight: .bold,
+                      color: Colors.green[700],
+                    ),
+                  ),
+                  CodeBlock(code: after),
+                ],
+              ),
             ),
           ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(l10n.close),
-          ),
-        ],
-      ),
+          actions: [CloseButton()],
+        );
+      },
     );
   }
 

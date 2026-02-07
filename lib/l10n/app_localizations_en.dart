@@ -21,6 +21,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get refactoring => 'Refactoring';
 
   @override
+  String get interviewQuestions => 'Interview Questions';
+
+  @override
   String get darkMode => 'Dark Mode';
 
   @override

@@ -73,6 +73,19 @@ class HomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (_) => const RefactoringPage()),
                 ),
               ),
+              HomeMenuCard(
+                title: l10n.interviewQuestions,
+                icon: Icons.question_mark_rounded,
+                color: colors.secondary,
+                onTap: () {
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (_) => const InterviewQuestionsPage(),
+                  //   ),
+                  // );
+                },
+              ),
             ],
           ),
         ),

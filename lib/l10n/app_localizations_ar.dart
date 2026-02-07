@@ -21,6 +21,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get refactoring => 'إعادة هيكلة الكود';
 
   @override
+  String get interviewQuestions => 'أسئلة المقابلات';
+
+  @override
   String get darkMode => 'الوضع الداكن';
 
   @override

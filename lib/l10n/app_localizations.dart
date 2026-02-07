@@ -122,6 +122,12 @@ abstract class AppLocalizations {
   /// **'Refactoring'**
   String get refactoring;
 
+  /// No description provided for @interviewQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Interview Questions'**
+  String get interviewQuestions;
+
   /// No description provided for @darkMode.
   ///
   /// In en, this message translates to:

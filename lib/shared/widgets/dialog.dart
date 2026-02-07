@@ -22,16 +22,23 @@ class AppDialog extends StatelessWidget {
         mainAxisSize: .min,
         crossAxisAlignment: .stretch,
         children: [
-          if (title case final title)
+          if (title case final title?)
             Container(
-              padding: const .symmetric(horizontal: 16, vertical: 8),
+              padding: const .only(left: 16, right: 16, top: 10, bottom: 7.5),
               decoration: BoxDecoration(
                 color: colors.surfaceContainerHigh,
                 border: Border(
                   bottom: BorderSide(color: colors.outlineVariant),
                 ),
               ),
-              child: title,
+              child: DefaultTextStyle.merge(
+                textHeightBehavior: const TextHeightBehavior(
+                  applyHeightToFirstAscent: false,
+                  applyHeightToLastDescent: false,
+                ),
+                style: const TextStyle(fontSize: 18),
+                child: title,
+              ),
             ),
           if (content case final content?)
             Flexible(
@@ -42,7 +49,10 @@ class AppDialog extends StatelessWidget {
             ),
           if (actions case final actions?) ...[
             Divider(height: 1, thickness: 1),
-            Row(children: actions),
+            Padding(
+              padding: const .all(8),
+              child: Row(children: actions),
+            ),
           ],
         ],
       ),

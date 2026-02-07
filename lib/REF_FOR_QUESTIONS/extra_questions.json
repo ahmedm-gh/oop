@@ -1,0 +1,464 @@
+[
+  {
+    "question_en": "What is Flutter?",
+    "question_ar": "ما هو فلاتر؟",
+    "tags": [
+      "Basic",
+      "Flutter",
+      "CrossPlatform"
+    ],
+    "notes_en": "Flutter is an open-source UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. It uses the Dart programming language and provides a rich set of customizable widgets and tools for fast development.",
+    "notes_ar": "فلاتر هو إطار عمل مفتوح المصدر لبناء تطبيقات مُترجمة بشكل أصلي لأنظمة تشغيل الهواتف المحمولة والويب وسطح المكتب من قاعدة كود واحدة. يستخدم لغة دارت ويوفر مجموعة غنية من الودجتس والأدوات القابلة للتخصيص لتطوير سريع.",
+    "pros_en": "High performance due to native compilation, hot reload for fast development, single codebase for multiple platforms.",
+    "pros_ar": "أداء عالي بفضل الترجمة الأصلية، وإعادة تحميل ساخنة لتطوير سريع، وقاعدة كود واحدة للعديد من المنصات.",
+    "cons_en": "Larger app size and fewer third-party libraries compared to some alternatives, learning Dart may be challenging for new developers.",
+    "cons_ar": "حجم تطبيق أكبر ومكتبات تابعة أقل مقارنة ببعض البدائل، وقد تكون دارت أصعب في التعلم للمطورين الجدد.",
+    "bestUse_en": "Ideal for building cross-platform mobile apps with beautiful custom UI and fast development cycles.",
+    "bestUse_ar": "مناسب لبناء تطبيقات جوال عبر المنصات مع واجهة مستخدم جذابة ودورات تطوير سريعة."
+  },
+  {
+    "question_en": "What is Dart, and why is it used in Flutter?",
+    "question_ar": "ما هي لغة دارت ولماذا تُستخدم في فلاتر؟",
+    "tags": [
+      "Basic",
+      "Dart",
+      "Language"
+    ],
+    "notes_en": "Dart is a modern object-oriented programming language optimized for building UI, used to develop Flutter applications. It compiles to native code for high performance and has features like sound null-safety and a rich standard library.",
+    "notes_ar": "دارت هي لغة برمجة حديثة موجهة للكائنات ومُحسَّنة لبناء واجهات المستخدم، تُستخدم لتطوير تطبيقات فلاتر. يتم تجميعها إلى كود أصلي لتحقيق أداء عالي وتحتوي على ميزات مثل السلامة من القيمة الخالية (Null Safety) ومكتبة قياسية غنية.",
+    "pros_en": "Easy to learn for developers familiar with C-style syntax, supports both Ahead-of-Time (AOT) and Just-in-Time (JIT) compilation for fast development and high performance.",
+    "pros_ar": "سهلة التعلم للمطورين المعتادين على صيغ لغات مثل C، وتدعم التجميع المسبق (AOT) والتنفيذي في وقت التشغيل (JIT) لتطوير سريع وأداء عالي.",
+    "cons_en": "Smaller ecosystem compared to languages like JavaScript, and primarily used with Flutter on the client side, limiting reuse in server-side contexts.",
+    "cons_ar": "نظام بيئي أصغر مقارنة بلغات مثل JavaScript، ويُستخدم بشكل أساسي مع فلاتر على جانب العميل، مما يحد من إعادة الاستخدام في السياقات الخدمية.",
+    "bestUse_en": "Best used for Flutter app development and client-side applications where performance and developer productivity matter.",
+    "bestUse_ar": "أفضل استخدام لها في تطوير تطبيقات فلاتر والتطبيقات على جانب العميل حيث يهم الأداء وإنتاجية المطور."
+  },
+  {
+    "question_en": "What are Widgets in Flutter?",
+    "question_ar": "ما هي الودجتس (Widgets) في فلاتر؟",
+    "tags": [
+      "Basic",
+      "Flutter",
+      "Widgets"
+    ],
+    "notes_en": "Widgets are the basic building blocks of a Flutter app’s UI. Everything you see on screen in Flutter is a Widget, which can be either stateful or stateless. Widgets describe how to display elements on the screen in a declarative manner.",
+    "notes_ar": "الودجتس هي لبنات البناء الأساسية لواجهة تطبيق فلاتر. كل ما تراه على الشاشة في فلاتر هو ودجت، والذي يمكن أن يكون ذا حالة (Stateful) أو بدون حالة (Stateless). تصف الودجتس كيف يتم عرض العناصر على الشاشة بطريقة إعلانية.",
+    "pros_en": "Highly customizable and composable; you can build complex UIs by combining simpler widgets. Flutter’s hot reload works well with its widget tree.",
+    "pros_ar": "قابلة للتخصيص بدرجة عالية وقابلة للتركيب؛ يمكنك بناء واجهات مستخدم معقدة بدمج ودجتس أبسط. تعيد ميزة التحميل السريع (Hot Reload) في فلاتر بناء الواجهة بشكل جيد اعتمادًا على شجرة الودجتس.",
+    "cons_en": "Deep widget hierarchies can become complex. Requires understanding of widget lifecycle for effective state management.",
+    "cons_ar": "يمكن أن تصبح تسلسلات الودجتس المعقدة معقدة. يتطلب فهم دورة حياة الودجت من أجل إدارة الحالة بشكل فعّال.",
+    "bestUse_en": "Use widgets for all UI components; take advantage of stateless widgets for static parts and stateful widgets for interactive parts.",
+    "bestUse_ar": "استخدم الودجتس لجميع مكونات الواجهة؛ استفد من الودجتس بدون حالة للأجزاء الثابتة ومن الودجتس ذات الحالة للأجزاء التفاعلية."
+  },
+  {
+    "question_en": "What is the difference between StatelessWidget and StatefulWidget?",
+    "question_ar": "ما الفرق بين StatelessWidget و StatefulWidget؟",
+    "tags": [
+      "Basic",
+      "Flutter",
+      "Widgets",
+      "Performance"
+    ],
+    "notes_en": "A StatelessWidget cannot change its state once built; it’s immutable. A StatefulWidget has mutable state (via a State object) that can change over time, triggering rebuilds.\n\nStatelessWidget is simpler and more performant for static content. StatefulWidget allows dynamic and interactive UI.\n\nExample:\nr'''class MyWidget extends StatefulWidget {\n  @override\n  _MyWidgetState createState() => _MyWidgetState();\n}\n\nclass _MyWidgetState extends State<MyWidget> {\n  int counter = 0;\n\n  @override\n  Widget build(BuildContext context) {\n    return Column(\n      children: [\n        Text('Counter: $counter'),\n        ElevatedButton(\n          onPressed: () { setState(() { counter++; }); },\n          child: Text('Increment'),\n        ),\n      ],\n    );\n  }\n}'''",
+    "notes_ar": "StatelessWidget لا يمكن أن تتغير حالتها بعد بنائه؛ فهي غير قابلة للتغيير. أما StatefulWidget فلها حالة قابلة للتغيير (من خلال كائن State) يمكن أن تتغير مع الوقت، مما يؤدي إلى إعادة بناء الودجت.\n\nStatelessWidget أبسط وأكثر كفاءة للأجزاء الثابتة. StatefulWidget تتيح واجهة مستخدم ديناميكية وتفاعلية.\n\nمثال:\nr'''class MyWidget extends StatefulWidget {\n  @override\n  _MyWidgetState createState() => _MyWidgetState();\n}\n\nclass _MyWidgetState extends State<MyWidget> {\n  int counter = 0;\n\n  @override\n  Widget build(BuildContext context) {\n    return Column(\n      children: [\n        Text('العَدّاد: $counter'),\n        ElevatedButton(\n          onPressed: () { setState(() { counter++; }); },\n          child: Text('زيادة'),\n        ),\n      ],\n    );\n  }\n}'''",
+    "pros_en": "StatelessWidget is simpler and more performant for static content. StatefulWidget allows dynamic and interactive UI.",
+    "pros_ar": "StatelessWidget أبسط وأكثر كفاءة للأجزاء الثابتة. StatefulWidget تتيح واجهة مستخدم ديناميكية وتفاعلية.",
+    "cons_en": "StatelessWidget can’t update UI based on changes. StatefulWidget introduces overhead of state management and rebuilds.",
+    "cons_ar": "StatelessWidget لا يمكنها تحديث الواجهة بناءً على التغييرات. StatefulWidget تضيف عبئًا لإدارة الحالة وإعادة بناء الودجت.",
+    "bestUse_en": "Use StatelessWidget for UI that doesn’t change (e.g., static text), and StatefulWidget when UI needs to update (e.g., forms, animations).",
+    "bestUse_ar": "استخدم StatelessWidget للواجهة التي لا تتغير (مثل النص الثابت)، وStatefulWidget عندما تحتاج الواجهة إلى التحديث (مثل النماذج أو الرسوم المتحركة)."
+  },
+  {
+    "question_en": "What is a Key in Flutter and why is it used?",
+    "question_ar": "ما هو المفتاح (Key) في فلاتر ولماذا يُستخدم؟",
+    "tags": [
+      "Intermediate",
+      "Flutter",
+      "Widgets"
+    ],
+    "notes_en": "A Key is an identifier for Widgets, Elements, and SemanticsNodes. Keys preserve state and control widget identity when the widget tree changes (e.g., reordering). Using keys helps Flutter match widgets between builds.",
+    "notes_ar": "المفتاح هو معرف للودجتس والعناصر (Elements) وعقد الدلالات. المفاتيح تحافظ على الحالة وتتحكم في هوية الودجت عندما تتغير شجرة الودجتس (مثل إعادة ترتيب العناصر). يساعد استخدام المفاتيح فلاتر على مطابقة الودجتس بين عمليات إعادة البناء.",
+    "pros_en": "Using keys (especially UniqueKey or ValueKey) helps avoid unexpected behavior when reordering or dynamically changing lists of widgets.",
+    "pros_ar": "يساعد استخدام المفاتيح (وخاصة UniqueKey أو ValueKey) على تجنب السلوك غير المتوقع عند إعادة ترتيب القوائم أو تغييرها ديناميكيًا.",
+    "cons_en": "Often not needed unless you manage dynamic widget lists; overusing keys can complicate the code.",
+    "cons_ar": "غالبًا غير ضروري إلا إذا كنت تدير قوائم ودجتس ديناميكية؛ الإفراط في استخدام المفاتيح قد يعقد الكود.",
+    "bestUse_en": "Use keys when you have multiple widgets of the same type and need to preserve their state when they move or change position.",
+    "bestUse_ar": "استخدم المفاتيح عندما يكون لديك عدة ودجتس من نفس النوع وتحتاج إلى الحفاظ على حالتها عندما تتحرك أو تتغير موضعها."
+  },
+  {
+    "question_en": "Explain the difference between Hot Reload and Hot Restart in Flutter.",
+    "question_ar": "اشرح الفرق بين Hot Reload و Hot Restart في فلاتر.",
+    "tags": [
+      "Intermediate",
+      "Flutter",
+      "Development"
+    ],
+    "notes_en": "Hot Reload injects updated source code into a running Dart VM, preserving the app state and making UI changes visible almost instantly. Hot Restart completely restarts the app, rebuilding the widget tree and reinitializing state, which is slower than hot reload.\n\nHot Reload greatly speeds up UI development by preserving state. Hot Restart ensures full reset, useful when major changes require clean state.",
+    "notes_ar": "يقوم Hot Reload بحقن الكود المصدر المحدث في آلة دارت الافتراضية قيد التشغيل، محافظًا على حالة التطبيق وجاعلاً تغييرات الواجهة مرئية تقريبًا على الفور. أما Hot Restart فيعيد تشغيل التطبيق بالكامل، مما يعيد بناء شجرة الودجت ويعيد تهيئة الحالة، وهو أبطأ من Hot Reload.\n\nHot Reload يسرع تطوير الواجهة بشكل كبير من خلال الحفاظ على الحالة. Hot Restart يضمن إعادة التعيين الكامل، وهو مفيد عندما تتطلب التغييرات الكبيرة حالة نظيفة.",
+    "pros_en": "Hot Reload greatly speeds up UI development by preserving state. Hot Restart ensures full reset, useful when major changes require clean state.",
+    "pros_ar": "Hot Reload يسرع تطوير الواجهة بشكل كبير من خلال الحفاظ على الحالة. Hot Restart يضمن إعادة التعيين الكامل، وهو مفيد عندما تتطلب التغييرات الكبيرة حالة نظيفة.",
+    "cons_en": "Hot Reload may not reflect changes outside widget code or initial setup. Hot Restart is slower and loses the current state.",
+    "cons_ar": "Hot Reload قد لا يعكس التغييرات خارج كود الودجت أو الإعدادات الأولية. Hot Restart أبطأ ويفقد الحالة الحالية.",
+    "bestUse_en": "Use Hot Reload for quick iterations during UI development; use Hot Restart when you need to apply changes that require restarting the app (e.g., changes to main()).",
+    "bestUse_ar": "استخدم Hot Reload للتكرارات السريعة أثناء تطوير الواجهة؛ استخدم Hot Restart عندما تحتاج إلى تطبيق تغييرات تتطلب إعادة تشغيل التطبيق (مثل التغييرات على main())."
+  },
+  {
+    "question_en": "What is the purpose of the MaterialApp and Scaffold widgets?",
+    "question_ar": "ما هو غرض ودجت MaterialApp و Scaffold في فلاتر؟",
+    "tags": [
+      "Basic",
+      "Flutter",
+      "UI"
+    ],
+    "notes_en": "MaterialApp is a convenience widget that wraps a number of widgets commonly required for Material Design applications, such as themes and navigation. Scaffold provides a framework for implementing the basic visual layout structure of Material Design (app bars, drawers, bottom sheets, etc.).\n\nUsing these widgets saves setup time: MaterialApp handles app-level configurations (theme, locale, navigator), and Scaffold provides standard UI elements out of the box.",
+    "notes_ar": "MaterialApp هو ودجت ملائم يلف مجموعة من الودجتس المطلوبة عادةً لتطبيقات تصميم المواد، مثل السمات (themes) والتنقل. يوفر Scaffold إطارًا لبناء الهيكل البصري الأساسي لتصميم المواد، مثل شريط التطبيق (AppBar)، الدُرج (drawer)، والنوافذ المنبثقة أسفل الشاشة.\n\nاستخدام هذه الودجتس يوفر وقت الإعداد: فـ MaterialApp يدير إعدادات على مستوى التطبيق (السمة، لغة الواجهة، المُسوِّر)، و Scaffold يوفر عناصر واجهة قياسية جاهزة للاستخدام.",
+    "pros_en": "Using these widgets saves setup time: MaterialApp handles app-level configurations (theme, locale, navigator), and Scaffold provides standard UI elements out of the box.",
+    "pros_ar": "استخدام هذه الودجتس يوفر وقت الإعداد: فـ MaterialApp يدير إعدادات على مستوى التطبيق (السمة، لغة الواجهة، المُسوِّر)، و Scaffold يوفر عناصر واجهة قياسية جاهزة للاستخدام.",
+    "cons_en": "They impose Material Design; for a custom look or non-Material design, one might use WidgetsApp or a custom layout.",
+    "cons_ar": "تفرض هذه الودجتس تصميم المواد؛ للحصول على مظهر مخصص أو تصميم غير المواد، قد تستخدم WidgetsApp أو تنسيقًا مخصصًا.",
+    "bestUse_en": "Use MaterialApp and Scaffold when developing a Flutter app following Material Design guidelines (common for Android or cross-platform).",
+    "bestUse_ar": "استخدم MaterialApp و Scaffold عند تطوير تطبيق فلاتر يتبع إرشادات تصميم المواد (شائعة لنظام Android أو عبر المنصات)."
+  },
+  {
+    "question_en": "What is a Flutter Widget’s lifecycle (StatefulWidget lifecycle)?",
+    "question_ar": "ما هي دورة حياة ودجت في فلاتر (دورة حياة StatefulWidget)؟",
+    "tags": [
+      "Intermediate",
+      "Flutter",
+      "Widgets"
+    ],
+    "notes_en": "A StatefulWidget has a State object whose lifecycle includes initState(), didChangeDependencies(), build(), setState(), deactivate(), dispose(), and reassemble (during hot reload). initState is called once when the widget is inserted into the widget tree; build() is called often to redraw; dispose() is called when the widget is removed.",
+    "notes_ar": "يحتوي StatefulWidget على كائن State تشمل دورة حياته دوال initState()، didChangeDependencies()، build()، setState()، deactivate()، dispose()، و reassemble (أثناء التحميل السريع). تُستدعى initState مرة واحدة عند إضافة الودجت إلى شجرة الودجتس؛ يُستدعى build عدة مرات لإعادة الرسم؛ ويُستدعى dispose عند إزالة الودجت.",
+    "pros_en": "Understanding lifecycle is crucial for resource management (e.g., initializing and disposing controllers) and for controlling rebuilds.",
+    "pros_ar": "فهم دورة الحياة ضروري لإدارة الموارد (مثل تهيئة المتحكمات Controller والتخلص منها) وللتحكم في عمليات إعادة البناء.",
+    "cons_en": "Managing complex lifecycles can be error-prone; forgetting to dispose can cause memory leaks.",
+    "cons_ar": "إدارة الدورات المعقدة قد تكون عرضة للأخطاء؛ قد يؤدي النسيان التخلص من الموارد إلى تسريبات الذاكرة.",
+    "bestUse_en": "Use initState for one-time initialization, build to construct the UI, and dispose to clean up resources like animations or streams.",
+    "bestUse_ar": "استخدم initState للتهيئة لمرة واحدة، وbuild لبناء الواجهة، وdispose لتنظيف الموارد مثل الرسوم المتحركة أو التدفقات."
+  },
+  {
+    "question_en": "What are mixins in Dart and how are they used?",
+    "question_ar": "ما هي الـ mixins في دارت وكيف تُستخدم؟",
+    "tags": [
+      "Intermediate",
+      "Dart",
+      "OOP"
+    ],
+    "notes_en": "Mixins allow a class to use methods and properties from multiple classes without multiple inheritance. In Dart, you define a mixin with the 'mixin' keyword and then use it with the 'with' keyword in a class declaration. They are useful for code reuse.\n\nProvide a way to add common functionality to multiple classes without forcing an inheritance relationship. They keep classes more modular.\n\nExample:\nr'''mixin Logger {\n  void log(String message) {\n    print('LOG: $message');\n  }\n}\n\nclass MyClass with Logger {\n  void doSomething() {\n    log('Doing something!');\n  }\n}'''",
+    "notes_ar": "تسمح الـ mixins لفئة معينة باستخدام الدوال والخصائص من فئات متعددة دون استخدام تعدد الميراث. في دارت، تعرف الـ mixin باستخدام الكلمة المحجوزة 'mixin' ثم تستخدمه في إعلان الفئة باستخدام 'with'. وهي مفيدة لإعادة استخدام الكود.\n\nتوفر طريقة لإضافة وظائف شائعة لعدة فئات دون فرض علاقة وراثة. تحافظ على فصل الفئات وزيادة modularity.\n\nمثال:\nr'''mixin Logger {\n  void log(String message) {\n    print('سجل: $message');\n  }\n}\n\nclass MyClass with Logger {\n  void doSomething() {\n    log('أداء شيء ما!');\n  }\n}'''",
+    "pros_en": "Provide a way to add common functionality to multiple classes without forcing an inheritance relationship. They keep classes more modular.",
+    "pros_ar": "توفر طريقة لإضافة وظائف شائعة لعدة فئات دون فرض علاقة وراثة. تحافظ على فصل الفئات وزيادة modularity.",
+    "cons_en": "Overusing mixins can lead to complex hierarchies and unexpected behavior if many mixins modify similar properties.",
+    "cons_ar": "الاستخدام المفرط للـ mixins يمكن أن يؤدي إلى هياكل معقدة وسلوك غير متوقع إذا عدّلت عدة mixins خصائص متشابهة.",
+    "bestUse_en": "Use mixins when you want to share functionality (like logging, validation, etc.) across different classes without creating a base class.",
+    "bestUse_ar": "استخدم الـ mixins عندما تريد مشاركة وظائف معينة (مثل التسجيل logging أو التحقق validation) عبر فئات مختلفة دون إنشاء فئة أساسية."
+  },
+  {
+    "question_en": "What are extension methods in Dart?",
+    "question_ar": "ما هي طرق الامتداد (extension methods) في دارت؟",
+    "tags": [
+      "Intermediate",
+      "Dart"
+    ],
+    "notes_en": "Extension methods allow you to add new methods (or getters/setters) to existing libraries or classes without modifying them. Defined using the 'extension' keyword, they are a syntactic convenience to extend functionality.\n\nEnable cleaner code by extending functionality of built-in types or classes (e.g., adding utility methods to String).\n\nExample:\nr'''extension NumberParsing on String {\n  int toIntOrZero() {\n    return int.tryParse(this) ?? 0;\n  }\n}\n\nvoid example() {\n  String s = '123';\n  int x = s.toIntOrZero(); // 123\n}'''",
+    "notes_ar": "طرق الامتداد تسمح لك بإضافة طرق (أو getters/setters) جديدة إلى مكتبات أو فئات موجودة دون تعديلها. تعرف باستخدام الكلمة المحجوزة 'extension'، وهي وسيلة لراحة الاستخدام لتمديد الوظائف.\n\nتسمح بكتابة أكواد أنظف عن طريق توسيع وظائف الأنواع أو الفئات المدمجة (مثل إضافة طرق مساعدة لنوع String).\n\nمثال:\nr'''extension NumberParsing on String {\n  int toIntOrZero() {\n    return int.tryParse(this) ?? 0;\n  }\n}\n\nvoid example() {\n  String s = '123';\n  int x = s.toIntOrZero(); // 123\n}'''",
+    "pros_en": "Enable cleaner code by extending functionality of built-in types or classes (e.g., adding utility methods to String).",
+    "pros_ar": "تسمح بكتابة أكواد أنظف عن طريق توسيع وظائف الأنواع أو الفئات المدمجة (مثل إضافة طرق مساعدة لنوع String).",
+    "cons_en": "They can make code harder to discover, as methods are not visible on the original class definition.",
+    "cons_ar": "يمكن أن تجعل الكود أصعب في الاكتشاف، لأن الطرق الجديدة ليست مرئية ضمن تعريف الفئة الأصلي.",
+    "bestUse_en": "Use extension methods to add helper functions to types (e.g., formatting, validation) in your project without creating utility classes.",
+    "bestUse_ar": "استخدم طرق الامتداد لإضافة دوال مساعدة للأنواع (مثل التنسيق أو التحقق) في مشروعك دون إنشاء فئات مساعدة."
+  },
+  {
+    "question_en": "What are Lists, Sets, and Maps in Dart and when to use each?",
+    "question_ar": "ما هي القوائم (Lists) والمجموعات (Sets) والقواميس (Maps) في دارت، ومتى يجب استخدام كل منها؟",
+    "tags": [
+      "Basic",
+      "Dart",
+      "DataStructures"
+    ],
+    "notes_en": "List is an ordered collection (like arrays) allowing duplicates; use when order matters and you may have repeats. Set is an unordered collection of unique items; use when you need uniqueness (e.g., a set of tags). Map is a key-value store (like dictionary); use when you need to associate values with keys for fast lookup.\n\nLists allow indexed access and ordering. Sets ensure no duplicates and provide fast membership checks. Maps provide fast key-based lookup.",
+    "notes_ar": "List هي مجموعة مرتبة (مثل المصفوفات) تسمح بالعناصر المكررة؛ استخدمها عندما يهم الترتيب وقد تكون هناك عناصر متكررة. Set هي مجموعة غير مرتبة من العناصر الفريدة؛ استخدمها عندما تحتاج إلى الفريدة (مثل مجموعة من الوسوم tags). Map هو هيكل بيانات من المفاتيح والقيم (مثل القاموس dictionary)؛ استخدمه عندما تحتاج إلى ربط قيم بمفاتيح للبحث السريع.\n\nتسمح الـ List بالوصول إلى العناصر عبر مؤشر وترتيب ثابت. تضمن الـ Set عدم وجود تكرارات وتوفر فحص أسرع للانتماء. يوفر الـ Map بحثًا سريعًا عن القيمة بناءً على المفتاح.",
+    "pros_en": "Lists allow indexed access and ordering. Sets ensure no duplicates and provide fast membership checks. Maps provide fast key-based lookup.",
+    "pros_ar": "تسمح الـ List بالوصول إلى العناصر عبر مؤشر وترتيب ثابت. تضمن الـ Set عدم وجود تكرارات وتوفر فحص أسرع للانتماء. يوفر الـ Map بحثًا سريعًا عن القيمة بناءً على المفتاح.",
+    "cons_en": "Lists may be inefficient if you need to enforce uniqueness. Sets do not maintain insertion order. Maps use more memory per entry than a simple list.",
+    "cons_ar": "قد تكون الـ List غير فعّالة إذا كنت بحاجة لضمان التفرد. لا تحافظ الـ Set على ترتيب الإدراج. يستخدم الـ Map ذاكرة أكبر لكل إدخال مقارنة بقائمة بسيطة.",
+    "bestUse_en": "Use List for ordered data sequences, Set for unique collections, and Map for key-value associations.",
+    "bestUse_ar": "استخدم List للتسلسلات المرتبة من البيانات، وSet للمجموعات الفريدة، وMap لربط المفاتيح بالقيم."
+  },
+  {
+    "question_en": "What are the SOLID principles and how do they apply in Flutter?",
+    "question_ar": "ما هي مبادئ SOLID وكيف يتم تطبيقها في فلاتر؟",
+    "tags": [
+      "Intermediate",
+      "Flutter",
+      "Architecture"
+    ],
+    "notes_en": "SOLID refers to five principles of object-oriented design: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion. For example, in Flutter you should keep widgets/controllers with a single responsibility, use abstractions for dependencies (Dependency Inversion), and make classes open for extension but closed for modification.\n\nFollowing SOLID makes code more maintainable, testable, and extensible. For Flutter, it encourages clean separation of UI and logic, and small reusable widgets/controllers.\n\nStrict adherence can lead to more abstraction and boilerplate; it may complicate simple projects if overdone.",
+    "notes_ar": "يشير SOLID إلى خمسة مبادئ لتصميم البرمجيات الموجهة للكائنات: مبدأ المسؤولية الوحيدة، مبدأ الانفتاح/الإغلاق، مبدأ استبدال ليسكوف، مبدأ تقسيم الواجهات، ومبدأ عكس التبعيات. على سبيل المثال، في فلاتر يجب أن تحتفظ الودجتس/متحكمات الحالة بمسؤولية واحدة فقط، واستخدام التجريدات للتبعيات (Dependency Inversion)، وجعل الفئات قابلة للتمديد لكن مغلقة للتعديل.\n\nاتباع SOLID يجعل الكود أكثر قابلية للصيانة والاختبار والتمديد. في فلاتر، يشجع ذلك على فصل واضح بين الواجهة والمنطق، وإنشاء ودجتس/متحكمات صغيرة قابلة لإعادة الاستخدام.\n\nالالتزام الصارم قد يؤدي إلى المزيد من التجريد وتكرار الكود الزائد، وقد يعقد المشاريع البسيطة إذا تم الإفراط فيه.",
+    "pros_en": "Following SOLID makes code more maintainable, testable, and extensible. For Flutter, it encourages clean separation of UI and logic, and small reusable widgets/controllers.",
+    "pros_ar": "اتباع SOLID يجعل الكود أكثر قابلية للصيانة والاختبار والتمديد. في فلاتر، يشجع ذلك على فصل واضح بين الواجهة والمنطق، وإنشاء ودجتس/متحكمات صغيرة قابلة لإعادة الاستخدام.",
+    "cons_en": "Strict adherence can lead to more abstraction and boilerplate; it may complicate simple projects if overdone.",
+    "cons_ar": "الالتزام الصارم قد يؤدي إلى المزيد من التجريد وتكرار الكود الزائد، وقد يعقد المشاريع البسيطة إذا تم الإفراط فيه.",
+    "bestUse_en": "Use SOLID to structure larger Flutter apps; start simple but refactor towards SOLID as complexity grows.",
+    "bestUse_ar": "استخدم SOLID لتنظيم تطبيقات فلاتر الأكبر؛ ابدأ بتصميم بسيط ثم أعد الهيكلة نحو SOLID مع زيادة التعقيد."
+  },
+  {
+    "question_en": "What is the BLoC pattern in Flutter?",
+    "question_ar": "ما هو نمط BLoC في فلاتر؟",
+    "tags": [
+      "Intermediate",
+      "Flutter",
+      "DesignPattern",
+      "StateManagement"
+    ],
+    "notes_en": "BLoC (Business Logic Component) is an architectural pattern that separates business logic from UI by using Streams. BLoC exposes streams of data, and UI widgets listen to them. This makes the code more testable and reusable.\n\nPromotes separation of concerns and testability, works well with reactive programming, and simplifies state management for complex apps.\n\nAdds boilerplate (stream controllers, sinks, etc.) and can be overkill for simple apps. Learning curve is higher than simple setState.",
+    "notes_ar": "BLoC (مكون منطق الأعمال) هو نمط معماري يفصل منطق العمل عن واجهة المستخدم باستخدام التدفقات (Streams). يقوم BLoC بعرض تدفقات بيانات تستمع لها ودجتس الواجهة. هذا يجعل الكود أكثر قابلية للاختبار وإعادة الاستخدام.\n\nيعزز فصل الاهتمامات وقابلية الاختبار، ويعمل جيدًا مع البرمجة التفاعلية، ويبسط إدارة الحالة للتطبيقات المعقدة.\n\nيضيف تكرار في الكود (مثل متحكمات التدفق والمستقبلات)، وقد يكون مفرطًا للتطبيقات البسيطة. منحنى التعلم أعلى مقارنةً بـ setState البسيط.",
+    "pros_en": "Promotes separation of concerns and testability, works well with reactive programming, and simplifies state management for complex apps.",
+    "pros_ar": "يعزز فصل الاهتمامات وقابلية الاختبار، ويعمل جيدًا مع البرمجة التفاعلية، ويبسط إدارة الحالة للتطبيقات المعقدة.",
+    "cons_en": "Adds boilerplate (stream controllers, sinks, etc.) and can be overkill for simple apps. Learning curve is higher than simple setState.",
+    "cons_ar": "يضيف تكرار في الكود (مثل متحكمات التدفق والمستقبلات)، وقد يكون مفرطًا للتطبيقات البسيطة. منحنى التعلم أعلى مقارنةً بـ setState البسيط.",
+    "bestUse_en": "Use BLoC for medium to large apps where separation of logic is beneficial. For smaller apps, simpler methods may suffice.",
+    "bestUse_ar": "استخدم BLoC للتطبيقات متوسطة إلى كبيرة الحجم حيث يفيد فصل المنطق. للتطبيقات الأصغر، قد تكفي الطرق الأبسط."
+  },
+  {
+    "question_en": "What is Provider in Flutter and how does it differ from BLoC?",
+    "question_ar": "ما هو Provider في فلاتر وكيف يختلف عن BLoC؟",
+    "tags": [
+      "Intermediate",
+      "Flutter",
+      "DesignPattern",
+      "StateManagement"
+    ],
+    "notes_en": "Provider is a wrapper around InheritedWidget that makes state management easier by providing and accessing state objects. Unlike BLoC, which is based on Streams, Provider often uses ChangeNotifier or simple objects. Provider simplifies passing data down the widget tree without using Streams.\n\nLightweight and easy to use, less boilerplate than BLoC, well-integrated with Flutter. Good for many apps\u2019 state needs.\n\nDoes not enforce a strict pattern, which can lead to scattered state logic if not organized. Less formal separation than BLoC.",
+    "notes_ar": "Provider هو طبقة تغليف حول InheritedWidget يجعل إدارة الحالة أسهل من خلال توفير والوصول إلى كائنات الحالة. على عكس BLoC المستند إلى التدفقات (Streams)، يستخدم Provider غالبًا ChangeNotifier أو كائنات بسيطة. يقوم Provider بتبسيط تمرير البيانات في شجرة الودجتس دون استخدام التدفقات.\n\nخفيف الوزن وسهل الاستخدام، مع كود أقل تكرارًا من BLoC، ومتكامل جيدًا مع فلاتر. جيد لتلبية احتياجات العديد من تطبيقات الحالة.\n\nلا يفرض نمطًا صارمًا، مما قد يؤدي إلى انتشار منطق الحالة إذا لم يتم تنظيمه. فصل أقل رسمية من BLoC.",
+    "pros_en": "Lightweight and easy to use, less boilerplate than BLoC, well-integrated with Flutter. Good for many apps\u2019 state needs.",
+    "pros_ar": "خفيف الوزن وسهل الاستخدام، مع كود أقل تكرارًا من BLoC، ومتكامل جيدًا مع فلاتر. جيد لتلبية احتياجات العديد من تطبيقات الحالة.",
+    "cons_en": "Does not enforce a strict pattern, which can lead to scattered state logic if not organized. Less formal separation than BLoC.",
+    "cons_ar": "لا يفرض نمطًا صارمًا، مما قد يؤدي إلى انتشار منطق الحالة إذا لم يتم تنظيمه. فصل أقل رسمية من BLoC.",
+    "bestUse_en": "Use Provider for simpler state management needs or smaller apps. It integrates well with Flutter and is easier to start with than BLoC.",
+    "bestUse_ar": "استخدم Provider لاحتياجات إدارة الحالة الأبسط أو التطبيقات الأصغر. يتكامل جيدًا مع فلاتر وأسهل للبدء مقارنةً بـ BLoC."
+  },
+  {
+    "question_en": "What is the difference between Future and Stream in Dart?",
+    "question_ar": "ما الفرق بين Future و Stream في دارت؟",
+    "tags": [
+      "Intermediate",
+      "Dart",
+      "Async"
+    ],
+    "notes_en": "A Future represents a single asynchronous computation that either completes with a value or an error. A Stream represents a sequence of asynchronous events or data over time. FutureBuilder is used for one-time async results, StreamBuilder for ongoing data streams.\n\nUse Future for single HTTP requests or quick async tasks. Use Stream for events like WebSocket messages, sensor data, or periodic updates.\n\nFuture cannot handle multiple values or continuous updates. Streams introduce more complexity (listeners, cancellations).\n\nExample:\nr'''// Future example\nFuture<String> fetchUserOrder() async {\n  // simulate network delay\n  await Future.delayed(Duration(seconds: 2));\n  return 'Large Latte';\n}\n\n// Stream example\nStream<int> countStream() async* {\n  for (int i = 1; i <= 3; i++) {\n    await Future.delayed(Duration(seconds: 1));\n    yield i;\n  }\n}'''",
+    "notes_ar": "Future تمثل عملية غير متزامنة واحدة تنتهي بقيمة أو بخطأ. Stream تمثل سلسلة من الأحداث أو البيانات غير المتزامنة على مدار الوقت. FutureBuilder يستخدم للنتائج غير المتزامنة لمرة واحدة، بينما StreamBuilder يستخدم لبيانات مستمرة.\n\nاستخدم Future لطلبات HTTP الأحادية أو المهام السريعة غير المتزامنة. استخدم Stream للأحداث مثل رسائل WebSocket أو بيانات المستشعرات أو التحديثات الدورية.\n\nFuture لا يمكنه التعامل مع قيم متعددة أو تحديثات مستمرة. Streams تضيف المزيد من التعقيد (المستمعون، الإلغاء).\n\nمثال:\nr'''// مثال على Future\nFuture<String> fetchUserOrder() async {\n  // تأخير محاكاة للشبكة\n  await Future.delayed(Duration(seconds: 2));\n  return 'قهوة لاتيه كبيرة';\n}\n\n// مثال على Stream\nStream<int> countStream() async* {\n  for (int i = 1; i <= 3; i++) {\n    await Future.delayed(Duration(seconds: 1));\n    yield i;\n  }\n}'''",
+    "pros_en": "Use Future for single HTTP requests or quick async tasks. Use Stream for events like WebSocket messages, sensor data, or periodic updates.",
+    "pros_ar": "استخدم Future لطلبات HTTP الأحادية أو المهام السريعة غير المتزامنة. استخدم Stream للأحداث مثل رسائل WebSocket أو بيانات المستشعرات أو التحديثات الدورية.",
+    "cons_en": "Future cannot handle multiple values or continuous updates. Streams introduce more complexity (listeners, cancellations).",
+    "cons_ar": "Future لا يمكنه التعامل مع قيم متعددة أو تحديثات مستمرة. Streams تضيف المزيد من التعقيد (المستمعون، الإلغاء).",
+    "bestUse_en": "Use Future when expecting a single result (e.g., API call). Use Stream when listening for multiple results or changes over time.",
+    "bestUse_ar": "استخدم Future عندما تتوقع نتيجة واحدة (مثل استدعاء API). استخدم Stream عند الاستماع إلى نتائج متعددة أو تغيرات على مدار الوقت."
+  },
+  {
+    "question_en": "How do you navigate between screens in Flutter? (push, pushReplacement)",
+    "question_ar": "كيف تتنقل بين الشاشات في فلاتر؟ (push، pushReplacement)",
+    "tags": [
+      "Intermediate",
+      "Flutter",
+      "Navigation"
+    ],
+    "notes_en": "Navigation in Flutter uses the Navigator widget. Navigator.push adds a route to the stack (user can press back to return). Navigator.pushReplacement replaces the current route with a new one, removing the previous from the stack.",
+    "notes_ar": "التنقل في فلاتر يستخدم ويدجت Navigator. يقوم Navigator.push بإضافة مسار إلى المكدس (يمكن للمستخدم الضغط على الرجوع للعودة). يقوم Navigator.pushReplacement باستبدال المسار الحالي بآخر جديد، مما يزيل المسار السابق من المكدس.",
+    "pros_en": "push keeps the previous screen in memory (user can go back), while pushReplacement removes it (suitable for login screens or flows where going back is not needed).",
+    "pros_ar": "push يحتفظ بالشاشة السابقة في الذاكرة (يمكن للمستخدم العودة)، بينما pushReplacement يزيلها (مناسب لشاشات تسجيل الدخول أو التدفقات حيث لا يلزم الرجوع).",
+    "cons_en": "push can accumulate many routes if not managed (memory). pushReplacement prevents back navigation but loses previous screen state.",
+    "cons_ar": "push يمكن أن يجمع العديد من المسارات إذا لم تتم إدارته بشكل صحيح (يستهلك الذاكرة). pushReplacement يمنع الرجوع للخلف ولكنه يفقد حالة الشاشة السابقة.",
+    "bestUse_en": "Use push for normal forward navigation. Use pushReplacement for replacing screens permanently (e.g., after login or splash screen).",
+    "bestUse_ar": "استخدم push للتنقل الطبيعي الأمامي. استخدم pushReplacement لاستبدال الشاشات بشكل دائم (مثل بعد تسجيل الدخول أو شاشة البداية)."
+  },
+  {
+    "question_en": "What is the difference between Navigator 1.0 and Navigator 2.0?",
+    "question_ar": "ما الفرق بين Navigator 1.0 و Navigator 2.0؟",
+    "tags": [
+      "Advanced",
+      "Flutter",
+      "Navigation"
+    ],
+    "notes_en": "Navigator 1.0 is the classic imperative API (push/pop by widget), while Navigator 2.0 is a declarative, URL-based API with Router and RouteInformationParser. Navigator 2.0 offers more control over browser URL and deep linking.",
+    "notes_ar": "Navigator 1.0 هو الواجهة الإمبريالية الكلاسيكية (push/pop عبر الودجت)، بينما Navigator 2.0 هو واجهة إعلانية تعتمد على عناوين URL مع Router و RouteInformationParser. يوفر Navigator 2.0 مزيدًا من التحكم في عناوين المتصفح والروابط العميقة.",
+    "pros_en": "Navigator 2.0 enables web and more complex navigation patterns (deep linking), at cost of more boilerplate.",
+    "pros_ar": "يمكن Navigator 2.0 من تحقيق التنقل على الويب وأنماط تنقل أكثر تعقيدًا (الروابط العميقة)، على حساب المزيد من تكرار الكود.",
+    "cons_en": "Navigator 2.0 has a steeper learning curve and more code overhead. For simple apps, Navigator 1.0 is easier to use.",
+    "cons_ar": "Navigator 2.0 لديه منحنى تعلم أعلى وعبء كود أكبر. للتطبيقات البسيطة، يكون Navigator 1.0 أسهل في الاستخدام.",
+    "bestUse_en": "Use Navigator 2.0 for web apps or apps requiring deep linking and custom routing behavior. For basic navigation, 1.0 is sufficient.",
+    "bestUse_ar": "استخدم Navigator 2.0 لتطبيقات الويب أو التطبيقات التي تحتاج إلى روابط عميقة وسلوك توجيه مخصص. بالنسبة للتنقل الأساسي، يكفي 1.0."
+  },
+  {
+    "question_en": "What is Flutter’s build() method context parameter?",
+    "question_ar": "ما هو وسيط BuildContext في دالة build() في Flutter؟",
+    "tags": [
+      "Basic",
+      "Flutter",
+      "Widgets"
+    ],
+    "notes_en": "BuildContext is an object which represents the location of a widget in the widget tree. It is passed to the build method and can be used to access theme data, localization, and to find ancestor widgets in the tree.",
+    "notes_ar": "BuildContext هو كائن يمثل موقع الودجت في شجرة الودجتس. يتم تمريره إلى دالة build ويمكن استخدامه للوصول إلى بيانات السمة، والعولمة، وللعثور على الودجتس الأجداد في الشجرة.",
+    "pros_en": "Allows widgets to access inherited widgets like Theme or MediaQuery. Essential for widget communication.",
+    "pros_ar": "يسمح للودجتس بالوصول إلى ودجتس موروثة مثل Theme أو MediaQuery. أساسي لتواصل الودجتس.",
+    "cons_en": "Misusing context (e.g., using it before initState or in async) can lead to errors.",
+    "cons_ar": "استخدام context بشكل خاطئ (مثل استخدامه قبل initState أو في العمليات غير المتزامنة) قد يؤدي إلى أخطاء.",
+    "bestUse_en": "Use context inside build() to obtain theme or other inherited data, or Navigator for navigation.",
+    "bestUse_ar": "استخدم context داخل build() للحصول على السمات أو بيانات موروثة أخرى، أو Navigator للتنقل."
+  },
+  {
+    "question_en": "What is an Isolate in Dart and how is it used?",
+    "question_ar": "ما هو Isolate في دارت وكيف يُستخدم؟",
+    "tags": [
+      "Advanced",
+      "Dart",
+      "Concurrency"
+    ],
+    "notes_en": "An Isolate is a separate thread of execution that doesn’t share memory with the main isolate. It has its own memory heap. Communication is done via message passing (SendPort/ReceivePort). Use isolates for CPU-intensive tasks to avoid blocking the main UI thread.\n\nEnables true parallel computation in Dart without shared-memory concurrency bugs, improving performance for heavy tasks.\n\nCommunication via message passing can be complex and slower. Starting an isolate has overhead; not suitable for small tasks.\n\nUse isolates for expensive computations (image processing, large computations) off the main thread. For most UI tasks, use async/await instead.",
+    "notes_ar": "الـ Isolate هو خيط تنفيذ منفصل لا يشارك الذاكرة مع الـ Isolate الرئيسي. لديه مساحة ذاكرة مستقلة. تتم الاتصالات عبر تبادل الرسائل (SendPort/ReceivePort). استخدم الـ Isolates للمهام الحسابية الشاقة لتجنب حظر خيط واجهة المستخدم الرئيسي.\n\nيُمكن من الحساب المتوازي الحقيقي في دارت دون أخطاء التعارض في الذاكرة المشتركة، مما يحسن الأداء للمهام الثقيلة.\n\nالتواصل عبر تبادل الرسائل قد يكون معقدًا وأبطأ. بدء Isolate له عبء كبير؛ غير مناسب للمهام الصغيرة.\n\nاستخدم الـ Isolates للحسابات المكلفة (معالجة الصور، الحسابات الكبيرة) خارج الخيط الرئيسي. لمعظم مهام الواجهة، استخدم async/await بدلاً من ذلك.",
+    "pros_en": "Enables true parallel computation in Dart without shared-memory concurrency bugs, improving performance for heavy tasks.",
+    "pros_ar": "يُمكن من الحساب المتوازي الحقيقي في دارت دون أخطاء التعارض في الذاكرة المشتركة، مما يحسن الأداء للمهام الثقيلة.",
+    "cons_en": "Communication via message passing can be complex and slower. Starting an isolate has overhead; not suitable for small tasks.",
+    "cons_ar": "التواصل عبر تبادل الرسائل قد يكون معقدًا وأبطأ. بدء Isolate له عبء كبير؛ غير مناسب للمهام الصغيرة.",
+    "bestUse_en": "Use isolates for expensive computations (image processing, large computations) off the main thread. For most UI tasks, use async/await instead.",
+    "bestUse_ar": "استخدم الـ Isolates للحسابات المكلفة (معالجة الصور، الحسابات الكبيرة) خارج الخيط الرئيسي. لمعظم مهام الواجهة، استخدم async/await بدلاً من ذلك."
+  },
+  {
+    "question_en": "What are FutureBuilder and StreamBuilder used for in Flutter?",
+    "question_ar": "ما الغرض من FutureBuilder و StreamBuilder في فلاتر؟",
+    "tags": [
+      "Intermediate",
+      "Flutter",
+      "Widgets"
+    ],
+    "notes_en": "FutureBuilder is a widget that builds itself based on the latest snapshot of interaction with a Future. StreamBuilder similarly rebuilds when new Stream events arrive. They simplify handling of asynchronous data in the UI without manual listeners.\n\nMakes it easy to update UI based on async results or stream data; handles connection states and snapshots automatically.\n\nCan lead to rebuilds on every event; need to manage performance if streams are frequent.\n\nUse FutureBuilder for one-time async calls (like HTTP requests) and StreamBuilder for continuous data (like realtime updates or web sockets).",
+    "notes_ar": "FutureBuilder هو ودجت يعيد بناء نفسه استنادًا إلى أحدث لقطة (snapshot) من تفاعل مع Future. StreamBuilder على نحو مماثل يعيد البناء عند وصول أحداث جديدة من Stream. هم يبسطون التعامل مع البيانات غير المتزامنة في الواجهة دون مستمعين يدويين.\n\nيسهل تحديث الواجهة بناءً على النتائج غير المتزامنة أو بيانات التدفق؛ يعالج حالات الاتصال واللقطات تلقائيًا.\n\nيمكن أن يؤدي إلى إعادة بناء الواجهة عند كل حدث؛ يجب إدارة الأداء إذا كانت التدفقات متكررة.\n\nاستخدم FutureBuilder للنداءات غير المتزامنة لمرة واحدة (مثل طلبات HTTP) و StreamBuilder للبيانات المستمرة (مثل التحديثات الحية أو الـ WebSockets).",
+    "pros_en": "Makes it easy to update UI based on async results or stream data; handles connection states and snapshots automatically.",
+    "pros_ar": "يسهل تحديث الواجهة بناءً على النتائج غير المتزامنة أو بيانات التدفق؛ يعالج حالات الاتصال واللقطات تلقائيًا.",
+    "cons_en": "Can lead to rebuilds on every event; need to manage performance if streams are frequent.",
+    "cons_ar": "يمكن أن يؤدي إلى إعادة بناء الواجهة عند كل حدث؛ يجب إدارة الأداء إذا كانت التدفقات متكررة.",
+    "bestUse_en": "Use FutureBuilder for one-time async calls (like HTTP requests) and StreamBuilder for continuous data (like realtime updates or web sockets).",
+    "bestUse_ar": "استخدم FutureBuilder للنداءات غير المتزامنة لمرة واحدة (مثل طلبات HTTP) و StreamBuilder للبيانات المستمرة (مثل التحديثات الحية أو الـ WebSockets)."
+  },
+  {
+    "question_en": "What is a Constructor in Dart and what are factory constructors?",
+    "question_ar": "ما هو الباني (Constructor) في دارت وما هي البانيات factory؟",
+    "tags": [
+      "Intermediate",
+      "Dart",
+      "OOP"
+    ],
+    "notes_en": "A constructor in Dart is a special method to create objects of a class. A factory constructor is a special type of constructor that can return an existing instance or a subclass. It's declared with the 'factory' keyword. Useful for singleton or cache implementations.\n\nFactory constructors allow control over instance creation (e.g., implementing singletons or caches) and can return different subtypes.\n\nFactory constructors cannot access 'this' and don't automatically create a new instance; they add complexity compared to a normal constructor.\n\nExample:\nr'''class Point {\n  final int x, y;\n  Point(this.x, this.y);\n  factory Point.origin() {\n    return Point(0, 0);\n  }\n}'''",
+    "notes_ar": "الباني في دارت هو دالة خاصة لإنشاء كائنات من فئة. الباني factory هو نوع خاص من الباني يمكنه إعادة كائن موجود بالفعل أو كائن من فئة فرعية. يُعلن عنه باستخدام الكلمة المحجوزة 'factory'. مفيد لتنفيذ أنماط مثل المفرد (singleton) أو التخزين المؤقت.\n\nتسمح البانيات factory بالتحكم في إنشاء الكائنات (مثل تنفيذ نمط المفرد أو التخزين المؤقت) ويمكنها إعادة أنواع فرعية مختلفة.\n\nالبانيات factory لا تستطيع الوصول إلى 'this' ولا تنشئ كائنًا جديدًا تلقائيًا؛ إنها تضيف تعقيدًا مقارنة بالباني العادي.\n\nمثال:\nr'''class Point {\n  final int x, y;\n  Point(this.x, this.y);\n  factory Point.origin() {\n    return Point(0, 0);\n  }\n}'''",
+    "pros_en": "Factory constructors allow control over instance creation (e.g., implementing singletons or caches) and can return different subtypes.",
+    "pros_ar": "تسمح البانيات factory بالتحكم في إنشاء الكائنات (مثل تنفيذ نمط المفرد أو التخزين المؤقت) ويمكنها إعادة أنواع فرعية مختلفة.",
+    "cons_en": "Factory constructors cannot access 'this' and don't automatically create a new instance; they add complexity compared to a normal constructor.",
+    "cons_ar": "البانيات factory لا تستطيع الوصول إلى 'this' ولا تنشئ كائنًا جديدًا تلقائيًا؛ إنها تضيف تعقيدًا مقارنة بالباني العادي.",
+    "bestUse_en": "Use factory constructors for patterns like singleton (ensuring only one instance) or when you need custom logic to decide which instance to return.",
+    "bestUse_ar": "استخدم البانيات factory لأنماط مثل singleton (لضمان وجود مثيل واحد فقط) أو عندما تحتاج إلى منطق مخصص لتحديد الكائن الذي سيتم إرجاعه."
+  },
+  {
+    "question_en": "What is a Singleton pattern and how can you implement it in Dart?",
+    "question_ar": "ما هو نمط Singleton وكيف يمكنك تنفيذه في دارت؟",
+    "tags": [
+      "Intermediate",
+      "DesignPattern",
+      "Dart"
+    ],
+    "notes_en": "Singleton ensures a class has only one instance and provides a global access point. In Dart, you can implement a singleton by using a private constructor and a static instance. Useful for caches or shared resources.\n\nEnsures a single shared instance across the app (useful for caches, shared resources).\n\nGlobal state can make testing harder and lead to hidden dependencies.\n\nCode Example:\nr'''class Singleton {\n  static final Singleton _instance = Singleton._internal();\n  factory Singleton() => _instance;\n  Singleton._internal();\n}'''",
+    "notes_ar": "Singleton يضمن أن فئة معينة لها مثيل واحد فقط ويوفر نقطة وصول عالمية له. في دارت، يمكنك تنفيذ Singleton عن طريق استخدام باني خاص ومثيل ثابت. مفيد للتخزين المؤقت أو الموارد المشتركة.\n\nيضمن مثيلًا واحدًا مشتركًا عبر التطبيق (مفيد للتخزين المؤقت، الموارد المشتركة).\n\nالحالة العالمية يمكن أن تجعل الاختبار أصعب وتؤدي إلى تبعيات مخفية.\n\nمثال على الكود:\nr'''class Singleton {\n  static final Singleton _instance = Singleton._internal();\n  factory Singleton() => _instance;\n  Singleton._internal();\n}'''",
+    "pros_en": "Ensures a single shared instance across the app (useful for caches, shared resources).",
+    "pros_ar": "يضمن مثيلًا واحدًا مشتركًا عبر التطبيق (مفيد للتخزين المؤقت، الموارد المشتركة).",
+    "cons_en": "Global state can make testing harder and lead to hidden dependencies.",
+    "cons_ar": "الحالة العالمية يمكن أن تجعل الاختبار أصعب وتؤدي إلى تبعيات مخفية.",
+    "bestUse_en": "Use singleton for classes that manage global state or resources (e.g., a settings manager or network client).",
+    "bestUse_ar": "استخدم singleton للفئات التي تدير الحالة العالمية أو الموارد (مثل مدير الإعدادات أو عميل الشبكة)."
+  },
+  {
+    "question_en": "How do you optimize Flutter application performance?",
+    "question_ar": "كيف تحسن أداء تطبيق فلاتر؟",
+    "tags": [
+      "Advanced",
+      "Flutter",
+      "Performance"
+    ],
+    "notes_en": "Common Flutter performance optimizations include: using const constructors to avoid rebuilds, splitting widgets to reduce rebuild scope, using efficient data structures (List, Set, Map), minimizing widget layers (RepaintBoundary), and caching images or data. Avoid large asset sizes and excessive rebuilds.\n\nApplying these techniques can significantly improve frame rates and responsiveness.\n\nOver-optimizing early can complicate code; focus on bottlenecks identified by profiling.\n\nUse performance profiling (DevTools) to find bottlenecks. Apply optimizations like const constructors, efficient layout, and offloading work to isolates as needed.",
+    "notes_ar": "تشمل تحسينات الأداء الشائعة في فلاتر: استخدام البانيات الثابتة (const) لتجنب إعادة البناء، تقسيم الودجتس لتقليل نطاق إعادة البناء، استخدام هياكل بيانات فعّالة (List, Set, Map)، تقليل طبقات الودجتس (RepaintBoundary)، وتخزين الصور أو البيانات مؤقتًا. تجنب استخدام الأصول كبيرة الحجم وإعادة البناء الزائدة.\n\nتطبيق هذه التقنيات يمكن أن يحسن بشكل كبير معدلات الإطارات والاستجابة.\n\nالتحسين المفرط في وقت مبكر يمكن أن يعقد الكود؛ ركز على الاختناقات التي حددتها أدوات التحليل.\n\nاستخدم أدوات تحليل الأداء (DevTools) لتحديد الاختناقات. طبق تحسينات مثل البانيات const، والتخطيط الفعال، واستخدام الـ isolates عند الحاجة.",
+    "pros_en": "Applying these techniques can significantly improve frame rates and responsiveness.",
+    "pros_ar": "تطبيق هذه التقنيات يمكن أن يحسن بشكل كبير معدلات الإطارات والاستجابة.",
+    "cons_en": "Over-optimizing early can complicate code; focus on bottlenecks identified by profiling.",
+    "cons_ar": "التحسين المفرط في وقت مبكر يمكن أن يعقد الكود؛ ركز على الاختناقات التي حددتها أدوات التحليل.",
+    "bestUse_en": "Use performance profiling (DevTools) to find bottlenecks. Apply optimizations like const constructors, efficient layout, and offloading work to isolates as needed.",
+    "bestUse_ar": "استخدم أدوات تحليل الأداء (DevTools) لتحديد الاختناقات. طبق تحسينات مثل البانيات const، والتخطيط الفعال، واستخدام الـ isolates عند الحاجة."
+  },
+  {
+    "question_en": "What is Flutter's rendering engine and how does it work (e.g., Skia, Impeller)?",
+    "question_ar": "ما هو محرك العرض في فلاتر وكيف يعمل (مثل Skia و Impeller)؟",
+    "tags": [
+      "Advanced",
+      "Flutter",
+      "Rendering"
+    ],
+    "notes_en": "Flutter’s default rendering engine is Skia, a C++ based 2D graphics library, which renders the UI. The newer Impeller engine (introduced recently) improves performance and reduces graphical issues on some platforms. These engines compile Flutter's UI to native graphics commands on each platform.\n\nSkia provides high-quality, fast rendering; Impeller further optimizes GPU use and predictability.\n\nEngine details are mostly abstracted away; developers should be aware for debugging only. Impeller is still maturing on some platforms.\n\nBenefit from engine improvements via Flutter upgrades. For advanced needs (e.g., custom shaders), learn how to use the appropriate engine.",
+    "notes_ar": "محرك العرض الافتراضي في فلاتر هو Skia، وهي مكتبة رسوميات ثنائية الأبعاد بلغة C++، تُستخدم لرسم واجهة المستخدم. محرك Impeller الأحدث (المقدم مؤخرًا) يحسن الأداء ويقلل المشاكل الرسومية على بعض المنصات. تقوم هذه المحركات بتحويل واجهة Flutter إلى أوامر رسومية أصلية لكل منصة.\n\nSkia يوفر عرض عالي الجودة وسريع؛ Impeller يحسن استخدام GPU والقابلية للتنبؤ بالأداء.\n\nتفاصيل المحرك مغلقة في الغالب للمطورين؛ يجب أن يكونوا على علم بها لأغراض تصحيح الأخطاء فقط. Impeller لا يزال في طور النضج على بعض المنصات.\n\nاستفد من تحسينات المحرك عبر تحديثات فلاتر. للاحتياجات المتقدمة (مثل shaders مخصصة)، تعرف على كيفية استخدام المحرك المناسب.",
+    "pros_en": "Skia provides high-quality, fast rendering; Impeller further optimizes GPU use and predictability.",
+    "pros_ar": "Skia يوفر عرض عالي الجودة وسريع؛ Impeller يحسن استخدام GPU والقابلية للتنبؤ بالأداء.",
+    "cons_en": "Engine details are mostly abstracted away; developers should be aware for debugging only. Impeller is still maturing on some platforms.",
+    "cons_ar": "تفاصيل المحرك مغلقة في الغالب للمطورين؛ يجب أن يكونوا على علم بها لأغراض تصحيح الأخطاء فقط. Impeller لا يزال في طور النضج على بعض المنصات.",
+    "bestUse_en": "Benefit from engine improvements via Flutter upgrades. For advanced needs (e.g., custom shaders), learn how to use the appropriate engine.",
+    "bestUse_ar": "استفد من تحسينات المحرك عبر تحديثات فلاتر. للاحتياجات المتقدمة (مثل shaders مخصصة)، تعرف على كيفية استخدام المحرك المناسب."
+  },
+  {
+    "question_en": "Compare Flutter with React Native: what are the pros and cons?",
+    "question_ar": "قارن بين فلاتر و React Native: ما هي المزايا والعيوب؟",
+    "tags": [
+      "Advanced",
+      "Flutter",
+      "Comparison",
+      "ReactNative"
+    ],
+    "notes_en": "Flutter and React Native are both cross-platform frameworks. Flutter compiles to native ARM code and has its own rendering, offering high performance. React Native uses a JavaScript bridge to native components, which can be slower. Flutter’s UI is highly customizable, while React Native uses native widgets with less flexibility. Flutter’s community is growing; React Native has a larger ecosystem (JavaScript). Hot reload exists in both, but Flutter’s is typically faster.\n\nFlutter: high performance, full UI control, one codebase (Android/iOS). React Native: larger library ecosystem, JavaScript familiarity for web developers.\n\nFlutter: larger app size, Dart is less known, fewer third-party packages. React Native: performance overhead from JS bridge, UI consistency issues across platforms.\n\nUse Flutter when performance and custom UI are top priorities. Use React Native if leveraging existing JavaScript code or ecosystem matters more.",
+    "notes_ar": "فلاتر و React Native هما إطاران لتطبيقات عبر المنصات. يقوم فلاتر بالترجمة إلى كود أصلي ويمتلك محرك عرض خاص به، مما يوفر أداء عالي. يستخدم React Native جسر JavaScript إلى مكونات أصلية، مما قد يكون أبطأ. واجهة فلاتر قابلة للتخصيص بشكل كبير، بينما يستخدم React Native ودجتس أصلية مع حرية أقل. مجتمع فلاتر في نمو؛ بينما لدى React Native نظام بيئي أكبر (JavaScript). هناك ميزة Hot Reload في كلاهما، لكن فيلاتر أسرع عادة.\n\nFlutter: أداء عالي، تحكم كامل بالواجهة، قاعدة كود واحدة (Android/iOS). React Native: نظام بيئي أكبر من المكتبات، مألوف لمطوري الويب (JavaScript).\n\nFlutter: حجم تطبيق أكبر، دارت أقل شهرة، عدد حزم التابعين أقل. React Native: تكلفة أداء من جسر JS، مشاكل اتساق الواجهة بين المنصات.\n\nاستخدم فلاتر عندما تكون الأداء وواجهة المستخدم المخصصة في أولوية قصوى. استخدم React Native إذا كان الاستفادة من كود JavaScript الموجود أو النظام البيئي لها أهمية أكبر.",
+    "pros_en": "Flutter: high performance, full UI control, one codebase (Android/iOS). React Native: larger library ecosystem, JavaScript familiarity for web developers.",
+    "pros_ar": "فلاتر: أداء عالي، تحكم كامل بالواجهة، قاعدة كود واحدة (Android/iOS). React Native: نظام بيئي أكبر من المكتبات، مألوف لمطوري الويب (JavaScript).",
+    "cons_en": "Flutter: larger app size, Dart is less known, fewer third-party packages. React Native: performance overhead from JS bridge, UI consistency issues across platforms.",
+    "cons_ar": "فلاتر: حجم تطبيق أكبر، دارت أقل شهرة، عدد حزم التابعين أقل. React Native: تكلفة أداء من جسر JS، مشاكل اتساق الواجهة بين المنصات.",
+    "bestUse_en": "Use Flutter when performance and custom UI are top priorities. Use React Native if leveraging existing JavaScript code or ecosystem matters more.",
+    "bestUse_ar": "استخدم فلاتر عندما تكون الأداء وواجهة المستخدم المخصصة في أولوية قصوى. استخدم React Native إذا كان الاستفادة من كود JavaScript الموجود أو النظام البيئي لها أهمية أكبر."
+  },
+  {
+    "question_en": "Explain inheritance and composition in Dart.",
+    "question_ar": "اشرح الميراث (inheritance) والتجميع (composition) في دارت.",
+    "tags": [
+      "Intermediate",
+      "Dart",
+      "OOP"
+    ],
+    "notes_en": "Inheritance is when a class extends another class, inheriting its properties and methods (\"is-a\" relationship). Composition is when a class includes instances of other classes as fields (\"has-a\" relationship). Composition is often preferred for flexibility, as it allows changing components at runtime.",
+    "notes_ar": "الميراث هو عندما تمتد فئة من فئة أخرى، فترث خصائصها وطرائقها (علاقة \"هي-نوعٌ من\"). التجميع هو عندما تحتوي فئة على مثيلات من فئات أخرى كحقول (علاقة \"يحتوي-على\"). غالبًا ما يُفضل التجميع للمرونة، لأنه يسمح بتغيير المكونات أثناء التشغيل.",
+    "pros_en": "Inheritance makes code reuse easy for closely related classes. Composition provides more flexibility and looser coupling.",
+    "pros_ar": "الميراث يجعل إعادة استخدام الكود سهلة للفئات ذات الصلة الوثيقة. التجميع يوفر مرونة أكبر وربطًا أضعف.",
+    "cons_en": "Inheritance can lead to rigid hierarchies and tight coupling; composition can lead to more boilerplate but is more adaptable.",
+    "cons_ar": "الميراث قد يؤدي إلى هياكل جامدة وربط قوي؛ التجميع قد يؤدي إلى المزيد من تكرار الكود لكنه أكثر قابلية للتكيف.",
+    "bestUse_en": "Use inheritance when classes have clear hierarchy and share behavior. Use composition to assemble behavior from multiple classes for flexibility.",
+    "bestUse_ar": "استخدم الميراث عندما تكون هناك فئات ذات تسلسل هرمي واضح وتشارك سلوكًا. استخدم التجميع لتجميع السلوك من عدة فئات لتحقيق مرونة أكبر."
+  },
+  {
+    "question_en": "What is polymorphism in object-oriented programming?",
+    "question_ar": "ما هو التعدد الشكلي (polymorphism) في البرمجة الشيئية؟",
+    "tags": [
+      "Basic",
+      "Dart",
+      "OOP"
+    ],
+    "notes_en": "Polymorphism means \"many forms\". In Dart, it allows treating objects of different classes through a common interface (e.g., methods overridden in subclasses). A function can accept a base class type and operate on any subclass instance.",
+    "notes_ar": "التعدد الشكلي يعني \"أشكال متعددة\". في دارت، يسمح بالتعامل مع كائنات من فئات مختلفة من خلال واجهة مشتركة (مثل الدوال التي يتم تجاوزها في الفئات الفرعية). يمكن لدالة أن تستقبل نوع الفئة الأساسية وتعمل على أي مثيل من فئات فرعية.",
+    "pros_en": "Makes code more flexible and reusable by programming to an interface or superclass rather than concrete classes.",
+    "pros_ar": "يجعل الكود أكثر مرونة وقابلية لإعادة الاستخدام عن طريق البرمجة باستخدام واجهة أو فئة أساسية بدلاً من فئات محددة.",
+    "cons_en": "May make code harder to understand if overused, as the actual object type is less obvious.",
+    "cons_ar": "قد يجعل الكود أكثر صعوبة في الفهم إذا استُخدم بشكل مفرط، حيث يصبح نوع الكائن الفعلي أقل وضوحًا.",
+    "bestUse_en": "Use polymorphism when you want to use a common interface (abstract class or base class) for different concrete implementations.",
+    "bestUse_ar": "استخدم التعدد الشكلي عندما تريد استخدام واجهة مشتركة (فئة مجردة أو أساسية) لتنفيذات ملموسة مختلفة."
+  }
+]
