@@ -3,6 +3,7 @@ library;
 
 import 'package:tuts/core/models/code_block.dart';
 import 'package:tuts/core/models/interview_question.dart';
+import 'package:tuts/core/models/localized_text.dart';
 
 import '../../core/enums/difficulty_level.dart';
 import '../core/models/content.dart';
@@ -97,30 +98,34 @@ const List<InterviewQuestion> questionsData = [
       bestUse:
           "التطبيقات متعددة المنصات التي تتطلب واجهة مستخدم/تجربة مستخدم متسقة، التطبيقات عالية الأداء، التطبيقات ذات واجهة المستخدم المخصصة المعقدة",
     ),
-    prosEn: [
-      "Fast development with hot reload",
-      "Single codebase for multiple platforms",
-      "Excellent performance",
-      "Rich widget library",
-      "Strong community support",
-    ],
-    prosAr: [
-      "تطوير سريع مع إعادة التحميل السريع",
-      "قاعدة كود واحدة لمنصات متعددة",
-      "أداء ممتاز",
-      "مكتبة غنية من عناصر التصميم (Widgets)",
-      "دعم قوي من المجتمع",
-    ],
-    consEn: [
-      "Larger app size due to engine inclusion",
-      "Relatively newer compared to native development",
-      "Limited third-party libraries compared to native",
-    ],
-    consAr: [
-      "حجم تطبيق أكبر بسبب تضمين المحرك",
-      "جديد نسبيًا مقارنة بالتطوير الأصلي",
-      "مكتبات طرف ثالث محدودة مقارنة بالتطوير الأصلي",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Fast development with hot reload",
+        "Single codebase for multiple platforms",
+        "Excellent performance",
+        "Rich widget library",
+        "Strong community support",
+      ],
+      ar: [
+        "تطوير سريع مع إعادة التحميل السريع",
+        "قاعدة كود واحدة لمنصات متعددة",
+        "أداء ممتاز",
+        "مكتبة غنية من عناصر التصميم (Widgets)",
+        "دعم قوي من المجتمع",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Larger app size due to engine inclusion",
+        "Relatively newer compared to native development",
+        "Limited third-party libraries compared to native",
+      ],
+      ar: [
+        "حجم تطبيق أكبر بسبب تضمين المحرك",
+        "جديد نسبيًا مقارنة بالتطوير الأصلي",
+        "مكتبات طرف ثالث محدودة مقارنة بالتطوير الأصلي",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-002",
@@ -166,22 +171,26 @@ const List<InterviewQuestion> questionsData = [
         "class MyText extends StatelessWidget { /* static */ }\nclass Counter extends StatefulWidget { /* has state */ }",
       ),
     ],
-    prosEn: [
-      "StatelessWidget: Better performance, simpler",
-      "StatefulWidget: Dynamic content, user interaction support",
-    ],
-    prosAr: [
-      "StatelessWidget: أداء أفضل، أبسط",
-      "StatefulWidget: محتوى ديناميكي، دعم التفاعل مع المستخدم",
-    ],
-    consEn: [
-      "StatelessWidget: Cannot handle dynamic changes",
-      "StatefulWidget: More complex, potential performance overhead if misused",
-    ],
-    consAr: [
-      "StatelessWidget: لا يمكنه التعامل مع التغييرات الديناميكية",
-      "StatefulWidget: أكثر تعقيدًا، احتمال تكلفة أداء إذا أسيء استخدامه",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "StatelessWidget: Better performance, simpler",
+        "StatefulWidget: Dynamic content, user interaction support",
+      ],
+      ar: [
+        "StatelessWidget: أداء أفضل، أبسط",
+        "StatefulWidget: محتوى ديناميكي، دعم التفاعل مع المستخدم",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "StatelessWidget: Cannot handle dynamic changes",
+        "StatefulWidget: More complex, potential performance overhead if misused",
+      ],
+      ar: [
+        "StatelessWidget: لا يمكنه التعامل مع التغييرات الديناميكية",
+        "StatefulWidget: أكثر تعقيدًا، احتمال تكلفة أداء إذا أسيء استخدامه",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-003",
@@ -398,16 +407,30 @@ const List<InterviewQuestion> questionsData = [
         "// Singleton\nclass ApiService {\n  static final ApiService _instance = ApiService._internal();\n  factory ApiService() => _instance;\n  ApiService._internal();\n}\n\n// Factory\nclass Animal {\n  factory Animal.fromType(String type) {\n    if (type == 'dog') return Dog();\n    return Cat();\n  }\n}\n\n// Repository\nabstract class IUserRepository {\n  Future<User> getUser(String id);\n}\nclass UserRepository implements IUserRepository {\n  final ApiService _api;\n  final LocalDatabase _db;\n  Future<User> getUser(String id) async {\n    try { return await _api.getUser(id); }\n    catch (_) { return await _db.getUser(id); }\n  }\n}",
       ),
     ],
-    prosEn: [
-      "Singleton: Global access point, memory efficient",
-      "Factory: Flexible object creation, encapsulation",
-      "Repository: Testable, separates concerns, switch data sources easily",
-    ],
-    consEn: [
-      "Singleton: Hard to test, global state issues",
-      "Factory: Can become complex",
-      "Repository: Additional abstraction layer",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Singleton: Global access point, memory efficient",
+        "Factory: Flexible object creation, encapsulation",
+        "Repository: Testable, separates concerns, switch data sources easily",
+      ],
+      ar: [
+        "Singleton: نقطة الوصول العامة، كفاءة الذاكرة",
+        "Factory: إنشاء كائنات مرنة، إغلاق",
+        "Repository: قابل للاختبار، تفصل المخاوف، تبديل مصادر البيانات بسهولة",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Singleton: Hard to test, global state issues",
+        "Factory: Can become complex",
+        "Repository: Additional abstraction layer",
+      ],
+      ar: [
+        "Singleton: صعب التحكم في الاختبار، مشاكل حالة عالمية",
+        "Factory: يمكن أن يصبح معقدًا",
+        "Repository: طبقة إضافية للإغلاق",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-007",
@@ -457,12 +480,22 @@ const List<InterviewQuestion> questionsData = [
       bestUse:
           "List للمجموعات المرتبة، Set للعناصر الفريدة، Map للبحث السريع بالمفاتيح، Queue لجدولة المهام",
     ),
-    prosAr: [
-      "Provider بسيط ومتكامل مع Flutter؛ Riverpod يحسن من قابلية الاختبار والأمان من الأخطاء؛ Bloc يوفر فصلاً واضحاً للمنطق.",
-    ],
-    consAr: [
-      "Provider يمكن أن يكون صعبًا مع التطبيقات الكبيرة؛ Riverpod لديه منحنى تعلم أعلى؛ Bloc يتطلب الكثير من التعليمات البرمجية الإضافية.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Provider simple and integrated with Flutter; Riverpod enhances testability and error safety; Bloc provides a clear logic section.",
+      ],
+      ar: [
+        "Provider بسيط ومتكامل مع Flutter؛ Riverpod يحسن من قابلية الاختبار والأمان من الأخطاء؛ Bloc يوفر فصلاً واضحاً للمنطق.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Provider can be complex with large apps; Riverpod has a steeper learning curve; Bloc requires additional code.",
+      ],
+      ar: [
+        "Provider يمكن أن يكون صعبًا مع التطبيقات الكبيرة؛ Riverpod لديه منحنى تعلم أعلى؛ Bloc يتطلب الكثير من التعليمات البرمجية الإضافية.",
+      ],
+    ),
     examples: [
       StrCodeBlock(
         "List<String> items = ['a', 'b', 'c'];\nSet<int> uniqueIds = {1, 2, 3};\nMap<String, User> userMap = {'id1': user1};\nQueue<Task> taskQueue = Queue();",
@@ -517,18 +550,34 @@ const List<InterviewQuestion> questionsData = [
         "// setState\nsetState(() { counter++; });\n\n// Provider\nProvider.of<Counter>(context).increment();\n\n// BLoC\ncounterBloc.add(IncrementEvent());\n\n// Riverpod\nref.read(counterProvider.notifier).increment();",
       ),
     ],
-    prosEn: [
-      "setState: Simple, no dependencies",
-      "Provider: Easy learning curve, good community",
-      "BLoC: Testable, scalable, clear separation",
-      "Riverpod: Type-safe, no context, excellent testing",
-    ],
-    consEn: [
-      "setState: Doesn't scale, hard to manage",
-      "Provider: Can get verbose, runtime errors",
-      "BLoC: Steep learning curve, more code",
-      "Riverpod: Newer, smaller ecosystem",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "setState: Simple, no dependencies",
+        "Provider: Easy learning curve, good community",
+        "BLoC: Testable, scalable, clear separation",
+        "Riverpod: Type-safe, no context, excellent testing",
+      ],
+      ar: [
+        "setState: بسيط، بدون اعتمادات",
+        "Provider: منحنى تعلم سهل، مجتمع جيد",
+        "BLoC: قابل للاختبار، قابل للقياس، فصل واضح",
+        "Riverpod: آمن من حيث النوع، بدون BuildContext، اختبار ممتاز",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "setState: Doesn't scale, hard to manage",
+        "Provider: Can get verbose, runtime errors",
+        "BLoC: Steep learning curve, more code",
+        "Riverpod: Newer, smaller ecosystem",
+      ],
+      ar: [
+        "setState: لا يناسب التطبيقات الكبيرة، صعب التحكم",
+        "Provider: يمكن أن يصبح صعبًا، أخطاء وقت التشغيل",
+        "BLoC: منحنى تعلم أعلى، المزيد من الكود",
+        "Riverpod: جديد، نظام أقل",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-009",
@@ -571,12 +620,22 @@ const List<InterviewQuestion> questionsData = [
       bestUse:
           "Future لطلبات HTTP واستعلامات قاعدة البيانات؛ Streams للبيانات في الوقت الفعلي ومعالجة الأحداث وإدخال المستخدم",
     ),
-    prosAr: [
-      "تحسن بشكل كبير من أداء التمرير للقوائم الطويلة؛ ضرورية لأي قائمة من البيانات.",
-    ],
-    consAr: [
-      "بدون ListView.builder، يتم بناء جميع العناصر مقدمًا، مما يسبب مشاكل في الأداء والذاكرة.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Improves scrolling performance for long lists; essential for any data list.",
+      ],
+      ar: [
+        "تحسن بشكل كبير من أداء التمرير للقوائم الطويلة؛ ضرورية لأي قائمة من البيانات.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Without ListView.builder, all items are built at once, causing performance and memory issues.",
+      ],
+      ar: [
+        "بدون ListView.builder، يتم بناء جميع العناصر مقدمًا، مما يسبب مشاكل في الأداء والذاكرة.",
+      ],
+    ),
     examples: [
       StrCodeBlock(
         "// Future\nFuture<String> fetchData() async {\n  await Future.delayed(Duration(seconds: 2));\n  return 'Data';\n}\n\n// async/await\nvoid loadData() async {\n  final data = await fetchData();\n  print(data);\n}\n\n// Stream\nStream<int> countStream() async* {\n  for (int i = 0; i < 5; i++) {\n    await Future.delayed(Duration(seconds: 1));\n    yield i;\n  }\n}\n\n// Listen to stream\ncountStream().listen((value) => print(value));",
@@ -710,12 +769,22 @@ const List<InterviewQuestion> questionsData = [
       bestUse:
           "قوائم العناصر ذات الحالة (قوائم المهام)، التحقق من صحة النموذج، الحفاظ على موضع التمرير",
     ),
-    prosAr: [
-      "يساعد على تجنب السلوك غير المتوقع عند إعادة ترتيب القوائم أو تغييرها ديناميكيًا.",
-    ],
-    consAr: [
-      "غالبًا غير ضروري إلا إذا كنت تدير قوائم عناصر التصميم (Widgets) ديناميكية؛ الإفراط في استخدام المفاتيح قد يعقد الكود.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Helps avoid unexpected behavior when reordering lists or dynamically changing them.",
+      ],
+      ar: [
+        "يساعد على تجنب السلوك غير المتوقع عند إعادة ترتيب القوائم أو تغييرها ديناميكيًا.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Often unnecessary unless you are managing dynamic widget lists; excessive use of keys can complicate code.",
+      ],
+      ar: [
+        "غالبًا غير ضروري إلا إذا كنت تدير قوائم عناصر التصميم (Widgets) ديناميكية؛ الإفراط في استخدام المفاتيح قد يعقد الكود.",
+      ],
+    ),
     examples: [
       StrCodeBlock(
         "// Preserving state in list\nkey: ValueKey(item.id),\n\n// Accessing state\nfinal key = GlobalKey<FormState>();\nkey.currentState?.validate();",
@@ -1717,21 +1786,25 @@ const List<InterviewQuestion> questionsData = [
       bestUse:
           'مناسب لبناء تطبيقات جوال عبر المنصات مع واجهة مستخدم جذابة ودورات تطوير سريعة.',
     ),
-    prosEn: [
-      "High performance due to native compilation",
-      "hot reload for fast development",
-      "single codebase for multiple platforms.",
-    ],
-    prosAr: [
-      "أداء عالي بفضل الترجمة الأصلية، وإعادة تحميل ساخنة لتطوير سريع، وقاعدة كود واحدة للعديد من المنصات.",
-    ],
-    consEn: [
-      "Larger app size and fewer third-party libraries compared to some alternatives",
-      "learning Dart may be challenging for new developers.",
-    ],
-    consAr: [
-      "حجم تطبيق أكبر ومكتبات تابعة أقل مقارنة ببعض البدائل، وقد تكون دارت أصعب في التعلم للمطورين الجدد.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "High performance due to native compilation",
+        "hot reload for fast development",
+        "single codebase for multiple platforms.",
+      ],
+      ar: [
+        "أداء عالي بفضل الترجمة الأصلية، وإعادة تحميل ساخنة لتطوير سريع، وقاعدة كود واحدة للعديد من المنصات.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Larger app size and fewer third-party libraries compared to some alternatives",
+        "learning Dart may be challenging for new developers.",
+      ],
+      ar: [
+        "حجم تطبيق أكبر ومكتبات تابعة أقل مقارنة ببعض البدائل، وقد تكون دارت أصعب في التعلم للمطورين الجدد.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-032",
@@ -1759,21 +1832,25 @@ const List<InterviewQuestion> questionsData = [
       bestUse:
           'أفضل استخدام لها في تطوير تطبيقات فلاتر والتطبيقات على جانب العميل حيث يهم الأداء وإنتاجية المطور.',
     ),
-    prosEn: [
-      "Easy to learn for developers familiar with C-style syntax",
-      "supports both Ahead-of-Time (AOT) and Just-in-Time (JIT) compilation for fast development and high performance.",
-    ],
-    prosAr: [
-      "سهلة التعلم للمطورين المعتادين على صيغ لغات مثل C، وتدعم التجميع المسبق (AOT) والتنفيذي في وقت التشغيل (JIT) لتطوير سريع وأداء عالي.",
-    ],
-    consEn: [
-      "Smaller ecosystem compared to languages like JavaScript",
-      "and primarily used with Flutter on the client side",
-      "limiting reuse in server-side contexts.",
-    ],
-    consAr: [
-      "نظام بيئي أصغر مقارنة بلغات مثل JavaScript، ويُستخدم بشكل أساسي مع فلاتر على جانب العميل، مما يحد من إعادة الاستخدام في السياقات الخدمية.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Easy to learn for developers familiar with C-style syntax",
+        "supports both Ahead-of-Time (AOT) and Just-in-Time (JIT) compilation for fast development and high performance.",
+      ],
+      ar: [
+        "سهلة التعلم للمطورين المعتادين على صيغ لغات مثل C، وتدعم التجميع المسبق (AOT) والتنفيذي في وقت التشغيل (JIT) لتطوير سريع وأداء عالي.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Smaller ecosystem compared to languages like JavaScript",
+        "and primarily used with Flutter on the client side",
+        "limiting reuse in server-side contexts.",
+      ],
+      ar: [
+        "نظام بيئي أصغر مقارنة بلغات مثل JavaScript، ويُستخدم بشكل أساسي مع فلاتر على جانب العميل، مما يحد من إعادة الاستخدام في السياقات الخدمية.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-033",
@@ -1801,18 +1878,22 @@ const List<InterviewQuestion> questionsData = [
       bestUse:
           'استخدم الودجتس لجميع مكونات الواجهة؛ استفد من الودجتس بدون حالة للأجزاء الثابتة ومن الودجتس ذات الحالة للأجزاء التفاعلية.',
     ),
-    prosEn: [
-      "Highly customizable and composable; you can build complex UIs by combining simpler widgets. Flutter’s hot reload works well with its widget tree.",
-    ],
-    prosAr: [
-      "قابلة للتخصيص بدرجة عالية وقابلة للتركيب؛ يمكنك بناء واجهات مستخدم معقدة بدمج ودجتس أبسط. تعيد ميزة التحميل السريع (Hot Reload) في فلاتر بناء الواجهة بشكل جيد اعتمادًا على شجرة الودجتس.",
-    ],
-    consEn: [
-      "Deep widget hierarchies can become complex. Requires understanding of widget lifecycle for effective state management.",
-    ],
-    consAr: [
-      "يمكن أن تصبح تسلسلات الودجتس المعقدة معقدة. يتطلب فهم دورة حياة الودجت من أجل إدارة الحالة بشكل فعّال.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Highly customizable and composable; you can build complex UIs by combining simpler widgets. Flutter’s hot reload works well with its widget tree.",
+      ],
+      ar: [
+        "قابلة للتخصيص بدرجة عالية وقابلة للتركيب؛ يمكنك بناء واجهات مستخدم معقدة بدمج ودجتس أبسط. تعيد ميزة التحميل السريع (Hot Reload) في فلاتر بناء الواجهة بشكل جيد اعتمادًا على شجرة الودجتس.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Deep widget hierarchies can become complex. Requires understanding of widget lifecycle for effective state management.",
+      ],
+      ar: [
+        "يمكن أن تصبح تسلسلات الودجتس المعقدة معقدة. يتطلب فهم دورة حياة الودجت من أجل إدارة الحالة بشكل فعّال.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-034",
@@ -1868,18 +1949,22 @@ class _MyWidgetState extends State<MyWidget> {
   }
 }'''),
     ],
-    prosEn: [
-      "StatelessWidget is simpler and more performant for static content. StatefulWidget allows dynamic and interactive UI.",
-    ],
-    prosAr: [
-      "StatelessWidget أبسط وأكثر كفاءة للأجزاء الثابتة. StatefulWidget تتيح واجهة مستخدم ديناميكية وتفاعلية.",
-    ],
-    consEn: [
-      "StatelessWidget can’t update UI based on changes. StatefulWidget introduces overhead of state management and rebuilds.",
-    ],
-    consAr: [
-      "StatelessWidget لا يمكنها تحديث الواجهة بناءً على التغييرات. StatefulWidget تضيف عبئًا لإدارة الحالة وإعادة بناء الودجت.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "StatelessWidget is simpler and more performant for static content. StatefulWidget allows dynamic and interactive UI.",
+      ],
+      ar: [
+        "StatelessWidget أبسط وأكثر كفاءة للأجزاء الثابتة. StatefulWidget تتيح واجهة مستخدم ديناميكية وتفاعلية.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "StatelessWidget can’t update UI based on changes. StatefulWidget introduces overhead of state management and rebuilds.",
+      ],
+      ar: [
+        "StatelessWidget لا يمكنها تحديث الواجهة بناءً على التغييرات. StatefulWidget تضيف عبئًا لإدارة الحالة وإعادة بناء الودجت.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-035",
@@ -1907,18 +1992,22 @@ class _MyWidgetState extends State<MyWidget> {
       bestUse:
           'استخدم المفاتيح عندما يكون لديك عدة ودجتس من نفس النوع وتحتاج إلى الحفاظ على حالتها عندما تتحرك أو تتغير موضعها.',
     ),
-    prosEn: [
-      "Using keys (especially UniqueKey or ValueKey) helps avoid unexpected behavior when reordering or dynamically changing lists of widgets.",
-    ],
-    prosAr: [
-      "يساعد استخدام المفاتيح (وخاصة UniqueKey أو ValueKey) على تجنب السلوك غير المتوقع عند إعادة ترتيب القوائم أو تغييرها ديناميكيًا.",
-    ],
-    consEn: [
-      "Often not needed unless you manage dynamic widget lists; overusing keys can complicate the code.",
-    ],
-    consAr: [
-      "غالبًا غير ضروري إلا إذا كنت تدير قوائم ودجتس ديناميكية؛ الإفراط في استخدام المفاتيح قد يعقد الكود.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Using keys (especially UniqueKey or ValueKey) helps avoid unexpected behavior when reordering or dynamically changing lists of widgets.",
+      ],
+      ar: [
+        "يساعد استخدام المفاتيح (وخاصة UniqueKey أو ValueKey) على تجنب السلوك غير المتوقع عند إعادة ترتيب القوائم أو تغييرها ديناميكيًا.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Often not needed unless you manage dynamic widget lists; overusing keys can complicate the code.",
+      ],
+      ar: [
+        "غالبًا غير ضروري إلا إذا كنت تدير قوائم ودجتس ديناميكية؛ الإفراط في استخدام المفاتيح قد يعقد الكود.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-036",
@@ -1951,19 +2040,23 @@ Hot Reload يسرع تطوير الواجهة بشكل كبير من خلال ا
       bestUse:
           'استخدم Hot Reload للتكرارات السريعة أثناء تطوير الواجهة؛ استخدم Hot Restart عندما تحتاج إلى تطبيق تغييرات تتطلب إعادة تشغيل التطبيق (مثل التغييرات على main()).',
     ),
-    prosEn: [
-      "Hot Reload greatly speeds up UI development by preserving state. Hot Restart ensures full reset",
-      "useful when major changes require clean state.",
-    ],
-    prosAr: [
-      "Hot Reload يسرع تطوير الواجهة بشكل كبير من خلال الحفاظ على الحالة. Hot Restart يضمن إعادة التعيين الكامل، وهو مفيد عندما تتطلب التغييرات الكبيرة حالة نظيفة.",
-    ],
-    consEn: [
-      "Hot Reload may not reflect changes outside widget code or initial setup. Hot Restart is slower and loses the current state.",
-    ],
-    consAr: [
-      "Hot Reload قد لا يعكس التغييرات خارج كود الودجت أو الإعدادات الأولية. Hot Restart أبطأ ويفقد الحالة الحالية.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Hot Reload greatly speeds up UI development by preserving state. Hot Restart ensures full reset",
+        "useful when major changes require clean state.",
+      ],
+      ar: [
+        "Hot Reload يسرع تطوير الواجهة بشكل كبير من خلال الحفاظ على الحالة. Hot Restart يضمن إعادة التعيين الكامل، وهو مفيد عندما تتطلب التغييرات الكبيرة حالة نظيفة.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Hot Reload may not reflect changes outside widget code or initial setup. Hot Restart is slower and loses the current state.",
+      ],
+      ar: [
+        "Hot Reload قد لا يعكس التغييرات خارج كود الودجت أو الإعدادات الأولية. Hot Restart أبطأ ويفقد الحالة الحالية.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-037",
@@ -1995,22 +2088,26 @@ Using these widgets saves setup time: MaterialApp handles app-level configuratio
       bestUse:
           'استخدم MaterialApp و Scaffold عند تطوير تطبيق فلاتر يتبع إرشادات تصميم المواد (شائعة لنظام Android أو عبر المنصات).',
     ),
-    prosEn: [
-      "Using these widgets saves setup time: MaterialApp handles app-level configurations (theme",
-      "locale",
-      "navigator)",
-      "and Scaffold provides standard UI elements out of the box.",
-    ],
-    prosAr: [
-      "استخدام هذه الودجتس يوفر وقت الإعداد: فـ MaterialApp يدير إعدادات على مستوى التطبيق (السمة، لغة الواجهة، المُسوِّر)، و Scaffold يوفر عناصر واجهة قياسية جاهزة للاستخدام.",
-    ],
-    consEn: [
-      "They impose Material Design; for a custom look or non-Material design",
-      "one might use WidgetsApp or a custom layout.",
-    ],
-    consAr: [
-      "تفرض هذه الودجتس تصميم المواد؛ للحصول على مظهر مخصص أو تصميم غير المواد، قد تستخدم WidgetsApp أو تنسيقًا مخصصًا.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Using these widgets saves setup time: MaterialApp handles app-level configurations (theme",
+        "locale",
+        "navigator)",
+        "and Scaffold provides standard UI elements out of the box.",
+      ],
+      ar: [
+        "استخدام هذه الودجتس يوفر وقت الإعداد: فـ MaterialApp يدير إعدادات على مستوى التطبيق (السمة، لغة الواجهة، المُسوِّر)، و Scaffold يوفر عناصر واجهة قياسية جاهزة للاستخدام.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "They impose Material Design; for a custom look or non-Material design",
+        "one might use WidgetsApp or a custom layout.",
+      ],
+      ar: [
+        "تفرض هذه الودجتس تصميم المواد؛ للحصول على مظهر مخصص أو تصميم غير المواد، قد تستخدم WidgetsApp أو تنسيقًا مخصصًا.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-038",
@@ -2039,19 +2136,23 @@ Using these widgets saves setup time: MaterialApp handles app-level configuratio
       bestUse:
           'استخدم initState للتهيئة لمرة واحدة، وbuild لبناء الواجهة، وdispose لتنظيف الموارد مثل الرسوم المتحركة أو التدفقات.',
     ),
-    prosEn: [
-      "Understanding lifecycle is crucial for resource management (e.g.",
-      "initializing and disposing controllers) and for controlling rebuilds.",
-    ],
-    prosAr: [
-      "فهم دورة الحياة ضروري لإدارة الموارد (مثل تهيئة المتحكمات Controller والتخلص منها) وللتحكم في عمليات إعادة البناء.",
-    ],
-    consEn: [
-      "Managing complex lifecycles can be error-prone; forgetting to dispose can cause memory leaks.",
-    ],
-    consAr: [
-      "إدارة الدورات المعقدة قد تكون عرضة للأخطاء؛ قد يؤدي النسيان التخلص من الموارد إلى تسريبات الذاكرة.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Understanding lifecycle is crucial for resource management (e.g.",
+        "initializing and disposing controllers) and for controlling rebuilds.",
+      ],
+      ar: [
+        "فهم دورة الحياة ضروري لإدارة الموارد (مثل تهيئة المتحكمات Controller والتخلص منها) وللتحكم في عمليات إعادة البناء.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Managing complex lifecycles can be error-prone; forgetting to dispose can cause memory leaks.",
+      ],
+      ar: [
+        "إدارة الدورات المعقدة قد تكون عرضة للأخطاء؛ قد يؤدي النسيان التخلص من الموارد إلى تسريبات الذاكرة.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-039",
@@ -2096,18 +2197,22 @@ class MyClass with Logger {
   }
 }'''),
     ],
-    prosEn: [
-      "Provide a way to add common functionality to multiple classes without forcing an inheritance relationship. They keep classes more modular.",
-    ],
-    prosAr: [
-      "توفر طريقة لإضافة وظائف شائعة لعدة فئات دون فرض علاقة وراثة. تحافظ على فصل الفئات وزيادة modularity.",
-    ],
-    consEn: [
-      "Overusing mixins can lead to complex hierarchies and unexpected behavior if many mixins modify similar properties.",
-    ],
-    consAr: [
-      "الاستخدام المفرط للـ mixins يمكن أن يؤدي إلى هياكل معقدة وسلوك غير متوقع إذا عدّلت عدة mixins خصائص متشابهة.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Provide a way to add common functionality to multiple classes without forcing an inheritance relationship. They keep classes more modular.",
+      ],
+      ar: [
+        "توفر طريقة لإضافة وظائف شائعة لعدة فئات دون فرض علاقة وراثة. تحافظ على فصل الفئات وزيادة modularity.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Overusing mixins can lead to complex hierarchies and unexpected behavior if many mixins modify similar properties.",
+      ],
+      ar: [
+        "الاستخدام المفرط للـ mixins يمكن أن يؤدي إلى هياكل معقدة وسلوك غير متوقع إذا عدّلت عدة mixins خصائص متشابهة.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-040",
@@ -2151,20 +2256,24 @@ void example() {
   int x = s.toIntOrZero(); // 123
 }'''),
     ],
-    prosEn: [
-      "Enable cleaner code by extending functionality of built-in types or classes (e.g.",
-      "adding utility methods to String).",
-    ],
-    prosAr: [
-      "تسمح بكتابة أكواد أنظف عن طريق توسيع وظائف الأنواع أو الفئات المدمجة (مثل إضافة طرق مساعدة لنوع String).",
-    ],
-    consEn: [
-      "They can make code harder to discover",
-      "as methods are not visible on the original class definition.",
-    ],
-    consAr: [
-      "يمكن أن تجعل الكود أصعب في الاكتشاف، لأن الطرق الجديدة ليست مرئية ضمن تعريف الفئة الأصلي.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Enable cleaner code by extending functionality of built-in types or classes (e.g.",
+        "adding utility methods to String).",
+      ],
+      ar: [
+        "تسمح بكتابة أكواد أنظف عن طريق توسيع وظائف الأنواع أو الفئات المدمجة (مثل إضافة طرق مساعدة لنوع String).",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "They can make code harder to discover",
+        "as methods are not visible on the original class definition.",
+      ],
+      ar: [
+        "يمكن أن تجعل الكود أصعب في الاكتشاف، لأن الطرق الجديدة ليست مرئية ضمن تعريف الفئة الأصلي.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-041",
@@ -2197,18 +2306,22 @@ Lists allow indexed access and ordering. Sets ensure no duplicates and provide f
       bestUse:
           'استخدم List للتسلسلات المرتبة من البيانات، وSet للمجموعات الفريدة، وMap لربط المفاتيح بالقيم.',
     ),
-    prosEn: [
-      "Lists allow indexed access and ordering. Sets ensure no duplicates and provide fast membership checks. Maps provide fast key-based lookup.",
-    ],
-    prosAr: [
-      "تسمح الـ List بالوصول إلى العناصر عبر مؤشر وترتيب ثابت. تضمن الـ Set عدم وجود تكرارات وتوفر فحص أسرع للانتماء. يوفر الـ Map بحثًا سريعًا عن القيمة بناءً على المفتاح.",
-    ],
-    consEn: [
-      "Lists may be inefficient if you need to enforce uniqueness. Sets do not maintain insertion order. Maps use more memory per entry than a simple list.",
-    ],
-    consAr: [
-      "قد تكون الـ List غير فعّالة إذا كنت بحاجة لضمان التفرد. لا تحافظ الـ Set على ترتيب الإدراج. يستخدم الـ Map ذاكرة أكبر لكل إدخال مقارنة بقائمة بسيطة.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Lists allow indexed access and ordering. Sets ensure no duplicates and provide fast membership checks. Maps provide fast key-based lookup.",
+      ],
+      ar: [
+        "تسمح الـ List بالوصول إلى العناصر عبر مؤشر وترتيب ثابت. تضمن الـ Set عدم وجود تكرارات وتوفر فحص أسرع للانتماء. يوفر الـ Map بحثًا سريعًا عن القيمة بناءً على المفتاح.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Lists may be inefficient if you need to enforce uniqueness. Sets do not maintain insertion order. Maps use more memory per entry than a simple list.",
+      ],
+      ar: [
+        "قد تكون الـ List غير فعّالة إذا كنت بحاجة لضمان التفرد. لا تحافظ الـ Set على ترتيب الإدراج. يستخدم الـ Map ذاكرة أكبر لكل إدخال مقارنة بقائمة بسيطة.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-042",
@@ -2245,22 +2358,26 @@ Strict adherence can lead to more abstraction and boilerplate; it may complicate
       bestUse:
           'استخدم SOLID لتنظيم تطبيقات فلاتر الأكبر؛ ابدأ بتصميم بسيط ثم أعد الهيكلة نحو SOLID مع زيادة التعقيد.',
     ),
-    prosEn: [
-      "Following SOLID makes code more maintainable",
-      "testable",
-      "and extensible. For Flutter",
-      "it encourages clean separation of UI and logic",
-      "and small reusable widgets/controllers.",
-    ],
-    prosAr: [
-      "اتباع SOLID يجعل الكود أكثر قابلية للصيانة والاختبار والتمديد. في فلاتر، يشجع ذلك على فصل واضح بين الواجهة والمنطق، وإنشاء ودجتس/متحكمات صغيرة قابلة لإعادة الاستخدام.",
-    ],
-    consEn: [
-      "Strict adherence can lead to more abstraction and boilerplate; it may complicate simple projects if overdone.",
-    ],
-    consAr: [
-      "الالتزام الصارم قد يؤدي إلى المزيد من التجريد وتكرار الكود الزائد، وقد يعقد المشاريع البسيطة إذا تم الإفراط فيه.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Following SOLID makes code more maintainable",
+        "testable",
+        "and extensible. For Flutter",
+        "it encourages clean separation of UI and logic",
+        "and small reusable widgets/controllers.",
+      ],
+      ar: [
+        "اتباع SOLID يجعل الكود أكثر قابلية للصيانة والاختبار والتمديد. في فلاتر، يشجع ذلك على فصل واضح بين الواجهة والمنطق، وإنشاء ودجتس/متحكمات صغيرة قابلة لإعادة الاستخدام.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Strict adherence can lead to more abstraction and boilerplate; it may complicate simple projects if overdone.",
+      ],
+      ar: [
+        "الالتزام الصارم قد يؤدي إلى المزيد من التجريد وتكرار الكود الزائد، وقد يعقد المشاريع البسيطة إذا تم الإفراط فيه.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-043",
@@ -2296,22 +2413,26 @@ Adds boilerplate (stream controllers, sinks, etc.) and can be overkill for simpl
       bestUse:
           'استخدم BLoC للتطبيقات متوسطة إلى كبيرة الحجم حيث يفيد فصل المنطق. للتطبيقات الأصغر، قد تكفي الطرق الأبسط.',
     ),
-    prosEn: [
-      "Promotes separation of concerns and testability",
-      "works well with reactive programming",
-      "and simplifies state management for complex apps.",
-    ],
-    prosAr: [
-      "يعزز فصل الاهتمامات وقابلية الاختبار، ويعمل جيدًا مع البرمجة التفاعلية، ويبسط إدارة الحالة للتطبيقات المعقدة.",
-    ],
-    consEn: [
-      "Adds boilerplate (stream controllers",
-      "sinks",
-      "etc.) and can be overkill for simple apps. Learning curve is higher than simple setState.",
-    ],
-    consAr: [
-      "يضيف تكرار في الكود (مثل متحكمات التدفق والمستقبلات)، وقد يكون مفرطًا للتطبيقات البسيطة. منحنى التعلم أعلى مقارنةً بـ setState البسيط.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Promotes separation of concerns and testability",
+        "works well with reactive programming",
+        "and simplifies state management for complex apps.",
+      ],
+      ar: [
+        "يعزز فصل الاهتمامات وقابلية الاختبار، ويعمل جيدًا مع البرمجة التفاعلية، ويبسط إدارة الحالة للتطبيقات المعقدة.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Adds boilerplate (stream controllers",
+        "sinks",
+        "etc.) and can be overkill for simple apps. Learning curve is higher than simple setState.",
+      ],
+      ar: [
+        "يضيف تكرار في الكود (مثل متحكمات التدفق والمستقبلات)، وقد يكون مفرطًا للتطبيقات البسيطة. منحنى التعلم أعلى مقارنةً بـ setState البسيط.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-044",
@@ -2347,21 +2468,25 @@ Does not enforce a strict pattern, which can lead to scattered state logic if no
       bestUse:
           'استخدم Provider لاحتياجات إدارة الحالة الأبسط أو التطبيقات الأصغر. يتكامل جيدًا مع فلاتر وأسهل للبدء مقارنةً بـ BLoC.',
     ),
-    prosEn: [
-      "Lightweight and easy to use",
-      "less boilerplate than BLoC",
-      "well-integrated with Flutter. Good for many apps’ state needs.",
-    ],
-    prosAr: [
-      "خفيف الوزن وسهل الاستخدام، مع كود أقل تكرارًا من BLoC، ومتكامل جيدًا مع فلاتر. جيد لتلبية احتياجات العديد من تطبيقات الحالة.",
-    ],
-    consEn: [
-      "Does not enforce a strict pattern",
-      "which can lead to scattered state logic if not organized. Less formal separation than BLoC.",
-    ],
-    consAr: [
-      "لا يفرض نمطًا صارمًا، مما قد يؤدي إلى انتشار منطق الحالة إذا لم يتم تنظيمه. فصل أقل رسمية من BLoC.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Lightweight and easy to use",
+        "less boilerplate than BLoC",
+        "well-integrated with Flutter. Good for many apps’ state needs.",
+      ],
+      ar: [
+        "خفيف الوزن وسهل الاستخدام، مع كود أقل تكرارًا من BLoC، ومتكامل جيدًا مع فلاتر. جيد لتلبية احتياجات العديد من تطبيقات الحالة.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Does not enforce a strict pattern",
+        "which can lead to scattered state logic if not organized. Less formal separation than BLoC.",
+      ],
+      ar: [
+        "لا يفرض نمطًا صارمًا، مما قد يؤدي إلى انتشار منطق الحالة إذا لم يتم تنظيمه. فصل أقل رسمية من BLoC.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-045",
@@ -2413,21 +2538,25 @@ Stream<int> countStream() async* {
   }
 }'''),
     ],
-    prosEn: [
-      "Use Future for single HTTP requests or quick async tasks. Use Stream for events like WebSocket messages",
-      "sensor data",
-      "or periodic updates.",
-    ],
-    prosAr: [
-      "استخدم Future لطلبات HTTP الأحادية أو المهام السريعة غير المتزامنة. استخدم Stream للأحداث مثل رسائل WebSocket أو بيانات المستشعرات أو التحديثات الدورية.",
-    ],
-    consEn: [
-      "Future cannot handle multiple values or continuous updates. Streams introduce more complexity (listeners",
-      "cancellations).",
-    ],
-    consAr: [
-      "Future لا يمكنه التعامل مع قيم متعددة أو تحديثات مستمرة. Streams تضيف المزيد من التعقيد (المستمعون، الإلغاء).",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Use Future for single HTTP requests or quick async tasks. Use Stream for events like WebSocket messages",
+        "sensor data",
+        "or periodic updates.",
+      ],
+      ar: [
+        "استخدم Future لطلبات HTTP الأحادية أو المهام السريعة غير المتزامنة. استخدم Stream للأحداث مثل رسائل WebSocket أو بيانات المستشعرات أو التحديثات الدورية.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Future cannot handle multiple values or continuous updates. Streams introduce more complexity (listeners",
+        "cancellations).",
+      ],
+      ar: [
+        "Future لا يمكنه التعامل مع قيم متعددة أو تحديثات مستمرة. Streams تضيف المزيد من التعقيد (المستمعون، الإلغاء).",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-046",
@@ -2456,19 +2585,23 @@ Stream<int> countStream() async* {
       bestUse:
           'استخدم push للتنقل الطبيعي الأمامي. استخدم pushReplacement لاستبدال الشاشات بشكل دائم (مثل بعد تسجيل الدخول أو شاشة البداية).',
     ),
-    prosEn: [
-      "push keeps the previous screen in memory (user can go back)",
-      "while pushReplacement removes it (suitable for login screens or flows where going back is not needed).",
-    ],
-    prosAr: [
-      "push يحتفظ بالشاشة السابقة في الذاكرة (يمكن للمستخدم العودة)، بينما pushReplacement يزيلها (مناسب لشاشات تسجيل الدخول أو التدفقات حيث لا يلزم الرجوع).",
-    ],
-    consEn: [
-      "push can accumulate many routes if not managed (memory). pushReplacement prevents back navigation but loses previous screen state.",
-    ],
-    consAr: [
-      "push يمكن أن يجمع العديد من المسارات إذا لم تتم إدارته بشكل صحيح (يستهلك الذاكرة). pushReplacement يمنع الرجوع للخلف ولكنه يفقد حالة الشاشة السابقة.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "push keeps the previous screen in memory (user can go back)",
+        "while pushReplacement removes it (suitable for login screens or flows where going back is not needed).",
+      ],
+      ar: [
+        "push يحتفظ بالشاشة السابقة في الذاكرة (يمكن للمستخدم العودة)، بينما pushReplacement يزيلها (مناسب لشاشات تسجيل الدخول أو التدفقات حيث لا يلزم الرجوع).",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "push can accumulate many routes if not managed (memory). pushReplacement prevents back navigation but loses previous screen state.",
+      ],
+      ar: [
+        "push يمكن أن يجمع العديد من المسارات إذا لم تتم إدارته بشكل صحيح (يستهلك الذاكرة). pushReplacement يمنع الرجوع للخلف ولكنه يفقد حالة الشاشة السابقة.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-047",
@@ -2497,20 +2630,24 @@ Stream<int> countStream() async* {
       bestUse:
           'استخدم Navigator 2.0 لتطبيقات الويب أو التطبيقات التي تحتاج إلى روابط عميقة وسلوك توجيه مخصص. بالنسبة للتنقل الأساسي، يكفي 1.0.',
     ),
-    prosEn: [
-      "Navigator 2.0 enables web and more complex navigation patterns (deep linking)",
-      "at cost of more boilerplate.",
-    ],
-    prosAr: [
-      "يمكن Navigator 2.0 من تحقيق التنقل على الويب وأنماط تنقل أكثر تعقيدًا (الروابط العميقة)، على حساب المزيد من تكرار الكود.",
-    ],
-    consEn: [
-      "Navigator 2.0 has a steeper learning curve and more code overhead. For simple apps",
-      "Navigator 1.0 is easier to use.",
-    ],
-    consAr: [
-      "Navigator 2.0 لديه منحنى تعلم أعلى وعبء كود أكبر. للتطبيقات البسيطة، يكون Navigator 1.0 أسهل في الاستخدام.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Navigator 2.0 enables web and more complex navigation patterns (deep linking)",
+        "at cost of more boilerplate.",
+      ],
+      ar: [
+        "يمكن Navigator 2.0 من تحقيق التنقل على الويب وأنماط تنقل أكثر تعقيدًا (الروابط العميقة)، على حساب المزيد من تكرار الكود.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Navigator 2.0 has a steeper learning curve and more code overhead. For simple apps",
+        "Navigator 1.0 is easier to use.",
+      ],
+      ar: [
+        "Navigator 2.0 لديه منحنى تعلم أعلى وعبء كود أكبر. للتطبيقات البسيطة، يكون Navigator 1.0 أسهل في الاستخدام.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-048",
@@ -2538,19 +2675,23 @@ Stream<int> countStream() async* {
       bestUse:
           'استخدم context داخل build() للحصول على السمات أو بيانات موروثة أخرى، أو Navigator للتنقل.',
     ),
-    prosEn: [
-      "Allows widgets to access inherited widgets like Theme or MediaQuery. Essential for widget communication.",
-    ],
-    prosAr: [
-      "يسمح للودجتس بالوصول إلى ودجتس موروثة مثل Theme أو MediaQuery. أساسي لتواصل الودجتس.",
-    ],
-    consEn: [
-      "Misusing context (e.g.",
-      "using it before initState or in async) can lead to errors.",
-    ],
-    consAr: [
-      "استخدام context بشكل خاطئ (مثل استخدامه قبل initState أو في العمليات غير المتزامنة) قد يؤدي إلى أخطاء.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Allows widgets to access inherited widgets like Theme or MediaQuery. Essential for widget communication.",
+      ],
+      ar: [
+        "يسمح للودجتس بالوصول إلى ودجتس موروثة مثل Theme أو MediaQuery. أساسي لتواصل الودجتس.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Misusing context (e.g.",
+        "using it before initState or in async) can lead to errors.",
+      ],
+      ar: [
+        "استخدام context بشكل خاطئ (مثل استخدامه قبل initState أو في العمليات غير المتزامنة) قد يؤدي إلى أخطاء.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-049",
@@ -2590,19 +2731,23 @@ Use isolates for expensive computations (image processing, large computations) o
       bestUse:
           'استخدم الـ Isolates للحسابات المكلفة (معالجة الصور، الحسابات الكبيرة) خارج الخيط الرئيسي. لمعظم مهام الواجهة، استخدم async/await بدلاً من ذلك.',
     ),
-    prosEn: [
-      "Enables true parallel computation in Dart without shared-memory concurrency bugs",
-      "improving performance for heavy tasks.",
-    ],
-    prosAr: [
-      "يُمكن من الحساب المتوازي الحقيقي في دارت دون أخطاء التعارض في الذاكرة المشتركة، مما يحسن الأداء للمهام الثقيلة.",
-    ],
-    consEn: [
-      "Communication via message passing can be complex and slower. Starting an isolate has overhead; not suitable for small tasks.",
-    ],
-    consAr: [
-      "التواصل عبر تبادل الرسائل قد يكون معقدًا وأبطأ. بدء Isolate له عبء كبير؛ غير مناسب للمهام الصغيرة.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Enables true parallel computation in Dart without shared-memory concurrency bugs",
+        "improving performance for heavy tasks.",
+      ],
+      ar: [
+        "يُمكن من الحساب المتوازي الحقيقي في دارت دون أخطاء التعارض في الذاكرة المشتركة، مما يحسن الأداء للمهام الثقيلة.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Communication via message passing can be complex and slower. Starting an isolate has overhead; not suitable for small tasks.",
+      ],
+      ar: [
+        "التواصل عبر تبادل الرسائل قد يكون معقدًا وأبطأ. بدء Isolate له عبء كبير؛ غير مناسب للمهام الصغيرة.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-050",
@@ -2642,18 +2787,22 @@ Use FutureBuilder for one-time async calls (like HTTP requests) and StreamBuilde
       bestUse:
           'استخدم FutureBuilder للنداءات غير المتزامنة لمرة واحدة (مثل طلبات HTTP) و StreamBuilder للبيانات المستمرة (مثل التحديثات الحية أو الـ WebSockets).',
     ),
-    prosEn: [
-      "Makes it easy to update UI based on async results or stream data; handles connection states and snapshots automatically.",
-    ],
-    prosAr: [
-      "يسهل تحديث الواجهة بناءً على النتائج غير المتزامنة أو بيانات التدفق؛ يعالج حالات الاتصال واللقطات تلقائيًا.",
-    ],
-    consEn: [
-      "Can lead to rebuilds on every event; need to manage performance if streams are frequent.",
-    ],
-    consAr: [
-      "يمكن أن يؤدي إلى إعادة بناء الواجهة عند كل حدث؛ يجب إدارة الأداء إذا كانت التدفقات متكررة.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Makes it easy to update UI based on async results or stream data; handles connection states and snapshots automatically.",
+      ],
+      ar: [
+        "يسهل تحديث الواجهة بناءً على النتائج غير المتزامنة أو بيانات التدفق؛ يعالج حالات الاتصال واللقطات تلقائيًا.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Can lead to rebuilds on every event; need to manage performance if streams are frequent.",
+      ],
+      ar: [
+        "يمكن أن يؤدي إلى إعادة بناء الواجهة عند كل حدث؛ يجب إدارة الأداء إذا كانت التدفقات متكررة.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-051",
@@ -2699,19 +2848,23 @@ Factory constructors cannot access 'this' and don't automatically create a new i
   }
 }'''),
     ],
-    prosEn: [
-      "Factory constructors allow control over instance creation (e.g.",
-      "implementing singletons or caches) and can return different subtypes.",
-    ],
-    prosAr: [
-      "تسمح البانيات factory بالتحكم في إنشاء الكائنات (مثل تنفيذ نمط المفرد أو التخزين المؤقت) ويمكنها إعادة أنواع فرعية مختلفة.",
-    ],
-    consEn: [
-      "Factory constructors cannot access 'this' and don't automatically create a new instance; they add complexity compared to a normal constructor.",
-    ],
-    consAr: [
-      "البانيات factory لا تستطيع الوصول إلى 'this' ولا تنشئ كائنًا جديدًا تلقائيًا؛ إنها تضيف تعقيدًا مقارنة بالباني العادي.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Factory constructors allow control over instance creation (e.g.",
+        "implementing singletons or caches) and can return different subtypes.",
+      ],
+      ar: [
+        "تسمح البانيات factory بالتحكم في إنشاء الكائنات (مثل تنفيذ نمط المفرد أو التخزين المؤقت) ويمكنها إعادة أنواع فرعية مختلفة.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Factory constructors cannot access 'this' and don't automatically create a new instance; they add complexity compared to a normal constructor.",
+      ],
+      ar: [
+        "البانيات factory لا تستطيع الوصول إلى 'this' ولا تنشئ كائنًا جديدًا تلقائيًا؛ إنها تضيف تعقيدًا مقارنة بالباني العادي.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-052",
@@ -2755,19 +2908,23 @@ Global state can make testing harder and lead to hidden dependencies.''',
   Singleton._internal();
 }'''),
     ],
-    prosEn: [
-      "Ensures a single shared instance across the app (useful for caches",
-      "shared resources).",
-    ],
-    prosAr: [
-      "يضمن مثيلًا واحدًا مشتركًا عبر التطبيق (مفيد للتخزين المؤقت، الموارد المشتركة).",
-    ],
-    consEn: [
-      "Global state can make testing harder and lead to hidden dependencies.",
-    ],
-    consAr: [
-      "الحالة العالمية يمكن أن تجعل الاختبار أصعب وتؤدي إلى تبعيات مخفية.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Ensures a single shared instance across the app (useful for caches",
+        "shared resources).",
+      ],
+      ar: [
+        "يضمن مثيلًا واحدًا مشتركًا عبر التطبيق (مفيد للتخزين المؤقت، الموارد المشتركة).",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Global state can make testing harder and lead to hidden dependencies.",
+      ],
+      ar: [
+        "الحالة العالمية يمكن أن تجعل الاختبار أصعب وتؤدي إلى تبعيات مخفية.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-053",
@@ -2807,18 +2964,22 @@ Use performance profiling (DevTools) to find bottlenecks. Apply optimizations li
       bestUse:
           'استخدم أدوات تحليل الأداء (DevTools) لتحديد الاختناقات. طبق تحسينات مثل البانيات const، والتخطيط الفعال، واستخدام الـ isolates عند الحاجة.',
     ),
-    prosEn: [
-      "Applying these techniques can significantly improve frame rates and responsiveness.",
-    ],
-    prosAr: [
-      "تطبيق هذه التقنيات يمكن أن يحسن بشكل كبير معدلات الإطارات والاستجابة.",
-    ],
-    consEn: [
-      "Over-optimizing early can complicate code; focus on bottlenecks identified by profiling.",
-    ],
-    consAr: [
-      "التحسين المفرط في وقت مبكر يمكن أن يعقد الكود؛ ركز على الاختناقات التي حددتها أدوات التحليل.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Applying these techniques can significantly improve frame rates and responsiveness.",
+      ],
+      ar: [
+        "تطبيق هذه التقنيات يمكن أن يحسن بشكل كبير معدلات الإطارات والاستجابة.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Over-optimizing early can complicate code; focus on bottlenecks identified by profiling.",
+      ],
+      ar: [
+        "التحسين المفرط في وقت مبكر يمكن أن يعقد الكود؛ ركز على الاختناقات التي حددتها أدوات التحليل.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-054",
@@ -2859,19 +3020,23 @@ Skia يوفر عرض عالي الجودة وسريع؛ Impeller يحسن است
       bestUse:
           'استفد من تحسينات المحرك عبر تحديثات فلاتر. للاحتياجات المتقدمة (مثل shaders مخصصة)، تعرف على كيفية استخدام المحرك المناسب.',
     ),
-    prosEn: [
-      "Skia provides high-quality",
-      "fast rendering; Impeller further optimizes GPU use and predictability.",
-    ],
-    prosAr: [
-      "Skia يوفر عرض عالي الجودة وسريع؛ Impeller يحسن استخدام GPU والقابلية للتنبؤ بالأداء.",
-    ],
-    consEn: [
-      "Engine details are mostly abstracted away; developers should be aware for debugging only. Impeller is still maturing on some platforms.",
-    ],
-    consAr: [
-      "تفاصيل المحرك مغلقة في الغالب للمطورين؛ يجب أن يكونوا على علم بها لأغراض تصحيح الأخطاء فقط. Impeller لا يزال في طور النضج على بعض المنصات.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Skia provides high-quality",
+        "fast rendering; Impeller further optimizes GPU use and predictability.",
+      ],
+      ar: [
+        "Skia يوفر عرض عالي الجودة وسريع؛ Impeller يحسن استخدام GPU والقابلية للتنبؤ بالأداء.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Engine details are mostly abstracted away; developers should be aware for debugging only. Impeller is still maturing on some platforms.",
+      ],
+      ar: [
+        "تفاصيل المحرك مغلقة في الغالب للمطورين؛ يجب أن يكونوا على علم بها لأغراض تصحيح الأخطاء فقط. Impeller لا يزال في طور النضج على بعض المنصات.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-055",
@@ -2912,24 +3077,31 @@ Flutter: حجم تطبيق أكبر، دارت أقل شهرة، عدد حزم �
       bestUse:
           'استخدم فلاتر عندما تكون الأداء وواجهة المستخدم المخصصة في أولوية قصوى. استخدم React Native إذا كان الاستفادة من كود JavaScript الموجود أو النظام البيئي لها أهمية أكبر.',
     ),
-    prosEn: [
-      "Flutter: high performance",
-      "full UI control",
-      "one codebase (Android/iOS). React Native: larger library ecosystem",
-      "JavaScript familiarity for web developers.",
-    ],
-    prosAr: [
-      "فلاتر: أداء عالي، تحكم كامل بالواجهة، قاعدة كود واحدة (Android/iOS). React Native: نظام بيئي أكبر من المكتبات، مألوف لمطوري الويب (JavaScript).",
-    ],
-    consEn: [
-      "Flutter: larger app size",
-      "Dart is less known",
-      "fewer third-party packages. React Native: performance overhead from JS bridge",
-      "UI consistency issues across platforms.",
-    ],
-    consAr: [
-      "فلاتر: حجم تطبيق أكبر، دارت أقل شهرة، عدد حزم التابعين أقل. React Native: تكلفة أداء من جسر JS، مشاكل اتساق الواجهة بين المنصات.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Flutter: high performance",
+        "full UI control",
+        "one codebase (Android/iOS). React Native: larger library ecosystem",
+        "JavaScript familiarity for web developers.",
+      ],
+      ar: [
+        "إطار Flutter: أداء عالي",
+        "تتحكم كامل بالواجهة",
+        "قاعدة كود واحدة (Android/iOS)، React Native: نظام بيئي أكبر من المكتبات، مألوف لمطوري الويب (JavaScript).",
+        "لغة JavaScript مألوفة لمطوري الويب.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Flutter: larger app size",
+        "Dart is less known",
+        "fewer third-party packages. React Native: performance overhead from JS bridge",
+        "UI consistency issues across platforms.",
+      ],
+      ar: [
+        "فلاتر: حجم تطبيق أكبر، دارت أقل شهرة، عدد حزم التابعين أقل. React Native: تكلفة أداء من جسر JS، مشاكل اتساق الواجهة بين المنصات.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-056",
@@ -2957,18 +3129,22 @@ Flutter: حجم تطبيق أكبر، دارت أقل شهرة، عدد حزم �
       bestUse:
           'استخدم الميراث عندما تكون هناك فئات ذات تسلسل هرمي واضح وتشارك سلوكًا. استخدم التجميع لتجميع السلوك من عدة فئات لتحقيق مرونة أكبر.',
     ),
-    prosEn: [
-      "Inheritance makes code reuse easy for closely related classes. Composition provides more flexibility and looser coupling.",
-    ],
-    prosAr: [
-      "الميراث يجعل إعادة استخدام الكود سهلة للفئات ذات الصلة الوثيقة. التجميع يوفر مرونة أكبر وربطًا أضعف.",
-    ],
-    consEn: [
-      "Inheritance can lead to rigid hierarchies and tight coupling; composition can lead to more boilerplate but is more adaptable.",
-    ],
-    consAr: [
-      "الميراث قد يؤدي إلى هياكل جامدة وربط قوي؛ التجميع قد يؤدي إلى المزيد من تكرار الكود لكنه أكثر قابلية للتكيف.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Inheritance makes code reuse easy for closely related classes. Composition provides more flexibility and looser coupling.",
+      ],
+      ar: [
+        "الميراث يجعل إعادة استخدام الكود سهلة للفئات ذات الصلة الوثيقة. التجميع يوفر مرونة أكبر وربطًا أضعف.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "Inheritance can lead to rigid hierarchies and tight coupling; composition can lead to more boilerplate but is more adaptable.",
+      ],
+      ar: [
+        "الميراث قد يؤدي إلى هياكل جامدة وربط قوي؛ التجميع قد يؤدي إلى المزيد من تكرار الكود لكنه أكثر قابلية للتكيف.",
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "FLT-057",
@@ -3024,18 +3200,22 @@ void main() {
 }
 """),
     ],
-    prosEn: [
-      "Makes code more flexible and reusable by programming to an interface or superclass rather than concrete classes.",
-    ],
-    prosAr: [
-      "يجعل الكود أكثر مرونة وقابلية لإعادة الاستخدام عن طريق البرمجة باستخدام واجهة أو فئة أساسية بدلاً من فئات محددة.",
-    ],
-    consEn: [
-      "May make code harder to understand if overused",
-      "as the actual object type is less obvious.",
-    ],
-    consAr: [
-      "قد يجعل الكود أكثر صعوبة في الفهم إذا استُخدم بشكل مفرط، حيث يصبح نوع الكائن الفعلي أقل وضوحًا.",
-    ],
+    pros: LocalizedValue(
+      en: [
+        "Makes code more flexible and reusable by programming to an interface or superclass rather than concrete classes.",
+      ],
+      ar: [
+        "يجعل الكود أكثر مرونة وقابلية لإعادة الاستخدام عن طريق البرمجة باستخدام واجهة أو فئة أساسية بدلاً من فئات محددة.",
+      ],
+    ),
+    cons: LocalizedValue(
+      en: [
+        "May make code harder to understand if overused",
+        "as the actual object type is less obvious.",
+      ],
+      ar: [
+        "قد يجعل الكود أكثر صعوبة في الفهم إذا استُخدم بشكل مفرط، حيث يصبح نوع الكائن الفعلي أقل وضوحًا.",
+      ],
+    ),
   ),
 ];

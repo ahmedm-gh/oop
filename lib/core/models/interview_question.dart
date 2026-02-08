@@ -3,6 +3,7 @@ library;
 
 import 'package:tuts/core/models/code_block.dart';
 import 'package:tuts/core/models/content.dart';
+import 'package:tuts/core/models/localized_text.dart';
 
 import '../enums/enums.dart';
 
@@ -17,14 +18,9 @@ class InterviewQuestion {
     required this.contentEn,
     required this.contentAr,
     this.examples,
-    List<String>? prosEn,
-    List<String>? consEn,
-    List<String>? prosAr,
-    List<String>? consAr,
-  }) : _consAr = consAr,
-       _prosAr = prosAr,
-       _consEn = consEn,
-       _prosEn = prosEn;
+    this.cons,
+    this.pros,
+  });
 
   final String id;
   final DifficultyLevel difficulty;
@@ -33,8 +29,8 @@ class InterviewQuestion {
   final List<String>? tags;
   final QuestionContent contentEn, contentAr;
   final List<StrCodeBlock>? examples;
-  final List<String>? _prosEn, _prosAr;
-  final List<String>? _consEn, _consAr;
+  final LocalizedValue<List<String>>? pros;
+  final LocalizedValue<List<String>>? cons;
 
   /// Get the localized content based on the current locale
   QuestionContent getLocalizedContent(String languageCode) {
@@ -43,12 +39,12 @@ class InterviewQuestion {
 
   /// Get the localized pros based on the current locale
   List<String>? getLocalizedPros(String languageCode) {
-    return languageCode == "ar" ? _prosAr : _prosEn;
+    return languageCode == "ar" ? pros?.ar : pros?.en;
   }
 
   /// Get the localized cons based on the current locale
   List<String>? getLocalizedCons(String languageCode) {
-    return languageCode == "ar" ? _consAr : _consEn;
+    return languageCode == "ar" ? cons?.ar : cons?.en;
   }
 }
 
