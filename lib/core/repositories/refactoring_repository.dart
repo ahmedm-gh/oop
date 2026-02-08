@@ -154,7 +154,7 @@ class RefactoringRepository {
   // New Complex Examples
   static StrCodeBlock? _getComplexBefore(String id) {
     if (id == 'extractMethod') {
-      return StrCodeBlock(r"""
+      return const StrCodeBlock(r"""
 void printOwing() {
   var outstanding = 0.0;
   
@@ -179,7 +179,7 @@ void printOwing() {
 
   static StrCodeBlock? _getComplexAfter(String id) {
     if (id == 'extractMethod') {
-      return StrCodeBlock(r"""
+      return const StrCodeBlock(r"""
 void printOwing() {
   printBanner();
   final outstanding = getOutstanding();

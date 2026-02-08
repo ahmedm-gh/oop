@@ -1,7 +1,12 @@
-sealed class Content<V> {
-  final V value;
+import 'package:flutter/material.dart';
+import 'package:tuts/core/enums/code_quality.dart';
 
+import 'code_block.dart';
+
+@optionalTypeArgs
+sealed class Content<V> {
   const Content(this.value);
+  final V value;
 
   @override
   String toString() => value.toString();
@@ -14,9 +19,20 @@ final class StringContent extends Content<String> {
   String toString() => value;
 }
 
+final class CodeContent extends Content<String> {
+  const CodeContent(super.value, {required this.codeQuality});
+
+  final CodeQuality codeQuality;
+
+  StrCodeBlock get code => StrCodeBlock(value, codeQuality: codeQuality);
+
+  @override
+  String toString() => value;
+}
+
 final class ListContent extends Content<List<String>> {
-  final String? title;
   const ListContent({this.title, List<String> value = const []}) : super(value);
+  final String? title;
 
   @override
   String toString() => <String>[?title, ...value].join('\n');

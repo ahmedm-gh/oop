@@ -1,6 +1,19 @@
 import 'package:tuts/core/models/code_block.dart';
 
 class RefactoringTechnique {
+  const RefactoringTechnique({
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.category,
+    required this.simpleBefore,
+    required this.simpleAfter,
+    required this.problem,
+    required this.solution,
+    this.complexBefore,
+    this.complexAfter,
+  });
+
   final String id;
   final String title;
   final String description; // Detailed description
@@ -11,17 +24,4 @@ class RefactoringTechnique {
   final StrCodeBlock? complexAfter;
   final String problem;
   final String solution;
-
-  const RefactoringTechnique({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.category,
-    required this.simpleBefore,
-    required this.simpleAfter,
-    this.complexBefore,
-    this.complexAfter,
-    required this.problem,
-    required this.solution,
-  });
 }

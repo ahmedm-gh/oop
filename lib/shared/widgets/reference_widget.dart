@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
-import "package:url_launcher/url_launcher.dart";
 import "package:tuts/core/extensions.dart";
+import "package:url_launcher/url_launcher.dart";
 
 class ReferenceWidget extends StatelessWidget {
+  const ReferenceWidget({required this.urls, super.key});
   final List<String> urls;
-  const ReferenceWidget({super.key, required this.urls});
 
   @override
   Widget build(BuildContext context) {

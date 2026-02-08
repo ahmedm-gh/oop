@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tuts/core/extensions.dart';
 
 class AppDialog extends StatelessWidget {
+  const AppDialog({super.key, this.title, this.content, this.actions});
   final Widget? title;
   final Widget? content;
   final List<Widget>? actions;
-
-  const AppDialog({super.key, this.title, this.content, this.actions});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,7 @@ class AppDialog extends StatelessWidget {
               ),
             ),
           if (actions case final actions?) ...[
-            Divider(height: 1, thickness: 1),
+            const Divider(height: 1, thickness: 1),
             Padding(
               padding: const .all(8),
               child: Row(children: actions),

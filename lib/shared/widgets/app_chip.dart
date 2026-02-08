@@ -4,8 +4,8 @@ import 'package:tuts/core/extensions.dart';
 
 class DifficultyChip extends StatelessWidget {
   const DifficultyChip({
-    this.child,
     required this.difficultyLevel,
+    this.child,
     this.padding = const .symmetric(horizontal: 2.5),
     super.key,
   });
@@ -24,7 +24,7 @@ class DifficultyChip extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5),
         side: color != null
-            ? BorderSide(color: color.withValues(alpha: 0.25), width: 1)
+            ? BorderSide(color: color.withValues(alpha: 0.25))
             : .none,
       ),
       label:
@@ -51,10 +51,7 @@ class TagChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Chip(
       padding: padding,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-        side: .none,
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       label: child,
     );
   }

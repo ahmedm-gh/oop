@@ -49,15 +49,14 @@ class RefactoringPage extends StatelessWidget {
 }
 
 class _RefactoringCategory extends StatelessWidget {
-  final String title;
-  final String description;
-  final List<RefactoringTechnique> techniques;
-
   const _RefactoringCategory({
     required this.title,
     required this.description,
     required this.techniques,
   });
+  final String title;
+  final String description;
+  final List<RefactoringTechnique> techniques;
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +87,8 @@ class _RefactoringCategory extends StatelessWidget {
 }
 
 class _TechniqueTile extends StatelessWidget {
-  final RefactoringTechnique technique;
   const _TechniqueTile({required this.technique});
+  final RefactoringTechnique technique;
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +108,7 @@ class _TechniqueTile extends StatelessWidget {
         ),
         onTap: () {
           Navigator.of(context).push(
-            MaterialPageRoute(
+            MaterialPageRoute<void>(
               builder: (context) =>
                   RefactoringDetailsPage(techniqueId: technique.id),
             ),

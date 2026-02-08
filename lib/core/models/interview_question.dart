@@ -7,16 +7,6 @@ import 'package:tuts/core/models/content.dart';
 
 /// Represents a single interview question with all its content
 class InterviewQuestion {
-  final String id;
-  final DifficultyLevel difficulty;
-  final String category;
-  final String type;
-  final List<String>? tags;
-  final QuestionContent contentEn, contentAr;
-  final List<StrCodeBlock>? examples;
-  final List<String>? _prosEn, _prosAr;
-  final List<String>? _consEn, _consAr;
-
   const InterviewQuestion({
     required this.id,
     required this.difficulty,
@@ -34,6 +24,15 @@ class InterviewQuestion {
        _prosAr = prosAr,
        _consEn = consEn,
        _prosEn = prosEn;
+  final String id;
+  final DifficultyLevel difficulty;
+  final String category;
+  final String type;
+  final List<String>? tags;
+  final QuestionContent contentEn, contentAr;
+  final List<StrCodeBlock>? examples;
+  final List<String>? _prosEn, _prosAr;
+  final List<String>? _consEn, _consAr;
 
   /// Get the localized content based on the current locale
   QuestionContent getLocalizedContent(String languageCode) {
@@ -53,26 +52,25 @@ class InterviewQuestion {
 
 /// Content for a specific language
 class QuestionContent {
-  final String question;
-  final List<Content> answer;
-  final List<String>? notes;
-  final String? bestUse;
-
   const QuestionContent({
     required this.question,
     required this.answer,
     this.notes,
     this.bestUse,
   });
+
+  final String question;
+  final List<Content> answer;
+  final List<String>? notes;
+  final String? bestUse;
 }
 
 /// A section of the answer
 class AnswerSection {
+  const AnswerSection({required this.content, this.title, this.codeExample});
   final String? title;
   final String content;
   final String? codeExample;
-
-  const AnswerSection({this.title, required this.content, this.codeExample});
 }
 
 /// Question category enum
@@ -95,10 +93,10 @@ enum QuestionCategory {
   dataStructures("Data Structures", "هياكل البيانات"),
   algorithms("Algorithms", "الخوارزميات");
 
+  const QuestionCategory(this.nameEn, this.nameAr);
+
   final String nameEn;
   final String nameAr;
-
-  const QuestionCategory(this.nameEn, this.nameAr);
 
   String getLocalizedName(String languageCode) {
     return languageCode == 'ar' ? nameAr : nameEn;

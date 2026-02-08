@@ -16,14 +16,14 @@ class AppValues {
 
 class AppNotifiers {
   static final appNotifier = ValueNotifier(
-    AppValues(locale: const Locale('ar'), brightness: Brightness.dark),
+    const AppValues(locale: Locale("en"), brightness: .dark),
   );
 
   static Locale toggleLocale() {
     appNotifier.value = appNotifier.value.copyWith(
-      locale: appNotifier.value.locale.languageCode == 'en'
-          ? const Locale('ar')
-          : const Locale('en'),
+      locale: appNotifier.value.locale.languageCode == "en"
+          ? const Locale("ar")
+          : const Locale("en"),
     );
     return appNotifier.value.locale;
   }

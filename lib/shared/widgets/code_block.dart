@@ -7,8 +7,6 @@ import "package:tuts/core/extensions.dart";
 import "../../core/enums/code_quality.dart";
 
 class CodeBlockViewer extends StatelessWidget {
-  final StrCodeBlock code;
-
   CodeBlockViewer({
     required String code,
     required CodeQuality codeQuality,
@@ -16,6 +14,7 @@ class CodeBlockViewer extends StatelessWidget {
   }) : code = StrCodeBlock(code, codeQuality: codeQuality);
 
   const CodeBlockViewer.fromStrCodeBlock(this.code, {super.key});
+  final StrCodeBlock code;
 
   @override
   Widget build(BuildContext context) {
@@ -53,15 +52,14 @@ class CodeBlockViewer extends StatelessWidget {
 }
 
 class _CodeHeader extends StatelessWidget {
-  final String? language;
-  final CodeQuality state;
-  final String code;
-
   const _CodeHeader({
     required this.language,
     required this.state,
     required this.code,
   });
+  final String? language;
+  final CodeQuality state;
+  final String code;
 
   @override
   Widget build(BuildContext context) {
@@ -150,17 +148,16 @@ class _CodeHeader extends StatelessWidget {
 }
 
 class _ActionButton extends StatelessWidget {
-  final IconData icon;
-  final String tooltip;
-  final VoidCallback onPressed;
-  final bool isCopy;
-
   const _ActionButton({
     required this.icon,
     required this.tooltip,
     required this.onPressed,
     this.isCopy = false,
   });
+  final IconData icon;
+  final String tooltip;
+  final VoidCallback onPressed;
+  final bool isCopy;
 
   @override
   Widget build(BuildContext context) {
@@ -179,9 +176,8 @@ class _ActionButton extends StatelessWidget {
 }
 
 class _CodeContent extends StatelessWidget {
-  final String code;
-
   const _CodeContent({required this.code});
+  final String code;
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +188,7 @@ class _CodeContent extends StatelessWidget {
       padding: const .all(16),
       child: SelectableText.rich(
         _SyntaxHighlighter(code, isDark).highlight(),
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: "FiraCode",
           fontWeight: .w500,
           fontSize: 13.5,
@@ -211,10 +207,9 @@ class _CodeContent extends StatelessWidget {
 /// VISUAL STUDIO STYLE HIGHLIGHTER
 /// ======================
 class _SyntaxHighlighter {
+  _SyntaxHighlighter(this.code, this.isDark);
   final String code;
   final bool isDark;
-
-  _SyntaxHighlighter(this.code, this.isDark);
 
   // VS Modern Dark Theme Colors
   static const _dPlain = Color(0xFFCCCCCC);

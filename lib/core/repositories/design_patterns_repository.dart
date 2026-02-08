@@ -38,7 +38,11 @@ class DesignPatternsRepository {
         cons: cons,
         whenToUse: whenToUse,
         bestUse: bestUse,
-        references: List<String>.from(codeData['refs'] ?? []),
+        references: List<String>.from(
+          codeData['refs'] is Iterable
+              ? codeData['refs'] as Iterable
+              : const [],
+        ),
       ),
     );
   }

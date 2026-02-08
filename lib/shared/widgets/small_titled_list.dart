@@ -14,12 +14,12 @@ enum TitledListType {
 
 class SmallTitledList extends StatelessWidget {
   const SmallTitledList({
-    super.key,
     required this.title,
-    this.content,
-    this.items,
     required this.icon,
     required this.color,
+    super.key,
+    this.content,
+    this.items,
   }) : type = .none;
 
   const SmallTitledList.notes({
@@ -102,7 +102,7 @@ class SmallTitledList extends StatelessWidget {
         crossAxisAlignment: .stretch,
         spacing: 5,
         children: [
-          if ((title ?? _getTitle(context.l10n)) case final title?)
+          if (title ?? _getTitle(context.l10n) case final title?)
             Row(
               children: [
                 DecoratedBox(

@@ -1,12 +1,6 @@
 import 'package:tuts/core/models/code_block.dart';
 
 class DesignPattern {
-  final String id;
-  final String title;
-  final String description;
-  final String type; // Creational, Structural, Behavioral
-  final DesignPatternContent content;
-
   const DesignPattern({
     required this.id,
     required this.title,
@@ -14,18 +8,14 @@ class DesignPattern {
     required this.type,
     required this.content,
   });
+  final String id;
+  final String title;
+  final String description;
+  final String type; // Creational, Structural, Behavioral
+  final DesignPatternContent content;
 }
 
 class DesignPatternContent {
-  final StrCodeBlock? badExample;
-  final StrCodeBlock? goodExample;
-  final String? note;
-  final List<String> pros;
-  final List<String> cons;
-  final List<String> whenToUse;
-  final List<String> bestUse;
-  final List<String> references;
-
   const DesignPatternContent({
     this.badExample,
     this.goodExample,
@@ -36,4 +26,12 @@ class DesignPatternContent {
     this.bestUse = const [],
     this.references = const [],
   });
+  final StrCodeBlock? badExample;
+  final StrCodeBlock? goodExample;
+  final String? note;
+  final List<String> pros;
+  final List<String> cons;
+  final List<String> whenToUse;
+  final List<String> bestUse;
+  final List<String> references;
 }

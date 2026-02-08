@@ -8,9 +8,8 @@ import 'package:tuts/shared/widgets/small_titled_list.dart';
 import '../../shared/widgets/code_block.dart';
 
 class QuestionDetailsPage extends StatelessWidget {
+  const QuestionDetailsPage({required this.question, super.key});
   final InterviewQuestion question;
-
-  const QuestionDetailsPage({super.key, required this.question});
 
   @override
   Widget build(BuildContext context) {
@@ -83,26 +82,20 @@ class QuestionDetailsPage extends StatelessWidget {
               SmallTitledList.notes(
                 title: Text(l10n.notes),
                 content: notes.length == 1 ? Text(notes.first) : null,
-                items: notes.length < 2
-                    ? null
-                    : notes.map((note) => Text(note)).toList(),
+                items: notes.length < 2 ? null : notes.map(Text.new).toList(),
               ),
             ],
 
             // Pros
             if (question.getLocalizedPros(langCode) case final pros?
                 when pros.isNotEmpty) ...[
-              SmallTitledList.advantages(
-                items: pros.map((p) => Text(p)).toList(),
-              ),
+              SmallTitledList.advantages(items: pros.map(Text.new).toList()),
             ],
 
             // Cons
             if (question.getLocalizedCons(langCode) case final cons?
                 when cons.isNotEmpty) ...[
-              SmallTitledList.disadvantages(
-                items: cons.map((c) => Text(c)).toList(),
-              ),
+              SmallTitledList.disadvantages(items: cons.map(Text.new).toList()),
             ],
 
             // Notes

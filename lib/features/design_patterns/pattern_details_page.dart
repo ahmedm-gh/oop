@@ -4,14 +4,13 @@ import "package:tuts/core/repositories/design_patterns_repository.dart";
 import "package:tuts/shared/app_widgets.dart";
 
 class PatternDetailsPage extends StatelessWidget {
-  final String patternKey;
-  final String patternName;
-
   const PatternDetailsPage({
-    super.key,
     required this.patternKey,
     required this.patternName,
+    super.key,
   });
+  final String patternKey;
+  final String patternName;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,8 @@ class PatternDetailsPage extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: .stretch,
+          spacing: 15,
           children: [
             Text(
               l10n.details,
@@ -32,12 +32,10 @@ class PatternDetailsPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 10),
             Text(
               pattern.description,
               textDirection: BidiUtil.getDirection(pattern.description),
             ),
-            const SizedBox(height: 16),
 
             // Bad Example
             if (pattern.content.badExample != null) ...[
@@ -48,10 +46,8 @@ class PatternDetailsPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
               if (pattern.content.badExample case final code?)
                 CodeBlockViewer.fromStrCodeBlock(code),
-              const SizedBox(height: 16),
             ],
 
             // Good Example
@@ -63,48 +59,32 @@ class PatternDetailsPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
               if (pattern.content.goodExample case final code?)
                 CodeBlockViewer.fromStrCodeBlock(code),
-              const SizedBox(height: 16),
             ],
 
-            if (pattern.content.note != null) ...[
-              NotesWidget(note: pattern.content.note!),
-              const SizedBox(height: 16),
-            ],
+            if (pattern.content.note case final note?)
+              SmallTitledList.notes(content: Text(note)),
 
-            const Divider(height: 1, thickness: 1),
-            const SizedBox(height: 16),
-
-            if (pattern.content.whenToUse.isNotEmpty) ...[
+            if (pattern.content.whenToUse.isNotEmpty)
               SmallTitledList.whenToUse(
-                items: pattern.content.whenToUse.map((e) => Text(e)).toList(),
+                items: pattern.content.whenToUse.map(Text.new).toList(),
               ),
-              const SizedBox(height: 16),
-            ],
 
-            if (pattern.content.pros.isNotEmpty) ...[
+            if (pattern.content.pros.isNotEmpty)
               SmallTitledList.advantages(
-                items: pattern.content.pros.map((e) => Text(e)).toList(),
+                items: pattern.content.pros.map(Text.new).toList(),
               ),
-              const SizedBox(height: 16),
-            ],
 
-            if (pattern.content.cons.isNotEmpty) ...[
+            if (pattern.content.cons.isNotEmpty)
               SmallTitledList.disadvantages(
-                items: pattern.content.cons.map((e) => Text(e)).toList(),
+                items: pattern.content.cons.map(Text.new).toList(),
               ),
-              const SizedBox(height: 16),
-            ],
 
-            if (pattern.content.bestUse.isNotEmpty) ...[
+            if (pattern.content.bestUse.isNotEmpty)
               SmallTitledList.bestFor(
-                items: pattern.content.bestUse.map((e) => Text(e)).toList(),
+                items: pattern.content.bestUse.map(Text.new).toList(),
               ),
-              const SizedBox(height: 16),
-            ],
-
             if (pattern.content.references.isNotEmpty)
               ReferenceWidget(urls: pattern.content.references),
           ],

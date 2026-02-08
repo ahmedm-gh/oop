@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:tuts/core/app_notifiers.dart";
 import "package:tuts/core/extensions.dart";
 import "package:tuts/features/design_patterns/design_patterns_page.dart";
 import "package:tuts/features/interview_questions/interview_questions_page.dart";
@@ -14,40 +13,7 @@ class HomePage extends StatelessWidget {
     final colors = context.colorScheme;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.appTitle),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.translate_rounded),
-            onPressed: AppNotifiers.toggleLocale,
-            tooltip: l10n.language,
-          ),
-          ValueListenableBuilder(
-            valueListenable: AppNotifiers.appNotifier,
-            builder: (context, appValues, _) {
-              return AnimatedSwitcher(
-                duration: const Duration(milliseconds: 300),
-                transitionBuilder: (child, animation) {
-                  return ScaleTransition(scale: animation, child: child);
-                },
-                child: IconButton(
-                  key: ValueKey(appValues.brightness),
-                  icon: Icon(
-                    appValues.brightness == .dark
-                        ? Icons.light_mode_rounded
-                        : Icons.dark_mode_rounded,
-                  ),
-                  onPressed: AppNotifiers.toggleTheme,
-                  tooltip: appValues.brightness == .dark
-                      ? l10n.lightMode
-                      : l10n.darkMode,
-                ),
-              );
-            },
-          ),
-          const SizedBox(width: 10),
-        ],
-      ),
+      appBar: AppBar(title: Text(l10n.appTitle)),
       body: Center(
         child: SingleChildScrollView(
           padding: const .all(24),
@@ -62,7 +28,9 @@ class HomePage extends StatelessWidget {
                 color: colors.primary,
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const DesignPatternsPage()),
+                  MaterialPageRoute<void>(
+                    builder: (_) => const DesignPatternsPage(),
+                  ),
                 ),
               ),
               HomeMenuCard(
@@ -71,7 +39,9 @@ class HomePage extends StatelessWidget {
                 color: colors.tertiary,
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const RefactoringPage()),
+                  MaterialPageRoute<void>(
+                    builder: (_) => const RefactoringPage(),
+                  ),
                 ),
               ),
               HomeMenuCard(
@@ -80,7 +50,7 @@ class HomePage extends StatelessWidget {
                 color: colors.secondary,
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(
+                  MaterialPageRoute<void>(
                     builder: (_) => const InterviewQuestionsPage(),
                   ),
                 ),
@@ -94,11 +64,6 @@ class HomePage extends StatelessWidget {
 }
 
 class HomeMenuCard extends StatelessWidget {
-  final String title;
-  final IconData icon;
-  final Color color;
-  final VoidCallback onTap;
-
   const HomeMenuCard({
     required this.title,
     required this.icon,
@@ -106,6 +71,10 @@ class HomeMenuCard extends StatelessWidget {
     required this.onTap,
     super.key,
   });
+  final String title;
+  final IconData icon;
+  final Color color;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {

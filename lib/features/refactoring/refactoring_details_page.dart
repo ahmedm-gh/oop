@@ -4,9 +4,8 @@ import 'package:tuts/core/repositories/refactoring_repository.dart';
 import 'package:tuts/shared/app_widgets.dart';
 
 class RefactoringDetailsPage extends StatelessWidget {
+  const RefactoringDetailsPage({required this.techniqueId, super.key});
   final String techniqueId;
-
-  const RefactoringDetailsPage({super.key, required this.techniqueId});
 
   @override
   Widget build(BuildContext context) {
@@ -56,13 +55,13 @@ class RefactoringDetailsPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            Text(
+            const Text(
               "Before",
               style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
             ),
             CodeBlockViewer.fromStrCodeBlock(technique.simpleBefore),
             const SizedBox(height: 8),
-            Text(
+            const Text(
               "After",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -81,7 +80,7 @@ class RefactoringDetailsPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              Text(
+              const Text(
                 "Before",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -90,7 +89,7 @@ class RefactoringDetailsPage extends StatelessWidget {
               ),
               CodeBlockViewer.fromStrCodeBlock(technique.complexBefore!),
               const SizedBox(height: 8),
-              Text(
+              const Text(
                 "After",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -107,17 +106,17 @@ class RefactoringDetailsPage extends StatelessWidget {
 }
 
 class _Section extends StatelessWidget {
-  final String title;
-  final IconData icon;
-  final Color color;
-  final String content;
-
   const _Section({
     required this.title,
     required this.icon,
     required this.color,
     required this.content,
   });
+
+  final String title;
+  final IconData icon;
+  final Color color;
+  final String content;
 
   @override
   Widget build(BuildContext context) {

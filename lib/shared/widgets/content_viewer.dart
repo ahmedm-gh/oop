@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tuts/core/extensions.dart';
 import 'package:tuts/core/models/content.dart';
 
+import 'code_block.dart';
+
 class ContentViewer extends StatelessWidget {
   const ContentViewer(this.content, {super.key});
 
@@ -12,16 +14,20 @@ class ContentViewer extends StatelessWidget {
     final colors = context.colorScheme;
 
     return switch (content) {
-      StringContent value => Text(value.value),
-      ListContent value => Column(
+      final StringContent value => Text(value.value),
+      final ListContent value => Column(
         crossAxisAlignment: .stretch,
         spacing: 7.5,
         children: [
           if (value.title case final title?)
-            Text(title, style: TextStyle(fontWeight: .bold, fontSize: 16)),
+            Text(
+              title,
+              style: const TextStyle(fontWeight: .bold, fontSize: 16),
+            ),
           ...buildItems(value, colors),
         ],
       ),
+      final CodeContent value => CodeBlockViewer.fromStrCodeBlock(value.code),
     };
   }
 
@@ -44,13 +50,13 @@ class ContentViewer extends StatelessWidget {
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(width: 5),
+              const SizedBox(width: 5),
               Expanded(child: Text(content.value[i])),
             ],
           ),
       ];
     } else {
-      return content.value.map((item) => Text(item)).toList();
+      return content.value.map(Text.new).toList();
     }
   }
 }

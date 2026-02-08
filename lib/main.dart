@@ -2,6 +2,7 @@ import "dart:developer";
 
 import "package:flutter/material.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
+import "package:tuts/core/extensions.dart";
 import "package:tuts/l10n/app_localizations.dart";
 import "package:tuts/core/app_notifiers.dart";
 import "package:tuts/features/home/home_page.dart";
@@ -30,6 +31,64 @@ class MyApp extends StatelessWidget {
           brightness: appValues.brightness,
         );
         return MaterialApp(
+          builder: (context, child) {
+            final l10n = context.l10n;
+
+            return ColoredBox(
+              color: colorScheme.surface,
+              child: Column(
+                children: [
+                  if (child case final child?)
+                    Expanded(child: ClipRect(child: child))
+                  else
+                    const Spacer(),
+                  Divider(
+                    height: 1,
+                    thickness: 1,
+                    color: colorScheme.outlineVariant,
+                  ),
+                  Material(
+                    type: .transparency,
+                    child: Directionality(
+                      textDirection: .ltr,
+                      child: SafeArea(
+                        child: Padding(
+                          padding: const .all(5),
+                          child: SizedBox(
+                            width: .infinity,
+                            child: Wrap(
+                              spacing: 10,
+                              crossAxisAlignment: .center,
+                              children: [
+                                const IconButton(
+                                  onPressed: AppNotifiers.toggleLocale,
+                                  icon: Icon(Icons.translate_rounded),
+                                ),
+                                IconButton(
+                                  key: ValueKey(appValues.brightness),
+                                  icon: Icon(
+                                    appValues.brightness == .dark
+                                        ? Icons.light_mode_rounded
+                                        : Icons.dark_mode_rounded,
+                                  ),
+                                  onPressed: AppNotifiers.toggleTheme,
+                                  tooltip: appValues.brightness == .dark
+                                      ? l10n.lightMode
+                                      : l10n.darkMode,
+                                ),
+                                const Text("LinkedIn: @ahmeds1"),
+                                const Text("GitHub: @ahmedm-gh"),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
           navigatorKey: MyApp.navigatorKey,
           locale: appValues.locale,
           supportedLocales: AppLocalizations.supportedLocales,
@@ -47,7 +106,7 @@ class MyApp extends StatelessWidget {
               color: colorScheme.outlineVariant,
               thickness: 1,
               space: 15,
-              radius: .all(.circular(1)),
+              radius: const .all(.circular(1)),
             ),
             appBarTheme: AppBarTheme(
               backgroundColor: colorScheme.surfaceContainerHigh,

@@ -26,7 +26,7 @@ class DesignPatternsPage extends StatelessWidget {
               "singleton",
             ],
           ),
-          Divider(height: 30),
+          const Divider(height: 30),
           _CategorySection(
             title: l10n.structuralPatterns,
             description: l10n.structuralPatternsDesc,
@@ -40,7 +40,7 @@ class DesignPatternsPage extends StatelessWidget {
               "proxy",
             ],
           ),
-          Divider(height: 30),
+          const Divider(height: 30),
           _CategorySection(
             title: l10n.behavioralPatterns,
             description: l10n.behavioralPatternsDesc,
@@ -65,15 +65,14 @@ class DesignPatternsPage extends StatelessWidget {
 }
 
 class _CategorySection extends StatelessWidget {
-  final String title;
-  final String description;
-  final List<String> patterns;
-
   const _CategorySection({
     required this.title,
     required this.description,
     required this.patterns,
   });
+  final String title;
+  final String description;
+  final List<String> patterns;
 
   @override
   Widget build(BuildContext context) {
@@ -111,8 +110,8 @@ class _CategorySection extends StatelessWidget {
 }
 
 class _PatternTile extends StatelessWidget {
-  final String pattern;
   const _PatternTile(this.pattern);
+  final String pattern;
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +123,7 @@ class _PatternTile extends StatelessWidget {
       trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14),
       onTap: () => Navigator.push(
         context,
-        MaterialPageRoute(
+        MaterialPageRoute<void>(
           builder: (_) {
             return PatternDetailsPage(patternKey: pattern, patternName: name);
           },

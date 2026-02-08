@@ -11,7 +11,7 @@ abstract class CodeExamples {
   // ==========================================================================
   // 1. WIDGETS - StatelessWidget vs StatefulWidget
   // ==========================================================================
-  
+
   static const statelessWidgetSimple = r'''
 // مثال بسيط - Simple Example
 class MyText extends StatelessWidget {
@@ -1733,41 +1733,41 @@ void main() {
       'statelessWidgetSimple' => statelessWidgetSimple,
       'statefulWidgetSimple' => statefulWidgetSimple,
       'statefulWidgetComplex' => statefulWidgetComplex,
-      
+
       // Mixins
       'mixinsSimple' => mixinsSimple,
       'mixinsComplex' => mixinsComplex,
-      
+
       // Extensions
       'extensionsSimple' => extensionsSimple,
       'extensionsComplex' => extensionsComplex,
-      
+
       // Async
       'futureSimple' => futureSimple,
       'streamSimple' => streamSimple,
       'asyncComplex' => asyncComplex,
-      
+
       // Design Patterns
       'factorySimple' => factorySimple,
       'singletonSimple' => singletonSimple,
       'designPatternsComplex' => designPatternsComplex,
-      
+
       // State Management
       'providerSimple' => providerSimple,
       'stateManagementComplex' => stateManagementComplex,
-      
+
       // Performance
       'performanceSimple' => performanceSimple,
       'performanceComplex' => performanceComplex,
-      
+
       // Navigation
       'navigationSimple' => navigationSimple,
       'navigationComplex' => navigationComplex,
-      
+
       // Testing
       'testingSimple' => testingSimple,
       'testingComplex' => testingComplex,
-      
+
       _ => null,
     };
   }

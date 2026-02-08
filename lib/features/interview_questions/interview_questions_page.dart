@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tuts/core/enums/difficulty_level.dart';
 import 'package:tuts/core/extensions.dart';
-import 'package:tuts/core/models/interview_question.dart';
 import 'package:tuts/core/interview_questions_repository.dart';
+import 'package:tuts/core/models/interview_question.dart';
 import 'package:tuts/features/interview_questions/question_details_page.dart';
 import 'package:tuts/shared/widgets/app_chip.dart';
 
@@ -112,7 +112,7 @@ class _InterviewQuestionsPageState extends State<InterviewQuestionsPage> {
             ),
           ),
 
-          Divider(height: 1, thickness: 1),
+          const Divider(height: 1, thickness: 1),
 
           // Questions list
           Expanded(
@@ -134,17 +134,16 @@ class _InterviewQuestionsPageState extends State<InterviewQuestionsPage> {
 }
 
 class _FilterChip extends StatelessWidget {
-  final String label;
-  final bool selected;
-  final Color? color;
-  final VoidCallback onSelected;
-
   const _FilterChip({
     required this.label,
     required this.selected,
     required this.onSelected,
     this.color,
   });
+  final String label;
+  final bool selected;
+  final Color? color;
+  final VoidCallback onSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -159,9 +158,8 @@ class _FilterChip extends StatelessWidget {
 }
 
 class _QuestionCard extends StatelessWidget {
-  final InterviewQuestion question;
-
   const _QuestionCard({required this.question});
+  final InterviewQuestion question;
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +175,7 @@ class _QuestionCard extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(
+            MaterialPageRoute<void>(
               builder: (_) => QuestionDetailsPage(question: question),
             ),
           );
