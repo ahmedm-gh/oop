@@ -374,5 +374,8 @@
     "advancedLevel": "متقدم",
     "expertLevel": "محترف",
     "answer": "الإجابة",
-    "codeExample": "مثال كود"
+    "codeExample": "مثال كود",
+    "programmingTerms": "مصطلحات برمجية",
+    "usefulPubPackages": "مكتبات مفيدة",
+    "tags": "الوسوم"
 }

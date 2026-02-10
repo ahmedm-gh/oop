@@ -2125,6 +2125,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Code Example'**
   String get codeExample;
+
+  /// No description provided for @programmingTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Programming Terms'**
+  String get programmingTerms;
+
+  /// No description provided for @usefulPubPackages.
+  ///
+  /// In en, this message translates to:
+  /// **'Useful Pub Packages'**
+  String get usefulPubPackages;
+
+  /// No description provided for @tags.
+  ///
+  /// In en, this message translates to:
+  /// **'Tags'**
+  String get tags;
 }
 
 class _AppLocalizationsDelegate

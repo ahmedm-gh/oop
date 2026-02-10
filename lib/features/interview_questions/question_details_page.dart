@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tuts/core/extensions.dart';
+import 'package:tuts/core/extensions/extensions.dart';
 import 'package:tuts/core/models/interview_question.dart';
-import 'package:tuts/shared/widgets/app_chip.dart';
-import 'package:tuts/shared/widgets/content_viewer.dart';
-import 'package:tuts/shared/widgets/small_titled_list.dart';
 
-import '../../shared/widgets/code_block.dart';
+import '../../shared/app_widgets.dart';
 
+// TODO: ADD .safeBidi()
 class QuestionDetailsPage extends StatelessWidget {
   const QuestionDetailsPage({required this.question, super.key});
   final InterviewQuestion question;
@@ -35,18 +33,30 @@ class QuestionDetailsPage extends StatelessWidget {
           spacing: 16,
           children: [
             // Question title
-            Text(
-              content.question,
-              style: const TextStyle(fontSize: 20, fontWeight: .bold),
+            Text.rich(
+              TextSpan(
+                text: content.question.safeBidi(),
+                style: const TextStyle(fontSize: 20, fontWeight: .bold),
+                children: [
+                  TextSpan(
+                    text: "\n- ${question.id}",
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: .normal,
+                      color: colors.onSurface,
+                    ),
+                  ),
+                ],
+              ),
             ),
 
             Container(
-              width: double.infinity,
+              width: .infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: colors.surfaceContainerLow,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
+                borderRadius: .circular(12),
+                border: .all(
                   color: colors.outlineVariant.withValues(alpha: 0.5),
                 ),
               ),
@@ -56,7 +66,11 @@ class QuestionDetailsPage extends StatelessWidget {
                 children: [
                   Text(
                     l10n.answer,
-                    style: const TextStyle(fontSize: 20, fontWeight: .bold),
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: .bold,
+                      color: colors.primary,
+                    ),
                   ),
                   ...content.answer.map(ContentViewer.new),
                 ],
@@ -107,19 +121,33 @@ class QuestionDetailsPage extends StatelessWidget {
             ],
 
             // Tags
-            if (question.tags case final tags? when tags.isNotEmpty)
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: tags
-                    .map(
-                      (t) => Chip(
-                        label: Text(t),
-                        backgroundColor: colors.surfaceContainerHighest,
-                      ),
-                    )
-                    .toList(),
-              ),
+            // if (question.tags case final tags? when tags.isNotEmpty)
+            //   Text.rich(
+            //     TextSpan(
+            //       style: const TextStyle(fontSize: 12),
+            //       children: [
+            //         TextSpan(
+            //           text: "${l10n.tags}: ",
+            //           style: TextStyle(
+            //             color: colors.secondary,
+            //             fontWeight: .bold,
+            //           ),
+            //         ),
+            //         TextSpan(text: tags.join(", ")),
+            //       ],
+            //     ),
+            //   ),
+            // if (question.tags case final tags? when tags.isNotEmpty) ...[
+            //   Text(
+            //     l10n.tags,
+            //     style: TextStyle(
+            //       fontSize: 12,
+            //       fontWeight: .w600,
+            //       color: colors.onSurface,
+            //     ),
+            //   ),
+            //   Tags(tags),
+            // ],
           ],
         ),
       ),

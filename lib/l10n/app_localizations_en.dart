@@ -1275,4 +1275,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get codeExample => 'Code Example';
+
+  @override
+  String get programmingTerms => 'Programming Terms';
+
+  @override
+  String get usefulPubPackages => 'Useful Pub Packages';
+
+  @override
+  String get tags => 'Tags';
 }

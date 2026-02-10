@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:tuts/core/extensions.dart";
+import "package:tuts/core/extensions/extensions.dart";
 import "package:tuts/l10n/app_localizations.dart";
 import "package:tuts/features/design_patterns/pattern_details_page.dart";
 

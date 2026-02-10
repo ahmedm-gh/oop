@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tuts/l10n/app_localizations.dart';
 
-import '../../core/extensions.dart';
+import '../../core/extensions/extensions.dart';
 
 enum TitledListType {
   none,
@@ -28,7 +28,7 @@ class SmallTitledList extends StatelessWidget {
     this.content,
     this.items,
     this.icon = Icons.info_rounded,
-    this.color = Colors.grey,
+    this.color = Colors.teal,
   }) : type = .notes;
 
   const SmallTitledList.whenToUse({
@@ -127,7 +127,7 @@ class SmallTitledList extends StatelessWidget {
                 ),
               ],
             ),
-          ...?buildContent(),
+          ?content,
           ...?buildItems(dir),
         ],
       ),
@@ -145,19 +145,6 @@ class SmallTitledList extends StatelessWidget {
     };
 
     return title == null ? null : Text(title);
-  }
-
-  List<Widget>? buildContent() {
-    if (content case final content?) {
-      return [
-        // Divider(color: color.withAlpha(100)),
-        Directionality(
-          textDirection: BidiUtil.getDirection(content.toString()),
-          child: content,
-        ),
-      ];
-    }
-    return null;
   }
 
   List<Widget>? buildItems(TextDirection dir) {

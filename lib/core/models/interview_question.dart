@@ -15,8 +15,7 @@ class InterviewQuestion {
     required this.categories,
     required this.type,
     required this.tags,
-    required this.contentEn,
-    required this.contentAr,
+    required this.content,
     this.examples,
     this.cons,
     this.pros,
@@ -27,14 +26,14 @@ class InterviewQuestion {
   final List<QuestionCategory> categories;
   final QuestionType type;
   final List<String>? tags;
-  final QuestionContent contentEn, contentAr;
+  final LocalizedValue<QuestionContent> content;
   final List<StrCodeBlock>? examples;
   final LocalizedValue<List<String>>? pros;
   final LocalizedValue<List<String>>? cons;
 
   /// Get the localized content based on the current locale
   QuestionContent getLocalizedContent(String languageCode) {
-    return languageCode == "ar" ? contentAr : contentEn;
+    return languageCode == "ar" ? content.ar : content.en;
   }
 
   /// Get the localized pros based on the current locale

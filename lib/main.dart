@@ -1,10 +1,13 @@
 import "dart:developer";
 
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:tuts/core/app_notifiers.dart";
+import "package:tuts/core/extensions/extensions.dart";
 import "package:tuts/features/home/home_page.dart";
 import "package:tuts/l10n/app_localizations.dart";
+import "package:url_launcher/url_launcher.dart";
 
 void main() {
   runApp(const App());
@@ -18,29 +21,35 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // implement backbutton with esc key
-
     return ValueListenableBuilder(
       valueListenable: AppNotifiers.appNotifier,
       builder: (context, appValues, _) {
-        log("locale: ${appValues.locale}", name: "app");
-        log("brightness: ${appValues.brightness}", name: "app");
+        log(
+          [
+            "locale: ${appValues.locale}",
+            "brightness: ${appValues.brightness.name}",
+          ].join("\n"),
+          name: "app",
+        );
         final colorScheme = ColorScheme.fromSeed(
-          seedColor: Colors.blueGrey,
+          seedColor: const Color(0xff135bec),
+          // seedColor: Colors.blueGrey,
           brightness: appValues.brightness,
         );
         return MaterialApp(
           builder: (context, child) {
-            return ColoredBox(
+            if (child == null) return const SizedBox.shrink();
+
+            return Material(
               color: colorScheme.surface,
-              child: Column(
-                children: [
-                  if (child case final child?)
-                    Expanded(child: ClipRect(child: child))
-                  else
-                    const Spacer(),
-                  const AppBottomBar(),
-                ],
+              // treat as a single unit
+              child: FocusScope(
+                child: Column(
+                  children: [
+                    Expanded(child: ClipRect(child: child)),
+                    const AppBottomBar(),
+                  ],
+                ),
               ),
             );
           },
@@ -55,8 +64,26 @@ class App extends StatelessWidget {
           ],
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            splashFactory: kIsWeb ? NoSplash.splashFactory : null,
             useMaterial3: true,
             colorScheme: colorScheme,
+            inputDecorationTheme: InputDecorationTheme(
+              contentPadding: const .symmetric(horizontal: 10, vertical: 10),
+              filled: true,
+              isDense: true,
+              border: const OutlineInputBorder(
+                borderRadius: .all(.circular(10)),
+                borderSide: .none,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: const .all(.circular(10)),
+                borderSide: BorderSide(color: colorScheme.outlineVariant),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: const .all(.circular(10)),
+                borderSide: BorderSide(color: colorScheme.primary),
+              ),
+            ),
             dividerTheme: DividerThemeData(
               color: colorScheme.outlineVariant,
               thickness: 1,
@@ -93,40 +120,57 @@ class AppBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appValues = AppNotifiers.appNotifier.value;
+    // final l10n = context.l10n;
 
     return Directionality(
       textDirection: .ltr,
       child: Material(
         type: .transparency,
-        child: SafeArea(
-          child: Padding(
-            padding: const .all(5),
-            child: SizedBox(
-              width: .infinity,
-              child: Wrap(
-                spacing: 10,
-                crossAxisAlignment: .center,
-                children: [
-                  const IconButton(
-                    onPressed: AppNotifiers.toggleLocale,
-                    icon: Icon(Icons.translate_rounded),
+        child: Container(
+          width: .infinity,
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(color: context.colorScheme.outlineVariant),
+            ),
+          ),
+          padding: const .all(5),
+          child: SafeArea(
+            child: Wrap(
+              spacing: 10,
+              crossAxisAlignment: .center,
+              children: [
+                const IconButton(
+                  onPressed: AppNotifiers.toggleLocale,
+                  icon: Icon(Icons.translate_rounded),
+                ),
+                IconButton(
+                  key: ValueKey(appValues.brightness),
+                  icon: Icon(
+                    appValues.brightness == .dark
+                        ? Icons.light_mode_rounded
+                        : Icons.dark_mode_rounded,
                   ),
-                  IconButton(
-                    key: ValueKey(appValues.brightness),
-                    icon: Icon(
-                      appValues.brightness == .dark
-                          ? Icons.light_mode_rounded
-                          : Icons.dark_mode_rounded,
-                    ),
-                    onPressed: AppNotifiers.toggleTheme,
-                    // tooltip: appValues.brightness == .dark
-                    //     ? l10n.lightMode
-                    //     : l10n.darkMode,
-                  ),
-                  const Text("LinkedIn: @ahmeds1"),
-                  const Text("GitHub: @ahmedm-gh"),
-                ],
-              ),
+                  onPressed: AppNotifiers.toggleTheme,
+                  // tooltip: appValues.brightness == .dark
+                  //     ? l10n.lightMode
+                  //     : l10n.darkMode,
+                ),
+                TextButton(
+                  onPressed: () {
+                    launchUrl(
+                      Uri.parse("https://www.linkedin.com/in/ahmeds1/"),
+                    );
+                  },
+                  child: const Text("LinkedIn: @ahmeds1"),
+                ),
+                const Text("|"),
+                TextButton(
+                  onPressed: () {
+                    launchUrl(Uri.parse("https://github.com/ahmedm-gh"));
+                  },
+                  child: const Text("GitHub: @ahmedm-gh"),
+                ),
+              ],
             ),
           ),
         ),

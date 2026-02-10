@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:tuts/core/models/code_block.dart";
 import "package:url_launcher/url_launcher.dart";
-import "package:tuts/core/extensions.dart";
+import "package:tuts/core/extensions/extensions.dart";
 
 import "../../core/enums/code_quality.dart";
 
@@ -184,10 +184,11 @@ class _CodeContent extends StatelessWidget {
     final isDark = context.isDark;
 
     return Container(
-      width: .infinity,
+      constraints: const BoxConstraints(maxHeight: 550),
       padding: const .all(16),
+      width: .infinity,
       child: SelectableText.rich(
-        _SyntaxHighlighter(code, isDark).highlight(),
+        _SyntaxHighlighter(code.trim(), isDark).highlight(),
         style: const TextStyle(
           fontFamily: "FiraCode",
           fontWeight: .w500,
@@ -200,12 +201,6 @@ class _CodeContent extends StatelessWidget {
   }
 }
 
-/// ======================
-/// COLORFUL SYNTAX MAGIC
-/// ======================
-/// ======================
-/// VISUAL STUDIO STYLE HIGHLIGHTER
-/// ======================
 class _SyntaxHighlighter {
   _SyntaxHighlighter(this.code, this.isDark);
   final String code;
@@ -221,9 +216,10 @@ class _SyntaxHighlighter {
   static const _dFunction = Color(0xFFDCDCAA); // Yellow
   static const _dNumber = Color(0xFFB5CEA8);
   static const _dParam = Color(0xFF9CDCFE); // Light blue
-  static const _dMeta = Color(
-    0xFFC586C0,
-  ); // Annotation (Same as control or separate)
+
+  // Annotation (Same as control or separate)
+  static const _dMeta = Color(0xFFC586C0);
+
   static const _dPunctuation = Color(0xFFD4D4D4);
 
   // VS Modern Light Theme Colors

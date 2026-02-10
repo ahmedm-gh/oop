@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:tuts/core/extensions.dart";
+import "package:tuts/core/extensions/extensions.dart";
 import "package:tuts/core/models/refactoring_technique.dart";
 import "package:tuts/core/repositories/refactoring_repository.dart";
 import "package:tuts/features/refactoring/refactoring_details_page.dart";
@@ -76,7 +76,7 @@ class _RefactoringCategory extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           description,
-          textDirection: BidiUtil.getDirection(description),
+          textDirection: description.getDirection(),
           style: textTheme.bodySmall,
         ),
         const SizedBox(height: 16),

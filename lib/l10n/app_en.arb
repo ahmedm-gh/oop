@@ -374,5 +374,8 @@
     "advancedLevel": "Advanced",
     "expertLevel": "Expert",
     "answer": "Answer",
-    "codeExample": "Code Example"
+    "codeExample": "Code Example",
+    "programmingTerms": "Programming Terms",
+    "usefulPubPackages": "Useful Pub Packages",
+    "tags": "Tags"
 }

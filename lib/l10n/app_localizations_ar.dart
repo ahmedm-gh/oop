@@ -1279,4 +1279,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get codeExample => 'مثال كود';
+
+  @override
+  String get programmingTerms => 'مصطلحات برمجية';
+
+  @override
+  String get usefulPubPackages => 'مكتبات مفيدة';
+
+  @override
+  String get tags => 'الوسوم';
 }

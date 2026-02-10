@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:tuts/core/extensions.dart";
+import "package:tuts/core/extensions/extensions.dart";
 import "package:tuts/core/repositories/design_patterns_repository.dart";
 import "package:tuts/shared/app_widgets.dart";
 
@@ -35,7 +35,7 @@ class PatternDetailsPage extends StatelessWidget {
             ),
             Text(
               pattern.description,
-              textDirection: BidiUtil.getDirection(pattern.description),
+              textDirection: pattern.description.getDirection(),
             ),
 
             // Bad Example

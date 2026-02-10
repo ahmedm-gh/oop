@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tuts/core/enums/difficulty_level.dart';
-import 'package:tuts/core/extensions.dart';
-import 'package:tuts/data/interview_questions_repository.dart';
+import 'package:tuts/core/extensions/extensions.dart';
 import 'package:tuts/core/models/interview_question.dart';
-import 'package:tuts/features/interview_questions/question_details_page.dart';
-import 'package:tuts/shared/widgets/app_chip.dart';
+import 'package:tuts/data/interview_questions_repository.dart';
+
+import '../../shared/widgets/question_card.dart';
 
 class InterviewQuestionsPage extends StatefulWidget {
   const InterviewQuestionsPage({super.key});
@@ -39,6 +39,7 @@ class _InterviewQuestionsPageState extends State<InterviewQuestionsPage> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final questions = _filteredQuestions;
+    final colors = context.colorScheme;
 
     // Group by difficulty
     final grouped = <DifficultyLevel, List<InterviewQuestion>>{};
@@ -47,32 +48,24 @@ class _InterviewQuestionsPageState extends State<InterviewQuestionsPage> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.interviewQuestions)),
+      appBar: AppBar(
+        title: Text(l10n.interviewQuestions),
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+      ),
       body: Column(
         crossAxisAlignment: .stretch,
         children: [
           // Search bar
           Padding(
-            padding: const .all(10),
+            padding: const .only(right: 16, left: 16, bottom: 16),
             child: Column(
               children: [
                 TextField(
                   controller: _searchController,
                   decoration: InputDecoration(
                     hintText: l10n.search,
-                    prefixIcon: const Icon(Icons.search),
-                    suffixIcon: _searchQuery.isNotEmpty
-                        ? IconButton(
-                            icon: const Icon(Icons.clear),
-                            onPressed: () {
-                              _searchController.clear();
-                              setState(() => _searchQuery = '');
-                            },
-                          )
-                        : null,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+                    suffixIcon: const Icon(Icons.search_rounded),
                   ),
                   onChanged: (v) => setState(() => _searchQuery = v),
                 ),
@@ -80,51 +73,75 @@ class _InterviewQuestionsPageState extends State<InterviewQuestionsPage> {
                 const SizedBox(height: 10),
 
                 // Filter chips
-                SingleChildScrollView(
-                  scrollDirection: .horizontal,
-                  child: Row(
-                    children: [
-                      _FilterChip(
-                        label: l10n.all,
-                        selected: _selectedDifficulty == null,
-                        onSelected: () =>
-                            setState(() => _selectedDifficulty = null),
-                      ),
-                      ...DifficultyLevel.values.map(
-                        (level) => Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: _FilterChip(
-                            label: level.label(l10n),
-                            selected: _selectedDifficulty == level,
-                            color: level.color,
-                            onSelected: () {
-                              setState(() {
-                                _selectedDifficulty = level;
-                              });
-                            },
-                          ),
+                SizedBox(
+                  width: .infinity,
+                  child: ChipTheme(
+                    data: ChipThemeData(
+                      padding: .zero,
+                      labelPadding: const .symmetric(horizontal: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: .circular(15),
+                        side: BorderSide(
+                          color: colors.outlineVariant.withValues(alpha: 0.35),
                         ),
                       ),
-                    ],
+                    ),
+                    child: SingleChildScrollView(
+                      scrollDirection: .horizontal,
+                      child: Row(
+                        spacing: 10,
+                        children: [
+                          _FilterChip(
+                            label: l10n.all,
+                            selected: _selectedDifficulty == null,
+                            onSelected: () {
+                              setState(() => _selectedDifficulty = null);
+                            },
+                          ),
+                          ...DifficultyLevel.values.map(
+                            (level) => _FilterChip(
+                              label: level.label(l10n),
+                              selected: _selectedDifficulty == level,
+                              color: level.color,
+                              onSelected: () {
+                                setState(() {
+                                  _selectedDifficulty = level;
+                                });
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
           ),
 
-          const Divider(height: 1, thickness: 1),
+          const Opacity(opacity: 0.4, child: Divider(height: 1, thickness: 1)),
 
           // Questions list
           Expanded(
             child: questions.isEmpty
                 ? Center(child: Text(l10n.noResults))
-                : ListView.separated(
-                    padding: const EdgeInsets.all(16),
-                    itemCount: questions.length,
-                    itemBuilder: (_, i) {
-                      return _QuestionCard(question: questions[i]);
-                    },
-                    separatorBuilder: (_, i) => const SizedBox(height: 10),
+                : CardTheme(
+                    color: colors.surfaceContainerLowest,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: .circular(16),
+                      side: BorderSide(
+                        color: colors.outlineVariant.withValues(alpha: 0.35),
+                      ),
+                    ),
+                    elevation: 0,
+                    child: ListView.separated(
+                      padding: const EdgeInsets.all(16),
+                      itemCount: questions.length,
+                      itemBuilder: (_, i) {
+                        return QuestionCard(question: questions[i]);
+                      },
+                      separatorBuilder: (_, i) => const SizedBox(height: 10),
+                    ),
                   ),
           ),
         ],
@@ -148,76 +165,15 @@ class _FilterChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilterChip(
-      label: Text(label),
+      label: Text(
+        label,
+        style: TextStyle(color: selected ? color?.pairedColor : null),
+      ),
       selected: selected,
       onSelected: (_) => onSelected(),
-      selectedColor: color?.withValues(alpha: 0.2),
-      checkmarkColor: color,
-    );
-  }
-}
-
-class _QuestionCard extends StatelessWidget {
-  const _QuestionCard({required this.question});
-  final InterviewQuestion question;
-
-  @override
-  Widget build(BuildContext context) {
-    final langCode = context.l10n.localeName;
-    final colors = context.colorScheme;
-
-    final content = question.getLocalizedContent(langCode);
-
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(10),
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute<void>(
-              builder: (_) => QuestionDetailsPage(question: question),
-            ),
-          );
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: .start,
-            spacing: 10,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      content.question,
-                      style: const TextStyle(fontSize: 16, fontWeight: .w600),
-                    ),
-                  ),
-                  const SizedBox(width: 5),
-                  Icon(Icons.chevron_right, color: colors.onSurfaceVariant),
-                ],
-              ),
-              Wrap(
-                spacing: 4,
-                runSpacing: 4,
-                children: [
-                  DifficultyChip(difficultyLevel: question.difficulty),
-                  ...question.tags?.map(
-                        (tag) => TagChip(
-                          child: Text(
-                            tag,
-                            style: const TextStyle(fontSize: 10),
-                          ),
-                        ),
-                      ) ??
-                      [],
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+      selectedColor: color,
+      showCheckmark: false,
+      side: selected ? .none : null,
     );
   }
 }

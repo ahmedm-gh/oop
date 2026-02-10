@@ -26,3 +26,7 @@ class LocalizedValue<E> {
 class LocalizedString extends LocalizedValue<String> {
   const LocalizedString({required super.en, required super.ar});
 }
+
+class LocalizedStringList extends LocalizedValue<List<String>> {
+  const LocalizedStringList({required super.en, required super.ar});
+}

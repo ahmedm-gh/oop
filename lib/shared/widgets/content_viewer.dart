@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tuts/core/extensions.dart';
+import 'package:tuts/core/extensions/extensions.dart';
 import 'package:tuts/core/models/content.dart';
 
 import 'code_block.dart';
@@ -22,7 +22,11 @@ class ContentViewer extends StatelessWidget {
           if (value.title case final title?)
             Text(
               title,
-              style: const TextStyle(fontWeight: .bold, fontSize: 16),
+              style: TextStyle(
+                fontWeight: .bold,
+                fontSize: 16,
+                color: colors.primary,
+              ),
             ),
           ...buildItems(value, colors),
         ],
