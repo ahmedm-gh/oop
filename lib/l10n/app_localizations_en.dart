@@ -1274,6 +1274,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get expertLevel => 'Expert';
 
   @override
+  String get answr => 'Answer';
+
+  @override
   String get codeExample => 'Code Example';
 
   @override
@@ -1284,4 +1287,70 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tags => 'Tags';
+
+  @override
+  String get theoretical => 'Theoretical';
+
+  @override
+  String get practical => 'Practical';
+
+  @override
+  String get cBasic => 'Basic';
+
+  @override
+  String get cSecurity => 'Security';
+
+  @override
+  String get cOOP => 'OOP';
+
+  @override
+  String get cSolid => 'SOLID';
+
+  @override
+  String get cDesignPatterns => 'Design Patterns';
+
+  @override
+  String get cDataStructures => 'Data Structures';
+
+  @override
+  String get cStateManagement => 'State Management';
+
+  @override
+  String get cPerformance => 'Performance';
+
+  @override
+  String get cTesting => 'Testing';
+
+  @override
+  String get cNetworking => 'Networking';
+
+  @override
+  String get cDatabase => 'Database';
+
+  @override
+  String get cArchitecture => 'Architecture';
+
+  @override
+  String get cDartBasics => 'Dart Basics';
+
+  @override
+  String get cFlutterBasics => 'Flutter Basics';
+
+  @override
+  String get cUI => 'UI';
+
+  @override
+  String get cNativePlatform => 'Native Platform';
+
+  @override
+  String get cAnimations => 'Animations';
+
+  @override
+  String get cModernFeatures => 'Modern Features';
+
+  @override
+  String get cDeployment => 'Deployment';
+
+  @override
+  String get questionNotFound => 'Question not found';
 }

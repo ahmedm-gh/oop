@@ -1,48 +1,11 @@
-/// Repository for interview questions data.
-library;
-
-import 'package:tuts/core/enums/difficulty_level.dart';
 import 'package:tuts/core/models/code_block.dart';
 import 'package:tuts/core/models/interview_question.dart';
 import 'package:tuts/core/models/localized_text.dart';
 import '../core/models/content.dart';
 
-/// Repository that provides interview questions
-class InterviewQuestionsRepository {
-  static List<InterviewQuestion>? _cachedQuestions;
-
-  /// Get all questions
-  static List<InterviewQuestion> getQuestions() {
-    _cachedQuestions ??= _buildQuestions();
-    return _cachedQuestions!;
-  }
-
-  /// Search questions by query
-  static List<InterviewQuestion> search(String query, String languageCode) {
-    if (query.isEmpty) return getQuestions();
-    final lowerQuery = query.toLowerCase();
-    return getQuestions().where((q) {
-      final content = q.getLocalizedContent(languageCode);
-      return content.question.toLowerCase().contains(lowerQuery) ||
-          content.answer.toString().toLowerCase().contains(lowerQuery) ||
-          (q.tags ?? []).any((t) => t.toLowerCase().contains(lowerQuery));
-    }).toList();
-  }
-
-  /// Get questions by difficulty
-  static List<InterviewQuestion> getByDifficulty(DifficultyLevel level) {
-    return getQuestions().where((q) => q.difficulty == level).toList();
-  }
-
-  /// Build questions from data
-  static List<InterviewQuestion> _buildQuestions() {
-    return questionsData;
-  }
-}
-
 const List<InterviewQuestion> questionsData = [
   InterviewQuestion(
-    id: "FLT-001",
+    id: "001",
     difficulty: .basic,
     categories: [.basic, .flutterBasics],
     type: .theoretical,
@@ -131,7 +94,7 @@ const List<InterviewQuestion> questionsData = [
     ),
   ),
   InterviewQuestion(
-    id: "FLT-002",
+    id: "002",
     difficulty: .basic,
     categories: [.basic, .flutterBasics],
     type: .theoretical,
@@ -271,7 +234,7 @@ class _CounterState extends State<Counter> {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-003",
+    id: "003",
     difficulty: .intermediate,
     categories: [.basic, .flutterBasics],
     type: .theoretical,
@@ -370,7 +333,7 @@ Widget build(BuildContext context) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-004",
+    id: "004",
     difficulty: .basic,
     categories: [.oop, .dartBasics],
     type: .theoretical,
@@ -515,7 +478,7 @@ class Circle implements Shape {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-005",
+    id: "005",
     difficulty: .intermediate,
     categories: [.solid, .architecture],
     type: .theoretical,
@@ -662,7 +625,7 @@ class UserService {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-006",
+    id: "006",
     difficulty: .intermediate,
     categories: [.designPatterns],
     type: .practical,
@@ -880,7 +843,7 @@ class UserRepository implements IUserRepository {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-007",
+    id: "007",
     difficulty: .basic,
     categories: [.dataStructures, .dartBasics],
     type: .theoretical,
@@ -1017,7 +980,7 @@ orderedSet.addAll(['ج', 'أ', 'ب']);
     ),
   ),
   InterviewQuestion(
-    id: "FLT-008",
+    id: "008",
     difficulty: .intermediate,
     categories: [.stateManagement],
     type: .practical,
@@ -1198,7 +1161,7 @@ ref.read(counterProvider.notifier).increment();''', codeQuality: .good),
     ),
   ),
   InterviewQuestion(
-    id: "FLT-009",
+    id: "009",
     difficulty: .intermediate,
     categories: [.dartBasics],
     type: .practical,
@@ -1368,7 +1331,7 @@ Future<void> loadAll() async {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-010",
+    id: "010",
     difficulty: .advanced,
     categories: [.performance],
     type: .practical,
@@ -1530,7 +1493,7 @@ class MyWidget extends StatelessWidget {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-011",
+    id: "011",
     difficulty: .intermediate,
     categories: [.performance, .flutterBasics],
     type: .practical,
@@ -1733,7 +1696,7 @@ ListView.builder(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-012",
+    id: "012",
     difficulty: .intermediate,
     categories: [.flutterBasics],
     type: .theoretical,
@@ -1892,7 +1855,7 @@ ListView.builder(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-013",
+    id: "013",
     difficulty: .advanced,
     categories: [.testing],
     type: .practical,
@@ -2080,7 +2043,7 @@ void main() {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-014",
+    id: "014",
     difficulty: .advanced,
     categories: [.performance, .modernFeatures],
     type: .theoretical,
@@ -2200,7 +2163,7 @@ void main() {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-015",
+    id: "015",
     difficulty: .intermediate,
     categories: [.networking],
     type: .practical,
@@ -2425,7 +2388,7 @@ class ApiService {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-016",
+    id: "016",
     difficulty: .intermediate,
     categories: [.database],
     type: .practical,
@@ -2680,7 +2643,7 @@ final adults = box.values.where((user) => user.age >= 18).toList();''',
     ),
   ),
   InterviewQuestion(
-    id: "FLT-017",
+    id: "017",
     difficulty: .advanced,
     categories: [.architecture],
     type: .theoretical,
@@ -2897,7 +2860,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-018",
+    id: "018",
     difficulty: .basic,
     categories: [.dartBasics],
     type: .practical,
@@ -3080,7 +3043,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-019",
+    id: "019",
     difficulty: .advanced,
     categories: [.performance, .dartBasics],
     type: .practical,
@@ -3177,7 +3140,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-020",
+    id: "020",
     difficulty: .advanced,
     categories: [.nativePlatform, .architecture],
     type: .practical,
@@ -3274,7 +3237,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-021",
+    id: "021",
     difficulty: .intermediate,
     categories: [.animations, .ui],
     type: .practical,
@@ -3385,7 +3348,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-022",
+    id: "022",
     difficulty: .advanced,
     categories: [.animations, .ui, .performance],
     type: .practical,
@@ -3484,7 +3447,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-023",
+    id: "023",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .practical,
@@ -3596,7 +3559,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-024",
+    id: "024",
     difficulty: .advanced,
     categories: [.modernFeatures, .ui],
     type: .theoretical,
@@ -3700,7 +3663,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-025",
+    id: "025",
     difficulty: .advanced,
     categories: [.security],
     type: .practical,
@@ -3803,7 +3766,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-026",
+    id: "026",
     difficulty: .advanced,
     categories: [.deployment],
     type: .theoretical,
@@ -3877,11 +3840,13 @@ void greet(String name, {String? nickname}) {
       ),
     ),
     examples: [
-      StrCodeBlock.good(
+      StrCodeBlock(
         "# GitHub Actions Example (.github/workflows/flutter.yml)\nname: Flutter CI\n\non:\n  push:\n    branches: [ main, develop ]\n  pull_request:\n    branches: [ main ]\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    \n    steps:\n      - uses: actions/checkout@v3\n      \n      - uses: subosito/flutter-action@v2\n        with:\n          flutter-version: '3.16.0'\n          channel: 'stable'\n      \n      - name: Get dependencies\n        run: flutter pub get\n      \n      - name: Analyze code\n        run: flutter analyze\n      \n      - name: Run tests\n        run: flutter test\n      \n      - name: Build APK\n        run: flutter build apk --release\n      \n      - name: Upload artifact\n        uses: actions/upload-artifact@v3\n        with:\n          name: release-apk\n          path: build/app/outputs/flutter-apk/app-release.apk",
+        codeLanguage: .yaml,
       ),
       StrCodeBlock(
         "# Codemagic configuration (codemagic.yaml)\nworkflows:\n  flutter-workflow:\n    name: Flutter Build\n    environment:\n      flutter: stable\n      xcode: latest\n    scripts:\n      - name: Install dependencies\n        script: flutter pub get\n      - name: Run tests\n        script: flutter test\n      - name: Build Android\n        script: flutter build appbundle --release\n      - name: Build iOS\n        script: flutter build ipa --release --export-options-plist=/path/to/ExportOptions.plist\n    artifacts:\n      - build/**/outputs/**/*.aab\n      - build/**/outputs/**/*.apk\n      - build/ios/ipa/*.ipa\n    publishing:\n      google_play:\n        credentials: \$GCLOUD_SERVICE_ACCOUNT_CREDENTIALS\n        track: internal",
+        codeLanguage: .yaml,
       ),
     ],
     pros: LocalizedValue(
@@ -3912,7 +3877,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-027",
+    id: "027",
     difficulty: .basic,
     categories: [.flutterBasics, .ui],
     type: .practical,
@@ -4016,7 +3981,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-028",
+    id: "028",
     difficulty: .advanced,
     categories: [.architecture, .flutterBasics],
     type: .practical,
@@ -4137,7 +4102,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-029",
+    id: "029",
     difficulty: .advanced,
     categories: [.performance, .architecture],
     type: .theoretical,
@@ -4233,7 +4198,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-030",
+    id: "030",
     difficulty: .advanced,
     categories: [.performance, .flutterBasics],
     type: .practical,
@@ -4352,7 +4317,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-031",
+    id: "031",
     difficulty: .basic,
     categories: [.basic, .flutterBasics],
     type: .theoretical,
@@ -4437,7 +4402,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-032",
+    id: "032",
     difficulty: .basic,
     categories: [.basic, .dartBasics],
     type: .theoretical,
@@ -4520,7 +4485,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-033",
+    id: "033",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .theoretical,
@@ -4601,7 +4566,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-034",
+    id: "034",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .stateManagement],
     type: .theoretical,
@@ -4713,7 +4678,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-035",
+    id: "035",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui, .performance],
     type: .theoretical,
@@ -4814,7 +4779,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-036",
+    id: "036",
     difficulty: .intermediate,
     categories: [.flutterBasics, .performance],
     type: .theoretical,
@@ -4940,7 +4905,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-037",
+    id: "037",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .theoretical,
@@ -5051,7 +5016,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-038",
+    id: "038",
     difficulty: .intermediate,
     categories: [.flutterBasics, .stateManagement],
     type: .theoretical,
@@ -5161,7 +5126,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-039",
+    id: "039",
     difficulty: .intermediate,
     categories: [.dartBasics, .oop],
     type: .theoretical,
@@ -5261,7 +5226,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-040",
+    id: "040",
     difficulty: .intermediate,
     categories: [.dartBasics, .modernFeatures],
     type: .theoretical,
@@ -5363,7 +5328,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-041",
+    id: "041",
     difficulty: .basic,
     categories: [.basic, .dartBasics, .dataStructures],
     type: .theoretical,
@@ -5487,7 +5452,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-042",
+    id: "042",
     difficulty: .intermediate,
     categories: [.solid, .architecture],
     type: .theoretical,
@@ -5586,7 +5551,7 @@ void greet(String name, {String? nickname}) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-043",
+    id: "043",
     difficulty: .intermediate,
     categories: [.designPatterns, .stateManagement],
     type: .theoretical,
@@ -5716,7 +5681,7 @@ class CounterBloc {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-044",
+    id: "044",
     difficulty: .intermediate,
     categories: [.designPatterns, .stateManagement],
     type: .theoretical,
@@ -5845,7 +5810,7 @@ class CounterDisplay extends StatelessWidget {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-045",
+    id: "045",
     difficulty: .intermediate,
     categories: [.dartBasics],
     type: .theoretical,
@@ -5972,7 +5937,7 @@ void main() async {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-046",
+    id: "046",
     difficulty: .intermediate,
     categories: [.flutterBasics],
     type: .theoretical,
@@ -6093,7 +6058,7 @@ Navigator.pushReplacementNamed(context, '/home');
     ),
   ),
   InterviewQuestion(
-    id: "FLT-047",
+    id: "047",
     difficulty: .advanced,
     categories: [.flutterBasics, .architecture],
     type: .theoretical,
@@ -6234,7 +6199,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
     ),
   ),
   InterviewQuestion(
-    id: "FLT-048",
+    id: "048",
     difficulty: .basic,
     categories: [.basic, .flutterBasics],
     type: .theoretical,
@@ -6361,7 +6326,7 @@ void loadData() async {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-049",
+    id: "049",
     difficulty: .advanced,
     categories: [.dartBasics, .performance],
     type: .theoretical,
@@ -6516,7 +6481,7 @@ Future<int> loadData() async {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-050",
+    id: "050",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .theoretical,
@@ -6699,7 +6664,7 @@ class _MyWidgetState extends State<MyWidget> {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-051",
+    id: "051",
     difficulty: .intermediate,
     categories: [.oop, .dartBasics],
     type: .theoretical,
@@ -6880,7 +6845,7 @@ class Square implements Shape {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-052",
+    id: "052",
     difficulty: .intermediate,
     categories: [.designPatterns, .oop],
     type: .theoretical,
@@ -7050,7 +7015,7 @@ void main() {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-053",
+    id: "053",
     difficulty: .advanced,
     categories: [.performance],
     type: .theoretical,
@@ -7235,7 +7200,7 @@ RepaintBoundary(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-054",
+    id: "054",
     difficulty: .advanced,
     categories: [.flutterBasics, .ui],
     type: .theoretical,
@@ -7375,7 +7340,7 @@ void main() {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-055",
+    id: "055",
     difficulty: .advanced,
     categories: [.flutterBasics, .ui],
     type: .theoretical,
@@ -7513,7 +7478,7 @@ void main() {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-056",
+    id: "056",
     difficulty: .intermediate,
     categories: [.oop, .dartBasics],
     type: .theoretical,
@@ -7595,8 +7560,7 @@ void main() {
       ),
     ),
     examples: [
-      StrCodeBlock.bad("""
-// Bad: Deep inheritance hierarchy
+      StrCodeBlock.bad("""// Bad: Deep inheritance hierarchy
 class Vehicle {
   void move() => print('Moving');
 }
@@ -7611,8 +7575,7 @@ class Car extends LandVehicle {
 
 // Tightly coupled, hard to change
 """),
-      StrCodeBlock.good("""
-// Good: Composition with interfaces
+      StrCodeBlock.good("""// Good: Composition with interfaces
 abstract class Movable {
   void move();
 }
@@ -7636,8 +7599,7 @@ class Car implements Movable {
 void main() {
   final car = Car(Engine());
   car.move(); // Flexible, testable
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -7677,7 +7639,7 @@ void main() {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-057",
+    id: "057",
     difficulty: .basic,
     categories: [.oop, .dartBasics],
     type: .theoretical,
@@ -7755,8 +7717,7 @@ void main() {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Abstract base class
+      StrCodeBlock.good("""// Abstract base class
 abstract class Animal {
   void makeSound();
   String get type;
@@ -7810,10 +7771,8 @@ void main() {
   // Meow! 🐈
   // A Avian says:
   // Tweet! 🐦
-}
-"""),
-      StrCodeBlock.good("""
-// Flutter example: Polymorphic widget rendering
+}"""),
+      StrCodeBlock.good("""// Flutter example: Polymorphic widget rendering
 import 'package:flutter/material.dart';
 
 abstract class Shape extends StatelessWidget {
@@ -7866,8 +7825,7 @@ class ShapeGallery extends StatelessWidget {
       children: shapes, // Polymorphism in action
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -7903,7 +7861,7 @@ class ShapeGallery extends StatelessWidget {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-058",
+    id: "058",
     difficulty: .basic,
     categories: [.basic, .flutterBasics],
     type: .theoretical,
@@ -7969,8 +7927,7 @@ class ShapeGallery extends StatelessWidget {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-name: my_flutter_app
+      StrCodeBlock("""name: my_flutter_app
 description: A new Flutter project
 version: 1.0.0+1
 
@@ -8002,7 +7959,7 @@ flutter:
         - asset: fonts/Roboto-Regular.ttf
         - asset: fonts/Roboto-Bold.ttf
           weight: 700
-"""),
+""", codeLanguage: .yaml),
     ],
     pros: LocalizedValue(
       en: [
@@ -8032,7 +7989,7 @@ flutter:
     ),
   ),
   InterviewQuestion(
-    id: "FLT-059",
+    id: "059",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .practical,
@@ -8096,16 +8053,15 @@ flutter:
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// 1. pubspec.yaml configuration
+      StrCodeBlock("""# 1. pubspec.yaml configuration
 flutter:
   assets:
     - assets/images/logo.png
     - assets/images/background.jpg
     # Or include entire directory:
     - assets/images/
-
-// 2. Using local asset image
+""", codeLanguage: .yaml),
+      StrCodeBlock("""// 2. Using local asset image
 Image.asset(
   'assets/images/logo.png',
   width: 200,
@@ -8132,8 +8088,7 @@ CachedNetworkImage(
   imageUrl: 'https://example.com/image.jpg',
   placeholder: (context, url) => CircularProgressIndicator(),
   errorWidget: (context, url, error) => Icon(Icons.error),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -8165,7 +8120,7 @@ CachedNetworkImage(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-060",
+    id: "060",
     difficulty: .basic,
     categories: [.basic, .flutterBasics],
     type: .theoretical,
@@ -8229,8 +8184,7 @@ CachedNetworkImage(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Simple main function
+      StrCodeBlock.good("""// Simple main function
 void main() {
   runApp(const MyApp());
 }
@@ -8245,10 +8199,8 @@ class MyApp extends StatelessWidget {
       home: HomeScreen(),
     );
   }
-}
-"""),
-      StrCodeBlock.good("""
-// Async main with initialization
+}"""),
+      StrCodeBlock.good("""// Async main with initialization
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -8258,10 +8210,8 @@ void main() async {
   ]);
   
   runApp(const MyApp());
-}
-"""),
-      StrCodeBlock.good("""
-// Main with error handling
+}"""),
+      StrCodeBlock.good("""// Main with error handling
 void main() {
   FlutterError.onError = (details) {
     print('Flutter error: \${details.exception}');
@@ -8272,8 +8222,7 @@ void main() {
   }, (error, stack) {
     print('Dart error: \$error');
   });
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -8303,7 +8252,7 @@ void main() {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-061",
+    id: "061",
     difficulty: .basic,
     categories: [.basic, .flutterBasics],
     type: .theoretical,
@@ -8383,8 +8332,7 @@ void main() {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Adding packages/plugins to pubspec.yaml
+      StrCodeBlock("""# Adding packages/plugins to pubspec.yaml
 dependencies:
   # Pure Dart packages
   http: ^1.1.0
@@ -8395,8 +8343,8 @@ dependencies:
   image_picker: ^1.0.0
   camera: ^0.10.0
   shared_preferences: ^2.2.0
-
-// Using a package
+""", codeLanguage: .yaml),
+      StrCodeBlock("""// Using a package
 import 'package:http/http.dart' as http;
 
 Future<String> fetchData() async {
@@ -8417,8 +8365,7 @@ Future<void> pickImage() async {
   if (image != null) {
     print('Image path: \${image.path}');
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -8450,7 +8397,7 @@ Future<void> pickImage() async {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-062",
+    id: "062",
     difficulty: .intermediate,
     categories: [.flutterBasics],
     type: .theoretical,
@@ -8515,8 +8462,7 @@ Future<void> pickImage() async {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Correct usage with async initialization
+      StrCodeBlock.good("""// Correct usage with async initialization
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -8528,24 +8474,19 @@ void main() async {
   final prefs = await SharedPreferences.getInstance();
   
   runApp(MyApp(prefs: prefs));
-}
-"""),
-      StrCodeBlock.bad("""
-// WRONG - async work without ensureInitialized()
+}"""),
+      StrCodeBlock.bad("""// WRONG - async work without ensureInitialized()
 void main() async {
   // This will crash!
   await Firebase.initializeApp(); // Error: binding not initialized
   
   runApp(const MyApp());
-}
-"""),
-      StrCodeBlock.good("""
-// Not needed when main is synchronous
+}"""),
+      StrCodeBlock.good("""// Not needed when main is synchronous
 void main() {
   // No ensureInitialized needed
   runApp(const MyApp());
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -8575,7 +8516,7 @@ void main() {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-063",
+    id: "063",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .practical,
@@ -8641,8 +8582,7 @@ void main() {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Container with multiple properties
+      StrCodeBlock.good("""// Container with multiple properties
 Container(
   width: 200,
   height: 100,
@@ -8663,10 +8603,8 @@ Container(
     'Hello Flutter',
     style: TextStyle(color: Colors.white),
   ),
-)
-"""),
-      StrCodeBlock.good("""
-// Container as colored box (no child)
+)"""),
+      StrCodeBlock.good("""// Container as colored box (no child)
 Container(
   width: 100,
   height: 100,
@@ -8684,10 +8622,8 @@ Container(
       end: Alignment.bottomRight,
     ),
   ),
-)
-"""),
-      StrCodeBlock.bad("""
-// BAD - Unnecessary Container for spacing
+)"""),
+      StrCodeBlock.bad("""// BAD - Unnecessary Container for spacing
 Container(
   width: 20,
   height: 20,
@@ -8697,8 +8633,7 @@ Container(
 const SizedBox(
   width: 20,
   height: 20,
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -8730,7 +8665,7 @@ const SizedBox(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-064",
+    id: "064",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .performance],
     type: .theoretical,
@@ -8794,8 +8729,7 @@ const SizedBox(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// GOOD - const widget
+      StrCodeBlock.good("""// GOOD - const widget
 const Text('Hello World')
 const Icon(Icons.star)
 const SizedBox(width: 20, height: 20)
@@ -8813,10 +8747,8 @@ class MyWidget extends StatelessWidget {
       ],
     );
   }
-}
-"""),
-      StrCodeBlock.bad("""
-// BAD - Missing const (unnecessary rebuilds)
+}"""),
+      StrCodeBlock.bad("""// BAD - Missing const (unnecessary rebuilds)
 Text('Hello World') // Will rebuild unnecessarily
 Icon(Icons.star) // Will rebuild unnecessarily
 
@@ -8824,8 +8756,7 @@ Icon(Icons.star) // Will rebuild unnecessarily
 String name = 'John';
 const Text(name) // Error: not a constant expression
 """),
-      StrCodeBlock.good("""
-// Performance comparison
+      StrCodeBlock.good("""// Performance comparison
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   
@@ -8838,8 +8769,7 @@ class MyApp extends StatelessWidget {
       ],
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -8873,7 +8803,7 @@ class MyApp extends StatelessWidget {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-065",
+    id: "065",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .theoretical,
@@ -8937,8 +8867,7 @@ class MyApp extends StatelessWidget {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic SafeArea usage
+      StrCodeBlock.good("""// Basic SafeArea usage
 Scaffold(
   body: SafeArea(
     child: Column(
@@ -8948,10 +8877,8 @@ Scaffold(
       ],
     ),
   ),
-)
-"""),
-      StrCodeBlock.good("""
-// Selective edge padding
+)"""),
+      StrCodeBlock.good("""// Selective edge padding
 SafeArea(
   top: true,     // Avoid status bar
   bottom: false, // Allow content under home indicator
@@ -8959,10 +8886,8 @@ SafeArea(
     color: Colors.blue,
     child: Text('Content'),
   ),
-)
-"""),
-      StrCodeBlock.bad("""
-// BAD - Without SafeArea on notched devices
+)"""),
+      StrCodeBlock.bad("""// BAD - Without SafeArea on notched devices
 Container(
   color: Colors.blue,
   child: Text('This text might be hidden by notch'),
@@ -8974,8 +8899,7 @@ SafeArea(
     color: Colors.blue,
     child: Text('This text is safe from notch'),
   ),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -9005,7 +8929,7 @@ SafeArea(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-066",
+    id: "066",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .practical,
@@ -9070,8 +8994,7 @@ SafeArea(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Creating a full-screen dialog
+      StrCodeBlock.good("""// Creating a full-screen dialog
 void openFullScreenDialog(BuildContext context) {
   Navigator.of(context).push(
     MaterialPageRoute(
@@ -9119,8 +9042,7 @@ class CreateItemScreen extends StatelessWidget {
       ),
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -9152,7 +9074,7 @@ class CreateItemScreen extends StatelessWidget {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-067",
+    id: "067",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .theoretical,
@@ -9232,8 +9154,7 @@ class CreateItemScreen extends StatelessWidget {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Expanded - widget fills space
+      StrCodeBlock.good("""// Expanded - widget fills space
 Row(
   children: [
     const Text('Start'),
@@ -9245,10 +9166,8 @@ Row(
     ),
     const Text('End'),
   ],
-)
-"""),
-      StrCodeBlock.good("""
-// Spacer - empty space between widgets
+)"""),
+      StrCodeBlock.good("""// Spacer - empty space between widgets
 Row(
   children: [
     const Text('Left'),
@@ -9266,10 +9185,8 @@ Row(
     const Spacer(flex: 2), // 2/3 of space
     const Text('C'),
   ],
-)
-"""),
-      StrCodeBlock.good("""
-// Comparison
+)"""),
+      StrCodeBlock.good("""// Comparison
 Column(
   children: [
     // Using Expanded with content
@@ -9286,8 +9203,7 @@ Column(
       child: Container(color: Colors.blue),
     ),
   ],
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -9319,7 +9235,7 @@ Column(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-068",
+    id: "068",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .theoretical,
@@ -9381,8 +9297,7 @@ Column(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// 16:9 aspect ratio (video)
+      StrCodeBlock.good("""// 16:9 aspect ratio (video)
 AspectRatio(
   aspectRatio: 16 / 9,
   child: Container(
@@ -9405,8 +9320,7 @@ AspectRatio(
   child: Card(
     child: Image.asset('assets/photo.jpg'),
   ),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -9436,7 +9350,7 @@ AspectRatio(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-069",
+    id: "069",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui, .performance],
     type: .theoretical,
@@ -9512,8 +9426,7 @@ AspectRatio(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// IntrinsicHeight - all children same height
+      StrCodeBlock.good("""// IntrinsicHeight - all children same height
 IntrinsicHeight(
   child: Row(
     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -9535,8 +9448,7 @@ IntrinsicHeight(
 )
 // All containers will be as tall as the tallest one
 """),
-      StrCodeBlock.good("""
-// IntrinsicWidth - all children same width
+      StrCodeBlock.good("""// IntrinsicWidth - all children same width
 IntrinsicWidth(
   child: Column(
     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -9558,8 +9470,7 @@ IntrinsicWidth(
 )
 // All buttons will be as wide as the widest one
 """),
-      StrCodeBlock.bad("""
-// BAD - Using in a list (performance issue)
+      StrCodeBlock.bad("""// BAD - Using in a list (performance issue)
 ListView.builder(
   itemCount: 1000,
   itemBuilder: (context, index) {
@@ -9572,8 +9483,7 @@ ListView.builder(
       ),
     );
   },
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -9603,7 +9513,7 @@ ListView.builder(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-070",
+    id: "070",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .theoretical,
@@ -9667,8 +9577,7 @@ ListView.builder(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Vertical scrolling (default)
+      StrCodeBlock.good("""// Vertical scrolling (default)
 SingleChildScrollView(
   child: Column(
     children: [
@@ -9713,8 +9622,7 @@ SingleChildScrollView(
       ],
     ),
   ),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -9746,7 +9654,7 @@ SingleChildScrollView(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-071",
+    id: "071",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .practical,
@@ -9808,8 +9716,7 @@ SingleChildScrollView(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// GestureDetector - custom tap handling
+      StrCodeBlock.good("""// GestureDetector - custom tap handling
 GestureDetector(
   onTap: () {
     print('Container tapped!');
@@ -9853,8 +9760,7 @@ IconButton(
   onPressed: () {
     print('Icon button pressed!');
   },
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -9886,7 +9792,7 @@ IconButton(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-072",
+    id: "072",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .theoretical,
@@ -9952,8 +9858,7 @@ IconButton(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic AppBar
+      StrCodeBlock.good("""// Basic AppBar
 Scaffold(
   appBar: AppBar(
     title: const Text('My App'),
@@ -9992,8 +9897,7 @@ AppBar(
       onPressed: () {},
     ),
   ],
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -10023,7 +9927,7 @@ AppBar(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-073",
+    id: "073",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .theoretical,
@@ -10087,8 +9991,7 @@ AppBar(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// CupertinoApp basic setup
+      StrCodeBlock.good("""// CupertinoApp basic setup
 import 'package:flutter/cupertino.dart';
 
 void main() {
@@ -10133,8 +10036,7 @@ CupertinoButton(
 CupertinoSwitch(
   value: true,
   onChanged: (value) {},
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -10166,7 +10068,7 @@ CupertinoSwitch(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-074",
+    id: "074",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .theoretical,
@@ -10228,8 +10130,7 @@ CupertinoSwitch(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// DefaultTabController with TabBar and TabBarView
+      StrCodeBlock.good("""// DefaultTabController with TabBar and TabBarView
 DefaultTabController(
   length: 3, // Number of tabs
   child: Scaffold(
@@ -10263,8 +10164,7 @@ TabBar(
     Tab(text: 'Profile'),
     Tab(text: 'Settings'),
   ],
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -10294,7 +10194,7 @@ TabBar(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-075",
+    id: "075",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .practical,
@@ -10362,8 +10262,7 @@ TabBar(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic text styling
+      StrCodeBlock.good("""// Basic text styling
 const Text(
   'Hello Flutter',
   style: TextStyle(
@@ -10414,8 +10313,7 @@ const Text(
     fontFamily: 'Roboto',
     fontSize: 20,
   ),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -10445,7 +10343,7 @@ const Text(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-076",
+    id: "076",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .theoretical,
@@ -10511,8 +10409,7 @@ const Text(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Define app theme in MaterialApp
+      StrCodeBlock.good("""// Define app theme in MaterialApp
 MaterialApp(
   title: 'My App',
   theme: ThemeData(
@@ -10557,8 +10454,7 @@ Theme(
     primaryColor: Colors.red,
   ),
   child: ChildWidget(),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -10588,7 +10484,7 @@ Theme(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-077",
+    id: "077",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .theoretical,
@@ -10652,8 +10548,7 @@ Theme(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Drawer in Scaffold
+      StrCodeBlock.good("""// Drawer in Scaffold
 Scaffold(
   appBar: AppBar(
     title: const Text('My App'),
@@ -10716,8 +10611,7 @@ Scaffold(
   body: const Center(
     child: Text('Main Content'),
   ),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -10747,7 +10641,7 @@ Scaffold(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-078",
+    id: "078",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .theoretical,
@@ -10811,8 +10705,7 @@ Scaffold(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic FloatingActionButton
+      StrCodeBlock.good("""// Basic FloatingActionButton
 Scaffold(
   appBar: AppBar(title: const Text('FAB Example')),
   body: const Center(child: Text('Content')),
@@ -10844,8 +10737,7 @@ Scaffold(
     child: const Icon(Icons.share),
   ),
   floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -10877,7 +10769,7 @@ Scaffold(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-079",
+    id: "079",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .practical,
@@ -10941,8 +10833,7 @@ Scaffold(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic SnackBar
+      StrCodeBlock.good("""// Basic SnackBar
 ScaffoldMessenger.of(context).showSnackBar(
   const SnackBar(
     content: Text('Item deleted'),
@@ -10978,8 +10869,7 @@ ScaffoldMessenger.of(context).showSnackBar(
       onPressed: () {},
     ),
   ),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -11011,7 +10901,7 @@ ScaffoldMessenger.of(context).showSnackBar(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-080",
+    id: "080",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .theoretical,
@@ -11075,8 +10965,7 @@ ScaffoldMessenger.of(context).showSnackBar(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Wrap with chips
+      StrCodeBlock.good("""// Wrap with chips
 Wrap(
   spacing: 8.0, // Space between items
   runSpacing: 4.0, // Space between lines
@@ -11120,8 +11009,7 @@ Wrap(
     ElevatedButton(onPressed: () {}, child: Text('Button 2')),
     ElevatedButton(onPressed: () {}, child: Text('Button 3')),
   ],
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -11151,7 +11039,7 @@ Wrap(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-081",
+    id: "081",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .theoretical,
@@ -11215,8 +11103,7 @@ Wrap(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic Opacity
+      StrCodeBlock.good("""// Basic Opacity
 Opacity(
   opacity: 0.5, // 50% transparent
   child: Container(
@@ -11252,8 +11139,7 @@ AnimatedOpacity(
     height: 100,
     color: Colors.blue,
   ),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -11283,7 +11169,7 @@ AnimatedOpacity(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-082",
+    id: "082",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .practical,
@@ -11347,8 +11233,7 @@ AnimatedOpacity(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Rounded image
+      StrCodeBlock.good("""// Rounded image
 ClipRRect(
   borderRadius: BorderRadius.circular(12),
   child: Image.network(
@@ -11394,8 +11279,7 @@ ClipRRect(
     color: Colors.green,
     child: const Center(child: Text('Pill Button')),
   ),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -11425,7 +11309,7 @@ ClipRRect(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-083",
+    id: "083",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .practical,
@@ -11489,8 +11373,7 @@ ClipRRect(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic RichText with different styles
+      StrCodeBlock.good("""// Basic RichText with different styles
 RichText(
   text: TextSpan(
     text: 'Hello ',
@@ -11568,8 +11451,7 @@ RichText(
       ),
     ],
   ),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -11599,7 +11481,7 @@ RichText(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-084",
+    id: "084",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .practical,
@@ -11663,8 +11545,7 @@ RichText(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Responsive layout based on width
+      StrCodeBlock.good("""// Responsive layout based on width
 LayoutBuilder(
   builder: (context, constraints) {
     if (constraints.maxWidth > 600) {
@@ -11718,8 +11599,7 @@ LayoutBuilder(
       style: TextStyle(fontSize: fontSize),
     );
   },
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -11749,7 +11629,7 @@ LayoutBuilder(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-085",
+    id: "085",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui, .performance],
     type: .theoretical,
@@ -11815,8 +11695,7 @@ LayoutBuilder(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// No code needed - it's a visual tool
+      StrCodeBlock.good("""// No code needed - it's a visual tool
 
 // However, you can enable debug flags programmatically:
 
@@ -11846,8 +11725,7 @@ MaterialApp(
 MaterialApp(
   showSemanticsDebugger: true, // Shows accessibility tree
   home: HomeScreen(),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -11877,7 +11755,7 @@ MaterialApp(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-086",
+    id: "086",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .performance],
     type: .theoretical,
@@ -11936,8 +11814,7 @@ MaterialApp(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Check current mode in code
+      StrCodeBlock.good("""// Check current mode in code
 bool get isInDebugMode {
   bool inDebugMode = false;
   assert(inDebugMode = true); // assert only runs in debug
@@ -11965,8 +11842,7 @@ Widget build(BuildContext context) {
     return DebugBanner(child: MyWidget());
   }
   return MyWidget();
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -11994,7 +11870,7 @@ Widget build(BuildContext context) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-087",
+    id: "087",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .practical,
@@ -12058,8 +11934,7 @@ Widget build(BuildContext context) {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-class MyWidget extends StatefulWidget {
+      StrCodeBlock.good("""class MyWidget extends StatefulWidget {
   final String title;
   const MyWidget({super.key, required this.title});
   
@@ -12113,8 +11988,7 @@ class _MyWidgetState extends State<MyWidget> {
   Widget build(BuildContext context) {
     return Container();
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -12144,7 +12018,7 @@ class _MyWidgetState extends State<MyWidget> {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-088",
+    id: "088",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .practical,
@@ -12208,8 +12082,7 @@ class _MyWidgetState extends State<MyWidget> {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-class CounterWidget extends StatefulWidget {
+      StrCodeBlock.good("""class CounterWidget extends StatefulWidget {
   final int initialCount;
   final String label;
   
@@ -12266,10 +12139,8 @@ class _CounterWidgetState extends State<CounterWidget> {
       ],
     );
   }
-}
-"""),
-      StrCodeBlock.good("""
-// Animation example
+}"""),
+      StrCodeBlock.good("""// Animation example
 class AnimatedBox extends StatefulWidget {
   final Color color;
   final double size;
@@ -12323,8 +12194,7 @@ class _AnimatedBoxState extends State<AnimatedBox>
       },
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -12354,7 +12224,7 @@ class _AnimatedBoxState extends State<AnimatedBox>
     ),
   ),
   InterviewQuestion(
-    id: "FLT-089",
+    id: "089",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui, .performance],
     type: .practical,
@@ -12420,8 +12290,7 @@ class _AnimatedBoxState extends State<AnimatedBox>
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-class MyWidget extends StatefulWidget {
+      StrCodeBlock.good("""class MyWidget extends StatefulWidget {
   const MyWidget({super.key});
   
   @override
@@ -12488,10 +12357,8 @@ class _MyWidgetState extends State<MyWidget>
   Widget build(BuildContext context) {
     return Container();
   }
-}
-"""),
-      StrCodeBlock.bad("""
-// BAD - Memory leak!
+}"""),
+      StrCodeBlock.bad("""// BAD - Memory leak!
 class BadWidget extends StatefulWidget {
   const BadWidget({super.key});
   
@@ -12514,8 +12381,7 @@ class _BadWidgetState extends State<BadWidget> {
   Widget build(BuildContext context) {
     return TextField(controller: _controller);
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -12545,7 +12411,7 @@ class _BadWidgetState extends State<BadWidget> {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-090",
+    id: "090",
     difficulty: .basic,
     categories: [.basic, .dartBasics],
     type: .theoretical,
@@ -12630,8 +12496,7 @@ class _BadWidgetState extends State<BadWidget> {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Synchronous - blocks execution
+      StrCodeBlock.good("""// Synchronous - blocks execution
 void synchronousExample() {
   print('Start');
   
@@ -12679,8 +12544,7 @@ String getData() {
 Future<String> getDataAsync() async {
   final response = await http.get(Uri.parse('https://api.example.com'));
   return response.body;
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -12704,7 +12568,7 @@ Future<String> getDataAsync() async {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-091",
+    id: "091",
     difficulty: .intermediate,
     categories: [.dartBasics],
     type: .practical,
@@ -12766,8 +12630,7 @@ Future<String> getDataAsync() async {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Method 1: try-catch with async/await (RECOMMENDED)
+      StrCodeBlock.good("""// Method 1: try-catch with async/await (RECOMMENDED)
 Future<void> fetchUserData() async {
   try {
     final response = await http.get(Uri.parse('https://api.example.com/user'));
@@ -12859,8 +12722,7 @@ class _DataWidgetState extends State<DataWidget> {
   Widget build(BuildContext context) {
     return Text(_status);
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -12888,7 +12750,7 @@ class _DataWidgetState extends State<DataWidget> {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-092",
+    id: "092",
     difficulty: .intermediate,
     categories: [.dartBasics],
     type: .theoretical,
@@ -12954,8 +12816,7 @@ class _DataWidgetState extends State<DataWidget> {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Creating a simple stream
+      StrCodeBlock.good("""// Creating a simple stream
 Stream<int> countStream() async* {
   for (int i = 1; i <= 5; i++) {
     await Future.delayed(Duration(seconds: 1));
@@ -13069,8 +12930,7 @@ class _SearchWidgetState extends State<SearchWidget> {
       },
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -13102,7 +12962,7 @@ class _SearchWidgetState extends State<SearchWidget> {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-093",
+    id: "093",
     difficulty: .basic,
     categories: [.basic, .flutterBasics],
     type: .practical,
@@ -13182,8 +13042,7 @@ class _SearchWidgetState extends State<SearchWidget> {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic navigation with push
+      StrCodeBlock.good("""// Basic navigation with push
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
   
@@ -13269,8 +13128,7 @@ Future<void> navigateAndGetResult(BuildContext context) async {
   );
   
   print('Received result: \$result');
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -13302,7 +13160,7 @@ Future<void> navigateAndGetResult(BuildContext context) async {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-094",
+    id: "094",
     difficulty: .intermediate,
     categories: [.flutterBasics],
     type: .practical,
@@ -13368,8 +13226,7 @@ Future<void> navigateAndGetResult(BuildContext context) async {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Define named routes in MaterialApp
+      StrCodeBlock.good("""// Define named routes in MaterialApp
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   
@@ -13472,8 +13329,7 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -13507,7 +13363,7 @@ class MyApp extends StatelessWidget {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-095",
+    id: "095",
     difficulty: .intermediate,
     categories: [.flutterBasics],
     type: .theoretical,
@@ -13573,8 +13429,7 @@ class MyApp extends StatelessWidget {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Accessing route arguments using ModalRoute
+      StrCodeBlock.good("""// Accessing route arguments using ModalRoute
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
   
@@ -13690,7 +13545,7 @@ Navigator.pushNamed(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-096",
+    id: "096",
     difficulty: .intermediate,
     categories: [.flutterBasics],
     type: .practical,
@@ -13754,8 +13609,7 @@ Navigator.pushNamed(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic maybePop usage
+      StrCodeBlock.good("""// Basic maybePop usage
 Future<void> handleBackButton(BuildContext context) async {
   final didPop = await Navigator.maybePop(context);
   
@@ -13844,8 +13698,7 @@ class CustomBackButton extends StatelessWidget {
       },
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -13875,7 +13728,7 @@ class CustomBackButton extends StatelessWidget {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-097",
+    id: "097",
     difficulty: .intermediate,
     categories: [.animations],
     type: .practical,
@@ -13941,8 +13794,7 @@ class CustomBackButton extends StatelessWidget {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic AnimationController setup
+      StrCodeBlock.good("""// Basic AnimationController setup
 class AnimatedBox extends StatefulWidget {
   const AnimatedBox({super.key});
   
@@ -14064,8 +13916,7 @@ class _SizeAnimationExampleState extends State<SizeAnimationExample>
       },
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -14097,7 +13948,7 @@ class _SizeAnimationExampleState extends State<SizeAnimationExample>
     ),
   ),
   InterviewQuestion(
-    id: "FLT-098",
+    id: "098",
     difficulty: .intermediate,
     categories: [.animations],
     type: .practical,
@@ -14163,8 +14014,7 @@ class _SizeAnimationExampleState extends State<SizeAnimationExample>
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic Tween usage
+      StrCodeBlock.good("""// Basic Tween usage
 class TweenExample extends StatefulWidget {
   const TweenExample({super.key});
   
@@ -14318,8 +14168,7 @@ class _ComplexAnimationState extends State<ComplexAnimation>
       },
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -14349,7 +14198,7 @@ class _ComplexAnimationState extends State<ComplexAnimation>
     ),
   ),
   InterviewQuestion(
-    id: "FLT-099",
+    id: "099",
     difficulty: .intermediate,
     categories: [.animations],
     type: .practical,
@@ -14415,8 +14264,7 @@ class _ComplexAnimationState extends State<ComplexAnimation>
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic CurvedAnimation
+      StrCodeBlock.good("""// Basic CurvedAnimation
 class CurvedAnimationExample extends StatefulWidget {
   const CurvedAnimationExample({super.key});
   
@@ -14624,7 +14472,7 @@ final examples = {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-100",
+    id: "100",
     difficulty: .intermediate,
     categories: [.animations],
     type: .theoretical,
@@ -14690,8 +14538,8 @@ final examples = {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// SingleTickerProviderStateMixin (one AnimationController)
+      StrCodeBlock.good(
+        """// SingleTickerProviderStateMixin (one AnimationController)
 class SingleAnimationExample extends StatefulWidget {
   const SingleAnimationExample({super.key});
   
@@ -14823,8 +14671,8 @@ class _CustomTickerExampleState extends State<CustomTickerExample>
   Widget build(BuildContext context) {
     return Text('Frames rendered: \$_frameCount');
   }
-}
-"""),
+}""",
+      ),
     ],
     pros: LocalizedValue(
       en: [
@@ -14854,7 +14702,7 @@ class _CustomTickerExampleState extends State<CustomTickerExample>
     ),
   ),
   InterviewQuestion(
-    id: "FLT-101",
+    id: "101",
     difficulty: .intermediate,
     categories: [.dartBasics, .animations],
     type: .theoretical,
@@ -14936,8 +14784,7 @@ class _CustomTickerExampleState extends State<CustomTickerExample>
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic Mixin definition
+      StrCodeBlock.good("""// Basic Mixin definition
 mixin Musical {
   void playMusic() {
     print('Playing music');
@@ -15110,8 +14957,7 @@ class _GameWidgetState extends State<GameWidget>
     super.build(context); // Required by AutomaticKeepAliveClientMixin
     return Container();
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -15143,7 +14989,7 @@ class _GameWidgetState extends State<GameWidget>
     ),
   ),
   InterviewQuestion(
-    id: "FLT-102",
+    id: "102",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .practical,
@@ -15209,8 +15055,7 @@ class _GameWidgetState extends State<GameWidget>
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Complete Form with validation
+      StrCodeBlock.good("""// Complete Form with validation
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
   
@@ -15417,8 +15262,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
     print('Email: \${_emailController.text}');
     print('Password: \${_passwordController.text}');
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -15450,7 +15294,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-103",
+    id: "103",
     difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .practical,
@@ -15516,8 +15360,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic FocusNode usage
+      StrCodeBlock.good("""// Basic FocusNode usage
 class FocusExample extends StatefulWidget {
   const FocusExample({super.key});
   
@@ -15689,8 +15532,7 @@ class _LoginFormWithFocusState extends State<LoginFormWithFocus> {
     print('Email: \${_emailController.text}');
     print('Password: \${_passwordController.text}');
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -15722,7 +15564,7 @@ class _LoginFormWithFocusState extends State<LoginFormWithFocus> {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-104",
+    id: "104",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .database],
     type: .practical,
@@ -15788,8 +15630,7 @@ class _LoginFormWithFocusState extends State<LoginFormWithFocus> {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Add dependency to pubspec.yaml:
+      StrCodeBlock.good("""// Add dependency to pubspec.yaml:
 // dependencies:
 //   shared_preferences: ^2.2.0
 
@@ -15924,8 +15765,7 @@ class AuthService {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString('authToken');
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -15957,7 +15797,7 @@ class AuthService {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-105",
+    id: "105",
     difficulty: .advanced,
     categories: [.ui, .performance],
     type: .practical,
@@ -16023,8 +15863,7 @@ class AuthService {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic SliverAppBar
+      StrCodeBlock.good("""// Basic SliverAppBar
 CustomScrollView(
   slivers: [
     SliverAppBar(
@@ -16157,8 +15996,7 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -16188,7 +16026,7 @@ class ProfileScreen extends StatelessWidget {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-106",
+    id: "106",
     difficulty: .advanced,
     categories: [.ui, .performance],
     type: .theoretical,
@@ -16254,8 +16092,7 @@ class ProfileScreen extends StatelessWidget {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic CustomScrollView
+      StrCodeBlock.good("""// Basic CustomScrollView
 CustomScrollView(
   slivers: [
     SliverAppBar(
@@ -16410,8 +16247,7 @@ class MySliverHeaderDelegate extends SliverPersistentHeaderDelegate {
   bool shouldRebuild(MySliverHeaderDelegate oldDelegate) {
     return maxHeight != oldDelegate.maxHeight || minHeight != oldDelegate.minHeight;
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -16443,7 +16279,7 @@ class MySliverHeaderDelegate extends SliverPersistentHeaderDelegate {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-107",
+    id: "107",
     difficulty: .intermediate,
     categories: [.flutterBasics],
     type: .practical,
@@ -16515,8 +16351,7 @@ class MySliverHeaderDelegate extends SliverPersistentHeaderDelegate {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Modern approach: PopScope (Flutter 3.12+)
+      StrCodeBlock.good("""// Modern approach: PopScope (Flutter 3.12+)
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key});
   
@@ -16637,8 +16472,7 @@ WillPopScope(
   child: Scaffold(
     body: const Text('Old approach - use PopScope instead'),
   ),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -16670,7 +16504,7 @@ WillPopScope(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-108",
+    id: "108",
     difficulty: .intermediate,
     categories: [.animations, .ui],
     type: .practical,
@@ -16736,8 +16570,7 @@ WillPopScope(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Screen 1: List of items
+      StrCodeBlock.good("""// Screen 1: List of items
 class ItemListScreen extends StatelessWidget {
   const ItemListScreen({super.key});
   
@@ -16838,8 +16671,7 @@ Hero(
     return RectTween(begin: begin, end: end);
   },
   child: Image.network('...'),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -16869,7 +16701,7 @@ Hero(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-109",
+    id: "109",
     difficulty: .basic,
     categories: [.ui, .flutterBasics],
     type: .practical,
@@ -16935,8 +16767,7 @@ Hero(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic RefreshIndicator
+      StrCodeBlock.good("""// Basic RefreshIndicator
 class RefreshableList extends StatefulWidget {
   const RefreshableList({super.key});
   
@@ -17086,8 +16917,7 @@ class _ProgrammaticRefreshState extends State<ProgrammaticRefresh> {
       ),
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -17117,7 +16947,7 @@ class _ProgrammaticRefreshState extends State<ProgrammaticRefresh> {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-110",
+    id: "110",
     difficulty: .intermediate,
     categories: [.ui, .flutterBasics],
     type: .practical,
@@ -17183,8 +17013,7 @@ class _ProgrammaticRefreshState extends State<ProgrammaticRefresh> {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic Dismissible
+      StrCodeBlock.good("""// Basic Dismissible
 class DismissibleListExample extends StatefulWidget {
   const DismissibleListExample({super.key});
   
@@ -17365,8 +17194,7 @@ Dismissible(
     // Handle dismiss
   },
   child: ListTile(title: Text(item)),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -17396,7 +17224,7 @@ Dismissible(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-111",
+    id: "111",
     difficulty: .intermediate,
     categories: [.ui, .flutterBasics],
     type: .practical,
@@ -17462,8 +17290,7 @@ Dismissible(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Using OrientationBuilder
+      StrCodeBlock.good("""// Using OrientationBuilder
 class OrientationExample extends StatelessWidget {
   const OrientationExample({super.key});
   
@@ -17663,8 +17490,7 @@ class LayoutBuilderExample extends StatelessWidget {
       ),
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -17694,7 +17520,7 @@ class LayoutBuilderExample extends StatelessWidget {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-112",
+    id: "112",
     difficulty: .intermediate,
     categories: [.ui, .flutterBasics],
     type: .theoretical,
@@ -17774,8 +17600,7 @@ class LayoutBuilderExample extends StatelessWidget {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// AbsorbPointer example
+      StrCodeBlock.good("""// AbsorbPointer example
 class AbsorbPointerExample extends StatelessWidget {
   const AbsorbPointerExample({super.key});
   
@@ -18009,8 +17834,7 @@ class LoadingOverlay extends StatelessWidget {
       ],
     );
   }
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -18040,7 +17864,7 @@ class LoadingOverlay extends StatelessWidget {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-113",
+    id: "113",
     difficulty: .intermediate,
     categories: [.ui, .flutterBasics],
     type: .theoretical,
@@ -18106,8 +17930,7 @@ class LoadingOverlay extends StatelessWidget {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic OverflowBox
+      StrCodeBlock.good("""// Basic OverflowBox
 class OverflowBoxExample extends StatelessWidget {
   const OverflowBoxExample({super.key});
   
@@ -18324,8 +18147,7 @@ OverflowBox(
     height: 400,
     color: Colors.blue,
   ),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -18357,7 +18179,7 @@ OverflowBox(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-114",
+    id: "114",
     difficulty: .basic,
     categories: [.basic, .flutterBasics, .ui],
     type: .practical,
@@ -18423,8 +18245,7 @@ OverflowBox(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Get screen size
+      StrCodeBlock.good("""// Get screen size
 class ScreenSizeExample extends StatelessWidget {
   const ScreenSizeExample({super.key});
   
@@ -18627,8 +18448,7 @@ void getScreenSizeWithoutContext() {
   
   print('Screen width: \${size.width}');
   print('Screen height: \${size.height}');
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -18658,7 +18478,7 @@ void getScreenSizeWithoutContext() {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-115",
+    id: "115",
     difficulty: .intermediate,
     categories: [.ui, .flutterBasics],
     type: .practical,
@@ -18724,8 +18544,7 @@ void getScreenSizeWithoutContext() {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic Stepper
+      StrCodeBlock.good("""// Basic Stepper
 class BasicStepperExample extends StatefulWidget {
   const BasicStepperExample({super.key});
   
@@ -18993,8 +18812,7 @@ Stepper(
     );
   },
   steps: [...],
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -19026,7 +18844,7 @@ Stepper(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-116",
+    id: "116",
     difficulty: .intermediate,
     categories: [.ui, .flutterBasics],
     type: .theoretical,
@@ -19094,8 +18912,7 @@ Stepper(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic Table
+      StrCodeBlock.good("""// Basic Table
 class BasicTableExample extends StatelessWidget {
   const BasicTableExample({super.key});
   
@@ -19291,8 +19108,7 @@ Table(
   defaultVerticalAlignment: TableCellVerticalAlignment.middle,
   // Options: top, middle, bottom, baseline, fill
   children: [...],
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -19328,7 +19144,7 @@ Table(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-117",
+    id: "117",
     difficulty: .intermediate,
     categories: [.ui, .flutterBasics],
     type: .theoretical,
@@ -19398,8 +19214,7 @@ Table(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic blur effect
+      StrCodeBlock.good("""// Basic blur effect
 class BlurExample extends StatelessWidget {
   const BlurExample({super.key});
   
@@ -19637,8 +19452,7 @@ ClipRect(
       color: Colors.white.withOpacity(0.2),
     ),
   ),
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -19674,7 +19488,7 @@ ClipRect(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-118",
+    id: "118",
     difficulty: .intermediate,
     categories: [.ui, .flutterBasics],
     type: .theoretical,
@@ -19744,8 +19558,7 @@ ClipRect(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic IndexedStack
+      StrCodeBlock.good("""// Basic IndexedStack
 class IndexedStackExample extends StatefulWidget {
   const IndexedStackExample({super.key});
   
@@ -19978,8 +19791,7 @@ IndexedStack(
   alignment: Alignment.center, // Center all children
   sizing: StackFit.loose, // Size to current child
   children: [...],
-)
-"""),
+)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -20015,7 +19827,7 @@ IndexedStack(
     ),
   ),
   InterviewQuestion(
-    id: "FLT-119",
+    id: "119",
     difficulty: .intermediate,
     categories: [.ui, .flutterBasics],
     type: .practical,
@@ -20085,8 +19897,7 @@ IndexedStack(
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-// Basic ReorderableListView
+      StrCodeBlock.good("""// Basic ReorderableListView
 class BasicReorderableList extends StatefulWidget {
   const BasicReorderableList({super.key});
   
@@ -20361,8 +20172,7 @@ void _onReorder(int oldIndex, int newIndex) {
     final item = _items.removeAt(oldIndex);
     _items.insert(newIndex, item);
   });
-}
-"""),
+}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -20398,7 +20208,7 @@ void _onReorder(int oldIndex, int newIndex) {
     ),
   ),
   InterviewQuestion(
-    id: "FLT-120",
+    id: "120",
     difficulty: .intermediate,
     categories: [.ui, .flutterBasics],
     type: .theoretical,
@@ -20476,8 +20286,8 @@ void _onReorder(int oldIndex, int newIndex) {
       ),
     ),
     examples: [
-      StrCodeBlock.good("""
-class FractionallySizedBoxExample extends StatelessWidget {
+      StrCodeBlock.good(
+        """class FractionallySizedBoxExample extends StatelessWidget {
   const FractionallySizedBoxExample({super.key});
   
   @override
@@ -20498,8 +20308,8 @@ class FractionallySizedBoxExample extends StatelessWidget {
       ),
     );
   }
-}
-"""),
+}""",
+      ),
     ],
     pros: LocalizedValue(
       en: [

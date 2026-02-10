@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tuts/core/enums/code_quality.dart';
 
 import 'code_block.dart';
 
@@ -20,11 +19,23 @@ final class StringContent extends Content<String> {
 }
 
 final class CodeContent extends Content<String> {
-  const CodeContent(super.value, {required this.codeQuality});
+  const CodeContent(
+    super.value, {
+    this.codeQuality = .normal,
+    this.codeLanguage = .dart,
+    this.codeType = .code,
+  });
 
   final CodeQuality codeQuality;
+  final CodeLanguage codeLanguage;
+  final CodeType codeType;
 
-  StrCodeBlock get code => StrCodeBlock(value, codeQuality: codeQuality);
+  StrCodeBlock get code => StrCodeBlock(
+    value,
+    codeQuality: codeQuality,
+    codeLanguage: codeLanguage,
+    codeType: codeType,
+  );
 
   @override
   String toString() => value;

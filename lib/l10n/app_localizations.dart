@@ -2120,6 +2120,12 @@ abstract class AppLocalizations {
   /// **'Expert'**
   String get expertLevel;
 
+  /// No description provided for @answr.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer'**
+  String get answr;
+
   /// No description provided for @codeExample.
   ///
   /// In en, this message translates to:
@@ -2143,6 +2149,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tags'**
   String get tags;
+
+  /// No description provided for @theoretical.
+  ///
+  /// In en, this message translates to:
+  /// **'Theoretical'**
+  String get theoretical;
+
+  /// No description provided for @practical.
+  ///
+  /// In en, this message translates to:
+  /// **'Practical'**
+  String get practical;
+
+  /// No description provided for @cBasic.
+  ///
+  /// In en, this message translates to:
+  /// **'Basic'**
+  String get cBasic;
+
+  /// No description provided for @cSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get cSecurity;
+
+  /// No description provided for @cOOP.
+  ///
+  /// In en, this message translates to:
+  /// **'OOP'**
+  String get cOOP;
+
+  /// No description provided for @cSolid.
+  ///
+  /// In en, this message translates to:
+  /// **'SOLID'**
+  String get cSolid;
+
+  /// No description provided for @cDesignPatterns.
+  ///
+  /// In en, this message translates to:
+  /// **'Design Patterns'**
+  String get cDesignPatterns;
+
+  /// No description provided for @cDataStructures.
+  ///
+  /// In en, this message translates to:
+  /// **'Data Structures'**
+  String get cDataStructures;
+
+  /// No description provided for @cStateManagement.
+  ///
+  /// In en, this message translates to:
+  /// **'State Management'**
+  String get cStateManagement;
+
+  /// No description provided for @cPerformance.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance'**
+  String get cPerformance;
+
+  /// No description provided for @cTesting.
+  ///
+  /// In en, this message translates to:
+  /// **'Testing'**
+  String get cTesting;
+
+  /// No description provided for @cNetworking.
+  ///
+  /// In en, this message translates to:
+  /// **'Networking'**
+  String get cNetworking;
+
+  /// No description provided for @cDatabase.
+  ///
+  /// In en, this message translates to:
+  /// **'Database'**
+  String get cDatabase;
+
+  /// No description provided for @cArchitecture.
+  ///
+  /// In en, this message translates to:
+  /// **'Architecture'**
+  String get cArchitecture;
+
+  /// No description provided for @cDartBasics.
+  ///
+  /// In en, this message translates to:
+  /// **'Dart Basics'**
+  String get cDartBasics;
+
+  /// No description provided for @cFlutterBasics.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter Basics'**
+  String get cFlutterBasics;
+
+  /// No description provided for @cUI.
+  ///
+  /// In en, this message translates to:
+  /// **'UI'**
+  String get cUI;
+
+  /// No description provided for @cNativePlatform.
+  ///
+  /// In en, this message translates to:
+  /// **'Native Platform'**
+  String get cNativePlatform;
+
+  /// No description provided for @cAnimations.
+  ///
+  /// In en, this message translates to:
+  /// **'Animations'**
+  String get cAnimations;
+
+  /// No description provided for @cModernFeatures.
+  ///
+  /// In en, this message translates to:
+  /// **'Modern Features'**
+  String get cModernFeatures;
+
+  /// No description provided for @cDeployment.
+  ///
+  /// In en, this message translates to:
+  /// **'Deployment'**
+  String get cDeployment;
+
+  /// No description provided for @questionNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Question not found'**
+  String get questionNotFound;
 }
 
 class _AppLocalizationsDelegate

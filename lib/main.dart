@@ -5,11 +5,14 @@ import "package:flutter/material.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:tuts/core/app_notifiers.dart";
 import "package:tuts/core/extensions/extensions.dart";
-import "package:tuts/features/home/home_page.dart";
+import "package:tuts/core/services/locator.dart";
+import "package:tuts/core/services/routes.dart";
 import "package:tuts/l10n/app_localizations.dart";
 import "package:url_launcher/url_launcher.dart";
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
   runApp(const App());
 }
 
@@ -67,6 +70,14 @@ class App extends StatelessWidget {
             splashFactory: kIsWeb ? NoSplash.splashFactory : null,
             useMaterial3: true,
             colorScheme: colorScheme,
+            iconButtonTheme: IconButtonThemeData(
+              style: IconButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: .circular(7.5),
+                  // side: BorderSide(color: colorScheme.outlineVariant),
+                ),
+              ),
+            ),
             inputDecorationTheme: InputDecorationTheme(
               contentPadding: const .symmetric(horizontal: 10, vertical: 10),
               filled: true,
@@ -107,7 +118,8 @@ class App extends StatelessWidget {
               ),
             ),
           ),
-          home: const HomePage(),
+          initialRoute: Routes.splash,
+          onGenerateRoute: Routes.onGenerateRoute,
         );
       },
     );
@@ -133,18 +145,21 @@ class AppBottomBar extends StatelessWidget {
               top: BorderSide(color: context.colorScheme.outlineVariant),
             ),
           ),
-          padding: const .all(5),
+          padding: const .all(7.5),
           child: SafeArea(
             child: Wrap(
-              spacing: 10,
+              spacing: 5,
+              runSpacing: 5,
               crossAxisAlignment: .center,
               children: [
                 const IconButton(
                   onPressed: AppNotifiers.toggleLocale,
+                  iconSize: 20,
                   icon: Icon(Icons.translate_rounded),
                 ),
                 IconButton(
                   key: ValueKey(appValues.brightness),
+                  iconSize: 20,
                   icon: Icon(
                     appValues.brightness == .dark
                         ? Icons.light_mode_rounded

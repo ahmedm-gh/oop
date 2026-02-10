@@ -3,8 +3,8 @@ import "package:tuts/core/extensions/extensions.dart";
 import "package:tuts/l10n/app_localizations.dart";
 import "package:tuts/features/design_patterns/pattern_details_page.dart";
 
-class DesignPatternsPage extends StatelessWidget {
-  const DesignPatternsPage({super.key});
+class DesignPatternsScreen extends StatelessWidget {
+  const DesignPatternsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +125,7 @@ class _PatternTile extends StatelessWidget {
         context,
         MaterialPageRoute<void>(
           builder: (_) {
-            return PatternDetailsPage(patternKey: pattern, patternName: name);
+            return PatternDetailsScreen(patternKey: pattern, patternName: name);
           },
         ),
       ),

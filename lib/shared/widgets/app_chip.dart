@@ -1,44 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tuts/core/enums/difficulty_level.dart';
 import 'package:tuts/core/extensions/extensions.dart';
-
-class DifficultyChip extends StatelessWidget {
-  const DifficultyChip({
-    required this.difficultyLevel,
-    this.child,
-    this.padding = const .symmetric(horizontal: 2.5),
-    super.key,
-  });
-
-  final Widget? child;
-  final DifficultyLevel? difficultyLevel;
-  final EdgeInsets padding;
-
-  @override
-  Widget build(BuildContext context) {
-    final color = difficultyLevel?.color;
-
-    return Chip(
-      padding: padding,
-      color: WidgetStatePropertyAll(color?.withValues(alpha: 0.1)),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-        side: color != null
-            ? BorderSide(color: color.withValues(alpha: 0.25))
-            : .none,
-        // side: color != null
-        //     ? BorderSide(color: color.withValues(alpha: 0.25))
-        //     : .none,
-      ),
-      label:
-          child ??
-          Text(
-            difficultyLevel?.label(context.l10n) ?? "",
-            style: TextStyle(color: color, fontSize: 12, fontWeight: .bold),
-          ),
-    );
-  }
-}
 
 class AppChip extends StatelessWidget {
   const AppChip({

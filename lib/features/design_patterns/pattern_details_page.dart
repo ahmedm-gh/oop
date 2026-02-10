@@ -3,8 +3,8 @@ import "package:tuts/core/extensions/extensions.dart";
 import "package:tuts/core/repositories/design_patterns_repository.dart";
 import "package:tuts/shared/app_widgets.dart";
 
-class PatternDetailsPage extends StatelessWidget {
-  const PatternDetailsPage({
+class PatternDetailsScreen extends StatelessWidget {
+  const PatternDetailsScreen({
     required this.patternKey,
     required this.patternName,
     super.key,

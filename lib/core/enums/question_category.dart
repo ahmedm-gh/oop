@@ -1,3 +1,5 @@
+import 'package:tuts/l10n/app_localizations.dart';
+
 enum QuestionCategory {
   basic,
   security,
@@ -47,5 +49,29 @@ enum QuestionCategory {
       };
     }
     return fallback;
+  }
+
+  String label(AppLocalizations l10n) {
+    return switch (this) {
+      basic => l10n.cBasic,
+      security => l10n.cSecurity,
+      oop => l10n.cOOP,
+      solid => l10n.cSolid,
+      designPatterns => l10n.cDesignPatterns,
+      dataStructures => l10n.cDataStructures,
+      stateManagement => l10n.cStateManagement,
+      performance => l10n.cPerformance,
+      testing => l10n.cTesting,
+      networking => l10n.cNetworking,
+      database => l10n.cDatabase,
+      architecture => l10n.cArchitecture,
+      dartBasics => l10n.cDartBasics,
+      flutterBasics => l10n.cFlutterBasics,
+      ui => l10n.cUI,
+      nativePlatform => l10n.cNativePlatform,
+      animations => l10n.cAnimations,
+      modernFeatures => l10n.cModernFeatures,
+      deployment => l10n.cDeployment,
+    };
   }
 }

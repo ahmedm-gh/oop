@@ -721,19 +721,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get answer => 'الإجابة';
 
   @override
-  String get basicLevel => 'مبتدئ';
+  String get basicLevel => 'مستوى مبتدئ';
 
   @override
   String get basicLevelDesc => 'مفاهيم أساسية يجب على كل مطور Flutter معرفتها.';
 
   @override
-  String get intermediateLevel => 'متوسط';
+  String get intermediateLevel => 'مستوى متوسط';
 
   @override
   String get intermediateLevelDesc => 'فهم أعمق لميزات Flutter و Dart.';
 
   @override
-  String get advancedLevel => 'متقدم';
+  String get advancedLevel => 'مستوى متقدم';
 
   @override
   String get advancedLevelDesc => 'مواضيع متقدمة للمطورين الأكثر خبرة.';
@@ -1278,6 +1278,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get expertLevel => 'محترف';
 
   @override
+  String get answr => 'Answer';
+
+  @override
   String get codeExample => 'مثال كود';
 
   @override
@@ -1288,4 +1291,70 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get tags => 'الوسوم';
+
+  @override
+  String get theoretical => 'نظري';
+
+  @override
+  String get practical => 'تطبيقي';
+
+  @override
+  String get cBasic => 'أساسي';
+
+  @override
+  String get cSecurity => 'أمان';
+
+  @override
+  String get cOOP => 'برمجة كائنية';
+
+  @override
+  String get cSolid => 'صلب';
+
+  @override
+  String get cDesignPatterns => 'أنماط التصميم';
+
+  @override
+  String get cDataStructures => 'هياكل البيانات';
+
+  @override
+  String get cStateManagement => 'إدارة الحالة';
+
+  @override
+  String get cPerformance => 'أداء';
+
+  @override
+  String get cTesting => 'اختبار';
+
+  @override
+  String get cNetworking => 'شبكات';
+
+  @override
+  String get cDatabase => 'قاعدة بيانات';
+
+  @override
+  String get cArchitecture => 'هندسة معمارية';
+
+  @override
+  String get cDartBasics => 'أساسيات دارت';
+
+  @override
+  String get cFlutterBasics => 'أساسيات فلاتر';
+
+  @override
+  String get cUI => 'واجهة المستخدم';
+
+  @override
+  String get cNativePlatform => 'منصة أصلية';
+
+  @override
+  String get cAnimations => 'رسوم متحركة';
+
+  @override
+  String get cModernFeatures => 'ميزات حديثة';
+
+  @override
+  String get cDeployment => 'النشر';
+
+  @override
+  String get questionNotFound => 'السؤال غير موجود';
 }

@@ -2,19 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:tuts/core/extensions/extensions.dart';
 import 'package:tuts/core/models/interview_question.dart';
 
-import '../../shared/app_widgets.dart';
+import '../../../shared/app_widgets.dart';
+import '../../../shared/widgets/difficulty_chip.dart';
 
 // TODO: ADD .safeBidi()
-class QuestionDetailsPage extends StatelessWidget {
-  const QuestionDetailsPage({required this.question, super.key});
-  final InterviewQuestion question;
+class QuestionDetailsScreen extends StatelessWidget {
+  const QuestionDetailsScreen({required this.question, super.key});
+  final InterviewQuestion? question;
 
   @override
   Widget build(BuildContext context) {
-    final langCode = context.l10n.localeName;
+    final l10n = context.l10n;
+    final question = this.question;
+    if (question == null) {
+      return Material(child: Center(child: Text(l10n.questionNotFound)));
+    }
+
+    final langCode = l10n.localeName;
     final content = question.getLocalizedContent(langCode);
     final colors = context.colorScheme;
-    final l10n = context.l10n;
 
     return Scaffold(
       appBar: AppBar(
@@ -22,37 +28,35 @@ class QuestionDetailsPage extends StatelessWidget {
         actions: [
           Padding(
             padding: const .symmetric(horizontal: 10),
-            child: DifficultyChip(difficultyLevel: question.difficulty),
+            child: DifficultyChip(question.difficulty),
           ),
         ],
       ),
       body: SingleChildScrollView(
         padding: const .all(16),
         child: Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: .stretch,
           spacing: 16,
           children: [
-            // Question title
-            Text.rich(
-              TextSpan(
-                text: content.question.safeBidi(),
-                style: const TextStyle(fontSize: 20, fontWeight: .bold),
-                children: [
-                  TextSpan(
-                    text: "\n- ${question.id}",
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: .normal,
-                      color: colors.onSurface,
-                    ),
-                  ),
-                ],
-              ),
+            // Question type and categories
+            Text(
+              [
+                question.id,
+                question.type.label(l10n),
+                ...question.categories.map((c) => c.label(l10n)),
+              ].join(" • "),
+              // maxLines: 1,
+              // overflow: .ellipsis,
+              style: TextStyle(fontSize: 12, color: colors.onSurfaceVariant),
             ),
-
+            // Question title
+            Text(
+              content.question.safeBidi(),
+              style: const TextStyle(fontSize: 20, fontWeight: .bold),
+            ),
             Container(
               width: .infinity,
-              padding: const EdgeInsets.all(16),
+              padding: const .symmetric(vertical: 10, horizontal: 15),
               decoration: BoxDecoration(
                 color: colors.surfaceContainerLow,
                 borderRadius: .circular(12),

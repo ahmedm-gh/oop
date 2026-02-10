@@ -25,7 +25,7 @@ class ContentViewer extends StatelessWidget {
               style: TextStyle(
                 fontWeight: .bold,
                 fontSize: 16,
-                color: colors.primary,
+                color: colors.secondary,
               ),
             ),
           ...buildItems(value, colors),
@@ -35,32 +35,75 @@ class ContentViewer extends StatelessWidget {
     };
   }
 
+  // v2
   List<Widget> buildItems(ListContent content, ColorScheme colors) {
-    if (content is OrderedListContent) {
-      return [
-        for (var i = 0; i < content.value.length; i++)
-          Row(
-            children: [
+    return [
+      for (var i = 0; i < content.value.length; i++)
+        Row(
+          children: [
+            if (content is OrderedListContent)
               Container(
                 decoration: BoxDecoration(
                   color: colors.surfaceContainerHighest,
                   borderRadius: BorderRadius.circular(5),
                 ),
+                margin: const .directional(start: 10),
                 padding: const .symmetric(horizontal: 5, vertical: 2.5),
                 alignment: .center,
-                constraints: const BoxConstraints(minWidth: 30),
+                constraints: const BoxConstraints(minWidth: 25),
+                child: Text("${i + 1}", style: const TextStyle(fontSize: 12)),
+              )
+            else
+              Padding(
+                padding: const .directional(start: 10),
                 child: Text(
-                  "${i + 1}",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  "•",
+                  style: TextStyle(color: colors.primary, fontSize: 16),
                 ),
               ),
-              const SizedBox(width: 5),
-              Expanded(child: Text(content.value[i])),
-            ],
-          ),
-      ];
-    } else {
-      return content.value.map(Text.new).toList();
-    }
+            const SizedBox(width: 10),
+            Expanded(child: Text(content.value[i])),
+          ],
+        ),
+    ];
   }
+
+  // v1
+  // List<Widget> buildItems(ListContent content, ColorScheme colors) {
+  //   if (content is OrderedListContent) {
+  //     return [
+  //       for (var i = 0; i < content.value.length; i++)
+  //         Row(
+  //           children: [
+  //             Container(
+  //               decoration: BoxDecoration(
+  //                 color: colors.surfaceContainerHighest,
+  //                 borderRadius: BorderRadius.circular(5),
+  //               ),
+  //               padding: const .symmetric(horizontal: 5, vertical: 2.5),
+  //               alignment: .center,
+  //               constraints: const BoxConstraints(minWidth: 30),
+  //               child: Text(
+  //                 "${i + 1}",
+  //                 style: const TextStyle(fontWeight: FontWeight.bold),
+  //               ),
+  //             ),
+  //             const SizedBox(width: 5),
+  //             Expanded(child: Text(content.value[i])),
+  //           ],
+  //         ),
+  //     ];
+  //   } else {
+  //     return [
+  //       Padding(
+  //         padding: const .symmetric(horizontal: 16),
+  //         child: Column(
+  //           crossAxisAlignment: .stretch,
+  //           spacing: 2.5,
+  //           children: content.value.map(Text.new).toList(),
+  //         ),
+  //       ),
+  //     ];
+  //   }
+  // }
 }

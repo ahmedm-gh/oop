@@ -4,8 +4,6 @@ import "package:tuts/core/models/code_block.dart";
 import "package:url_launcher/url_launcher.dart";
 import "package:tuts/core/extensions/extensions.dart";
 
-import "../../core/enums/code_quality.dart";
-
 class CodeBlockViewer extends StatelessWidget {
   CodeBlockViewer({
     required String code,
@@ -39,11 +37,12 @@ class CodeBlockViewer extends StatelessWidget {
         child: Column(
           children: [
             _CodeHeader(
-              language: "Dart",
+              language: code.codeLanguage.displayName,
               state: code.codeQuality,
               code: code.value,
+              codeLanguage: code.codeLanguage,
             ),
-            _CodeContent(code: code.value),
+            _CodeContent(code: code.value, codeLanguage: code.codeLanguage),
           ],
         ),
       ),
@@ -56,10 +55,12 @@ class _CodeHeader extends StatelessWidget {
     required this.language,
     required this.state,
     required this.code,
+    required this.codeLanguage,
   });
   final String? language;
   final CodeQuality state;
   final String code;
+  final CodeLanguage codeLanguage;
 
   @override
   Widget build(BuildContext context) {
@@ -104,8 +105,7 @@ class _CodeHeader extends StatelessWidget {
             ),
           if (!state.isNormal)
             Text(
-              // isBad ? l10n.badExample : l10n.goodExample,
-              "(${state.isBad ? "Bad" : "Good"})",
+              "• ${state.isBad ? "Bad" : "Good"}",
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: .bold,
@@ -113,11 +113,12 @@ class _CodeHeader extends StatelessWidget {
               ),
             ),
           const Spacer(),
-          _ActionButton(
-            icon: Icons.play_arrow_rounded,
-            tooltip: "Try in DartPad",
-            onPressed: () => _openDartPad(code),
-          ),
+          if (codeLanguage == .dart)
+            _ActionButton(
+              icon: Icons.play_arrow_rounded,
+              tooltip: "Try in DartPad",
+              onPressed: () => _openDartPad(code),
+            ),
           _ActionButton(
             icon: Icons.copy_rounded,
             tooltip: l10n.copied,
@@ -138,8 +139,6 @@ class _CodeHeader extends StatelessWidget {
   }
 
   void _openDartPad(String code) async {
-    // final encodedCode = Uri.encodeComponent(code);
-    // final url = Uri.parse("https://dartpad.dev/?code=$encodedCode");
     final url = Uri.parse("https://dartpad.dev");
     if (!await launchUrl(url)) {
       throw Exception("Could not launch $url");
@@ -176,19 +175,24 @@ class _ActionButton extends StatelessWidget {
 }
 
 class _CodeContent extends StatelessWidget {
-  const _CodeContent({required this.code});
+  const _CodeContent({required this.code, required this.codeLanguage});
   final String code;
+  final CodeLanguage codeLanguage;
 
   @override
   Widget build(BuildContext context) {
     final isDark = context.isDark;
 
     return Container(
-      constraints: const BoxConstraints(maxHeight: 550),
+      // constraints: const BoxConstraints(maxHeight: 550),
       padding: const .all(16),
       width: .infinity,
       child: SelectableText.rich(
-        _SyntaxHighlighter(code.trim(), isDark).highlight(),
+        SyntaxHighlighterFactory.create(
+          codeLanguage,
+          code.trim(),
+          isDark,
+        ).highlight(),
         style: const TextStyle(
           fontFamily: "FiraCode",
           fontWeight: .w500,
@@ -201,8 +205,23 @@ class _CodeContent extends StatelessWidget {
   }
 }
 
-class _SyntaxHighlighter {
-  _SyntaxHighlighter(this.code, this.isDark);
+// Extension for display name
+extension CodeLanguageExtension on CodeLanguage {
+  String get displayName {
+    return switch (this) {
+      .dart => 'Dart',
+      .yaml => 'YAML',
+    };
+  }
+}
+
+// ============================================================================
+// SYNTAX HIGHLIGHTER BASE CLASS
+// ============================================================================
+
+abstract class SyntaxHighlighter {
+  SyntaxHighlighter(this.code, this.isDark);
+
   final String code;
   final bool isDark;
 
@@ -210,26 +229,23 @@ class _SyntaxHighlighter {
   static const _dPlain = Color(0xFFCCCCCC);
   static const _dComment = Color(0xFF6A9955);
   static const _dString = Color(0xFFCE9178);
-  static const _dControl = Color(0xFFC586C0); // Purple (if/else/return)
-  static const _dKeyword = Color(0xFF569CD6); // Blue (void/class/var)
-  static const _dType = Color(0xFF4EC9B0); // Teal (Class names)
-  static const _dFunction = Color(0xFFDCDCAA); // Yellow
+  static const _dControl = Color(0xFFC586C0);
+  static const _dKeyword = Color(0xFF569CD6);
+  static const _dType = Color(0xFF4EC9B0);
+  static const _dFunction = Color(0xFFDCDCAA);
   static const _dNumber = Color(0xFFB5CEA8);
-  static const _dParam = Color(0xFF9CDCFE); // Light blue
-
-  // Annotation (Same as control or separate)
+  static const _dParam = Color(0xFF9CDCFE);
   static const _dMeta = Color(0xFFC586C0);
-
   static const _dPunctuation = Color(0xFFD4D4D4);
 
   // VS Modern Light Theme Colors
   static const _lPlain = Color(0xFF333333);
   static const _lComment = Color(0xFF008000);
   static const _lString = Color(0xFFA31515);
-  static const _lControl = Color(0xFFAF00DB); // Purple
-  static const _lKeyword = Color(0xFF0000FF); // Blue
-  static const _lType = Color(0xFF267F99); // Teal
-  static const _lFunction = Color(0xFF795E26); // Brown-Yellow
+  static const _lControl = Color(0xFFAF00DB);
+  static const _lKeyword = Color(0xFF0000FF);
+  static const _lType = Color(0xFF267F99);
+  static const _lFunction = Color(0xFF795E26);
   static const _lNumber = Color(0xFF098658);
   static const _lParam = Color(0xFF001080);
   static const _lMeta = Color(0xFFAF00DB);
@@ -247,6 +263,46 @@ class _SyntaxHighlighter {
   Color get param => isDark ? _dParam : _lParam;
   Color get meta => isDark ? _dMeta : _lMeta;
   Color get punctuation => isDark ? _dPunctuation : _lPunctuation;
+
+  /// Highlights the entire multi-line code string.
+  TextSpan highlight() {
+    final lines = code.split('\n');
+    return TextSpan(
+      children:
+          lines
+              .expand((l) => [highlightLine(l), const TextSpan(text: "\n")])
+              .toList()
+            ..removeLast(),
+    );
+  }
+
+  /// Highlights a single line of code. Must be implemented by subclasses.
+  TextSpan highlightLine(String line);
+}
+
+// ============================================================================
+// FACTORY
+// ============================================================================
+
+class SyntaxHighlighterFactory {
+  static SyntaxHighlighter create(
+    CodeLanguage language,
+    String code,
+    bool isDark,
+  ) {
+    return switch (language) {
+      .dart => DartSyntaxHighlighter(code, isDark),
+      .yaml => YamlSyntaxHighlighter(code, isDark),
+    };
+  }
+}
+
+// ============================================================================
+// DART SYNTAX HIGHLIGHTER
+// ============================================================================
+
+class DartSyntaxHighlighter extends SyntaxHighlighter {
+  DartSyntaxHighlighter(super.code, super.isDark);
 
   static final _dartPattern = RegExp(
     // 1. Comments (Line based)
@@ -275,26 +331,13 @@ class _SyntaxHighlighter {
     r'([+\-*/%<>=!&|^~?]+|[{}()[\].,;:])',
   );
 
-  /// Highlights the entire multi-line code string.
-  TextSpan highlight() {
-    final lines = code.split('\n');
-    return TextSpan(
-      children:
-          lines
-              .expand((l) => [_highlightLine(l), const TextSpan(text: "\n")])
-              .toList()
-            ..removeLast(),
-    );
-  }
-
-  /// Highlights a single line of code.
-  TextSpan _highlightLine(String line) {
+  @override
+  TextSpan highlightLine(String line) {
     final spans = <TextSpan>[];
     _highlightContent(line, spans);
     return TextSpan(children: spans);
   }
 
-  /// Recursively highlights a segment of code.
   void _highlightContent(String content, List<TextSpan> spans) {
     content.splitMapJoin(
       _dartPattern,
@@ -368,7 +411,6 @@ class _SyntaxHighlighter {
     );
   }
 
-  /// Processes a string literal, highlighting interpolation markers and expressions.
   void _handleStringInterpolation(String stringText, List<TextSpan> spans) {
     // Raw strings do not support interpolation in Dart.
     if (stringText.startsWith('r')) {
@@ -381,7 +423,6 @@ class _SyntaxHighlighter {
       return;
     }
 
-    // Regex for basic Dart interpolation: ${expression} or $variable.
     final interpPattern = RegExp(r'(\$\{.*?\})|(\$[a-zA-Z_]\w*)');
 
     stringText.splitMapJoin(
@@ -390,16 +431,13 @@ class _SyntaxHighlighter {
         if (m.group(1) != null) {
           // Case: ${nestedExpression}
           final fullMatch = m.group(1)!;
-          // Highlight the delimiters
           spans.add(
             TextSpan(
               text: r'${',
               style: TextStyle(color: control),
             ),
           );
-          // Extract the expression inside ${ }
           final expression = fullMatch.substring(2, fullMatch.length - 1);
-          // Highlight the expression content recursively
           _highlightContent(expression, spans);
           spans.add(
             TextSpan(
@@ -410,14 +448,12 @@ class _SyntaxHighlighter {
         } else if (m.group(2) != null) {
           // Case: $simpleVariable
           final fullMatch = m.group(2)!;
-          // Highlight the '$' delimiter
           spans.add(
             TextSpan(
               text: r'$',
               style: TextStyle(color: control),
             ),
           );
-          // Highlight the variable name with the 'parameter' color
           spans.add(
             TextSpan(
               text: fullMatch.substring(1),
@@ -429,7 +465,6 @@ class _SyntaxHighlighter {
       },
       onNonMatch: (nonMatch) {
         if (nonMatch.isNotEmpty) {
-          // Regular string content
           spans.add(
             TextSpan(
               text: nonMatch,
@@ -440,5 +475,106 @@ class _SyntaxHighlighter {
         return "";
       },
     );
+  }
+}
+
+// ============================================================================
+// YAML SYNTAX HIGHLIGHTER
+// ============================================================================
+
+class YamlSyntaxHighlighter extends SyntaxHighlighter {
+  YamlSyntaxHighlighter(super.code, super.isDark);
+
+  static final _yamlPattern = RegExp(
+    // 1. Comments
+    r'(#.*)|'
+    // 2. Keys (words followed by colon)
+    r'(\w+(?:\s+\w+)*)\s*:|'
+    // 3. Strings (quoted)
+    r'("(?:[^"\\]|\\.)*"|'
+    r"'(?:[^'\\]|\\.)*')|"
+    // 4. Numbers (integers and floats)
+    r'\b(-?\d+(?:\.\d+)?)\b|'
+    // 5. Booleans and null
+    r'\b(true|false|null|yes|no|on|off)\b|'
+    // 6. Special characters (list markers, anchors, aliases)
+    r'([\-\*&])|'
+    // 7. Document markers
+    r'(---|\.\.\.)',
+  );
+
+  @override
+  TextSpan highlightLine(String line) {
+    final spans = <TextSpan>[];
+
+    line.splitMapJoin(
+      _yamlPattern,
+      onMatch: (m) {
+        Color color = plain;
+        String text = m.group(0)!;
+
+        // Group 1: Comments
+        if (m.group(1) != null) {
+          color = comment;
+        }
+        // Group 2: Keys
+        else if (m.group(2) != null) {
+          color = keyword;
+          text = '${m.group(2)!}:';
+        }
+        // Group 3: Quoted strings
+        else if (m.group(3) != null) {
+          color = string;
+        }
+        // Group 4: Numbers
+        else if (m.group(4) != null) {
+          color = number;
+        }
+        // Group 5: Booleans and null
+        else if (m.group(5) != null) {
+          color = control;
+        }
+        // Group 6: Special characters
+        else if (m.group(6) != null) {
+          color = punctuation;
+        }
+        // Group 7: Document markers
+        else if (m.group(7) != null) {
+          color = meta;
+        }
+
+        spans.add(
+          TextSpan(
+            text: text,
+            style: TextStyle(color: color),
+          ),
+        );
+        return "";
+      },
+      onNonMatch: (text) {
+        if (text.isNotEmpty) {
+          // Check if it's an unquoted string value
+          final trimmed = text.trim();
+          if (trimmed.isNotEmpty && !text.startsWith(' ')) {
+            spans.add(
+              TextSpan(
+                text: text,
+                style: TextStyle(color: string),
+              ),
+            );
+          } else {
+            spans.add(
+              TextSpan(
+                text: text,
+                style: TextStyle(color: plain),
+              ),
+            );
+          }
+        }
+        return "";
+      },
+    );
+
+    return TextSpan(children: spans);
   }
 }

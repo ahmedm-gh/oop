@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:tuts/core/extensions/extensions.dart";
+import "package:tuts/core/services/routes.dart";
 import "package:tuts/features/design_patterns/design_patterns_page.dart";
-import "package:tuts/features/interview_questions/interview_questions_page.dart";
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -184,7 +184,7 @@ class HomePage extends StatelessWidget {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (_) => const DesignPatternsPage(),
+                    builder: (_) => const DesignPatternsScreen(),
                   ),
                 ),
               ),
@@ -192,12 +192,7 @@ class HomePage extends StatelessWidget {
                 title: l10n.interviewQuestions,
                 icon: Icons.question_mark_rounded,
                 color: colors.secondary,
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (_) => const InterviewQuestionsPage(),
-                  ),
-                ),
+                onTap: () => Navigator.pushNamed(context, Routes.questionList),
               ),
               HomeMenuCard(
                 title: l10n.refactoring,
