@@ -13,16 +13,19 @@ class DifficultyChip extends StatelessWidget {
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: difficulty.color.withAlpha(50),
+        color: difficulty.color.withAlpha(40),
         borderRadius: .circular(5),
       ),
       child: Padding(
-        padding: const .symmetric(horizontal: 7.5, vertical: 5),
+        padding: const .symmetric(horizontal: 10, vertical: 5),
         child: Text(
           difficulty.label(l10n),
           style: TextStyle(
             fontSize: 12,
-            color: difficulty.color,
+            color: Color.alphaBlend(
+              difficulty.color.withAlpha(120),
+              difficulty.color.pairedColor,
+            ),
             fontWeight: .bold,
             height: 1,
           ),

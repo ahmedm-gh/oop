@@ -730,6 +730,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get advancedLevelDesc => 'Expert-level topics for senior developers.';
 
   @override
+  String get expertLevel => 'Expert';
+
+  @override
+  String get expertLevelDesc => 'Expert-level topics for senior developers.';
+
+  @override
   String get qWhatIsFlutter => 'What is Flutter?';
 
   @override
@@ -1271,9 +1277,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get all => 'All';
 
   @override
-  String get expertLevel => 'Expert';
-
-  @override
   String get answr => 'Answer';
 
   @override
@@ -1353,4 +1356,58 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get questionNotFound => 'Question not found';
+
+  @override
+  String get onlyBookmarked => 'Only Bookmarked';
+
+  @override
+  String get allLevels => 'All Levels';
+
+  @override
+  String get commonMistakes => 'Common Mistakes';
+
+  @override
+  String get noPattern => 'No pattern';
+
+  @override
+  String get pGoF => 'Classic (GoF)';
+
+  @override
+  String get pNonGoF => 'Non-GoF';
+
+  @override
+  String get pPractical => 'Practical';
+
+  @override
+  String get pModern => 'Modern';
+
+  @override
+  String get designPattern => 'Design Patterns';
+
+  @override
+  String get architecturalPattern => 'Architectural Patterns';
+
+  @override
+  String get stateManagementPattern => 'State Management Patterns';
+
+  @override
+  String get uiPattern => 'UI Patterns';
+
+  @override
+  String get projectStructurePattern => 'Project Structure Patterns';
+
+  @override
+  String get creationalPattern => 'Creational Patterns';
+
+  @override
+  String get structuralPattern => 'Structural Patterns';
+
+  @override
+  String get behavioralPattern => 'Behavioral Patterns';
+
+  @override
+  String get relatedPatterns => 'Related Patterns';
+
+  @override
+  String get oftenConfusedWith => 'Often Confused With';
 }

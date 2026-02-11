@@ -1,13 +1,14 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tuts/data/interview_questions_repository.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:tuts/data/interview_questions.dart';
+import 'package:tuts/shared/methods/to_value.dart' show toValue;
 
 import '../../../../core/enums/difficulty_level.dart';
 import '../../../../core/models/interview_question.dart';
 
 part 'questions_state.dart';
 
-class QuestionsCubit extends Cubit<QuestionsState> {
+class QuestionsCubit extends HydratedCubit<QuestionsState> {
   QuestionsCubit()
     : super(
         const QuestionsState(bookmarkedQuestions: {}, questions: questionsData),
@@ -18,6 +19,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
   void filterQuestions({
     ValueGetter<String?>? query,
     ValueGetter<DifficultyLevel?>? difficulty,
+    ValueGetter<bool>? onlyBookmarked,
   }) {
     // Determine the target values for filtering.
     // If a getter is provided, use its value (even if null).
@@ -28,6 +30,9 @@ class QuestionsCubit extends Cubit<QuestionsState> {
     final DifficultyLevel? targetDifficulty = difficulty != null
         ? difficulty()
         : state.difficulty;
+    final bool targetOnlyBookmarked = onlyBookmarked != null
+        ? onlyBookmarked()
+        : state.onlyBookmarked;
 
     // Always filter starting from the complete dataset (questionsData).
     final filtered = questionsData.where((question) {
@@ -40,7 +45,11 @@ class QuestionsCubit extends Cubit<QuestionsState> {
       final matchesDifficulty =
           targetDifficulty == null || question.difficulty == targetDifficulty;
 
-      return matchesQuery && matchesDifficulty;
+      final matchesOnlyBookmarked =
+          !targetOnlyBookmarked ||
+          state.bookmarkedQuestions.contains(question.id);
+
+      return matchesQuery && matchesDifficulty && matchesOnlyBookmarked;
     }).toList();
 
     emit(
@@ -48,6 +57,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
         questions: filtered,
         query: () => targetQuery,
         difficulty: () => targetDifficulty,
+        onlyBookmarked: () => targetOnlyBookmarked,
       ),
     );
   }
@@ -74,9 +84,23 @@ class QuestionsCubit extends Cubit<QuestionsState> {
     }
   }
 
+  void toggleOnlyBookmarked() {
+    filterQuestions(onlyBookmarked: () => !state.onlyBookmarked);
+  }
+
   @override
   Future<void> close() {
     searchController.dispose();
     return super.close();
+  }
+
+  @override
+  QuestionsState? fromJson(Map<String, dynamic> json) {
+    return QuestionsState.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic>? toJson(QuestionsState state) {
+    return state.toJson();
   }
 }

@@ -19,6 +19,7 @@ class InterviewQuestion {
     this.examples,
     this.cons,
     this.pros,
+    this.whenToUse,
   });
 
   final String id;
@@ -28,8 +29,11 @@ class InterviewQuestion {
   final List<String>? tags;
   final LocalizedValue<QuestionContent> content;
   final List<StrCodeBlock>? examples;
+
   final LocalizedValue<List<String>>? pros;
   final LocalizedValue<List<String>>? cons;
+
+  final LocalizedValue<List<Content>>? whenToUse;
 
   /// Get the localized content based on the current locale
   QuestionContent getLocalizedContent(String languageCode) {
@@ -44,6 +48,11 @@ class InterviewQuestion {
   /// Get the localized cons based on the current locale
   List<String>? getLocalizedCons(String languageCode) {
     return languageCode == "ar" ? cons?.ar : cons?.en;
+  }
+
+  /// Get the localized when to use based on the current locale
+  List<Content>? getLocalizedWhenToUse(String languageCode) {
+    return languageCode == "ar" ? whenToUse?.ar : whenToUse?.en;
   }
 }
 

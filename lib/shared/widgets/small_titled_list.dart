@@ -10,6 +10,7 @@ enum TitledListType {
   advantages,
   disadvantages,
   bestFor,
+  commonMistakes,
 }
 
 class SmallTitledList extends StatelessWidget {
@@ -66,6 +67,15 @@ class SmallTitledList extends StatelessWidget {
     this.icon = Icons.star_rounded,
     this.color = Colors.amber,
   }) : type = .bestFor;
+
+  const SmallTitledList.commonMistakes({
+    super.key,
+    this.title,
+    this.content,
+    this.items,
+    this.icon = Icons.warning_rounded,
+    this.color = Colors.orange,
+  }) : type = .commonMistakes;
 
   final Widget? title;
   final Widget? content;
@@ -141,6 +151,7 @@ class SmallTitledList extends StatelessWidget {
       .advantages => l10n.pros,
       .disadvantages => l10n.cons,
       .bestFor => l10n.bestUse,
+      .commonMistakes => l10n.commonMistakes,
       .none => null,
     };
 

@@ -4,6 +4,7 @@ import 'package:tuts/core/enums/difficulty_level.dart';
 import 'package:tuts/core/extensions/extensions.dart';
 import 'package:tuts/core/models/interview_question.dart';
 import 'package:tuts/features/interview_questions/controller/cubit/questions_cubit.dart';
+import 'package:tuts/shared/app_widgets.dart';
 import 'package:tuts/shared/widgets/filter_chip.dart';
 
 import 'widgets/question_card.dart';
@@ -21,6 +22,21 @@ class InterviewQuestionsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.interviewQuestions),
+        // actions: [
+        //   BlocSelector<QuestionsCubit, QuestionsState, bool>(
+        //     selector: (state) {
+        //       return state.onlyBookmarked;
+        //     },
+        //     builder: (context, onlyBookmarked) {
+        //       return BookmarkIconButton(
+        //         tooltip: l10n.onlyBookmarked,
+        //         onPressed: cubit.toggleOnlyBookmarked,
+        //         isActive: onlyBookmarked,
+        //         animated: true,
+        //       );
+        //     },
+        //   ),
+        // ],
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
       ),
@@ -32,14 +48,34 @@ class InterviewQuestionsScreen extends StatelessWidget {
             padding: const .only(right: 16, left: 16, bottom: 16),
             child: Column(
               children: [
-                TextField(
-                  controller: cubit.searchController,
-                  decoration: InputDecoration(
-                    hintText: l10n.search,
-                    suffixIcon: const Icon(Icons.search_rounded),
-                  ),
-                  onChanged: (query) =>
-                      cubit.filterQuestions(query: () => query),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: cubit.searchController,
+                        decoration: InputDecoration(
+                          hintText: l10n.search,
+                          suffixIcon: const Icon(Icons.search_rounded),
+                        ),
+                        onChanged: (query) =>
+                            cubit.filterQuestions(query: () => query),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    BlocSelector<QuestionsCubit, QuestionsState, bool>(
+                      selector: (state) {
+                        return state.onlyBookmarked;
+                      },
+                      builder: (context, onlyBookmarked) {
+                        return BookmarkIconButton(
+                          tooltip: l10n.onlyBookmarked,
+                          onPressed: cubit.toggleOnlyBookmarked,
+                          isActive: onlyBookmarked,
+                          animated: true,
+                        );
+                      },
+                    ),
+                  ],
                 ),
 
                 const SizedBox(height: 10),
@@ -49,6 +85,7 @@ class InterviewQuestionsScreen extends StatelessWidget {
                   width: .infinity,
                   child: SingleChildScrollView(
                     scrollDirection: .horizontal,
+                    clipBehavior: .none,
                     child:
                         BlocSelector<
                           QuestionsCubit,
@@ -56,13 +93,13 @@ class InterviewQuestionsScreen extends StatelessWidget {
                           DifficultyLevel?
                         >(
                           selector: (state) => state.difficulty,
-                          builder: (context, difficulty) {
+                          builder: (context, state) {
                             return Row(
                               spacing: 10,
                               children: [
                                 AppFilterChip(
-                                  label: l10n.all,
-                                  selected: difficulty == null,
+                                  label: l10n.allLevels,
+                                  selected: state == null,
                                   onSelected: () {
                                     cubit.filterQuestions(
                                       query: () => cubit.searchController.text,
@@ -70,11 +107,12 @@ class InterviewQuestionsScreen extends StatelessWidget {
                                     );
                                   },
                                   animated: true,
+                                  color: colors.primary,
                                 ),
                                 ...DifficultyLevel.values.map(
                                   (level) => AppFilterChip(
                                     label: level.label(l10n),
-                                    selected: difficulty == level,
+                                    selected: state == level,
                                     color: level.color,
                                     onSelected: () {
                                       cubit.filterQuestions(
@@ -84,6 +122,13 @@ class InterviewQuestionsScreen extends StatelessWidget {
                                     animated: true,
                                   ),
                                 ),
+                                // AppFilterChip(
+                                //   label: l10n.onlyBookmarked,
+                                //   selected: state.onlyBookmarked,
+                                //   onSelected: cubit.toggleOnlyBookmarked,
+                                //   animated: true,
+                                //   color: colors.primary,
+                                // ),
                               ],
                             );
                           },
@@ -106,7 +151,8 @@ class InterviewQuestionsScreen extends StatelessWidget {
                 return isEmpty
                     ? Center(child: Text(l10n.noResults))
                     : CardTheme(
-                        color: colors.surfaceContainerLowest,
+                        elevation: 0,
+                        color: colors.surfaceContainerLow,
                         shape: RoundedRectangleBorder(
                           borderRadius: .circular(16),
                           side: BorderSide(
@@ -115,7 +161,6 @@ class InterviewQuestionsScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        elevation: 0,
                         child:
                             BlocSelector<
                               QuestionsCubit,

@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
 import "package:tuts/core/extensions/extensions.dart";
-import "package:tuts/l10n/app_localizations.dart";
-import "package:tuts/features/design_patterns/pattern_details_page.dart";
+import "package:tuts/core/services/routes.dart";
+import "package:tuts/data/design_patterns.dart";
+
+import "pattern_details_page.dart";
 
 class DesignPatternsScreen extends StatelessWidget {
   const DesignPatternsScreen({super.key});
@@ -9,155 +11,69 @@ class DesignPatternsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final colors = context.colorScheme;
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.designPatterns)),
-      body: ListView(
-        padding: const .all(16),
-        children: [
-          _CategorySection(
-            title: l10n.creationalPatterns,
-            description: l10n.creationalPatternsDesc,
-            patterns: const [
-              "factoryMethod",
-              "abstractFactory",
-              "builder",
-              "prototype",
-              "singleton",
-            ],
-          ),
-          const Divider(height: 30),
-          _CategorySection(
-            title: l10n.structuralPatterns,
-            description: l10n.structuralPatternsDesc,
-            patterns: const [
-              "adapter",
-              "bridge",
-              "composite",
-              "decorator",
-              "facade",
-              "flyweight",
-              "proxy",
-            ],
-          ),
-          const Divider(height: 30),
-          _CategorySection(
-            title: l10n.behavioralPatterns,
-            description: l10n.behavioralPatternsDesc,
-            patterns: const [
-              "chainOfResponsibility",
-              "command",
-              "interpreter",
-              "iterator",
-              "mediator",
-              "memento",
-              "observer",
-              "state",
-              "strategy",
-              "templateMethod",
-              "visitor",
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _CategorySection extends StatelessWidget {
-  const _CategorySection({
-    required this.title,
-    required this.description,
-    required this.patterns,
-  });
-  final String title;
-  final String description;
-  final List<String> patterns;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colorScheme;
-
-    return ListTileTheme(
-      tileColor: context.colorScheme.surfaceContainerLow,
-      shape: RoundedRectangleBorder(
-        side: BorderSide(
-          color: context.colorScheme.outlineVariant.withAlpha(80),
+      body: ListTileTheme(
+        tileColor: colors.surfaceContainer,
+        style: .list,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
         ),
-        borderRadius: .circular(10),
-      ),
-      child: Material(
-        type: .transparency,
-        child: Column(
-          crossAxisAlignment: .start,
-          spacing: 10,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: .bold,
-                color: colors.primary,
+        child: Material(
+          type: .transparency,
+          child: CustomScrollView(
+            slivers: [
+              SliverPadding(
+                padding: const .all(16),
+                sliver: SliverList.separated(
+                  itemBuilder: (context, index) {
+                    return Column(
+                      crossAxisAlignment: .stretch,
+                      spacing: 5,
+                      children: [
+                        ListTile(
+                          title: Text(
+                            designPatternCategories[index].title.call(
+                              Locale(l10n.localeName),
+                            ),
+                          ),
+                        ),
+                        for (final patternStr
+                            in designPatternCategories[index].patterns)
+                          if (designPatterns[patternStr] case final pattern?)
+                            InkWell(
+                              borderRadius: BorderRadius.circular(12),
+                              onTap: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  Routes.designPatternDetails,
+                                  arguments: PatternDetailsScreenArguments(
+                                    pattern: pattern,
+                                  ),
+                                );
+                              },
+                              child: Padding(
+                                padding: const .all(10),
+                                child: Text(
+                                  pattern.title.call(Locale(l10n.localeName)),
+                                ),
+                              ),
+                            ),
+                      ],
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(height: 16);
+                  },
+                  itemCount: designPatternCategories.length,
+                ),
               ),
-            ),
-            Text(description),
-            ...patterns.map(_PatternTile.new),
-          ],
+            ],
+          ),
         ),
       ),
     );
-  }
-}
-
-class _PatternTile extends StatelessWidget {
-  const _PatternTile(this.pattern);
-  final String pattern;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final name = _getPatternName(l10n, pattern);
-
-    return ListTile(
-      title: Text(name),
-      trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14),
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute<void>(
-          builder: (_) {
-            return PatternDetailsScreen(patternKey: pattern, patternName: name);
-          },
-        ),
-      ),
-    );
-  }
-
-  String _getPatternName(AppLocalizations l10n, String key) {
-    return switch (key) {
-      "factoryMethod" => l10n.factoryMethod,
-      "abstractFactory" => l10n.abstractFactory,
-      "builder" => l10n.builder,
-      "prototype" => l10n.prototype,
-      "singleton" => l10n.singleton,
-      "adapter" => l10n.adapter,
-      "bridge" => l10n.bridge,
-      "composite" => l10n.composite,
-      "decorator" => l10n.decorator,
-      "facade" => l10n.facade,
-      "flyweight" => l10n.flyweight,
-      "proxy" => l10n.proxy,
-      "chainOfResponsibility" => l10n.chainOfResponsibility,
-      "command" => l10n.command,
-      "iterator" => l10n.iterator,
-      "interpreter" => l10n.interpreter,
-      "mediator" => l10n.mediator,
-      "memento" => l10n.memento,
-      "observer" => l10n.observer,
-      "state" => l10n.state,
-      "strategy" => l10n.strategy,
-      "templateMethod" => l10n.templateMethod,
-      "visitor" => l10n.visitor,
-      _ => key,
-    };
   }
 }

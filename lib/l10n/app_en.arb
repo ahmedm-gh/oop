@@ -198,6 +198,8 @@
     "intermediateLevelDesc": "Deeper understanding of Flutter and Dart features.",
     "advancedLevel": "Advanced",
     "advancedLevelDesc": "Expert-level topics for senior developers.",
+    "expertLevel": "Expert",
+    "expertLevelDesc": "Expert-level topics for senior developers.",
     "qWhatIsFlutter": "What is Flutter?",
     "qWhatIsFlutterNotes": "Flutter is an open-source UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. It uses the Dart programming language and provides a rich set of customizable widgets and tools for fast development.",
     "qWhatIsFlutterPros": "High performance due to native compilation.\nHot reload for fast development.\nSingle codebase for multiple platforms.",
@@ -336,7 +338,6 @@
     "search": "Search questions...",
     "noResults": "No results found",
     "all": "All",
-    "expertLevel": "Expert",
     "answr": "Answer",
     "codeExample": "Code Example",
     "programmingTerms": "Programming Terms",
@@ -363,5 +364,25 @@
     "cAnimations": "Animations",
     "cModernFeatures": "Modern Features",
     "cDeployment": "Deployment",
-    "questionNotFound": "Question not found"
+    "questionNotFound": "Question not found",
+    "onlyBookmarked": "Only Bookmarked",
+    "allLevels": "All Levels",
+    "commonMistakes": "Common Mistakes",
+    "noPattern": "No pattern",
+
+  "pGoF": "Classic (GoF)",
+  "pNonGoF": "Non-GoF",
+  "pPractical": "Practical",
+  "pModern": "Modern",
+  "designPattern": "Design Patterns",
+  "architecturalPattern": "Architectural Patterns",
+  "stateManagementPattern": "State Management Patterns",
+  "uiPattern": "UI Patterns",
+  "projectStructurePattern": "Project Structure Patterns",
+  "creationalPattern": "Creational Patterns",
+  "structuralPattern": "Structural Patterns",
+  "behavioralPattern": "Behavioral Patterns",
+
+  "relatedPatterns": "Related Patterns",
+  "oftenConfusedWith": "Often Confused With"
 }

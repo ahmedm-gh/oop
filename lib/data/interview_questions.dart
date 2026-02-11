@@ -6,7 +6,7 @@ import '../core/models/content.dart';
 const List<InterviewQuestion> questionsData = [
   InterviewQuestion(
     id: "001",
-    difficulty: .basic,
+    difficulty: .intermediate,
     categories: [.basic, .flutterBasics],
     type: .theoretical,
     tags: ["widgets", "dartBasics", "framework"],
@@ -90,6 +90,30 @@ const List<InterviewQuestion> questionsData = [
         "جديد نسبيًا مقارنة بالتطوير الأصلي",
         "مكتبات طرف ثالث أقل مقارنة بالمنصات الأصلية",
         "يتطلب تعلم Dart (أقل شهرة من JavaScript)",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Flutter when:",
+          value: [
+            "Building cross-platform apps with a single codebase",
+            "Requiring a high-performance, consistent UI across iOS and Android",
+            "Needing rapid development with features like Hot Reload",
+            "Creating custom, complex UI designs that aren't easily achieved with native widgets",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Flutter عندما:",
+          value: [
+            "بناء تطبيقات متعددة المنصات بقاعدة كود واحدة",
+            "الحاجة إلى واجهة مستخدم عالية الأداء ومتسقة عبر iOS و Android",
+            "الحاجة لتطوير سريع باستخدام ميزات مثل Hot Reload",
+            "إنشاء تصميمات واجهة مستخدم مخصصة ومعقدة لا يمكن تحقيقها بسهولة باستخدام الودجت الأصلية",
+          ],
+        ),
       ],
     ),
   ),
@@ -232,6 +256,28 @@ class _CounterState extends State<Counter> {
         "StatefulWidget: أكثر تعقيدًا، احتمال تكلفة أداء إذا أسيء استخدامه، يتطلب فئتين",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use StatelessWidget when:",
+          value: [
+            "Widget displays static content without internal state",
+            "Appearance depends only on constructor parameters",
+            "No user interactions that modify the widget's data",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم StatelessWidget عندما:",
+          value: [
+            "العنصر يعرض محتوى ثابت بدون حالة داخلية",
+            "الشكل يعتمد فقط على المعاملات الأولية",
+            "لا يوجد تفاعل يغير بيانات العنصر",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "003",
@@ -331,10 +377,34 @@ Widget build(BuildContext context) {
             "الوصول إلى بيانات السمة، التنقل، الودجتس الموروثة، التصميم المستجيب، عرض الحوارات",
       ),
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use BuildContext when:",
+          value: [
+            "Accessing inherited widgets (Theme, MediaQuery, Provider)",
+            "Navigating between screens",
+            "Showing dialogs, snackbars, or modals",
+            "Finding ancestor or descendant widgets",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم BuildContext عندما:",
+          value: [
+            "الوصول للعناصر الموروثة (الثيم، بيانات الشاشة، Provider)",
+            "التنقل بين الشاشات",
+            "عرض النوافذ المنبثقة والإشعارات",
+            "البحث عن العناصر الأب أو الأبناء",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "004",
-    difficulty: .basic,
+    difficulty: .intermediate,
     categories: [.oop, .dartBasics],
     type: .theoretical,
     tags: [
@@ -476,10 +546,34 @@ class Circle implements Shape {
             "التغليف لحماية البيانات، الوراثة لإعادة استخدام الكود، تعدد الأشكال للمرونة، التجريد لواجهات برمجية نظيفة",
       ),
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Apply OOP Pillars when:",
+          value: [
+            "Encapsulation: Protecting internal data from unintended access",
+            "Inheritance: Sharing common behavior and fields between related classes",
+            "Polymorphism: Treating different objects uniformly through common interfaces",
+            "Abstraction: Simplifying complex systems by hiding implementation details",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "طبق أعمدة البرمجة الكائنية عندما:",
+          value: [
+            "التغليف: حماية البيانات الداخلية من الوصول غير المقصود",
+            "الوراثة: مشاركة السلوك والحقول المشتركة بين الفئات ذات الصلة",
+            "تعدد الأشكال: معاملة كائنات مختلفة بشكل موحد من خلال واجهات مشتركة",
+            "التجريد: تبسيط الأنظمة المعقدة عن طريق إخفاء تفاصيل التنفيذ",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "005",
-    difficulty: .intermediate,
+    difficulty: .advanced,
     categories: [.solid, .architecture],
     type: .theoretical,
     tags: [
@@ -623,6 +717,30 @@ class UserService {
             "طبقها في طبقات الخدمة والمستودعات ومنطق الأعمال. ضرورية للبنية النظيفة والتطبيقات المؤسسية.",
       ),
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Apply SOLID when:",
+          value: [
+            "Developing large-scale, enterprise-level applications",
+            "Working in a team where code clarity and maintainability are critical",
+            "Designing systems that need to be easily extensible and testable",
+            "Reducing tight coupling between different modules of the app",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "طبق SOLID عندما:",
+          value: [
+            "تطوير تطبيقات واسعة النطاق على مستوى مؤسسي",
+            "العمل في فريق حيث وضوح الكود وقابليته للصيانة أمر بالغ الأهمية",
+            "تصميم أنظمة تحتاج إلى أن تكون قابلة للتوسيع والاختبار بسهولة",
+            "تقليل الارتباط الوثيق بين الوحدات المختلفة للتطبيق",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "006",
@@ -737,6 +855,9 @@ class UserRepository implements IUserRepository {
               "Repository: يجرد مصادر البيانات ويوفر واجهة برمجية نظيفة للوصول إلى البيانات. يعمل كوسيط بين مصادر البيانات (API، قاعدة البيانات المحلية) ومنطق الأعمال.",
             ],
           ),
+          StringContent(
+            "تطبيق هذه الأنماط يسهل اختبار الكود وفصله عن بعضه البعض.",
+          ),
           CodeContent('''// نمط Singleton
 class ApiService {
   static final ApiService _instance = ApiService._internal();
@@ -839,6 +960,28 @@ class UserRepository implements IUserRepository {
         "Singleton: صعب الاختبار، مشاكل حالة عالمية، قد يخفي التبعيات",
         "Factory: يمكن أن يصبح معقدًا مع أنواع كثيرة",
         "Repository: طبقة تجريد إضافية، المزيد من الكود للصيانة",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Design Pattern Usage:",
+          value: [
+            "Singleton: Global services, configuration managers, database instances",
+            "Factory: Flexible object creation, complex initialization logic",
+            "Repository: Data layer abstraction, offline-first support, testability",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدام أنماط التصميم:",
+          value: [
+            "Singleton: الخدمات العالمية، مديرو التكوين، مثيلات قاعدة البيانات",
+            "Factory: إنشاء كائنات مرنة، منطق تهيئة معقد",
+            "Repository: تجريد طبقة البيانات، دعم العمل بدون اتصال، قابلية الاختبار",
+          ],
+        ),
       ],
     ),
   ),
@@ -978,10 +1121,34 @@ orderedSet.addAll(['ج', 'أ', 'ب']);
         "Map: يستخدم ذاكرة أكثر من List، لا ضمان لترتيب التكرار (ما لم يكن LinkedHashMap)",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Data Structure Usage:",
+          value: [
+            "List: Ordered collection, allows duplicates, access by index",
+            "Set: Unique elements only, no duplicates, fast lookup",
+            "Map: Key-value pairs, quick access by key",
+            "Queue: FIFO operations, Stack: LIFO operations",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدام هياكل البيانات:",
+          value: [
+            "List: مجموعة مرتبة، تسمح بالتكرار، الوصول بالفهرس",
+            "Set: عناصر فريدة فقط، بحث سريع",
+            "Map: أزواج مفتاح-قيمة، وصول سريع بالمفتاح",
+            "Queue: عمليات FIFO، Stack: عمليات LIFO",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "008",
-    difficulty: .intermediate,
+    difficulty: .advanced,
     categories: [.stateManagement],
     type: .practical,
     tags: ["provider", "bloc", "riverpod", "setState", "stateManagement"],
@@ -1159,6 +1326,30 @@ ref.read(counterProvider.notifier).increment();''', codeQuality: .good),
         "Riverpod: أحدث (نظام بيئي أصغر)، صيغة مختلفة عن Provider، منحنى تعلم",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "State Management Selection:",
+          value: [
+            "setState: Simple local state in single widget",
+            "Provider: Shared state across widget tree, medium apps",
+            "BLoC: Large apps, strict separation, reactive streams",
+            "Riverpod: Modern apps, compile-time safety, better Provider",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار إدارة الحالة:",
+          value: [
+            "setState: حالة محلية بسيطة في عنصر واحد",
+            "Provider: مشاركة الحالة عبر الشجرة، تطبيقات متوسطة",
+            "BLoC: تطبيقات كبيرة، فصل صارم، تدفقات تفاعلية",
+            "Riverpod: تطبيقات حديثة، أمان أفضل من Provider",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "009",
@@ -1329,6 +1520,28 @@ Future<void> loadAll() async {
         "Streams: أكثر تعقيدًا، تحتاج تنظيف مناسب، تسريبات ذاكرة إذا لم تُغلق",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Async Operations:",
+          value: [
+            "Future: Single async operation (API call, file read)",
+            "async/await: Cleaner async code syntax",
+            "Stream: Multiple async events over time (real-time data)",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "العمليات غير المتزامنة:",
+          value: [
+            "Future: عملية واحدة غير متزامنة (استدعاء API، قراءة ملف)",
+            "async/await: كتابة كود غير متزامن بشكل أوضح",
+            "Stream: أحداث متعددة مع الوقت (بيانات فورية)",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "010",
@@ -1490,6 +1703,30 @@ class MyWidget extends StatelessWidget {
         bestUse:
             "طبق هذه التقنيات في تطبيقات الإنتاج مع مشاكل الأداء، خاصة مع القوائم الكبيرة أو واجهة المستخدم المعقدة",
       ),
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Performance Optimization Usage:",
+          value: [
+            "ListView.builder: For long or infinite lists to enable lazy loading",
+            "compute(): For heavy CPU tasks like large JSON parsing to keep UI responsive",
+            "const Constructors: To minimize widget rebuilds and CPU cycles",
+            "cached_network_image: For efficient image loading and persistence",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدام تحسين الأداء:",
+          value: [
+            "ListView.builder: للقوائم الطويلة أو اللانهائية لتمكين التحميل الكسول",
+            "compute(): للمهام البرمجية الثقيلة مثل معالجة JSON الكبير للحفاظ على استجابة واجهة المستخدم",
+            "منشئات const: لتقليل عمليات إعادة بناء العناصر ودورات المعالج",
+            "cached_network_image: لتحميل الصور وتخزينها بكفاءة",
+          ],
+        ),
+      ],
     ),
   ),
   InterviewQuestion(
@@ -1694,6 +1931,30 @@ ListView.builder(
         "يمكن أن يعقد قابلية قراءة الكود إذا استُخدم بشكل مفرط",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Keys when:",
+          value: [
+            "Preserving state in lists with reordering/removal",
+            "Distinguishing widgets of same type at same level",
+            "Maintaining state across widget rebuilds",
+            "Working with animated lists or complex collections",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Keys عندما:",
+          value: [
+            "الحفاظ على الحالة في القوائم عند إعادة الترتيب",
+            "التمييز بين عناصر من نفس النوع",
+            "الحفاظ على الحالة عند إعادة البناء",
+            "العمل مع القوائم المتحركة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "012",
@@ -1853,10 +2114,34 @@ ListView.builder(
             "حفظ البيانات عند توقف التطبيق، إيقاف الرسوم المتحركة/المؤقتات في الخلفية، تحرير الموارد عندما لا يكون التطبيق مرئيًا",
       ),
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "App Lifecycle Usage:",
+          value: [
+            "paused: Save user progress or sensitive data before app is backgrounded",
+            "resumed: Refresh real-time data or restart paused animations/timers",
+            "inactive: Pause animations or heavy visual effects during overlays",
+            "detached: Final cleanup of non-persistent resources",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدام دورة حياة التطبيق:",
+          value: [
+            "paused: حفظ تقدم المستخدم أو البيانات الحساسة قبل ذهاب التطبيق للخلفية",
+            "resumed: تحديث البيانات في الوقت الفعلي أو إعادة تشغيل الحركات المتوقفة",
+            "inactive: إيقاف الرسوم المتحركة مؤقتًا أثناء ظهور تراكبات النظام",
+            "detached: التنظيف النهائي للموارد غير الدائمة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "013",
-    difficulty: .advanced,
+    difficulty: .intermediate,
     categories: [.testing],
     type: .practical,
     tags: ["unitTesting", "widgetTesting", "integrationTesting", "testing"],
@@ -2041,10 +2326,32 @@ void main() {
             "اختبارات الوحدة لجميع منطق الأعمال، اختبارات الودجت لمكونات واجهة المستخدم الحرجة، اختبارات التكامل لتدفقات المستخدم الأساسية (تسجيل الدخول، الدفع)",
       ),
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Testing Selection:",
+          value: [
+            "Unit Tests: Critical business logic, value calculations, utility functions",
+            "Widget Tests: Reusable components, specific UI layouts, form interactions",
+            "Integration Tests: Critical user journeys, third-party service integration",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار الاختبارات:",
+          value: [
+            "اختبارات الوحدة: منطق الأعمال الحرج، حسابات القيم، الدوال المساعدة",
+            "اختبارات الودجت: المكونات القابلة لإعادة الاستخدام، تخطيطات واجهة المستخدم، تفاعلات النماذج",
+            "اختبارات التكامل: رحلات المستخدم الحرجة، تكامل خدمات الطرف الثالث",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "014",
-    difficulty: .advanced,
+    difficulty: .intermediate,
     categories: [.performance, .modernFeatures],
     type: .theoretical,
     tags: ["rendering", "impeller", "skia", "performance"],
@@ -2161,10 +2468,22 @@ void main() {
             "افتراضي على iOS الآن، اختياري لـ Android عندما تحتاج إلى رسومات عالية الأداء ورسوم متحركة سلسة",
       ),
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        StringContent(
+          "Use Impeller when targeting iOS or newer Android versions for better performance, reduced jank, and consistent rendering. It's the default rendering engine replacing Skia in newer Flutter versions.",
+        ),
+      ],
+      ar: [
+        StringContent(
+          "استخدم Impeller عند استهداف iOS أو إصدارات Android الحديثة للحصول على أداء أفضل وسلاسة أكثر. إنه محرك العرض الافتراضي الذي يحل محل Skia.",
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "015",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.networking],
     type: .practical,
     tags: ["http", "dio", "restApi", "networking"],
@@ -2386,10 +2705,30 @@ class ApiService {
             "استخدم Dio لتطبيقات المؤسسات التي تحتاج تحديث رمز المصادقة، إعادة المحاولة التلقائية، التسجيل، وتحميل الملفات. استخدم http للنماذج الأولية البسيطة.",
       ),
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Networking Package Selection:",
+          value: [
+            "http: Simple requests, basic GET/POST, small projects",
+            "dio: Advanced features (interceptors, file upload, retries), production apps",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار مكتبة الشبكة:",
+          value: [
+            "http: طلبات بسيطة، مشاريع صغيرة",
+            "dio: ميزات متقدمة (معترضات، رفع ملفات)، تطبيقات إنتاجية",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "016",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.database],
     type: .practical,
     tags: ["sqlite", "hive", "sharedPreferences", "persistence", "database"],
@@ -2641,6 +2980,28 @@ final adults = box.values.where((user) => user.age >= 18).toList();''',
             "SharedPreferences لإعدادات التطبيق والأعلام، SQLite للبيانات العلائقية المعقدة والاستعلامات، Hive/Isar لتخزين الكائنات السريع والتطبيقات التي تعمل دون اتصال أولاً",
       ),
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Local Storage Selection:",
+          value: [
+            "SharedPreferences: Simple key-value (settings, flags)",
+            "SQLite: Relational data, complex queries, large datasets",
+            "Hive: Fast NoSQL, objects storage, offline-first apps",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار التخزين المحلي:",
+          value: [
+            "SharedPreferences: إعدادات بسيطة مفتاح-قيمة",
+            "SQLite: بيانات علائقية، استعلامات معقدة، بيانات كبيرة",
+            "Hive: NoSQL سريع، تخزين كائنات، تطبيقات أوفلاين",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "017",
@@ -2858,6 +3219,28 @@ class UserBloc extends Bloc<UserEvent, UserState> {
             "MVVM/Provider للتطبيقات الصغيرة-المتوسطة، البنية النظيفة للتطبيقات المؤسسية الكبيرة ذات منطق الأعمال المعقد، Feature-first للتطبيقات ذات الميزات المتعددة المتميزة",
       ),
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Architecture Selection:",
+          value: [
+            "MVC: Simple apps, quick prototypes",
+            "MVVM: Medium apps, better testability than MVC",
+            "Clean Architecture: Large enterprise apps, maximum separation",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار البنية:",
+          value: [
+            "MVC: تطبيقات بسيطة، نماذج سريعة",
+            "MVVM: تطبيقات متوسطة، اختبار أفضل من MVC",
+            "Clean Architecture: تطبيقات كبيرة، فصل كامل للطبقات",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "018",
@@ -3041,6 +3424,28 @@ void greet(String name, {String? nickname}) {
             "أساسي لجميع مشاريع Dart/Flutter الحديثة. يمنع فئة كاملة من أخطاء وقت التشغيل.",
       ),
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Null Safety Usage:",
+          value: [
+            "Everywhere: Mandatory for modern Dart/Flutter apps to prevent runtime crashes",
+            "Types: Use non-nullable types by default to ensure data integrity",
+            "Migration: Migrate legacy apps to improve security and performance",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدام أمان العدم:",
+          value: [
+            "في كل مكان: إلزامي لتطبيقات Dart/Flutter الحديثة لمنع تعطل وقت التشغيل",
+            "الأنواع: استخدم الأنواع غير القابلة للعدم افتراضيًا لضمان سلامة البيانات",
+            "الهجرة: رحّل التطبيقات القديمة لتحسين الأمان والأداء",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "019",
@@ -3138,10 +3543,34 @@ void greet(String name, {String? nickname}) {
         "لا يمكن الوصول مباشرة إلى ودجتس Flutter أو حالة الواجهة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Isolates when:",
+          value: [
+            "Heavy computations (JSON parsing, image processing)",
+            "Operations blocking UI thread (>16ms)",
+            "CPU-intensive tasks requiring parallel execution",
+            "Processing large files or datasets",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Isolates عندما:",
+          value: [
+            "حسابات ثقيلة (تحليل JSON، معالجة صور)",
+            "عمليات تعطل واجهة المستخدم",
+            "مهام تحتاج معالجة متوازية",
+            "معالجة ملفات أو بيانات ضخمة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "020",
-    difficulty: .advanced,
+    difficulty: .intermediate,
     categories: [.nativePlatform, .architecture],
     type: .practical,
     tags: ["methodChannel", "platformChannels", "nativeCode", "eventChannel"],
@@ -3233,6 +3662,18 @@ void greet(String name, {String? nickname}) {
         "يتطلب كود خاص بكل منصة",
         "يزيد من تعقيد الصيانة",
         "أمان الأنواع محدود بأنواع codec الرسائل القياسية",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        StringContent(
+          "Use Platform Channels when accessing native device features not available in Flutter (camera, sensors, bluetooth), integrating existing native code, or using platform-specific APIs.",
+        ),
+      ],
+      ar: [
+        StringContent(
+          "استخدم Platform Channels عند الوصول لميزات أصلية غير متوفرة in Flutter (كاميرا، مستشعرات)، أو دمج كود أصلي موجود، أو استخدام APIs خاصة بالمنصة.",
+        ),
       ],
     ),
   ),
@@ -3346,6 +3787,26 @@ void greet(String name, {String? nickname}) {
         "الصريحة: كود إضافي أكثر، تتطلب إدارة يدوية للمتحكم",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Animation Type Selection:",
+          value: [
+            "Implicit: Simple property animations, automatic transitions",
+            "Explicit: Full control, complex coordinated animations, custom timing",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار نوع الحركة:",
+          value: [
+            "Implicit: حركات بسيطة، انتقالات تلقائية",
+            "Explicit: تحكم كامل، حركات معقدة، توقيت مخصص",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "022",
@@ -3445,10 +3906,34 @@ void greet(String name, {String? nickname}) {
         "لا يوجد اختبار نقرات مدمج - يجب التنفيذ يدويًا للتفاعلات",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use CustomPaint when:",
+          value: [
+            "Drawing custom shapes and graphics",
+            "Creating charts, graphs, or data visualizations",
+            "Building unique UI elements not available in widgets",
+            "Performance-critical custom rendering",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم CustomPaint عندما:",
+          value: [
+            "رسم أشكال ورسومات مخصصة",
+            "إنشاء مخططات وتصورات بيانات",
+            "بناء عناصر واجهة فريدة",
+            "عرض مخصص يحتاج أداء عالي",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "023",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .ui],
     type: .practical,
     tags: ["streamBuilder", "futureBuilder", "asyncWidgets", "reactive"],
@@ -3529,9 +4014,6 @@ void greet(String name, {String? nickname}) {
       StrCodeBlock.good(
         "class MessageList extends StatelessWidget {\n  final Stream<List<Message>> messageStream;\n\n  MessageList({required this.messageStream});\n\n  @override\n  Widget build(BuildContext context) {\n    return StreamBuilder<List<Message>>(\n      stream: messageStream,\n      builder: (context, snapshot) {\n        if (snapshot.hasError) {\n          return Text('Error: \${snapshot.error}');\n        }\n        \n        if (!snapshot.hasData) {\n          return CircularProgressIndicator();\n        }\n        \n        final messages = snapshot.data!;\n        return ListView.builder(\n          itemCount: messages.length,\n          itemBuilder: (context, index) => Text(messages[index].text),\n        );\n      },\n    );\n  }\n}",
       ),
-      StrCodeBlock.bad(
-        "// ❌ BAD: Creating Future inside build\nWidget build(BuildContext context) {\n  return FutureBuilder(\n    future: fetchUser(), // Creates new Future on EVERY rebuild!\n    builder: (context, snapshot) => Text('...'),\n  );\n}",
-      ),
     ],
     pros: LocalizedValue(
       en: [
@@ -3557,10 +4039,30 @@ void greet(String name, {String? nickname}) {
         "قد يكون مفرطًا للعمليات غير المتزامنة البسيطة لمرة واحدة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Builder Selection:",
+          value: [
+            "FutureBuilder: One-time async operations (API call, database query)",
+            "StreamBuilder: Continuous data updates (real-time chat, live scores)",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار Builder:",
+          value: [
+            "FutureBuilder: عمليات لمرة واحدة (استدعاء API)",
+            "StreamBuilder: تحديثات مستمرة (دردشة فورية، نتائج مباشرة)",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "024",
-    difficulty: .advanced,
+    difficulty: .intermediate,
     categories: [.modernFeatures, .ui],
     type: .theoretical,
     tags: ["accessibility", "semantics", "screenReader", "a11y"],
@@ -3633,9 +4135,6 @@ void greet(String name, {String? nickname}) {
       StrCodeBlock.good(
         "// Merge semantics for card\nMergeSemantics(\n  child: Card(\n    child: Column(\n      children: [\n        Text('John Doe'),\n        Text('Software Engineer'),\n        // Screen reader announces: \"John Doe, Software Engineer\"\n      ],\n    ),\n  ),\n)",
       ),
-      StrCodeBlock.good(
-        "// Exclude decorative elements\nExcludeSemantics(\n  child: Container(\n    decoration: BoxDecoration(\n      image: DecorationImage(\n        image: AssetImage('assets/background_pattern.png'),\n      ),\n    ),\n  ),\n)",
-      ),
     ],
     pros: LocalizedValue(
       en: [
@@ -3664,7 +4163,7 @@ void greet(String name, {String? nickname}) {
   ),
   InterviewQuestion(
     id: "025",
-    difficulty: .advanced,
+    difficulty: .intermediate,
     categories: [.security],
     type: .practical,
     tags: ["obfuscation", "flutterSecureStorage", "sslPinning", "encryption"],
@@ -3733,12 +4232,6 @@ void greet(String name, {String? nickname}) {
       StrCodeBlock.good(
         "// SSL Pinning with Dio\nimport 'package:dio/dio.dart';\nimport 'package:dio/adapter.dart';\n\nfinal dio = Dio();\n(dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = \n  (client) {\n    client.badCertificateCallback = \n      (X509Certificate cert, String host, int port) {\n        // Verify certificate fingerprint\n        return cert.sha1.toString() == 'expected_sha1_fingerprint';\n      };\n    return client;\n  };",
       ),
-      StrCodeBlock.good(
-        "// Hide sensitive content in app switcher\nclass _MyAppState extends State<MyApp> with WidgetsBindingObserver {\n  bool _isAppInBackground = false;\n\n  @override\n  void initState() {\n    super.initState();\n    WidgetsBinding.instance.addObserver(this);\n  }\n\n  @override\n  void dispose() {\n    WidgetsBinding.instance.removeObserver(this);\n    super.dispose();\n  }\n\n  @override\n  void didChangeAppLifecycleState(AppLifecycleState state) {\n    setState(() {\n      _isAppInBackground = state == AppLifecycleState.paused;\n    });\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return _isAppInBackground\n        ? Container(color: Colors.white) // Hide sensitive content\n        : ActualApp();\n  }\n}",
-      ),
-      StrCodeBlock.bad(
-        "// ❌ BAD: Hardcoded API key\nconst String API_KEY = 'sk_live_1234567890abcdef';\n\n// ❌ BAD: Using SharedPreferences for sensitive data\nfinal prefs = await SharedPreferences.getInstance();\nawait prefs.setString('password', userPassword);",
-      ),
     ],
     pros: LocalizedValue(
       en: [
@@ -3767,7 +4260,7 @@ void greet(String name, {String? nickname}) {
   ),
   InterviewQuestion(
     id: "026",
-    difficulty: .advanced,
+    difficulty: .intermediate,
     categories: [.deployment],
     type: .theoretical,
     tags: ["ciCd", "codemagic", "githubActions", "fastlane", "automation"],
@@ -3951,9 +4444,6 @@ void greet(String name, {String? nickname}) {
       StrCodeBlock.good(
         "// Stack with Positioned\nStack(\n  children: [\n    Container(color: Colors.blue, width: 200, height: 200),\n    Positioned(\n      top: 20,\n      left: 20,\n      child: Icon(Icons.favorite, color: Colors.red),\n    ),\n    Positioned(\n      bottom: 0,\n      right: 0,\n      child: Text('Bottom Right'),\n    ),\n  ],\n)",
       ),
-      StrCodeBlock(
-        "// Column with spacing\nColumn(\n  mainAxisAlignment: MainAxisAlignment.start,\n  crossAxisAlignment: CrossAxisAlignment.stretch,\n  children: [\n    Text('Title'),\n    SizedBox(height: 16), // Spacing\n    Text('Subtitle'),\n    SizedBox(height: 8),\n    ElevatedButton(onPressed: () {}, child: Text('Action')),\n  ],\n)",
-      ),
     ],
     pros: LocalizedValue(
       en: [
@@ -4100,10 +4590,34 @@ void greet(String name, {String? nickname}) {
         "يتطلب إدارة حالة دقيقة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Navigator 2.0 when:",
+          value: [
+            "Need declarative routing and deep linking",
+            "Web app with URL-based navigation",
+            "Complex navigation requirements with state restoration",
+            "Multiple navigation stacks or nested routing",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Navigator 2.0 عندما:",
+          value: [
+            "تحتاج توجيه تصريحي وروابط عميقة",
+            "تطبيق ويب مع تنقل بناءً على URLs",
+            "متطلبات تنقل معقدة مع استعادة الحالة",
+            "عدة أكوام تنقل أو توجيه متداخل",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "029",
-    difficulty: .advanced,
+    difficulty: .expert,
     categories: [.performance, .architecture],
     type: .theoretical,
     tags: ["renderObject", "elements", "widgets", "rendering", "internals"],
@@ -4676,6 +5190,26 @@ void greet(String name, {String? nickname}) {
         "يتطلب فهمًا لمتى يتم استخدام كل نوع",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Widget Type Selection:",
+          value: [
+            "StatelessWidget: Static content, no internal state changes",
+            "StatefulWidget: Dynamic content, responds to user input, has lifecycle",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار نوع الويدجت:",
+          value: [
+            "StatelessWidget: محتوى ثابت، لا تغييرات داخلية",
+            "StatefulWidget: محتوى ديناميكي، يستجيب للمدخلات",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "035",
@@ -4777,10 +5311,32 @@ void greet(String name, {String? nickname}) {
         "يمكن أن يسبب الارتباك إذا أُسيء استخدامه",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Keys when:",
+          value: [
+            "Maintaining state in dynamic lists",
+            "Preserving widget state during reordering",
+            "Distinguishing similar widgets in the tree",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Keys عندما:",
+          value: [
+            "الحفاظ على الحالة في القوائم الديناميكية",
+            "الحفاظ على حالة العنصر عند إعادة الترتيب",
+            "التمييز بين عناصر متشابهة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "036",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .performance],
     type: .theoretical,
     tags: ["intermediate", "flutter", "development", "hotreload"],
@@ -4903,6 +5459,26 @@ void greet(String name, {String? nickname}) {
         "Hot Reload يمكن أن يؤدي أحيانًا إلى حالة غير متسقة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Development Feature Usage:",
+          value: [
+            "Hot Reload: Quick UI changes, preserves app state",
+            "Hot Restart: Reset app state, rebuild from scratch",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدام ميزات التطوير:",
+          value: [
+            "Hot Reload: تغييرات سريعة، يحفظ حالة التطبيق",
+            "Hot Restart: إعادة تعيين الحالة، بناء من الصفر",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "037",
@@ -5012,6 +5588,26 @@ void greet(String name, {String? nickname}) {
         "لتطبيقات بنمط iOS، استخدم CupertinoApp و CupertinoPageScaffold بدلاً من ذلك",
         "يمكن أن تضيف عبئًا إذا لم تكن بحاجة إلى مكونات Material",
         "منحنى تعلم لجميع خصائص Scaffold المتاحة",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Core Widgets Usage:",
+          value: [
+            "MaterialApp: Root widget, Material Design theme, routing",
+            "Scaffold: Basic screen structure (AppBar, Body, FAB, Drawer)",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدام العناصر الأساسية:",
+          value: [
+            "MaterialApp: العنصر الجذر، ثيم Material، التوجيه",
+            "Scaffold: هيكل الشاشة الأساسي (شريط علوي، محتوى، زر عائم)",
+          ],
+        ),
       ],
     ),
   ),
@@ -5124,6 +5720,30 @@ void greet(String name, {String? nickname}) {
         "يتطلب فهم ترتيب التنفيذ",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Lifecycle methods when:",
+          value: [
+            "initState: Initializing controllers or fetching initial data",
+            "didChangeDependencies: Handling layout changes based on MediaQuery or Theme",
+            "build: Defining the widget structure based on current state",
+            "dispose: Cleaning up listeners, timers, and controllers to avoid memory leaks",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم طرق دورة الحياة عندما:",
+          value: [
+            "initState: تهيئة المتحكمات أو جلب البيانات الأولية",
+            "didChangeDependencies: التعامل مع تغييرات التخطيط بناءً على البيانات المستوحاة",
+            "build: تحديد هيكل الودجت بناءً على الحالة الحالية",
+            "dispose: تنظيف المستمعين، المؤقتات، والمتحكمات لتجنب تسرب الذاكرة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "039",
@@ -5224,10 +5844,32 @@ void greet(String name, {String? nickname}) {
         "أكثر تعقيدًا من الميراث البسيط",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Mixins when:",
+          value: [
+            "Reusing code across multiple independent class hierarchies",
+            "Adding optional capabilities to classes (e.g., logging, validation)",
+            "Avoiding the limitations of single inheritance",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Mixins عندما:",
+          value: [
+            "إعادة استخدام الكود عبر فئات غير مترابطة",
+            "إضافة قدرات اختيارية للفئات (مثل السجلات، التحقق)",
+            "تجنب قيود الوراثة الفردية",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "040",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.dartBasics, .modernFeatures],
     type: .theoretical,
     tags: ["intermediate", "dart", "extensions"],
@@ -5324,6 +5966,28 @@ void greet(String name, {String? nickname}) {
         "لا يمكن إضافة حقول مثيل",
         "احتمال حدوث تعارضات في التسمية مع تحديثات المكتبة المستقبلية",
         "يتم حلها بشكل ثابت - لا تعمل مع الأنواع الديناميكية",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use extension methods when:",
+          value: [
+            "Adding utility methods to existing classes (built-in or library)",
+            "Improving code readability and maintainability",
+            "Creating domain-specific helpers for existing types",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم طرق الامتداد عندما:",
+          value: [
+            "إضافة طرق مساعدة إلى الفئات الموجودة (مدمجة أو مكتبة)",
+            "تحسين قابلية قراءة الكود وصيانته",
+            "إنشاء مساعدين خاصين بالمجال للأنواع الموجودة",
+          ],
+        ),
       ],
     ),
   ),
@@ -5450,10 +6114,32 @@ void greet(String name, {String? nickname}) {
         "تحتاج لفهم أي نوع يناسب حالة الاستخدام",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Collection Type Selection:",
+          value: [
+            "List: Ordered, indexed access, allows duplicates",
+            "Set: Unique elements, no duplicates, fast membership test",
+            "Map: Key-value pairs, quick lookup by key",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار نوع المجموعة:",
+          value: [
+            "List: مرتبة، وصول بالفهرس، تسمح بالتكرار",
+            "Set: عناصر فريدة، اختبار انتماء سريع",
+            "Map: أزواج مفتاح-قيمة، بحث سريع",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "042",
-    difficulty: .intermediate,
+    difficulty: .advanced,
     categories: [.solid, .architecture],
     type: .theoretical,
     tags: ["intermediate", "flutter", "architecture", "solid", "principles"],
@@ -5549,10 +6235,32 @@ void greet(String name, {String? nickname}) {
         "قد يضيف كود نموذجي زائد",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Apply SOLID when:",
+          value: [
+            "Building scalable and maintainable Flutter applications",
+            "Working in teams where code consistency is vital",
+            "Simplifying testing and future code updates",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "طبق SOLID عندما:",
+          value: [
+            "بناء تطبيقات فلاتر قابلة للتوسع والصيانة",
+            "العمل في فرق حيث اتساق الكود أمر حيوي",
+            "تبسيط الاختبار وتحديثات الكود المستقبلية",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "043",
-    difficulty: .intermediate,
+    difficulty: .advanced,
     categories: [.designPatterns, .stateManagement],
     type: .theoretical,
     tags: [
@@ -5677,6 +6385,28 @@ class CounterBloc {
         "قد يكون مفرطًا للتطبيقات البسيطة",
         "يتطلب إدارة يدوية للذاكرة (التخلص من المتحكمات)",
         "المزيد من الملفات والفئات للإدارة",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use BLoC when:",
+          value: [
+            "Strict separation of UI and business logic is required",
+            "State needs to be predictable and traceable",
+            "Large apps with complex state dependencies",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم BLoC عندما:",
+          value: [
+            "يكون الفصل الصارم بين الواجهة ومنطق العمل مطلوبًا",
+            "تحتاج الحالة إلى أن تكون قابلة للتنبؤ والتتبع",
+            "تطبيقات كبيرة ذات تبعيات حالة معقدة",
+          ],
+        ),
       ],
     ),
   ),
@@ -5808,6 +6538,28 @@ class CounterDisplay extends StatelessWidget {
         "إدارة يدوية للتخلص من ChangeNotifiers",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Provider when:",
+          value: [
+            "Building small to medium-sized applications",
+            "Flexibility is preferred over strict architectural enforcement",
+            "Needing a simple, boilerplate-free state management solution",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Provider عندما:",
+          value: [
+            "بناء تطبيقات صغيرة إلى متوسطة الحجم",
+            "تفضل المرونة على فرض الأنماط المعمارية الصارمة",
+            "تحتاج حلًا بسيطًا لإدارة الحالة بدون كود تكراري",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "045",
@@ -5935,10 +6687,30 @@ void main() async {
         "Stream: قد يسبب تسرب في الذاكرة إذا لم يتم إلغاء الاشتراكات",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Future vs Stream Selection:",
+          value: [
+            "Future: Single asynchronous result (API call, shared preferences)",
+            "Stream: Continuous sequence of events (sensor data, real-time sync)",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار Future مقابل Stream:",
+          value: [
+            "Future: نتيجة غير متزامنة واحدة (استدعاء API، الإعدادات المفضلة)",
+            "Stream: سلسلة مستمرة من الأحداث (بيانات المستشعرات، المزامنة الفورية)",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "046",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics],
     type: .theoretical,
     tags: ["intermediate", "flutter", "navigation", "navigator"],
@@ -6022,13 +6794,6 @@ Navigator.pushReplacement(
   MaterialPageRoute(builder: (context) => HomeScreen()),
 );
 '''),
-      StrCodeBlock.good(r'''
-// Named routes with push
-Navigator.pushNamed(context, '/details');
-
-// Named routes with pushReplacement
-Navigator.pushReplacementNamed(context, '/home');
-'''),
     ],
     pros: LocalizedValue(
       en: [
@@ -6054,6 +6819,26 @@ Navigator.pushReplacementNamed(context, '/home');
         "push: يمكن أن يجمع العديد من المسارات مستهلكًا الذاكرة إذا لم تتم الإدارة بشكل صحيح",
         "pushReplacement: يفقد حالة الشاشة السابقة بشكل دائم، لا يمكن العودة",
         "يحتاج إلى معالجة يدوية لمكدسات التنقل المعقدة (فكر في popUntil أو pushNamedAndRemoveUntil)",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Push vs PushReplacement Selection:",
+          value: [
+            "Push: Forward navigation where returning to the previous screen is meaningful",
+            "PushReplacement: Transitional screens where the previous state should be discarded",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار Push مقابل PushReplacement:",
+          value: [
+            "Push: التنقل الأمامي حيث تكون العودة للشاشة السابقة ذات معنى",
+            "PushReplacement: الشاشات الانتقالية حيث يجب التخلص من الحالة السابقة",
+          ],
+        ),
       ],
     ),
   ),
@@ -6197,10 +6982,30 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
         "Navigator 1.0: أصعب في إدارة تدفقات التنقل المعقدة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Navigator 1.0 vs 2.0 Selection:",
+          value: [
+            "Navigator 1.0: Small mobile apps, simple linear navigation",
+            "Navigator 2.0: Web apps, deep linking, complex state-driven navigation",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار Navigator 1.0 مقابل 2.0:",
+          value: [
+            "Navigator 1.0: تطبيقات المحمول الصغيرة، التنقل الخطي البسيط",
+            "Navigator 2.0: تطبيقات الويب، الروابط العميقة، التنقل المعقد القائم على الحالة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "048",
-    difficulty: .basic,
+    difficulty: .intermediate,
     categories: [.basic, .flutterBasics],
     type: .theoretical,
     tags: ["basic", "flutter", "widgets", "buildcontext"],
@@ -6322,6 +7127,28 @@ void loadData() async {
         "سوء استخدام context (مثل بعد dispose أو في async بدون فحوصات) يسبب أخطاء",
         "السياق من ودجت مختلف قد لا يحتوي على الودجتس الموروثة المتوقعة",
         "قد يؤدي إلى ارتباك للمبتدئين حول بنية شجرة الودجتس",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Using BuildContext when:",
+          value: [
+            "Accessing Theme/MediaQuery/Localizations",
+            "Performing Navigation or showing SnackBars",
+            "Looking up ancestors in the widget tree",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدام BuildContext عندما:",
+          value: [
+            "الوصول للسمات/بيانات الشاشة/العولمة",
+            "إجراء التنقل أو عرض شرائط الإشعارات",
+            "البحث عن الأسلاف في شجرة الودجتس",
+          ],
+        ),
       ],
     ),
   ),
@@ -6479,10 +7306,32 @@ Future<int> loadData() async {
         "غير مناسب للعمليات البسيطة غير المتزامنة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Isolates when:",
+          value: [
+            "Handling CPU-intensive tasks (image processing, large data parsing)",
+            "Preventing UI jank in performance-critical apps",
+            "Maintaining 60/120 FPS during heavy calculations",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Isolates عندما:",
+          value: [
+            "معالجة المهام المكثفة للمعالج (معالجة الصور، تحليل بيانات ضخمة)",
+            "منع تعثر الواجهة في التطبيقات ذات الأداء الحرج",
+            "الحفاظ على 60/120 إطار في الثانية أثناء الحسابات الثقيلة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "050",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .ui],
     type: .theoretical,
     tags: [
@@ -6594,41 +7443,6 @@ StreamBuilder<int>(
   },
 )
 '''),
-      StrCodeBlock.bad(r'''
-// BAD - Creating Future inside build causes rebuild issues
-FutureBuilder(
-  future: fetchData(), // Creates new Future on every rebuild!
-  builder: (context, snapshot) {
-    // ...
-  },
-)
-
-// GOOD - Store Future in state
-class MyWidget extends StatefulWidget {
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget> {
-  late Future<Data> _dataFuture;
-  
-  @override
-  void initState() {
-    super.initState();
-    _dataFuture = fetchData(); // Create once
-  }
-  
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _dataFuture, // Reuse same Future
-      builder: (context, snapshot) {
-        // ...
-      },
-    );
-  }
-}
-'''),
     ],
     pros: LocalizedValue(
       en: [
@@ -6662,10 +7476,30 @@ class _MyWidgetState extends State<MyWidget> {
         "قد يتطلب منطقًا إضافيًا لمعالجة الأخطاء المعقدة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Future vs Stream Builder Usage:",
+          value: [
+            "FutureBuilder: For single async results (fetching user data)",
+            "StreamBuilder: For continuous updates (chat messages, real-time prices)",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدام FutureBuilder مقابل StreamBuilder:",
+          value: [
+            "FutureBuilder: للنتائج غير المتزامنة الأحادية (جلب بيانات المستخدم)",
+            "StreamBuilder: للتحديثات المستمرة (رسائل الدردشة، الأسعار الفورية)",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "051",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.oop, .dartBasics],
     type: .theoretical,
     tags: ["intermediate", "dart", "oop", "constructor", "factory"],
@@ -6769,46 +7603,6 @@ class Logger {
 final logger1 = Logger();
 final logger2 = Logger();
 print(identical(logger1, logger2)); // true - same instance
-'''),
-      StrCodeBlock.good(r'''
-// Factory constructor - Caching pattern
-class User {
-  final String id;
-  final String name;
-  
-  static final Map<String, User> _cache = {};
-  
-  factory User(String id, String name) {
-    return _cache.putIfAbsent(
-      id,
-      () => User._internal(id, name),
-    );
-  }
-  
-  User._internal(this.id, this.name);
-}
-'''),
-      StrCodeBlock.good(r'''
-// Factory constructor - Returning subtypes
-abstract class Shape {
-  factory Shape(String type) {
-    if (type == 'circle') return Circle();
-    if (type == 'square') return Square();
-    throw ArgumentError('Unknown shape: $type');
-  }
-  
-  void draw();
-}
-
-class Circle implements Shape {
-  @override
-  void draw() => print('Drawing circle');
-}
-
-class Square implements Shape {
-  @override
-  void draw() => print('Drawing square');
-}
 '''),
     ],
     pros: LocalizedValue(
@@ -6949,35 +7743,6 @@ class ApiClient {
   }
 }
 '''),
-      StrCodeBlock.good(r'''
-// Singleton with configuration
-class AppConfig {
-  static final AppConfig _instance = AppConfig._internal();
-  
-  factory AppConfig() => _instance;
-  
-  AppConfig._internal();
-  
-  String apiUrl = '';
-  String apiKey = '';
-  
-  void initialize({required String apiUrl, required String apiKey}) {
-    this.apiUrl = apiUrl;
-    this.apiKey = apiKey;
-  }
-}
-
-// Usage
-void main() {
-  AppConfig().initialize(
-    apiUrl: 'https://api.example.com',
-    apiKey: 'secret',
-  );
-  
-  // Later in app
-  print(AppConfig().apiUrl); // https://api.example.com
-}
-'''),
     ],
     pros: LocalizedValue(
       en: [
@@ -7011,6 +7776,28 @@ void main() {
         "صعب التزييف في الاختبارات",
         "ينتهك مبدأ المسؤولية الواحدة إذا استُخدم بإفراط",
         "قد يسبب مشاكل في سيناريوهات العوازل المتعددة",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Singleton when:",
+          value: [
+            "A single instance is required for a shared resource (Database/API client)",
+            "Managing global configuration or state",
+            "Coordinating access to a shared peripheral",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Singleton عندما:",
+          value: [
+            "يكون مثيل واحد مطلوبًا لمورد مشترك (قاعدة بيانات/عميل API)",
+            "إدارة التكوين أو الحالة العالمية",
+            "تنسيق الوصول إلى طرفية مشتركة",
+          ],
+        ),
       ],
     ),
   ),
@@ -7147,24 +7934,6 @@ class MyWidget extends StatelessWidget {
   }
 }
 '''),
-      StrCodeBlock.good(r'''
-// GOOD - Efficient list with builder
-ListView.builder(
-  itemCount: items.length,
-  itemExtent: 50.0, // Helps with scroll performance
-  itemBuilder: (context, index) {
-    return ListTile(
-      title: Text(items[index]),
-    );
-  },
-)
-'''),
-      StrCodeBlock.good(r'''
-// GOOD - Using RepaintBoundary for expensive widgets
-RepaintBoundary(
-  child: ComplexAnimation(), // Isolates repaints
-)
-'''),
     ],
     pros: LocalizedValue(
       en: [
@@ -7196,6 +7965,28 @@ RepaintBoundary(
         "يجب الموازنة بين التحسين وقابلية قراءة الكود",
         "ليست كل التحسينات تعمل في كل سيناريو",
         "التحليل يتطلب وقتًا وفهمًا للأدوات",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Apply Performance Optimization when:",
+          value: [
+            "Experiencing frame drops (jank) during animations or scrolling",
+            "App startup is slow or uses excessive battery/memory",
+            "Targeting lower-end devices with limited resources",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "طبق تحسين الأداء عندما:",
+          value: [
+            "ملاحظة تساقط الإطارات (تقطيع) أثناء الرسوم المتحركة أو التمرير",
+            "يكون بدء تشغيل التطبيق بطيئًا أو يستهلك الكثير من البطارية/الذاكرة",
+            "استهداف أجهزة منخفضة المواصفات ذات موارد محدودة",
+          ],
+        ),
       ],
     ),
   ),
@@ -7338,10 +8129,32 @@ void main() {
         "Shaders المخصصة قد تحتاج إلى تعديلات عند تبديل المحركات",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Engine Considerations:",
+          value: [
+            "Impeller: Recommended for iOS to eliminate shader jank",
+            "Skia: Proven stability for wide Android device range",
+            "Switching: When specific rendering performance issues are identified",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اعتبارات المحرك:",
+          value: [
+            "Impeller: يوصى به لـ iOS للتخلص من تقطيع الـ shader",
+            "Skia: استقرار مثبت لمجموعة واسعة من أجهزة Android",
+            "التبديل: عند تحديد مشاكل أداء عرض معينة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "055",
-    difficulty: .advanced,
+    difficulty: .intermediate,
     categories: [.flutterBasics, .ui],
     type: .theoretical,
     tags: [
@@ -7474,6 +8287,26 @@ void main() {
         "React Native: عدم اتساق الواجهة بين iOS و Android",
         "React Native: صعوبة تحقيق 60 إطار في الثانية في الرسوم المتحركة المعقدة",
         "React Native: تصحيح الأخطاء قد يكون صعباً مع مشاكل الجسر",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Framework Selection:",
+          value: [
+            "Flutter: For high-performance, custom-branded UIs and consistency",
+            "React Native: For leveraging JS ecosystem and existing web teams",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار إطار العمل:",
+          value: [
+            "Flutter: للواجهات عالية الأداء المخصصة والاتساق الكامل",
+            "React Native: للاستفادة من نظام JS وفرق الويب الموجودة",
+          ],
+        ),
       ],
     ),
   ),
@@ -7635,6 +8468,26 @@ void main() {
         "التكوين: قد يؤدي إلى المزيد من الكود المتكرر",
         "التكوين: وصول غير مباشر لطرق الكائنات المكونة",
         "التكوين: قد يكون مبالغة للتسلسلات الهرمية البسيطة",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Inheritance vs Composition Selection:",
+          value: [
+            "Inheritance: Primary relationship is 'is-a' and stable",
+            "Composition: Relationship is 'has-a' or requires flexibility",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار الوراثة مقابل التكوين:",
+          value: [
+            "الوراثة: العلاقة الأساسية هي 'هو نوع من' ومستقرة",
+            "التكوين: العلاقة هي 'يحتوي على' أو تحتاج لمرونة",
+          ],
+        ),
       ],
     ),
   ),
@@ -7859,6 +8712,28 @@ class ShapeGallery extends StatelessWidget {
         "تصحيح الأخطاء قد يكون أكثر صعوبة مع تنفيذات متعددة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Polymorphism when:",
+          value: [
+            "Building modular systems with interchangeable components",
+            "Handling collections of different objects sharing a common base",
+            "Decoupling high-level logic from specific implementations",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم تعدد الأشكال عندما:",
+          value: [
+            "بناء أنظمة برمجية مع مكونات قابلة للتبديل",
+            "التعامل مع مجموعات من كائنات مختلفة تشترك في أصل واحد",
+            "فصل المنطق عالي المستوى عن تنفيذات محددة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "058",
@@ -7980,11 +8855,35 @@ flutter:
         "YAML syntax can be error-prone (indentation issues)",
         "Large projects may have very long dependency lists",
         "Version conflicts can occur between dependencies",
+        "Not all dependencies on pub.dev are high quality",
       ],
       ar: [
         "صيغة YAML قد تكون عرضة للأخطاء (مشاكل المسافات)",
         "المشاريع الكبيرة قد يكون لها قوائم تبعيات طويلة جدًا",
         "قد تحدث تعارضات في الإصدارات بين التبعيات",
+        "ليست كل التبعيات على pub.dev عالية الجودة",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Modify pubspec.yaml when:",
+          value: [
+            "Adding or updating package dependencies",
+            "Registering local assets or custom fonts",
+            "Changing app version or build number",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "عدل pubspec.yaml عندما:",
+          value: [
+            "إضافة أو تحديث تبعيات الحزم",
+            "تسجيل الأصول المحلية أو الخطوط المخصصة",
+            "تغيير إصدار التطبيق أو رقم البناء",
+          ],
+        ),
       ],
     ),
   ),
@@ -8118,6 +9017,26 @@ CachedNetworkImage(
         "لا يوجد تخزين مؤقت مدمج لصور الشبكة بدون حزم",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Local vs Network Assets Selection:",
+          value: [
+            "Local: Reliable icons, logos, and UI decorations",
+            "Network: Dynamic content, large image collections, user-uploaded data",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار الأصول المحلية مقابل الشبكة:",
+          value: [
+            "المحلية: الأيقونات الموثوقة، الشعارات، وزخارف الواجهة",
+            "الشبكة: المحتوى الديناميكي، مجموعات الصور الكبيرة، بيانات المستخدم",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "060",
@@ -8211,18 +9130,6 @@ void main() async {
   
   runApp(const MyApp());
 }"""),
-      StrCodeBlock.good("""// Main with error handling
-void main() {
-  FlutterError.onError = (details) {
-    print('Flutter error: \${details.exception}');
-  };
-  
-  runZonedGuarded(() {
-    runApp(const MyApp());
-  }, (error, stack) {
-    print('Dart error: \$error');
-  });
-}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -8248,6 +9155,28 @@ void main() {
         "قد تصبح مزدحمة مع الكثير من التهيئة",
         "العمليات غير المتزامنة في main قد تؤخر بدء التطبيق",
         "ليس واضحًا أين تضع بعض كود التهيئة",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use main() for:",
+          value: [
+            "Starting the Flutter application",
+            "One-time global service initialization",
+            "Configuring app-wide error reporters",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم main() لـ:",
+          value: [
+            "بدء تشغيل تطبيق فلاتر",
+            "تهيئة الخدمات العالمية لمرة واحدة",
+            "تكوين مبلّغي أخطاء شاملين للتطبيق",
+          ],
+        ),
       ],
     ),
   ),
@@ -8395,6 +9324,26 @@ Future<void> pickImage() async {
         "الإضافات تزيد حجم التطبيق أكثر من الحزم النقية",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Package vs Plugin Selection:",
+          value: [
+            "Package: Cross-platform logic, utilities, and UI widgets",
+            "Plugin: Hardware access (camera, GPS) and platform services (Firebase)",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار الحزمة مقابل الإضافة:",
+          value: [
+            "الحزمة: منطق عابر للمنصات، أدوات مساعدة، وودجتس واجهة",
+            "الإضافة: الوصول للعتاد (كاميرا، GPS) وخدمات المنصة (Firebase)",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "062",
@@ -8482,11 +9431,6 @@ void main() async {
   
   runApp(const MyApp());
 }"""),
-      StrCodeBlock.good("""// Not needed when main is synchronous
-void main() {
-  // No ensureInitialized needed
-  runApp(const MyApp());
-}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -8512,6 +9456,28 @@ void main() {
         "يضيف كود متكرر لدالة main()",
         "سهل النسيان عند الحاجة، مما يسبب أخطاء وقت التشغيل",
         "ليس بديهيًا لماذا ضروري للمبتدئين",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Ensure Initialized when:",
+          value: [
+            "Calling Firebase.initializeApp() in main",
+            "Setting up SharedPreferences before runApp",
+            "Configuring initial app orientation or theme in main",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اضمن التهيئة عندما:",
+          value: [
+            "استدعاء Firebase.initializeApp() في main",
+            "إعداد SharedPreferences قبل runApp",
+            "تكوين اتجاه التطبيق أو السمة الأولية في main",
+          ],
+        ),
       ],
     ),
   ),
@@ -8623,17 +9589,6 @@ Container(
     ),
   ),
 )"""),
-      StrCodeBlock.bad("""// BAD - Unnecessary Container for spacing
-Container(
-  width: 20,
-  height: 20,
-)
-
-// GOOD - Use SizedBox instead
-const SizedBox(
-  width: 20,
-  height: 20,
-)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -8661,6 +9616,28 @@ const SizedBox(
         "تأثير على الأداء إذا استُخدم بشكل مفرط",
         "Container فارغ يهدر الموارد",
         "قد يؤدي إلى أشجار ودجتس معقدة دون داعٍ",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Container for:",
+          value: [
+            "Quickly applying multiple styling properties (padding, decoration, margin)",
+            "Creating simple colored or decorated dividers",
+            "Applying constraints to a single child",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Container لـ:",
+          value: [
+            "تطبيق خصائص تنسيق متعددة بسرعة (حشو، زخرفة، هوامش)",
+            "إنشاء فواصل ملونة أو مزخرفة بسيطة",
+            "تطبيق قيود على طفل واحد",
+          ],
+        ),
       ],
     ),
   ),
@@ -8756,20 +9733,6 @@ Icon(Icons.star) // Will rebuild unnecessarily
 String name = 'John';
 const Text(name) // Error: not a constant expression
 """),
-      StrCodeBlock.good("""// Performance comparison
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Text('This never rebuilds'), // const
-        Text('This rebuilds every time'), // non-const
-      ],
-    );
-  }
-}"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -8799,6 +9762,28 @@ class MyApp extends StatelessWidget {
         "تتطلب أن تكون جميع معاملات الباني const",
         "قد تجعل الكود أكثر تفصيلاً مع كلمة 'const' في كل مكان",
         "سهل النسيان وتحتاج قواعد lint للتذكير",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Const when:",
+          value: [
+            "The widget and its children are static",
+            "Values are known at compile-time",
+            "Optimizing rebuild performance is a priority",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Const عندما:",
+          value: [
+            "تكون الودجت وأطفالها ثابتة",
+            "القيم معروفة في وقت الترجمة",
+            "تكون أولوية تحسين أداء إعادة البناء قائمة",
+          ],
+        ),
       ],
     ),
   ),
@@ -8887,19 +9872,6 @@ SafeArea(
     child: Text('Content'),
   ),
 )"""),
-      StrCodeBlock.bad("""// BAD - Without SafeArea on notched devices
-Container(
-  color: Colors.blue,
-  child: Text('This text might be hidden by notch'),
-)
-
-// GOOD - With SafeArea
-SafeArea(
-  child: Container(
-    color: Colors.blue,
-    child: Text('This text is safe from notch'),
-  ),
-)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -8927,10 +9899,32 @@ SafeArea(
         "قد يتعارض مع التخطيطات المخصصة التي تتطلب تصميم من حافة لحافة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use SafeArea when:",
+          value: [
+            "Building pages without a standard AppBar",
+            "Content overlaps with the device's notch or status bar",
+            "Ensuring interactive elements avoid the home indicator",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم SafeArea عندما:",
+          value: [
+            "بناء صفحات بدون AppBar قياسي",
+            "يتداخل المحتوى مع ثقب الكاميرا أو شريط الحالة",
+            "ضمان تجنب العناصر التفاعلية لمؤشر الصفحة الرئيسية",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "066",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .ui],
     type: .practical,
     tags: ["intermediate", "dialog", "navigation", "fullscreen"],
@@ -9072,6 +10066,28 @@ class CreateItemScreen extends StatelessWidget {
         "أكثر تعقيدًا من مربعات الحوار البسيطة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Full-screen Dialogs for:",
+          value: [
+            "Complex data entry (e.g., creating a new calendar event)",
+            "Stand-alone tasks that require focus",
+            "Editor interfaces with multiple options",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم مربعات الحوار بملء الشاشة لـ:",
+          value: [
+            "إدخال البيانات المعقدة (مثل إنشاء حدث تقويم جديد)",
+            "المهام القائمة بذاتها التي تتطلب تركيزًا",
+            "واجهات المحرر ذات الخيارات المتعددة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "067",
@@ -9186,24 +10202,6 @@ Row(
     const Text('C'),
   ],
 )"""),
-      StrCodeBlock.good("""// Comparison
-Column(
-  children: [
-    // Using Expanded with content
-    Expanded(
-      child: Container(color: Colors.red),
-    ),
-    
-    // Using Spacer (no content)
-    const Spacer(),
-    
-    // Using Expanded with flex
-    Expanded(
-      flex: 2,
-      child: Container(color: Colors.blue),
-    ),
-  ],
-)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -9231,6 +10229,26 @@ Column(
         "قد يسبب تجاوز إذا حُسب flex الإجمالي بشكل خاطئ",
         "Spacer يضيف عبء ودجت لمساحة فارغة",
         "يتطلب فهم نظام flex",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Expanded vs Spacer Selection:",
+          value: [
+            "Expanded: To make a child widget stretch and fill space",
+            "Spacer: To create empty, flexible gaps between widgets",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختيار Expanded مقابل Spacer:",
+          value: [
+            "Expanded: لجعل ودجت طفل يمتد ويملأ المساحة",
+            "Spacer: لإنشاء فجوات فارغة مرنة بين الودجتس",
+          ],
+        ),
       ],
     ),
   ),
@@ -9346,6 +10364,28 @@ AspectRatio(
         "قد لا يناسب تمامًا جميع قيود الوالد",
         "قد يسبب تحجيم غير متوقع إذا تعارضت قيود الوالد",
         "يتطلب حساب يدوي لنسبة الأبعاد",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use AspectRatio for:",
+          value: [
+            "Video players and image previews",
+            "Maintaining circular or square shapes in grid layouts",
+            "Responsive media content",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم AspectRatio لـ:",
+          value: [
+            "مشغلات الفيديو ومعاينات الصور",
+            "الحفاظ على أشكال دائرية أو مربعة في تخطيطات الشبكة",
+            "محتوى الوسائط المتجاوب",
+          ],
+        ),
       ],
     ),
   ),
@@ -9470,20 +10510,6 @@ IntrinsicWidth(
 )
 // All buttons will be as wide as the widest one
 """),
-      StrCodeBlock.bad("""// BAD - Using in a list (performance issue)
-ListView.builder(
-  itemCount: 1000,
-  itemBuilder: (context, index) {
-    return IntrinsicHeight( // BAD: Expensive in scrolling list
-      child: Row(
-        children: [
-          Text('Item \$index'),
-          // ...
-        ],
-      ),
-    );
-  },
-)"""),
     ],
     pros: LocalizedValue(
       en: [
@@ -9509,6 +10535,28 @@ ListView.builder(
         "يجب تجنبها في القوائم أو الودجتس المعاد بناؤها بشكل متكرر",
         "غالبًا توجد بدائل أبسط",
         "قد تسبب مشاكل أداء إذا استُخدمت بإفراط",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Intrinsic widgets when:",
+          value: [
+            "Creating side-by-side buttons of uniform width",
+            "Row items must match the height of the tallest item",
+            "No other layout solution (Expanded/Constraints) achieves the goal",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم ودجتس Intrinsic عندما:",
+          value: [
+            "إنشاء أزرار متجاورة بعرض موحد",
+            "يجب أن تطابق عناصر الصف ارتفاع أطول عنصر",
+            "لا يوجد حل تخطيط آخر يحقق الهدف",
+          ],
+        ),
       ],
     ),
   ),
@@ -9652,6 +10700,28 @@ SingleChildScrollView(
         "يستهلك ذاكرة للطفل بالكامل حتى لو لم يكن مرئيًا",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use SingleChildScrollView for:",
+          value: [
+            "Scrollable forms and detail pages",
+            "Preventing overflow on small screen devices",
+            "Modal sheets with variable content height",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم SingleChildScrollView لـ:",
+          value: [
+            "النماذج القابلة للتمرير وصفحات التفاصيل",
+            "منع التجاوز على الأجهزة ذات الشاشات الصغيرة",
+            "الصفائح النموذجية ذات ارتفاع المحتوى المتغير",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "071",
@@ -9790,6 +10860,30 @@ IconButton(
         "قد يكون محيرًا للمبتدئين أيهما يُستخدم",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Handle taps when:",
+          value: [
+            "Creating custom interactive widgets",
+            "Adding Material ripple effects to containers",
+            "Implementing standard button actions",
+            "Detecting specific gestures like long press or double tap",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "تعامل مع النقرات عندما:",
+          value: [
+            "إنشاء ودجتس تفاعلية مخصصة",
+            "إضافة تأثيرات تموج Material إلى الحاويات",
+            "تنفيذ إجراءات الأزرار القياسية",
+            "اكتشاف إيماءات معينة مثل الضغط الطويل أو النقر المزدوج",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "072",
@@ -9923,6 +11017,30 @@ AppBar(
         "ارتفاع ثابت - غير مرن افتراضيًا",
         "Material Design فقط - استخدم CupertinoNavigationBar لنمط iOS",
         "قد يبدو غير مناسب في التطبيقات المصممة بشكل مخصص",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use AppBar when:",
+          value: [
+            "Providing a screen title and consistent navigation",
+            "Adding action buttons to the top of the screen",
+            "Implementing a standard Material Design look",
+            "Integrating with Scaffold to automatically handle the drawer or back button",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم AppBar عندما:",
+          value: [
+            "توفير عنوان للشاشة وتنقل متسق",
+            "إضافة أزرار إجراءات في أعلى الشاشة",
+            "تنفيذ مظهر Material Design القياسي",
+            "التكامل مع Scaffold للتعامل تلقائيًا مع الدرج أو زر الرجوع",
+          ],
+        ),
       ],
     ),
   ),
@@ -10066,10 +11184,32 @@ CupertinoSwitch(
         "تحتاج للتعامل مع فروقات المنصة يدويًا",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use CupertinoApp when:",
+          value: [
+            "Building an app specifically for iOS users",
+            "Targeting a strict iOS Human Interface look and feel",
+            "Developing platform-specific subtrees for a consistent iOS experience",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم CupertinoApp عندما:",
+          value: [
+            "بناء تطبيق مخصص لمستخدمي iOS",
+            "استهداف مظهر وشعور iOS Human Interface الصارم",
+            "تطوير أشجار فرعية خاصة بالمنصة لتجربة iOS متسقة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "074",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .ui],
     type: .theoretical,
     tags: ["intermediate", "tabs", "tabcontroller", "navigation"],
@@ -10190,6 +11330,28 @@ TabBar(
         "جميع عروض علامات التبويب تُبنى مرة واحدة (ليست محملة كسولة)",
         "تخصيص محدود مقارنة بـ TabController المخصص",
         "قد يكون مكثفًا للذاكرة مع العديد من علامات التبويب المعقدة",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use DefaultTabController when:",
+          value: [
+            "Implementing simple tabbed navigation within a screen",
+            "Syncing a TabBar with a TabBarView automatically",
+            "You don't need fine-grained control over the tab switching process",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم DefaultTabController عندما:",
+          value: [
+            "تنفيذ تنقل بسيط بعلامات التبويب داخل الشاشة",
+            "مزامنة TabBar مع TabBarView تلقائيًا",
+            "لا تحتاج لسيطرة دقيقة على عملية تبديل علامات التبويب",
+          ],
+        ),
       ],
     ),
   ),
@@ -10341,10 +11503,32 @@ const Text(
         "الخطوط المخصصة تزيد حجم التطبيق",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Style text when:",
+          value: [
+            "Defining the visual appearance of individual Text widgets",
+            "Applying consistent typography across the application via themes",
+            "Modifying specific properties like color, weight, or spacing for emphasis",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "نسق النص عندما:",
+          value: [
+            "تعريف المظهر المرئي لودجتس Text الفردية",
+            "تطبيق طباعة متسقة عبر التطبيق من خلال السمات",
+            "تعديل خصائص معينة مثل اللون أو الوزن أو التباعد للتأكيد",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "076",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .ui],
     type: .theoretical,
     tags: ["intermediate", "theme", "styling", "design"],
@@ -10480,6 +11664,28 @@ Theme(
         "قد يكون معقدًا في الإعداد الأولي",
         "تجاوز السمات قد يؤدي إلى عدم اتساق",
         "كائنات ThemeData الكبيرة قد يصعب صيانتها",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use ThemeData when:",
+          value: [
+            "Establishing a global design system for the entire app",
+            "Implementing Dark/Light mode switching",
+            "Centralizing color palettes and typography for better maintainability",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم ThemeData عندما:",
+          value: [
+            "إنشاء نظام تصميم عالمي للتطبيق بأكمله",
+            "تنفيذ خيار التبديل بين الوضع الداكن والفاتح",
+            "مركزية لوحات الألوان والطباعة لتحسين قابلية الصيانة",
+          ],
+        ),
       ],
     ),
   ),
@@ -10639,6 +11845,28 @@ Scaffold(
         "غير مناسب كتنقل أساسي لعناصر قليلة جدًا",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Drawer when:",
+          value: [
+            "Your app has many top-level destinations (more than 5)",
+            "Providing secondary navigation items like settings or profile",
+            "Storing account switching or branding information",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Drawer عندما:",
+          value: [
+            "يحتوي تطبيقك على العديد من الوجهات الرئيسية (أكثر من 5)",
+            "توفير عناصر تنقل ثانوية مثل الإعدادات أو الملف الشخصي",
+            "تخزين معلومات تبديل الحساب أو العلامة التجارية",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "078",
@@ -10765,6 +11993,28 @@ Scaffold(
         "يجب أن يمثل إجراءً واحدًا فقط",
         "غير مناسب للإجراءات الثانوية أو الثلاثية",
         "قد لا يناسب جميع أنظمة التصميم",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use FloatingActionButton when:",
+          value: [
+            "Promoting the most important, primary action on a screen",
+            "Providing quick access to a high-frequency task (e.g., 'Compose', 'Add')",
+            "Following Material Design principles for a central UI action",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم FloatingActionButton عندما:",
+          value: [
+            "الترويج لأهم إجراء أساسي على الشاشة",
+            "توفير وصول سريع لمهمة تتكرر كثيرًا (مثل 'إنشاء'، 'إضافة')",
+            "اتباع مبادئ Material Design لإجراء مركزي في واجهة المستخدم",
+          ],
+        ),
       ],
     ),
   ),
@@ -10899,10 +12149,32 @@ ScaffoldMessenger.of(context).showSnackBar(
         "مساحة محدودة للمحتوى",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use SnackBar when:",
+          value: [
+            "Confirming a user action (e.g., 'Message archived')",
+            "Providing lightweight, temporary feedback about an operation",
+            "Informing users of non-critical status changes (e.g., 'Back online')",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم SnackBar عندما:",
+          value: [
+            "تأكيد إجراء قام به المستخدم (مثل 'تمت أرشفة الرسالة')",
+            "توفير ملاحظات مؤقتة وخفيفة حول عملية ما",
+            "إعلام المستخدمين بتغييرات الحالة غير الحرجة (مثل 'عبر الإنترنت الآن')",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "080",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .ui],
     type: .theoretical,
     tags: ["intermediate", "wrap", "layout", "responsive"],
@@ -11037,6 +12309,28 @@ Wrap(
         "غير مناسب عندما يكون التخطيط الدقيق مطلوبًا",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Wrap when:",
+          value: [
+            "Displaying a collection of items (chips, tags) that should wrap to new lines",
+            "Creating responsive layouts without complex calculations",
+            "You have dynamic content that might overflow a Row or Column",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Wrap عندما:",
+          value: [
+            "عرض مجموعة من العناصر (chips، tags) التي يجب أن تلتف إلى سطور جديدة",
+            "إنشاء تخطيطات متجاوبة دون حسابات معقدة",
+            "لديك محتوى ديناميكي قد يتجاوز Row أو Column",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "081",
@@ -11165,6 +12459,28 @@ AnimatedOpacity(
         "الودجت لا يزال يشغل مساحة حتى عندما يكون غير مرئي",
         "غير مناسب للتغييرات المتكررة أو القوائم",
         "توجد بدائل أفضل (Color.withOpacity، AnimatedOpacity)",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Opacity when:",
+          value: [
+            "Changing the transparency of any widget to values between 0.0 and 1.0",
+            "Making complex UI elements partially transparent for visual effects",
+            "Maintaining the layout space of a widget while making it invisible",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Opacity عندما:",
+          value: [
+            "تغيير شفافية أي ودجت إلى قيم بين 0.0 و 1.0",
+            "جعل عناصر واجهة المستخدم المعقدة شفافة جزئيًا للتأثيرات البصرية",
+            "الحفاظ على مساحة تخطيط الودجت مع جعله غير مرئي",
+          ],
+        ),
       ],
     ),
   ),
@@ -11307,10 +12623,32 @@ ClipRRect(
         "يضيف طبقة ودجت إضافية",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use ClipRRect when:",
+          value: [
+            "Creating rounded corners on rectangular widgets (especially images)",
+            "Implementing a specific radius for each corner of a container",
+            "Clipping descendants that might overflow a rounded container",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم ClipRRect عندما:",
+          value: [
+            "إنشاء زوايا مستديرة على ودجتس مستطيلة (خاصة الصور)",
+            "تنفيذ نصف قطر محدد لكل زاوية من زوايا الحاوية",
+            "قص الودجتس التابعة التي قد تتجاوز حاوية مستديرة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "083",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .ui],
     type: .practical,
     tags: ["intermediate", "richtext", "textspan", "styling"],
@@ -11479,6 +12817,28 @@ RichText(
         "يتطلب فهم هيكل TextSpan",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use RichText when:",
+          value: [
+            "Mixing multiple styles (colors, fonts, sizes) in a single paragraph",
+            "Adding clickable links or spans within a text block",
+            "Creating formatted strings that require high fidelity over standard Text widgets",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم RichText عندما:",
+          value: [
+            "مزج أنماط متعددة (ألوان، خطوط، أحجام) في فقرة واحدة",
+            "إضافة روابط أو أجزاء قابلة للنقر داخل كتلة نصية",
+            "إنشاء سلاسل نصية منسقة تتطلب دقة عالية تتجاوز ودجتس Text القياسية",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "084",
@@ -11627,10 +12987,32 @@ LayoutBuilder(
         "قد يُعاد بناؤه بشكل متكرر إذا تغيرت القيود كثيرًا",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use LayoutBuilder when:",
+          value: [
+            "Implementing truly responsive layouts that adapt based on parent width/height",
+            "Creating adaptive widgets that show different UIs on mobile vs tablet",
+            "Adjusting specific properties like column counts based on available space",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم LayoutBuilder عندما:",
+          value: [
+            "تنفيذ تخطيطات متجاوبة حقًا تتكيف بناءً على عرض/ارتفاع الأب",
+            "إنشاء ودجتس تكيفية تعرض واجهات مستخدم مختلفة على الهاتف مقابل الجهاز اللوحي",
+            "تعديل خصائص معينة مثل عدد الأعمدة بناءً على المساحة المتاحة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "085",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .ui, .performance],
     type: .theoretical,
     tags: ["intermediate", "inspector", "debugging", "devtools"],
@@ -11753,6 +13135,28 @@ MaterialApp(
         "منحنى تعلم للمبتدئين",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Flutter Inspector when:",
+          value: [
+            "Debugging layout issues and understanding widget bounds",
+            "Identifying performance bottlenecks and unnecessary rebuilds",
+            "Exploring the widget tree structure and property values",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Flutter Inspector عندما:",
+          value: [
+            "تصحيح مشاكل التخطيط وفهم حدود الودجت",
+            "تحديد اختناقات الأداء وإعادات البناء غير الضرورية",
+            "استكشاف هيكل شجرة الودجتس وقيم الخصائص",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "086",
@@ -11858,20 +13262,42 @@ Widget build(BuildContext context) {
     ),
     cons: LocalizedValue(
       en: [
-        "Debug: Slow performance, large size, not for production",
-        "Profile: No hot reload, harder to debug",
-        "Release: No debugging, can't test development features",
+        "Debug mode is slow",
+        "Release mode can't be debugged",
+        "Performance testing must only be done in Profile/Release mode",
       ],
       ar: [
-        "Debug: أداء بطيء، حجم كبير، ليس للإنتاج",
-        "Profile: لا إعادة تحميل سريع، أصعب للتصحيح",
-        "Release: لا تصحيح، لا يمكن اختبار ميزات التطوير",
+        "وضع التصحيح بطيء",
+        "وضع الإصدار لا يمكن تصحيحه",
+        "يجب إجراء اختبار الأداء فقط في وضع الملف الشخصي أو الإصدار",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Understand build modes when:",
+          value: [
+            "Developing and debugging logic (Debug mode)",
+            "Testing application performance (Profile mode)",
+            "Deploying the final application to users (Release mode)",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "افهم أوضاع البناء عندما:",
+          value: [
+            "تطوير وتصحيح المنطق (وضع Debug)",
+            "اختبار أداء التطبيق (وضع Profile)",
+            "نشر التطبيق النهائي للمستخدمين (وضع Release)",
+          ],
+        ),
       ],
     ),
   ),
   InterviewQuestion(
     id: "087",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .ui],
     type: .practical,
     tags: ["intermediate", "lifecycle", "initstate", "statefulwidget"],
@@ -12006,14 +13432,36 @@ class _MyWidgetState extends State<MyWidget> {
     ),
     cons: LocalizedValue(
       en: [
-        "Cannot use BuildContext to access inherited widgets",
-        "setState has no effect here",
-        "Called only once - won't react to widget updates",
+        "Only called once - can't rely on it for value updates",
+        "Too much logic here can slow down app start",
+        "BuildContext might not be fully available for some operations",
       ],
       ar: [
-        "لا يمكن استخدام BuildContext للوصول إلى ودجتس موروثة",
-        "setState لا تأثير لها هنا",
-        "تُستدعى مرة واحدة فقط - لن تتفاعل مع تحديثات الودجت",
+        "تُستدعى مرة واحدة فقط - لا يمكن الاعتماد عليها لتحديث القيم",
+        "الكثير من المنطق هنا قد يبطئ بدء تشغيل التطبيق",
+        "قد لا يكون BuildContext متاحًا بالكامل لبعض العمليات",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use initState when:",
+          value: [
+            "Initializing variables that depend on the widget's location in the tree",
+            "Subscribing to Streams or base-level ChangeNotifiers",
+            "Starting animations or setting up controllers",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم initState عندما:",
+          value: [
+            "تهيئة المتغيرات التي تعتمد على موقع الودجت في الشجرة",
+            "الاشتراك في Streams أو ChangeNotifiers الأساسية",
+            "بدء الرسوم المتحركة أو إعداد وحدات التحكم",
+          ],
+        ),
       ],
     ),
   ),
@@ -12212,20 +13660,42 @@ class _AnimatedBoxState extends State<AnimatedBox>
     ),
     cons: LocalizedValue(
       en: [
-        "Can be called frequently if parent rebuilds often",
-        "Need careful comparison to avoid unnecessary work",
-        "Can cause performance issues if not optimized",
+        "Can be called frequently",
+        "Logic here must be efficient",
+        "Often forgotten by developers leading to bugs",
       ],
       ar: [
-        "قد تُستدعى بشكل متكرر إذا أعاد الوالد البناء كثيرًا",
-        "تحتاج مقارنة دقيقة لتجنب العمل غير الضروري",
-        "قد تسبب مشاكل أداء إذا لم تُحسّن",
+        "قد تُستدعى بشكل متكرر",
+        "يجب أن يكون المنطق هنا فعالاً",
+        "غالبًا ما ينساه المطورون مما يؤدي إلى أخطاء",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use didUpdateWidget when:",
+          value: [
+            "Updating internal state when the parent widget changes its configuration",
+            "Restarting animations or re-fetching data based on new widget properties",
+            "Comparing old vs new widget fields to decide whether to trigger side effects",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم didUpdateWidget عندما:",
+          value: [
+            "تحديث الحالة الداخلية عندما يغير الودجت الأب تكوينه",
+            "إعادة بدء الرسوم المتحركة أو إعادة جلب البيانات بناءً على خصائص الودجت الجديدة",
+            "مقارنة حقول الودجت القديمة مقابل الجديدة لتقرير ما إذا كان سيتم تشغيل آثار جانبية",
+          ],
+        ),
       ],
     ),
   ),
   InterviewQuestion(
     id: "089",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .ui, .performance],
     type: .practical,
     tags: ["intermediate", "lifecycle", "dispose", "cleanup", "memory"],
@@ -12399,14 +13869,36 @@ class _BadWidgetState extends State<BadWidget> {
     ),
     cons: LocalizedValue(
       en: [
-        "Easy to forget (causes memory leaks)",
-        "Must remember to dispose every resource",
-        "No compile-time errors if forgotten",
+        "Failure to call leads to memory leaks",
+        "Once disposed, the state cannot be used again",
+        "Must be careful not to call setState after dispose",
       ],
       ar: [
-        "سهل النسيان (يسبب تسريبات ذاكرة)",
-        "يجب تذكر التخلص من كل مورد",
-        "لا توجد أخطاء وقت الترجمة إذا نُسي",
+        "الفشل في استدعائها يؤدي إلى تسرب الذاكرة",
+        "بمجرد التخلص منها، لا يمكن استخدام الحالة مرة أخرى",
+        "يجب الحذر من عدم استدعاء setState بعد dispose",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use dispose when:",
+          value: [
+            "Canceling active Stream subscriptions",
+            "Closing AnimationControllers or VideoControllers",
+            "Cleaning up any listeners or resources to prevent memory leaks",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم dispose عندما:",
+          value: [
+            "إلغاء اشتراكات Streams النشطة",
+            "إغلاق AnimationControllers أو VideoControllers",
+            "تنظيف أي مستمعين أو موارد لمنع تسرب الذاكرة",
+          ],
+        ),
       ],
     ),
   ),
@@ -12564,6 +14056,28 @@ Future<String> getDataAsync() async {
       ar: [
         "المتزامن: يحجب التنفيذ، قد يجمد واجهة المستخدم",
         "غير المتزامن: أكثر تعقيدًا، أصعب للتصحيح، تعقيد معالجة الأخطاء",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use asynchronous programming when:",
+          value: [
+            "Performing I/O operations (network requests, file access, database queries)",
+            "Running long-running computations that would otherwise block the UI",
+            "Handling user input events that might take time to process",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم البرمجة غير المتزامنة عندما:",
+          value: [
+            "إجراء عمليات الإدخال/الإخراج (طلبات الشبكة، الوصول إلى الملفات، استعلامات قاعدة البيانات)",
+            "تشغيل عمليات حسابية طويلة الأمد قد تحجب واجهة المستخدم",
+            "التعامل مع أحداث إدخال المستخدم التي قد تستغرق وقتًا للمعالجة",
+          ],
+        ),
       ],
     ),
   ),
@@ -12746,6 +14260,28 @@ class _DataWidgetState extends State<DataWidget> {
         "قد يجعل الكود أكثر تفصيلاً",
         "سهل نسيان معالجة الأخطاء",
         "catchError لا يلتقط جميع أنواع الأخطاء",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Handle Future errors when:",
+          value: [
+            "Making network requests that might fail (e.g., no internet, server error)",
+            "Reading/writing files that might not exist or have permission issues",
+            "Parsing data that might be malformed",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "تعامل مع أخطاء Future عندما:",
+          value: [
+            "إجراء طلبات الشبكة التي قد تفشل (مثل، لا يوجد إنترنت، خطأ في الخادم)",
+            "قراءة/كتابة الملفات التي قد لا تكون موجودة أو بها مشاكل في الأذونات",
+            "تحليل البيانات التي قد تكون مشوهة",
+          ],
+        ),
       ],
     ),
   ),
@@ -12960,6 +14496,28 @@ class _SearchWidgetState extends State<SearchWidget> {
         "قد يكون مبالغة للعمليات غير المتزامنة البسيطة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Streams when:",
+          value: [
+            "Receiving multiple data points over time (e.g., location updates)",
+            "Handling real-time data from WebSockets or Firebase",
+            "Building reactive UIs that respond to continuous event flows",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Streams عندما:",
+          value: [
+            "تلقي نقاط بيانات متعددة بمرور الوقت (مثل تحديثات الموقع)",
+            "التعامل مع البيانات في الوقت الفعلي من WebSockets أو Firebase",
+            "بناء واجهات مستخدم تفاعلية تستجيب لتدفقات الأحداث المستمرة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "093",
@@ -13158,10 +14716,32 @@ Future<void> navigateAndGetResult(BuildContext context) async {
         "أصعب لإدارة تدفقات تنقل معقدة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Navigator push/pop when:",
+          value: [
+            "Navigating between simple screens in a small application",
+            "Returning data from a modal or detail screen back to the caller",
+            "Performing direct, imperative navigation without pre-defined routes",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Navigator push/pop عندما:",
+          value: [
+            "التنقل بين شاشات بسيطة في تطبيق صغير",
+            "إعادة البيانات من شاشة منبثقة أو شاشة تفاصيل إلى المستدعي",
+            "إجراء تنقل مباشر وأمري بدون مسارات محددة مسبقًا",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "094",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics],
     type: .practical,
     tags: ["intermediate", "navigation", "routes", "namedroutes"],
@@ -13361,6 +14941,28 @@ class MyApp extends StatelessWidget {
         "يجب تحويل المعاملات للنوع الصحيح",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Named Routes when:",
+          value: [
+            "Managing navigation in a large app with many screens",
+            "Implementing deep linking or URL-based routing",
+            "Keeping navigation logic centralized and maintainable",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Named Routes عندما:",
+          value: [
+            "إدارة التنقل في تطبيق كبير مع العديد من الشاشات",
+            "تنفيذ الربط العميق أو التوجيه القائم على URL",
+            "الحفاظ على منطق التنقل مركزيًا وقابلاً للصيانة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "095",
@@ -13543,10 +15145,32 @@ Navigator.pushNamed(
         "غير آمن من حيث النوع بدون غلاف مخصص",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use ModalRoute when:",
+          value: [
+            "Retrieving arguments passed to a screen during navigation",
+            "Accessing specific settings of the current route inside the widget tree",
+            "Determining whether the current screen is the first/root route",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم ModalRoute عندما:",
+          value: [
+            "استرجاع المعاملات الممررة إلى شاشة أثناء التنقل",
+            "الوصول إلى إعدادات معينة للمسار الحالي داخل شجرة الودجت",
+            "تحديد ما إذا كانت الشاشة الحالية هي المسار الأول/الجذر",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "096",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics],
     type: .practical,
     tags: ["intermediate", "navigation", "maybepop", "conditionalnavigation"],
@@ -13724,6 +15348,28 @@ class CustomBackButton extends StatelessWidget {
         "يعيد Future - تحتاج للانتظار",
         "أكثر تعقيدًا قليلاً من pop البسيط",
         "سلوك أقل وضوحًا من pop للمبتدئين",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use maybePop when:",
+          value: [
+            "Implementing custom drawer or back-button logic",
+            "Safely attempting to go back without risking a crash at the root screen",
+            "Coordinating navigation with dialogs or confirmation prompts",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم maybePop عندما:",
+          value: [
+            "تنفيذ منطق درج أو زر رجوع مخصص",
+            "محاولة العودة للخلف بأمان دون المخاطرة بتعطل التطبيق في الشاشة الجذر",
+            "تنسيق التنقل مع الحوارات أو مطالبات التأكيد",
+          ],
+        ),
       ],
     ),
   ),
@@ -13944,6 +15590,28 @@ class _SizeAnimationExampleState extends State<SizeAnimationExample>
         "يجب تذكر التخلص منه",
         "المزيد من الكود المتكرر من الرسوم المتحركة الضمنية",
         "ينتج فقط 0.0-1.0 بدون Tween",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use AnimationController when:",
+          value: [
+            "Creating complex, fine-tuned animations with full control",
+            "Synchronizing multiple animated properties simultaneously",
+            "Controlling animation playback (forward/reverse/repeat) based on logic",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم AnimationController عندما:",
+          value: [
+            "إنشاء رسوم متحركة معقدة ومضبوطة بدقة مع تحكم كامل",
+            "مزامنة العديد من الخصائص المتحركة في وقت واحد",
+            "التحكم في تشغيل الرسوم المتحركة (للأمام/للخلف/تكرار) بناءً على المنطق",
+          ],
+        ),
       ],
     ),
   ),
@@ -14194,6 +15862,28 @@ class _ComplexAnimationState extends State<ComplexAnimation>
         "يحتاج AnimationController للعمل",
         "طبقة تعقيد إضافية",
         "يجب تحديد قيم البداية والنهاية",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Tween when:",
+          value: [
+            "Animating values outside the standard 0.0 to 1.0 range",
+            "Handling specific types like Color, Size, Offset, or BorderRadius",
+            "Creating custom interpolations between two states",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Tween عندما:",
+          value: [
+            "تحريك القيم خارج نطاق 0.0 إلى 1.0 القياسي",
+            "التعامل مع أنواع معينة مثل Color أو Size أو Offset أو BorderRadius",
+            "إنشاء استكمالات مخصصة بين حالتين",
+          ],
+        ),
       ],
     ),
   ),
@@ -14470,6 +16160,28 @@ final examples = {
         "قد يُستخدم بإفراط (ليست كل الرسوم المتحركة تحتاج منحنيات)",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use CurvedAnimation when:",
+          value: [
+            "Making animations feel more natural and life-like",
+            "Implementing easing effects like bounce, elastic, or decelerate",
+            "Specifying different behaviors for forward and reverse playback",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم CurvedAnimation عندما:",
+          value: [
+            "جعل الرسوم المتحركة تبدو أكثر طبيعية وواقعية",
+            "تنفيذ تأثيرات التسهيل مثل الارتداد أو المرونة أو التباطؤ",
+            "تحديد سلوكيات مختلفة للتشغيل للأمام وللخلف",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "100",
@@ -14698,6 +16410,28 @@ class _CustomTickerExampleState extends State<CustomTickerExample>
         "يتطلب mixin (SingleTickerProviderStateMixin)",
         "لا يمكن استخدامه مع StatelessWidget",
         "يجب تذكر اختيار mixin الصحيح (Single vs Multiple)",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Ticker/vsync when:",
+          value: [
+            "Building any custom animation that requires an AnimationController",
+            "Optimizing app battery life by pausing animations in the background",
+            "Developing low-level UI components with precise frame-rate synchronization",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Ticker/vsync عندما:",
+          value: [
+            "بناء أي رسم متحرك مخصص يتطلب AnimationController",
+            "تحسين عمر بطارية التطبيق بوقف الرسوم المتحركة في الخلفية",
+            "تطوير مكونات واجهة مستخدم منخفضة المستوى مع مزامنة دقيقة لمعدل الإطارات",
+          ],
+        ),
       ],
     ),
   ),
@@ -14987,10 +16721,32 @@ class _GameWidgetState extends State<GameWidget>
         "تحتاج لمعرفة أي mixin تستخدم (Single vs Multiple)",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Mixins and TickerProvider when:",
+          value: [
+            "Sharing code/logic between multiple unrelated class hierarchies",
+            "Implementing animation controllers that require a lifecycle-linked Ticker",
+            "Keeping StatefulWidget states clean by extracting reusable behaviors",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Mixins و TickerProvider عندما:",
+          value: [
+            "مشاركة الكود/المنطق بين عدة تسلسلات فئات غير مرتبطة",
+            "تنفيذ متحكمات الرسوم المتحركة التي تتطلب Ticker مرتبط بدورة الحياة",
+            "الحفاظ على حالات StatefulWidget نظيفة عن طريق استخراج السلوكيات القابلة لإعادة الاستخدام",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "102",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .ui],
     type: .practical,
     tags: ["intermediate", "forms", "validation", "textfield"],
@@ -15292,10 +17048,32 @@ class _RegistrationFormState extends State<RegistrationForm> {
         "قد يكون مطولاً للنماذج المعقدة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Forms and Validation when:",
+          value: [
+            "Collecting user data that requires specific formats (email, password strength)",
+            "Managing multiple related input fields as a single unit",
+            "Providing immediate feedback to users during data entry",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم النماذج والتحقق عندما:",
+          value: [
+            "جمع بيانات المستخدم التي تتطلب تنسيقات محددة (البريد الإلكتروني، قوة كلمة المرور)",
+            "إدارة العديد من حقول الإدخال المرتبطة كوحدة واحدة",
+            "توفير ملاحظات فورية للمستخدمين أثناء إدخال البيانات",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "103",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics, .ui],
     type: .practical,
     tags: ["intermediate", "focusnode", "keyboard", "textfield"],
@@ -15562,6 +17340,28 @@ class _LoginFormWithFocusState extends State<LoginFormWithFocus> {
         "سهل إنشاء تسريبات ذاكرة إذا لم يُتخلص منه",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use FocusNode when:",
+          value: [
+            "Controlling which text field is currently active programmatically",
+            "Moving focus to the next field automatically when 'Enter' is pressed",
+            "Implementing custom keyboard shortcuts or focus-based UI highlights",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم FocusNode عندما:",
+          value: [
+            "التحكم في أي حقل نصي نشط حاليًا برمجيًا",
+            "نقل التركيز إلى الحقل التالي تلقائيًا عند الضغط على 'Enter'",
+            "تنفيذ اختصارات لوحة مفاتيح مخصصة أو تمييز واجهة المستخدم بناءً على التركيز",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "104",
@@ -15795,10 +17595,32 @@ class AuthService {
         "غير متزامن (تعقيد طفيف)",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use SharedPreferences when:",
+          value: [
+            "Persisting simple user settings like theme mode or language",
+            "Storing small flags such as whether a user has seen an onboarding flow",
+            "Saving lightweight session tokens or basic app configuration",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم SharedPreferences عندما:",
+          value: [
+            "حفظ إعدادات المستخدم البسيطة مثل وضع السمات أو اللغة",
+            "تخزين علامات صغيرة مثل ما إذا كان المستخدم قد رأى تدفق الإعداد",
+            "حفظ رموز الجلسة الخفيفة أو تكوين التطبيق الأساسي",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "105",
-    difficulty: .advanced,
+    difficulty: .intermediate,
     categories: [.ui, .performance],
     type: .practical,
     tags: ["advanced", "sliverappbar", "scrolling", "customscrollview"],
@@ -16024,10 +17846,32 @@ class ProfileScreen extends StatelessWidget {
         "السلوك قد يكون محيرًا (تركيبات floating، pinned، snap)",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use SliverAppBar when:",
+          value: [
+            "Creating high-end UI headers that collapse or expand during scroll",
+            "Maximizing screen space by hiding the app bar on down-scrolling",
+            "Implementing visual effects like background image parallax in headers",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم SliverAppBar عندما:",
+          value: [
+            "إنشاء رؤوس واجهة مستخدم راقية تطوى أو تتوسع أثناء التمرير",
+            "زيادة مساحة الشاشة عن طريق إخفاء شريط التطبيق عند التمرير للأسفل",
+            "تنفيذ تأثيرات بصرية مثل اختلاف منظر صورة الخلفية في الرؤوس",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "106",
-    difficulty: .advanced,
+    difficulty: .intermediate,
     categories: [.ui, .performance],
     type: .theoretical,
     tags: ["advanced", "customscrollview", "slivers", "scrolling"],
@@ -16277,10 +18121,32 @@ class MySliverHeaderDelegate extends SliverPersistentHeaderDelegate {
         "واجهة برمجية معقدة للمبتدئين",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use CustomScrollView when:",
+          value: [
+            "Combining mixed scrollable content types (lists, grids, and sticky headers)",
+            "Optimizing performance for complex scrolling layouts via Slivers",
+            "Implementing advanced scroll-linked effects that require fine coordination",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم CustomScrollView عندما:",
+          value: [
+            "دمج أنواع محتوى قابلة للتمرير مختلطة (قوائم، شبكات، ورؤوس ثابتة)",
+            "تحسين الأداء لتخطيطات تمرير معقدة عبر Slivers",
+            "تنفيذ تأثيرات متقدمة مرتبطة بالتمرير تتطلب تنسيقًا دقيقًا",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "107",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.flutterBasics],
     type: .practical,
     tags: [
@@ -16502,6 +18368,28 @@ WillPopScope(
         "PopScope لديه واجهة برمجية مختلفة عن WillPopScope",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use PopScope when:",
+          value: [
+            "Preventing accidental back-button presses that could cause data loss",
+            "Displaying a confirmation dialog before allowed to leave a screen",
+            "Coordinating complex closing workflows for custom overlays or drawers",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم PopScope عندما:",
+          value: [
+            "منع ضغطات زر الرجوع العرضية التي قد تسبب فقدان البيانات",
+            "عرض حوار تأكيد قبل السماح بمغادرة الشاشة",
+            "تنسيق تدفقات عمل الإغلاق المعقدة للتراكبات أو الأدرج المخصصة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "108",
@@ -16697,6 +18585,28 @@ Hero(
         "يجب أن يكون لدى كلتا الشاشتين وسوم Hero متطابقة",
         "قد يكون معقدًا مع التنقل المتداخل",
         "قد يحتاج لبناة مخصصين للانتقالات المعقدة",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Hero animations when:",
+          value: [
+            "Providing visual continuity for a shared element (like an image) across screens",
+            "Guiding user focus from a thumbnail in a list to its detailed view",
+            "Creating a premium, polished feel during route transitions",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم حركات Hero عندما:",
+          value: [
+            "توفير الاستمرارية البصرية لعنصر مشترك (مثل الصورة) عبر الشاشات",
+            "توجيه تركيز المستخدم من صورة مصغرة في قائمة إلى عرضها المفصل",
+            "إنشاء شعور راقي ومصقول أثناء انتقالات المسار",
+          ],
+        ),
       ],
     ),
   ),
@@ -16945,10 +18855,32 @@ class _ProgrammaticRefreshState extends State<ProgrammaticRefresh> {
         "فقط سحب عمودي للأسفل (لا سحب للأعلى)",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use RefreshIndicator when:",
+          value: [
+            "Implementing pull-to-refresh functionality in lists or grids",
+            "Providing a manual way for users to re-fetch dynamic data from an API",
+            "Adding familiar mobile navigation patterns for content updates",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم RefreshIndicator عندما:",
+          value: [
+            "تنفيذ وظيفة السحب للتحديث في القوائم أو الشبكات",
+            "توفير طريقة يدوية للمستخدمين لإعادة جلب البيانات الديناميكية من واجهة برمجة تطبيقات",
+            "إضافة أنماط تنقل محمولة مألوفة لتحديثات المحتوى",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "110",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.ui, .flutterBasics],
     type: .practical,
     tags: ["intermediate", "dismissible", "swipetodelete", "gestures"],
@@ -17222,10 +19154,32 @@ Dismissible(
         "قد يحتاج حوارات تأكيد لمنع الأخطاء",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Dismissible when:",
+          value: [
+            "Implementing intuitive swipe-to-delete or archive actions in list items",
+            "Managing quick task completion in to-do or productivity applications",
+            "Adding interactive, gesture-based controls to repetitive list content",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Dismissible عندما:",
+          value: [
+            "تنفيذ إجراءات سحب بديهية للحذف أو الأرشفة في عناصر القائمة",
+            "إدارة إكمال المهام السريع في تطبيقات المهام أو الإنتاجية",
+            "إضافة عناصر تحكم تفاعلية قائمة على الإيماءات لمحتوى القائمة المتكرر",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "111",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.ui, .flutterBasics],
     type: .practical,
     tags: ["intermediate", "orientation", "mediaquery", "responsive"],
@@ -17516,6 +19470,28 @@ class LayoutBuilderExample extends StatelessWidget {
         "تعقيد كود أكبر للتخطيطات المختلفة",
         "قد تُفقد الحالة أثناء تغيير الاتجاه (بدون معالجة صحيحة)",
         "الاختبار لكلا الاتجاهين مطلوب",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Handle Orientation when:",
+          value: [
+            "Optimizing the user interface for both portrait and landscape modes",
+            "Locking specific screens (like video players) to a fixed orientation",
+            "Detecting physical hardware rotation to adjust component positioning",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "تعامل مع الاتجاه عندما:",
+          value: [
+            "تحسين واجهة المستخدم لكل من الوضع الطولي والأفقي",
+            "قفل شاشات معينة (مثل مشغلات الفيديو) على اتجاه ثابت",
+            "اكتشاف دوران أجهزة الهاردوير لتعديل موضع المكونات",
+          ],
+        ),
       ],
     ),
   ),
@@ -17862,6 +19838,28 @@ class LoadingOverlay extends StatelessWidget {
         "قد لا يعمل كما هو متوقع مع أشجار ودجتس معقدة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Choose AbsorbPointer/IgnorePointer when:",
+          value: [
+            "Creating non-interactive loading states or partial UI overlays",
+            "Blocking interaction with a layer that should still capture hit tests (AbsorbPointer)",
+            "Allowing touch events to pass through transparent visual elements (IgnorePointer)",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "اختر AbsorbPointer/IgnorePointer عندما:",
+          value: [
+            "إنشاء حالات تحميل غير تفاعلية أو تراكبات واجهة مستخدم جزئية",
+            "منع التفاعل مع طبقة يجب أن تظل تلتقط اختبارات الضربة (AbsorbPointer)",
+            "السماح لأحداث اللمس بالمرور عبر العناصر البصرية الشفافة (IgnorePointer)",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "113",
@@ -18177,6 +20175,28 @@ OverflowBox(
         "قد يحتاج ClipRect لمنع التجاوز غير المرغوب فيه",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use OverflowBox when:",
+          value: [
+            "Intentionally allowing a child widget to exceed its parent's constraints",
+            "Creating artistic 'bleed' effects for decorative UI elements",
+            "Displaying fixed-size content in a container that would otherwise shrink it",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم OverflowBox عندما:",
+          value: [
+            "السماح لودجت فرع بتجاوز قيود والده عمدًا",
+            "إنشاء تأثيرات 'نزيف' فنية لعناصر واجهة المستخدم الزخرفية",
+            "عرض محتوى ثابت الحجم في حاوية قد تؤدي لتقليصه بخلاف ذلك",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "114",
@@ -18476,10 +20496,32 @@ void getScreenSizeWithoutContext() {
         "يعيد البكسل المنطقي (قد يحتاج تحويل للبكسل الفعلي)",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Screen Dimensions (MediaQuery) when:",
+          value: [
+            "Calculating dynamic widths or heights for adaptive components",
+            "Detecting system-level paddings (status bar, notch) for safe layouts",
+            "Applying different styling based on available logical pixel density",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم أبعاد الشاشة (MediaQuery) عندما:",
+          value: [
+            "حساب العروض أو الارتفاعات الديناميكية للمكونات التكيفية",
+            "اكتشاف حشوات مستوى النظام (شريط الحالة، الشق) للتخطيطات الآمنة",
+            "تطبيق أنماط مختلفة بناءً على كثافة البكسل المنطقي المتاحة",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "115",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.ui, .flutterBasics],
     type: .practical,
     tags: ["intermediate", "stepper", "forms", "wizard"],
@@ -18842,10 +20884,32 @@ Stepper(
         "قد لا يناسب جميع متطلبات التصميم",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Stepper when:",
+          value: [
+            "Guiding users through a logical sequence of multi-step tasks",
+            "Building onboarding flows or complex wizards (like checkout or registration)",
+            "Visualizing progress in a linear or non-linear process",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Stepper عندما:",
+          value: [
+            "توجيه المستخدمين عبر تسلسل منطقي لمهام متعددة الخطوات",
+            "بناء تدفقات الإعداد أو المعالجات المعقدة (مثل الدفع أو التسجيل)",
+            "تصور التقدم في عملية خطية أو غير خطية",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "116",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.ui, .flutterBasics],
     type: .theoretical,
     tags: ["intermediate", "table", "layout", "rows", "columns"],
@@ -19140,6 +21204,28 @@ Table(
         "أقل ملاءمة لمجموعات البيانات الكبيرة",
         "جميع الصفوف يجب أن يكون لها نفس عدد الأطفال",
         "لا فرز أو تصفية مدمجة",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use Table when:",
+          value: [
+            "Displaying static, non-scrollable tabular data like product comparisons",
+            "Aligning complex grid-like layouts that don't require lazy loading",
+            "Creating structured UI components such as schedules or calendars",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم Table عندما:",
+          value: [
+            "عرض بيانات جدولية ثابتة غير قابلة للتمرير مثل مقارنات المنتجات",
+            "محاذاة تخطيطات شبكية معقدة لا تتطلب تحميلاً كسولاً",
+            "إنشاء مكونات واجهة مستخدم منظمة مثل الجداول الزمنية أو التقاويم",
+          ],
+        ),
       ],
     ),
   ),
@@ -19486,10 +21572,32 @@ ClipRect(
         "غير مناسب للرسوم المتحركة أو المحتوى القابل للتمرير",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use BackdropFilter when:",
+          value: [
+            "Creating modern 'glassmorphism' or frosted glass visual styles",
+            "Applying blur effects to background elements during modal transitions",
+            "Enhancing UI depth by subtly blurring content behind overlays",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم BackdropFilter عندما:",
+          value: [
+            "إنشاء أنماط بصرية حديثة مثل 'glassmorphism' أو الزجاج المتجمد",
+            "تطبيق تأثيرات التمويه على عناصر الخلفية أثناء انتقالات المودال",
+            "تعزيز عمق واجهة المستخدم عن طريق تمويه المحتوى خلف التراكبات بشكل طفيف",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "118",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.ui, .flutterBasics],
     type: .theoretical,
     tags: ["intermediate", "indexedstack", "stack", "visibility", "tabview"],
@@ -19825,10 +21933,32 @@ IndexedStack(
         "قفزات الحجم إذا كان للأطفال أحجام مختلفة",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use IndexedStack when:",
+          value: [
+            "Navigating between sections while preserving sub-page scroll positions",
+            "Managing simple tab systems that don't require fancy transitions",
+            "Maintaining persistent state (like form inputs) when switching views",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم IndexedStack عندما:",
+          value: [
+            "التنقل بين الأقسام مع الحفاظ على مواضع تمرير الصفحات الفرعية",
+            "إدارة أنظمة تبويب بسيطة لا تتطلب انتقالات معقدة",
+            "الحفاظ على حالة مستمرة (مثل مدخلات النموذج) عند التبديل بين طرق العرض",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "119",
-    difficulty: .intermediate,
+    difficulty: .basic,
     categories: [.ui, .flutterBasics],
     type: .practical,
     tags: ["intermediate", "reorderablelistview", "drag", "reorder", "list"],
@@ -20206,6 +22336,28 @@ void _onReorder(int oldIndex, int newIndex) {
         "حساب الفهرس في onReorder قد يكون مربكًا",
       ],
     ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use ReorderableListView when:",
+          value: [
+            "Building customizable user lists like playlists or priority tasks",
+            "Allowing users to manually rank or sort items in a collection",
+            "Implementing draggable dashboard items or configurable settings",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم ReorderableListView عندما:",
+          value: [
+            "بناء قوائم مستخدم قابلة للتخصيص مثل قوائم التشغيل أو المهام ذات الأولوية",
+            "السماح للمستخدمين بتصنيف أو فرز العناصر يدويًا في مجموعة",
+            "تنفيذ عناصر لوحة معلومات قابلة للسحب أو إعدادات قابلة للتكوين",
+          ],
+        ),
+      ],
+    ),
   ),
   InterviewQuestion(
     id: "120",
@@ -20341,6 +22493,28 @@ void _onReorder(int oldIndex, int newIndex) {
         "العوامل > 1.0 قد تسبب مشاكل تجاوز",
         "يتطلب وجود والد محدد الأبعاد في كل بُعد",
         "غير مناسب لاحتياجات الحجم الجوهري",
+      ],
+    ),
+    whenToUse: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: "Use FractionallySizedBox when:",
+          value: [
+            "Creating responsive widgets that adapt to a percentage of their parent's size",
+            "Developing layout grids that scale proportionally across different screens",
+            "Designing centered UI elements (like logos) with specific relative dimensions",
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: "استخدم FractionallySizedBox عندما:",
+          value: [
+            "إنشاء ودجتس متجاوبة تتكيف مع نسبة مئوية من حجم والديها",
+            "تطوير شبكات تخطيط تتوسع بشكل تناسبي عبر الشاشات المختلفة",
+            "تصميم عناصر واجهة مستخدم مركزة (مثل الشعارات) بأبعاد نسبية محددة",
+          ],
+        ),
       ],
     ),
   ),

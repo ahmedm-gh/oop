@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tuts/core/services/locator.dart';
 import 'package:tuts/features/design_patterns/design_patterns_page.dart';
+import 'package:tuts/features/design_patterns/pattern_details_page.dart';
 import 'package:tuts/features/home/home_page.dart';
-import 'package:tuts/features/interview_questions/controller/cubit/questions_cubit.dart'
-    show QuestionsCubit;
+import 'package:tuts/features/interview_questions/controller/cubit/questions_cubit.dart';
 import 'package:tuts/features/interview_questions/view/interview_questions_page.dart';
 import 'package:tuts/features/interview_questions/view/question_details_page.dart';
 import 'package:tuts/features/splash/splash_screen.dart';
+import 'package:tuts/shared/methods/to_value.dart';
 
 abstract class Routes {
   static const String splash = "/";
@@ -28,11 +29,16 @@ abstract class Routes {
       designPattern => MaterialPageRoute(
         builder: (_) => const DesignPatternsScreen(),
       ),
-      // designPatternDetails => MaterialPageRoute(
-      //   builder: (_) {
-      //     return const PatternDetailsScreen(pattern: null);
-      //   },
-      // ),
+      designPatternDetails => MaterialPageRoute(
+        builder: (_) {
+          return PatternDetailsScreen(
+            pattern: toValue<PatternDetailsScreenArguments>(
+              settings.arguments,
+              const .none(),
+            ).pattern,
+          );
+        },
+      ),
       questionList => MaterialPageRoute(
         builder: (_) => BlocProvider<QuestionsCubit>(
           create: (context) => sl(),

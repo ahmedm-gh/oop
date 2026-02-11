@@ -25,6 +25,7 @@ class QuestionDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.interviewQuestions),
+        backgroundColor: Colors.transparent,
         actions: [
           Padding(
             padding: const .symmetric(horizontal: 10),
@@ -49,14 +50,16 @@ class QuestionDetailsScreen extends StatelessWidget {
               // overflow: .ellipsis,
               style: TextStyle(fontSize: 12, color: colors.onSurfaceVariant),
             ),
+
             // Question title
             Text(
               content.question.safeBidi(),
               style: const TextStyle(fontSize: 20, fontWeight: .bold),
             ),
+
+            // Question answer
             Container(
-              width: .infinity,
-              padding: const .symmetric(vertical: 10, horizontal: 15),
+              padding: const .all(16),
               decoration: BoxDecoration(
                 color: colors.surfaceContainerLow,
                 borderRadius: .circular(12),
@@ -116,42 +119,19 @@ class QuestionDetailsScreen extends StatelessWidget {
               SmallTitledList.disadvantages(items: cons.map(Text.new).toList()),
             ],
 
-            // Notes
-            if (content.bestUse case final use? when use.isNotEmpty) ...[
-              SmallTitledList.whenToUse(
-                title: Text(l10n.whenToUse),
-                content: Text(use),
-              ),
-            ],
-
-            // Tags
-            // if (question.tags case final tags? when tags.isNotEmpty)
-            //   Text.rich(
-            //     TextSpan(
-            //       style: const TextStyle(fontSize: 12),
-            //       children: [
-            //         TextSpan(
-            //           text: "${l10n.tags}: ",
-            //           style: TextStyle(
-            //             color: colors.secondary,
-            //             fontWeight: .bold,
-            //           ),
-            //         ),
-            //         TextSpan(text: tags.join(", ")),
-            //       ],
-            //     ),
+            // // Notes
+            // if (content.bestUse case final use? when use.isNotEmpty) ...[
+            //   SmallTitledList.whenToUse(
+            //     title: Text(l10n.whenToUse),
+            //     content: Text(use),
             //   ),
-            // if (question.tags case final tags? when tags.isNotEmpty) ...[
-            //   Text(
-            //     l10n.tags,
-            //     style: TextStyle(
-            //       fontSize: 12,
-            //       fontWeight: .w600,
-            //       color: colors.onSurface,
-            //     ),
-            //   ),
-            //   Tags(tags),
             // ],
+
+            // Notes
+            if (question.getLocalizedWhenToUse(langCode) case final use?
+                when use.isNotEmpty) ...[
+              ...use.map(ContentViewer.new),
+            ],
           ],
         ),
       ),

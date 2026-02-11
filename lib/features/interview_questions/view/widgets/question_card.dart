@@ -67,7 +67,7 @@ class QuestionCard extends StatelessWidget {
                       return state.bookmarkedQuestions.contains(question.id);
                     },
                     builder: (context, selected) {
-                      return BookmarkIconButton(
+                      return BookmarkIconButton.compact(
                         isActive: selected,
                         onPressed: () {
                           context.read<QuestionsCubit>().toggleBookmark(

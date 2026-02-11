@@ -1286,6 +1286,18 @@ abstract class AppLocalizations {
   /// **'Expert-level topics for senior developers.'**
   String get advancedLevelDesc;
 
+  /// No description provided for @expertLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert'**
+  String get expertLevel;
+
+  /// No description provided for @expertLevelDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert-level topics for senior developers.'**
+  String get expertLevelDesc;
+
   /// No description provided for @qWhatIsFlutter.
   ///
   /// In en, this message translates to:
@@ -2114,12 +2126,6 @@ abstract class AppLocalizations {
   /// **'All'**
   String get all;
 
-  /// No description provided for @expertLevel.
-  ///
-  /// In en, this message translates to:
-  /// **'Expert'**
-  String get expertLevel;
-
   /// No description provided for @answr.
   ///
   /// In en, this message translates to:
@@ -2281,6 +2287,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Question not found'**
   String get questionNotFound;
+
+  /// No description provided for @onlyBookmarked.
+  ///
+  /// In en, this message translates to:
+  /// **'Only Bookmarked'**
+  String get onlyBookmarked;
+
+  /// No description provided for @allLevels.
+  ///
+  /// In en, this message translates to:
+  /// **'All Levels'**
+  String get allLevels;
+
+  /// No description provided for @commonMistakes.
+  ///
+  /// In en, this message translates to:
+  /// **'Common Mistakes'**
+  String get commonMistakes;
+
+  /// No description provided for @noPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'No pattern'**
+  String get noPattern;
+
+  /// No description provided for @pGoF.
+  ///
+  /// In en, this message translates to:
+  /// **'Classic (GoF)'**
+  String get pGoF;
+
+  /// No description provided for @pNonGoF.
+  ///
+  /// In en, this message translates to:
+  /// **'Non-GoF'**
+  String get pNonGoF;
+
+  /// No description provided for @pPractical.
+  ///
+  /// In en, this message translates to:
+  /// **'Practical'**
+  String get pPractical;
+
+  /// No description provided for @pModern.
+  ///
+  /// In en, this message translates to:
+  /// **'Modern'**
+  String get pModern;
+
+  /// No description provided for @designPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Design Patterns'**
+  String get designPattern;
+
+  /// No description provided for @architecturalPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Architectural Patterns'**
+  String get architecturalPattern;
+
+  /// No description provided for @stateManagementPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'State Management Patterns'**
+  String get stateManagementPattern;
+
+  /// No description provided for @uiPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'UI Patterns'**
+  String get uiPattern;
+
+  /// No description provided for @projectStructurePattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Project Structure Patterns'**
+  String get projectStructurePattern;
+
+  /// No description provided for @creationalPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Creational Patterns'**
+  String get creationalPattern;
+
+  /// No description provided for @structuralPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Structural Patterns'**
+  String get structuralPattern;
+
+  /// No description provided for @behavioralPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Behavioral Patterns'**
+  String get behavioralPattern;
+
+  /// No description provided for @relatedPatterns.
+  ///
+  /// In en, this message translates to:
+  /// **'Related Patterns'**
+  String get relatedPatterns;
+
+  /// No description provided for @oftenConfusedWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Often Confused With'**
+  String get oftenConfusedWith;
 }
 
 class _AppLocalizationsDelegate

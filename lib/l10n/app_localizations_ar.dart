@@ -721,22 +721,28 @@ class AppLocalizationsAr extends AppLocalizations {
   String get answer => 'الإجابة';
 
   @override
-  String get basicLevel => 'مستوى مبتدئ';
+  String get basicLevel => 'مبتدئ';
 
   @override
   String get basicLevelDesc => 'مفاهيم أساسية يجب على كل مطور Flutter معرفتها.';
 
   @override
-  String get intermediateLevel => 'مستوى متوسط';
+  String get intermediateLevel => 'متوسط';
 
   @override
   String get intermediateLevelDesc => 'فهم أعمق لميزات Flutter و Dart.';
 
   @override
-  String get advancedLevel => 'مستوى متقدم';
+  String get advancedLevel => 'متقدم';
 
   @override
   String get advancedLevelDesc => 'مواضيع متقدمة للمطورين الأكثر خبرة.';
+
+  @override
+  String get expertLevel => 'محترف';
+
+  @override
+  String get expertLevelDesc => 'مواضيع متقدمة للمطورين الأكثر خبرة.';
 
   @override
   String get qWhatIsFlutter => 'ما هو Flutter؟';
@@ -1275,9 +1281,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get all => 'الكل';
 
   @override
-  String get expertLevel => 'محترف';
-
-  @override
   String get answr => 'Answer';
 
   @override
@@ -1357,4 +1360,58 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get questionNotFound => 'السؤال غير موجود';
+
+  @override
+  String get onlyBookmarked => 'فقط المحفوظة';
+
+  @override
+  String get allLevels => 'جميع المستويات';
+
+  @override
+  String get commonMistakes => 'الأخطاء الشائعة';
+
+  @override
+  String get noPattern => 'لا يوجد نمط';
+
+  @override
+  String get pGoF => 'الكلاسيكية (GoF)';
+
+  @override
+  String get pNonGoF => 'غير مدرجة ضمن GoF';
+
+  @override
+  String get pPractical => 'نمط عملي';
+
+  @override
+  String get pModern => 'نمط حديث';
+
+  @override
+  String get designPattern => 'نمط تصميم';
+
+  @override
+  String get architecturalPattern => 'نمط معماري';
+
+  @override
+  String get stateManagementPattern => 'نمط إدارة الحالة';
+
+  @override
+  String get uiPattern => 'نمط واجهة المستخدم (UI)';
+
+  @override
+  String get projectStructurePattern => 'نمط هيكلة المشروع';
+
+  @override
+  String get creationalPattern => 'نمط الإنشاء (Creational)';
+
+  @override
+  String get structuralPattern => 'نمط التركيب (Structural)';
+
+  @override
+  String get behavioralPattern => 'نمط السلوك (Behavioral)';
+
+  @override
+  String get relatedPatterns => 'أنماط متعلقة';
+
+  @override
+  String get oftenConfusedWith => 'غالباً ما يخطلت الأمر مع';
 }
