@@ -11,15 +11,19 @@ class Tags extends StatelessWidget {
     final colors = context.colorScheme;
 
     return DefaultTextStyle.merge(
-      style: TextStyle(color: colors.primary, fontSize: 12, fontWeight: .bold),
+      style: TextStyle(color: colors.primary, fontSize: 12, fontWeight: .w500),
+      // child: Text(
+      //   tags.map((tag) => "#${tag.replaceAll(" ", "_")}").join(" "),
+      //   textDirection: tags.join("_").getDirection(),
+      // ),
       child: Wrap(
-        spacing: 8,
-        runSpacing: 8,
+        spacing: 5,
+        runSpacing: 5,
         children: tags
             .map(
               (tag) => Text(
                 "#${tag.replaceAll(" ", "_")}",
-                textDirection: tag.getDirection(),
+                textDirection: tag.textDirection,
               ),
             )
             .toList(),

@@ -8,11 +8,17 @@ class CodeBlockViewer extends StatelessWidget {
   CodeBlockViewer({
     required String code,
     required CodeQuality codeQuality,
+    this.enableHorizontalScroll = true,
     super.key,
   }) : code = StrCodeBlock(code, codeQuality: codeQuality);
 
-  const CodeBlockViewer.fromStrCodeBlock(this.code, {super.key});
+  const CodeBlockViewer.fromStrCodeBlock(
+    this.code, {
+    this.enableHorizontalScroll = true,
+    super.key,
+  });
   final StrCodeBlock code;
+  final bool enableHorizontalScroll;
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +48,24 @@ class CodeBlockViewer extends StatelessWidget {
               code: code.value,
               codeLanguage: code.codeLanguage,
             ),
-            _CodeContent(code: code.value, codeLanguage: code.codeLanguage),
+            SizedBox(
+              width: .infinity,
+              child: switch (enableHorizontalScroll) {
+                true => SingleChildScrollView(
+                  scrollDirection: .horizontal,
+                  child: buildCode(),
+                ),
+                false => buildCode(),
+              },
+            ),
           ],
         ),
       ),
     );
+  }
+
+  Widget buildCode() {
+    return _CodeContent(code: code.value, codeLanguage: code.codeLanguage);
   }
 }
 
@@ -183,10 +202,8 @@ class _CodeContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = context.isDark;
 
-    return Container(
-      // constraints: const BoxConstraints(maxHeight: 550),
+    return Padding(
       padding: const .all(16),
-      width: .infinity,
       child: SelectableText.rich(
         SyntaxHighlighterFactory.create(
           codeLanguage,
@@ -296,7 +313,8 @@ class SyntaxHighlighterFactory {
     bool isDark,
   ) {
     return switch (language) {
-      .text || .sql => TextSyntaxHighlighter(code, isDark),
+      .text => TextSyntaxHighlighter(code, isDark),
+      .sql => SQLSyntaxHighlighter(code, isDark),
       .dart => DartSyntaxHighlighter(code, isDark),
       .yaml => YamlSyntaxHighlighter(code, isDark),
       .python => PythonSyntaxHighlighter(code, isDark),
@@ -321,6 +339,95 @@ class TextSyntaxHighlighter extends SyntaxHighlighter {
       text: line,
       style: TextStyle(color: plain),
     );
+  }
+}
+
+// ============================================================================
+// SQL SYNTAX HIGHLIGHTER
+// ============================================================================
+
+class SQLSyntaxHighlighter extends SyntaxHighlighter {
+  SQLSyntaxHighlighter(super.code, super.isDark);
+
+  static final _sqlPattern = RegExp(
+    // 1. Comments (-- line comments and /* block comments */)
+    r'(--.*|/\*[\s\S]*?\*/)|'
+    // 2. Strings (Single quoted)
+    r"('([^'\\]|\\.)*')|"
+    // 3. Keywords (DML, DDL, DCL)
+    r'\b(SELECT|FROM|WHERE|INSERT|INTO|UPDATE|DELETE|CREATE|ALTER|DROP|TABLE|DATABASE|INDEX|VIEW|JOIN|INNER|LEFT|RIGHT|FULL|OUTER|ON|AS|AND|OR|NOT|IN|BETWEEN|LIKE|IS|NULL|ORDER|BY|GROUP|HAVING|DISTINCT|UNION|ALL|LIMIT|OFFSET|SET|VALUES|DEFAULT|PRIMARY|FOREIGN|KEY|REFERENCES|CONSTRAINT|UNIQUE|CHECK|CASCADE|GRANT|REVOKE|COMMIT|ROLLBACK|SAVEPOINT|TRANSACTION|BEGIN|END|CASE|WHEN|THEN|ELSE|EXISTS|ANY|SOME)\b|'
+    // 4. Data Types
+    r'\b(INT|INTEGER|BIGINT|SMALLINT|TINYINT|DECIMAL|NUMERIC|FLOAT|DOUBLE|REAL|CHAR|VARCHAR|TEXT|BLOB|DATE|TIME|DATETIME|TIMESTAMP|BOOLEAN|BOOL|BINARY|VARBINARY|ENUM|JSON|UUID|SERIAL|AUTO_INCREMENT)\b|'
+    // 5. Functions
+    r'\b(COUNT|SUM|AVG|MAX|MIN|CONCAT|SUBSTRING|UPPER|LOWER|TRIM|LENGTH|COALESCE|IFNULL|NULLIF|CAST|CONVERT|NOW|CURRENT_TIMESTAMP|CURRENT_DATE|DATE_ADD|DATE_SUB|DATEDIFF|YEAR|MONTH|DAY|HOUR|MINUTE|SECOND|ABS|ROUND|FLOOR|CEIL|RAND|MD5|SHA1)\b(?=\s*\()|'
+    // 6. Numbers (integers, decimals, scientific notation)
+    r'\b(\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)\b|'
+    // 7. Operators and Punctuation
+    r'([+\-*/%<>=!]+|[()[\]{}.,;:])',
+    caseSensitive: false,
+  );
+
+  @override
+  TextSpan highlightLine(String line) {
+    final spans = <TextSpan>[];
+
+    line.splitMapJoin(
+      _sqlPattern,
+      onMatch: (m) {
+        Color color = plain;
+        String text = m.group(0)!;
+
+        // Group 1: Comments
+        if (m.group(1) != null) {
+          color = comment;
+        }
+        // Group 2: Strings
+        else if (m.group(2) != null) {
+          color = string;
+        }
+        // Group 3: Keywords
+        else if (m.group(3) != null) {
+          color = keyword;
+        }
+        // Group 4: Data Types
+        else if (m.group(4) != null) {
+          color = type;
+        }
+        // Group 5: Functions
+        else if (m.group(5) != null) {
+          color = function;
+        }
+        // Group 6: Numbers
+        else if (m.group(6) != null) {
+          color = number;
+        }
+        // Group 7: Operators/Punctuation
+        else if (m.group(7) != null) {
+          color = punctuation;
+        }
+
+        spans.add(
+          TextSpan(
+            text: text,
+            style: TextStyle(color: color),
+          ),
+        );
+        return "";
+      },
+      onNonMatch: (text) {
+        if (text.isNotEmpty) {
+          spans.add(
+            TextSpan(
+              text: text,
+              style: TextStyle(color: plain),
+            ),
+          );
+        }
+        return "";
+      },
+    );
+
+    return TextSpan(children: spans);
   }
 }
 
