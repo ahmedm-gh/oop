@@ -16,12 +16,12 @@ final class TermsState {
         json["bookmarkedTerms"],
         const {},
       ).toSet(),
-      terms: allTermsList,
+      terms: allTerms,
     );
   }
 
   final Set<String> bookmarkedTerms;
-  final List<ProgrammingTerm> terms;
+  final Map<String, ProgrammingTerm> terms;
   final String? query;
   final TermCategory? category;
   final TermType? type;
@@ -29,7 +29,7 @@ final class TermsState {
 
   TermsState copyWith({
     Set<String>? bookmarkedTerms,
-    List<ProgrammingTerm>? terms,
+    Map<String, ProgrammingTerm>? terms,
     ValueGetter<String?>? query,
     ValueGetter<TermCategory?>? category,
     ValueGetter<TermType?>? type,

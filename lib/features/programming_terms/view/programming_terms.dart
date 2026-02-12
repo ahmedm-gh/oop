@@ -124,15 +124,15 @@ class ProgrammingTermsScreen extends StatelessWidget {
                       BlocSelector<
                         TermsCubit,
                         TermsState,
-                        List<ProgrammingTerm>
+                        Map<String, ProgrammingTerm>
                       >(
                         selector: (state) => state.terms,
                         builder: (context, terms) {
                           return ListView.separated(
                             padding: DL.listPadding,
                             itemBuilder: (context, index) {
-                              final term = terms[index];
-                              return TermCard(term: term);
+                              final term = terms.entries.elementAt(index);
+                              return TermCard(term: term.value);
                             },
                             separatorBuilder: (context, index) {
                               return const SizedBox(

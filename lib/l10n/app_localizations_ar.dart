@@ -355,6 +355,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get termNotFound => 'المصطلح غير موجود';
 
   @override
+  String get termTypeLanguage => 'لغة';
+
+  @override
   String get termTypeConcept => 'مفهوم';
 
   @override
@@ -475,6 +478,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get termCategoryCloud => 'الحوسبة السحابية';
 
   @override
+  String get termCategoryNativePlatform => 'المنصة الأصلية';
+
+  @override
   String get termCategoryArtificialIntelligence => 'الذكاء الاصطناعي';
 
   @override
@@ -505,5 +511,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get popularityTierNiche => 'متخصصة';
 
   @override
-  String get aliases => 'معروف بـ';
+  String get aliases => 'أسماء بديلة';
+
+  @override
+  String get relatedTerms => 'مصطلحات ذات صلة';
 }

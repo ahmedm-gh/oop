@@ -11,3 +11,6 @@ export 'widgets/icons.dart';
 export 'widgets/no_result.dart';
 export 'widgets/dividers.dart';
 export 'widgets/term_chips.dart';
+export 'widgets/tags.dart';
+export 'widgets/style_wrappers.dart';
+export 'widgets/id_text.dart';

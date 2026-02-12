@@ -10,7 +10,7 @@ enum CodeQuality {
   bool get isBad => this == .bad;
 }
 
-enum CodeLanguage { dart, yaml }
+enum CodeLanguage { text, dart, python, yaml, bash, json, sql }
 
 enum CodeType { code, explanation }
 

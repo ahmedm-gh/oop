@@ -132,6 +132,7 @@
   "termTypeMethodology": "منهجية",
   "termTypeDesignSystem": "نظام تصميم",
 
+  "termTypeLanguage": "لغة",
   "termCategoryFundamentals": "الأساسيات",
   "termCategoryOOP": "البرمجة كائنية التوجه",
   "termCategoryFunctionalProgramming": "البرمجة الوظيفية",
@@ -155,6 +156,7 @@
   "termCategoryCompilerInternals": "بنية المترجم الداخلية",
   "termCategoryVersionControl": "إدارة الإصدارات",
   "termCategoryCloud": "الحوسبة السحابية",
+  "termCategoryNativePlatform": "المنصة الأصلية",
   "termCategoryArtificialIntelligence": "الذكاء الاصطناعي",
 
   "termEraClassic": "كلاسيكي",
@@ -168,5 +170,6 @@
   "popularityTierLow": "منخفضة",
   "popularityTierNiche": "متخصصة",
 
-  "aliases": "معروف بـ"
+  "aliases": "أسماء بديلة",
+  "relatedTerms": "مصطلحات ذات صلة"
 }

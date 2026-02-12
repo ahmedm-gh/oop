@@ -95,33 +95,35 @@ class TermCard extends StatelessWidget {
                 ],
               ),
 
-              if (term.quickOverview.call(l10n.localeName) case final qo
-                  when qo.isNotEmpty)
-                for (final content in qo) ContentViewer(content),
+              if (false)
+                if (term.quickOverview(l10n.localeName) case final qo
+                    when qo.isNotEmpty)
+                  for (final content in qo) ContentViewer(content),
 
-              if (term.popularityTier case final pt?)
-                Row(
-                  children: [
-                    FilledIcon(
-                      icon: Icon(
-                        Icons.trending_up_rounded,
-                        size: 12,
-                        color: pt.color.pairedColor,
+              if (false)
+                if (term.popularityTier case final pt?)
+                  Row(
+                    children: [
+                      FilledIcon(
+                        icon: Icon(
+                          Icons.trending_up_rounded,
+                          size: 12,
+                          color: pt.color.pairedColor,
+                        ),
+                        background: pt.color,
+                        padding: const EdgeInsets.all(2.5),
                       ),
-                      background: pt.color,
-                      padding: const EdgeInsets.all(2.5),
-                    ),
-                    const SizedBox(width: 7.5),
-                    Flexible(
-                      child: Text(
-                        "${l10n.popularityTierLabel}: ${pt.label(l10n)}",
-                        maxLines: 1,
-                        overflow: .ellipsis,
-                        style: const TextStyle(fontSize: 12),
+                      const SizedBox(width: 7.5),
+                      Flexible(
+                        child: Text(
+                          "${l10n.popularityTierLabel}: ${pt.label(l10n)}",
+                          maxLines: 1,
+                          overflow: .ellipsis,
+                          style: const TextStyle(fontSize: 12),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
             ],
           ),
         ),

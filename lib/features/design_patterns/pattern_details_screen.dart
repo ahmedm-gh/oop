@@ -4,22 +4,24 @@ import "package:tuts/shared/app_widgets.dart";
 import "package:tuts/shared/design_layouts.dart";
 
 import "../../core/models/design_patterns.dart";
+import "../../core/services/routes.dart";
 import "../../data/design_patterns.dart";
 
 class PatternDetailsScreenArguments {
   const PatternDetailsScreenArguments({required this.pattern});
-  const PatternDetailsScreenArguments.none() : pattern = null;
-  final DesignPattern? pattern;
+  final DesignPattern pattern;
 }
 
 class PatternDetailsScreen extends StatelessWidget {
-  const PatternDetailsScreen({required this.pattern, super.key});
-  final DesignPattern? pattern;
+  const PatternDetailsScreen({required this.arguments, super.key});
+  final PatternDetailsScreenArguments? arguments;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colorScheme;
     final l10n = context.l10n;
+    final pattern = arguments?.pattern;
+    final textStyles = context.textTheme;
 
     if (pattern case final pattern?) {
       return Scaffold(
@@ -41,25 +43,23 @@ class PatternDetailsScreen extends StatelessWidget {
               // - type
 
               // Question type and categories
-              Row(
-                spacing: 5,
+              Column(
+                crossAxisAlignment: .start,
                 children: [
-                  Expanded(
-                    child: Text(
-                      <String>[
-                        pattern.category.label(l10n),
-                        pattern.group.label(l10n),
-                        ?pattern.type?.label(l10n),
-                      ].join(" • "),
-                      // maxLines: 1,
-                      // overflow: .ellipsis,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: context.colorScheme.onSurfaceVariant,
-                      ),
+                  Text(
+                    <String>[
+                      pattern.category.label(l10n),
+                      pattern.group.label(l10n),
+                      ?pattern.type?.label(l10n),
+                    ].join(" • "),
+                    style: textStyles.bodySmall?.copyWith(
+                      color: colors.onSurfaceVariant,
                     ),
                   ),
-                  PatternChip(name: pattern.id),
+                  Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: IdText(id: pattern.id),
+                  ),
                 ],
               ),
 
@@ -128,49 +128,69 @@ class PatternDetailsScreen extends StatelessWidget {
                   items: mistakes.map(Text.new).toList(),
                 ),
 
+              const LiteDivider(),
+
               if (pattern.relatedPatterns case final relatives?
-                  when relatives.isNotEmpty)
-                Wrap(
-                  spacing: 10,
-                  runSpacing: 5,
-                  crossAxisAlignment: .center,
+                  when relatives.isNotEmpty) ...[
+                Column(
+                  crossAxisAlignment: .stretch,
+                  spacing: 5,
                   children: [
-                    Text(
-                      l10n.relatedPatterns,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: context.colorScheme.onSurfaceVariant,
-                        fontWeight: .bold,
+                    Text(l10n.relatedPatterns, style: textStyles.titleMedium),
+                    ActionChipsWrapper(
+                      backgroundColor: context.colorScheme.primary.withValues(
+                        alpha: 0.2,
+                      ),
+                      child: Wrap(
+                        spacing: 10,
+                        runSpacing: 5,
+                        crossAxisAlignment: .center,
+                        children: [
+                          for (final relative in relatives)
+                            if (designPatterns[relative] case final pattern?)
+                              ActionChip(
+                                label: Text(pattern.title(l10n.localeName)),
+                                onPressed: () => replaceWith(context, pattern),
+                              ),
+                        ],
                       ),
                     ),
-                    for (final relative in relatives)
-                      if (designPatterns[relative] case final pattern?)
-                        PatternChip(name: pattern.title(l10n.localeName)),
                   ],
                 ),
+              ],
               if (pattern.oftenConfusedWith case final confusedWith?
-                  when confusedWith.isNotEmpty)
-                Wrap(
-                  spacing: 10,
-                  runSpacing: 5,
-                  crossAxisAlignment: .center,
+                  when confusedWith.isNotEmpty) ...[
+                Column(
+                  crossAxisAlignment: .stretch,
+                  spacing: 5,
                   children: [
                     Text(
                       l10n.oftenConfusedWith,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: context.colorScheme.onSurfaceVariant,
-                        fontWeight: .bold,
+                      style: textStyles.titleMedium?.copyWith(
+                        color: colors.error,
                       ),
                     ),
-                    for (final confPattern in confusedWith)
-                      if (designPatterns[confPattern] case final pattern?)
-                        PatternChip(
-                          name: pattern.title(l10n.localeName),
-                          color: colors.errorContainer,
-                        ),
+                    ActionChipsWrapper(
+                      backgroundColor: context.colorScheme.error.withValues(
+                        alpha: 0.2,
+                      ),
+                      child: Wrap(
+                        spacing: 10,
+                        runSpacing: 5,
+                        crossAxisAlignment: .center,
+                        children: [
+                          for (final confPattern in confusedWith)
+                            if (designPatterns[confPattern] case final pattern?)
+                              ActionChip(
+                                label: Text(pattern.title(l10n.localeName)),
+                                onPressed: () => replaceWith(context, pattern),
+                              ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
+              ],
             ],
           ),
         ),
@@ -179,30 +199,12 @@ class PatternDetailsScreen extends StatelessWidget {
 
     return Material(child: Center(child: Text(l10n.noPattern)));
   }
-}
 
-class PatternChip extends StatelessWidget {
-  const PatternChip({required this.name, this.color, super.key});
-
-  final String name;
-  final Color? color;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colorScheme;
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 7.5, vertical: 2.5),
-      decoration: BoxDecoration(
-        color: (color ?? colors.primaryContainer).withAlpha(50),
-        borderRadius: BorderRadius.circular(5),
-        border: Border.all(color: color?.withAlpha(100) ?? colors.onPrimary),
-      ),
-      child: Text(
-        name,
-        textDirection: .ltr,
-        style: const TextStyle(fontSize: 12, fontWeight: .bold),
-      ),
+  Future<Object?> replaceWith(BuildContext context, DesignPattern pattern) {
+    return Navigator.pushReplacementNamed(
+      context,
+      Routes.designPatternDetails,
+      arguments: PatternDetailsScreenArguments(pattern: pattern),
     );
   }
 }

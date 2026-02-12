@@ -770,6 +770,12 @@ abstract class AppLocalizations {
   /// **'Term not found'**
   String get termNotFound;
 
+  /// No description provided for @termTypeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get termTypeLanguage;
+
   /// No description provided for @termTypeConcept.
   ///
   /// In en, this message translates to:
@@ -1010,6 +1016,12 @@ abstract class AppLocalizations {
   /// **'Cloud Computing'**
   String get termCategoryCloud;
 
+  /// No description provided for @termCategoryNativePlatform.
+  ///
+  /// In en, this message translates to:
+  /// **'Native Platform'**
+  String get termCategoryNativePlatform;
+
   /// No description provided for @termCategoryArtificialIntelligence.
   ///
   /// In en, this message translates to:
@@ -1075,6 +1087,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Aliases'**
   String get aliases;
+
+  /// No description provided for @relatedTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Related Terms'**
+  String get relatedTerms;
 }
 
 class _AppLocalizationsDelegate

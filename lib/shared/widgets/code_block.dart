@@ -209,8 +209,13 @@ class _CodeContent extends StatelessWidget {
 extension CodeLanguageExtension on CodeLanguage {
   String get displayName {
     return switch (this) {
+      .sql => 'SQL',
+      .text => 'Text',
       .dart => 'Dart',
       .yaml => 'YAML',
+      .python => 'Python',
+      .bash => 'Bash',
+      .json => 'JSON',
     };
   }
 }
@@ -291,9 +296,31 @@ class SyntaxHighlighterFactory {
     bool isDark,
   ) {
     return switch (language) {
+      .text || .sql => TextSyntaxHighlighter(code, isDark),
       .dart => DartSyntaxHighlighter(code, isDark),
       .yaml => YamlSyntaxHighlighter(code, isDark),
+      .python => PythonSyntaxHighlighter(code, isDark),
+      .bash => BashSyntaxHighlighter(code, isDark),
+      .json => JsonSyntaxHighlighter(code, isDark),
     };
+  }
+}
+
+// ============================================================================
+// TEXT (PLAIN) SYNTAX HIGHLIGHTER
+// ============================================================================
+
+class TextSyntaxHighlighter extends SyntaxHighlighter {
+  TextSyntaxHighlighter(super.code, super.isDark);
+
+  @override
+  TextSpan highlightLine(String line) {
+    // Plain text has no syntax to parse, so we just return
+    // the whole line in the default 'plain' color.
+    return TextSpan(
+      text: line,
+      style: TextStyle(color: plain),
+    );
   }
 }
 
@@ -476,6 +503,115 @@ class DartSyntaxHighlighter extends SyntaxHighlighter {
       },
     );
   }
+} // ============================================================================
+// PYTHON SYNTAX HIGHLIGHTER
+// ============================================================================
+
+class PythonSyntaxHighlighter extends SyntaxHighlighter {
+  PythonSyntaxHighlighter(super.code, super.isDark);
+
+  static final _pythonPattern = RegExp(
+    // 1. Comments
+    r'(#.*)|'
+    // 2. Triple quoted strings (multi-line)
+    r'''("""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\')|'''
+    // 3. Single / Double quoted strings
+    r'''("([^"\\]|\\.)*"|\'([^\'\\]|\\.)*\')|'''
+    // 4. Decorators
+    r'(@\w+)|'
+    // 5. Control Flow
+    r'\b(if|elif|else|match|case|for|while|break|continue|return|yield|try|except|finally|raise|assert|with|async|await|pass|lambda|in|is|not|and|or)\b|'
+    // 6. Keywords / Declarations
+    r'\b(def|class|from|import|as|global|nonlocal|del|True|False|None)\b|'
+    // 7. Functions (identifier followed by paren)
+    r'\b([a-z_]\w*)(?=\s*\()|'
+    // 8. Types (PascalCase convention)
+    r'\b([A-Z][a-zA-Z0-9_]*)\b|'
+    // 9. Numbers (int, float, hex, binary)
+    r'\b(0x[0-9a-fA-F]+|0b[01]+|\d+(?:\.\d+)?)\b|'
+    // 10. Parameters (before equals in function defs)
+    r'\b(\w+)(?=\s*=)|'
+    // 11. Operators / punctuation
+    r'([+\-*/%<>=!&|^~:,.\[\]{}()]+)',
+  );
+
+  @override
+  TextSpan highlightLine(String line) {
+    final spans = <TextSpan>[];
+
+    line.splitMapJoin(
+      _pythonPattern,
+      onMatch: (m) {
+        Color color = plain;
+        String text = m.group(0)!;
+
+        // Group 1: Comments
+        if (m.group(1) != null) {
+          color = comment;
+        }
+        // Group 2-3: Strings
+        else if (m.group(2) != null || m.group(3) != null) {
+          color = string;
+        }
+        // Group 4: Decorators
+        else if (m.group(4) != null) {
+          color = meta;
+        }
+        // Group 5: Control Flow
+        else if (m.group(5) != null) {
+          color = control;
+        }
+        // Group 6: Keywords
+        else if (m.group(6) != null) {
+          color = keyword;
+        }
+        // Group 7: Function names
+        else if (m.group(7) != null) {
+          color = function;
+          text = m.group(7)!;
+        }
+        // Group 8: Types
+        else if (m.group(8) != null) {
+          color = type;
+        }
+        // Group 9: Numbers
+        else if (m.group(9) != null) {
+          color = number;
+        }
+        // Group 10: Parameters
+        else if (m.group(10) != null) {
+          color = param;
+          text = m.group(10)!;
+        }
+        // Group 11: Operators / punctuation
+        else if (m.group(11) != null) {
+          color = punctuation;
+        }
+
+        spans.add(
+          TextSpan(
+            text: text,
+            style: TextStyle(color: color),
+          ),
+        );
+
+        return "";
+      },
+      onNonMatch: (text) {
+        if (text.isNotEmpty) {
+          spans.add(
+            TextSpan(
+              text: text,
+              style: TextStyle(color: plain),
+            ),
+          );
+        }
+        return "";
+      },
+    );
+
+    return TextSpan(children: spans);
+  }
 }
 
 // ============================================================================
@@ -578,3 +714,179 @@ class YamlSyntaxHighlighter extends SyntaxHighlighter {
     return TextSpan(children: spans);
   }
 }
+
+// ============================================================================
+// BASH SYNTAX HIGHLIGHTER
+// ============================================================================
+
+class BashSyntaxHighlighter extends SyntaxHighlighter {
+  BashSyntaxHighlighter(super.code, super.isDark);
+
+  static final _bashPattern = RegExp(
+    // 1. Comments (Starts with #)
+    r'(#.*)|'
+    // 2. Strings (Double quoted with potential interpolation, or Single quoted literal)
+    r'("([^"\\]|\\.)*"|'
+    r"'([^'\\]|\\.)*')|"
+    // 3. Variables ($VAR, ${VAR}, $?, $*, $@)
+    r'(\$[a-zA-Z_]\w*|\$\{[^}]+\}|\$[?*@#$!0-9])|'
+    // 4. Control Flow / Keywords
+    r'\b(if|then|else|elif|fi|case|esac|for|select|while|until|do|done|in|function|time|coproc|break|continue|return|exit)\b|'
+    // 5. Built-in Commands & Common Tools
+    r'\b(echo|cd|pwd|ls|cat|grep|sed|awk|source|export|alias|eval|set|unset|readonly|shift|umask|true|false|sudo|chmod|chown|mkdir|rm|cp|mv|touch|git|npm|flutter|dart|docker|make|curl|wget|tar|unzip|ssh|scp|kill|ps|top|htop|df|du)\b|'
+    // 6. Numbers
+    r'\b(\d+(?:\.\d+)?)\b|'
+    // 7. Flags (e.g., -v, --verbose) - capturing simplified dash patterns
+    r'(\s-{1,2}[a-zA-Z0-9_-]+)|'
+    // 8. Operators & Punctuation
+    r'(\|\||&&|>>|<<|[|&;()<>!={}\[\]])',
+  );
+
+  @override
+  TextSpan highlightLine(String line) {
+    final spans = <TextSpan>[];
+
+    line.splitMapJoin(
+      _bashPattern,
+      onMatch: (m) {
+        Color color = plain;
+        final String text = m.group(0)!;
+
+        // Group 1: Comments
+        if (m.group(1) != null) {
+          color = comment;
+        }
+        // Group 2: Strings
+        else if (m.group(2) != null) {
+          color = string;
+        }
+        // Group 3: Variables
+        else if (m.group(3) != null) {
+          color =
+              param; // VS Code usually colors shell variables blue-ish (param color)
+        }
+        // Group 4: Keywords
+        else if (m.group(4) != null) {
+          color = keyword;
+        }
+        // Group 5: Commands
+        else if (m.group(5) != null) {
+          color = function; // Commands treated as functions
+        }
+        // Group 6: Numbers
+        else if (m.group(6) != null) {
+          color = number;
+        }
+        // Group 7: Flags
+        else if (m.group(7) != null) {
+          color = type; // Using 'type' color for flags to distinguish them
+        }
+        // Group 8: Operators
+        else if (m.group(8) != null) {
+          color = punctuation;
+        }
+
+        spans.add(
+          TextSpan(
+            text: text,
+            style: TextStyle(color: color),
+          ),
+        );
+        return "";
+      },
+      onNonMatch: (text) {
+        if (text.isNotEmpty) {
+          spans.add(
+            TextSpan(
+              text: text,
+              style: TextStyle(color: plain),
+            ),
+          );
+        }
+        return "";
+      },
+    );
+
+    return TextSpan(children: spans);
+  }
+}
+
+// ============================================================================
+// JSON SYNTAX HIGHLIGHTER
+// ============================================================================
+
+class JsonSyntaxHighlighter extends SyntaxHighlighter {
+  JsonSyntaxHighlighter(super.code, super.isDark);
+
+  static final _jsonPattern = RegExp(
+    // 1. Keys (Double quoted string followed by a colon)
+    // Uses lookahead (?=\s*:) to ensure it is a key, but doesn't consume the colon.
+    r'("([^"\\]|\\.)*")(?=\s*:)|'
+    // 2. String Values (Double quoted)
+    r'("([^"\\]|\\.)*")|'
+    // 3. Literals (true, false, null)
+    r'\b(true|false|null)\b|'
+    // 4. Numbers (Integer, Float, Scientific notation)
+    r'\b(-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?)\b|'
+    // 5. Punctuation
+    r'([{}[\],:])',
+  );
+
+  @override
+  TextSpan highlightLine(String line) {
+    final spans = <TextSpan>[];
+
+    line.splitMapJoin(
+      _jsonPattern,
+      onMatch: (m) {
+        Color color = plain;
+        final String text = m.group(0)!;
+
+        // Group 1: Keys (Property names)
+        if (m.group(1) != null) {
+          // Using 'keyword' (Blue) for keys to distinguish from value strings
+          color = keyword;
+        }
+        // Group 2: String Values
+        else if (m.group(2) != null) {
+          color = string;
+        }
+        // Group 3: Literals
+        else if (m.group(3) != null) {
+          color = control; // or keyword, usually distinct for booleans
+        }
+        // Group 4: Numbers
+        else if (m.group(4) != null) {
+          color = number;
+        }
+        // Group 5: Punctuation
+        else if (m.group(5) != null) {
+          color = punctuation;
+        }
+
+        spans.add(
+          TextSpan(
+            text: text,
+            style: TextStyle(color: color),
+          ),
+        );
+        return "";
+      },
+      onNonMatch: (text) {
+        if (text.isNotEmpty) {
+          spans.add(
+            TextSpan(
+              text: text,
+              style: TextStyle(color: plain),
+            ),
+          );
+        }
+        return "";
+      },
+    );
+
+    return TextSpan(children: spans);
+  }
+}
+
+//

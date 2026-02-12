@@ -28,6 +28,7 @@ class QuestionDetailsScreen extends StatelessWidget {
     final langCode = l10n.localeName;
     final content = question.getLocalizedContent(langCode);
     final colors = context.colorScheme;
+    final textStyles = context.textTheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -44,18 +45,26 @@ class QuestionDetailsScreen extends StatelessWidget {
         padding: DL.pagePadding,
         child: Column(
           crossAxisAlignment: .stretch,
-          spacing: DL.compactSeparatorHeight,
+          spacing: DL.listSeparatorHeight,
           children: [
-            // Question type and categories
-            Text(
-              <String>[
-                question.id,
-                question.type.label(l10n),
-                ...question.categories.map((c) => c.label(l10n)),
-              ].join(" • "),
-              // maxLines: 1,
-              // overflow: .ellipsis,
-              style: TextStyle(fontSize: 12, color: colors.onSurfaceVariant),
+            // Question id, type and categories
+            Column(
+              crossAxisAlignment: .start,
+              children: [
+                Text(
+                  <String>[
+                    question.type.label(l10n),
+                    ...question.categories.map((c) => c.label(l10n)),
+                  ].join(" • "),
+                  style: textStyles.bodySmall?.copyWith(
+                    color: colors.onSurfaceVariant,
+                  ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional.centerEnd,
+                  child: IdText(id: question.id),
+                ),
+              ],
             ),
 
             // Question title
@@ -138,6 +147,13 @@ class QuestionDetailsScreen extends StatelessWidget {
             if (question.getLocalizedWhenToUse(langCode) case final use?
                 when use.isNotEmpty) ...[
               ...use.map(ContentViewer.new),
+            ],
+
+            const LiteDivider(),
+
+            // Tags
+            if (question.tags case final tags? when tags.isNotEmpty) ...[
+              Tags(tags: tags),
             ],
           ],
         ),

@@ -9,8 +9,7 @@ import '../../../../core/models/term.dart';
 part 'terms_state.dart';
 
 class TermsCubit extends HydratedCubit<TermsState> {
-  TermsCubit()
-    : super(const TermsState(bookmarkedTerms: {}, terms: allTermsList));
+  TermsCubit() : super(const TermsState(bookmarkedTerms: {}, terms: allTerms));
 
   final searchController = TextEditingController();
 
@@ -34,26 +33,29 @@ class TermsCubit extends HydratedCubit<TermsState> {
         ? onlyBookmarked()
         : state.onlyBookmarked;
 
-    final filtered = allTermsList.where((term) {
-      final matchesQuery =
-          targetQuery.isEmpty ||
-          (term.title.en + term.title.ar + term.aliases.join(' '))
-              .toLowerCase()
-              .contains(targetQuery.toLowerCase());
+    final filtered = Map.fromEntries(
+      allTerms.entries.where((entry) {
+        final term = entry.value;
+        final matchesQuery =
+            targetQuery.isEmpty ||
+            (term.title.en + term.title.ar + term.aliases.join(' '))
+                .toLowerCase()
+                .contains(targetQuery.toLowerCase());
 
-      final matchesCategory =
-          targetCategory == null || term.category == targetCategory;
+        final matchesCategory =
+            targetCategory == null || term.category == targetCategory;
 
-      final matchesType = targetType == null || term.type == targetType;
+        final matchesType = targetType == null || term.type == targetType;
 
-      final matchesOnlyBookmarked =
-          !targetOnlyBookmarked || state.bookmarkedTerms.contains(term.id);
+        final matchesOnlyBookmarked =
+            !targetOnlyBookmarked || state.bookmarkedTerms.contains(term.id);
 
-      return matchesQuery &&
-          matchesCategory &&
-          matchesType &&
-          matchesOnlyBookmarked;
-    }).toList();
+        return matchesQuery &&
+            matchesCategory &&
+            matchesType &&
+            matchesOnlyBookmarked;
+      }),
+    );
 
     emit(
       state.copyWith(

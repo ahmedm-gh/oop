@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tuts/core/services/routes.dart';
-import 'package:tuts/l10n/app_localizations.dart';
 import 'package:tuts/shared/app_widgets.dart';
 import 'package:tuts/shared/design_layouts.dart';
 
@@ -39,6 +38,7 @@ class ProgrammingTermDetailsScreen extends StatelessWidget {
     final l10n = context.l10n;
     final colors = context.colorScheme;
     final langCode = l10n.localeName;
+    final textStyle = context.textTheme;
 
     if (arguments case final args?) {
       final term = args.term;
@@ -46,7 +46,6 @@ class ProgrammingTermDetailsScreen extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          surfaceTintColor: Colors.transparent,
           title: Text(term.title(langCode)),
         ),
         body: SingleChildScrollView(
@@ -56,43 +55,24 @@ class ProgrammingTermDetailsScreen extends StatelessWidget {
             spacing: DL.listSeparatorHeight,
             children: [
               // Metadata Row
-              Row(
-                spacing: 10,
+              Column(
+                crossAxisAlignment: .start,
                 children: [
-                  TermChip(
-                    color: colors.primary,
-                    child: Text(
-                      <String>[
-                        term.type.label(l10n),
-                        if (langCode != "en") term.type.enLabel().ltr,
-                      ].join(" • "),
+                  Text(
+                    <String>[
+                      term.type.label(l10n),
+                      if (langCode != "en") term.type.enLabel().ltr,
+                      ?term.era?.label(l10n),
+                    ].join(" • "),
+                    style: textStyle.bodySmall?.copyWith(
+                      color: colors.onSurfaceVariant,
                     ),
                   ),
-                  if (term.era case final era?)
-                    TermChip(
-                      color: colors.secondary,
-                      child: Text(era.label(l10n)),
-                    ),
-                  Expanded(
-                    child: Text(
-                      term.id.ltr,
-                      textAlign: .end,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: colors.onSurfaceVariant.withValues(alpha: 0.5),
-                        fontFamily: 'monospace',
-                      ),
-                    ),
+                  Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: IdText(id: term.id),
                   ),
                 ],
-              ),
-              Text(
-                <String>[
-                  term.category.label(l10n),
-                  if (term.introducedYear case final year?)
-                    "${l10n.introducedYearLabel}: $year",
-                ].join(" • "),
-                style: TextStyle(fontSize: 12, color: colors.onSurfaceVariant),
               ),
 
               // Overview & Details Card
@@ -101,7 +81,7 @@ class ProgrammingTermDetailsScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: colors.surfaceContainerLow,
                   borderRadius: DL.inListCardBorderRadius,
-                  border: Border.all(
+                  border: .all(
                     color: colors.outlineVariant.withValues(alpha: 0.5),
                   ),
                 ),
@@ -109,12 +89,12 @@ class ProgrammingTermDetailsScreen extends StatelessWidget {
                   crossAxisAlignment: .stretch,
                   spacing: 12,
                   children: [
-                    if (term.quickOverview.call(langCode) case final qo
+                    if (term.quickOverview(langCode) case final qo
                         when qo.isNotEmpty) ...[
                       for (final content in qo) ContentViewer(content),
                       const LiteDivider(),
                     ],
-                    if (term.details.call(langCode) case final details
+                    if (term.details(langCode) case final details
                         when details.isNotEmpty)
                       for (final content in details) ContentViewer(content),
                   ],
@@ -132,7 +112,7 @@ class ProgrammingTermDetailsScreen extends StatelessWidget {
                         color: pt.color.pairedColor,
                       ),
                       background: pt.color,
-                      padding: const EdgeInsets.all(4),
+                      padding: const .all(4),
                     ),
                     const SizedBox(width: 8),
                     Text(
@@ -173,75 +153,49 @@ class ProgrammingTermDetailsScreen extends StatelessWidget {
                         color: colors.onSurfaceVariant,
                       ),
                     ),
-                    for (final alias in term.aliases)
-                      TermChip(child: Text(alias)),
+                    Text(
+                      term.aliases.join(", "),
+                      textDirection: .ltr,
+                      style: const TextStyle(fontSize: 12),
+                    ),
                   ],
                 ),
 
               // Languages
-              if (term.languages.isNotEmpty)
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  crossAxisAlignment: .center,
-                  children: [
-                    Text(
-                      "${l10n.languagesLabel}:",
-                      textDirection: .ltr,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: .bold,
-                        color: colors.onSurfaceVariant,
-                      ),
-                    ),
-                    for (final lang in term.languages)
-                      TermChip(
-                        color: colors.secondary,
-                        child: Text(lang.label),
-                      ),
-                  ],
-                ),
+              // if (term.languages.isNotEmpty)
+              //   Wrap(
+              //     spacing: 8,
+              //     runSpacing: 8,
+              //     crossAxisAlignment: .center,
+              //     children: [
+              //       Text(
+              //         "${l10n.languagesLabel}:",
+              //         textDirection: .ltr,
+              //         style: TextStyle(
+              //           fontSize: 12,
+              //           fontWeight: .bold,
+              //           color: colors.onSurfaceVariant,
+              //         ),
+              //       ),
+              //       for (final lang in term.languages)
+              //         TermChip(
+              //           color: colors.secondary,
+              //           child: Text(lang.label),
+              //         ),
+              //     ],
+              //   ),
 
               // Tags
-              if (term.tags.isNotEmpty)
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: [
-                    for (final tag in term.tags)
-                      Text(
-                        "#$tag",
-                        textDirection: tag.getDirection(),
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: colors.primary.withValues(alpha: 0.7),
-                          fontWeight: .bold,
-                        ),
-                      ),
-                  ],
-                ),
+              if (term.tags.isNotEmpty) Tags(tags: term.tags),
 
               // Related Terms
               if (term.relatedTerms.isNotEmpty) ...[
                 const LiteDivider(),
-                Text(
-                  l10n.relatedPatterns, // Reuse this for simple cross-ref
-                  style: const TextStyle(fontSize: 16, fontWeight: .bold),
-                ),
-                ChipTheme(
-                  data: ChipThemeData(
-                    backgroundColor: colors.surfaceContainerHigh.withValues(
-                      alpha: 0.5,
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    side: BorderSide(color: colors.outlineVariant),
-                  ),
+                Text(l10n.relatedTerms, style: textStyle.titleMedium),
+                ActionChipsWrapper(
                   child: Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
+                    spacing: 10,
+                    runSpacing: 5,
                     children: [
                       for (final relatedId in term.relatedTerms)
                         if (allTerms[relatedId] case final relatedTerm?)
@@ -273,10 +227,4 @@ class ProgrammingTermDetailsScreen extends StatelessWidget {
       body: Center(child: Text(l10n.termNotFound, textAlign: TextAlign.center)),
     );
   }
-}
-
-extension on AppLocalizations {
-  String get languagesLabel => localeName == 'ar' ? 'اللغات' : 'Languages';
-  String get introducedYearLabel =>
-      localeName == 'ar' ? 'سنة التقديم' : 'Introduced';
 }

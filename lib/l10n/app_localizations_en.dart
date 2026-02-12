@@ -348,6 +348,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get termNotFound => 'Term not found';
 
   @override
+  String get termTypeLanguage => 'Language';
+
+  @override
   String get termTypeConcept => 'Concept';
 
   @override
@@ -468,6 +471,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get termCategoryCloud => 'Cloud Computing';
 
   @override
+  String get termCategoryNativePlatform => 'Native Platform';
+
+  @override
   String get termCategoryArtificialIntelligence => 'Artificial Intelligence';
 
   @override
@@ -499,4 +505,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aliases => 'Aliases';
+
+  @override
+  String get relatedTerms => 'Related Terms';
 }

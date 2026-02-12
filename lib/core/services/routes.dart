@@ -58,10 +58,7 @@ abstract class Routes {
       designPatternDetails => MaterialPageRoute(
         builder: (_) {
           return PatternDetailsScreen(
-            pattern: toValue<PatternDetailsScreenArguments>(
-              settings.arguments,
-              const .none(),
-            ).pattern,
+            arguments: toValue(settings.arguments, null),
           );
         },
       ),

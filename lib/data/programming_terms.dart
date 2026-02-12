@@ -2,63 +2,207 @@ import '../core/models/content.dart';
 import '../core/models/localized_text.dart';
 import '../core/models/term.dart';
 
-// Assuming TermKeys remains the same as provided in the start of the file
 abstract class TermKeys {
-  static const fundamentalsVariable = "fundamentals_variable";
-  static const fundamentalsDataType = "fundamentals_data_type";
-  static const fundamentalsFunction = "fundamentals_function";
-  static const fundamentalsArgument = "fundamentals_argument";
-  static const fundamentalsConditional = "fundamentals_conditional";
-  static const fundamentalsLoop = "fundamentals_loop";
-  static const fundamentalsAlgorithm = "fundamentals_algorithm";
-  static const fundamentalsBigO = "fundamentals_big_o";
-  static const dataStructureArray = "data_structure_array";
-  static const dataStructureSet = "data_structure_set";
-  static const dataStructureMap = "data_structure_map";
-  static const dataStructureStack = "data_structure_stack";
-  static const dataStructureQueue = "data_structure_queue";
-  static const dataStructureLinkedList = "data_structure_linked_list";
-  static const dataStructureTree = "data_structure_tree";
-  static const dataStructureGraph = "data_structure_graph";
-  static const oopClass = "oop_class";
-  static const oopObject = "oop_object";
-  static const oopInterface = "oop_interface";
-  static const oopAbstractClass = "oop_abstract_class";
-  static const oopInheritance = "oop_inheritance";
-  static const oopPolymorphism = "oop_polymorphism";
-  static const oopEncapsulation = "oop_encapsulation";
-  static const oopAbstraction = "oop_abstraction";
-  static const oopMethod = "oop_method";
-  static const paradigmOop = "paradigm_oop";
-  static const paradigmFunctional = "paradigm_functional";
-  static const paradigmProcedural = "paradigm_procedural";
-  static const concurrencyThread = "concurrency_thread";
-  static const concurrencyProcess = "concurrency_process";
-  static const concurrencySemaphore = "concurrency_semaphore";
-  static const concurrencyDeadlock = "concurrency_deadlock";
-  static const concurrencyRaceCondition = "concurrency_race_condition";
-  static const concurrencyAsync = "concurrency_async";
-  static const dartLanguage = "dart_language";
-  static const flutterFramework = "flutter_framework";
-  static const flutterWidget = "flutter_widget";
-  static const flutterStatelessWidget = "flutter_stateless_widget";
-  static const flutterStatefulWidget = "flutter_stateful_widget";
-  static const flutterHotReload = "flutter_hot_reload";
-  static const flutterHotRestart = "flutter_hot_restart";
-  static const flutterMaterialDesign = "flutter_material_design";
-  static const dartNullSafety = "dart_null_safety";
-  static const dartPub = "dart_pub";
-  static const dartIsolate = "dart_isolate";
-  static const dartFuture = "dart_future";
-  static const dartStream = "dart_stream";
-  static const dartMixin = "dart_mixin";
+  static const fundamentalsVariable = "fundamentals-variable";
+  static const fundamentalsDataType = "fundamentals-data-type";
+  static const fundamentalsFunction = "fundamentals-function";
+  static const fundamentalsArgument = "fundamentals-argument";
+  static const fundamentalsConditional = "fundamentals-conditional";
+  static const fundamentalsLoop = "fundamentals-loop";
+  static const fundamentalsAlgorithm = "fundamentals-algorithm";
+  static const fundamentalsBigO = "fundamentals-big-o";
+  static const dataStructureArray = "data-structure-array";
+  static const dataStructureSet = "data-structure-set";
+  static const dataStructureMap = "data-structure-map";
+  static const dataStructureStack = "data-structure-stack";
+  static const dataStructureQueue = "data-structure-queue";
+  static const dataStructureLinkedList = "data-structure-linked-list";
+  static const dataStructureTree = "data-structure-tree";
+  static const dataStructureGraph = "data-structure-graph";
+  static const oopClass = "oop-class";
+  static const oopObject = "oop-object";
+  static const oopInterface = "oop-interface";
+  static const oopAbstractClass = "oop-abstract-class";
+  static const oopInheritance = "oop-inheritance";
+  static const oopPolymorphism = "oop-polymorphism";
+  static const oopEncapsulation = "oop-encapsulation";
+  static const oopAbstraction = "oop-abstraction";
+  static const oopMethod = "oop-method";
+  static const paradigmOop = "paradigm-oop";
+  static const paradigmFunctional = "paradigm-functional";
+  static const paradigmProcedural = "paradigm-procedural";
+  static const concurrencyThread = "concurrency-thread";
+  static const concurrencyProcess = "concurrency-process";
+  static const concurrencySemaphore = "concurrency-semaphore";
+  static const concurrencyDeadlock = "concurrency-deadlock";
+  static const concurrencyRaceCondition = "concurrency-race-condition";
+  static const concurrencyAsync = "concurrency-async";
+  static const dartLanguage = "dart-language";
+  static const flutterFramework = "flutter-framework";
+  static const flutterWidget = "flutter-widget";
+  static const flutterStatelessWidget = "flutter-stateless-widget";
+  static const flutterStatefulWidget = "flutter-stateful-widget";
+  static const flutterHotReload = "flutter-hot-reload";
+  static const flutterHotRestart = "flutter-hot-restart";
+  static const flutterMaterialDesign = "flutter-material-design";
+  static const dartNullSafety = "dart-null-safety";
+  static const dartPub = "dart-pub";
+  static const dartIsolate = "dart-isolate";
+  static const dartFuture = "dart-future";
+  static const dartStream = "dart-stream";
+  static const dartMixin = "dart-mixin";
+  static const fundamentalsConstant = "fundamentals-constant";
+  static const fundamentalsParameter = "fundamentals-parameter";
+  static const fundamentalsReturnValue = "fundamentals-return-value";
+  static const fundamentalsNull = "fundamentals-null";
+  static const fundamentalsRecursion = "fundamentals-recursion";
+  static const oopConstructor = "oop-constructor";
+  static const oopGetterSetter = "oop-getter-setter";
+  static const immutable = "immutable";
+  static const state = "state";
+  static const typeInference = "type-inference";
+  static const staticTyping = "static-typing";
+  static const dynamicTyping = "dynamic-typing";
+  static const compilation = "compilation";
+  static const runtime = "runtime";
+  static const compiler = "compiler";
+  static const interpreter = "interpreter";
+  static const package = "package";
+  static const dependency = "dependency";
+  static const library = "library";
+  static const importExport = "import-export";
+  static const frameworkConcept = "framework-concept";
+  static const sdk = "sdk";
+  static const api = "api";
+  static const exception = "exception";
+  static const errorHandling = "error-handling";
+  static const tryCatch = "try-catch";
+  static const assertion = "assertion";
+  static const testing = "testing";
+  static const unitTest = "unit-test";
+  static const widgetTest = "widget-test";
+  static const integrationTest = "integration-test";
+  static const mock = "mock";
+  static const versionControl = "version-control";
+  static const git = "git";
+  static const commit = "commit";
+  static const branch = "branch";
+  static const merge = "merge";
+  static const pullRequest = "pull-request";
+  static const codeReview = "code-review";
+  static const singleton = "singleton";
+  static const factoryConstructor = "factory-constructor";
+  static const observerPattern = "observer-pattern";
+  static const mvc = "mvc";
+  static const mvvm = "mvvm";
+  static const dependencyInjection = "dependency-injection";
+  static const callback = "callback";
+  static const json = "json";
+  static const serialization = "serialization";
+  static const httpHttps = "http-https";
+  static const restApi = "rest-api";
+  static const websocket = "websocket";
+  static const authentication = "authentication";
+  static const authorization = "authorization";
+  static const jwt = "jwt";
+  static const stateManagement = "state-management";
+  static const bloc = "bloc";
+  static const providerPattern = "provider-pattern";
+  static const reactiveProgramming = "reactive-programming";
+  static const buildMethod = "build-method";
+  static const buildContext = "build-context";
+  static const eventLoop = "event-loop";
+  static const architectureClean = "architecture-clean";
+  static const architectureLayered = "architecture-layered";
+  static const patternRepository = "pattern-repository";
+  static const patternServiceLocator = "pattern-service-locator";
+  static const stateManagementCubit = "state-management-cubit";
+  static const toolRiverpod = "tool-riverpod";
+  static const toolGetIt = "tool-get-it";
+  static const patternRedux = "pattern-redux";
+  static const conceptDesignPattern = "concept-design-pattern";
+  static const principleSolid = "principle-solid";
+  static const principleDry = "principle-dry";
+  static const principleKiss = "principle-kiss";
+  static const principleYagni = "principle-yagni";
+  static const gitRebase = "git-rebase";
+  static const conceptRefactoring = "concept-refactoring";
+  static const conceptCodeSmell = "concept-code-smell";
+  static const technicalDebt = "technical-debt";
+  static const toolLint = "tool-lint";
+  static const memoryGarbageCollection = "memory-garbage-collection";
+  static const memoryLeak = "memory-leak";
+  static const memoryHeap = "memory-heap";
+  static const memoryStack = "memory-stack";
+  static const conceptPointer = "concept-pointer";
+  static const conceptReference = "concept-reference";
+  static const dataDeserialization = "data-deserialization";
+  static const securityEncryption = "security-encryption";
+  static const securityHashing = "security-hashing";
+  static const dbDatabase = "db-database";
+  static const dbSql = "db-sql";
+  static const dbNosql = "db-nosql";
+  static const dbOrm = "db-orm";
+  static const performanceCaching = "performance-caching";
+  static const devopsDocker = "devops-docker";
+  static const devopsContainerization = "devops-containerization";
+  static const cloudComputing = "cloud-computing";
+  static const cloudServerless = "cloud-serverless";
+  static const architectureMicroservices = "architecture-microservices";
+  static const architectureMonolith = "architecture-monolith";
+  static const devopsConcept = "devops-concept";
+  static const devopsCiCd = "devops-ci-cd";
+  static const devopsDeployment = "devops-deployment";
+  static const environmentConcept = "environment-concept";
+  static const environmentProduction = "environment-production";
+  static const environmentStaging = "environment-staging";
+  static const toolDebugMode = "tool-debug-mode";
+  static const toolReleaseMode = "tool-release-mode";
+  static const uiResponsive = "ui-responsive";
+  static const flutterCupertino = "flutter-cupertino";
+  static const uiAnimation = "ui-animation";
+  static const conceptLifecycle = "concept-lifecycle";
+  static const flutterLifecycleMethod = "flutter-lifecycle-method";
+  static const flutterRendering = "flutter-rendering";
+  static const flutterWidgetLayout = "flutter-widget-layout";
+  static const flutterConstraint = "flutter-constraint";
+  static const flutterWidgetFlex = "flutter-widget-flex";
+  static const flutterWidgetExpanded = "flutter-widget-expanded";
+  static const flutterWidgetMediaQuery = "flutter-widget-media-query";
+  static const flutterNavigator = "flutter-navigator";
+  static const flutterRouting = "flutter-routing";
+  static const flutterDeepLinking = "flutter-deep-linking";
+  static const uiTheming = "ui-theming";
+  static const i18nL10N = "i18n-l10n";
+  static const uiAccessibility = "ui-accessibility";
+  static const performanceOptimization = "performance-optimization";
+  static const performanceLazyLoading = "performance-lazy-loading";
+  static const compilationAot = "compilation-aot";
+  static const compilationJit = "compilation-jit";
+  static const conceptTreeShaking = "concept-tree-shaking";
+  static const conceptObfuscation = "concept-obfuscation";
+  static const dartGenerics = "dart-generics";
+  static const dartExtensions = "dart-extensions";
+  static const dartRecords = "dart-records";
+  static const dartPatterns = "dart-patterns";
+  static const flutterPlatformChannel = "flutter-platform-channel";
+  static const flutterGoldenTest = "flutter-golden-test";
+  static const methodologyTdd = "methodology-tdd";
+  static const methodologyBdd = "methodology-bdd";
+  static const netGraphql = "net-graphql";
+  static const netGrpc = "net-grpc";
+  static const securitySslPinning = "security-ssl-pinning";
+  static const conceptCodeSplitting = "concept-code-splitting";
+  static const toolFormatter = "tool-formatter";
+  static const dbMigration = "db-migration";
+  static const dbIndex = "db-index";
+  static const testingStub = "testing-stub";
+  static const conceptModule = "concept-module";
+  static const conceptNamespace = "concept-namespace";
 }
 
-const List<ProgrammingTerm> allTermsList = [
-  // ============================================================================
-  // FUNDAMENTALS
-  // ============================================================================
-  ProgrammingTerm(
+const Map<String, ProgrammingTerm> allTerms = {
+  TermKeys.fundamentalsVariable: ProgrammingTerm(
     id: TermKeys.fundamentalsVariable,
     title: LocalizedString(en: 'Variable', ar: 'المتغير'),
     quickOverview: LocalizedValue(
@@ -109,8 +253,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.fundamentalsDataType: ProgrammingTerm(
     id: TermKeys.fundamentalsDataType,
     title: LocalizedString(en: 'Data Type', ar: 'نوع البيانات'),
     quickOverview: LocalizedValue(
@@ -171,8 +314,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.fundamentalsFunction: ProgrammingTerm(
     id: TermKeys.fundamentalsFunction,
     title: LocalizedString(en: 'Function', ar: 'الدالة'),
     quickOverview: LocalizedValue(
@@ -226,8 +368,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.fundamentalsArgument: ProgrammingTerm(
     id: TermKeys.fundamentalsArgument,
     title: LocalizedString(en: 'Argument', ar: 'الوسيط'),
     quickOverview: LocalizedValue(
@@ -281,8 +422,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.fundamentalsConditional: ProgrammingTerm(
     id: TermKeys.fundamentalsConditional,
     title: LocalizedString(en: 'Conditional (If-Else)', ar: 'الجملة الشرطية'),
     quickOverview: LocalizedValue(
@@ -352,8 +492,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.fundamentalsLoop: ProgrammingTerm(
     id: TermKeys.fundamentalsLoop,
     title: LocalizedString(en: 'Loop', ar: 'الحلقة التكرارية'),
     quickOverview: LocalizedValue(
@@ -420,8 +559,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.fundamentalsAlgorithm: ProgrammingTerm(
     id: TermKeys.fundamentalsAlgorithm,
     title: LocalizedString(en: 'Algorithm', ar: 'الخوارزمية'),
     quickOverview: LocalizedValue(
@@ -489,8 +627,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.fundamentalsBigO: ProgrammingTerm(
     id: TermKeys.fundamentalsBigO,
     title: LocalizedString(en: 'Big O Notation', ar: 'ترميز O الكبير'),
     quickOverview: LocalizedValue(
@@ -549,11 +686,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  // ============================================================================
-  // DATA STRUCTURES
-  // ============================================================================
-  ProgrammingTerm(
+  TermKeys.dataStructureArray: ProgrammingTerm(
     id: TermKeys.dataStructureArray,
     title: LocalizedString(en: 'Array / List', ar: 'المصفوفة / القائمة'),
     quickOverview: LocalizedValue(
@@ -615,8 +748,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dataStructureSet: ProgrammingTerm(
     id: TermKeys.dataStructureSet,
     title: LocalizedString(en: 'Set', ar: 'المجموعة'),
     quickOverview: LocalizedValue(
@@ -675,8 +807,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dataStructureMap: ProgrammingTerm(
     id: TermKeys.dataStructureMap,
     title: LocalizedString(en: 'Map / Dictionary', ar: 'الخريطة / القاموس'),
     quickOverview: LocalizedValue(
@@ -751,8 +882,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dataStructureStack: ProgrammingTerm(
     id: TermKeys.dataStructureStack,
     title: LocalizedString(en: 'Stack', ar: 'المكدس'),
     quickOverview: LocalizedValue(
@@ -829,8 +959,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dataStructureQueue: ProgrammingTerm(
     id: TermKeys.dataStructureQueue,
     title: LocalizedString(en: 'Queue', ar: 'الطابور'),
     quickOverview: LocalizedValue(
@@ -909,8 +1038,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dataStructureLinkedList: ProgrammingTerm(
     id: TermKeys.dataStructureLinkedList,
     title: LocalizedString(en: 'Linked List', ar: 'القائمة المترابطة'),
     quickOverview: LocalizedValue(
@@ -991,8 +1119,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .medium,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dataStructureTree: ProgrammingTerm(
     id: TermKeys.dataStructureTree,
     title: LocalizedString(en: 'Tree', ar: 'الشجرة'),
     quickOverview: LocalizedValue(
@@ -1065,8 +1192,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dataStructureGraph: ProgrammingTerm(
     id: TermKeys.dataStructureGraph,
     title: LocalizedString(en: 'Graph', ar: 'الرسم البياني'),
     quickOverview: LocalizedValue(
@@ -1143,11 +1269,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .medium,
   ),
-
-  // ============================================================================
-  // OBJECT-ORIENTED PROGRAMMING
-  // ============================================================================
-  ProgrammingTerm(
+  TermKeys.oopClass: ProgrammingTerm(
     id: TermKeys.oopClass,
     title: LocalizedString(en: 'Class', ar: 'الفئة'),
     quickOverview: LocalizedValue(
@@ -1214,8 +1336,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.oopObject: ProgrammingTerm(
     id: TermKeys.oopObject,
     title: LocalizedString(en: 'Object', ar: 'الكائن'),
     quickOverview: LocalizedValue(
@@ -1279,8 +1400,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.oopInterface: ProgrammingTerm(
     id: TermKeys.oopInterface,
     title: LocalizedString(en: 'Interface', ar: 'الواجهة'),
     quickOverview: LocalizedValue(
@@ -1348,8 +1468,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.oopAbstractClass: ProgrammingTerm(
     id: TermKeys.oopAbstractClass,
     title: LocalizedString(en: 'Abstract Class', ar: 'الفئة المجردة'),
     quickOverview: LocalizedValue(
@@ -1418,8 +1537,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.oopInheritance: ProgrammingTerm(
     id: TermKeys.oopInheritance,
     title: LocalizedString(en: 'Inheritance', ar: 'الوراثة'),
     quickOverview: LocalizedValue(
@@ -1497,8 +1615,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.oopPolymorphism: ProgrammingTerm(
     id: TermKeys.oopPolymorphism,
     title: LocalizedString(en: 'Polymorphism', ar: 'تعدد الأشكال'),
     quickOverview: LocalizedValue(
@@ -1564,8 +1681,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.oopEncapsulation: ProgrammingTerm(
     id: TermKeys.oopEncapsulation,
     title: LocalizedString(en: 'Encapsulation', ar: 'التغليف'),
     quickOverview: LocalizedValue(
@@ -1639,8 +1755,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.oopAbstraction: ProgrammingTerm(
     id: TermKeys.oopAbstraction,
     title: LocalizedString(en: 'Abstraction', ar: 'التجريد'),
     quickOverview: LocalizedValue(
@@ -1709,11 +1824,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  // ============================================================================
-  // PROGRAMMING PARADIGMS
-  // ============================================================================
-  ProgrammingTerm(
+  TermKeys.paradigmOop: ProgrammingTerm(
     id: TermKeys.paradigmOop,
     title: LocalizedString(
       en: 'Object-Oriented Programming',
@@ -1793,8 +1904,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.paradigmFunctional: ProgrammingTerm(
     id: TermKeys.paradigmFunctional,
     title: LocalizedString(
       en: 'Functional Programming',
@@ -1863,8 +1973,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.paradigmProcedural: ProgrammingTerm(
     id: TermKeys.paradigmProcedural,
     title: LocalizedString(
       en: 'Procedural Programming',
@@ -1936,11 +2045,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .medium,
   ),
-
-  // ============================================================================
-  // CONCURRENCY & PARALLELISM
-  // ============================================================================
-  ProgrammingTerm(
+  TermKeys.concurrencyThread: ProgrammingTerm(
     id: TermKeys.concurrencyThread,
     title: LocalizedString(en: 'Thread', ar: 'الخيط'),
     quickOverview: LocalizedValue(
@@ -1995,8 +2100,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.concurrencyProcess: ProgrammingTerm(
     id: TermKeys.concurrencyProcess,
     title: LocalizedString(en: 'Process', ar: 'العملية'),
     quickOverview: LocalizedValue(
@@ -2048,8 +2152,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .medium,
   ),
-
-  ProgrammingTerm(
+  TermKeys.concurrencySemaphore: ProgrammingTerm(
     id: TermKeys.concurrencySemaphore,
     title: LocalizedString(en: 'Semaphore', ar: 'الإشارة'),
     quickOverview: LocalizedValue(
@@ -2114,8 +2217,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .low,
   ),
-
-  ProgrammingTerm(
+  TermKeys.concurrencyDeadlock: ProgrammingTerm(
     id: TermKeys.concurrencyDeadlock,
     title: LocalizedString(en: 'Deadlock', ar: 'الجمود'),
     quickOverview: LocalizedValue(
@@ -2186,8 +2288,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .medium,
   ),
-
-  ProgrammingTerm(
+  TermKeys.concurrencyRaceCondition: ProgrammingTerm(
     id: TermKeys.concurrencyRaceCondition,
     title: LocalizedString(en: 'Race Condition', ar: 'ظرف السباق'),
     quickOverview: LocalizedValue(
@@ -2263,8 +2364,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .classic,
     popularityTier: .medium,
   ),
-
-  ProgrammingTerm(
+  TermKeys.concurrencyAsync: ProgrammingTerm(
     id: TermKeys.concurrencyAsync,
     title: LocalizedString(
       en: 'Asynchronous Programming',
@@ -2341,11 +2441,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .modern,
     popularityTier: .veryHigh,
   ),
-
-  // ============================================================================
-  // DART & FLUTTER SPECIFIC TERMS
-  // ============================================================================
-  ProgrammingTerm(
+  TermKeys.dartLanguage: ProgrammingTerm(
     id: TermKeys.dartLanguage,
     title: LocalizedString(en: 'Dart', ar: 'دارت'),
     quickOverview: LocalizedValue(
@@ -2415,8 +2511,7 @@ const List<ProgrammingTerm> allTermsList = [
     popularityTier: .veryHigh,
     introducedYear: 2011,
   ),
-
-  ProgrammingTerm(
+  TermKeys.flutterFramework: ProgrammingTerm(
     id: TermKeys.flutterFramework,
     title: LocalizedString(en: 'Flutter', ar: 'فلاتر'),
     quickOverview: LocalizedValue(
@@ -2476,8 +2571,7 @@ const List<ProgrammingTerm> allTermsList = [
     popularityTier: .veryHigh,
     introducedYear: 2017,
   ),
-
-  ProgrammingTerm(
+  TermKeys.flutterWidget: ProgrammingTerm(
     id: TermKeys.flutterWidget,
     title: LocalizedString(en: 'Widget', ar: 'الويدجت'),
     quickOverview: LocalizedValue(
@@ -2548,8 +2642,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .modern,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.flutterStatelessWidget: ProgrammingTerm(
     id: TermKeys.flutterStatelessWidget,
     title: LocalizedString(en: 'StatelessWidget', ar: 'ويدجت بدون حالة'),
     quickOverview: LocalizedValue(
@@ -2622,8 +2715,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .modern,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.flutterStatefulWidget: ProgrammingTerm(
     id: TermKeys.flutterStatefulWidget,
     title: LocalizedString(en: 'StatefulWidget', ar: 'ويدجت ذو حالة'),
     quickOverview: LocalizedValue(
@@ -2716,8 +2808,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .modern,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.flutterHotReload: ProgrammingTerm(
     id: TermKeys.flutterHotReload,
     title: LocalizedString(en: 'Hot Reload', ar: 'إعادة التحميل الساخن'),
     quickOverview: LocalizedValue(
@@ -2786,8 +2877,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .modern,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.flutterHotRestart: ProgrammingTerm(
     id: TermKeys.flutterHotRestart,
     title: LocalizedString(en: 'Hot Restart', ar: 'إعادة التشغيل الساخن'),
     quickOverview: LocalizedValue(
@@ -2856,8 +2946,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .modern,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.flutterMaterialDesign: ProgrammingTerm(
     id: TermKeys.flutterMaterialDesign,
     title: LocalizedString(en: 'Material Design', ar: 'تصميم ماتيريال'),
     quickOverview: LocalizedValue(
@@ -2928,8 +3017,7 @@ const List<ProgrammingTerm> allTermsList = [
     popularityTier: .veryHigh,
     introducedYear: 2014,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dartNullSafety: ProgrammingTerm(
     id: TermKeys.dartNullSafety,
     title: LocalizedString(en: 'Null Safety', ar: 'أمان القيم الفارغة'),
     quickOverview: LocalizedValue(
@@ -2996,8 +3084,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .modern,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dartPub: ProgrammingTerm(
     id: TermKeys.dartPub,
     title: LocalizedString(en: 'pub (Package Manager)', ar: 'pub (مدير الحزم)'),
     quickOverview: LocalizedValue(
@@ -3065,8 +3152,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .modern,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dartIsolate: ProgrammingTerm(
     id: TermKeys.dartIsolate,
     title: LocalizedString(en: 'Isolate', ar: 'العزلة'),
     quickOverview: LocalizedValue(
@@ -3143,8 +3229,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .modern,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dartFuture: ProgrammingTerm(
     id: TermKeys.dartFuture,
     title: LocalizedString(en: 'Future', ar: 'المستقبل'),
     quickOverview: LocalizedValue(
@@ -3216,8 +3301,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .modern,
     popularityTier: .veryHigh,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dartStream: ProgrammingTerm(
     id: TermKeys.dartStream,
     title: LocalizedString(en: 'Stream', ar: 'التدفق'),
     quickOverview: LocalizedValue(
@@ -3305,8 +3389,7 @@ const List<ProgrammingTerm> allTermsList = [
     era: .modern,
     popularityTier: .high,
   ),
-
-  ProgrammingTerm(
+  TermKeys.dartMixin: ProgrammingTerm(
     id: TermKeys.dartMixin,
     title: LocalizedString(en: 'Mixin', ar: 'المزيج'),
     quickOverview: LocalizedValue(
@@ -3386,8 +3469,8977 @@ const List<ProgrammingTerm> allTermsList = [
     era: .modern,
     popularityTier: .high,
   ),
-];
-
-final Map<String, ProgrammingTerm> allTerms = {
-  for (final t in allTermsList) t.id: t,
+  TermKeys.fundamentalsConstant: ProgrammingTerm(
+    id: TermKeys.fundamentalsConstant,
+    title: LocalizedString(en: 'Constant', ar: 'الثابت'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A value that cannot be changed after it is set. Constants are used to define values that remain the same throughout program execution.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'قيمة لا يمكن تغييرها بعد تعيينها. تُستخدم الثوابت لتعريف القيم التي تبقى كما هي طوال تنفيذ البرنامج.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Benefits of constants:',
+          value: [
+            'Prevents accidental modification of important values',
+            'Makes code more readable and maintainable',
+            'Compiler can optimize constant values',
+            'Type safety - errors caught at compile time',
+          ],
+        ),
+        StringContent('In Dart:'),
+        CodeContent(
+          'const double pi = 3.14159;  // Compile-time constant\n'
+          'final currentTime = DateTime.now();  // Runtime constant\n'
+          '\n'
+          '// const vs final:\n'
+          '// const - value must be known at compile time\n'
+          '// final - value set once at runtime, then immutable',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'فوائد الثوابت:',
+          value: [
+            'تمنع التعديل العرضي للقيم المهمة',
+            'تجعل الكود أكثر قابلية للقراءة والصيانة',
+            'يمكن للمترجم تحسين القيم الثابتة',
+            'أمان النوع - يتم اكتشاف الأخطاء في وقت الترجمة',
+          ],
+        ),
+        StringContent('في Dart:'),
+        CodeContent(
+          'const double pi = 3.14159;  // ثابت وقت الترجمة\n'
+          'final currentTime = DateTime.now();  // ثابت وقت التشغيل\n'
+          '\n'
+          '// const مقابل final:\n'
+          '// const - يجب معرفة القيمة في وقت الترجمة\n'
+          '// final - يتم تعيين القيمة مرة واحدة في وقت التشغيل، ثم تصبح ثابتة',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .c, .cpp, .javascript],
+    relatedTerms: [TermKeys.fundamentalsVariable, TermKeys.immutable],
+    aliases: ['Immutable value', 'Final value'],
+    tags: ['immutable', 'const', 'final', 'basics'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.fundamentalsParameter: ProgrammingTerm(
+    id: TermKeys.fundamentalsParameter,
+    title: LocalizedString(en: 'Parameter', ar: 'المعامل'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A variable in a function definition that receives a value when the function is called. Parameters define what inputs a function expects.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'متغير في تعريف الدالة يتلقى قيمة عند استدعاء الدالة. تحدد المعاملات المدخلات التي تتوقعها الدالة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Types of parameters in Dart:',
+          value: [
+            'Required positional - must be provided in order',
+            'Optional positional - wrapped in [ ], can be omitted',
+            'Named - wrapped in { }, called by name',
+            'Required named - named parameters that must be provided',
+          ],
+        ),
+        StringContent('Examples:'),
+        CodeContent(
+          '// Required positional\n'
+          'void greet(String name) { }\n'
+          '\n'
+          '// Optional positional\n'
+          'void greet(String name, [String? title]) { }\n'
+          '\n'
+          '// Named parameters\n'
+          'void greet({String? name, int? age}) { }\n'
+          '\n'
+          '// Required named\n'
+          'void greet({required String name}) { }',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'Important: Parameter is the variable in the definition, Argument is the actual value passed.',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أنواع المعاملات في Dart:',
+          value: [
+            'موضعي مطلوب - يجب توفيره بالترتيب',
+            'موضعي اختياري - ملفوف في [ ]، يمكن حذفه',
+            'مسمى - ملفوف في { }، يُستدعى بالاسم',
+            'مسمى مطلوب - معاملات مسماة يجب توفيرها',
+          ],
+        ),
+        StringContent('أمثلة:'),
+        CodeContent(
+          '// موضعي مطلوب\n'
+          'void greet(String name) { }\n'
+          '\n'
+          '// موضعي اختياري\n'
+          'void greet(String name, [String? title]) { }\n'
+          '\n'
+          '// معاملات مسماة\n'
+          'void greet({String? name, int? age}) { }\n'
+          '\n'
+          '// مسمى مطلوب\n'
+          'void greet({required String name}) { }',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'مهم: المعامل هو المتغير في التعريف، الوسيط هو القيمة الفعلية الممررة.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .python, .javascript],
+    relatedTerms: [
+      TermKeys.fundamentalsFunction,
+      TermKeys.fundamentalsArgument,
+    ],
+    tags: ['function', 'input', 'parameter', 'basics'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.fundamentalsReturnValue: ProgrammingTerm(
+    id: TermKeys.fundamentalsReturnValue,
+    title: LocalizedString(en: 'Return Value', ar: 'القيمة المرجعة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The output that a function sends back to the caller. A function can return a value using the return statement.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'الناتج الذي ترسله الدالة إلى المستدعي. يمكن للدالة إرجاع قيمة باستخدام جملة return.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Key points:',
+          value: [
+            'Functions can return a value to the caller',
+            'Return type must be specified in function signature',
+            'void means no return value',
+            'return statement stops function execution',
+          ],
+        ),
+        StringContent('Examples:'),
+        CodeContent(
+          'int add(int a, int b) {\n'
+          '  return a + b;  // Returns an integer\n'
+          '}\n'
+          '\n'
+          'String greet(String name) {\n'
+          '  return "Hello, \$name";  // Returns a string\n'
+          '}\n'
+          '\n'
+          'void printMessage() {\n'
+          '  print("No return value");  // void = no return\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'النقاط الرئيسية:',
+          value: [
+            'يمكن للدوال إرجاع قيمة للمستدعي',
+            'يجب تحديد نوع الإرجاع في توقيع الدالة',
+            'void تعني عدم وجود قيمة مرجعة',
+            'جملة return توقف تنفيذ الدالة',
+          ],
+        ),
+        StringContent('أمثلة:'),
+        CodeContent(
+          'int add(int a, int b) {\n'
+          '  return a + b;  // يرجع عددًا صحيحًا\n'
+          '}\n'
+          '\n'
+          'String greet(String name) {\n'
+          '  return "مرحبًا، \$name";  // يرجع نصًا\n'
+          '}\n'
+          '\n'
+          'void printMessage() {\n'
+          '  print("لا قيمة مرجعة");  // void = لا إرجاع\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .python, .javascript],
+    relatedTerms: [TermKeys.fundamentalsFunction],
+    aliases: ['Function output', 'Result'],
+    tags: ['function', 'return', 'output', 'basics'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.fundamentalsNull: ProgrammingTerm(
+    id: TermKeys.fundamentalsNull,
+    title: LocalizedString(en: 'Null', ar: 'القيمة الفارغة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A special value representing the absence of a value. Null indicates that a variable has no value assigned to it.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'قيمة خاصة تمثل غياب القيمة. تشير null إلى أن المتغير لا يحتوي على قيمة مخصصة له.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Important concepts:',
+          value: [
+            'Null is different from 0, empty string, or false',
+            'Accessing null values can cause runtime errors',
+            'Modern languages provide null safety features',
+          ],
+        ),
+        StringContent('In Dart with null safety:'),
+        CodeContent(
+          'String name = "Alice";  // Cannot be null\n'
+          'String? nickname;  // Can be null (notice the ?)\n'
+          '\n'
+          'print(nickname);  // null\n'
+          '\n'
+          '// Safe access with null-aware operators:\n'
+          'int? length = nickname?.length;  // null if nickname is null\n'
+          'String display = nickname ?? "No nickname";  // Default value\n'
+          '\n'
+          '// Force unwrap (use carefully!):\n'
+          'int length2 = nickname!.length;  // Throws if null',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'Null pointer exceptions are one of the most common programming errors, which is why Dart has built-in null safety.',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'مفاهيم مهمة:',
+          value: [
+            'null مختلف عن 0، نص فارغ، أو false',
+            'الوصول إلى قيم null يمكن أن يسبب أخطاء وقت التشغيل',
+            'توفر اللغات الحديثة ميزات أمان القيم الفارغة',
+          ],
+        ),
+        StringContent('في Dart مع أمان القيم الفارغة:'),
+        CodeContent(
+          'String name = "Alice";  // لا يمكن أن يكون null\n'
+          'String? nickname;  // يمكن أن يكون null (لاحظ ?)\n'
+          '\n'
+          'print(nickname);  // null\n'
+          '\n'
+          '// وصول آمن مع عوامل واعية بـ null:\n'
+          'int? length = nickname?.length;  // null إذا كان nickname فارغًا\n'
+          'String display = nickname ?? "لا لقب";  // قيمة افتراضية\n'
+          '\n'
+          '// فك الإجباري (استخدم بحذر!):\n'
+          'int length2 = nickname!.length;  // يرمي خطأ إذا كان null',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'استثناءات المؤشر الفارغ هي واحدة من أكثر أخطاء البرمجة شيوعًا، ولهذا السبب لدى Dart أمان مدمج للقيم الفارغة.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .javascript, .python],
+    relatedTerms: [TermKeys.dartNullSafety, TermKeys.fundamentalsDataType],
+    aliases: ['Nil', 'None', 'undefined'],
+    tags: ['null', 'empty', 'absence', 'safety'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.fundamentalsRecursion: ProgrammingTerm(
+    id: TermKeys.fundamentalsRecursion,
+    title: LocalizedString(en: 'Recursion', ar: 'التكرار الذاتي'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A programming technique where a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تقنية برمجة حيث تستدعي الدالة نفسها لحل مشكلة من خلال تقسيمها إلى مشاكل فرعية أصغر ومشابهة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Every recursive function needs:',
+          value: [
+            'Base case - condition to stop recursion',
+            'Recursive case - function calls itself with modified input',
+            'Progress toward base case - each call gets closer to ending',
+          ],
+        ),
+        StringContent('Classic example - calculating factorial:'),
+        CodeContent(
+          'int factorial(int n) {\n'
+          '  // Base case\n'
+          '  if (n <= 1) return 1;\n'
+          '  \n'
+          '  // Recursive case\n'
+          '  return n * factorial(n - 1);\n'
+          '}\n'
+          '\n'
+          '// factorial(5) = 5 * factorial(4)\n'
+          '//              = 5 * 4 * factorial(3)\n'
+          '//              = 5 * 4 * 3 * factorial(2)\n'
+          '//              = 5 * 4 * 3 * 2 * factorial(1)\n'
+          '//              = 5 * 4 * 3 * 2 * 1 = 120',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'Advantages:',
+          value: [
+            'Elegant solutions for naturally recursive problems (trees, graphs)',
+            'Simpler code for complex problems',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Disadvantages:',
+          value: [
+            'Can cause stack overflow if too deep',
+            'Often slower than iteration',
+            'Uses more memory',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'كل دالة تكرارية تحتاج:',
+          value: [
+            'حالة أساسية - شرط لإيقاف التكرار',
+            'حالة تكرارية - الدالة تستدعي نفسها مع مدخل معدل',
+            'تقدم نحو الحالة الأساسية - كل استدعاء يقترب من النهاية',
+          ],
+        ),
+        StringContent('مثال كلاسيكي - حساب المضروب:'),
+        CodeContent(
+          'int factorial(int n) {\n'
+          '  // الحالة الأساسية\n'
+          '  if (n <= 1) return 1;\n'
+          '  \n'
+          '  // الحالة التكرارية\n'
+          '  return n * factorial(n - 1);\n'
+          '}\n'
+          '\n'
+          '// factorial(5) = 5 * factorial(4)\n'
+          '//              = 5 * 4 * factorial(3)\n'
+          '//              = 5 * 4 * 3 * factorial(2)\n'
+          '//              = 5 * 4 * 3 * 2 * factorial(1)\n'
+          '//              = 5 * 4 * 3 * 2 * 1 = 120',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'المزايا:',
+          value: [
+            'حلول أنيقة للمشاكل التكرارية الطبيعية (الأشجار، الرسوم البيانية)',
+            'كود أبسط للمشاكل المعقدة',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'العيوب:',
+          value: [
+            'يمكن أن يسبب فيضان المكدس إذا كان عميقًا جدًا',
+            'غالبًا أبطأ من التكرار',
+            'يستخدم ذاكرة أكثر',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .python, .c],
+    relatedTerms: [TermKeys.fundamentalsFunction, 'iteration'],
+    tags: ['recursion', 'function', 'algorithm', 'self-call'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.oopMethod: ProgrammingTerm(
+    id: TermKeys.oopMethod,
+    title: LocalizedString(en: 'Method', ar: 'الأسلوب'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A function that belongs to a class or object. Methods define the behaviors and actions that objects of that class can perform.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'دالة تنتمي إلى فئة أو كائن. تحدد الأساليب السلوكيات والإجراءات التي يمكن لكائنات تلك الفئة تنفيذها.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Types of methods:',
+          value: [
+            'Instance methods - operate on object instances',
+            'Static methods - belong to the class itself, not instances',
+            'Getters - retrieve property values',
+            'Setters - modify property values',
+          ],
+        ),
+        StringContent('Example in Dart:'),
+        CodeContent(
+          'class Car {\n'
+          '  String brand;\n'
+          '  int speed = 0;\n'
+          '  \n'
+          '  Car(this.brand);\n'
+          '  \n'
+          '  // Instance method\n'
+          '  void accelerate(int amount) {\n'
+          '    speed += amount;\n'
+          '  }\n'
+          '  \n'
+          '  // Getter\n'
+          '  String get info => "\$brand at \$speed km/h";\n'
+          '  \n'
+          '  // Static method\n'
+          '  static Car createSportsCar() {\n'
+          '    return Car("Ferrari");\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أنواع الأساليب:',
+          value: [
+            'أساليب النسخة - تعمل على نسخ الكائنات',
+            'أساليب ثابتة - تنتمي للفئة نفسها، وليس النسخ',
+            'Getters - استرجاع قيم الخصائص',
+            'Setters - تعديل قيم الخصائص',
+          ],
+        ),
+        StringContent('مثال في Dart:'),
+        CodeContent(
+          'class Car {\n'
+          '  String brand;\n'
+          '  int speed = 0;\n'
+          '  \n'
+          '  Car(this.brand);\n'
+          '  \n'
+          '  // أسلوب النسخة\n'
+          '  void accelerate(int amount) {\n'
+          '    speed += amount;\n'
+          '  }\n'
+          '  \n'
+          '  // Getter\n'
+          '  String get info => "\$brand عند \$speed كم/ساعة";\n'
+          '  \n'
+          '  // أسلوب ثابت\n'
+          '  static Car createSportsCar() {\n'
+          '    return Car("فيراري");\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .oop,
+    languages: [.dart, .java, .cpp, .python],
+    relatedTerms: [TermKeys.fundamentalsFunction, TermKeys.oopClass],
+    aliases: ['Member function', 'Class function'],
+    tags: ['oop', 'function', 'behavior', 'class'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.oopConstructor: ProgrammingTerm(
+    id: TermKeys.oopConstructor,
+    title: LocalizedString(en: 'Constructor', ar: 'المنشئ'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A special method that is automatically called when creating a new object. Constructors initialize the object\'s properties and set up its initial state.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'أسلوب خاص يتم استدعاؤه تلقائيًا عند إنشاء كائن جديد. تقوم المنشئات بتهيئة خصائص الكائن وإعداد حالته الأولية.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Constructor types in Dart:',
+          value: [
+            'Default constructor - same name as class',
+            'Named constructor - class.name() syntax',
+            'Const constructor - for compile-time constants',
+            'Factory constructor - can return existing instances',
+          ],
+        ),
+        StringContent('Examples:'),
+        CodeContent(
+          'class Person {\n'
+          '  String name;\n'
+          '  int age;\n'
+          '  \n'
+          '  // Default constructor\n'
+          '  Person(this.name, this.age);\n'
+          '  \n'
+          '  // Named constructor\n'
+          '  Person.guest() : name = "Guest", age = 0;\n'
+          '  \n'
+          '  // Const constructor\n'
+          '  const Person.anonymous() : name = "Anonymous", age = 0;\n'
+          '}\n'
+          '\n'
+          '// Usage:\n'
+          'var p1 = Person("Alice", 30);\n'
+          'var p2 = Person.guest();\n'
+          'const p3 = Person.anonymous();',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أنواع المنشئات في Dart:',
+          value: [
+            'المنشئ الافتراضي - نفس اسم الفئة',
+            'المنشئ المسمى - صيغة class.name()',
+            'المنشئ الثابت - للثوابت في وقت الترجمة',
+            'المنشئ المصنعي - يمكنه إرجاع نسخ موجودة',
+          ],
+        ),
+        StringContent('أمثلة:'),
+        CodeContent(
+          'class Person {\n'
+          '  String name;\n'
+          '  int age;\n'
+          '  \n'
+          '  // المنشئ الافتراضي\n'
+          '  Person(this.name, this.age);\n'
+          '  \n'
+          '  // المنشئ المسمى\n'
+          '  Person.guest() : name = "ضيف", age = 0;\n'
+          '  \n'
+          '  // المنشئ الثابت\n'
+          '  const Person.anonymous() : name = "مجهول", age = 0;\n'
+          '}\n'
+          '\n'
+          '// الاستخدام:\n'
+          'var p1 = Person("أليس", 30);\n'
+          'var p2 = Person.guest();\n'
+          'const p3 = Person.anonymous();',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .oop,
+    languages: [.dart, .java, .cpp, .csharp],
+    relatedTerms: [
+      TermKeys.oopClass,
+      TermKeys.oopObject,
+      TermKeys.factoryConstructor,
+    ],
+    tags: ['oop', 'initialization', 'constructor', 'object creation'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.oopGetterSetter: ProgrammingTerm(
+    id: TermKeys.oopGetterSetter,
+    title: LocalizedString(en: 'Getter and Setter', ar: 'المُحصِّل والمُعيِّن'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'Special methods for accessing (getter) and modifying (setter) private properties of a class. They provide controlled access to object data.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'أساليب خاصة للوصول (getter) وتعديل (setter) الخصائص الخاصة لفئة. توفر وصولاً محكومًا لبيانات الكائن.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Benefits:',
+          value: [
+            'Encapsulation - control how properties are accessed',
+            'Validation - check values before setting',
+            'Computed properties - calculate values on demand',
+            'Read-only properties - getter without setter',
+          ],
+        ),
+        StringContent('Example in Dart:'),
+        CodeContent(
+          'class Temperature {\n'
+          '  double _celsius;  // Private property\n'
+          '  \n'
+          '  Temperature(this._celsius);\n'
+          '  \n'
+          '  // Getter\n'
+          '  double get celsius => _celsius;\n'
+          '  \n'
+          '  // Setter with validation\n'
+          '  set celsius(double value) {\n'
+          '    if (value < -273.15) {\n'
+          '      throw ArgumentError("Below absolute zero!");\n'
+          '    }\n'
+          '    _celsius = value;\n'
+          '  }\n'
+          '  \n'
+          '  // Computed property (getter only)\n'
+          '  double get fahrenheit => (_celsius * 9/5) + 32;\n'
+          '}\n'
+          '\n'
+          'var temp = Temperature(25);\n'
+          'print(temp.celsius);  // 25.0\n'
+          'print(temp.fahrenheit);  // 77.0\n'
+          'temp.celsius = 30;  // Uses setter',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الفوائد:',
+          value: [
+            'التغليف - التحكم في كيفية الوصول للخصائص',
+            'التحقق - فحص القيم قبل التعيين',
+            'خصائص محسوبة - حساب القيم عند الطلب',
+            'خصائص للقراءة فقط - getter بدون setter',
+          ],
+        ),
+        StringContent('مثال في Dart:'),
+        CodeContent(
+          'class Temperature {\n'
+          '  double _celsius;  // خاصية خاصة\n'
+          '  \n'
+          '  Temperature(this._celsius);\n'
+          '  \n'
+          '  // Getter\n'
+          '  double get celsius => _celsius;\n'
+          '  \n'
+          '  // Setter مع تحقق\n'
+          '  set celsius(double value) {\n'
+          '    if (value < -273.15) {\n'
+          '      throw ArgumentError("أقل من الصفر المطلق!");\n'
+          '    }\n'
+          '    _celsius = value;\n'
+          '  }\n'
+          '  \n'
+          '  // خاصية محسوبة (getter فقط)\n'
+          '  double get fahrenheit => (_celsius * 9/5) + 32;\n'
+          '}\n'
+          '\n'
+          'var temp = Temperature(25);\n'
+          'print(temp.celsius);  // 25.0\n'
+          'print(temp.fahrenheit);  // 77.0\n'
+          'temp.celsius = 30;  // يستخدم setter',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .oop,
+    languages: [.dart, .java, .csharp, .javascript],
+    relatedTerms: [TermKeys.oopEncapsulation, TermKeys.oopMethod],
+    aliases: ['Accessor', 'Mutator', 'Property'],
+    tags: ['oop', 'encapsulation', 'getter', 'setter', 'property'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.immutable: ProgrammingTerm(
+    id: TermKeys.immutable,
+    title: LocalizedString(en: 'Immutable', ar: 'غير قابل للتغيير'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'An object or value that cannot be modified after creation. Once created, its state remains constant throughout its lifetime.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'كائن أو قيمة لا يمكن تعديلها بعد الإنشاء. بمجرد إنشائها، تبقى حالتها ثابتة طوال عمرها.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Benefits of immutability:',
+          value: [
+            'Thread safety - no race conditions',
+            'Predictability - easier to reason about code',
+            'Caching - safe to share and reuse',
+            'Debugging - state doesn\'t change unexpectedly',
+          ],
+        ),
+        StringContent('Examples in Dart:'),
+        CodeContent(
+          '// Immutable class\n'
+          'class Point {\n'
+          '  final int x;\n'
+          '  final int y;\n'
+          '  \n'
+          '  const Point(this.x, this.y);\n'
+          '}\n'
+          '\n'
+          '// Immutable collections\n'
+          'final list = const [1, 2, 3];\n'
+          '// list.add(4);  // Error! Cannot modify\n'
+          '\n'
+          '// Built-in immutable types:\n'
+          'const pi = 3.14159;\n'
+          'final name = "Alice";  // Strings are immutable in Dart',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'Opposite: Mutable objects can be changed after creation.',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'فوائد عدم القابلية للتغيير:',
+          value: [
+            'أمان الخيوط - لا ظروف سباق',
+            'قابلية التنبؤ - أسهل للتفكير في الكود',
+            'التخزين المؤقت - آمن للمشاركة وإعادة الاستخدام',
+            'تصحيح الأخطاء - الحالة لا تتغير بشكل غير متوقع',
+          ],
+        ),
+        StringContent('أمثلة في Dart:'),
+        CodeContent(
+          '// فئة غير قابلة للتغيير\n'
+          'class Point {\n'
+          '  final int x;\n'
+          '  final int y;\n'
+          '  \n'
+          '  const Point(this.x, this.y);\n'
+          '}\n'
+          '\n'
+          '// مجموعات غير قابلة للتغيير\n'
+          'final list = const [1, 2, 3];\n'
+          '// list.add(4);  // خطأ! لا يمكن التعديل\n'
+          '\n'
+          '// أنواع غير قابلة للتغيير مدمجة:\n'
+          'const pi = 3.14159;\n'
+          'final name = "أليس";  // النصوص غير قابلة للتغيير في Dart',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'العكس: الكائنات القابلة للتغيير يمكن تعديلها بعد الإنشاء.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .javascript, .scala],
+    relatedTerms: [TermKeys.fundamentalsConstant, 'mutable'],
+    tags: ['immutable', 'const', 'final', 'thread-safe'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.state: ProgrammingTerm(
+    id: TermKeys.state,
+    title: LocalizedString(en: 'State', ar: 'الحالة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The data that an application or component maintains and can change over time. State represents the current condition or snapshot of an object or system.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'البيانات التي يحافظ عليها التطبيق أو المكون ويمكن أن تتغير بمرور الوقت. تمثل الحالة الوضع الحالي أو اللقطة لكائن أو نظام.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Types of state:',
+          value: [
+            'Local state - data used within a single widget/component',
+            'App state - data shared across multiple parts of the app',
+            'Ephemeral state - temporary, doesn\'t need persistence',
+            'Persistent state - saved between app sessions',
+          ],
+        ),
+        StringContent('Example in Flutter:'),
+        CodeContent(
+          'class CounterWidget extends StatefulWidget {\n'
+          '  @override\n'
+          '  State<CounterWidget> createState() => _CounterWidgetState();\n'
+          '}\n'
+          '\n'
+          'class _CounterWidgetState extends State<CounterWidget> {\n'
+          '  int _counter = 0;  // This is the state\n'
+          '  \n'
+          '  void _increment() {\n'
+          '    setState(() {  // Updates the state\n'
+          '      _counter++;\n'
+          '    });\n'
+          '  }\n'
+          '  \n'
+          '  @override\n'
+          '  Widget build(BuildContext context) {\n'
+          '    return Text("\$_counter");  // UI reflects state\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أنواع الحالة:',
+          value: [
+            'حالة محلية - بيانات مستخدمة ضمن ويدجت/مكون واحد',
+            'حالة التطبيق - بيانات مشتركة عبر أجزاء متعددة من التطبيق',
+            'حالة مؤقتة - مؤقتة، لا تحتاج استمرارية',
+            'حالة مستمرة - محفوظة بين جلسات التطبيق',
+          ],
+        ),
+        StringContent('مثال في Flutter:'),
+        CodeContent(
+          'class CounterWidget extends StatefulWidget {\n'
+          '  @override\n'
+          '  State<CounterWidget> createState() => _CounterWidgetState();\n'
+          '}\n'
+          '\n'
+          'class _CounterWidgetState extends State<CounterWidget> {\n'
+          '  int _counter = 0;  // هذه هي الحالة\n'
+          '  \n'
+          '  void _increment() {\n'
+          '    setState(() {  // يحدث الحالة\n'
+          '      _counter++;\n'
+          '    });\n'
+          '  }\n'
+          '  \n'
+          '  @override\n'
+          '  Widget build(BuildContext context) {\n'
+          '    return Text("\$_counter");  // واجهة المستخدم تعكس الحالة\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .stateManagement,
+    languages: [.dart, .flutter, .javascript, .react],
+    relatedTerms: [TermKeys.flutterStatefulWidget, TermKeys.stateManagement],
+    tags: ['state', 'data', 'management', 'ui'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.typeInference: ProgrammingTerm(
+    id: TermKeys.typeInference,
+    title: LocalizedString(en: 'Type Inference', ar: 'استنتاج النوع'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The ability of a compiler to automatically deduce the data type of a variable based on its initial value, without requiring explicit type declaration.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'قدرة المترجم على استنتاج نوع بيانات المتغير تلقائيًا بناءً على قيمته الأولية، دون الحاجة لتصريح النوع صراحة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Type inference makes code cleaner while maintaining type safety.',
+        ),
+        StringContent('Examples in Dart:'),
+        CodeContent(
+          '// Explicit type\n'
+          'String name = "Alice";\n'
+          'int age = 30;\n'
+          '\n'
+          '// Type inference with var\n'
+          'var name2 = "Bob";  // Inferred as String\n'
+          'var age2 = 25;      // Inferred as int\n'
+          '\n'
+          '// Type inference in collections\n'
+          'var numbers = [1, 2, 3];  // Inferred as List<int>\n'
+          'var map = {"key": "value"};  // Inferred as Map<String, String>\n'
+          '\n'
+          '// Still type-safe!\n'
+          '// name2 = 123;  // Error: A value of type int can\'t be assigned to String',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'Benefits:',
+          value: [
+            'Less verbose code',
+            'Maintains type safety',
+            'Easier refactoring',
+            'Better readability for complex types',
+          ],
+        ),
+      ],
+      ar: [
+        StringContent(
+          'استنتاج النوع يجعل الكود أنظف مع الحفاظ على أمان النوع.',
+        ),
+        StringContent('أمثلة في Dart:'),
+        CodeContent(
+          '// نوع صريح\n'
+          'String name = "أليس";\n'
+          'int age = 30;\n'
+          '\n'
+          '// استنتاج النوع مع var\n'
+          'var name2 = "بوب";  // مستنتج كـ String\n'
+          'var age2 = 25;      // مستنتج كـ int\n'
+          '\n'
+          '// استنتاج النوع في المجموعات\n'
+          'var numbers = [1, 2, 3];  // مستنتج كـ List<int>\n'
+          'var map = {"key": "value"};  // مستنتج كـ Map<String, String>\n'
+          '\n'
+          '// لا يزال آمنًا من ناحية النوع!\n'
+          '// name2 = 123;  // خطأ: لا يمكن تعيين قيمة من نوع int إلى String',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'الفوائد:',
+          value: [
+            'كود أقل إسهابًا',
+            'يحافظ على أمان النوع',
+            'إعادة هيكلة أسهل',
+            'قابلية قراءة أفضل للأنواع المعقدة',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .typescript, .kotlin, .swift],
+    relatedTerms: [
+      TermKeys.fundamentalsDataType,
+      TermKeys.fundamentalsVariable,
+    ],
+    tags: ['type system', 'inference', 'var', 'automatic'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.staticTyping: ProgrammingTerm(
+    id: TermKeys.staticTyping,
+    title: LocalizedString(en: 'Static Typing', ar: 'الكتابة الثابتة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A type system where variable types are checked at compile time. Once a variable is declared with a type, it cannot hold values of other types.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نظام كتابة حيث يتم فحص أنواع المتغيرات في وقت الترجمة. بمجرد تصريح متغير بنوع، لا يمكنه احتواء قيم من أنواع أخرى.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Characteristics:',
+          value: [
+            'Types are known before runtime',
+            'Compiler catches type errors early',
+            'Better IDE support (autocomplete, refactoring)',
+            'Usually better performance',
+          ],
+        ),
+        StringContent('Example in Dart (statically typed):'),
+        CodeContent(
+          'int age = 25;\n'
+          '// age = "twenty-five";  // Compile error!\n'
+          '\n'
+          'String name = "Alice";\n'
+          '// name = 123;  // Compile error!\n'
+          '\n'
+          'List<int> numbers = [1, 2, 3];\n'
+          '// numbers.add("four");  // Compile error!',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'Statically typed languages: Dart, Java, C++, C#, TypeScript, Swift',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الخصائص:',
+          value: [
+            'الأنواع معروفة قبل وقت التشغيل',
+            'المترجم يكتشف أخطاء النوع مبكرًا',
+            'دعم أفضل من IDE (إكمال تلقائي، إعادة هيكلة)',
+            'عادة أداء أفضل',
+          ],
+        ),
+        StringContent('مثال في Dart (مكتوب بشكل ثابت):'),
+        CodeContent(
+          'int age = 25;\n'
+          '// age = "خمسة وعشرون";  // خطأ في الترجمة!\n'
+          '\n'
+          'String name = "أليس";\n'
+          '// name = 123;  // خطأ في الترجمة!\n'
+          '\n'
+          'List<int> numbers = [1, 2, 3];\n'
+          '// numbers.add("أربعة");  // خطأ في الترجمة!',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'لغات مكتوبة بشكل ثابت: Dart، Java، C++، C#، TypeScript، Swift',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .cpp, .csharp, .typescript],
+    relatedTerms: [TermKeys.dynamicTyping, TermKeys.fundamentalsDataType],
+    tags: ['type system', 'compile-time', 'type checking', 'safety'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.dynamicTyping: ProgrammingTerm(
+    id: TermKeys.dynamicTyping,
+    title: LocalizedString(en: 'Dynamic Typing', ar: 'الكتابة الديناميكية'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A type system where variable types are checked at runtime. Variables can hold values of any type and can change types during execution.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نظام كتابة حيث يتم فحص أنواع المتغيرات في وقت التشغيل. يمكن للمتغيرات احتواء قيم من أي نوع ويمكنها تغيير الأنواع أثناء التنفيذ.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Characteristics:',
+          value: [
+            'Types are determined at runtime',
+            'More flexible but less safe',
+            'Errors found during execution',
+            'Faster to prototype',
+          ],
+        ),
+        StringContent('Example in Python (dynamically typed):'),
+        CodeContent(
+          'x = 42        # x is an integer\n'
+          'x = "hello"   # Now x is a string (allowed!)\n'
+          'x = [1, 2, 3] # Now x is a list (also allowed!)',
+          codeLanguage: .python,
+        ),
+        StringContent('Dart supports dynamic typing with the dynamic keyword:'),
+        CodeContent(
+          'dynamic value = 42;\n'
+          'value = "hello";  // Allowed with dynamic\n'
+          'value = [1, 2, 3];  // Also allowed\n'
+          '\n'
+          '// But loses compile-time safety\n'
+          'print(value.length);  // No error until runtime',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'Dynamically typed languages: Python, JavaScript, Ruby, PHP',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الخصائص:',
+          value: [
+            'يتم تحديد الأنواع في وقت التشغيل',
+            'أكثر مرونة لكن أقل أمانًا',
+            'يتم اكتشاف الأخطاء أثناء التنفيذ',
+            'أسرع للنماذج الأولية',
+          ],
+        ),
+        StringContent('مثال في Python (مكتوب بشكل ديناميكي):'),
+        CodeContent(
+          'x = 42        # x عدد صحيح\n'
+          'x = "hello"   # الآن x نص (مسموح!)\n'
+          'x = [1, 2, 3] # الآن x قائمة (مسموح أيضًا!)',
+          codeLanguage: .python,
+        ),
+        StringContent(
+          'Dart يدعم الكتابة الديناميكية بالكلمة المفتاحية dynamic:',
+        ),
+        CodeContent(
+          'dynamic value = 42;\n'
+          'value = "hello";  // مسموح مع dynamic\n'
+          'value = [1, 2, 3];  // مسموح أيضًا\n'
+          '\n'
+          '// لكن يفقد أمان وقت الترجمة\n'
+          'print(value.length);  // لا خطأ حتى وقت التشغيل',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'لغات مكتوبة بشكل ديناميكي: Python، JavaScript، Ruby، PHP',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.python, .javascript, .ruby, .php],
+    relatedTerms: [TermKeys.staticTyping, TermKeys.fundamentalsDataType],
+    tags: ['type system', 'runtime', 'flexible', 'dynamic'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.compilation: ProgrammingTerm(
+    id: TermKeys.compilation,
+    title: LocalizedString(en: 'Compilation', ar: 'الترجمة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of translating source code written in a high-level programming language into machine code or intermediate code that a computer can execute.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية ترجمة الكود المصدري المكتوب بلغة برمجة عالية المستوى إلى كود آلة أو كود وسيط يمكن للكمبيوتر تنفيذه.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Compilation process stages:',
+          value: [
+            'Lexical analysis - breaking code into tokens',
+            'Syntax analysis - checking grammar and structure',
+            'Semantic analysis - checking meaning and types',
+            'Optimization - improving performance',
+            'Code generation - producing executable code',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Types of compilation:',
+          value: [
+            'AOT (Ahead-of-Time) - compiled before execution',
+            'JIT (Just-in-Time) - compiled during execution',
+          ],
+        ),
+        StringContent(
+          'Dart uses both: JIT during development (hot reload), AOT for production (better performance).',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'مراحل عملية الترجمة:',
+          value: [
+            'التحليل المعجمي - تقسيم الكود إلى رموز',
+            'التحليل النحوي - فحص القواعد والهيكل',
+            'التحليل الدلالي - فحص المعنى والأنواع',
+            'التحسين - تحسين الأداء',
+            'توليد الكود - إنتاج كود قابل للتنفيذ',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'أنواع الترجمة:',
+          value: [
+            'AOT (مسبقًا) - يترجم قبل التنفيذ',
+            'JIT (في الوقت المناسب) - يترجم أثناء التنفيذ',
+          ],
+        ),
+        StringContent(
+          'Dart يستخدم كليهما: JIT أثناء التطوير (إعادة التحميل الساخن)، AOT للإنتاج (أداء أفضل).',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .compilerInternals,
+    languages: [.dart, .c, .cpp, .java],
+    relatedTerms: [TermKeys.compiler, TermKeys.runtime, 'aot-jit'],
+    tags: ['compilation', 'compiler', 'translation', 'build'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.runtime: ProgrammingTerm(
+    id: TermKeys.runtime,
+    title: LocalizedString(en: 'Runtime', ar: 'وقت التشغيل'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The period during which a program is executing. Also refers to the environment and libraries needed to run a program.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'الفترة التي يكون فيها البرنامج قيد التنفيذ. يشير أيضًا إلى البيئة والمكتبات اللازمة لتشغيل البرنامج.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Runtime includes:',
+          value: [
+            'Execution environment - where code runs',
+            'Runtime libraries - built-in functions and services',
+            'Memory management - garbage collection, allocation',
+            'Error handling - exception management',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Compile-time vs Runtime:',
+          value: [
+            'Compile-time - errors caught by compiler before running',
+            'Runtime - errors that occur during program execution',
+          ],
+        ),
+        StringContent('Examples:'),
+        CodeContent(
+          '// Compile-time error (caught before running)\n'
+          '// int x = "hello";  // Type mismatch\n'
+          '\n'
+          '// Runtime error (happens during execution)\n'
+          'int divide(int a, int b) {\n'
+          '  return a ~/ b;  // Throws error if b is 0\n'
+          '}\n'
+          '\n'
+          'divide(10, 0);  // Runtime error: division by zero',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'وقت التشغيل يشمل:',
+          value: [
+            'بيئة التنفيذ - حيث يعمل الكود',
+            'مكتبات وقت التشغيل - دوال وخدمات مدمجة',
+            'إدارة الذاكرة - جمع القمامة، التخصيص',
+            'معالجة الأخطاء - إدارة الاستثناءات',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'وقت الترجمة مقابل وقت التشغيل:',
+          value: [
+            'وقت الترجمة - أخطاء يكتشفها المترجم قبل التشغيل',
+            'وقت التشغيل - أخطاء تحدث أثناء تنفيذ البرنامج',
+          ],
+        ),
+        StringContent('أمثلة:'),
+        CodeContent(
+          '// خطأ وقت الترجمة (يُكتشف قبل التشغيل)\n'
+          '// int x = "hello";  // عدم تطابق النوع\n'
+          '\n'
+          '// خطأ وقت التشغيل (يحدث أثناء التنفيذ)\n'
+          'int divide(int a, int b) {\n'
+          '  return a ~/ b;  // يرمي خطأ إذا كان b يساوي 0\n'
+          '}\n'
+          '\n'
+          'divide(10, 0);  // خطأ وقت التشغيل: قسمة على صفر',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .compilerInternals,
+    languages: [.dart, .java, .javascript, .python],
+    relatedTerms: [TermKeys.compilation, TermKeys.compiler],
+    tags: ['runtime', 'execution', 'environment', 'errors'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.compiler: ProgrammingTerm(
+    id: TermKeys.compiler,
+    title: LocalizedString(en: 'Compiler', ar: 'المترجم'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A program that translates source code from a high-level programming language into machine code or intermediate code.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'برنامج يترجم الكود المصدري من لغة برمجة عالية المستوى إلى كود آلة أو كود وسيط.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'What compilers do:',
+          value: [
+            'Check syntax and type errors',
+            'Optimize code for performance',
+            'Generate executable files or bytecode',
+            'Produce error messages and warnings',
+          ],
+        ),
+        StringContent(
+          'Examples: GCC (C/C++), javac (Java), Dart compiler, rustc (Rust)',
+        ),
+        StringContent(
+          'The Dart compiler can produce: native machine code (mobile/desktop), JavaScript (web), or kernel bytecode.',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'ما يفعله المترجمون:',
+          value: [
+            'فحص أخطاء البناء والنوع',
+            'تحسين الكود للأداء',
+            'توليد ملفات قابلة للتنفيذ أو bytecode',
+            'إنتاج رسائل أخطاء وتحذيرات',
+          ],
+        ),
+        StringContent(
+          'أمثلة: GCC (C/C++)، javac (Java)، مترجم Dart، rustc (Rust)',
+        ),
+        StringContent(
+          'يمكن لمترجم Dart إنتاج: كود آلة أصلي (موبايل/سطح مكتب)، JavaScript (ويب)، أو kernel bytecode.',
+        ),
+      ],
+    ),
+    type: .tool,
+    category: .compilerInternals,
+    relatedTerms: [
+      TermKeys.compilation,
+      TermKeys.runtime,
+      TermKeys.interpreter,
+    ],
+    tags: ['compiler', 'translation', 'tool', 'build'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.interpreter: ProgrammingTerm(
+    id: TermKeys.interpreter,
+    title: LocalizedString(en: 'Interpreter', ar: 'المفسر'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A program that directly executes source code line-by-line without prior compilation to machine code.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'برنامج ينفذ الكود المصدري مباشرة سطرًا بسطر دون ترجمة مسبقة إلى كود آلة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Compiler vs Interpreter:',
+          value: [
+            'Compiler - translates entire program, then runs it',
+            'Interpreter - translates and runs code line by line',
+            'Compiled - faster execution, slower to start',
+            'Interpreted - slower execution, faster to start',
+          ],
+        ),
+        StringContent(
+          'Examples: Python interpreter, JavaScript engines (V8, SpiderMonkey), Ruby interpreter',
+        ),
+        StringContent(
+          'Note: Modern systems often use a hybrid approach (e.g., JIT compilation).',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'المترجم مقابل المفسر:',
+          value: [
+            'المترجم - يترجم البرنامج بالكامل، ثم يشغله',
+            'المفسر - يترجم ويشغل الكود سطرًا بسطر',
+            'مترجم - تنفيذ أسرع، بداية أبطأ',
+            'مفسر - تنفيذ أبطأ، بداية أسرع',
+          ],
+        ),
+        StringContent(
+          'أمثلة: مفسر Python، محركات JavaScript (V8، SpiderMonkey)، مفسر Ruby',
+        ),
+        StringContent(
+          'ملاحظة: الأنظمة الحديثة غالبًا تستخدم نهجًا هجينًا (مثل، ترجمة JIT).',
+        ),
+      ],
+    ),
+    type: .tool,
+    category: .compilerInternals,
+    relatedTerms: [TermKeys.compiler, TermKeys.runtime],
+    tags: ['interpreter', 'execution', 'tool', 'runtime'],
+    era: .classic,
+    popularityTier: .medium,
+  ),
+  TermKeys.package: ProgrammingTerm(
+    id: TermKeys.package,
+    title: LocalizedString(en: 'Package', ar: 'الحزمة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A collection of related code files and resources bundled together that can be shared and reused across projects.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مجموعة من ملفات الكود والموارد ذات الصلة مجمعة معًا يمكن مشاركتها وإعادة استخدامها عبر المشاريع.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Packages provide:',
+          value: [
+            'Code reusability - use pre-built functionality',
+            'Modularity - organize large projects',
+            'Version management - track updates and dependencies',
+            'Distribution - share code with others',
+          ],
+        ),
+        StringContent('In Dart/Flutter:'),
+        CodeContent(
+          '// pubspec.yaml\n'
+          'dependencies:\n'
+          '  http: ^1.1.0  # HTTP client package\n'
+          '  provider: ^6.0.0  # State management\n',
+          codeLanguage: .yaml,
+        ),
+        CodeContent(
+          '// Using packages in code:\n'
+          "import 'package:http/http.dart' as http;\n"
+          "import 'package:provider/provider.dart';",
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'Packages are hosted on pub.dev for Dart/Flutter, npm for JavaScript, PyPI for Python.',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'توفر الحزم:',
+          value: [
+            'إعادة استخدام الكود - استخدام وظائف مبنية مسبقًا',
+            'النمطية - تنظيم المشاريع الكبيرة',
+            'إدارة الإصدارات - تتبع التحديثات والتبعيات',
+            'التوزيع - مشاركة الكود مع الآخرين',
+          ],
+        ),
+        StringContent('في Dart/Flutter:'),
+        CodeContent(
+          '// pubspec.yaml\n'
+          'dependencies:\n'
+          '  http: ^1.1.0  # حزمة عميل HTTP\n'
+          '  provider: ^6.0.0  # إدارة الحالة\n'
+          '\n'
+          '// استخدام الحزم في الكود:\n'
+          "import 'package:http/http.dart' as http;\n"
+          "import 'package:provider/provider.dart';",
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'تُستضاف الحزم على pub.dev لـ Dart/Flutter، npm لـ JavaScript، PyPI لـ Python.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .python, .javascript],
+    relatedTerms: [TermKeys.dartPub, TermKeys.dependency, TermKeys.library],
+    aliases: ['Module', 'Library'],
+    tags: ['package', 'dependency', 'module', 'reusable'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.dependency: ProgrammingTerm(
+    id: TermKeys.dependency,
+    title: LocalizedString(en: 'Dependency', ar: 'التبعية'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'External code that a project relies on to function. Dependencies are packages or libraries that your code imports and uses.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'كود خارجي يعتمد عليه المشروع للعمل. التبعيات هي حزم أو مكتبات يستوردها كودك ويستخدمها.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Types of dependencies:',
+          value: [
+            'Direct dependencies - packages you directly use',
+            'Transitive dependencies - dependencies of your dependencies',
+            'Dev dependencies - only needed during development',
+            'Peer dependencies - required by packages you use',
+          ],
+        ),
+        StringContent('Managing dependencies in Dart:'),
+        CodeContent(
+          '// pubspec.yaml\n'
+          'dependencies:\n'
+          '  http: ^1.1.0  # Production dependency\n'
+          '  \n'
+          'dev_dependencies:\n'
+          '  test: ^1.24.0  # Only for testing\n'
+          '  build_runner: ^2.4.0  # Only for code generation\n'
+          '\n'
+          '// Install dependencies:\n'
+          '// dart pub get',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'Best practices:',
+          value: [
+            'Keep dependencies up to date',
+            'Minimize number of dependencies',
+            'Review dependency licenses',
+            'Check for security vulnerabilities',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أنواع التبعيات:',
+          value: [
+            'تبعيات مباشرة - حزم تستخدمها مباشرة',
+            'تبعيات انتقالية - تبعيات تبعياتك',
+            'تبعيات التطوير - مطلوبة فقط أثناء التطوير',
+            'تبعيات النظير - مطلوبة من الحزم التي تستخدمها',
+          ],
+        ),
+        StringContent('إدارة التبعيات في Dart:'),
+        CodeContent(
+          '// pubspec.yaml\n'
+          'dependencies:\n'
+          '  http: ^1.1.0  # تبعية الإنتاج\n'
+          '  \n'
+          'dev_dependencies:\n'
+          '  test: ^1.24.0  # للاختبار فقط\n'
+          '  build_runner: ^2.4.0  # لتوليد الكود فقط\n'
+          '\n'
+          '// تثبيت التبعيات:\n'
+          '// dart pub get',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'أفضل الممارسات:',
+          value: [
+            'حافظ على تحديث التبعيات',
+            'قلل عدد التبعيات',
+            'راجع تراخيص التبعيات',
+            'تحقق من ثغرات الأمان',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .javascript, .python, .java],
+    relatedTerms: [TermKeys.package, TermKeys.dartPub, TermKeys.library],
+    tags: ['dependency', 'package', 'external', 'management'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.library: ProgrammingTerm(
+    id: TermKeys.library,
+    title: LocalizedString(en: 'Library', ar: 'المكتبة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A collection of pre-written code that provides specific functionality and can be imported into programs to avoid rewriting common operations.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مجموعة من الكود المكتوب مسبقًا توفر وظائف محددة ويمكن استيرادها في البرامج لتجنب إعادة كتابة العمليات الشائعة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Types of libraries:',
+          value: [
+            'Standard library - comes with the language',
+            'Third-party library - created by community',
+            'Internal library - created for your project',
+          ],
+        ),
+        StringContent('Dart standard libraries:'),
+        CodeContent(
+          "import 'dart:core';  // Core types (automatically imported)\n"
+          "import 'dart:async';  // Async programming (Future, Stream)\n"
+          "import 'dart:collection';  // Collections (Queue, etc.)\n"
+          "import 'dart:convert';  // JSON encoding/decoding\n"
+          "import 'dart:io';  // File, network I/O\n"
+          "import 'dart:math';  // Math functions",
+          codeLanguage: .dart,
+        ),
+        StringContent('Creating your own library:'),
+        CodeContent(
+          '// lib/my_library.dart\n'
+          'library my_library;\n'
+          '\n'
+          'export \'src/utils.dart\';\n'
+          'export \'src/models.dart\';\n'
+          '\n'
+          '// In another file:\n'
+          "import 'package:my_project/my_library.dart';",
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أنواع المكتبات:',
+          value: [
+            'المكتبة القياسية - تأتي مع اللغة',
+            'مكتبة من طرف ثالث - أنشأتها المجتمع',
+            'مكتبة داخلية - أنشئت لمشروعك',
+          ],
+        ),
+        StringContent('مكتبات Dart القياسية:'),
+        CodeContent(
+          "import 'dart:core';  // الأنواع الأساسية (مستوردة تلقائيًا)\n"
+          "import 'dart:async';  // البرمجة غير المتزامنة (Future، Stream)\n"
+          "import 'dart:collection';  // المجموعات (Queue، إلخ)\n"
+          "import 'dart:convert';  // ترميز/فك ترميز JSON\n"
+          "import 'dart:io';  // إدخال/إخراج الملفات والشبكة\n"
+          "import 'dart:math';  // دوال رياضية",
+          codeLanguage: .dart,
+        ),
+        StringContent('إنشاء مكتبتك الخاصة:'),
+        CodeContent(
+          '// lib/my_library.dart\n'
+          'library my_library;\n'
+          '\n'
+          'export \'src/utils.dart\';\n'
+          'export \'src/models.dart\';\n'
+          '\n'
+          '// في ملف آخر:\n'
+          "import 'package:my_project/my_library.dart';",
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .python, .javascript],
+    relatedTerms: [
+      TermKeys.package,
+      TermKeys.dependency,
+      TermKeys.importExport,
+    ],
+    aliases: ['Package', 'Module'],
+    tags: ['library', 'reusable', 'module', 'import'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.importExport: ProgrammingTerm(
+    id: TermKeys.importExport,
+    title: LocalizedString(en: 'Import/Export', ar: 'الاستيراد/التصدير'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'Mechanisms for using code from other files or packages (import) and making code available to other files (export).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'آليات لاستخدام الكود من ملفات أو حزم أخرى (استيراد) وجعل الكود متاحًا لملفات أخرى (تصدير).',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent('Import in Dart:'),
+        CodeContent(
+          "// Import entire library\n"
+          "import 'dart:math';\n"
+          '\n'
+          '// Import with prefix\n'
+          "import 'dart:math' as math;\n"
+          '\n'
+          '// Import only specific items\n'
+          "import 'dart:math' show pi, sqrt;\n"
+          '\n'
+          '// Import everything except specific items\n'
+          "import 'dart:math' hide Random;\n"
+          '\n'
+          '// Import from package\n'
+          "import 'package:http/http.dart';\n"
+          '\n'
+          '// Import relative file\n'
+          "import 'models/user.dart';",
+          codeLanguage: .dart,
+        ),
+        StringContent('Export in Dart:'),
+        CodeContent(
+          '// lib/my_library.dart\n'
+          '// Re-export files\n'
+          "export 'src/models.dart';\n"
+          "export 'src/utils.dart';\n"
+          '\n'
+          '// Selective export\n'
+          "export 'src/internal.dart' show PublicClass;",
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent('الاستيراد في Dart:'),
+        CodeContent(
+          "// استيراد المكتبة بالكامل\n"
+          "import 'dart:math';\n"
+          '\n'
+          '// استيراد مع بادئة\n'
+          "import 'dart:math' as math;\n"
+          '\n'
+          '// استيراد عناصر محددة فقط\n'
+          "import 'dart:math' show pi, sqrt;\n"
+          '\n'
+          '// استيراد كل شيء عدا عناصر محددة\n'
+          "import 'dart:math' hide Random;\n"
+          '\n'
+          '// استيراد من حزمة\n'
+          "import 'package:http/http.dart';\n"
+          '\n'
+          '// استيراد ملف نسبي\n'
+          "import 'models/user.dart';",
+          codeLanguage: .dart,
+        ),
+        StringContent('التصدير في Dart:'),
+        CodeContent(
+          '// lib/my_library.dart\n'
+          '// إعادة تصدير الملفات\n'
+          "export 'src/models.dart';\n"
+          "export 'src/utils.dart';\n"
+          '\n'
+          '// تصدير انتقائي\n'
+          "export 'src/internal.dart' show PublicClass;",
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .syntax,
+    category: .fundamentals,
+    languages: [.dart, .javascript, .python, .java],
+    relatedTerms: [TermKeys.library, TermKeys.package, TermKeys.dependency],
+    tags: ['import', 'export', 'module', 'namespace'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.frameworkConcept: ProgrammingTerm(
+    id: TermKeys.frameworkConcept,
+    title: LocalizedString(en: 'Framework', ar: 'إطار العمل'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A pre-built structure that provides a foundation for developing applications. Frameworks dictate the architecture and provide reusable components.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'هيكل مبني مسبقًا يوفر أساسًا لتطوير التطبيقات. تحدد أطر العمل المعمارية وتوفر مكونات قابلة لإعادة الاستخدام.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Framework vs Library:',
+          value: [
+            'Library - you call its code (you are in control)',
+            'Framework - it calls your code (inversion of control)',
+            'Library - use what you need',
+            'Framework - follow its structure and conventions',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Examples:',
+          value: [
+            'Flutter - UI framework for building cross-platform apps',
+            'Django - Python web framework',
+            'Spring - Java enterprise framework',
+            'React - JavaScript UI framework',
+            'Angular - TypeScript web framework',
+          ],
+        ),
+        StringContent(
+          'Frameworks typically provide: project structure, build tools, routing, state management, and common patterns.',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'إطار العمل مقابل المكتبة:',
+          value: [
+            'المكتبة - أنت تستدعي كودها (أنت في السيطرة)',
+            'إطار العمل - يستدعي كودك (انعكاس السيطرة)',
+            'المكتبة - استخدم ما تحتاجه',
+            'إطار العمل - اتبع هيكله واتفاقياته',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'أمثلة:',
+          value: [
+            'Flutter - إطار واجهة المستخدم لبناء تطبيقات متعددة المنصات',
+            'Django - إطار ويب Python',
+            'Spring - إطار عمل Java للمؤسسات',
+            'React - إطار واجهة المستخدم JavaScript',
+            'Angular - إطار ويب TypeScript',
+          ],
+        ),
+        StringContent(
+          'عادة ما توفر أطر العمل: هيكل المشروع، أدوات البناء، التوجيه، إدارة الحالة، والأنماط الشائعة.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.flutter, .java, .python, .javascript],
+    relatedTerms: [TermKeys.flutterFramework, TermKeys.library],
+    tags: ['framework', 'architecture', 'structure', 'foundation'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.sdk: ProgrammingTerm(
+    id: TermKeys.sdk,
+    title: LocalizedString(
+      en: 'SDK (Software Development Kit)',
+      ar: 'حزمة تطوير البرمجيات',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A collection of tools, libraries, documentation, and code samples that developers use to create applications for a specific platform or framework.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مجموعة من الأدوات والمكتبات والوثائق وعينات الكود التي يستخدمها المطورون لإنشاء تطبيقات لمنصة أو إطار عمل محدد.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'SDK typically includes:',
+          value: [
+            'Compiler or interpreter',
+            'Debugger',
+            'Libraries and APIs',
+            'Documentation',
+            'Code samples and templates',
+            'Build tools',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Examples:',
+          value: [
+            'Dart SDK - tools for Dart development',
+            'Flutter SDK - framework + tools for Flutter apps',
+            'Android SDK - tools for Android development',
+            'iOS SDK - tools for iOS development',
+            'JDK (Java Development Kit)',
+          ],
+        ),
+        StringContent(
+          'Installing Flutter SDK gives you the Flutter framework, Dart SDK, and development tools.',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'عادة ما يتضمن SDK:',
+          value: [
+            'مترجم أو مفسر',
+            'مصحح أخطاء',
+            'مكتبات وواجهات برمجة التطبيقات',
+            'وثائق',
+            'عينات كود وقوالب',
+            'أدوات البناء',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'أمثلة:',
+          value: [
+            'Dart SDK - أدوات لتطوير Dart',
+            'Flutter SDK - إطار العمل + أدوات لتطبيقات Flutter',
+            'Android SDK - أدوات لتطوير Android',
+            'iOS SDK - أدوات لتطوير iOS',
+            'JDK (حزمة تطوير Java)',
+          ],
+        ),
+        StringContent(
+          'تثبيت Flutter SDK يمنحك إطار Flutter، Dart SDK، وأدوات التطوير.',
+        ),
+      ],
+    ),
+    type: .tool,
+    category: .mobileDevelopment,
+    languages: [.dart, .flutter, .java, .swift],
+    relatedTerms: [
+      TermKeys.dartLanguage,
+      TermKeys.flutterFramework,
+      TermKeys.api,
+    ],
+    aliases: ['Development Kit', 'Toolkit'],
+    tags: ['sdk', 'tools', 'development', 'platform'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.api: ProgrammingTerm(
+    id: TermKeys.api,
+    title: LocalizedString(
+      en: 'API (Application Programming Interface)',
+      ar: 'واجهة برمجة التطبيقات',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A set of rules, protocols, and tools that define how software components should interact. APIs specify what operations are available and how to use them.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مجموعة من القواعد والبروتوكولات والأدوات التي تحدد كيف يجب أن تتفاعل مكونات البرمجيات. تحدد واجهات برمجة التطبيقات العمليات المتاحة وكيفية استخدامها.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Types of APIs:',
+          value: [
+            'Library/Framework API - functions and classes you can use',
+            'Web API (REST, GraphQL) - HTTP endpoints for data',
+            'Operating System API - interact with OS features',
+            'Hardware API - access device capabilities',
+          ],
+        ),
+        StringContent('Example - using a REST API:'),
+        CodeContent(
+          "import 'package:http/http.dart' as http;\n"
+          '\n'
+          'Future<void> fetchUser() async {\n'
+          "  final response = await http.get(\n"
+          "    Uri.parse('https://api.example.com/users/1'),\n"
+          '  );\n'
+          '  \n'
+          '  if (response.statusCode == 200) {\n'
+          '    print(\'User data: \${response.body}\');\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'APIs allow programs to communicate without knowing internal implementation details.',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أنواع واجهات برمجة التطبيقات:',
+          value: [
+            'واجهة المكتبة/إطار العمل - دوال وفئات يمكنك استخدامها',
+            'واجهة الويب (REST، GraphQL) - نقاط نهاية HTTP للبيانات',
+            'واجهة نظام التشغيل - التفاعل مع ميزات OS',
+            'واجهة الأجهزة - الوصول إلى قدرات الجهاز',
+          ],
+        ),
+        StringContent('مثال - استخدام REST API:'),
+        CodeContent(
+          "import 'package:http/http.dart' as http;\n"
+          '\n'
+          'Future<void> fetchUser() async {\n'
+          "  final response = await http.get(\n"
+          "    Uri.parse('https://api.example.com/users/1'),\n"
+          '  );\n'
+          '  \n'
+          '  if (response.statusCode == 200) {\n'
+          '    print(\'بيانات المستخدم: \${response.body}\');\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'تسمح واجهات برمجة التطبيقات للبرامج بالتواصل دون معرفة تفاصيل التنفيذ الداخلية.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .python, .javascript],
+    relatedTerms: [TermKeys.restApi, TermKeys.httpHttps],
+    aliases: ['Interface', 'Web Service'],
+    tags: ['api', 'interface', 'communication', 'integration'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.exception: ProgrammingTerm(
+    id: TermKeys.exception,
+    title: LocalizedString(en: 'Exception', ar: 'الاستثناء'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'An event that disrupts the normal flow of program execution. Exceptions represent errors or unexpected conditions that occur during runtime.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'حدث يعطل التدفق الطبيعي لتنفيذ البرنامج. تمثل الاستثناءات الأخطاء أو الظروف غير المتوقعة التي تحدث أثناء وقت التشغيل.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Common types of exceptions:',
+          value: [
+            'NullPointerException - accessing null object',
+            'IndexOutOfBoundsException - invalid array/list index',
+            'FormatException - parsing error',
+            'TimeoutException - operation took too long',
+            'IOException - input/output error',
+          ],
+        ),
+        StringContent('Example in Dart:'),
+        CodeContent(
+          'void divide(int a, int b) {\n'
+          '  if (b == 0) {\n'
+          '    throw Exception(\'Cannot divide by zero\');\n'
+          '  }\n'
+          '  print(a / b);\n'
+          '}\n'
+          '\n'
+          '// Custom exception\n'
+          'class InvalidAgeException implements Exception {\n'
+          '  final String message;\n'
+          '  InvalidAgeException(this.message);\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أنواع الاستثناءات الشائعة:',
+          value: [
+            'NullPointerException - الوصول إلى كائن فارغ',
+            'IndexOutOfBoundsException - فهرس مصفوفة/قائمة غير صالح',
+            'FormatException - خطأ في التحليل',
+            'TimeoutException - استغرقت العملية وقتًا طويلاً',
+            'IOException - خطأ في الإدخال/الإخراج',
+          ],
+        ),
+        StringContent('مثال في Dart:'),
+        CodeContent(
+          'void divide(int a, int b) {\n'
+          '  if (b == 0) {\n'
+          '    throw Exception(\'لا يمكن القسمة على صفر\');\n'
+          '  }\n'
+          '  print(a / b);\n'
+          '}\n'
+          '\n'
+          '// استثناء مخصص\n'
+          'class InvalidAgeException implements Exception {\n'
+          '  final String message;\n'
+          '  InvalidAgeException(this.message);\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .python, .csharp],
+    relatedTerms: [TermKeys.errorHandling, TermKeys.tryCatch],
+    aliases: ['Error', 'Runtime error'],
+    tags: ['exception', 'error', 'runtime', 'throw'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.errorHandling: ProgrammingTerm(
+    id: TermKeys.errorHandling,
+    title: LocalizedString(en: 'Error Handling', ar: 'معالجة الأخطاء'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of anticipating, detecting, and resolving errors that occur during program execution to prevent crashes and provide graceful degradation.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية توقع واكتشاف وحل الأخطاء التي تحدث أثناء تنفيذ البرنامج لمنع الانهيارات وتوفير تدهور تدريجي.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Error handling strategies:',
+          value: [
+            'Try-catch blocks - catch and handle exceptions',
+            'Throwing exceptions - signal errors to caller',
+            'Error return values - return special values on error',
+            'Logging - record errors for debugging',
+            'User feedback - inform users of errors gracefully',
+          ],
+        ),
+        StringContent('Best practices:'),
+        UnorderedListContent(
+          value: [
+            'Handle expected errors, let unexpected ones crash',
+            'Provide meaningful error messages',
+            'Clean up resources (close files, connections)',
+            'Don\'t swallow exceptions silently',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'استراتيجيات معالجة الأخطاء:',
+          value: [
+            'كتل Try-catch - اصطياد ومعالجة الاستثناءات',
+            'رمي الاستثناءات - الإشارة للأخطاء للمستدعي',
+            'قيم إرجاع الأخطاء - إرجاع قيم خاصة عند الخطأ',
+            'التسجيل - تسجيل الأخطاء لتصحيح الأخطاء',
+            'ملاحظات المستخدم - إعلام المستخدمين بالأخطاء بلطف',
+          ],
+        ),
+        StringContent('أفضل الممارسات:'),
+        UnorderedListContent(
+          value: [
+            'تعامل مع الأخطاء المتوقعة، دع غير المتوقعة تنهار',
+            'وفر رسائل خطأ ذات معنى',
+            'نظف الموارد (أغلق الملفات، الاتصالات)',
+            'لا تبتلع الاستثناءات بصمت',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .python, .javascript],
+    relatedTerms: [TermKeys.exception, TermKeys.tryCatch],
+    tags: ['error', 'exception', 'handling', 'robustness'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.tryCatch: ProgrammingTerm(
+    id: TermKeys.tryCatch,
+    title: LocalizedString(en: 'Try-Catch', ar: 'Try-Catch'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A control structure for handling exceptions. Code that might throw an exception is placed in the try block, and error handling code goes in the catch block.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'هيكل تحكم لمعالجة الاستثناءات. يُوضع الكود الذي قد يرمي استثناءً في كتلة try، ويذهب كود معالجة الأخطاء في كتلة catch.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent('Syntax in Dart:'),
+        CodeContent(
+          'try {\n'
+          '  // Code that might throw an exception\n'
+          '  int result = 10 ~/ 0;  // Division by zero\n'
+          '} catch (e) {\n'
+          '  // Handle the exception\n'
+          '  print(\'Error: \$e\');\n'
+          '} finally {\n'
+          '  // Always executes (optional)\n'
+          '  print(\'Cleanup code\');\n'
+          '}\n'
+          '\n'
+          '// Catching specific exceptions\n'
+          'try {\n'
+          '  // risky code\n'
+          '} on FormatException catch (e) {\n'
+          '  print(\'Format error: \$e\');\n'
+          '} on Exception catch (e) {\n'
+          '  print(\'Other error: \$e\');\n'
+          '} catch (e) {\n'
+          '  print(\'Unknown error: \$e\');\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'Key points:',
+          value: [
+            'try - contains code that might fail',
+            'catch - handles the exception',
+            'finally - executes regardless of exception',
+            'on - catches specific exception types',
+          ],
+        ),
+      ],
+      ar: [
+        StringContent('الصيغة في Dart:'),
+        CodeContent(
+          'try {\n'
+          '  // كود قد يرمي استثناءً\n'
+          '  int result = 10 ~/ 0;  // قسمة على صفر\n'
+          '} catch (e) {\n'
+          '  // معالجة الاستثناء\n'
+          '  print(\'خطأ: \$e\');\n'
+          '} finally {\n'
+          '  // يُنفذ دائمًا (اختياري)\n'
+          '  print(\'كود التنظيف\');\n'
+          '}\n'
+          '\n'
+          '// اصطياد استثناءات محددة\n'
+          'try {\n'
+          '  // كود خطر\n'
+          '} on FormatException catch (e) {\n'
+          '  print(\'خطأ في التنسيق: \$e\');\n'
+          '} on Exception catch (e) {\n'
+          '  print(\'خطأ آخر: \$e\');\n'
+          '} catch (e) {\n'
+          '  print(\'خطأ غير معروف: \$e\');\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'نقاط رئيسية:',
+          value: [
+            'try - يحتوي على كود قد يفشل',
+            'catch - يعالج الاستثناء',
+            'finally - يُنفذ بغض النظر عن الاستثناء',
+            'on - يصطاد أنواع استثناءات محددة',
+          ],
+        ),
+      ],
+    ),
+    type: .syntax,
+    category: .fundamentals,
+    languages: [.dart, .java, .javascript, .python],
+    relatedTerms: [TermKeys.exception, TermKeys.errorHandling],
+    aliases: ['Exception handling', 'Try-except'],
+    tags: ['try', 'catch', 'exception', 'error handling'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.assertion: ProgrammingTerm(
+    id: TermKeys.assertion,
+    title: LocalizedString(en: 'Assertion', ar: 'التأكيد'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A statement that checks if a condition is true during development. If false, the program throws an error. Assertions help catch bugs early.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'جملة تتحقق من صحة شرط أثناء التطوير. إذا كانت خاطئة، يرمي البرنامج خطأ. تساعد التأكيدات في اكتشاف الأخطاء مبكرًا.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent('In Dart:'),
+        CodeContent(
+          'void setAge(int age) {\n'
+          '  assert(age >= 0, \'Age cannot be negative\');\n'
+          '  assert(age < 150, \'Age seems unrealistic\');\n'
+          '  // ... rest of code\n'
+          '}\n'
+          '\n'
+          '// Assertions are only active in debug mode\n'
+          '// In production (release mode), they are ignored\n'
+          '\n'
+          '// Enable assertions when running:\n'
+          '// dart run --enable-asserts my_app.dart',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'When to use assertions:',
+          value: [
+            'Verify assumptions during development',
+            'Document code requirements',
+            'Catch programming errors early',
+            'NOT for user input validation (use exceptions)',
+          ],
+        ),
+      ],
+      ar: [
+        StringContent('في Dart:'),
+        CodeContent(
+          'void setAge(int age) {\n'
+          '  assert(age >= 0, \'لا يمكن أن يكون العمر سالبًا\');\n'
+          '  assert(age < 150, \'العمر يبدو غير واقعي\');\n'
+          '  // ... بقية الكود\n'
+          '}\n'
+          '\n'
+          '// التأكيدات نشطة فقط في وضع التصحيح\n'
+          '// في الإنتاج (وضع الإصدار)، يتم تجاهلها\n'
+          '\n'
+          '// تمكين التأكيدات عند التشغيل:\n'
+          '// dart run --enable-asserts my_app.dart',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'متى تستخدم التأكيدات:',
+          value: [
+            'التحقق من الافتراضات أثناء التطوير',
+            'توثيق متطلبات الكود',
+            'اكتشاف أخطاء البرمجة مبكرًا',
+            'ليس للتحقق من إدخال المستخدم (استخدم الاستثناءات)',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .java, .c, .python],
+    relatedTerms: [TermKeys.exception, 'debugging'],
+    aliases: ['Assert'],
+    tags: ['assertion', 'debug', 'validation', 'testing'],
+    era: .classic,
+    popularityTier: .medium,
+  ),
+  TermKeys.testing: ProgrammingTerm(
+    id: TermKeys.testing,
+    title: LocalizedString(en: 'Testing', ar: 'الاختبار'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of evaluating software to find bugs and verify it works as expected. Testing ensures code quality and reliability.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية تقييم البرمجيات لإيجاد الأخطاء والتحقق من عملها كما هو متوقع. يضمن الاختبار جودة الكود وموثوقيته.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Types of testing:',
+          value: [
+            'Unit Testing - test individual functions/classes',
+            'Integration Testing - test how parts work together',
+            'Widget Testing (Flutter) - test UI components',
+            'End-to-End Testing - test complete user flows',
+            'Manual Testing - human testers use the app',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Benefits:',
+          value: [
+            'Catch bugs early',
+            'Enable confident refactoring',
+            'Document expected behavior',
+            'Reduce debugging time',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أنواع الاختبار:',
+          value: [
+            'اختبار الوحدة - اختبار دوال/فئات فردية',
+            'اختبار التكامل - اختبار كيف تعمل الأجزاء معًا',
+            'اختبار الويدجت (Flutter) - اختبار مكونات واجهة المستخدم',
+            'الاختبار من البداية للنهاية - اختبار تدفقات المستخدم الكاملة',
+            'الاختبار اليدوي - مختبرون بشريون يستخدمون التطبيق',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'الفوائد:',
+          value: [
+            'اكتشاف الأخطاء مبكرًا',
+            'تمكين إعادة الهيكلة بثقة',
+            'توثيق السلوك المتوقع',
+            'تقليل وقت تصحيح الأخطاء',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .testing,
+    languages: [.dart, .flutter, .java, .python],
+    relatedTerms: [
+      TermKeys.unitTest,
+      TermKeys.widgetTest,
+      TermKeys.integrationTest,
+    ],
+    tags: ['testing', 'quality', 'bugs', 'verification'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.unitTest: ProgrammingTerm(
+    id: TermKeys.unitTest,
+    title: LocalizedString(en: 'Unit Test', ar: 'اختبار الوحدة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A test that verifies the behavior of a single unit of code (usually a function or method) in isolation from the rest of the system.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'اختبار يتحقق من سلوك وحدة واحدة من الكود (عادة دالة أو أسلوب) بمعزل عن بقية النظام.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent('Example in Dart:'),
+        CodeContent(
+          "import 'package:test/test.dart';\n"
+          '\n'
+          '// Function to test\n'
+          'int add(int a, int b) => a + b;\n'
+          '\n'
+          '// Unit test\n'
+          "void main() {\n"
+          "  test('add returns sum of two numbers', () {\n"
+          '    expect(add(2, 3), equals(5));\n'
+          '    expect(add(-1, 1), equals(0));\n'
+          '    expect(add(0, 0), equals(0));\n'
+          '  });\n'
+          '  \n'
+          "  test('add handles negative numbers', () {\n"
+          '    expect(add(-5, -3), equals(-8));\n'
+          '  });\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'Best practices:',
+          value: [
+            'Test one thing per test',
+            'Tests should be fast',
+            'Tests should be independent',
+            'Use descriptive test names',
+            'Follow AAA pattern: Arrange, Act, Assert',
+          ],
+        ),
+      ],
+      ar: [
+        StringContent('مثال في Dart:'),
+        CodeContent(
+          "import 'package:test/test.dart';\n"
+          '\n'
+          '// دالة للاختبار\n'
+          'int add(int a, int b) => a + b;\n'
+          '\n'
+          '// اختبار الوحدة\n'
+          "void main() {\n"
+          "  test('add يرجع مجموع رقمين', () {\n"
+          '    expect(add(2, 3), equals(5));\n'
+          '    expect(add(-1, 1), equals(0));\n'
+          '    expect(add(0, 0), equals(0));\n'
+          '  });\n'
+          '  \n'
+          "  test('add يتعامل مع الأرقام السالبة', () {\n"
+          '    expect(add(-5, -3), equals(-8));\n'
+          '  });\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'أفضل الممارسات:',
+          value: [
+            'اختبر شيئًا واحدًا لكل اختبار',
+            'يجب أن تكون الاختبارات سريعة',
+            'يجب أن تكون الاختبارات مستقلة',
+            'استخدم أسماء اختبار وصفية',
+            'اتبع نمط AAA: ترتيب، تصرف، تأكيد',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .testing,
+    languages: [.dart, .java, .python, .javascript],
+    relatedTerms: [TermKeys.testing, TermKeys.widgetTest, TermKeys.mock],
+    tags: ['unit test', 'testing', 'isolation', 'verification'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.widgetTest: ProgrammingTerm(
+    id: TermKeys.widgetTest,
+    title: LocalizedString(en: 'Widget Test', ar: 'اختبار الويدجت'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A Flutter-specific test that verifies the behavior of widgets. Tests user interactions, widget rendering, and state changes.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'اختبار خاص بـ Flutter يتحقق من سلوك الويدجت. يختبر تفاعلات المستخدم، عرض الويدجت، وتغييرات الحالة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent('Example:'),
+        CodeContent(
+          "import 'package:flutter_test/flutter_test.dart';\n"
+          "import 'package:flutter/material.dart';\n"
+          '\n'
+          'void main() {\n'
+          "  testWidgets('Counter increments', (tester) async {\n"
+          '    // Build widget\n'
+          '    await tester.pumpWidget(MyApp());\n'
+          '    \n'
+          '    // Verify initial state\n'
+          "    expect(find.text('0'), findsOneWidget);\n"
+          "    expect(find.text('1'), findsNothing);\n"
+          '    \n'
+          '    // Tap button\n'
+          '    await tester.tap(find.byIcon(Icons.add));\n'
+          '    await tester.pump();\n'
+          '    \n'
+          '    // Verify updated state\n'
+          "    expect(find.text('0'), findsNothing);\n"
+          "    expect(find.text('1'), findsOneWidget);\n"
+          '  });\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'Key methods:',
+          value: [
+            'pumpWidget - build the widget tree',
+            'pump - trigger a frame',
+            'tap - simulate tap gesture',
+            'find - locate widgets',
+            'expect - verify assertions',
+          ],
+        ),
+      ],
+      ar: [
+        StringContent('مثال:'),
+        CodeContent(
+          "import 'package:flutter_test/flutter_test.dart';\n"
+          "import 'package:flutter/material.dart';\n"
+          '\n'
+          'void main() {\n'
+          "  testWidgets('العداد يزداد', (tester) async {\n"
+          '    // بناء الويدجت\n'
+          '    await tester.pumpWidget(MyApp());\n'
+          '    \n'
+          '    // التحقق من الحالة الأولية\n'
+          "    expect(find.text('0'), findsOneWidget);\n"
+          "    expect(find.text('1'), findsNothing);\n"
+          '    \n'
+          '    // النقر على الزر\n'
+          '    await tester.tap(find.byIcon(Icons.add));\n'
+          '    await tester.pump();\n'
+          '    \n'
+          '    // التحقق من الحالة المحدثة\n'
+          "    expect(find.text('0'), findsNothing);\n"
+          "    expect(find.text('1'), findsOneWidget);\n"
+          '  });\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        UnorderedListContent(
+          title: 'الأساليب الرئيسية:',
+          value: [
+            'pumpWidget - بناء شجرة الويدجت',
+            'pump - تشغيل إطار',
+            'tap - محاكاة لمسة النقر',
+            'find - تحديد موقع الويدجت',
+            'expect - التحقق من التأكيدات',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .testing,
+    languages: [.flutter],
+    relatedTerms: [TermKeys.testing, TermKeys.unitTest, TermKeys.flutterWidget],
+    tags: ['widget test', 'flutter', 'ui testing', 'automation'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.integrationTest: ProgrammingTerm(
+    id: TermKeys.integrationTest,
+    title: LocalizedString(en: 'Integration Test', ar: 'اختبار التكامل'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A test that verifies how different parts of the system work together. Tests complete features or user flows across multiple components.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'اختبار يتحقق من كيفية عمل أجزاء مختلفة من النظام معًا. يختبر ميزات كاملة أو تدفقات المستخدم عبر مكونات متعددة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'What integration tests verify:',
+          value: [
+            'Multiple components working together',
+            'Database interactions',
+            'API calls and responses',
+            'Complete user workflows',
+            'Real device/platform behavior',
+          ],
+        ),
+        StringContent(
+          'In Flutter, integration tests run on real devices or emulators:',
+        ),
+        CodeContent(
+          "import 'package:flutter_test/flutter_test.dart';\n"
+          "import 'package:integration_test/integration_test.dart';\n"
+          '\n'
+          'void main() {\n'
+          '  IntegrationTestWidgetsFlutterBinding.ensureInitialized();\n'
+          '  \n'
+          "  testWidgets('Complete login flow', (tester) async {\n"
+          '    await tester.pumpWidget(MyApp());\n'
+          '    \n'
+          '    // Enter credentials\n'
+          "    await tester.enterText(find.byKey(Key('email')), 'user@example.com');\n"
+          "    await tester.enterText(find.byKey(Key('password')), 'password123');\n"
+          '    \n'
+          '    // Submit\n'
+          "    await tester.tap(find.text('Login'));\n"
+          '    await tester.pumpAndSettle();\n'
+          '    \n'
+          '    // Verify navigation to home screen\n'
+          "    expect(find.text('Welcome'), findsOneWidget);\n"
+          '  });\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'ما يتحقق منه اختبار التكامل:',
+          value: [
+            'مكونات متعددة تعمل معًا',
+            'تفاعلات قاعدة البيانات',
+            'استدعاءات واستجابات API',
+            'تدفقات عمل المستخدم الكاملة',
+            'سلوك الجهاز/المنصة الحقيقي',
+          ],
+        ),
+        StringContent(
+          'في Flutter، تعمل اختبارات التكامل على أجهزة حقيقية أو محاكيات:',
+        ),
+        CodeContent(
+          "import 'package:flutter_test/flutter_test.dart';\n"
+          "import 'package:integration_test/integration_test.dart';\n"
+          '\n'
+          'void main() {\n'
+          '  IntegrationTestWidgetsFlutterBinding.ensureInitialized();\n'
+          '  \n'
+          "  testWidgets('تدفق تسجيل الدخول الكامل', (tester) async {\n"
+          '    await tester.pumpWidget(MyApp());\n'
+          '    \n'
+          '    // إدخال بيانات الاعتماد\n'
+          "    await tester.enterText(find.byKey(Key('email')), 'user@example.com');\n"
+          "    await tester.enterText(find.byKey(Key('password')), 'password123');\n"
+          '    \n'
+          '    // إرسال\n'
+          "    await tester.tap(find.text('تسجيل الدخول'));\n"
+          '    await tester.pumpAndSettle();\n'
+          '    \n'
+          '    // التحقق من الانتقال لشاشة الرئيسية\n'
+          "    expect(find.text('مرحبًا'), findsOneWidget);\n"
+          '  });\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .testing,
+    languages: [.dart, .flutter, .java, .python],
+    relatedTerms: [TermKeys.testing, TermKeys.unitTest, TermKeys.widgetTest],
+    aliases: ['End-to-end test', 'E2E test'],
+    tags: ['integration', 'testing', 'workflow', 'e2e'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.mock: ProgrammingTerm(
+    id: TermKeys.mock,
+    title: LocalizedString(en: 'Mock', ar: 'المحاكاة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A simulated object that mimics the behavior of real objects in testing. Mocks replace dependencies to test code in isolation.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'كائن محاكى يحاكي سلوك الكائنات الحقيقية في الاختبار. تستبدل المحاكيات التبعيات لاختبار الكود بمعزل.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Why use mocks:',
+          value: [
+            'Test without external dependencies (database, API)',
+            'Control test conditions precisely',
+            'Make tests faster and more reliable',
+            'Verify interactions (method calls, parameters)',
+          ],
+        ),
+        StringContent('Example using Mockito in Dart:'),
+        CodeContent(
+          "import 'package:mockito/mockito.dart';\n"
+          "import 'package:test/test.dart';\n"
+          '\n'
+          '// Interface to mock\n'
+          'abstract class UserRepository {\n'
+          '  Future<User> getUser(String id);\n'
+          '}\n'
+          '\n'
+          '// Mock implementation\n'
+          'class MockUserRepository extends Mock implements UserRepository {}\n'
+          '\n'
+          'void main() {\n'
+          "  test('fetchUserData returns user', () async {\n"
+          '    // Create mock\n'
+          '    final mockRepo = MockUserRepository();\n'
+          '    \n'
+          '    // Define behavior\n'
+          "    when(mockRepo.getUser('123'))\n"
+          "        .thenAnswer((_) async => User(id: '123', name: 'Alice'));\n"
+          '    \n'
+          '    // Test using mock\n'
+          "    final user = await mockRepo.getUser('123');\n"
+          "    expect(user.name, equals('Alice'));\n"
+          '    \n'
+          '    // Verify interaction\n'
+          "    verify(mockRepo.getUser('123')).called(1);\n"
+          '  });\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'لماذا نستخدم المحاكيات:',
+          value: [
+            'الاختبار بدون تبعيات خارجية (قاعدة بيانات، API)',
+            'التحكم في ظروف الاختبار بدقة',
+            'جعل الاختبارات أسرع وأكثر موثوقية',
+            'التحقق من التفاعلات (استدعاءات الأساليب، المعاملات)',
+          ],
+        ),
+        StringContent('مثال باستخدام Mockito في Dart:'),
+        CodeContent(
+          "import 'package:mockito/mockito.dart';\n"
+          "import 'package:test/test.dart';\n"
+          '\n'
+          '// واجهة للمحاكاة\n'
+          'abstract class UserRepository {\n'
+          '  Future<User> getUser(String id);\n'
+          '}\n'
+          '\n'
+          '// تنفيذ المحاكاة\n'
+          'class MockUserRepository extends Mock implements UserRepository {}\n'
+          '\n'
+          'void main() {\n'
+          "  test('fetchUserData يرجع مستخدم', () async {\n"
+          '    // إنشاء محاكاة\n'
+          '    final mockRepo = MockUserRepository();\n'
+          '    \n'
+          '    // تحديد السلوك\n'
+          "    when(mockRepo.getUser('123'))\n"
+          "        .thenAnswer((_) async => User(id: '123', name: 'أليس'));\n"
+          '    \n'
+          '    // الاختبار باستخدام المحاكاة\n'
+          "    final user = await mockRepo.getUser('123');\n"
+          "    expect(user.name, equals('أليس'));\n"
+          '    \n'
+          '    // التحقق من التفاعل\n'
+          "    verify(mockRepo.getUser('123')).called(1);\n"
+          '  });\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .testing,
+    languages: [.dart, .java, .python, .javascript],
+    relatedTerms: [TermKeys.unitTest, 'stub'],
+    aliases: ['Test double', 'Fake'],
+    tags: ['mock', 'testing', 'isolation', 'simulation'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.versionControl: ProgrammingTerm(
+    id: TermKeys.versionControl,
+    title: LocalizedString(en: 'Version Control', ar: 'التحكم في الإصدار'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A system that tracks changes to files over time, allowing you to recall specific versions, collaborate with others, and manage code history.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نظام يتتبع التغييرات على الملفات مع مرور الوقت، مما يسمح لك باسترجاع إصدارات محددة، التعاون مع الآخرين، وإدارة تاريخ الكود.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Benefits:',
+          value: [
+            'Track all changes to code',
+            'Collaborate with multiple developers',
+            'Revert to previous versions',
+            'Branch for new features',
+            'Review code before merging',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Popular systems:',
+          value: [
+            'Git - most widely used (GitHub, GitLab, Bitbucket)',
+            'SVN (Subversion) - centralized system',
+            'Mercurial - distributed system',
+          ],
+        ),
+        StringContent('Git is the industry standard for version control.'),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الفوائد:',
+          value: [
+            'تتبع جميع التغييرات على الكود',
+            'التعاون مع مطورين متعددين',
+            'العودة لإصدارات سابقة',
+            'التفرع للميزات الجديدة',
+            'مراجعة الكود قبل الدمج',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'الأنظمة الشائعة:',
+          value: [
+            'Git - الأكثر استخدامًا (GitHub، GitLab، Bitbucket)',
+            'SVN (Subversion) - نظام مركزي',
+            'Mercurial - نظام موزع',
+          ],
+        ),
+        StringContent('Git هو المعيار الصناعي للتحكم في الإصدار.'),
+      ],
+    ),
+    type: .concept,
+    category: .versionControl,
+    relatedTerms: [TermKeys.git, TermKeys.commit, TermKeys.branch],
+    aliases: ['Source control', 'SCM'],
+    tags: ['version control', 'git', 'collaboration', 'history'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.git: ProgrammingTerm(
+    id: TermKeys.git,
+    title: LocalizedString(en: 'Git', ar: 'Git'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A distributed version control system that tracks changes in source code. Created by Linus Torvalds in 2005.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نظام تحكم في الإصدار موزع يتتبع التغييرات في الكود المصدري. أنشأه Linus Torvalds في 2005.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Basic Git commands:',
+          value: [
+            'git init - create a new repository',
+            'git clone - copy a repository',
+            'git add - stage changes',
+            'git commit - save changes',
+            'git push - upload to remote',
+            'git pull - download from remote',
+            'git status - check current state',
+          ],
+        ),
+        StringContent('Basic workflow:'),
+        CodeContent(
+          '# Initialize repository\n'
+          'git init\n'
+          '\n'
+          '# Add files\n'
+          'git add .\n'
+          '\n'
+          '# Commit changes\n'
+          'git commit -m "Initial commit"\n'
+          '\n'
+          '# Connect to remote\n'
+          'git remote add origin https://github.com/user/repo.git\n'
+          '\n'
+          '# Push to remote\n'
+          'git push -u origin main',
+          codeLanguage: .bash,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أوامر Git الأساسية:',
+          value: [
+            'git init - إنشاء مستودع جديد',
+            'git clone - نسخ مستودع',
+            'git add - تجهيز التغييرات',
+            'git commit - حفظ التغييرات',
+            'git push - رفع للخادم البعيد',
+            'git pull - تنزيل من الخادم البعيد',
+            'git status - فحص الحالة الحالية',
+          ],
+        ),
+        StringContent('سير العمل الأساسي:'),
+        CodeContent(
+          '# تهيئة المستودع\n'
+          'git init\n'
+          '\n'
+          '# إضافة الملفات\n'
+          'git add .\n'
+          '\n'
+          '# حفظ التغييرات\n'
+          'git commit -m "الإضافة الأولية"\n'
+          '\n'
+          '# الاتصال بالخادم البعيد\n'
+          'git remote add origin https://github.com/user/repo.git\n'
+          '\n'
+          '# رفع للخادم البعيد\n'
+          'git push -u origin main',
+          codeLanguage: .bash,
+        ),
+      ],
+    ),
+    type: .tool,
+    category: .versionControl,
+    relatedTerms: [TermKeys.versionControl, TermKeys.commit, TermKeys.branch],
+    tags: ['git', 'vcs', 'version control', 'collaboration'],
+    era: .classic,
+    popularityTier: .veryHigh,
+    introducedYear: 2005,
+  ),
+  TermKeys.commit: ProgrammingTerm(
+    id: TermKeys.commit,
+    title: LocalizedString(en: 'Commit', ar: 'الإيداع'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A snapshot of changes in version control. A commit saves the current state of files with a descriptive message.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'لقطة من التغييرات في التحكم في الإصدار. يحفظ الإيداع الحالة الحالية للملفات مع رسالة وصفية.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Good commit practices:',
+          value: [
+            'Write clear, descriptive messages',
+            'Make atomic commits (one logical change)',
+            'Commit often (small, frequent changes)',
+            'Don\'t commit broken code',
+          ],
+        ),
+        StringContent('Creating commits:'),
+        CodeContent(
+          '# Stage specific files\n'
+          'git add file1.dart file2.dart\n'
+          '\n'
+          '# Stage all changes\n'
+          'git add .\n'
+          '\n'
+          '# Commit with message\n'
+          'git commit -m "Add user authentication feature"\n'
+          '\n'
+          '# Commit all tracked changes\n'
+          'git commit -am "Fix login bug"\n'
+          '\n'
+          '# View commit history\n'
+          'git log',
+          codeLanguage: .bash,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'ممارسات الإيداع الجيدة:',
+          value: [
+            'اكتب رسائل واضحة ووصفية',
+            'قم بإيداعات ذرية (تغيير منطقي واحد)',
+            'قم بالإيداع كثيرًا (تغييرات صغيرة متكررة)',
+            'لا تودع كودًا مكسورًا',
+          ],
+        ),
+        StringContent('إنشاء الإيداعات:'),
+        CodeContent(
+          '# تجهيز ملفات محددة\n'
+          'git add file1.dart file2.dart\n'
+          '\n'
+          '# تجهيز جميع التغييرات\n'
+          'git add .\n'
+          '\n'
+          '# الإيداع مع رسالة\n'
+          'git commit -m "إضافة ميزة مصادقة المستخدم"\n'
+          '\n'
+          '# إيداع جميع التغييرات المتتبعة\n'
+          'git commit -am "إصلاح خطأ تسجيل الدخول"\n'
+          '\n'
+          '# عرض تاريخ الإيداعات\n'
+          'git log',
+          codeLanguage: .bash,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .versionControl,
+    relatedTerms: [TermKeys.git, TermKeys.versionControl],
+    aliases: ['Check-in', 'Revision'],
+    tags: ['commit', 'git', 'snapshot', 'save'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.branch: ProgrammingTerm(
+    id: TermKeys.branch,
+    title: LocalizedString(en: 'Branch', ar: 'الفرع'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A parallel version of a repository. Branches allow you to work on new features or fixes without affecting the main codebase.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نسخة موازية من المستودع. تسمح الفروع بالعمل على ميزات أو إصلاحات جديدة دون التأثير على قاعدة الكود الرئيسية.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Common branching strategies:',
+          value: [
+            'main/master - production-ready code',
+            'develop - integration branch for features',
+            'feature/* - new features',
+            'bugfix/* - bug fixes',
+            'hotfix/* - urgent production fixes',
+          ],
+        ),
+        StringContent('Working with branches:'),
+        CodeContent(
+          '# Create and switch to new branch\n'
+          'git checkout -b feature/user-profile\n'
+          '\n'
+          '# List all branches\n'
+          'git branch\n'
+          '\n'
+          '# Switch to existing branch\n'
+          'git checkout main\n'
+          '\n'
+          '# Delete branch\n'
+          'git branch -d feature/user-profile\n'
+          '\n'
+          '# Push branch to remote\n'
+          'git push origin feature/user-profile',
+          codeLanguage: .bash,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'استراتيجيات التفرع الشائعة:',
+          value: [
+            'main/master - كود جاهز للإنتاج',
+            'develop - فرع التكامل للميزات',
+            'feature/* - ميزات جديدة',
+            'bugfix/* - إصلاحات الأخطاء',
+            'hotfix/* - إصلاحات إنتاج عاجلة',
+          ],
+        ),
+        StringContent('العمل مع الفروع:'),
+        CodeContent(
+          '# إنشاء والانتقال لفرع جديد\n'
+          'git checkout -b feature/user-profile\n'
+          '\n'
+          '# عرض جميع الفروع\n'
+          'git branch\n'
+          '\n'
+          '# الانتقال لفرع موجود\n'
+          'git checkout main\n'
+          '\n'
+          '# حذف فرع\n'
+          'git branch -d feature/user-profile\n'
+          '\n'
+          '# رفع فرع للخادم البعيد\n'
+          'git push origin feature/user-profile',
+          codeLanguage: .bash,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .versionControl,
+    relatedTerms: [TermKeys.git, TermKeys.merge, TermKeys.commit],
+    tags: ['branch', 'git', 'parallel development', 'workflow'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.merge: ProgrammingTerm(
+    id: TermKeys.merge,
+    title: LocalizedString(en: 'Merge', ar: 'الدمج'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of combining changes from one branch into another. Merging integrates separate development lines.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية دمج التغييرات من فرع إلى آخر. يدمج الدمج خطوط التطوير المنفصلة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent('Merging branches:'),
+        CodeContent(
+          '# Switch to target branch\n'
+          'git checkout main\n'
+          '\n'
+          '# Merge feature branch into main\n'
+          'git merge feature/user-profile\n'
+          '\n'
+          '# If there are conflicts:\n'
+          '# 1. Resolve conflicts in files\n'
+          '# 2. Stage resolved files: git add .\n'
+          '# 3. Complete merge: git commit',
+          codeLanguage: .bash,
+        ),
+        UnorderedListContent(
+          title: 'Merge conflicts occur when:',
+          value: [
+            'Same lines modified in both branches',
+            'File deleted in one branch, modified in another',
+            'Both branches modify same file differently',
+          ],
+        ),
+        StringContent(
+          'Best practice: Pull latest changes before merging to minimize conflicts.',
+        ),
+      ],
+      ar: [
+        StringContent('دمج الفروع:'),
+        CodeContent(
+          '# الانتقال للفرع المستهدف\n'
+          'git checkout main\n'
+          '\n'
+          '# دمج فرع الميزة في main\n'
+          'git merge feature/user-profile\n'
+          '\n'
+          '# إذا كانت هناك تعارضات:\n'
+          '# 1. حل التعارضات في الملفات\n'
+          '# 2. تجهيز الملفات المحلولة: git add .\n'
+          '# 3. إكمال الدمج: git commit',
+          codeLanguage: .bash,
+        ),
+        UnorderedListContent(
+          title: 'تحدث تعارضات الدمج عندما:',
+          value: [
+            'تعديل نفس الأسطر في كلا الفرعين',
+            'حذف ملف في فرع، تعديله في آخر',
+            'تعديل كلا الفرعين لنفس الملف بشكل مختلف',
+          ],
+        ),
+        StringContent(
+          'أفضل ممارسة: اسحب أحدث التغييرات قبل الدمج لتقليل التعارضات.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .versionControl,
+    relatedTerms: [TermKeys.branch, TermKeys.git, 'rebase'],
+    aliases: ['Integration'],
+    tags: ['merge', 'git', 'integration', 'conflicts'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.pullRequest: ProgrammingTerm(
+    id: TermKeys.pullRequest,
+    title: LocalizedString(en: 'Pull Request (PR)', ar: 'طلب السحب'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A request to merge code changes from one branch into another. PRs enable code review and discussion before integration.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'طلب لدمج تغييرات الكود من فرع إلى آخر. تتيح طلبات السحب مراجعة الكود والنقاش قبل الدمج.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Pull request workflow:',
+          value: [
+            '1. Create feature branch',
+            '2. Make changes and commit',
+            '3. Push branch to remote',
+            '4. Create pull request on GitHub/GitLab',
+            '5. Team reviews code',
+            '6. Address feedback and update',
+            '7. PR approved and merged',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Good PR practices:',
+          value: [
+            'Write clear description of changes',
+            'Keep PRs small and focused',
+            'Link to related issues/tickets',
+            'Request specific reviewers',
+            'Respond to feedback promptly',
+          ],
+        ),
+        StringContent('Also called "Merge Request" (MR) in GitLab.'),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'سير عمل طلب السحب:',
+          value: [
+            '1. إنشاء فرع الميزة',
+            '2. إجراء التغييرات والإيداع',
+            '3. رفع الفرع للخادم البعيد',
+            '4. إنشاء طلب سحب على GitHub/GitLab',
+            '5. الفريق يراجع الكود',
+            '6. معالجة الملاحظات والتحديث',
+            '7. الموافقة على طلب السحب ودمجه',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'ممارسات طلب السحب الجيدة:',
+          value: [
+            'اكتب وصفًا واضحًا للتغييرات',
+            'اجعل طلبات السحب صغيرة ومركزة',
+            'اربط بالمشاكل/التذاكر ذات الصلة',
+            'اطلب مراجعين محددين',
+            'استجب للملاحظات بسرعة',
+          ],
+        ),
+        StringContent('يُسمى أيضًا "طلب الدمج" (MR) في GitLab.'),
+      ],
+    ),
+    type: .concept,
+    category: .versionControl,
+    relatedTerms: [TermKeys.merge, TermKeys.codeReview, TermKeys.branch],
+    aliases: ['Merge Request', 'MR'],
+    tags: ['pull request', 'code review', 'collaboration', 'git'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.codeReview: ProgrammingTerm(
+    id: TermKeys.codeReview,
+    title: LocalizedString(en: 'Code Review', ar: 'مراجعة الكود'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The practice of examining code written by others to find bugs, improve quality, share knowledge, and ensure standards are met.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ممارسة فحص الكود المكتوب من قبل الآخرين لإيجاد الأخطاء، تحسين الجودة، مشاركة المعرفة، والتأكد من استيفاء المعايير.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'What reviewers check:',
+          value: [
+            'Correctness - does it work as intended?',
+            'Code quality - is it readable and maintainable?',
+            'Tests - are there adequate tests?',
+            'Performance - any potential bottlenecks?',
+            'Security - any vulnerabilities?',
+            'Standards - follows team conventions?',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Benefits:',
+          value: [
+            'Catch bugs early',
+            'Improve code quality',
+            'Share knowledge across team',
+            'Maintain consistent style',
+            'Mentor junior developers',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'ما يفحصه المراجعون:',
+          value: [
+            'الصحة - هل يعمل كما هو مقصود؟',
+            'جودة الكود - هل هو قابل للقراءة والصيانة؟',
+            'الاختبارات - هل هناك اختبارات كافية؟',
+            'الأداء - أي اختناقات محتملة؟',
+            'الأمان - أي ثغرات؟',
+            'المعايير - يتبع اتفاقيات الفريق؟',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'الفوائد:',
+          value: [
+            'اكتشاف الأخطاء مبكرًا',
+            'تحسين جودة الكود',
+            'مشاركة المعرفة عبر الفريق',
+            'الحفاظ على نمط متسق',
+            'توجيه المطورين المبتدئين',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    relatedTerms: [TermKeys.pullRequest, 'refactoring'],
+    tags: ['code review', 'quality', 'collaboration', 'best practices'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.singleton: ProgrammingTerm(
+    id: TermKeys.singleton,
+    title: LocalizedString(en: 'Singleton Pattern', ar: 'نمط المفرد'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A design pattern that ensures a class has only one instance and provides a global point of access to it.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نمط تصميم يضمن أن للفئة نسخة واحدة فقط ويوفر نقطة وصول عامة لها.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Use cases:',
+          value: [
+            'Database connections',
+            'Configuration settings',
+            'Logging services',
+            'Cache managers',
+          ],
+        ),
+        StringContent('Implementation in Dart:'),
+        CodeContent(
+          'class DatabaseConnection {\n'
+          '  // Private constructor\n'
+          '  DatabaseConnection._();\n'
+          '  \n'
+          '  // Single instance\n'
+          '  static final DatabaseConnection _instance = DatabaseConnection._();\n'
+          '  \n'
+          '  // Factory constructor returns same instance\n'
+          '  factory DatabaseConnection() => _instance;\n'
+          '  \n'
+          '  void query(String sql) {\n'
+          '    print("Executing: \$sql");\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// Usage:\n'
+          'var db1 = DatabaseConnection();\n'
+          'var db2 = DatabaseConnection();\n'
+          'print(identical(db1, db2));  // true - same instance',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'حالات الاستخدام:',
+          value: [
+            'اتصالات قاعدة البيانات',
+            'إعدادات التكوين',
+            'خدمات التسجيل',
+            'مدراء التخزين المؤقت',
+          ],
+        ),
+        StringContent('التنفيذ في Dart:'),
+        CodeContent(
+          'class DatabaseConnection {\n'
+          '  // منشئ خاص\n'
+          '  DatabaseConnection._();\n'
+          '  \n'
+          '  // نسخة واحدة\n'
+          '  static final DatabaseConnection _instance = DatabaseConnection._();\n'
+          '  \n'
+          '  // منشئ مصنعي يرجع نفس النسخة\n'
+          '  factory DatabaseConnection() => _instance;\n'
+          '  \n'
+          '  void query(String sql) {\n'
+          '    print("تنفيذ: \$sql");\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// الاستخدام:\n'
+          'var db1 = DatabaseConnection();\n'
+          'var db2 = DatabaseConnection();\n'
+          'print(identical(db1, db2));  // true - نفس النسخة',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .pattern,
+    category: .architecture,
+    languages: [.dart, .java, .csharp, .python],
+    relatedTerms: [TermKeys.oopConstructor, 'design-patterns'],
+    tags: ['singleton', 'design pattern', 'instance', 'global'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.factoryConstructor: ProgrammingTerm(
+    id: TermKeys.factoryConstructor,
+    title: LocalizedString(en: 'Factory Constructor', ar: 'المنشئ المصنعي'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A special constructor in Dart that can return an existing instance or a subclass instance instead of always creating a new object.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'منشئ خاص في Dart يمكنه إرجاع نسخة موجودة أو نسخة فئة فرعية بدلاً من إنشاء كائن جديد دائمًا.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Factory constructors can:',
+          value: [
+            'Return cached instances',
+            'Return subclass instances',
+            'Perform complex initialization',
+            'Implement singleton pattern',
+          ],
+        ),
+        StringContent('Examples:'),
+        CodeContent(
+          'class Logger {\n'
+          '  final String name;\n'
+          '  static final Map<String, Logger> _cache = {};\n'
+          '  \n'
+          '  // Private constructor\n'
+          '  Logger._(this.name);\n'
+          '  \n'
+          '  // Factory constructor with caching\n'
+          '  factory Logger(String name) {\n'
+          '    return _cache.putIfAbsent(name, () => Logger._(name));\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// Factory returning subclass\n'
+          'abstract class Shape {\n'
+          '  factory Shape(String type) {\n'
+          '    if (type == "circle") return Circle();\n'
+          '    if (type == "square") return Square();\n'
+          '    throw ArgumentError("Unknown shape");\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'يمكن للمنشئات المصنعية:',
+          value: [
+            'إرجاع نسخ مخزنة مؤقتًا',
+            'إرجاع نسخ فئة فرعية',
+            'إجراء تهيئة معقدة',
+            'تنفيذ نمط المفرد',
+          ],
+        ),
+        StringContent('أمثلة:'),
+        CodeContent(
+          'class Logger {\n'
+          '  final String name;\n'
+          '  static final Map<String, Logger> _cache = {};\n'
+          '  \n'
+          '  // منشئ خاص\n'
+          '  Logger._(this.name);\n'
+          '  \n'
+          '  // منشئ مصنعي مع تخزين مؤقت\n'
+          '  factory Logger(String name) {\n'
+          '    return _cache.putIfAbsent(name, () => Logger._(name));\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// منشئ مصنعي يرجع فئة فرعية\n'
+          'abstract class Shape {\n'
+          '  factory Shape(String type) {\n'
+          '    if (type == "circle") return Circle();\n'
+          '    if (type == "square") return Square();\n'
+          '    throw ArgumentError("شكل غير معروف");\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .oop,
+    languages: [.dart],
+    relatedTerms: [TermKeys.oopConstructor, TermKeys.singleton],
+    tags: ['factory', 'constructor', 'pattern', 'dart'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.observerPattern: ProgrammingTerm(
+    id: TermKeys.observerPattern,
+    title: LocalizedString(en: 'Observer Pattern', ar: 'نمط المراقب'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A design pattern where an object (subject) maintains a list of dependents (observers) and notifies them of state changes.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نمط تصميم حيث يحتفظ كائن (الموضوع) بقائمة من التابعين (المراقبين) ويخطرهم بتغييرات الحالة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Components:',
+          value: [
+            'Subject - maintains observers, notifies them',
+            'Observer - receives notifications',
+            'ConcreteSubject - specific implementation',
+            'ConcreteObserver - specific response to changes',
+          ],
+        ),
+        StringContent('Example in Dart:'),
+        CodeContent(
+          'abstract class Observer {\n'
+          '  void update(String message);\n'
+          '}\n'
+          '\n'
+          'class Subject {\n'
+          '  final List<Observer> _observers = [];\n'
+          '  \n'
+          '  void attach(Observer observer) => _observers.add(observer);\n'
+          '  void detach(Observer observer) => _observers.remove(observer);\n'
+          '  \n'
+          '  void notify(String message) {\n'
+          '    for (var observer in _observers) {\n'
+          '      observer.update(message);\n'
+          '    }\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          'class EmailNotifier implements Observer {\n'
+          '  @override\n'
+          '  void update(String message) {\n'
+          '    print("Email sent: \$message");\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'Used in: Event systems, MVC, reactive programming (Streams in Dart).',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'المكونات:',
+          value: [
+            'الموضوع - يحتفظ بالمراقبين، يخطرهم',
+            'المراقب - يتلقى الإخطارات',
+            'الموضوع الملموس - تنفيذ محدد',
+            'المراقب الملموس - استجابة محددة للتغييرات',
+          ],
+        ),
+        StringContent('مثال في Dart:'),
+        CodeContent(
+          'abstract class Observer {\n'
+          '  void update(String message);\n'
+          '}\n'
+          '\n'
+          'class Subject {\n'
+          '  final List<Observer> _observers = [];\n'
+          '  \n'
+          '  void attach(Observer observer) => _observers.add(observer);\n'
+          '  void detach(Observer observer) => _observers.remove(observer);\n'
+          '  \n'
+          '  void notify(String message) {\n'
+          '    for (var observer in _observers) {\n'
+          '      observer.update(message);\n'
+          '    }\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          'class EmailNotifier implements Observer {\n'
+          '  @override\n'
+          '  void update(String message) {\n'
+          '    print("إرسال بريد إلكتروني: \$message");\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'يُستخدم في: أنظمة الأحداث، MVC، البرمجة التفاعلية (Streams في Dart).',
+        ),
+      ],
+    ),
+    type: .pattern,
+    category: .architecture,
+    languages: [.dart, .java, .javascript, .csharp],
+    relatedTerms: [TermKeys.dartStream, TermKeys.reactiveProgramming],
+    aliases: ['Publish-Subscribe', 'Event Listener'],
+    tags: ['observer', 'design pattern', 'event', 'notification'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.mvc: ProgrammingTerm(
+    id: TermKeys.mvc,
+    title: LocalizedString(en: 'MVC (Model-View-Controller)', ar: 'نمط MVC'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'An architectural pattern that separates an application into three interconnected components: Model (data), View (UI), and Controller (logic).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نمط معماري يفصل التطبيق إلى ثلاثة مكونات متصلة: النموذج (البيانات)، العرض (واجهة المستخدم)، والمتحكم (المنطق).',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Components:',
+          value: [
+            'Model - manages data and business logic',
+            'View - displays data to user (UI)',
+            'Controller - handles user input, updates model/view',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Benefits:',
+          value: [
+            'Separation of concerns',
+            'Easier testing',
+            'Parallel development',
+            'Code reusability',
+          ],
+        ),
+        StringContent(
+          'Flow: User interacts with View → Controller updates Model → Model notifies View → View updates display',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'المكونات:',
+          value: [
+            'النموذج - يدير البيانات ومنطق الأعمال',
+            'العرض - يعرض البيانات للمستخدم (واجهة المستخدم)',
+            'المتحكم - يتعامل مع إدخال المستخدم، يحدث النموذج/العرض',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'الفوائد:',
+          value: [
+            'فصل الاهتمامات',
+            'اختبار أسهل',
+            'تطوير متوازي',
+            'إعادة استخدام الكود',
+          ],
+        ),
+        StringContent(
+          'التدفق: المستخدم يتفاعل مع العرض → المتحكم يحدث النموذج → النموذج يخطر العرض → العرض يحدث العرض',
+        ),
+      ],
+    ),
+    type: .architecture,
+    category: .architecture,
+    relatedTerms: [TermKeys.mvvm, 'design-patterns'],
+    aliases: ['Model-View-Controller'],
+    tags: ['mvc', 'architecture', 'pattern', 'separation'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.mvvm: ProgrammingTerm(
+    id: TermKeys.mvvm,
+    title: LocalizedString(en: 'MVVM (Model-View-ViewModel)', ar: 'نمط MVVM'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'An architectural pattern that separates UI (View) from business logic through a ViewModel that exposes data and commands for the View to bind to.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نمط معماري يفصل واجهة المستخدم (العرض) عن منطق الأعمال من خلال ViewModel يعرض البيانات والأوامر للعرض للربط بها.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Components:',
+          value: [
+            'Model - data and business logic',
+            'View - UI elements (widgets)',
+            'ViewModel - mediator between Model and View',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Key differences from MVC:',
+          value: [
+            'View binds directly to ViewModel',
+            'No direct View-Model communication',
+            'Better suited for declarative UI (like Flutter)',
+          ],
+        ),
+        StringContent(
+          'Popular in Flutter with Provider, Riverpod, or BLoC for state management.',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'المكونات:',
+          value: [
+            'النموذج - البيانات ومنطق الأعمال',
+            'العرض - عناصر واجهة المستخدم (الويدجت)',
+            'ViewModel - وسيط بين النموذج والعرض',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'الفروقات الرئيسية عن MVC:',
+          value: [
+            'العرض يرتبط مباشرة بـ ViewModel',
+            'لا تواصل مباشر بين العرض والنموذج',
+            'أنسب لواجهة المستخدم التصريحية (مثل Flutter)',
+          ],
+        ),
+        StringContent(
+          'شائع في Flutter مع Provider، Riverpod، أو BLoC لإدارة الحالة.',
+        ),
+      ],
+    ),
+    type: .architecture,
+    category: .architecture,
+    languages: [.flutter, .dart, .csharp],
+    relatedTerms: [TermKeys.mvc, TermKeys.stateManagement],
+    aliases: ['Model-View-ViewModel'],
+    tags: ['mvvm', 'architecture', 'pattern', 'binding'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.dependencyInjection: ProgrammingTerm(
+    id: TermKeys.dependencyInjection,
+    title: LocalizedString(en: 'Dependency Injection', ar: 'حقن التبعية'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A design pattern where objects receive their dependencies from external sources rather than creating them internally.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نمط تصميم حيث تتلقى الكائنات تبعياتها من مصادر خارجية بدلاً من إنشائها داخليًا.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Benefits:',
+          value: [
+            'Loose coupling - easier to change implementations',
+            'Testability - inject mock dependencies',
+            'Reusability - same code with different dependencies',
+            'Single Responsibility - objects don\'t manage dependencies',
+          ],
+        ),
+        StringContent('Example without DI:'),
+        CodeContent(
+          'class UserService {\n'
+          '  final database = Database();  // Tight coupling!\n'
+          '  \n'
+          '  void saveUser(User user) {\n'
+          '    database.save(user);\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        StringContent('With DI (Constructor Injection):'),
+        CodeContent(
+          'class UserService {\n'
+          '  final Database database;\n'
+          '  \n'
+          '  // Dependency injected via constructor\n'
+          '  UserService(this.database);\n'
+          '  \n'
+          '  void saveUser(User user) {\n'
+          '    database.save(user);\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// Now we can easily test with mock:\n'
+          'final service = UserService(MockDatabase());',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الفوائد:',
+          value: [
+            'ارتباط فضفاض - أسهل لتغيير التنفيذات',
+            'قابلية الاختبار - حقن تبعيات محاكاة',
+            'إعادة الاستخدام - نفس الكود مع تبعيات مختلفة',
+            'مسؤولية واحدة - الكائنات لا تدير التبعيات',
+          ],
+        ),
+        StringContent('مثال بدون DI:'),
+        CodeContent(
+          'class UserService {\n'
+          '  final database = Database();  // ارتباط محكم!\n'
+          '  \n'
+          '  void saveUser(User user) {\n'
+          '    database.save(user);\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        StringContent('مع DI (حقن المنشئ):'),
+        CodeContent(
+          'class UserService {\n'
+          '  final Database database;\n'
+          '  \n'
+          '  // التبعية محقونة عبر المنشئ\n'
+          '  UserService(this.database);\n'
+          '  \n'
+          '  void saveUser(User user) {\n'
+          '    database.save(user);\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// الآن يمكننا الاختبار بسهولة مع محاكاة:\n'
+          'final service = UserService(MockDatabase());',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .pattern,
+    category: .architecture,
+    languages: [.dart, .java, .csharp, .typescript],
+    relatedTerms: ['service-locator', 'get-it'],
+    aliases: ['DI', 'Inversion of Control'],
+    tags: ['dependency injection', 'pattern', 'testability', 'decoupling'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.callback: ProgrammingTerm(
+    id: TermKeys.callback,
+    title: LocalizedString(en: 'Callback', ar: 'الاستدعاء الراجع'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A function passed as an argument to another function, to be executed later when a certain event occurs or condition is met.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'دالة تُمرر كوسيط لدالة أخرى، ليتم تنفيذها لاحقًا عند حدوث حدث معين أو استيفاء شرط.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Common uses:',
+          value: [
+            'Event handlers (button clicks, gestures)',
+            'Asynchronous operations',
+            'Custom behavior injection',
+            'Animation completion',
+          ],
+        ),
+        StringContent('Examples in Dart:'),
+        CodeContent(
+          '// Simple callback\n'
+          'void fetchData(void Function(String) onComplete) {\n'
+          '  // Simulate async operation\n'
+          '  Future.delayed(Duration(seconds: 2), () {\n'
+          "    onComplete('Data loaded');\n"
+          '  });\n'
+          '}\n'
+          '\n'
+          '// Usage:\n'
+          'fetchData((result) {\n'
+          '  print(result);  // Prints: Data loaded\n'
+          '});\n'
+          '\n'
+          '// In Flutter widgets:\n'
+          'ElevatedButton(\n'
+          '  onPressed: () {  // Callback\n'
+          "    print('Button clicked');\n"
+          '  },\n'
+          "  child: Text('Click Me'),\n"
+          ')',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الاستخدامات الشائعة:',
+          value: [
+            'معالجات الأحداث (نقرات الأزرار، الإيماءات)',
+            'العمليات غير المتزامنة',
+            'حقن السلوك المخصص',
+            'إكمال الرسوم المتحركة',
+          ],
+        ),
+        StringContent('أمثلة في Dart:'),
+        CodeContent(
+          '// استدعاء راجع بسيط\n'
+          'void fetchData(void Function(String) onComplete) {\n'
+          '  // محاكاة عملية غير متزامنة\n'
+          '  Future.delayed(Duration(seconds: 2), () {\n'
+          "    onComplete('تم تحميل البيانات');\n"
+          '  });\n'
+          '}\n'
+          '\n'
+          '// الاستخدام:\n'
+          'fetchData((result) {\n'
+          '  print(result);  // يطبع: تم تحميل البيانات\n'
+          '});\n'
+          '\n'
+          '// في ويدجت Flutter:\n'
+          'ElevatedButton(\n'
+          '  onPressed: () {  // استدعاء راجع\n'
+          "    print('تم النقر على الزر');\n"
+          '  },\n'
+          "  child: Text('انقر هنا'),\n"
+          ')',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.dart, .javascript, .python, .java],
+    relatedTerms: [TermKeys.fundamentalsFunction, TermKeys.concurrencyAsync],
+    aliases: ['Event handler', 'Listener'],
+    tags: ['callback', 'function', 'async', 'event'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.json: ProgrammingTerm(
+    id: TermKeys.json,
+    title: LocalizedString(en: 'JSON (JavaScript Object Notation)', ar: 'JSON'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تنسيق تبادل بيانات خفيف الوزن سهل القراءة والكتابة للبشر، وسهل التحليل والتوليد للآلات.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'JSON data types:',
+          value: [
+            'String - text in double quotes',
+            'Number - integer or decimal',
+            'Boolean - true or false',
+            'Null - null value',
+            'Object - key-value pairs in {}',
+            'Array - ordered list in []',
+          ],
+        ),
+        StringContent('Example JSON:'),
+        CodeContent(
+          '{\n'
+          '  "name": "Alice",\n'
+          '  "age": 30,\n'
+          '  "isActive": true,\n'
+          '  "tags": ["developer", "flutter"],\n'
+          '  "address": {\n'
+          '    "city": "New York",\n'
+          '    "country": "USA"\n'
+          '  }\n'
+          '}',
+          codeLanguage: .json,
+        ),
+        StringContent('Working with JSON in Dart:'),
+        CodeContent(
+          "import 'dart:convert';\n"
+          '\n'
+          '// Parse JSON string\n'
+          'String jsonString = \'{"name": "Alice", "age": 30}\';\n'
+          'Map<String, dynamic> user = jsonDecode(jsonString);\n'
+          "print(user['name']);  // Alice\n"
+          '\n'
+          '// Convert to JSON string\n'
+          "Map<String, dynamic> data = {'name': 'Bob', 'age': 25};\n"
+          'String json = jsonEncode(data);\n'
+          'print(json);  // {"name":"Bob","age":25}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أنواع بيانات JSON:',
+          value: [
+            'نص - نص بين علامات اقتباس مزدوجة',
+            'رقم - عدد صحيح أو عشري',
+            'منطقي - true أو false',
+            'فارغ - قيمة null',
+            'كائن - أزواج مفتاح-قيمة في {}',
+            'مصفوفة - قائمة مرتبة في []',
+          ],
+        ),
+        StringContent('مثال JSON:'),
+        CodeContent(
+          '{\n'
+          '  "name": "أليس",\n'
+          '  "age": 30,\n'
+          '  "isActive": true,\n'
+          '  "tags": ["مطور", "flutter"],\n'
+          '  "address": {\n'
+          '    "city": "نيويورك",\n'
+          '    "country": "الولايات المتحدة"\n'
+          '  }\n'
+          '}',
+          codeLanguage: .json,
+        ),
+        StringContent('العمل مع JSON في Dart:'),
+        CodeContent(
+          "import 'dart:convert';\n"
+          '\n'
+          '// تحليل نص JSON\n'
+          'String jsonString = \'{"name": "أليس", "age": 30}\';\n'
+          'Map<String, dynamic> user = jsonDecode(jsonString);\n'
+          "print(user['name']);  // أليس\n"
+          '\n'
+          '// تحويل لنص JSON\n'
+          "Map<String, dynamic> data = {'name': 'بوب', 'age': 25};\n"
+          'String json = jsonEncode(data);\n'
+          'print(json);  // {"name":"بوب","age":25}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .protocol,
+    category: .fundamentals,
+    relatedTerms: [TermKeys.serialization, TermKeys.restApi],
+    tags: ['json', 'data format', 'serialization', 'api'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.serialization: ProgrammingTerm(
+    id: TermKeys.serialization,
+    title: LocalizedString(en: 'Serialization', ar: 'التسلسل'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of converting an object or data structure into a format that can be stored or transmitted, and reconstructed later.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية تحويل كائن أو هيكل بيانات إلى تنسيق يمكن تخزينه أو نقله، وإعادة بنائه لاحقًا.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Common formats:',
+          value: [
+            'JSON - human-readable, widely used',
+            'XML - verbose but flexible',
+            'Protocol Buffers - binary, efficient',
+            'MessagePack - binary JSON alternative',
+          ],
+        ),
+        StringContent('Serialization in Dart:'),
+        CodeContent(
+          'class User {\n'
+          '  final String name;\n'
+          '  final int age;\n'
+          '  \n'
+          '  User(this.name, this.age);\n'
+          '  \n'
+          '  // Serialize to JSON\n'
+          '  Map<String, dynamic> toJson() => {\n'
+          "    'name': name,\n"
+          "    'age': age,\n"
+          '  };\n'
+          '  \n'
+          '  // Deserialize from JSON\n'
+          '  factory User.fromJson(Map<String, dynamic> json) {\n'
+          "    return User(json['name'], json['age']);\n"
+          '  }\n'
+          '}\n'
+          '\n'
+          '// Usage:\n'
+          "var user = User('Alice', 30);\n"
+          'String json = jsonEncode(user.toJson());\n'
+          'User decoded = User.fromJson(jsonDecode(json));',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'التنسيقات الشائعة:',
+          value: [
+            'JSON - قابل للقراءة، مستخدم على نطاق واسع',
+            'XML - مطول لكن مرن',
+            'Protocol Buffers - ثنائي، فعال',
+            'MessagePack - بديل JSON ثنائي',
+          ],
+        ),
+        StringContent('التسلسل في Dart:'),
+        CodeContent(
+          'class User {\n'
+          '  final String name;\n'
+          '  final int age;\n'
+          '  \n'
+          '  User(this.name, this.age);\n'
+          '  \n'
+          '  // تسلسل إلى JSON\n'
+          '  Map<String, dynamic> toJson() => {\n'
+          "    'name': name,\n"
+          "    'age': age,\n"
+          '  };\n'
+          '  \n'
+          '  // إلغاء التسلسل من JSON\n'
+          '  factory User.fromJson(Map<String, dynamic> json) {\n'
+          "    return User(json['name'], json['age']);\n"
+          '  }\n'
+          '}\n'
+          '\n'
+          '// الاستخدام:\n'
+          "var user = User('أليس', 30);\n"
+          'String json = jsonEncode(user.toJson());\n'
+          'User decoded = User.fromJson(jsonDecode(json));',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    relatedTerms: [TermKeys.json, 'deserialization'],
+    aliases: ['Marshalling'],
+    tags: ['serialization', 'json', 'data', 'conversion'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.httpHttps: ProgrammingTerm(
+    id: TermKeys.httpHttps,
+    title: LocalizedString(en: 'HTTP/HTTPS', ar: 'HTTP/HTTPS'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'HTTP (HyperText Transfer Protocol) is the foundation of data communication on the web. HTTPS is the secure version using encryption.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'HTTP (بروتوكول نقل النص التشعبي) هو أساس اتصال البيانات على الويب. HTTPS هو النسخة الآمنة باستخدام التشفير.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'HTTP Methods:',
+          value: [
+            'GET - retrieve data',
+            'POST - send data to create resource',
+            'PUT - update existing resource',
+            'PATCH - partial update',
+            'DELETE - remove resource',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Status codes:',
+          value: [
+            '200 OK - success',
+            '201 Created - resource created',
+            '400 Bad Request - client error',
+            '401 Unauthorized - authentication required',
+            '404 Not Found - resource doesn\'t exist',
+            '500 Internal Server Error - server error',
+          ],
+        ),
+        StringContent('Making HTTP requests in Dart:'),
+        CodeContent(
+          "import 'package:http/http.dart' as http;\n"
+          "import 'dart:convert';\n"
+          '\n'
+          '// GET request\n'
+          'Future<void> fetchUser() async {\n'
+          "  final response = await http.get(\n"
+          "    Uri.parse('https://api.example.com/users/1'),\n"
+          '  );\n'
+          '  \n'
+          '  if (response.statusCode == 200) {\n'
+          '    final user = jsonDecode(response.body);\n'
+          '    print(user);\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// POST request\n'
+          'Future<void> createUser(Map<String, dynamic> data) async {\n'
+          "  final response = await http.post(\n"
+          "    Uri.parse('https://api.example.com/users'),\n"
+          "    headers: {'Content-Type': 'application/json'},\n"
+          '    body: jsonEncode(data),\n'
+          '  );\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        StringContent(
+          'HTTPS adds SSL/TLS encryption for secure communication.',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أساليب HTTP:',
+          value: [
+            'GET - استرجاع البيانات',
+            'POST - إرسال بيانات لإنشاء مورد',
+            'PUT - تحديث مورد موجود',
+            'PATCH - تحديث جزئي',
+            'DELETE - إزالة مورد',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'رموز الحالة:',
+          value: [
+            '200 OK - نجاح',
+            '201 Created - تم إنشاء المورد',
+            '400 Bad Request - خطأ من العميل',
+            '401 Unauthorized - المصادقة مطلوبة',
+            '404 Not Found - المورد غير موجود',
+            '500 Internal Server Error - خطأ في الخادم',
+          ],
+        ),
+        StringContent('إجراء طلبات HTTP في Dart:'),
+        CodeContent(
+          "import 'package:http/http.dart' as http;\n"
+          "import 'dart:convert';\n"
+          '\n'
+          '// طلب GET\n'
+          'Future<void> fetchUser() async {\n'
+          "  final response = await http.get(\n"
+          "    Uri.parse('https://api.example.com/users/1'),\n"
+          '  );\n'
+          '  \n'
+          '  if (response.statusCode == 200) {\n'
+          '    final user = jsonDecode(response.body);\n'
+          '    print(user);\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// طلب POST\n'
+          'Future<void> createUser(Map<String, dynamic> data) async {\n'
+          "  final response = await http.post(\n"
+          "    Uri.parse('https://api.example.com/users'),\n"
+          "    headers: {'Content-Type': 'application/json'},\n"
+          '    body: jsonEncode(data),\n'
+          '  );\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+        StringContent('HTTPS يضيف تشفير SSL/TLS للاتصال الآمن.'),
+      ],
+    ),
+    type: .protocol,
+    category: .networking,
+    relatedTerms: [TermKeys.restApi, TermKeys.api],
+    tags: ['http', 'https', 'protocol', 'web', 'network'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.restApi: ProgrammingTerm(
+    id: TermKeys.restApi,
+    title: LocalizedString(en: 'REST API', ar: 'واجهة REST'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'Representational State Transfer - an architectural style for designing networked applications using HTTP requests to access and manipulate data.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نقل الحالة التمثيلية - نمط معماري لتصميم تطبيقات الشبكة باستخدام طلبات HTTP للوصول إلى البيانات ومعالجتها.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'REST principles:',
+          value: [
+            'Stateless - each request is independent',
+            'Client-Server - separation of concerns',
+            'Cacheable - responses can be cached',
+            'Uniform Interface - consistent endpoints',
+            'Resource-based - data represented as resources',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Example endpoints:',
+          value: [
+            'GET /api/users - get all users',
+            'GET /api/users/123 - get specific user',
+            'POST /api/users - create new user',
+            'PUT /api/users/123 - update user',
+            'DELETE /api/users/123 - delete user',
+          ],
+        ),
+        StringContent('REST APIs typically use JSON for data exchange.'),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'مبادئ REST:',
+          value: [
+            'عديم الحالة - كل طلب مستقل',
+            'عميل-خادم - فصل الاهتمامات',
+            'قابل للتخزين المؤقت - يمكن تخزين الاستجابات مؤقتًا',
+            'واجهة موحدة - نقاط نهاية متسقة',
+            'قائم على الموارد - البيانات ممثلة كموارد',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'أمثلة نقاط النهاية:',
+          value: [
+            'GET /api/users - الحصول على جميع المستخدمين',
+            'GET /api/users/123 - الحصول على مستخدم محدد',
+            'POST /api/users - إنشاء مستخدم جديد',
+            'PUT /api/users/123 - تحديث مستخدم',
+            'DELETE /api/users/123 - حذف مستخدم',
+          ],
+        ),
+        StringContent('عادة ما تستخدم واجهات REST API JSON لتبادل البيانات.'),
+      ],
+    ),
+    type: .architecture,
+    category: .networking,
+    relatedTerms: [TermKeys.httpHttps, TermKeys.api, TermKeys.json],
+    aliases: ['RESTful API'],
+    tags: ['rest', 'api', 'web service', 'http'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.websocket: ProgrammingTerm(
+    id: TermKeys.websocket,
+    title: LocalizedString(en: 'WebSocket', ar: 'WebSocket'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A protocol providing full-duplex communication channels over a single TCP connection, enabling real-time bidirectional data transfer.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'بروتوكول يوفر قنوات اتصال كاملة الازدواجية عبر اتصال TCP واحد، مما يتيح نقل البيانات الثنائي في الوقت الفعلي.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Use cases:',
+          value: [
+            'Chat applications - instant messaging',
+            'Live notifications - real-time updates',
+            'Collaborative editing - multiple users',
+            'Gaming - multiplayer interactions',
+            'Stock tickers - live price updates',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'WebSocket vs HTTP:',
+          value: [
+            'HTTP - request-response, one-way',
+            'WebSocket - persistent connection, bidirectional',
+            'WebSocket - lower latency for real-time',
+          ],
+        ),
+        StringContent('Using WebSocket in Dart:'),
+        CodeContent(
+          "import 'dart:io';\n"
+          '\n'
+          'Future<void> connectWebSocket() async {\n'
+          "  final socket = await WebSocket.connect('ws://example.com/socket');\n"
+          '  \n'
+          '  // Send message\n'
+          "  socket.add('Hello Server');\n"
+          '  \n'
+          '  // Listen for messages\n'
+          '  socket.listen((message) {\n'
+          '    print(\'Received: \$message\');\n'
+          '  });\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'حالات الاستخدام:',
+          value: [
+            'تطبيقات الدردشة - المراسلة الفورية',
+            'الإشعارات المباشرة - التحديثات في الوقت الفعلي',
+            'التحرير التعاوني - مستخدمون متعددون',
+            'الألعاب - تفاعلات متعددة اللاعبين',
+            'أسعار الأسهم - تحديثات الأسعار المباشرة',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'WebSocket مقابل HTTP:',
+          value: [
+            'HTTP - طلب-استجابة، اتجاه واحد',
+            'WebSocket - اتصال مستمر، ثنائي الاتجاه',
+            'WebSocket - زمن انتقال أقل للوقت الفعلي',
+          ],
+        ),
+        StringContent('استخدام WebSocket في Dart:'),
+        CodeContent(
+          "import 'dart:io';\n"
+          '\n'
+          'Future<void> connectWebSocket() async {\n'
+          "  final socket = await WebSocket.connect('ws://example.com/socket');\n"
+          '  \n'
+          '  // إرسال رسالة\n'
+          "  socket.add('مرحبا الخادم');\n"
+          '  \n'
+          '  // الاستماع للرسائل\n'
+          '  socket.listen((message) {\n'
+          '    print(\'تم الاستلام: \$message\');\n'
+          '  });\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .protocol,
+    category: .networking,
+    languages: [.dart, .javascript, .java],
+    relatedTerms: [TermKeys.httpHttps, TermKeys.dartStream],
+    tags: ['websocket', 'real-time', 'bidirectional', 'protocol'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.authentication: ProgrammingTerm(
+    id: TermKeys.authentication,
+    title: LocalizedString(en: 'Authentication', ar: 'المصادقة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of verifying the identity of a user, device, or system. Confirms "who you are".',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية التحقق من هوية مستخدم أو جهاز أو نظام. تؤكد "من أنت".',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Common methods:',
+          value: [
+            'Password-based - username and password',
+            'Token-based - JWT, OAuth tokens',
+            'Biometric - fingerprint, face recognition',
+            'Multi-factor (MFA) - multiple verification methods',
+            'Social login - Google, Facebook, Apple',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Authentication vs Authorization:',
+          value: [
+            'Authentication - who you are (login)',
+            'Authorization - what you can do (permissions)',
+          ],
+        ),
+        StringContent('Example: Firebase Authentication in Flutter'),
+        CodeContent(
+          "import 'package:firebase_auth/firebase_auth.dart';\n"
+          '\n'
+          'Future<void> signIn(String email, String password) async {\n'
+          '  try {\n'
+          '    await FirebaseAuth.instance.signInWithEmailAndPassword(\n'
+          '      email: email,\n'
+          '      password: password,\n'
+          '    );\n'
+          "    print('Signed in successfully');\n"
+          '  } catch (e) {\n'
+          "    print('Error: \$e');\n"
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الطرق الشائعة:',
+          value: [
+            'قائمة على كلمة المرور - اسم المستخدم وكلمة المرور',
+            'قائمة على الرمز - JWT، رموز OAuth',
+            'بيومترية - بصمة الإصبع، التعرف على الوجه',
+            'متعددة العوامل (MFA) - طرق تحقق متعددة',
+            'تسجيل الدخول الاجتماعي - Google، Facebook، Apple',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'المصادقة مقابل التفويض:',
+          value: [
+            'المصادقة - من أنت (تسجيل الدخول)',
+            'التفويض - ما يمكنك فعله (الأذونات)',
+          ],
+        ),
+        StringContent('مثال: مصادقة Firebase في Flutter'),
+        CodeContent(
+          "import 'package:firebase_auth/firebase_auth.dart';\n"
+          '\n'
+          'Future<void> signIn(String email, String password) async {\n'
+          '  try {\n'
+          '    await FirebaseAuth.instance.signInWithEmailAndPassword(\n'
+          '      email: email,\n'
+          '      password: password,\n'
+          '    );\n'
+          "    print('تم تسجيل الدخول بنجاح');\n"
+          '  } catch (e) {\n'
+          "    print('خطأ: \$e');\n"
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .security,
+    relatedTerms: [TermKeys.authorization, TermKeys.jwt],
+    tags: ['authentication', 'security', 'identity', 'login'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.authorization: ProgrammingTerm(
+    id: TermKeys.authorization,
+    title: LocalizedString(en: 'Authorization', ar: 'التفويض'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of determining what actions an authenticated user is allowed to perform. Confirms "what you can do".',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية تحديد الإجراءات التي يُسمح للمستخدم المصادق عليه بتنفيذها. تؤكد "ما يمكنك فعله".',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Common models:',
+          value: [
+            'Role-Based Access Control (RBAC) - permissions by role',
+            'Attribute-Based Access Control (ABAC) - based on attributes',
+            'Access Control Lists (ACL) - explicit permissions',
+          ],
+        ),
+        StringContent('Example:'),
+        CodeContent(
+          'class User {\n'
+          '  final String id;\n'
+          '  final List<String> roles;\n'
+          '  \n'
+          '  User(this.id, this.roles);\n'
+          '  \n'
+          '  bool canEdit() => roles.contains(\'editor\');\n'
+          '  bool canDelete() => roles.contains(\'admin\');\n'
+          '  bool canView() => true;  // Everyone can view\n'
+          '}\n'
+          '\n'
+          '// Usage:\n'
+          "var user = User('123', ['editor']);\n"
+          'if (user.canEdit()) {\n'
+          '  // Allow editing\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'النماذج الشائعة:',
+          value: [
+            'التحكم في الوصول القائم على الأدوار (RBAC) - أذونات حسب الدور',
+            'التحكم في الوصول القائم على السمات (ABAC) - بناءً على السمات',
+            'قوائم التحكم في الوصول (ACL) - أذونات صريحة',
+          ],
+        ),
+        StringContent('مثال:'),
+        CodeContent(
+          'class User {\n'
+          '  final String id;\n'
+          '  final List<String> roles;\n'
+          '  \n'
+          '  User(this.id, this.roles);\n'
+          '  \n'
+          '  bool canEdit() => roles.contains(\'editor\');\n'
+          '  bool canDelete() => roles.contains(\'admin\');\n'
+          '  bool canView() => true;  // الجميع يمكنهم العرض\n'
+          '}\n'
+          '\n'
+          '// الاستخدام:\n'
+          "var user = User('123', ['editor']);\n"
+          'if (user.canEdit()) {\n'
+          '  // السماح بالتحرير\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .security,
+    relatedTerms: [TermKeys.authentication],
+    aliases: ['Access Control', 'Permissions'],
+    tags: ['authorization', 'security', 'permissions', 'access control'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.jwt: ProgrammingTerm(
+    id: TermKeys.jwt,
+    title: LocalizedString(en: 'JWT (JSON Web Token)', ar: 'رمز JWT'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A compact, URL-safe token format for securely transmitting information between parties as a JSON object. Commonly used for authentication.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تنسيق رمز مضغوط وآمن لعنوان URL لنقل المعلومات بشكل آمن بين الأطراف ككائن JSON. يُستخدم عادة للمصادقة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'JWT structure (3 parts separated by dots):',
+          value: [
+            'Header - algorithm and token type',
+            'Payload - claims (user data, expiration)',
+            'Signature - verifies token integrity',
+          ],
+        ),
+        StringContent('Example JWT:'),
+        CodeContent(
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.\n'
+          'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.\n'
+          'SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+          codeLanguage: .text,
+        ),
+        UnorderedListContent(
+          title: 'How it works:',
+          value: [
+            '1. User logs in with credentials',
+            '2. Server creates JWT with user info',
+            '3. Client stores JWT (usually in local storage)',
+            '4. Client sends JWT with each request',
+            '5. Server verifies JWT signature',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'هيكل JWT (3 أجزاء مفصولة بنقاط):',
+          value: [
+            'الرأس - الخوارزمية ونوع الرمز',
+            'الحمولة - المطالبات (بيانات المستخدم، الانتهاء)',
+            'التوقيع - يتحقق من سلامة الرمز',
+          ],
+        ),
+        StringContent('مثال JWT:'),
+        CodeContent(
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.\n'
+          'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.\n'
+          'SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+          codeLanguage: .text,
+        ),
+        UnorderedListContent(
+          title: 'كيف يعمل:',
+          value: [
+            '1. المستخدم يسجل الدخول ببيانات الاعتماد',
+            '2. الخادم ينشئ JWT بمعلومات المستخدم',
+            '3. العميل يخزن JWT (عادة في التخزين المحلي)',
+            '4. العميل يرسل JWT مع كل طلب',
+            '5. الخادم يتحقق من توقيع JWT',
+          ],
+        ),
+      ],
+    ),
+    type: .protocol,
+    category: .security,
+    relatedTerms: [TermKeys.authentication, TermKeys.httpHttps],
+    aliases: ['JSON Web Token'],
+    tags: ['jwt', 'authentication', 'token', 'security'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.stateManagement: ProgrammingTerm(
+    id: TermKeys.stateManagement,
+    title: LocalizedString(en: 'State Management', ar: 'إدارة الحالة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The practice of managing and coordinating application state across components. Essential for keeping UI in sync with data.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ممارسة إدارة وتنسيق حالة التطبيق عبر المكونات. أساسي للحفاظ على تزامن واجهة المستخدم مع البيانات.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Why state management matters:',
+          value: [
+            'Share data between widgets',
+            'Avoid prop drilling (passing data through many layers)',
+            'Separate business logic from UI',
+            'Make state changes predictable',
+            'Enable time-travel debugging',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'Popular Flutter solutions:',
+          value: [
+            'setState - built-in, simple',
+            'Provider - recommended by Flutter team',
+            'Riverpod - improved Provider',
+            'BLoC - business logic component pattern',
+            'GetX - all-in-one solution',
+            'MobX - reactive state management',
+            'Redux - predictable state container',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'لماذا إدارة الحالة مهمة:',
+          value: [
+            'مشاركة البيانات بين الويدجت',
+            'تجنب حفر الخصائص (تمرير البيانات عبر طبقات كثيرة)',
+            'فصل منطق الأعمال عن واجهة المستخدم',
+            'جعل تغييرات الحالة قابلة للتنبؤ',
+            'تمكين تصحيح السفر عبر الزمن',
+          ],
+        ),
+        UnorderedListContent(
+          title: 'حلول Flutter الشائعة:',
+          value: [
+            'setState - مدمج، بسيط',
+            'Provider - موصى به من فريق Flutter',
+            'Riverpod - Provider محسّن',
+            'BLoC - نمط مكون منطق الأعمال',
+            'GetX - حل شامل',
+            'MobX - إدارة حالة تفاعلية',
+            'Redux - حاوية حالة قابلة للتنبؤ',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .stateManagement,
+    languages: [.flutter, .dart, .react, .angular],
+    relatedTerms: [TermKeys.state, TermKeys.bloc, TermKeys.providerPattern],
+    tags: ['state management', 'flutter', 'architecture', 'data'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.bloc: ProgrammingTerm(
+    id: TermKeys.bloc,
+    title: LocalizedString(
+      en: 'BLoC (Business Logic Component)',
+      ar: 'نمط BLoC',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A state management pattern in Flutter that separates business logic from UI using streams. Events go in, states come out.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نمط إدارة حالة في Flutter يفصل منطق الأعمال عن واجهة المستخدم باستخدام التدفقات. الأحداث تدخل، الحالات تخرج.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Core concepts:',
+          value: [
+            'Events - user actions (button clicks, etc.)',
+            'States - UI states (loading, success, error)',
+            'BLoC - processes events, emits states',
+            'Streams - communication channel',
+          ],
+        ),
+        StringContent('Simple counter example:'),
+        CodeContent(
+          "import 'package:flutter_bloc/flutter_bloc.dart';\n"
+          '\n'
+          '// Events\n'
+          'abstract class CounterEvent {}\n'
+          'class Increment extends CounterEvent {}\n'
+          'class Decrement extends CounterEvent {}\n'
+          '\n'
+          '// BLoC\n'
+          'class CounterBloc extends Bloc<CounterEvent, int> {\n'
+          '  CounterBloc() : super(0) {\n'
+          '    on<Increment>((event, emit) => emit(state + 1));\n'
+          '    on<Decrement>((event, emit) => emit(state - 1));\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// Usage in widget:\n'
+          'BlocBuilder<CounterBloc, int>(\n'
+          '  builder: (context, count) => Text(\'\$count\'),\n'
+          ')',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'المفاهيم الأساسية:',
+          value: [
+            'الأحداث - إجراءات المستخدم (نقرات الأزرار، إلخ)',
+            'الحالات - حالات واجهة المستخدم (تحميل، نجاح، خطأ)',
+            'BLoC - يعالج الأحداث، يصدر الحالات',
+            'التدفقات - قناة الاتصال',
+          ],
+        ),
+        StringContent('مثال عداد بسيط:'),
+        CodeContent(
+          "import 'package:flutter_bloc/flutter_bloc.dart';\n"
+          '\n'
+          '// الأحداث\n'
+          'abstract class CounterEvent {}\n'
+          'class Increment extends CounterEvent {}\n'
+          'class Decrement extends CounterEvent {}\n'
+          '\n'
+          '// BLoC\n'
+          'class CounterBloc extends Bloc<CounterEvent, int> {\n'
+          '  CounterBloc() : super(0) {\n'
+          '    on<Increment>((event, emit) => emit(state + 1));\n'
+          '    on<Decrement>((event, emit) => emit(state - 1));\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// الاستخدام في الويدجت:\n'
+          'BlocBuilder<CounterBloc, int>(\n'
+          '  builder: (context, count) => Text(\'\$count\'),\n'
+          ')',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .pattern,
+    category: .stateManagement,
+    languages: [.flutter, .dart],
+    relatedTerms: [TermKeys.stateManagement, TermKeys.dartStream, 'cubit'],
+    aliases: ['Business Logic Component'],
+    tags: ['bloc', 'state management', 'flutter', 'pattern'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.providerPattern: ProgrammingTerm(
+    id: TermKeys.providerPattern,
+    title: LocalizedString(en: 'Provider', ar: 'Provider'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A recommended state management solution for Flutter that uses InheritedWidget to propagate state down the widget tree efficiently.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'حل إدارة حالة موصى به لـ Flutter يستخدم InheritedWidget لنشر الحالة عبر شجرة الويدجت بكفاءة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent('Basic Provider example:'),
+        CodeContent(
+          "import 'package:flutter/material.dart';\n"
+          "import 'package:provider/provider.dart';\n"
+          '\n'
+          '// Model class\n'
+          'class Counter extends ChangeNotifier {\n'
+          '  int _count = 0;\n'
+          '  int get count => _count;\n'
+          '  \n'
+          '  void increment() {\n'
+          '    _count++;\n'
+          '    notifyListeners();  // Notify widgets to rebuild\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// Provide at top level:\n'
+          'ChangeNotifierProvider(\n'
+          '  create: (_) => Counter(),\n'
+          '  child: MyApp(),\n'
+          ')\n'
+          '\n'
+          '// Consume in widgets:\n'
+          'Consumer<Counter>(\n'
+          '  builder: (context, counter, child) {\n'
+          '    return Text(\'\${counter.count}\');\n'
+          '  },\n'
+          ')\n'
+          '\n'
+          '// Or access directly:\n'
+          'context.read<Counter>().increment();',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent('مثال Provider الأساسي:'),
+        CodeContent(
+          "import 'package:flutter/material.dart';\n"
+          "import 'package:provider/provider.dart';\n"
+          '\n'
+          '// فئة النموذج\n'
+          'class Counter extends ChangeNotifier {\n'
+          '  int _count = 0;\n'
+          '  int get count => _count;\n'
+          '  \n'
+          '  void increment() {\n'
+          '    _count++;\n'
+          '    notifyListeners();  // إخطار الويدجت لإعادة البناء\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// التوفير في المستوى الأعلى:\n'
+          'ChangeNotifierProvider(\n'
+          '  create: (_) => Counter(),\n'
+          '  child: MyApp(),\n'
+          ')\n'
+          '\n'
+          '// الاستهلاك في الويدجت:\n'
+          'Consumer<Counter>(\n'
+          '  builder: (context, counter, child) {\n'
+          '    return Text(\'\${counter.count}\');\n'
+          '  },\n'
+          ')\n'
+          '\n'
+          '// أو الوصول مباشرة:\n'
+          'context.read<Counter>().increment();',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .framework,
+    category: .stateManagement,
+    languages: [.flutter, .dart],
+    relatedTerms: [TermKeys.stateManagement, 'riverpod'],
+    tags: ['provider', 'state management', 'flutter', 'inherited widget'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.reactiveProgramming: ProgrammingTerm(
+    id: TermKeys.reactiveProgramming,
+    title: LocalizedString(en: 'Reactive Programming', ar: 'البرمجة التفاعلية'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A programming paradigm focused on data streams and the propagation of change. When data changes, dependent values automatically update.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نموذج برمجة يركز على تدفقات البيانات ونشر التغيير. عند تغيير البيانات، تتحدث القيم التابعة تلقائيًا.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Key concepts:',
+          value: [
+            'Observable/Stream - source of data',
+            'Observer/Listener - reacts to changes',
+            'Operators - transform data (map, filter, etc.)',
+            'Automatic updates - no manual refresh needed',
+          ],
+        ),
+        StringContent('Simple example with Dart Streams:'),
+        CodeContent(
+          "import 'dart:async';\n"
+          '\n'
+          'void main() {\n'
+          '  final controller = StreamController<int>();\n'
+          '  \n'
+          '  // React to stream changes\n'
+          '  controller.stream\n'
+          '    .map((value) => value * 2)  // Transform\n'
+          '    .where((value) => value > 10)  // Filter\n'
+          '    .listen((value) {  // React\n'
+          '      print(\'Received: \$value\');\n'
+          '    });\n'
+          '  \n'
+          '  // Emit values\n'
+          '  controller.add(3);   // 6 - filtered out\n'
+          '  controller.add(7);   // 14 - printed\n'
+          '  controller.add(10);  // 20 - printed\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'المفاهيم الرئيسية:',
+          value: [
+            'القابل للمراقبة/التدفق - مصدر البيانات',
+            'المراقب/المستمع - يتفاعل مع التغييرات',
+            'المشغلات - تحول البيانات (map، filter، إلخ)',
+            'التحديثات التلقائية - لا حاجة لتحديث يدوي',
+          ],
+        ),
+        StringContent('مثال بسيط مع Dart Streams:'),
+        CodeContent(
+          "import 'dart:async';\n"
+          '\n'
+          'void main() {\n'
+          '  final controller = StreamController<int>();\n'
+          '  \n'
+          '  // التفاعل مع تغييرات التدفق\n'
+          '  controller.stream\n'
+          '    .map((value) => value * 2)  // تحويل\n'
+          '    .where((value) => value > 10)  // تصفية\n'
+          '    .listen((value) {  // تفاعل\n'
+          '      print(\'تم الاستلام: \$value\');\n'
+          '    });\n'
+          '  \n'
+          '  // إصدار القيم\n'
+          '  controller.add(3);   // 6 - تمت تصفيته\n'
+          '  controller.add(7);   // 14 - تمت الطباعة\n'
+          '  controller.add(10);  // 20 - تمت الطباعة\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .paradigm,
+    category: .reactiveProgramming,
+    languages: [.dart, .javascript, .java, .swift],
+    relatedTerms: [TermKeys.dartStream, TermKeys.observerPattern],
+    aliases: ['Reactive Extensions', 'Rx'],
+    tags: ['reactive', 'streams', 'observable', 'data flow'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.buildMethod: ProgrammingTerm(
+    id: TermKeys.buildMethod,
+    title: LocalizedString(en: 'build() Method', ar: 'أسلوب build()'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The core method in Flutter widgets that describes how to display the widget in terms of other, lower-level widgets.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'الأسلوب الأساسي في ويدجت Flutter الذي يصف كيفية عرض الويدجت من حيث الويدجت الأخرى منخفضة المستوى.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Key points:',
+          value: [
+            'Called when widget needs to render',
+            'Should be pure - no side effects',
+            'Can be called multiple times',
+            'Returns a Widget tree',
+            'Performance matters - avoid heavy computation',
+          ],
+        ),
+        StringContent('Example:'),
+        CodeContent(
+          'class MyWidget extends StatelessWidget {\n'
+          '  @override\n'
+          '  Widget build(BuildContext context) {\n'
+          '    return Container(\n'
+          '      child: Text(\'Hello, Flutter!\'),\n'
+          '    );\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// In StatefulWidget:\n'
+          'class Counter extends StatefulWidget {\n'
+          '  @override\n'
+          '  State<Counter> createState() => _CounterState();\n'
+          '}\n'
+          '\n'
+          'class _CounterState extends State<Counter> {\n'
+          '  int count = 0;\n'
+          '  \n'
+          '  @override\n'
+          '  Widget build(BuildContext context) {\n'
+          '    return Text(\'\$count\');  // Rebuilds when setState called\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'نقاط رئيسية:',
+          value: [
+            'يُستدعى عندما يحتاج الويدجت للعرض',
+            'يجب أن يكون نقيًا - بدون آثار جانبية',
+            'يمكن استدعاؤه عدة مرات',
+            'يرجع شجرة Widget',
+            'الأداء مهم - تجنب الحسابات الثقيلة',
+          ],
+        ),
+        StringContent('مثال:'),
+        CodeContent(
+          'class MyWidget extends StatelessWidget {\n'
+          '  @override\n'
+          '  Widget build(BuildContext context) {\n'
+          '    return Container(\n'
+          '      child: Text(\'مرحبا، Flutter!\'),\n'
+          '    );\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// في StatefulWidget:\n'
+          'class Counter extends StatefulWidget {\n'
+          '  @override\n'
+          '  State<Counter> createState() => _CounterState();\n'
+          '}\n'
+          '\n'
+          'class _CounterState extends State<Counter> {\n'
+          '  int count = 0;\n'
+          '  \n'
+          '  @override\n'
+          '  Widget build(BuildContext context) {\n'
+          '    return Text(\'\$count\');  // يعاد البناء عند استدعاء setState\n'
+          '  }\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .uiUx,
+    languages: [.flutter],
+    relatedTerms: [TermKeys.flutterWidget, TermKeys.buildContext],
+    tags: ['build', 'flutter', 'widget', 'rendering'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.buildContext: ProgrammingTerm(
+    id: TermKeys.buildContext,
+    title: LocalizedString(en: 'BuildContext', ar: 'BuildContext'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A handle to the location of a widget in the widget tree. Provides access to inherited widgets, themes, and navigation.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مقبض لموقع ويدجت في شجرة الويدجت. يوفر وصولاً إلى الويدجت الموروثة، السمات، والتنقل.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Common uses:',
+          value: [
+            'Access theme data: Theme.of(context)',
+            'Navigate: Navigator.of(context).push()',
+            'Show dialogs/snackbars',
+            'Access inherited widgets',
+            'Get screen size: MediaQuery.of(context)',
+          ],
+        ),
+        StringContent('Example:'),
+        CodeContent(
+          'Widget build(BuildContext context) {\n'
+          '  // Access theme\n'
+          '  final theme = Theme.of(context);\n'
+          '  \n'
+          '  // Get screen size\n'
+          '  final size = MediaQuery.of(context).size;\n'
+          '  \n'
+          '  return ElevatedButton(\n'
+          '    onPressed: () {\n'
+          '      // Navigate\n'
+          '      Navigator.of(context).push(\n'
+          '        MaterialPageRoute(builder: (_) => NextPage()),\n'
+          '      );\n'
+          '      \n'
+          '      // Show snackbar\n'
+          '      ScaffoldMessenger.of(context).showSnackBar(\n'
+          "        SnackBar(content: Text('Hello!')),\n"
+          '      );\n'
+          '    },\n'
+          "    child: Text('Click'),\n"
+          '  );\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الاستخدامات الشائعة:',
+          value: [
+            'الوصول لبيانات السمة: Theme.of(context)',
+            'التنقل: Navigator.of(context).push()',
+            'إظهار الحوارات/أشرطة الوجبات الخفيفة',
+            'الوصول للويدجت الموروثة',
+            'الحصول على حجم الشاشة: MediaQuery.of(context)',
+          ],
+        ),
+        StringContent('مثال:'),
+        CodeContent(
+          'Widget build(BuildContext context) {\n'
+          '  // الوصول للسمة\n'
+          '  final theme = Theme.of(context);\n'
+          '  \n'
+          '  // الحصول على حجم الشاشة\n'
+          '  final size = MediaQuery.of(context).size;\n'
+          '  \n'
+          '  return ElevatedButton(\n'
+          '    onPressed: () {\n'
+          '      // التنقل\n'
+          '      Navigator.of(context).push(\n'
+          '        MaterialPageRoute(builder: (_) => NextPage()),\n'
+          '      );\n'
+          '      \n'
+          '      // إظهار شريط وجبة خفيفة\n'
+          '      ScaffoldMessenger.of(context).showSnackBar(\n'
+          "        SnackBar(content: Text('مرحبا!')),\n"
+          '      );\n'
+          '    },\n'
+          "    child: Text('انقر'),\n"
+          '  );\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .uiUx,
+    languages: [.flutter],
+    relatedTerms: [TermKeys.flutterWidget, TermKeys.buildMethod],
+    tags: ['context', 'flutter', 'widget tree', 'navigation'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.eventLoop: ProgrammingTerm(
+    id: TermKeys.eventLoop,
+    title: LocalizedString(en: 'Event Loop', ar: 'حلقة الأحداث'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A programming construct that waits for and dispatches events or messages in a program. Central to asynchronous programming.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'بنية برمجة تنتظر وترسل الأحداث أو الرسائل في برنامج. محوري للبرمجة غير المتزامنة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'How Dart event loop works:',
+          value: [
+            '1. Executes main() function',
+            '2. Processes microtask queue (Futures, etc.)',
+            '3. Processes event queue (I/O, timers, user events)',
+            '4. Repeats until queues are empty',
+          ],
+        ),
+        StringContent(
+          'The event loop enables Dart to handle async operations without blocking the main thread, keeping UIs responsive.',
+        ),
+        CodeContent(
+          'void main() {\n'
+          "  print('1');\n"
+          '  \n'
+          '  Future(() => print(\'2\'));  // Event queue\n'
+          '  \n'
+          '  Future.microtask(() => print(\'3\'));  // Microtask queue\n'
+          '  \n'
+          "  print('4');\n"
+          '}\n'
+          '\n'
+          '// Output: 1, 4, 3, 2\n'
+          '// Synchronous code first, then microtasks, then events',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'كيف تعمل حلقة أحداث Dart:',
+          value: [
+            '1. تنفيذ دالة main()',
+            '2. معالجة طابور المهام الصغيرة (Futures، إلخ)',
+            '3. معالجة طابور الأحداث (الإدخال/الإخراج، المؤقتات، أحداث المستخدم)',
+            '4. التكرار حتى تفرغ الطوابير',
+          ],
+        ),
+        StringContent(
+          'تمكّن حلقة الأحداث Dart من التعامل مع العمليات غير المتزامنة دون حظر الخيط الرئيسي، مما يحافظ على استجابة واجهات المستخدم.',
+        ),
+        CodeContent(
+          'void main() {\n'
+          "  print('1');\n"
+          '  \n'
+          '  Future(() => print(\'2\'));  // طابور الأحداث\n'
+          '  \n'
+          '  Future.microtask(() => print(\'3\'));  // طابور المهام الصغيرة\n'
+          '  \n'
+          "  print('4');\n"
+          '}\n'
+          '\n'
+          '// الناتج: 1، 4، 3، 2\n'
+          '// الكود المتزامن أولاً، ثم المهام الصغيرة، ثم الأحداث',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .concurrency,
+    languages: [.dart, .javascript, .python],
+    relatedTerms: [TermKeys.concurrencyAsync, TermKeys.dartFuture],
+    tags: ['event loop', 'async', 'concurrency', 'non-blocking'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.architectureClean: ProgrammingTerm(
+    id: TermKeys.architectureClean,
+    title: LocalizedString(en: 'Clean Architecture', ar: 'العمارة النظيفة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A software design philosophy that separates elements into ring levels. The main rule is that dependencies can only point inwards, towards high-level policies.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'فلسفة تصميم برمجيات تفصل العناصر إلى مستويات حلقية. القاعدة الرئيسية هي أن التبعيات يمكن أن تشير فقط إلى الداخل، نحو السياسات عالية المستوى.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Layers (Outer to Inner):',
+          value: [
+            'Infrastructure (Frameworks, DB, UI)',
+            'Interface Adapters (Presenters, Gateways)',
+            'Use Cases (Application Business Rules)',
+            'Entities (Enterprise Business Rules)',
+          ],
+        ),
+        StringContent(
+          'Benefits: Independent of UI, Database, and Frameworks. Highly testable.',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الطبقات (من الخارج للداخل):',
+          value: [
+            'البنية التحتية (أطر العمل، قواعد البيانات، واجهة المستخدم)',
+            'محولات الواجهة (المقدمون، البوابات)',
+            'حالات الاستخدام (قواعد أعمال التطبيق)',
+            'الكيانات (قواعد أعمال المؤسسة)',
+          ],
+        ),
+        StringContent(
+          'الفوائد: مستقلة عن واجهة المستخدم، وقاعدة البيانات، وأطر العمل. قابلة للاختبار بشكل كبير.',
+        ),
+      ],
+    ),
+    type: .architecture,
+    category: .architecture,
+    languages: [.dart, .java, .csharp, .swift],
+    relatedTerms: [
+      TermKeys.architectureLayered,
+      TermKeys.patternRepository,
+      'solid',
+    ],
+    tags: ['clean architecture', 'uncle bob', 'layers', 'independence'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.architectureLayered: ProgrammingTerm(
+    id: TermKeys.architectureLayered,
+    title: LocalizedString(en: 'Layered Architecture', ar: 'العمارة الطبقية'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A traditional architectural pattern that organizes code into horizontal layers, where each layer performs a specific role and interacts only with the layer directly below it.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نمط معماري تقليدي ينظم الكود في طبقات أفقية، حيث تؤدي كل طبقة دورًا محددًا وتتفاعل فقط مع الطبقة التي تحتها مباشرة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Common Layers:',
+          value: [
+            'Presentation Layer (UI)',
+            'Business Logic / Domain Layer',
+            'Data Access Layer (Repository/Database)',
+          ],
+        ),
+        StringContent(
+          'Simple to understand and implement, but can lead to "tight coupling" if not managed well.',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الطبقات الشائعة:',
+          value: [
+            'طبقة العرض (واجهة المستخدم)',
+            'منطق الأعمال / طبقة المجال',
+            'طبقة الوصول للبيانات (المستودع/قاعدة البيانات)',
+          ],
+        ),
+        StringContent(
+          'بسيطة للفهم والتنفيذ، لكن قد تؤدي إلى "ارتباط محكم" إذا لم تتم إدارتها بشكل جيد.',
+        ),
+      ],
+    ),
+    type: .architecture,
+    category: .architecture,
+    relatedTerms: [TermKeys.architectureClean, TermKeys.mvc],
+    tags: ['layers', 'n-tier', 'structure', 'organization'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.patternRepository: ProgrammingTerm(
+    id: TermKeys.patternRepository,
+    title: LocalizedString(en: 'Repository Pattern', ar: 'نمط المستودع'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A design pattern that mediates between the domain and data mapping layers using a collection-like interface for accessing domain objects.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نمط تصميم يتوسط بين المجال وطبقات تعيين البيانات باستخدام واجهة تشبه المجموعة للوصول إلى كائنات المجال.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'It abstracts the data source (API, SQL, Cache) so the app logic doesn\'t care where data comes from.',
+        ),
+        CodeContent(
+          'abstract class UserRepository {\n'
+          '  Future<User> getUser(String id);\n'
+          '  Future<void> saveUser(User user);\n'
+          '}\n'
+          '\n'
+          'class UserRepositoryImpl implements UserRepository {\n'
+          '  // Implementation details hidden from the app\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يقوم بتجريد مصدر البيانات (API، SQL، التخزين المؤقت) بحيث لا يهتم منطق التطبيق بمصدر البيانات.',
+        ),
+        CodeContent(
+          'abstract class UserRepository {\n'
+          '  Future<User> getUser(String id);\n'
+          '  Future<void> saveUser(User user);\n'
+          '}\n'
+          '\n'
+          'class UserRepositoryImpl implements UserRepository {\n'
+          '  // تفاصيل التنفيذ مخفية عن التطبيق\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .pattern,
+    category: .architecture,
+    languages: [.dart, .java, .csharp],
+    relatedTerms: [TermKeys.architectureClean, TermKeys.dependencyInjection],
+    tags: ['repository', 'data abstraction', 'pattern', 'database'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.patternServiceLocator: ProgrammingTerm(
+    id: TermKeys.patternServiceLocator,
+    title: LocalizedString(en: 'Service Locator', ar: 'محدد الخدمة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A design pattern used to decouple the interface with an implementation by creating a central registry (the locator) where services are registered and retrieved.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نمط تصميم يستخدم لفصل الواجهة عن التنفيذ عن طريق إنشاء سجل مركزي (المحدد) حيث يتم تسجيل الخدمات واسترجاعها.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Often considered an alternative to Dependency Injection. In Dart, `GetIt` is a popular service locator.',
+        ),
+        CodeContent(
+          'final locator = GetIt.instance;\n'
+          '\n'
+          '// Register\n'
+          'locator.registerSingleton<AuthService>(AuthServiceImpl());\n'
+          '\n'
+          '// Retrieve\n'
+          'final authService = locator<AuthService>();',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent(
+          'غالبًا ما يعتبر بديلاً لحقن التبعية. في Dart، يعد `GetIt` محدد خدمة شائع.',
+        ),
+        CodeContent(
+          'final locator = GetIt.instance;\n'
+          '\n'
+          '// تسجيل\n'
+          'locator.registerSingleton<AuthService>(AuthServiceImpl());\n'
+          '\n'
+          '// استرجاع\n'
+          'final authService = locator<AuthService>();',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .pattern,
+    category: .architecture,
+    languages: [.dart, .csharp],
+    relatedTerms: [TermKeys.dependencyInjection, TermKeys.toolGetIt],
+    tags: ['service locator', 'registry', 'singleton', 'dependencies'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.stateManagementCubit: ProgrammingTerm(
+    id: TermKeys.stateManagementCubit,
+    title: LocalizedString(en: 'Cubit', ar: 'Cubit'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A subset of the BLoC pattern that simplifies state management by using functions to emit states instead of event streams.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مجموعة فرعية من نمط BLoC تبسط إدارة الحالة باستخدام الدوال لإصدار الحالات بدلاً من تدفقات الأحداث.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Cubits are easier to write than full BLoCs because you call methods directly.',
+        ),
+        CodeContent(
+          'class CounterCubit extends Cubit<int> {\n'
+          '  CounterCubit() : super(0);\n'
+          '\n'
+          '  void increment() => emit(state + 1);\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تعد Cubits أسهل في الكتابة من BLoC الكامل لأنك تستدعي الأساليب مباشرة.',
+        ),
+        CodeContent(
+          'class CounterCubit extends Cubit<int> {\n'
+          '  CounterCubit() : super(0);\n'
+          '\n'
+          '  void increment() => emit(state + 1);\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .library,
+    category: .stateManagement,
+    languages: [.dart, .flutter],
+    relatedTerms: [TermKeys.bloc, TermKeys.stateManagement],
+    tags: ['cubit', 'bloc', 'state', 'flutter'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.toolRiverpod: ProgrammingTerm(
+    id: TermKeys.toolRiverpod,
+    title: LocalizedString(en: 'Riverpod', ar: 'Riverpod'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A reactive caching and data-binding framework for Dart and Flutter. It is often seen as a "rewrite of Provider" that is compile-safe and testable.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'إطار عمل للتخزين المؤقت التفاعلي وربط البيانات لـ Dart و Flutter. غالبًا ما يُنظر إليه على أنه "إعادة كتابة لـ Provider" آمنة في وقت الترجمة وقابلة للاختبار.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Key Advantages:',
+          value: [
+            'Compile-time safety (no ProviderNotFoundException)',
+            'Independent of the Widget tree (no BuildContext needed)',
+            'Easier to combine providers',
+          ],
+        ),
+        CodeContent(
+          'final counterProvider = StateProvider((ref) => 0);\n'
+          '\n'
+          '// In a Widget\n'
+          'ref.watch(counterProvider);',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'المزايا الرئيسية:',
+          value: [
+            'أمان وقت الترجمة (لا يوجد ProviderNotFoundException)',
+            'مستقل عن شجرة الويدجت (لا يحتاج BuildContext)',
+            'أسهل لدمج المزودين',
+          ],
+        ),
+        CodeContent(
+          'final counterProvider = StateProvider((ref) => 0);\n'
+          '\n'
+          '// في ويدجت\n'
+          'ref.watch(counterProvider);',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .framework,
+    category: .stateManagement,
+    languages: [.dart, .flutter],
+    relatedTerms: [TermKeys.providerPattern, TermKeys.stateManagement],
+    tags: ['riverpod', 'provider', 'state', 'reactive'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.toolGetIt: ProgrammingTerm(
+    id: TermKeys.toolGetIt,
+    title: LocalizedString(en: 'GetIt', ar: 'GetIt'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A simple, direct Service Locator for Dart and Flutter. It allows you to access your business logic objects from anywhere in the UI without passing context.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'محدد خدمة بسيط ومباشر لـ Dart و Flutter. يسمح لك بالوصول إلى كائنات منطق الأعمال الخاصة بك من أي مكان في واجهة المستخدم دون تمرير السياق.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'It decouples your implementation from the interface and is commonly used with Dependency Injection.',
+        ),
+        StringContent(
+          'Note: While convenient, overuse can make testing harder if not managed cleanly.',
+        ),
+      ],
+      ar: [
+        StringContent('يفصل تنفيذك عن الواجهة ويستخدم عادة مع حقن التبعية.'),
+        StringContent(
+          'ملاحظة: على الرغم من ملاءمته، فإن الإفراط في استخدامه قد يجعل الاختبار أصعب إذا لم تتم إدارته بنظافة.',
+        ),
+      ],
+    ),
+    type: .tool,
+    category: .architecture,
+    languages: [.dart, .flutter],
+    relatedTerms: [
+      TermKeys.patternServiceLocator,
+      TermKeys.dependencyInjection,
+    ],
+    tags: ['get_it', 'locator', 'di', 'dependencies'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.patternRedux: ProgrammingTerm(
+    id: TermKeys.patternRedux,
+    title: LocalizedString(en: 'Redux', ar: 'Redux'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A predictable state container for applications. It relies on a single source of truth (Store), read-only state, and pure functions (Reducers) to modify state.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'حاوية حالة قابلة للتنبؤ للتطبيقات. تعتمد على مصدر حقيقة واحد (Store)، وحالة للقراءة فقط، ودوال نقية (Reducers) لتعديل الحالة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Core Cycle:',
+          value: [
+            'Action: Describes what happened',
+            'Reducer: Takes old state + action -> new state',
+            'Store: Holds the state',
+          ],
+        ),
+        StringContent('Very popular in React, also available in Flutter.'),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الدورة الأساسية:',
+          value: [
+            'الإجراء (Action): يصف ما حدث',
+            'المخفض (Reducer): يأخذ الحالة القديمة + الإجراء -> حالة جديدة',
+            'المخزن (Store): يحتفظ بالحالة',
+          ],
+        ),
+        StringContent('شائع جدًا في React، ومتاح أيضًا في Flutter.'),
+      ],
+    ),
+    type: .pattern,
+    category: .stateManagement,
+    languages: [.javascript, .dart],
+    relatedTerms: [TermKeys.stateManagement, TermKeys.paradigmFunctional],
+    tags: ['redux', 'reducer', 'store', 'unidirectional'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.conceptDesignPattern: ProgrammingTerm(
+    id: TermKeys.conceptDesignPattern,
+    title: LocalizedString(en: 'Design Pattern', ar: 'نمط التصميم'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A general, reusable solution to a commonly occurring problem within a given context in software design. It is a template, not code.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'حل عام قابل لإعادة الاستخدام لمشكلة شائعة الحدوث في سياق معين في تصميم البرمجيات. إنه قالب وليس كودًا.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Types of Patterns (Gang of Four):',
+          value: [
+            'Creational: Creating objects (Singleton, Factory)',
+            'Structural: Composition of classes (Adapter, Decorator)',
+            'Behavioral: Communication between objects (Observer, Strategy)',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أنواع الأنماط (عصابة الأربعة):',
+          value: [
+            'إنشائية: إنشاء الكائنات (المفرد، المصنع)',
+            'هيكلية: تركيب الفئات (المحول، المزخرف)',
+            'سلوكية: التواصل بين الكائنات (المراقب، الاستراتيجية)',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .architecture,
+    relatedTerms: [
+      TermKeys.singleton,
+      TermKeys.observerPattern,
+      TermKeys.factoryConstructor,
+    ],
+    tags: ['gof', 'patterns', 'best practices', 'solution'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.principleSolid: ProgrammingTerm(
+    id: TermKeys.principleSolid,
+    title: LocalizedString(en: 'SOLID Principles', ar: 'مبادئ SOLID'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'An acronym for five design principles intended to make software designs more understandable, flexible, and maintainable.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'اختصار لخمسة مبادئ تصميم تهدف إلى جعل تصميمات البرمجيات أكثر قابلية للفهم والمرونة والصيانة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'The Principles:',
+          value: [
+            'S - Single Responsibility: One reason to change',
+            'O - Open/Closed: Open for extension, closed for modification',
+            'L - Liskov Substitution: Subtypes must be substitutable',
+            'I - Interface Segregation: Many specific interfaces are better',
+            'D - Dependency Inversion: Depend on abstractions, not concretions',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'المبادئ:',
+          value: [
+            'S - المسؤولية الواحدة: سبب واحد للتغيير',
+            'O - المفتوح/المغلق: مفتوح للتمديد، مغلق للتعديل',
+            'L - استبدال ليسكوف: يجب أن تكون الأنواع الفرعية قابلة للاستبدال',
+            'I - فصل الواجهة: واجهات محددة متعددة أفضل',
+            'D - عكس التبعية: الاعتماد على التجريدات، وليس التطبيقات الملموسة',
+          ],
+        ),
+      ],
+    ),
+    type: .principle,
+    category: .architecture,
+    languages: [.java, .csharp, .dart, .cpp],
+    relatedTerms: [TermKeys.paradigmOop, TermKeys.architectureClean],
+    tags: ['solid', 'principles', 'oop', 'best practices'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.principleDry: ProgrammingTerm(
+    id: TermKeys.principleDry,
+    title: LocalizedString(
+      en: 'DRY (Don\'t Repeat Yourself)',
+      ar: 'لا تكرر نفسك',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A principle of software development aimed at reducing repetition of software patterns, replacing it with abstractions or using data normalization.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مبدأ في تطوير البرمجيات يهدف إلى تقليل تكرار أنماط البرمجيات، واستبدالها بالتجريدات أو استخدام تسوية البيانات.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يجب أن يكون لكل جزء من المعرفة تمثيل واحد، غير غامض، وموثوق داخل النظام.',
+        ),
+      ],
+    ),
+    type: .principle,
+    category: .fundamentals,
+    relatedTerms: [TermKeys.fundamentalsFunction, 'refactoring'],
+    tags: ['dry', 'clean code', 'redundancy'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.principleKiss: ProgrammingTerm(
+    id: TermKeys.principleKiss,
+    title: LocalizedString(
+      en: 'KISS (Keep It Simple, Stupid)',
+      ar: 'اجعلها بسيطة وغبية',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A design principle stating that systems work best if they are kept simple rather than made complicated.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مبدأ تصميم ينص على أن الأنظمة تعمل بشكل أفضل إذا تم الحفاظ على بساطتها بدلاً من جعلها معقدة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Avoid unnecessary complexity. Simple code is easier to maintain, debug, and understand.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تجنب التعقيد غير الضروري. الكود البسيط أسهل في الصيانة وتصحيح الأخطاء والفهم.',
+        ),
+      ],
+    ),
+    type: .principle,
+    category: .fundamentals,
+    relatedTerms: [TermKeys.principleYagni],
+    tags: ['kiss', 'simplicity', 'clean code'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.principleYagni: ProgrammingTerm(
+    id: TermKeys.principleYagni,
+    title: LocalizedString(
+      en: 'YAGNI (You Ain\'t Gonna Need It)',
+      ar: 'لن تحتاج إليها',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A principle of Extreme Programming (XP) that states a programmer should not add functionality until deemed necessary.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مبدأ من البرمجة المتطرفة (XP) ينص على أنه يجب على المبرمج عدم إضافة وظائف حتى تعتبر ضرورية.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Don\'t write code for the future. Solve the current problem. Unused code is technical debt.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'لا تكتب كودًا للمستقبل. حل المشكلة الحالية. الكود غير المستخدم هو دين تقني.',
+        ),
+      ],
+    ),
+    type: .principle,
+    category: .fundamentals,
+    relatedTerms: [TermKeys.principleKiss, TermKeys.technicalDebt],
+    tags: ['yagni', 'xp', 'efficiency'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.gitRebase: ProgrammingTerm(
+    id: TermKeys.gitRebase,
+    title: LocalizedString(en: 'Rebase', ar: 'Rebase (إعادة التأسيس)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A Git command used to integrate changes from one branch into another by moving the entire sequence of commits to a new base commit.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'أمر Git يُستخدم لدمج التغييرات من فرع إلى آخر عن طريق نقل تسلسل الإيداعات بالكامل إلى إيداع أساس جديد.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Creates a linear history, unlike `merge` which creates a merge commit. Warning: Do not rebase public branches!',
+        ),
+        CodeContent(
+          'git checkout feature\ngit rebase main',
+          codeLanguage: .bash,
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ينشئ تاريخًا خطيًا، على عكس `merge` الذي ينشئ إيداع دمج. تحذير: لا تقم بعمل rebase للفروع العامة!',
+        ),
+        CodeContent(
+          'git checkout feature\ngit rebase main',
+          codeLanguage: .bash,
+        ),
+      ],
+    ),
+    type: .tool,
+    category: .versionControl,
+    languages: [],
+    relatedTerms: [TermKeys.git, TermKeys.merge, TermKeys.branch],
+    tags: ['git', 'rebase', 'history', 'linear'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.conceptRefactoring: ProgrammingTerm(
+    id: TermKeys.conceptRefactoring,
+    title: LocalizedString(en: 'Refactoring', ar: 'إعادة الهيكلة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of restructuring existing computer code without changing its external behavior.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية إعادة هيكلة كود الكمبيوتر الموجود دون تغيير سلوكه الخارجي.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Goal: Improve nonfunctional attributes (readability, reduce complexity) to make code easier to maintain.',
+        ),
+        UnorderedListContent(
+          title: 'Examples:',
+          value: [
+            'Renaming variables to be meaningful',
+            'Extracting a large function into smaller ones',
+            'Removing duplicate code',
+          ],
+        ),
+      ],
+      ar: [
+        StringContent(
+          'الهدف: تحسين السمات غير الوظيفية (القراءة، تقليل التعقيد) لجعل الكود أسهل في الصيانة.',
+        ),
+        UnorderedListContent(
+          title: 'أمثلة:',
+          value: [
+            'إعادة تسمية المتغيرات لتكون ذات معنى',
+            'استخراج دالة كبيرة إلى دوال أصغر',
+            'إزالة الكود المكرر',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    relatedTerms: ['code-smell', TermKeys.technicalDebt, TermKeys.testing],
+    tags: ['refactoring', 'clean code', 'maintenance'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.conceptCodeSmell: ProgrammingTerm(
+    id: TermKeys.conceptCodeSmell,
+    title: LocalizedString(en: 'Code Smell', ar: 'رائحة الكود'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A surface indication that usually corresponds to a deeper problem in the system. It\'s not necessarily a bug, but a weakness in design.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مؤشر سطحي يتوافق عادةً مع مشكلة أعمق في النظام. ليس بالضرورة خطأً برمجيًا، بل ضعف في التصميم.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Common Smells:',
+          value: [
+            'Long Method: Function does too much',
+            'Large Class: Class tries to do everything',
+            'Duplicated Code: Same logic in multiple places',
+            'Magic Numbers: Unexplained numeric literals',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'روائح شائعة:',
+          value: [
+            'الأسلوب الطويل: الدالة تفعل الكثير',
+            'الفئة الكبيرة: الفئة تحاول فعل كل شيء',
+            'الكود المكرر: نفس المنطق في أماكن متعددة',
+            'الأرقام السحرية: قيم رقمية غير مشروحة',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    relatedTerms: [TermKeys.conceptRefactoring, TermKeys.principleDry],
+    tags: ['code smell', 'anti-pattern', 'quality'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.technicalDebt: ProgrammingTerm(
+    id: TermKeys.technicalDebt,
+    title: LocalizedString(en: 'Technical Debt', ar: 'الدين التقني'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The implied cost of additional rework caused by choosing an easy (limited) solution now instead of using a better approach that would take longer.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'التكلفة الضمنية لإعادة العمل الإضافية الناتجة عن اختيار حل سهل (محدود) الآن بدلاً من استخدام نهج أفضل سيستغرق وقتًا أطول.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Like financial debt, if not paid back (refactored), it accumulates interest (development becomes slower and harder).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مثل الدين المالي، إذا لم يتم سداده (إعادة الهيكلة)، فإنه يراكم الفوائد (يصبح التطوير أبطأ وأصعب).',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    relatedTerms: [TermKeys.conceptRefactoring, TermKeys.conceptCodeSmell],
+    tags: ['debt', 'management', 'quality', 'speed vs quality'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.toolLint: ProgrammingTerm(
+    id: TermKeys.toolLint,
+    title: LocalizedString(en: 'Linter', ar: 'المدقق البرمجي (Linter)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A tool that analyzes source code to flag programming errors, bugs, stylistic errors, and suspicious constructs.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'أداة تحلل الكود المصدري لتحديد أخطاء البرمجة، والأخطاء، والأخطاء الأسلوبية، والتركيبات المشبوهة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In Dart, `flutter_lints` is commonly used to enforce rules.',
+        ),
+        CodeContent(
+          '// analysis_options.yaml\n'
+          'linter:\n'
+          '  rules:\n'
+          '    prefer_const_constructors: true\n'
+          '    avoid_print: true',
+          codeLanguage: .yaml,
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في Dart، يُستخدم `flutter_lints` بشكل شائع لفرض القواعد.',
+        ),
+        CodeContent(
+          '// analysis_options.yaml\n'
+          'linter:\n'
+          '  rules:\n'
+          '    prefer_const_constructors: true\n'
+          '    avoid_print: true',
+          codeLanguage: .yaml,
+        ),
+      ],
+    ),
+    type: .tool,
+    category: .devOps,
+    languages: [.dart, .javascript, .python],
+    relatedTerms: [TermKeys.toolFormatter, TermKeys.staticTyping],
+    tags: ['lint', 'analysis', 'static analysis', 'style'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.memoryGarbageCollection: ProgrammingTerm(
+    id: TermKeys.memoryGarbageCollection,
+    title: LocalizedString(en: 'Garbage Collection (GC)', ar: 'جمع القمامة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A form of automatic memory management. The garbage collector attempts to reclaim memory occupied by objects that are no longer in use by the program.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'شكل من أشكال إدارة الذاكرة التلقائية. يحاول جامع القمامة استعادة الذاكرة التي تشغلها الكائنات التي لم يعد يستخدمها البرنامج.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Dart uses a generational garbage collector (Young Space / Old Space). You don\'t need to free memory manually like in C++.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يستخدم Dart جامع قمامة جيلي (المساحة الشابة / المساحة القديمة). لا تحتاج إلى تحرير الذاكرة يدويًا كما في C++.',
+        ),
+      ],
+    ),
+    type: .feature,
+    category: .memoryManagement,
+    languages: [.dart, .java, .python, .javascript],
+    relatedTerms: [TermKeys.memoryLeak, TermKeys.memoryHeap],
+    tags: ['memory', 'gc', 'performance', 'allocation'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.memoryLeak: ProgrammingTerm(
+    id: TermKeys.memoryLeak,
+    title: LocalizedString(en: 'Memory Leak', ar: 'تسرب الذاكرة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'Occurs when a program allocates memory but fails to release it back to the operating system when no longer needed, leading to reduced performance or crashes.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يحدث عندما يخصص البرنامج ذاكرة ولكنه يفشل في إعادتها إلى نظام التشغيل عندما لا تكون هناك حاجة إليها، مما يؤدي إلى انخفاض الأداء أو الانهيار.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Common causes in Flutter: forgetting to dispose controllers (`TextEditingController`, `StreamController`) or adding listeners without removing them.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'الأسباب الشائعة في Flutter: نسيان التخلص من المتحكمات (`TextEditingController`، `StreamController`) أو إضافة مستمعين دون إزالتهم.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .memoryManagement,
+    relatedTerms: [TermKeys.memoryGarbageCollection, 'lifecycle'],
+    tags: ['bug', 'memory', 'performance', 'crash'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.memoryHeap: ProgrammingTerm(
+    id: TermKeys.memoryHeap,
+    title: LocalizedString(en: 'Heap Memory', ar: 'ذاكرة الكومة (Heap)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A region of computer memory used for dynamic memory allocation. Objects are stored here.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'منطقة من ذاكرة الكمبيوتر تستخدم لتخصيص الذاكرة الديناميكية. يتم تخزين الكائنات هنا.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Large, somewhat unstructured, and slower to access than Stack. Objects live here until Garbage Collected.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'كبيرة، غير منظمة إلى حد ما، وأبطأ في الوصول من المكدس. تعيش الكائنات هنا حتى يتم جمعها (Garbage Collected).',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .memoryManagement,
+    relatedTerms: [TermKeys.memoryStack, TermKeys.memoryGarbageCollection],
+    tags: ['memory', 'allocation', 'dynamic', 'storage'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.memoryStack: ProgrammingTerm(
+    id: TermKeys.memoryStack,
+    title: LocalizedString(en: 'Stack Memory', ar: 'ذاكرة المكدس (Stack)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A region of memory used for static memory allocation and function call execution contexts.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'منطقة من الذاكرة تستخدم لتخصيص الذاكرة الثابتة وسياقات تنفيذ استدعاء الدوال.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Fast access (LIFO). Stores local primitive variables and references to objects in the Heap. Automatically cleared when function returns.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'وصول سريع (LIFO). يخزن المتغيرات الأولية المحلية والمراجع للكائنات في الكومة. يتم مسحها تلقائيًا عند عودة الدالة.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .memoryManagement,
+    relatedTerms: [TermKeys.memoryHeap, TermKeys.dataStructureStack],
+    tags: ['memory', 'execution', 'fast', 'lifo'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.conceptPointer: ProgrammingTerm(
+    id: TermKeys.conceptPointer,
+    title: LocalizedString(en: 'Pointer', ar: 'المؤشر'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A variable that stores the memory address of another variable.',
+        ),
+      ],
+      ar: [StringContent('متغير يخزن عنوان الذاكرة لمتغير آخر.')],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Dart doesn\'t use pointers explicitly (like C++), it uses References. However, knowing pointers helps understand how objects are passed.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'لا يستخدم Dart المؤشرات صراحة (مثل C++)، بل يستخدم المراجع. ومع ذلك، معرفة المؤشرات تساعد في فهم كيفية تمرير الكائنات.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .memoryManagement,
+    languages: [.c, .cpp, .go],
+    relatedTerms: [TermKeys.conceptReference, TermKeys.memoryHeap],
+    tags: ['memory', 'address', 'low-level'],
+    era: .classic,
+    popularityTier: .medium,
+  ),
+  TermKeys.conceptReference: ProgrammingTerm(
+    id: TermKeys.conceptReference,
+    title: LocalizedString(en: 'Reference', ar: 'المرجع'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A value that enables a program to indirectly access a particular datum, such as a variable\'s value, in the computer\'s memory or on some other storage device.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'قيمة تمكن البرنامج من الوصول بشكل غير مباشر إلى بيان معين، مثل قيمة متغير، في ذاكرة الكمبيوتر أو على جهاز تخزين آخر.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In Dart, objects are passed by reference. If you pass an object to a function and modify it inside, the original object changes.',
+        ),
+        CodeContent(
+          'void modify(List<int> list) {\n'
+          '  list.add(4);\n'
+          '}\n'
+          '\n'
+          'var myList = [1, 2, 3];\n'
+          'modify(myList);\n'
+          'print(myList); // [1, 2, 3, 4]',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في Dart، يتم تمرير الكائنات بالمرجع. إذا مررت كائنًا إلى دالة وقمت بتعديله بداخلها، يتغير الكائن الأصلي.',
+        ),
+        CodeContent(
+          'void modify(List<int> list) {\n'
+          '  list.add(4);\n'
+          '}\n'
+          '\n'
+          'var myList = [1, 2, 3];\n'
+          'modify(myList);\n'
+          'print(myList); // [1, 2, 3, 4]',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .memoryManagement,
+    languages: [.dart, .java],
+    relatedTerms: [TermKeys.conceptPointer, TermKeys.fundamentalsVariable],
+    tags: ['memory', 'pass-by-reference', 'object'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.dataDeserialization: ProgrammingTerm(
+    id: TermKeys.dataDeserialization,
+    title: LocalizedString(en: 'Deserialization', ar: 'إلغاء التسلسل'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The reverse process of serialization; converting a stream of bytes or data format (like JSON) back into an object in memory.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'العملية العكسية للتسلسل؛ تحويل تدفق من البايتات أو تنسيق البيانات (مثل JSON) مرة أخرى إلى كائن في الذاكرة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent('Commonly used when receiving data from an API.'),
+        CodeContent(
+          '// JSON string -> Dart Map -> User Object\n'
+          'User user = User.fromJson(jsonDecode(jsonString));',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent('يستخدم عادة عند استقبال البيانات من API.'),
+        CodeContent(
+          '// JSON string -> Dart Map -> User Object\n'
+          'User user = User.fromJson(jsonDecode(jsonString));',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    relatedTerms: [TermKeys.serialization, TermKeys.json],
+    tags: ['data', 'conversion', 'parsing'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.securityEncryption: ProgrammingTerm(
+    id: TermKeys.securityEncryption,
+    title: LocalizedString(en: 'Encryption', ar: 'التشفير'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of encoding information so that only authorized parties can access it.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية ترميز المعلومات بحيث لا يمكن الوصول إليها إلا للأطراف المصرح لها.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Types:',
+          value: [
+            'Symmetric (AES): Same key for encryption/decryption',
+            'Asymmetric (RSA): Public key encrypts, Private key decrypts',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الأنواع:',
+          value: [
+            'متماثل (AES): نفس المفتاح للتشفير/فك التشفير',
+            'غير متماثل (RSA): المفتاح العام يشفر، المفتاح الخاص يفك التشفير',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .security,
+    relatedTerms: [TermKeys.securityHashing, 'https'],
+    tags: ['security', 'cryptography', 'protection'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.securityHashing: ProgrammingTerm(
+    id: TermKeys.securityHashing,
+    title: LocalizedString(en: 'Hashing', ar: 'التهشير (Hashing)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A one-way process of mapping data of arbitrary size to fixed-size values. It is irreversible.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية أحادية الاتجاه لتعيين بيانات ذات حجم عشوائي إلى قيم ذات حجم ثابت. وهي غير قابلة للعكس.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Used for passwords (storing hash instead of plain text) and data integrity (checksums). Examples: SHA-256, MD5.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يستخدم لكلمات المرور (تخزين الهاش بدلاً من النص العادي) وسلامة البيانات (الاختبار الجمعي). أمثلة: SHA-256، MD5.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .security,
+    relatedTerms: [TermKeys.securityEncryption, TermKeys.authentication],
+    tags: ['security', 'password', 'integrity'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.dbDatabase: ProgrammingTerm(
+    id: TermKeys.dbDatabase,
+    title: LocalizedString(en: 'Database', ar: 'قاعدة البيانات'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'An organized collection of structured information, or data, typically stored electronically in a computer system.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مجموعة منظمة من المعلومات المهيكلة، أو البيانات، مخزنة عادةً إلكترونيًا في نظام كمبيوتر.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Managed by a DBMS (Database Management System). Can be local (SQLite, Hive) or remote (PostgreSQL, Firebase).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تدار بواسطة DBMS (نظام إدارة قواعد البيانات). يمكن أن تكون محلية (SQLite، Hive) أو بعيدة (PostgreSQL، Firebase).',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .databases,
+    relatedTerms: [TermKeys.dbSql, TermKeys.dbNosql, TermKeys.dbOrm],
+    tags: ['storage', 'backend', 'data'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.dbSql: ProgrammingTerm(
+    id: TermKeys.dbSql,
+    title: LocalizedString(en: 'SQL', ar: 'SQL'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'Structured Query Language. A standard language for storing, manipulating, and retrieving data in databases.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'لغة الاستعلام الهيكلية. لغة قياسية لتخزين ومعالجة واسترجاع البيانات في قواعد البيانات.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Used in Relational Databases (RDBMS) like MySQL, PostgreSQL, SQLite.',
+        ),
+        CodeContent('SELECT * FROM users WHERE age > 18;', codeLanguage: .sql),
+      ],
+      ar: [
+        StringContent(
+          'تستخدم في قواعد البيانات العلائقية (RDBMS) مثل MySQL، PostgreSQL، SQLite.',
+        ),
+        CodeContent('SELECT * FROM users WHERE age > 18;', codeLanguage: .sql),
+      ],
+    ),
+    type: .language,
+    category: .databases,
+    languages: [.sql],
+    relatedTerms: [TermKeys.dbDatabase, TermKeys.dbNosql],
+    tags: ['query', 'relational', 'table'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.dbNosql: ProgrammingTerm(
+    id: TermKeys.dbNosql,
+    title: LocalizedString(en: 'NoSQL', ar: 'NoSQL'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'Non-relational databases that store data in formats other than tabular relations, such as documents, key-value pairs, or graphs.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'قواعد بيانات غير علائقية تخزن البيانات بتنسيقات غير العلاقات الجدولية، مثل المستندات، أو أزواج المفتاح-القيمة، أو الرسوم البيانية.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Examples: MongoDB (Document), Firebase Firestore (Document), Redis (Key-Value). Flexible schema.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'أمثلة: MongoDB (مستند)، Firebase Firestore (مستند)، Redis (مفتاح-قيمة). مخطط مرن.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .databases,
+    relatedTerms: [TermKeys.dbSql, TermKeys.json],
+    tags: ['document', 'flexible', 'scalable'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.dbOrm: ProgrammingTerm(
+    id: TermKeys.dbOrm,
+    title: LocalizedString(en: 'ORM (Object-Relational Mapping)', ar: 'ORM'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A technique that lets you query and manipulate data from a database using an object-oriented paradigm instead of writing SQL directly.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تقنية تسمح لك بالاستعلام عن البيانات ومعالجتها من قاعدة بيانات باستخدام نموذج موجه للكائنات بدلاً من كتابة SQL مباشرة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In Flutter: Drift or Isar are popular. It maps Database Tables to Dart Classes.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في Flutter: تعتبر Drift أو Isar شائعة. تقوم بتعيين جداول قاعدة البيانات إلى فئات Dart.',
+        ),
+      ],
+    ),
+    type: .tool,
+    category: .databases,
+    relatedTerms: [TermKeys.dbSql, TermKeys.dbDatabase],
+    tags: ['abstraction', 'database', 'productivity'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.performanceCaching: ProgrammingTerm(
+    id: TermKeys.performanceCaching,
+    title: LocalizedString(en: 'Caching', ar: 'التخزين المؤقت'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of storing copies of files or data in a temporary storage location (cache) so that they can be accessed more quickly.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية تخزين نسخ من الملفات أو البيانات في موقع تخزين مؤقت (ذاكرة التخزين المؤقت) بحيث يمكن الوصول إليها بسرعة أكبر.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Used to reduce network load and improve app speed. Can be in-memory (RAM) or persistent (Disk).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تستخدم لتقليل حمل الشبكة وتحسين سرعة التطبيق. يمكن أن تكون في الذاكرة (RAM) أو دائمة (القرص).',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .performance,
+    relatedTerms: [TermKeys.memoryHeap, TermKeys.dbDatabase],
+    tags: ['performance', 'speed', 'storage'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.devopsDocker: ProgrammingTerm(
+    id: TermKeys.devopsDocker,
+    title: LocalizedString(en: 'Docker', ar: 'Docker (دوكر)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A platform designed to help developers build, share, and run applications in containers. It packages software into standardized units.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'منصة مصممة لمساعدة المطورين على بناء ومشاركة وتشغيل التطبيقات في حاويات. تقوم بتغليف البرمجيات في وحدات قياسية.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Solves the "it works on my machine" problem by bundling the app with all its dependencies (libraries, runtime, OS settings).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يحل مشكلة "إنه يعمل على جهازي" عن طريق تجميع التطبيق مع جميع تبعياته (المكتبات، وقت التشغيل، إعدادات نظام التشغيل).',
+        ),
+      ],
+    ),
+    type: .tool,
+    category: .devOps,
+    relatedTerms: [TermKeys.devopsContainerization, TermKeys.cloudComputing],
+    tags: ['container', 'deployment', 'virtualization'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.devopsContainerization: ProgrammingTerm(
+    id: TermKeys.devopsContainerization,
+    title: LocalizedString(
+      en: 'Containerization',
+      ar: 'التحوية (Containerization)',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A form of operating system virtualization where applications run in isolated user spaces called containers, sharing the same OS kernel.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'شكل من أشكال محاكاة نظام التشغيل الافتراضية حيث تعمل التطبيقات في مساحات مستخدم معزولة تسمى حاويات، وتتشارك نفس نواة نظام التشغيل.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Lighter than Virtual Machines (VMs) because they don\'t need a full OS for each instance.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'أخف من الأجهزة الافتراضية (VMs) لأنها لا تحتاج إلى نظام تشغيل كامل لكل نسخة.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .devOps,
+    relatedTerms: [TermKeys.devopsDocker],
+    tags: ['isolation', 'virtualization', 'deploy'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.cloudComputing: ProgrammingTerm(
+    id: TermKeys.cloudComputing,
+    title: LocalizedString(en: 'Cloud Computing', ar: 'الحوسبة السحابية'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The delivery of computing services—including servers, storage, databases, networking, software, and intelligence—over the Internet ("the cloud").',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تقديم خدمات الحوسبة - بما في ذلك الخوادم والتخزين وقواعد البيانات والشبكات والبرمجيات والذكاء - عبر الإنترنت ("السحابة").',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Providers:',
+          value: ['AWS (Amazon)', 'GCP (Google)', 'Azure (Microsoft)'],
+        ),
+        StringContent(
+          'Models: IaaS (Infrastructure), PaaS (Platform), SaaS (Software).',
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'المزودون:',
+          value: ['AWS (Amazon)', 'GCP (Google)', 'Azure (Microsoft)'],
+        ),
+        StringContent(
+          'النماذج: IaaS (بنية تحتية)، PaaS (منصة)، SaaS (برمجيات).',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .cloud,
+    relatedTerms: [TermKeys.cloudServerless, TermKeys.devopsDocker],
+    tags: ['cloud', 'aws', 'google cloud', 'internet'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.cloudServerless: ProgrammingTerm(
+    id: TermKeys.cloudServerless,
+    title: LocalizedString(en: 'Serverless', ar: 'بدون خادم (Serverless)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A cloud computing execution model where the cloud provider runs the server, and dynamically manages the allocation of machine resources.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نموذج تنفيذ للحوسبة السحابية حيث يقوم مزود السحابة بتشغيل الخادم، وإدارة تخصيص موارد الآلة ديناميكيًا.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'You just write code (functions) and pay only when they run. Examples: AWS Lambda, Google Cloud Functions, Firebase Functions.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'أنت تكتب الكود فقط (دوال) وتدفع فقط عند تشغيلها. أمثلة: AWS Lambda، Google Cloud Functions، Firebase Functions.',
+        ),
+      ],
+    ),
+    type: .architecture,
+    category: .cloud,
+    relatedTerms: [TermKeys.cloudComputing, TermKeys.architectureMicroservices],
+    tags: ['functions', 'faas', 'scaling', 'cost-effective'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.architectureMicroservices: ProgrammingTerm(
+    id: TermKeys.architectureMicroservices,
+    title: LocalizedString(
+      en: 'Microservices',
+      ar: 'الخدمات المصغرة (Microservices)',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'An architectural style that structures an application as a collection of loosely coupled services, which implement business capabilities.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نمط معماري ينظم التطبيق كمجموعة من الخدمات المرتبطة بشكل فضفاض، والتي تنفذ قدرات الأعمال.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Each service runs in its own process and communicates via lightweight mechanisms (HTTP/API). Opposite of Monolith.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تعمل كل خدمة في عمليتها الخاصة وتتواصل عبر آليات خفيفة الوزن (HTTP/API). عكس الـ Monolith.',
+        ),
+      ],
+    ),
+    type: .architecture,
+    category: .architecture,
+    relatedTerms: [TermKeys.architectureMonolith, TermKeys.restApi],
+    tags: ['distributed', 'scalability', 'decoupling'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.architectureMonolith: ProgrammingTerm(
+    id: TermKeys.architectureMonolith,
+    title: LocalizedString(en: 'Monolith', ar: 'أحادي الكتلة (Monolith)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A traditional unified model for the design of a software program. Everything is composed all in one piece.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نموذج موحد تقليدي لتصميم برنامج حاسوبي. كل شيء يتكون في قطعة واحدة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Easier to develop/test initially, but harder to scale and maintain as it grows large.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'أسهل في التطوير/الاختبار في البداية، ولكن يصعب توسيعه وصيانته عندما يكبر.',
+        ),
+      ],
+    ),
+    type: .architecture,
+    category: .architecture,
+    relatedTerms: [TermKeys.architectureMicroservices],
+    tags: ['legacy', 'simple', 'single-unit'],
+    era: .classic,
+    popularityTier: .medium,
+  ),
+  TermKeys.devopsConcept: ProgrammingTerm(
+    id: TermKeys.devopsConcept,
+    title: LocalizedString(en: 'DevOps', ar: 'DevOps (ديف أوبس)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A set of practices that combines software development (Dev) and IT operations (Ops) to shorten the systems development life cycle.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مجموعة من الممارسات التي تجمع بين تطوير البرمجيات (Dev) وعمليات تكنولوجيا المعلومات (Ops) لتقصير دورة حياة تطوير الأنظمة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Focuses on automation, continuous integration, continuous delivery, and monitoring.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يركز على الأتمتة، والتكامل المستمر، والتسليم المستمر، والمراقبة.',
+        ),
+      ],
+    ),
+    type: .methodology,
+    category: .devOps,
+    relatedTerms: [TermKeys.devopsCiCd, TermKeys.devopsDeployment],
+    tags: ['culture', 'automation', 'collaboration'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.devopsCiCd: ProgrammingTerm(
+    id: TermKeys.devopsCiCd,
+    title: LocalizedString(en: 'CI/CD', ar: 'التكامل المستمر/النشر المستمر'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'Continuous Integration (CI) and Continuous Delivery/Deployment (CD). A method to frequently deliver apps to customers by introducing automation into the stages of app development.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'التكامل المستمر (CI) والتسليم/النشر المستمر (CD). طريقة لتسليم التطبيقات بشكل متكرر للعملاء عن طريق إدخال الأتمتة في مراحل تطوير التطبيق.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Pipeline steps:',
+          value: [
+            'Code Commit',
+            'Automated Build',
+            'Automated Tests (Unit/Integration)',
+            'Deploy to Staging',
+            'Deploy to Production',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'خطوات خط الأنابيب (Pipeline):',
+          value: [
+            'إيداع الكود',
+            'البناء التلقائي',
+            'الاختبارات التلقائية (الوحدة/التكامل)',
+            'النشر إلى بيئة التجربة (Staging)',
+            'النشر إلى بيئة الإنتاج (Production)',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .devOps,
+    relatedTerms: [TermKeys.testing, TermKeys.devopsDeployment],
+    tags: ['automation', 'pipeline', 'workflow'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.devopsDeployment: ProgrammingTerm(
+    id: TermKeys.devopsDeployment,
+    title: LocalizedString(en: 'Deployment', ar: 'النشر (Deployment)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of making a software application available for use. This involves moving code from a development environment to a production environment.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية جعل تطبيق برمجي متاحًا للاستخدام. يتضمن ذلك نقل الكود من بيئة التطوير إلى بيئة الإنتاج.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In mobile apps (Flutter), this means uploading .apk or .ipa files to Google Play Store or Apple App Store.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في تطبيقات الهاتف المحمول (Flutter)، يعني هذا رفع ملفات .apk أو .ipa إلى متجر Google Play أو متجر تطبيقات Apple.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .devOps,
+    relatedTerms: [TermKeys.environmentProduction, TermKeys.toolReleaseMode],
+    tags: ['release', 'publishing', 'app store'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.environmentConcept: ProgrammingTerm(
+    id: TermKeys.environmentConcept,
+    title: LocalizedString(en: 'Environment', ar: 'البيئة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A specific configuration where software runs. Separating environments ensures that testing and development do not affect real users.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تكوين محدد حيث تعمل البرمجيات. يضمن فصل البيئات أن الاختبار والتطوير لا يؤثران على المستخدمين الحقيقيين.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Common Types:',
+          value: [
+            'Development (Local machine)',
+            'Staging (Testing server mimicking production)',
+            'Production (Live for users)',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الأنواع الشائعة:',
+          value: [
+            'التطوير (الجهاز المحلي)',
+            'التجربة / Staging (خادم اختبار يحاكي الإنتاج)',
+            'الإنتاج (مباشر للمستخدمين)',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .devOps,
+    relatedTerms: [TermKeys.environmentProduction, TermKeys.environmentStaging],
+    tags: ['config', 'setup', 'server'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.environmentProduction: ProgrammingTerm(
+    id: TermKeys.environmentProduction,
+    title: LocalizedString(en: 'Production', ar: 'بيئة الإنتاج'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The live environment where the application is used by real end-users. Code here must be stable and optimized.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'البيئة المباشرة حيث يتم استخدام التطبيق من قبل المستخدمين النهائيين الحقيقيين. يجب أن يكون الكود هنا مستقرًا ومحسنًا.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Often referred to as "Prod" or "Live". Data here is real customer data.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يشار إليها غالبًا باسم "Prod" أو "Live". البيانات هنا هي بيانات العملاء الحقيقية.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .devOps,
+    relatedTerms: [TermKeys.environmentStaging, TermKeys.toolReleaseMode],
+    tags: ['live', 'real-world', 'stable'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.environmentStaging: ProgrammingTerm(
+    id: TermKeys.environmentStaging,
+    title: LocalizedString(en: 'Staging', ar: 'بيئة التجربة (Staging)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'An environment that mirrors the production environment as closely as possible. It is used for final testing before deployment.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'بيئة تعكس بيئة الإنتاج بأكبر قدر ممكن. تستخدم للاختبار النهائي قبل النشر.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Used to catch bugs that might occur due to environment differences (e.g., database latency, server configurations).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تستخدم لاكتشاف الأخطاء التي قد تحدث بسبب اختلافات البيئة (مثل زمن انتقال قاعدة البيانات، تكوينات الخادم).',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .devOps,
+    relatedTerms: [TermKeys.environmentProduction, TermKeys.testing],
+    tags: ['testing', 'pre-prod', 'qa'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.toolDebugMode: ProgrammingTerm(
+    id: TermKeys.toolDebugMode,
+    title: LocalizedString(en: 'Debug Mode', ar: 'وضع التصحيح'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A compile mode optimizing for development speed and debugging. It includes assertions, detailed error messages, and supports features like Hot Reload.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'وضع ترجمة يحسن سرعة التطوير وتصحيح الأخطاء. يتضمن التأكيدات، رسائل الخطأ المفصلة، ويدعم ميزات مثل إعادة التحميل الساخن.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In Flutter: Apps run slower in debug mode (JIT compilation) but allow for debugging breakpoints and inspection.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في Flutter: تعمل التطبيقات بشكل أبطأ في وضع التصحيح (ترجمة JIT) ولكنها تسمح بنقاط توقف التصحيح والفحص.',
+        ),
+      ],
+    ),
+    type: .tool,
+    category: .mobileDevelopment,
+    languages: [.dart, .flutter],
+    relatedTerms: [
+      TermKeys.toolReleaseMode,
+      TermKeys.flutterHotReload,
+      TermKeys.assertion,
+    ],
+    tags: ['debug', 'development', 'jit'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.toolReleaseMode: ProgrammingTerm(
+    id: TermKeys.toolReleaseMode,
+    title: LocalizedString(en: 'Release Mode', ar: 'وضع الإصدار'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A compile mode optimizing for execution speed and binary size. It removes debugging information and assertions.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'وضع ترجمة يحسن سرعة التنفيذ وحجم الملف الثنائي. يزيل معلومات التصحيح والتأكيدات.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In Flutter: Apps are compiled Ahead-of-Time (AOT) to native machine code. Hot Reload is disabled.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في Flutter: يتم تجميع التطبيقات مسبقًا (AOT) إلى كود آلة أصلي. يتم تعطيل إعادة التحميل الساخن.',
+        ),
+      ],
+    ),
+    type: .tool,
+    category: .mobileDevelopment,
+    languages: [.dart, .flutter],
+    relatedTerms: [TermKeys.toolDebugMode, TermKeys.compilationAot],
+    tags: ['production', 'speed', 'optimization', 'aot'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.uiResponsive: ProgrammingTerm(
+    id: TermKeys.uiResponsive,
+    title: LocalizedString(en: 'Responsive Design', ar: 'التصميم المستجيب'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'An approach to UI design that makes web or app content render well on a variety of devices and window or screen sizes.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نهج لتصميم واجهة المستخدم يجعل محتوى الويب أو التطبيق يُعرض بشكل جيد على مجموعة متنوعة من الأجهزة وأحجام النوافذ أو الشاشات.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In Flutter, this is achieved using widgets like `LayoutBuilder`, `MediaQuery`, `Flex`, and `Expanded` to adapt layouts.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في Flutter، يتحقق ذلك باستخدام ويدجت مثل `LayoutBuilder`، `MediaQuery`، `Flex`، و`Expanded` لتكييف التخطيطات.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .uiUx,
+    languages: [.flutter, .css],
+    relatedTerms: [
+      TermKeys.flutterWidgetMediaQuery,
+      TermKeys.flutterWidgetLayout,
+    ],
+    tags: ['ui', 'adaptive', 'mobile', 'tablet', 'desktop'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.flutterCupertino: ProgrammingTerm(
+    id: TermKeys.flutterCupertino,
+    title: LocalizedString(en: 'Cupertino', ar: 'Cupertino (كوبرتينو)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A set of Flutter widgets that implement the current iOS design language (Apple style), as opposed to Material Design (Android style).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مجموعة من ويدجت Flutter التي تنفذ لغة تصميم iOS الحالية (نمط Apple)، على عكس Material Design (نمط Android).',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Includes widgets like `CupertinoButton`, `CupertinoNavigationBar`, and `CupertinoSwitch` to give apps a native iOS feel.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تتضمن ويدجت مثل `CupertinoButton`، `CupertinoNavigationBar`، و`CupertinoSwitch` لمنح التطبيقات شعور iOS الأصلي.',
+        ),
+      ],
+    ),
+    type: .designSystem,
+    category: .uiUx,
+    languages: [.flutter],
+    relatedTerms: [TermKeys.flutterMaterialDesign, TermKeys.flutterWidget],
+    tags: ['ios', 'apple', 'design system', 'ui'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.uiAnimation: ProgrammingTerm(
+    id: TermKeys.uiAnimation,
+    title: LocalizedString(en: 'Animation', ar: 'الرسوم المتحركة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of creating motion and shape change in the UI. In Flutter, this adds visual cues and improves user experience.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية إنشاء الحركة وتغيير الشكل في واجهة المستخدم. في Flutter، يضيف هذا إشارات بصرية ويحسن تجربة المستخدم.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Types in Flutter:',
+          value: [
+            'Implicit Animations (AnimatedContainer, AnimatedOpacity)',
+            'Explicit Animations (AnimationController, Tween)',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الأنواع في Flutter:',
+          value: [
+            'الرسوم المتحركة الضمنية (AnimatedContainer، AnimatedOpacity)',
+            'الرسوم المتحركة الصريحة (AnimationController، Tween)',
+          ],
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .uiUx,
+    languages: [.flutter, .css],
+    relatedTerms: [TermKeys.flutterWidget],
+    tags: ['motion', 'visual', 'ux'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.conceptLifecycle: ProgrammingTerm(
+    id: TermKeys.conceptLifecycle,
+    title: LocalizedString(en: 'Lifecycle', ar: 'دورة الحياة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The series of states that an object (like a Widget or Controller) goes through from its creation to its destruction.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'سلسلة الحالات التي يمر بها الكائن (مثل Widget أو المتحكم) من إنشائه إلى تدميره.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Understanding lifecycle is crucial for initializing data, subscribing to streams, and freeing resources (memory management).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'فهم دورة الحياة أمر بالغ الأهمية لتهيئة البيانات، والاشتراك في التدفقات، وتحرير الموارد (إدارة الذاكرة).',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    languages: [.flutter, .react, .android],
+    relatedTerms: [TermKeys.flutterLifecycleMethod, TermKeys.memoryLeak],
+    tags: ['state', 'creation', 'destruction'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.flutterLifecycleMethod: ProgrammingTerm(
+    id: TermKeys.flutterLifecycleMethod,
+    title: LocalizedString(en: 'Lifecycle Methods', ar: 'أساليب دورة الحياة'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'Specific methods in a State object that are called at specific points in its lifecycle, allowing you to hook into these events.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'أساليب محددة في كائن State يتم استدعاؤها في نقاط معينة من دورة حياته، مما يسمح لك بالربط مع هذه الأحداث.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Key Flutter Methods:',
+          value: [
+            'initState(): Called once when inserted into tree.',
+            'didChangeDependencies(): Called when dependencies change.',
+            'build(): Called to render UI.',
+            'dispose(): Called when removed permanently. Clean up here!',
+          ],
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'أساليب Flutter الرئيسية:',
+          value: [
+            'initState(): يُستدعى مرة واحدة عند الإدراج في الشجرة.',
+            'didChangeDependencies(): يُستدعى عند تغير التبعيات.',
+            'build(): يُستدعى لعرض واجهة المستخدم.',
+            'dispose(): يُستدعى عند الإزالة نهائيًا. نظف هنا!',
+          ],
+        ),
+      ],
+    ),
+    type: .feature,
+    category: .mobileDevelopment,
+    languages: [.flutter],
+    relatedTerms: [TermKeys.flutterStatefulWidget, TermKeys.conceptLifecycle],
+    tags: ['init', 'dispose', 'hooks'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.flutterRendering: ProgrammingTerm(
+    id: TermKeys.flutterRendering,
+    title: LocalizedString(en: 'Rendering', ar: 'العرض (Rendering)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of generating an image from the 2D/3D model (in Flutter\'s case, the Widget Tree).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية توليد صورة من النموذج ثنائي/ثلاثي الأبعاد (في حالة Flutter، شجرة الويدجت).',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Flutter Pipeline: Widget Tree -> Element Tree -> RenderObject Tree -> Layer Tree -> GPU.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'خط أنابيب Flutter: شجرة الويدجت -> شجرة العناصر -> شجرة كائنات العرض -> شجرة الطبقات -> وحدة معالجة الرسومات.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .uiUx,
+    languages: [.flutter],
+    relatedTerms: [TermKeys.flutterWidget, TermKeys.buildMethod],
+    tags: ['painting', 'drawing', 'pipeline'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.flutterWidgetLayout: ProgrammingTerm(
+    id: TermKeys.flutterWidgetLayout,
+    title: LocalizedString(en: 'Layout', ar: 'التخطيط'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of determining the size and position of widgets on the screen. In Flutter, "Constraints go down. Sizes go up. Parent sets position."',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية تحديد حجم وموضع الويدجت على الشاشة. في Flutter، "القيود تنزل للأسفل. الأحجام تصعد للأعلى. الوالد يحدد الموضع."',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Widgets like `Row`, `Column`, and `Stack` are layout widgets designed to arrange their children.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ويدجت مثل `Row`، `Column`، و`Stack` هي ويدجت تخطيط مصممة لترتيب أطفالها.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .uiUx,
+    languages: [.flutter],
+    relatedTerms: [TermKeys.flutterConstraint, TermKeys.flutterWidgetFlex],
+    tags: ['positioning', 'size', 'ui'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.flutterConstraint: ProgrammingTerm(
+    id: TermKeys.flutterConstraint,
+    title: LocalizedString(en: 'Constraint', ar: 'القيد (Constraint)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A rule describing the minimum and maximum width and height a widget can have. Passed from parent to child.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'قاعدة تصف الحد الأدنى والأقصى للعرض والارتفاع الذي يمكن أن يمتلكه الويدجت. تمرر من الوالد إلى الطفل.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'BoxConstraints(minWidth, maxWidth, minHeight, maxHeight). If min==max, the size is "tight".',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'BoxConstraints(minWidth, maxWidth, minHeight, maxHeight). إذا كان الحد الأدنى == الحد الأقصى، فإن الحجم يكون "محكمًا" (tight).',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .uiUx,
+    languages: [.flutter],
+    relatedTerms: [TermKeys.flutterWidgetLayout],
+    tags: ['box constraints', 'sizing', 'layout rule'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.flutterWidgetFlex: ProgrammingTerm(
+    id: TermKeys.flutterWidgetFlex,
+    title: LocalizedString(en: 'Flex', ar: 'Flex'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A layout widget that displays its children in a one-dimensional array (Row or Column). It allows flexible sizing of children.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ويدجت تخطيط يعرض أطفاله في مصفوفة أحادية البعد (صف أو عمود). يسمح بتحجيم مرن للأطفال.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          '`Row` and `Column` extend `Flex`. They use MainAxisAlignment and CrossAxisAlignment to align children.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          '`Row` و `Column` يمددان `Flex`. يستخدمان MainAxisAlignment و CrossAxisAlignment لمحاذاة الأطفال.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .uiUx,
+    languages: [.flutter, .css],
+    relatedTerms: [
+      TermKeys.flutterWidgetExpanded,
+      TermKeys.flutterWidgetLayout,
+    ],
+    tags: ['row', 'column', 'flexible', 'layout'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.flutterWidgetExpanded: ProgrammingTerm(
+    id: TermKeys.flutterWidgetExpanded,
+    title: LocalizedString(en: 'Expanded', ar: 'Expanded'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A widget that expands a child of a `Row`, `Column`, or `Flex` so that the child fills the available space.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ويدجت يوسع طفل `Row`، أو `Column`، أو `Flex` بحيث يملأ الطفل المساحة المتاحة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Similar to `Flexible` but with `fit: FlexFit.tight` forced. Use `flex` factor to distribute space proportionally among multiple Expanded widgets.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مشابه لـ `Flexible` لكن مع فرض `fit: FlexFit.tight`. استخدم عامل `flex` لتوزيع المساحة بشكل متناسب بين ويدجت Expanded متعددة.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .uiUx,
+    languages: [.flutter],
+    relatedTerms: [TermKeys.flutterWidgetFlex],
+    tags: ['layout', 'space', 'fill'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.flutterWidgetMediaQuery: ProgrammingTerm(
+    id: TermKeys.flutterWidgetMediaQuery,
+    title: LocalizedString(en: 'MediaQuery', ar: 'MediaQuery'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A widget that establishes a subtree in which media queries resolve to the given data (e.g., screen size, orientation, text scale factor).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ويدجت ينشئ شجرة فرعية يتم فيها حل استعلامات الوسائط إلى البيانات المعطاة (مثل حجم الشاشة، الاتجاه، عامل تكبير النص).',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Common usage: `MediaQuery.of(context).size` to get screen dimensions for responsive design.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'الاستخدام الشائع: `MediaQuery.of(context).size` للحصول على أبعاد الشاشة للتصميم المستجيب.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .uiUx,
+    languages: [.flutter, .css],
+    relatedTerms: [TermKeys.uiResponsive, TermKeys.buildContext],
+    tags: ['screen size', 'device info', 'adaptation'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.flutterNavigator: ProgrammingTerm(
+    id: TermKeys.flutterNavigator,
+    title: LocalizedString(en: 'Navigator', ar: 'المتنقل (Navigator)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A widget that manages a set of child widgets with a stack discipline. It allows you to move between different screens (Routes) in the app.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ويدجت يدير مجموعة من الويدجت الفرعية بنظام المكدس. يسمح لك بالانتقال بين الشاشات المختلفة (المسارات) في التطبيق.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Basic operations: `push` (add screen to top), `pop` (remove top screen). Uses `MaterialPageRoute` for transitions.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'العمليات الأساسية: `push` (إضافة شاشة للأعلى)، `pop` (إزالة الشاشة العلوية). يستخدم `MaterialPageRoute` للانتقالات.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .uiUx,
+    languages: [.flutter],
+    relatedTerms: [TermKeys.flutterRouting, TermKeys.dataStructureStack],
+    tags: ['navigation', 'screens', 'pages', 'stack'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.flutterRouting: ProgrammingTerm(
+    id: TermKeys.flutterRouting,
+    title: LocalizedString(en: 'Routing', ar: 'التوجيه (Routing)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The mechanism of mapping a specific screen (widget) to a specific path or name (e.g., "/home", "/details").',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'آلية تعيين شاشة معينة (ويدجت) لمسار أو اسم محدد (مثل "/home"، "/details").',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Flutter supports declarative routing (Navigator 2.0 / GoRouter) and imperative routing (Navigator.pushNamed).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يدعم Flutter التوجيه التصريحي (Navigator 2.0 / GoRouter) والتوجيه الإلزامي (Navigator.pushNamed).',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .uiUx,
+    languages: [.flutter, .web],
+    relatedTerms: [TermKeys.flutterNavigator, TermKeys.flutterDeepLinking],
+    tags: ['url', 'path', 'navigation'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.flutterDeepLinking: ProgrammingTerm(
+    id: TermKeys.flutterDeepLinking,
+    title: LocalizedString(
+      en: 'Deep Linking',
+      ar: 'الربط العميق (Deep Linking)',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The ability to open a specific page or state inside a mobile app directly via a URL from outside the app (e.g., from a website or email).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'القدرة على فتح صفحة أو حالة معينة داخل تطبيق جوال مباشرة عبر رابط URL من خارج التطبيق (مثلًا من موقع ويب أو بريد إلكتروني).',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Requires configuring AndroidManifest.xml and Info.plist to handle custom schemes or universal links.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يتطلب تكوين AndroidManifest.xml و Info.plist للتعامل مع المخططات المخصصة أو الروابط العالمية.',
+        ),
+      ],
+    ),
+    type: .feature,
+    category: .mobileDevelopment,
+    languages: [.flutter, .android, .swift],
+    relatedTerms: [TermKeys.flutterRouting],
+    tags: ['url', 'external-link', 'intent'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.uiTheming: ProgrammingTerm(
+    id: TermKeys.uiTheming,
+    title: LocalizedString(en: 'Theming', ar: 'التنسيق (Theming)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of defining a consistent look and feel for an application by specifying colors, fonts, and shapes in a central place.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية تحديد مظهر وإحساس متسقين للتطبيق من خلال تحديد الألوان والخطوط والأشكال في مكان مركزي.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In Flutter: `ThemeData` passed to `MaterialApp` allows global styling. Access using `Theme.of(context)`.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في Flutter: `ThemeData` الممررة إلى `MaterialApp` تسمح بالتنسيق العالمي. يمكن الوصول إليها باستخدام `Theme.of(context)`.',
+        ),
+      ],
+    ),
+    type: .feature,
+    category: .uiUx,
+    languages: [.flutter],
+    relatedTerms: [TermKeys.flutterMaterialDesign],
+    tags: ['style', 'colors', 'fonts', 'dark mode'],
+    era: .modern,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.i18nL10N: ProgrammingTerm(
+    id: TermKeys.i18nL10N,
+    title: LocalizedString(
+      en: 'Internationalization (i18n) & Localization (l10n)',
+      ar: 'التدويل (i18n) والتعريب (l10n)',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'i18n: Designing software so it can be adapted to various languages/regions without engineering changes. l10n: Adapting it to a specific region (translating text, formatting dates).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'i18n: تصميم البرمجيات بحيث يمكن تكييفها مع لغات/مناطق مختلفة دون تغييرات هندسية. l10n: تكييفها لمنطقة معينة (ترجمة النصوص، تنسيق التواريخ).',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Flutter uses `flutter_localizations` package and ARB files to manage translations.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يستخدم Flutter حزمة `flutter_localizations` وملفات ARB لإدارة الترجمات.',
+        ),
+      ],
+    ),
+    type: .feature,
+    category: .uiUx,
+    languages: [.flutter, .dart],
+    relatedTerms: [TermKeys.uiResponsive],
+    tags: ['translation', 'language', 'global'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.uiAccessibility: ProgrammingTerm(
+    id: TermKeys.uiAccessibility,
+    title: LocalizedString(
+      en: 'Accessibility (a11y)',
+      ar: 'إمكانية الوصول (a11y)',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The design of products, devices, services, or environments for people with disabilities. Examples: Screen readers, high contrast modes.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تصميم المنتجات أو الأجهزة أو الخدمات أو البيئات للأشخاص ذوي الإعاقة. أمثلة: قارئات الشاشة، أوضاع التباين العالي.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Flutter provides `Semantics` widget to annotate the UI for screen readers (TalkBack/VoiceOver).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يوفر Flutter ويدجت `Semantics` لإضافة شروحات لواجهة المستخدم لقارئات الشاشة (TalkBack/VoiceOver).',
+        ),
+      ],
+    ),
+    type: .feature,
+    category: .uiUx,
+    languages: [.flutter, .html],
+    relatedTerms: [TermKeys.uiTheming],
+    tags: ['inclusive', 'semantics', 'disability'],
+    era: .classic,
+    popularityTier: .medium,
+  ),
+  TermKeys.performanceOptimization: ProgrammingTerm(
+    id: TermKeys.performanceOptimization,
+    title: LocalizedString(en: 'Performance Optimization', ar: 'تحسين الأداء'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The process of modifying a system to make it work more efficiently or use fewer resources (CPU, Memory, Battery).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية تعديل النظام لجعله يعمل بكفاءة أكبر أو استخدام موارد أقل (وحدة المعالجة المركزية، الذاكرة، البطارية).',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In Flutter: Use `const` constructors, avoid rebuilding widgets unnecessarily, minimize expensive calculations in build().',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في Flutter: استخدم منشئات `const`، تجنب إعادة بناء الويدجت بشكل غير ضروري، قلل من الحسابات المكلفة في build().',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .performance,
+    relatedTerms: [
+      TermKeys.buildMethod,
+      TermKeys.memoryLeak,
+      TermKeys.fundamentalsBigO,
+    ],
+    tags: ['speed', 'efficiency', 'best practices'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.performanceLazyLoading: ProgrammingTerm(
+    id: TermKeys.performanceLazyLoading,
+    title: LocalizedString(
+      en: 'Lazy Loading',
+      ar: 'التحميل الكسول (Lazy Loading)',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A design pattern that defers the initialization of an object or the loading of a resource until the point at which it is needed.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نمط تصميم يؤجل تهيئة كائن أو تحميل مورد حتى النقطة التي تكون هناك حاجة إليه فيها.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Example: `ListView.builder` in Flutter creates widgets only when they scroll into view, saving memory.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مثال: `ListView.builder` في Flutter ينشئ الويدجت فقط عندما تظهر في العرض أثناء التمرير، مما يوفر الذاكرة.',
+        ),
+      ],
+    ),
+    type: .pattern,
+    category: .performance,
+    languages: [.dart, .flutter, .javascript],
+    relatedTerms: [TermKeys.performanceOptimization],
+    tags: ['efficiency', 'memory', 'defer'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.compilationAot: ProgrammingTerm(
+    id: TermKeys.compilationAot,
+    title: LocalizedString(en: 'AOT Compilation', ar: 'ترجمة AOT (مسبقة)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'Ahead-Of-Time compilation. Code is compiled into native machine code before execution (at build time).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'الترجمة المسبقة (Ahead-Of-Time). يتم ترجمة الكود إلى كود آلة أصلي قبل التنفيذ (في وقت البناء).',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Used by Flutter in Release mode. Results in faster startup and execution but no Hot Reload.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يستخدمه Flutter في وضع الإصدار (Release mode). ينتج عنه بدء تشغيل وتنفيذ أسرع ولكن بدون إعادة تحميل ساخن.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .compilerInternals,
+    languages: [.dart, .c, .cpp],
+    relatedTerms: [TermKeys.compilationJit, TermKeys.toolReleaseMode],
+    tags: ['compiler', 'native', 'performance'],
+    era: .classic,
+    popularityTier: .medium,
+  ),
+  TermKeys.compilationJit: ProgrammingTerm(
+    id: TermKeys.compilationJit,
+    title: LocalizedString(en: 'JIT Compilation', ar: 'ترجمة JIT (آنية)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'Just-In-Time compilation. Code is compiled during execution (at runtime).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'الترجمة الآنية (Just-In-Time). يتم ترجمة الكود أثناء التنفيذ (في وقت التشغيل).',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Used by Flutter in Debug mode. Enables fast development cycles and Hot Reload, but app performance is slower.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يستخدمه Flutter في وضع التصحيح (Debug mode). يمكن دورات تطوير سريعة وإعادة تحميل ساخن، ولكن أداء التطبيق يكون أبطأ.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .compilerInternals,
+    languages: [.dart, .java, .javascript],
+    relatedTerms: [TermKeys.compilationAot, TermKeys.toolDebugMode],
+    tags: ['compiler', 'runtime', 'development'],
+    era: .classic,
+    popularityTier: .medium,
+  ),
+  TermKeys.conceptTreeShaking: ProgrammingTerm(
+    id: TermKeys.conceptTreeShaking,
+    title: LocalizedString(en: 'Tree Shaking', ar: 'هز الشجرة (Tree Shaking)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A dead code elimination technique used by compilers (like Dart\'s) to remove unused code from the final executable, reducing app size.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تقنية لإزالة الكود الميت يستخدمها المترجمون (مثل Dart) لحذف الكود غير المستخدم من الملف القابل للتنفيذ النهائي، مما يقلل من حجم التطبيق.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'It "shakes" the dependency tree so that dead leaves (unused functions/classes) fall off. Essential for Flutter web and mobile builds.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تقوم "بهز" شجرة التبعية بحيث تسقط الأوراق الميتة (الدوال/الفئات غير المستخدمة). ضروري لبناء تطبيقات Flutter للويب والموبايل.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .compilerInternals,
+    languages: [.dart, .javascript],
+    relatedTerms: [TermKeys.compilationAot, TermKeys.toolReleaseMode],
+    tags: ['optimization', 'build size', 'dead code'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.conceptObfuscation: ProgrammingTerm(
+    id: TermKeys.conceptObfuscation,
+    title: LocalizedString(en: 'Obfuscation', ar: 'التعمية (Obfuscation)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The practice of making source code or machine code difficult for humans to understand to protect intellectual property and prevent reverse engineering.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ممارسة جعل الكود المصدري أو كود الآلة صعب الفهم للبشر لحماية الملكية الفكرية ومنع الهندسة العكسية.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In Flutter: Renames classes, methods, and variables to random characters in the release build. Reduces size and increases security.',
+        ),
+        CodeContent(
+          'flutter build apk --obfuscate --split-debug-info=/<path>',
+          codeLanguage: .bash,
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في Flutter: تعيد تسمية الفئات، والأساليب، والمتغيرات إلى أحرف عشوائية في إصدار الإطلاق. يقلل الحجم ويزيد الأمان.',
+        ),
+        CodeContent(
+          'flutter build apk --obfuscate --split-debug-info=/<path>',
+          codeLanguage: .bash,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .security,
+    relatedTerms: [TermKeys.securityEncryption, TermKeys.toolReleaseMode],
+    tags: ['security', 'protection', 'reverse engineering'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.dartGenerics: ProgrammingTerm(
+    id: TermKeys.dartGenerics,
+    title: LocalizedString(en: 'Generics', ar: 'الأنواع العامة (Generics)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A feature that allows you to write flexible, reusable code capable of working with any data type while maintaining type safety.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ميزة تسمح لك بكتابة كود مرن وقابل لإعادة الاستخدام قادر على العمل مع أي نوع بيانات مع الحفاظ على أمان النوع.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Defined using angle brackets `<T>`. Used extensively in Collections (List<String>).',
+        ),
+        CodeContent(
+          'class Box<T> {\n'
+          '  T value;\n'
+          '  Box(this.value);\n'
+          '}\n'
+          '\n'
+          'var box1 = Box<int>(10);\n'
+          'var box2 = Box<String>("Hello");',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تعرف باستخدام الأقواس الزاوية `<T>`. تستخدم بكثرة في المجموعات (List<String>).',
+        ),
+        CodeContent(
+          'class Box<T> {\n'
+          '  T value;\n'
+          '  Box(this.value);\n'
+          '}\n'
+          '\n'
+          'var box1 = Box<int>(10);\n'
+          'var box2 = Box<String>("Hello");',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .feature,
+    category: .fundamentals,
+    languages: [.dart, .java, .csharp, .typescript],
+    relatedTerms: [TermKeys.staticTyping, TermKeys.fundamentalsDataType],
+    tags: ['types', 'reusability', 'safety'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.dartExtensions: ProgrammingTerm(
+    id: TermKeys.dartExtensions,
+    title: LocalizedString(
+      en: 'Extension Methods',
+      ar: 'طرق التمديد (Extension Methods)',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A Dart feature that allows you to add new functionality (methods) to existing libraries or classes without modifying them or subclassing.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ميزة في Dart تسمح لك بإضافة وظائف جديدة (أساليب) إلى المكتبات أو الفئات الموجودة دون تعديلها أو إنشاء فئات فرعية منها.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent('Example: Adding a method to the built-in String class.'),
+        CodeContent(
+          'extension StringParsing on String {\n'
+          '  int parseInt() {\n'
+          '    return int.parse(this);\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// Usage\n'
+          'print("42".parseInt());',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent('مثال: إضافة أسلوب إلى فئة String المدمجة.'),
+        CodeContent(
+          'extension StringParsing on String {\n'
+          '  int parseInt() {\n'
+          '    return int.parse(this);\n'
+          '  }\n'
+          '}\n'
+          '\n'
+          '// الاستخدام\n'
+          'print("42".parseInt());',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .feature,
+    category: .fundamentals,
+    languages: [.dart, .kotlin, .csharp, .swift],
+    relatedTerms: [TermKeys.oopInheritance],
+    tags: ['extensions', 'utility', 'sugar'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.dartRecords: ProgrammingTerm(
+    id: TermKeys.dartRecords,
+    title: LocalizedString(en: 'Records', ar: 'السجلات (Records)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A feature introduced in Dart 3 that lets you bundle multiple values into a single object. Records are immutable and type-safe.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ميزة تم تقديمها في Dart 3 تسمح لك تجميع قيم متعددة في كائن واحد. السجلات غير قابلة للتغيير وآمنة النوع.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'More lightweight than creating a Class for simple data holding.',
+        ),
+        CodeContent(
+          '// Define a record\n'
+          'var record = (\'first\', a: 2, b: true, \'last\');\n'
+          '\n'
+          '// Access fields\n'
+          'print(record.\$1); // first\n'
+          'print(record.a);  // 2\n'
+          '\n'
+          '// Return multiple values from function\n'
+          '(double, double) getLocation() {\n'
+          '  return (12.34, 56.78);\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent('أخف وزناً من إنشاء فئة (Class) لحفظ البيانات البسيطة.'),
+        CodeContent(
+          '// تعريف سجل\n'
+          'var record = (\'first\', a: 2, b: true, \'last\');\n'
+          '\n'
+          '// الوصول للحقول\n'
+          'print(record.\$1); // first\n'
+          'print(record.a);  // 2\n'
+          '\n'
+          '// إرجاع قيم متعددة من دالة\n'
+          '(double, double) getLocation() {\n'
+          '  return (12.34, 56.78);\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .feature,
+    category: .fundamentals,
+    languages: [.dart],
+    relatedTerms: [TermKeys.fundamentalsDataType, TermKeys.immutable],
+    tags: ['records', 'tuples', 'dart3'],
+    era: .modern,
+    popularityTier: .high,
+    introducedYear: 2023,
+  ),
+  TermKeys.dartPatterns: ProgrammingTerm(
+    id: TermKeys.dartPatterns,
+    title: LocalizedString(en: 'Patterns', ar: 'الأنماط (Patterns)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A syntactic category in Dart 3 that represents the "shape" of a set of values, used for matching and destructuring data.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'فئة نحوية في Dart 3 تمثل "شكل" مجموعة من القيم، تستخدم لمطابقة وتفكيك البيانات.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Used in switch statements and variable assignments for cleaner code.',
+        ),
+        CodeContent(
+          'var list = [1, 2, 3];\n'
+          'var [a, b, c] = list; // Destructuring\n'
+          '\n'
+          'switch (list) {\n'
+          '  case [1, 2, ...]: // Pattern matching\n'
+          '    print(\'Starts with 1, 2\');\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent('تستخدم في جمل switch وتعيينات المتغيرات لكود أنظف.'),
+        CodeContent(
+          'var list = [1, 2, 3];\n'
+          'var [a, b, c] = list; // تفكيك (Destructuring)\n'
+          '\n'
+          'switch (list) {\n'
+          '  case [1, 2, ...]: // مطابقة الأنماط\n'
+          '    print(\'يبدأ بـ 1، 2\');\n'
+          '}',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .feature,
+    category: .fundamentals,
+    languages: [.dart, .rust, .swift],
+    relatedTerms: [TermKeys.dartRecords, TermKeys.fundamentalsConditional],
+    tags: ['pattern matching', 'destructuring', 'dart3'],
+    era: .modern,
+    popularityTier: .high,
+    introducedYear: 2023,
+  ),
+  TermKeys.flutterPlatformChannel: ProgrammingTerm(
+    id: TermKeys.flutterPlatformChannel,
+    title: LocalizedString(
+      en: 'Platform Channel',
+      ar: 'قناة المنصة (Platform Channel)',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A mechanism in Flutter that enables communication between Dart code and platform-specific native code (Kotlin/Java for Android, Swift/Obj-C for iOS).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'آلية في Flutter تمكن التواصل بين كود Dart والكود الأصلي الخاص بالمنصة (Kotlin/Java لـ Android، Swift/Obj-C لـ iOS).',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Types:',
+          value: [
+            'MethodChannel: Invoke methods (Dart -> Native -> Dart)',
+            'EventChannel: Stream events (Native -> Dart)',
+            'BasicMessageChannel: Send structured data',
+          ],
+        ),
+        StringContent('Example: Getting battery level from Android/iOS.'),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الأنواع:',
+          value: [
+            'MethodChannel: استدعاء الأساليب (Dart -> Native -> Dart)',
+            'EventChannel: تدفق الأحداث (Native -> Dart)',
+            'BasicMessageChannel: إرسال بيانات مهيكلة',
+          ],
+        ),
+        StringContent('مثال: الحصول على مستوى البطارية من Android/iOS.'),
+      ],
+    ),
+    type: .feature,
+    category: .nativePlatform,
+    languages: [.flutter, .kotlin, .swift],
+    relatedTerms: [TermKeys.dartStream, TermKeys.api],
+    tags: ['interop', 'native', 'android', 'ios'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.flutterGoldenTest: ProgrammingTerm(
+    id: TermKeys.flutterGoldenTest,
+    title: LocalizedString(
+      en: 'Golden Test',
+      ar: 'الاختبار الذهبي (Golden Test)',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A type of visual regression test in Flutter where a rendered widget is compared pixel-by-pixel against a master reference image (the "golden file").',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'نوع من اختبار الانحدار البصري في Flutter حيث تتم مقارنة الويدجت المعروض بكسل تلو الآخر مقابل صورة مرجعية رئيسية ("الملف الذهبي").',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Ensures that UI changes don\'t accidentally break the visual appearance of the app.',
+        ),
+        CodeContent(
+          'testWidgets(\'Visual match\', (tester) async {\n'
+          '  await tester.pumpWidget(MyApp());\n'
+          '  await expectLater(\n'
+          '    find.byType(MyApp),\n'
+          '    matchesGoldenFile(\'goldens/my_app.png\')\n'
+          '  );\n'
+          '});',
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يضمن أن تغييرات واجهة المستخدم لا تكسر المظهر المرئي للتطبيق عن طريق الخطأ.',
+        ),
+        CodeContent(
+          'testWidgets(\'تطابق بصري\', (tester) async {\n'
+          '  await tester.pumpWidget(MyApp());\n'
+          '  await expectLater(\n'
+          '    find.byType(MyApp),\n'
+          '    matchesGoldenFile(\'goldens/my_app.png\')\n'
+          '  );\n'
+          '});',
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .testing,
+    languages: [.flutter],
+    relatedTerms: [TermKeys.widgetTest, TermKeys.testing],
+    tags: ['visual testing', 'pixels', 'ui'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.methodologyTdd: ProgrammingTerm(
+    id: TermKeys.methodologyTdd,
+    title: LocalizedString(
+      en: 'TDD (Test Driven Development)',
+      ar: 'التطوير القائم على الاختبار (TDD)',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A software development process where you write the test BEFORE writing the actual code. Cycle: Red (fail) -> Green (pass) -> Refactor.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'عملية تطوير برمجيات حيث تكتب الاختبار قبل كتابة الكود الفعلي. الدورة: أحمر (فشل) -> أخضر (نجاح) -> إعادة هيكلة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Forces you to think about the interface and requirements first. Results in high test coverage and cleaner code.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يجبرك على التفكير في الواجهة والمتطلبات أولاً. ينتج عنه تغطية اختبار عالية وكود أنظف.',
+        ),
+      ],
+    ),
+    type: .methodology,
+    category: .testing,
+    relatedTerms: [TermKeys.unitTest, TermKeys.conceptRefactoring],
+    tags: ['process', 'agile', 'quality'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.methodologyBdd: ProgrammingTerm(
+    id: TermKeys.methodologyBdd,
+    title: LocalizedString(
+      en: 'BDD (Behavior Driven Development)',
+      ar: 'التطوير القائم على السلوك (BDD)',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'An extension of TDD that uses a natural language (like Gherkin: Given-When-Then) to describe the expected behavior of the system.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'امتداد لـ TDD يستخدم لغة طبيعية (مثل Gherkin: Given-When-Then) لوصف السلوك المتوقع للنظام.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Encourages collaboration between developers, QA, and business stakeholders.',
+        ),
+        CodeContent(
+          'Feature: Login\n'
+          '  Scenario: Successful Login\n'
+          '    Given I am on the login screen\n'
+          '    When I enter valid credentials\n'
+          '    Then I should be redirected home',
+          codeLanguage: .text,
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يشجع التعاون بين المطورين، وضمان الجودة، وأصحاب المصلحة التجاريين.',
+        ),
+        CodeContent(
+          'Feature: Login\n'
+          '  Scenario: Successful Login\n'
+          '    Given I am on the login screen\n'
+          '    When I enter valid credentials\n'
+          '    Then I should be redirected home',
+          codeLanguage: .text,
+        ),
+      ],
+    ),
+    type: .methodology,
+    category: .testing,
+    relatedTerms: [TermKeys.methodologyTdd, TermKeys.integrationTest],
+    tags: ['gherkin', 'collaboration', 'specs'],
+    era: .classic,
+    popularityTier: .medium,
+  ),
+  TermKeys.netGraphql: ProgrammingTerm(
+    id: TermKeys.netGraphql,
+    title: LocalizedString(en: 'GraphQL', ar: 'GraphQL'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A query language for APIs and a runtime for fulfilling those queries. Unlike REST, it allows the client to request exactly the data they need.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'لغة استعلام لواجهات برمجة التطبيقات ووقت تشغيل لتنفيذ تلك الاستعلامات. على عكس REST، يسمح للعميل بطلب البيانات التي يحتاجها بالضبط.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        UnorderedListContent(
+          title: 'Key features:',
+          value: [
+            'Single Endpoint (usually /graphql)',
+            'No Over-fetching (getting too much data)',
+            'No Under-fetching (getting too little data)',
+            'Strongly typed schema',
+          ],
+        ),
+        CodeContent(
+          'query {\n'
+          '  user(id: "1") {\n'
+          '    name\n'
+          '    email\n'
+          '  }\n'
+          '}',
+          codeLanguage: .text,
+        ),
+      ],
+      ar: [
+        UnorderedListContent(
+          title: 'الميزات الرئيسية:',
+          value: [
+            'نقطة نهاية واحدة (عادة /graphql)',
+            'لا جلب زائد (الحصول على بيانات كثيرة جدًا)',
+            'لا جلب ناقص (الحصول على بيانات قليلة جدًا)',
+            'مخطط قوي النوع (Strongly typed)',
+          ],
+        ),
+        CodeContent(
+          'query {\n'
+          '  user(id: "1") {\n'
+          '    name\n'
+          '    email\n'
+          '  }\n'
+          '}',
+          codeLanguage: .text,
+        ),
+      ],
+    ),
+    type: .protocol,
+    category: .networking,
+    relatedTerms: [TermKeys.restApi, TermKeys.json],
+    tags: ['api', 'query', 'facebook', 'modern'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.netGrpc: ProgrammingTerm(
+    id: TermKeys.netGrpc,
+    title: LocalizedString(en: 'gRPC', ar: 'gRPC'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A high-performance Remote Procedure Call (RPC) framework developed by Google. It uses Protocol Buffers (binary) instead of JSON.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'إطار عمل عالي الأداء لاستدعاء الإجراءات عن بعد (RPC) طورته Google. يستخدم Protocol Buffers (ثنائي) بدلاً من JSON.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Faster and lighter than REST/JSON. Ideal for microservices and mobile-backend communication where bandwidth is limited.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'أسرع وأخف من REST/JSON. مثالي للخدمات المصغرة واتصالات الموبايل بالخلفية حيث يكون النطاق الترددي محدودًا.',
+        ),
+      ],
+    ),
+    type: .protocol,
+    category: .networking,
+    relatedTerms: [TermKeys.restApi, TermKeys.serialization],
+    tags: ['rpc', 'protobuf', 'performance', 'google'],
+    era: .modern,
+    popularityTier: .medium,
+  ),
+  TermKeys.securitySslPinning: ProgrammingTerm(
+    id: TermKeys.securitySslPinning,
+    title: LocalizedString(en: 'SSL Pinning', ar: 'تثبيت SSL (SSL Pinning)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A security measure where the app verifies the server\'s certificate against a known copy (pin) to prevent Man-in-the-Middle (MITM) attacks.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'تدبير أمني حيث يتحقق التطبيق من شهادة الخادم مقابل نسخة معروفة (الدبوس) لمنع هجمات الوسيط (MITM).',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Ensures the app is talking to *your* server, not an interceptor. If the certificate changes on the server, the app must be updated.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يضمن أن التطبيق يتحدث إلى *خادمك*، وليس معترضًا. إذا تغيرت الشهادة على الخادم، يجب تحديث التطبيق.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .security,
+    relatedTerms: ['https', TermKeys.securityEncryption],
+    tags: ['security', 'mitm', 'certificate'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.conceptCodeSplitting: ProgrammingTerm(
+    id: TermKeys.conceptCodeSplitting,
+    title: LocalizedString(
+      en: 'Code Splitting',
+      ar: 'تقسيم الكود (Code Splitting)',
+    ),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'The practice of splitting code into smaller chunks which can then be loaded on demand or in parallel, rather than loading one massive bundle at start.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'ممارسة تقسيم الكود إلى أجزاء أصغر يمكن تحميلها عند الطلب أو بشكل متوازٍ، بدلاً من تحميل حزمة ضخمة واحدة عند البدء.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In Flutter Web, this happens automatically with deferred imports (`import ... deferred as ...`), speeding up initial load times.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في Flutter Web، يحدث هذا تلقائيًا مع الواردات المؤجلة (`import ... deferred as ...`)، مما يسرع أوقات التحميل الأولية.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .performance,
+    relatedTerms: [TermKeys.performanceLazyLoading],
+    tags: ['web', 'performance', 'loading'],
+    era: .modern,
+    popularityTier: .high,
+  ),
+  TermKeys.toolFormatter: ProgrammingTerm(
+    id: TermKeys.toolFormatter,
+    title: LocalizedString(en: 'Formatter', ar: 'المنسق (Formatter)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A tool that automatically modifies source code to follow a specific style guide (indentation, spacing, line breaks) without changing its logic.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'أداة تقوم تلقائيًا بتعديل الكود المصدري لاتباع دليل نمط معين (المسافة البادئة، التباعد، فواصل الأسطر) دون تغيير منطقه.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In Dart: `dart format .` ensures all code looks consistent, ending debates about style in code reviews.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في Dart: `dart format .` يضمن أن يبدو كل الكود متسقًا، مما ينهي النقاشات حول النمط في مراجعات الكود.',
+        ),
+      ],
+    ),
+    type: .tool,
+    category: .devOps,
+    relatedTerms: [TermKeys.toolLint, TermKeys.conceptRefactoring],
+    tags: ['style', 'clean code', 'automation'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.dbMigration: ProgrammingTerm(
+    id: TermKeys.dbMigration,
+    title: LocalizedString(en: 'Migration', ar: 'التهجير (Migration)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A way to manage changes to a database schema over time. It allows you to evolve your database structure without losing data.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'طريقة لإدارة التغييرات على مخطط قاعدة البيانات بمرور الوقت. يسمح لك بتطوير هيكل قاعدة البيانات الخاصة بك دون فقدان البيانات.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Like version control for databases. Example: Adding a "phone_number" column to an existing "users" table.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'مثل التحكم في الإصدار لقواعد البيانات. مثال: إضافة عمود "رقم الهاتف" إلى جدول "المستخدمين" الموجود.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .databases,
+    relatedTerms: [TermKeys.dbDatabase, TermKeys.dbSql],
+    tags: ['schema', 'versioning', 'database'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.dbIndex: ProgrammingTerm(
+    id: TermKeys.dbIndex,
+    title: LocalizedString(en: 'Index', ar: 'الفهرس (Index)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A data structure used to quickly locate and access the data in a database table. It speeds up reads but slows down writes.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'هيكل بيانات يستخدم لتحديد موقع البيانات والوصول إليها بسرعة في جدول قاعدة البيانات. يسرع القراءة ولكنه يبطئ الكتابة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Think of it like the index at the back of a book. Without it, you have to scan every page (full table scan) to find what you want.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'فكر فيه مثل الفهرس في الجزء الخلفي من الكتاب. بدونه، عليك مسح كل صفحة (مسح كامل للجدول) للعثور على ما تريد.',
+        ),
+      ],
+    ),
+    type: .dataStructure,
+    category: .databases,
+    relatedTerms: [TermKeys.dbDatabase, TermKeys.fundamentalsBigO],
+    tags: ['performance', 'search', 'optimization'],
+    era: .classic,
+    popularityTier: .veryHigh,
+  ),
+  TermKeys.testingStub: ProgrammingTerm(
+    id: TermKeys.testingStub,
+    title: LocalizedString(en: 'Stub', ar: 'Stub (كعب/بديل)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A simple fake object used in testing that provides canned answers to calls made during the test, usually not responding to anything outside what\'s programmed.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'كائن مزيف بسيط يستخدم في الاختبار يوفر إجابات جاهزة للاستدعاءات التي تتم أثناء الاختبار، وعادة لا يستجيب لأي شيء خارج ما هو مبرمج.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'Difference from Mock: Stubs provide state verification (return specific data), Mocks provide behavior verification (check if method was called).',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'الفرق عن Mock: توفر Stubs التحقق من الحالة (إرجاع بيانات محددة)، وتوفر Mocks التحقق من السلوك (التحقق مما إذا تم استدعاء الأسلوب).',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .testing,
+    relatedTerms: [TermKeys.mock, TermKeys.unitTest],
+    tags: ['testing', 'fake', 'isolation'],
+    era: .classic,
+    popularityTier: .medium,
+  ),
+  TermKeys.conceptModule: ProgrammingTerm(
+    id: TermKeys.conceptModule,
+    title: LocalizedString(en: 'Module', ar: 'الوحدة (Module)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A distinct part of a computer program that can be compiled and run separately or used within a larger system. Encapsulates related code.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'جزء متميز من برنامج كمبيوتر يمكن ترجمته وتشغيله بشكل منفصل أو استخدامه داخل نظام أكبر. يغلف الكود ذي الصلة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent(
+          'In Dart, every file is technically a library/module. Promotes separation of concerns.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'في Dart، كل ملف هو من الناحية الفنية مكتبة/وحدة. يعزز فصل الاهتمامات.',
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    relatedTerms: [TermKeys.package, TermKeys.library],
+    tags: ['encapsulation', 'structure', 'architecture'],
+    era: .classic,
+    popularityTier: .high,
+  ),
+  TermKeys.conceptNamespace: ProgrammingTerm(
+    id: TermKeys.conceptNamespace,
+    title: LocalizedString(en: 'Namespace', ar: 'مساحة الاسم (Namespace)'),
+    quickOverview: LocalizedValue(
+      en: [
+        StringContent(
+          'A container that allows you to group identifiers (names of classes, variables) to prevent name collisions when using multiple libraries.',
+        ),
+      ],
+      ar: [
+        StringContent(
+          'حاوية تسمح لك بتجميع المعرفات (أسماء الفئات، المتغيرات) لمنع تصادم الأسماء عند استخدام مكتبات متعددة.',
+        ),
+      ],
+    ),
+    details: LocalizedValue(
+      en: [
+        StringContent('Dart uses `as` keyword for namespacing imports.'),
+        CodeContent(
+          "import 'package:http/http.dart' as http;\n"
+          "// Now we use http.get() instead of just get()",
+          codeLanguage: .dart,
+        ),
+      ],
+      ar: [
+        StringContent(
+          'يستخدم Dart الكلمة المفتاحية `as` لاستيراد مساحات الأسماء.',
+        ),
+        CodeContent(
+          "import 'package:http/http.dart' as http;\n"
+          "// الآن نستخدم http.get() بدلاً من مجرد get()",
+          codeLanguage: .dart,
+        ),
+      ],
+    ),
+    type: .concept,
+    category: .fundamentals,
+    relatedTerms: [TermKeys.importExport, TermKeys.library],
+    tags: ['naming', 'collisions', 'organization'],
+    era: .classic,
+    popularityTier: .high,
+  ),
 };

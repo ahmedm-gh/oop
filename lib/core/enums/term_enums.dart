@@ -2,6 +2,7 @@ import 'package:tuts/l10n/app_localizations.dart';
 import 'package:tuts/l10n/app_localizations_en.dart';
 
 enum TermType {
+  language,
   concept,
   paradigm,
   pattern,
@@ -22,6 +23,7 @@ enum TermType {
 
   String label(AppLocalizations l10n) {
     return switch (this) {
+      language => l10n.termTypeLanguage,
       concept => l10n.termTypeConcept,
       paradigm => l10n.termTypeParadigm,
       pattern => l10n.termTypePattern,
@@ -69,6 +71,7 @@ enum TermCategory {
   compilerInternals,
   versionControl,
   cloud,
+  nativePlatform,
   artificialIntelligence;
 
   String label(AppLocalizations l10n) {
@@ -96,6 +99,7 @@ enum TermCategory {
       compilerInternals => l10n.termCategoryCompilerInternals,
       versionControl => l10n.termCategoryVersionControl,
       cloud => l10n.termCategoryCloud,
+      nativePlatform => l10n.termCategoryNativePlatform,
       artificialIntelligence => l10n.termCategoryArtificialIntelligence,
     };
   }
@@ -126,6 +130,17 @@ enum ProgrammingLanguage {
   scala("Scala"),
   haskell("Haskell"),
   sql("SQL"),
+
+  // Frameworks
+  react("React"),
+  angular("Angular"),
+
+  // Web
+  web("Web"),
+
+  // Mobile
+  android("Android"),
+  ios("iOS"),
 
   // Markup / Styling
   html("HTML"),

@@ -113,6 +113,7 @@
     "oftenConfusedWith": "Often Confused With",
     "termNotFound": "Term not found",
 
+  "termTypeLanguage": "Language",
 "termTypeConcept": "Concept",
   "termTypeParadigm": "Paradigm",
   "termTypePattern": "Pattern",
@@ -154,6 +155,7 @@
   "termCategoryCompilerInternals": "Compiler Internals",
   "termCategoryVersionControl": "Version Control",
   "termCategoryCloud": "Cloud Computing",
+  "termCategoryNativePlatform": "Native Platform",
   "termCategoryArtificialIntelligence": "Artificial Intelligence",
 
   "termEraClassic": "Classic",
@@ -167,5 +169,6 @@
   "popularityTierLow": "Low",
   "popularityTierNiche": "Niche",
 
-  "aliases": "Aliases"
+  "aliases": "Aliases",
+  "relatedTerms": "Related Terms"
 }
