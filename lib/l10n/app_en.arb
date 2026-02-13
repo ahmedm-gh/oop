@@ -101,17 +101,18 @@
     "pNonGoF": "Non-GoF",
     "pPractical": "Practical",
     "pModern": "Modern",
-    "designPattern": "Design Patterns",
-    "architecturalPattern": "Architectural Patterns",
-    "stateManagementPattern": "State Management Patterns",
-    "uiPattern": "UI Patterns",
-    "projectStructurePattern": "Project Structure Patterns",
-    "creationalPattern": "Creational Patterns",
-    "structuralPattern": "Structural Patterns",
-    "behavioralPattern": "Behavioral Patterns",
+    "designPattern": "Design Pattern",
+    "architecturalPattern": "Architectural Pattern",
+    "stateManagementPattern": "State Management Pattern",
+    "uiPattern": "UI Pattern",
+    "projectStructurePattern": "Project Structure Pattern",
+    "creationalPattern": "Creational Pattern",
+    "structuralPattern": "Structural Pattern",
+    "behavioralPattern": "Behavioral Pattern",
     "relatedPatterns": "Related Patterns",
     "oftenConfusedWith": "Often Confused With",
     "termNotFound": "Term not found",
+    "bookmarks": "Bookmarks",
 
   "termTypeLanguage": "Language",
 "termTypeConcept": "Concept",
@@ -170,5 +171,14 @@
   "popularityTierNiche": "Niche",
 
   "aliases": "Aliases",
-  "relatedTerms": "Related Terms"
+  "relatedTerms": "Related Terms",
+  
+  "patternBeginnerLevel": "Beginner",
+  "patternIntermediateLevel": "Intermediate",
+  "patternAdvancedLevel": "Advanced",
+  "patterns": "Patterns",
+  "viewDetails": "View Details",
+  "keyCharacteristics": "Key Characteristics",
+  "commonUseCases": "Common Use Cases",
+  "realWorldExamples": "Real World Examples"
 }

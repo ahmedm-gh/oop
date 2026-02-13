@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:tuts/core/models/code_block.dart';
 import 'package:tuts/core/models/localized_text.dart';
 import 'package:tuts/l10n/app_localizations.dart';
@@ -54,7 +55,17 @@ enum PatternCategory {
   };
 }
 
-enum PatternLevel { beginner, intermediate, advanced }
+enum PatternLevel {
+  beginner,
+  intermediate,
+  advanced;
+
+  String label(AppLocalizations l10n) => switch (this) {
+    beginner => l10n.patternBeginnerLevel,
+    intermediate => l10n.patternIntermediateLevel,
+    advanced => l10n.patternAdvancedLevel,
+  };
+}
 
 class DesignPatternsCategory with EquatableMixin {
   const DesignPatternsCategory({
@@ -63,19 +74,59 @@ class DesignPatternsCategory with EquatableMixin {
     required this.description,
     required this.isClassic,
     required this.patterns,
+    required this.keyCharacteristics,
+    required this.icon,
+    required this.color,
+    this.commonUseCases,
+    this.realWorldExamples,
+    this.relatedCategories = const [],
+    this.learningPath,
   });
 
   final String id;
   final LocalizedString title;
-  final LocalizedString description;
-
-  /// True if this category mainly contains GoF patterns
+  final LocalizedValue<List<Content>> description;
   final bool isClassic;
-
   final List<String> patterns;
 
+  /// Key defining characteristics of this pattern category
+  final LocalizedValue<List<String>> keyCharacteristics;
+
+  /// Icon representing this category
+  final IconData icon;
+
+  /// Primary color for this category
+  final Color color;
+
+  /// Common scenarios where patterns from this category are useful
+  final LocalizedValue<List<String>>? commonUseCases;
+
+  /// Real-world examples of applications/systems using these patterns
+  final LocalizedValue<List<String>>? realWorldExamples;
+
+  /// IDs of related pattern categories
+  final List<String> relatedCategories;
+
+  /// Suggested order for learning patterns in this category
+  final List<String>? learningPath;
+
+  int get patternCount => patterns.length;
+
   @override
-  List<Object?> get props => [id, title, description, isClassic, patterns];
+  List<Object?> get props => [
+    id,
+    title,
+    description,
+    isClassic,
+    patterns,
+    keyCharacteristics,
+    icon,
+    color,
+    commonUseCases,
+    realWorldExamples,
+    relatedCategories,
+    learningPath,
+  ];
 }
 
 class DesignPattern with EquatableMixin {

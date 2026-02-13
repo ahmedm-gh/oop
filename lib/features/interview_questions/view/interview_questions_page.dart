@@ -10,6 +10,7 @@ import 'package:tuts/shared/app_widgets.dart';
 import 'package:tuts/shared/design_layouts.dart';
 
 import 'widgets/question_card.dart';
+import 'widgets/question_cards_wrapper.dart';
 
 class InterviewQuestionsScreen extends StatelessWidget {
   const InterviewQuestionsScreen({super.key});
@@ -54,7 +55,7 @@ class InterviewQuestionsScreen extends StatelessWidget {
                         return state.onlyBookmarked;
                       },
                       builder: (context, onlyBookmarked) {
-                        return BookmarkIconButton(
+                        return BookmarkIconButton.bookmarks(
                           tooltip: l10n.onlyBookmarked,
                           onPressed: cubit.toggleOnlyBookmarked,
                           isActive: onlyBookmarked,
@@ -137,7 +138,7 @@ class InterviewQuestionsScreen extends StatelessWidget {
               builder: (context, isEmpty) {
                 return isEmpty
                     ? Center(child: Text(l10n.noResults))
-                    : buildQuestionsList(colors);
+                    : const _QuestionsList();
               },
             ),
           ),
@@ -145,15 +146,14 @@ class InterviewQuestionsScreen extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget buildQuestionsList(ColorScheme colors) {
-    return CardTheme(
-      elevation: 0,
-      color: colors.surfaceContainerLow,
-      shape: RoundedRectangleBorder(
-        borderRadius: DL.inListCardBorderRadius,
-        side: BorderSide(color: colors.outlineVariant.withValues(alpha: 0.35)),
-      ),
+class _QuestionsList extends StatelessWidget {
+  const _QuestionsList();
+
+  @override
+  Widget build(BuildContext context) {
+    return QuestionCardsWrapper(
       child:
           BlocSelector<QuestionsCubit, QuestionsState, List<InterviewQuestion>>(
             selector: (state) => state.questions,

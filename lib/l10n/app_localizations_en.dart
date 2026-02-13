@@ -315,28 +315,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pModern => 'Modern';
 
   @override
-  String get designPattern => 'Design Patterns';
+  String get designPattern => 'Design Pattern';
 
   @override
-  String get architecturalPattern => 'Architectural Patterns';
+  String get architecturalPattern => 'Architectural Pattern';
 
   @override
-  String get stateManagementPattern => 'State Management Patterns';
+  String get stateManagementPattern => 'State Management Pattern';
 
   @override
-  String get uiPattern => 'UI Patterns';
+  String get uiPattern => 'UI Pattern';
 
   @override
-  String get projectStructurePattern => 'Project Structure Patterns';
+  String get projectStructurePattern => 'Project Structure Pattern';
 
   @override
-  String get creationalPattern => 'Creational Patterns';
+  String get creationalPattern => 'Creational Pattern';
 
   @override
-  String get structuralPattern => 'Structural Patterns';
+  String get structuralPattern => 'Structural Pattern';
 
   @override
-  String get behavioralPattern => 'Behavioral Patterns';
+  String get behavioralPattern => 'Behavioral Pattern';
 
   @override
   String get relatedPatterns => 'Related Patterns';
@@ -346,6 +346,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termNotFound => 'Term not found';
+
+  @override
+  String get bookmarks => 'Bookmarks';
 
   @override
   String get termTypeLanguage => 'Language';
@@ -508,4 +511,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get relatedTerms => 'Related Terms';
+
+  @override
+  String get patternBeginnerLevel => 'Beginner';
+
+  @override
+  String get patternIntermediateLevel => 'Intermediate';
+
+  @override
+  String get patternAdvancedLevel => 'Advanced';
+
+  @override
+  String get patterns => 'Patterns';
+
+  @override
+  String get viewDetails => 'View Details';
+
+  @override
+  String get keyCharacteristics => 'Key Characteristics';
+
+  @override
+  String get commonUseCases => 'Common Use Cases';
+
+  @override
+  String get realWorldExamples => 'Real World Examples';
 }

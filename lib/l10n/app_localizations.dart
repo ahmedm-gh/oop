@@ -707,49 +707,49 @@ abstract class AppLocalizations {
   /// No description provided for @designPattern.
   ///
   /// In en, this message translates to:
-  /// **'Design Patterns'**
+  /// **'Design Pattern'**
   String get designPattern;
 
   /// No description provided for @architecturalPattern.
   ///
   /// In en, this message translates to:
-  /// **'Architectural Patterns'**
+  /// **'Architectural Pattern'**
   String get architecturalPattern;
 
   /// No description provided for @stateManagementPattern.
   ///
   /// In en, this message translates to:
-  /// **'State Management Patterns'**
+  /// **'State Management Pattern'**
   String get stateManagementPattern;
 
   /// No description provided for @uiPattern.
   ///
   /// In en, this message translates to:
-  /// **'UI Patterns'**
+  /// **'UI Pattern'**
   String get uiPattern;
 
   /// No description provided for @projectStructurePattern.
   ///
   /// In en, this message translates to:
-  /// **'Project Structure Patterns'**
+  /// **'Project Structure Pattern'**
   String get projectStructurePattern;
 
   /// No description provided for @creationalPattern.
   ///
   /// In en, this message translates to:
-  /// **'Creational Patterns'**
+  /// **'Creational Pattern'**
   String get creationalPattern;
 
   /// No description provided for @structuralPattern.
   ///
   /// In en, this message translates to:
-  /// **'Structural Patterns'**
+  /// **'Structural Pattern'**
   String get structuralPattern;
 
   /// No description provided for @behavioralPattern.
   ///
   /// In en, this message translates to:
-  /// **'Behavioral Patterns'**
+  /// **'Behavioral Pattern'**
   String get behavioralPattern;
 
   /// No description provided for @relatedPatterns.
@@ -769,6 +769,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Term not found'**
   String get termNotFound;
+
+  /// No description provided for @bookmarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmarks'**
+  String get bookmarks;
 
   /// No description provided for @termTypeLanguage.
   ///
@@ -1093,6 +1099,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Related Terms'**
   String get relatedTerms;
+
+  /// No description provided for @patternBeginnerLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Beginner'**
+  String get patternBeginnerLevel;
+
+  /// No description provided for @patternIntermediateLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Intermediate'**
+  String get patternIntermediateLevel;
+
+  /// No description provided for @patternAdvancedLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced'**
+  String get patternAdvancedLevel;
+
+  /// No description provided for @patterns.
+  ///
+  /// In en, this message translates to:
+  /// **'Patterns'**
+  String get patterns;
+
+  /// No description provided for @viewDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View Details'**
+  String get viewDetails;
+
+  /// No description provided for @keyCharacteristics.
+  ///
+  /// In en, this message translates to:
+  /// **'Key Characteristics'**
+  String get keyCharacteristics;
+
+  /// No description provided for @commonUseCases.
+  ///
+  /// In en, this message translates to:
+  /// **'Common Use Cases'**
+  String get commonUseCases;
+
+  /// No description provided for @realWorldExamples.
+  ///
+  /// In en, this message translates to:
+  /// **'Real World Examples'**
+  String get realWorldExamples;
 }
 
 class _AppLocalizationsDelegate

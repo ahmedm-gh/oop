@@ -50,7 +50,7 @@ class App extends StatelessWidget {
             name: "app",
           );
           final colorScheme = ColorScheme.fromSeed(
-            seedColor: Colors.lightBlue,
+            seedColor: Colors.blue,
             brightness: state.brightness,
           );
           return MaterialApp(
@@ -151,6 +151,8 @@ class AppBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colorScheme;
+
     return BlocBuilder<AppControllerCubit, AppControllerState>(
       builder: (context, state) {
         final cubit = context.read<AppControllerCubit>();
@@ -194,7 +196,11 @@ class AppBottomBar extends StatelessWidget {
                       icon: const Icon(Icons.text_fields_rounded),
                       onPressed: cubit.changeFontScale,
                     ),
-                    const Icon(Icons.square_rounded, size: 6),
+                    Icon(
+                      Icons.square_rounded,
+                      size: 6,
+                      color: colors.outlineVariant,
+                    ),
                     IconButton(
                       onPressed: () {
                         launchUrl(Uri.parse("https://github.com/ahmedm-gh"));

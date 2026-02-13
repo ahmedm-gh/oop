@@ -1,9 +1,11 @@
+import "package:flutter/material.dart";
+
 import "../core/models/code_block.dart";
 import "../core/models/content.dart";
 import "../core/models/design_patterns.dart";
 import "../core/models/localized_text.dart";
 
-abstract class PatternKeys {
+abstract class PK {
   // Creational Patterns
   static const creationalPatterns = 'creational-patterns';
   static const factoryMethod = 'factory-method';
@@ -79,137 +81,488 @@ abstract class PatternKeys {
 
 const List<DesignPatternsCategory> designPatternCategories = [
   DesignPatternsCategory(
-    id: PatternKeys.creationalPatterns,
-    title: LocalizedString(
-      en: "Creational Patterns",
-      ar: "الأنماط الإنشائية (Creational Patterns)",
-    ),
-    description: LocalizedString(
-      en: "Patterns that deal with object creation mechanisms",
-      ar: "أنماط تتعامل مع آليات إنشاء الكائنات",
-    ),
-    isClassic: true,
-    patterns: [
-      PatternKeys.factoryMethod,
-      PatternKeys.abstractFactory,
-      PatternKeys.builder,
-      PatternKeys.prototype,
-      PatternKeys.singleton,
-      PatternKeys.objectPool,
-      PatternKeys.lazyInitialization,
-      PatternKeys.multiton,
-      PatternKeys.factoryKit,
-    ],
-  ),
-  DesignPatternsCategory(
-    id: PatternKeys.structuralPatterns,
-    title: LocalizedString(
-      en: "Structural Patterns",
-      ar: "الأنماط البنيوية (Structural Patterns)",
-    ),
-    description: LocalizedString(
-      en: "Patterns that deal with object composition and relationships",
-      ar: "أنماط تتعامل مع تركيب الكائنات والعلاقات بينها",
+    id: PK.creationalPatterns,
+    title: LocalizedString(en: "Creational Patterns", ar: "الأنماط الإنشائية"),
+    description: LocalizedValue(
+      en: [
+        StringContent(
+          "Creational patterns abstract the instantiation process, making systems independent of how objects are created, composed, and represented.",
+        ),
+      ],
+      ar: [
+        StringContent(
+          "الأنماط الإنشائية تجرد عملية الإنشاء، مما يجعل الأنظمة مستقلة عن كيفية إنشاء الكائنات وتركيبها وتمثيلها.",
+        ),
+      ],
     ),
     isClassic: true,
     patterns: [
-      PatternKeys.adapter,
-      PatternKeys.bridge,
-      PatternKeys.composite,
-      PatternKeys.decorator,
-      PatternKeys.facade,
-      PatternKeys.flyweight,
-      PatternKeys.proxy,
-      PatternKeys.wrapper,
-      PatternKeys.dataMapper,
-      PatternKeys.dto,
-      PatternKeys.extensionObject,
-      PatternKeys.plugin,
+      PK.factoryMethod,
+      PK.abstractFactory,
+      PK.builder,
+      PK.prototype,
+      PK.singleton,
+      PK.objectPool,
+      PK.lazyInitialization,
+      PK.multiton,
+      PK.factoryKit,
+    ],
+    keyCharacteristics: LocalizedValue(
+      en: [
+        "Abstract object creation",
+        "Hide construction complexity",
+        "Control instantiation process",
+        "Promote code reusability",
+        "Support flexibility in object creation",
+      ],
+      ar: [
+        "تجريد إنشاء الكائنات",
+        "إخفاء تعقيد البناء",
+        "التحكم في عملية الإنشاء",
+        "تعزيز إعادة استخدام الكود",
+        "دعم المرونة في إنشاء الكائنات",
+      ],
+    ),
+    icon: Icons.construction,
+    color: Colors.blue,
+    commonUseCases: LocalizedValue(
+      en: [
+        "Managing object lifecycle and dependencies",
+        "Creating families of related objects",
+        "Building complex objects step by step",
+        "Controlling instance creation and reuse",
+        "Hiding implementation details from clients",
+      ],
+      ar: [
+        "إدارة دورة حياة الكائنات والتبعيات",
+        "إنشاء عائلات من الكائنات المترابطة",
+        "بناء كائنات معقدة خطوة بخطوة",
+        "التحكم في إنشاء وإعادة استخدام النسخ",
+        "إخفاء تفاصيل التنفيذ عن العملاء",
+      ],
+    ),
+    realWorldExamples: LocalizedValue(
+      en: [
+        "UI component factories in Flutter",
+        "Database connection pools",
+        "Document builders (PDF, Word, etc.)",
+        "Configuration managers",
+        "Dependency injection containers",
+      ],
+      ar: [
+        "مصانع مكونات واجهة المستخدم في Flutter",
+        "تجمعات اتصال قاعدة البيانات",
+        "بناة المستندات (PDF، Word، إلخ)",
+        "مديرو الإعدادات",
+        "حاويات حقن الاعتمادية",
+      ],
+    ),
+    relatedCategories: [PK.behavioralPatterns],
+    learningPath: [
+      PK.singleton,
+      PK.factoryMethod,
+      PK.builder,
+      PK.abstractFactory,
+      PK.prototype,
+      PK.lazyInitialization,
+      PK.objectPool,
+      PK.multiton,
+      PK.factoryKit,
     ],
   ),
   DesignPatternsCategory(
-    id: PatternKeys.behavioralPatterns,
-    title: LocalizedString(
-      en: "Behavioral Patterns",
-      ar: "الأنماط السلوكية (Behavioral Patterns)",
-    ),
-    description: LocalizedString(
-      en: "Patterns that deal with object communication and responsibility",
-      ar: "أنماط تتعامل مع التواصل بين الكائنات والمسؤوليات",
+    id: PK.structuralPatterns,
+    title: LocalizedString(en: "Structural Patterns", ar: "الأنماط الهيكلية"),
+    description: LocalizedValue(
+      en: [
+        StringContent(
+          "Structural patterns deal with object composition, creating relationships between objects to form larger structures while keeping them flexible and efficient.",
+        ),
+      ],
+      ar: [
+        StringContent(
+          "الأنماط الهيكلية تتعامل مع تركيب الكائنات، وإنشاء علاقات بين الكائنات لتشكيل بنى أكبر مع الحفاظ على مرونتها وكفاءتها.",
+        ),
+      ],
     ),
     isClassic: true,
     patterns: [
-      PatternKeys.chainOfResponsibility,
-      PatternKeys.command,
-      PatternKeys.interpreter,
-      PatternKeys.iterator,
-      PatternKeys.mediator,
-      PatternKeys.memento,
-      PatternKeys.observer,
-      PatternKeys.state,
-      PatternKeys.strategy,
-      PatternKeys.templateMethod,
-      PatternKeys.visitor,
-      PatternKeys.dependencyInjection,
-      PatternKeys.serviceLocator,
-      PatternKeys.repository,
-      PatternKeys.unitOfWork,
-      PatternKeys.specification,
-      PatternKeys.policy,
+      PK.adapter,
+      PK.bridge,
+      PK.composite,
+      PK.decorator,
+      PK.facade,
+      PK.flyweight,
+      PK.proxy,
+      PK.wrapper,
+      PK.dataMapper,
+      PK.dto,
+      PK.extensionObject,
+      PK.plugin,
+    ],
+    keyCharacteristics: LocalizedValue(
+      en: [
+        "Compose objects into larger structures",
+        "Define relationships between entities",
+        "Simplify complex subsystems",
+        "Add functionality dynamically",
+        "Optimize resource usage",
+      ],
+      ar: [
+        "تركيب الكائنات في بنى أكبر",
+        "تعريف العلاقات بين الكيانات",
+        "تبسيط الأنظمة الفرعية المعقدة",
+        "إضافة وظائف ديناميكياً",
+        "تحسين استخدام الموارد",
+      ],
+    ),
+    icon: Icons.account_tree_rounded,
+    color: Colors.green,
+    commonUseCases: LocalizedValue(
+      en: [
+        "Integrating legacy code with new systems",
+        "Creating flexible class hierarchies",
+        "Adding responsibilities without inheritance",
+        "Simplifying complex interfaces",
+        "Managing memory-intensive objects",
+      ],
+      ar: [
+        "دمج الكود القديم مع الأنظمة الجديدة",
+        "إنشاء تسلسلات هرمية مرنة للفئات",
+        "إضافة مسؤوليات دون وراثة",
+        "تبسيط الواجهات المعقدة",
+        "إدارة الكائنات كثيفة الذاكرة",
+      ],
+    ),
+    realWorldExamples: LocalizedValue(
+      en: [
+        "Widget wrappers in Flutter",
+        "API adapters for third-party services",
+        "File system hierarchies",
+        "Stream decorators",
+        "Database ORMs and mappers",
+      ],
+      ar: [
+        "أغلفة الودجات في Flutter",
+        "محولات API لخدمات الطرف الثالث",
+        "تسلسلات هرمية لنظام الملفات",
+        "مزخرفات التدفقات",
+        "ORMs ومخططات قاعدة البيانات",
+      ],
+    ),
+    relatedCategories: [PK.creationalPatterns, PK.behavioralPatterns],
+    learningPath: [
+      PK.adapter,
+      PK.facade,
+      PK.decorator,
+      PK.composite,
+      PK.proxy,
+      PK.bridge,
+      PK.flyweight,
+      PK.wrapper,
+      PK.dto,
+      PK.dataMapper,
+      PK.extensionObject,
+      PK.plugin,
     ],
   ),
   DesignPatternsCategory(
-    id: PatternKeys.architecturalPatterns,
+    id: PK.behavioralPatterns,
+    title: LocalizedString(en: "Behavioral Patterns", ar: "الأنماط السلوكية"),
+    description: LocalizedValue(
+      en: [
+        StringContent(
+          "Behavioral patterns focus on communication between objects, defining how objects interact and distribute responsibilities while staying loosely coupled.",
+        ),
+      ],
+      ar: [
+        StringContent(
+          "الأنماط السلوكية تركز على التواصل بين الكائنات، وتعريف كيفية تفاعل الكائنات وتوزيع المسؤوليات مع البقاء مفصولة بشكل فضفاض.",
+        ),
+      ],
+    ),
+    isClassic: true,
+    patterns: [
+      PK.chainOfResponsibility,
+      PK.command,
+      PK.interpreter,
+      PK.iterator,
+      PK.mediator,
+      PK.memento,
+      PK.observer,
+      PK.state,
+      PK.strategy,
+      PK.templateMethod,
+      PK.visitor,
+      PK.dependencyInjection,
+      PK.serviceLocator,
+      PK.repository,
+      PK.unitOfWork,
+      PK.specification,
+      PK.policy,
+    ],
+    keyCharacteristics: LocalizedValue(
+      en: [
+        "Define object communication",
+        "Distribute responsibilities",
+        "Encapsulate algorithms",
+        "Control flow of execution",
+        "Enable loose coupling",
+      ],
+      ar: [
+        "تعريف تواصل الكائنات",
+        "توزيع المسؤوليات",
+        "تغليف الخوارزميات",
+        "التحكم في تدفق التنفيذ",
+        "تمكين الفصل الفضفاض",
+      ],
+    ),
+    // icon: Icons.pivot_table_chart_rounded,
+    icon: Icons.webhook_rounded,
+    color: Colors.orange,
+    commonUseCases: LocalizedValue(
+      en: [
+        "Implementing undo/redo functionality",
+        "Event handling and notification systems",
+        "State machines and workflows",
+        "Swappable algorithms and strategies",
+        "Request processing pipelines",
+      ],
+      ar: [
+        "تنفيذ وظيفة التراجع/الإعادة",
+        "معالجة الأحداث وأنظمة الإخطار",
+        "آلات الحالة وسير العمل",
+        "خوارزميات واستراتيجيات قابلة للتبديل",
+        "خطوط معالجة الطلبات",
+      ],
+    ),
+    realWorldExamples: LocalizedValue(
+      en: [
+        "Flutter's ChangeNotifier and listeners",
+        "Text editors with undo/redo",
+        "Game AI state machines",
+        "Payment processing strategies",
+        "Data validation pipelines",
+      ],
+      ar: [
+        "ChangeNotifier والمستمعين في Flutter",
+        "محررات النصوص مع التراجع/الإعادة",
+        "آلات حالة الذكاء الاصطناعي للألعاب",
+        "استراتيجيات معالجة الدفع",
+        "خطوط التحقق من البيانات",
+      ],
+    ),
+    relatedCategories: [PK.creationalPatterns, PK.structuralPatterns],
+    learningPath: [
+      PK.observer,
+      PK.strategy,
+      PK.command,
+      PK.state,
+      PK.templateMethod,
+      PK.chainOfResponsibility,
+      PK.mediator,
+      PK.memento,
+      PK.iterator,
+      PK.visitor,
+      PK.interpreter,
+      PK.dependencyInjection,
+      PK.repository,
+      PK.specification,
+      PK.policy,
+      PK.serviceLocator,
+      PK.unitOfWork,
+    ],
+  ),
+  DesignPatternsCategory(
+    id: PK.architecturalPatterns,
     title: LocalizedString(
       en: "Architectural Patterns",
-      ar: "الأنماط المعمارية (Architectural Patterns)",
+      ar: "الأنماط المعمارية",
     ),
-    description: LocalizedString(
-      en: "High-level patterns for application structure",
-      ar: "أنماط عالية المستوى لبنية التطبيق",
+    description: LocalizedValue(
+      en: [
+        StringContent(
+          "Architectural patterns provide templates for organizing entire applications, defining the high-level structure and relationships between major components.",
+        ),
+      ],
+      ar: [
+        StringContent(
+          "الأنماط المعمارية توفر قوالب لتنظيم التطبيقات بالكامل، وتعريف البنية عالية المستوى والعلاقات بين المكونات الرئيسية.",
+        ),
+      ],
     ),
     isClassic: false,
     patterns: [
-      PatternKeys.mvc,
-      PatternKeys.mvp,
-      PatternKeys.mvvm,
-      PatternKeys.mvu,
-      PatternKeys.cleanArchitecture,
-      PatternKeys.hexagonal,
-      PatternKeys.layeredArchitecture,
-      PatternKeys.modularMonolith,
-      PatternKeys.microservices,
-      PatternKeys.cqrs,
-      PatternKeys.eventSourcing,
+      PK.mvc,
+      PK.mvp,
+      PK.mvvm,
+      PK.mvu,
+      PK.cleanArchitecture,
+      PK.hexagonal,
+      PK.layeredArchitecture,
+      PK.modularMonolith,
+      PK.microservices,
+      PK.cqrs,
+      PK.eventSourcing,
+    ],
+    keyCharacteristics: LocalizedValue(
+      en: [
+        "Define system-wide structure",
+        "Separate concerns at high level",
+        "Enable scalability and maintainability",
+        "Guide development approach",
+        "Support team organization",
+      ],
+      ar: [
+        "تعريف البنية على مستوى النظام",
+        "فصل الاهتمامات على مستوى عالٍ",
+        "تمكين القابلية للتوسع والصيانة",
+        "توجيه نهج التطوير",
+        "دعم تنظيم الفريق",
+      ],
+    ),
+    icon: Icons.auto_awesome_mosaic_rounded,
+    color: Colors.teal,
+    commonUseCases: LocalizedValue(
+      en: [
+        "Organizing large-scale applications",
+        "Separating UI from business logic",
+        "Building testable and maintainable systems",
+        "Managing complex domain logic",
+        "Scaling applications and teams",
+      ],
+      ar: [
+        "تنظيم التطبيقات واسعة النطاق",
+        "فصل واجهة المستخدم عن منطق العمل",
+        "بناء أنظمة قابلة للاختبار والصيانة",
+        "إدارة منطق المجال المعقد",
+        "توسيع التطبيقات والفرق",
+      ],
+    ),
+    realWorldExamples: LocalizedValue(
+      en: [
+        "E-commerce platforms",
+        "Banking applications",
+        "Social media apps",
+        "Enterprise resource planning systems",
+        "Content management systems",
+      ],
+      ar: [
+        "منصات التجارة الإلكترونية",
+        "تطبيقات البنوك",
+        "تطبيقات وسائل التواصل الاجتماعي",
+        "أنظمة تخطيط موارد المؤسسات",
+        "أنظمة إدارة المحتوى",
+      ],
+    ),
+    relatedCategories: [PK.stateManagementPatterns],
+    learningPath: [
+      PK.mvc,
+      PK.mvp,
+      PK.mvvm,
+      PK.mvu,
+      PK.layeredArchitecture,
+      PK.cleanArchitecture,
+      PK.hexagonal,
+      PK.modularMonolith,
+      PK.cqrs,
+      PK.eventSourcing,
+      PK.microservices,
     ],
   ),
   DesignPatternsCategory(
-    id: PatternKeys.stateManagementPatterns,
-    title: LocalizedString(
-      en: "State Management Patterns",
-      ar: "أنماط إدارة الحالة (State Management Patterns)",
-    ),
-    description: LocalizedString(
-      en: "Flutter-specific patterns for managing application state",
-      ar: "أنماط خاصة بـ Flutter لإدارة حالة التطبيق",
+    id: PK.stateManagementPatterns,
+    title: LocalizedString(en: "State Management", ar: "إدارة الحالة"),
+    description: LocalizedValue(
+      en: [
+        StringContent(
+          "State management patterns help organize and control application state in Flutter, ensuring predictable data flow and UI updates.",
+        ),
+      ],
+      ar: [
+        StringContent(
+          "أنماط إدارة الحالة تساعد في تنظيم والتحكم في حالة التطبيق في Flutter، مما يضمن تدفق بيانات قابل للتنبؤ وتحديثات واجهة المستخدم.",
+        ),
+      ],
     ),
     isClassic: false,
     patterns: [
-      PatternKeys.bloc,
-      PatternKeys.cubit,
-      PatternKeys.provider,
-      PatternKeys.stateNotifier,
-      PatternKeys.redux,
-      PatternKeys.unidirectionalDataFlow,
-      PatternKeys.featureFirstStructure,
-      PatternKeys.presentationDomainData,
+      PK.bloc,
+      PK.cubit,
+      PK.provider,
+      PK.stateNotifier,
+      PK.redux,
+      PK.unidirectionalDataFlow,
+      PK.featureFirstStructure,
+      PK.presentationDomainData,
+    ],
+    keyCharacteristics: LocalizedValue(
+      en: [
+        "Manage application state",
+        "Control data flow",
+        "Enable reactive UI updates",
+        "Separate business logic from UI",
+        "Support testability",
+      ],
+      ar: [
+        "إدارة حالة التطبيق",
+        "التحكم في تدفق البيانات",
+        "تمكين تحديثات واجهة المستخدم التفاعلية",
+        "فصل منطق العمل عن واجهة المستخدم",
+        "دعم القابلية للاختبار",
+      ],
+    ),
+    icon: Icons.model_training_rounded,
+    color: Colors.red,
+    commonUseCases: LocalizedValue(
+      en: [
+        "Managing complex UI state",
+        "Sharing state across widgets",
+        "Handling async operations",
+        "Implementing undo/redo",
+        "Building reactive applications",
+      ],
+      ar: [
+        "إدارة حالة واجهة المستخدم المعقدة",
+        "مشاركة الحالة عبر الودجات",
+        "معالجة العمليات غير المتزامنة",
+        "تنفيذ التراجع/الإعادة",
+        "بناء تطبيقات تفاعلية",
+      ],
+    ),
+    realWorldExamples: LocalizedValue(
+      en: [
+        "Shopping cart in e-commerce apps",
+        "Form validation and state",
+        "Real-time chat applications",
+        "News feed with infinite scroll",
+        "Authentication state management",
+      ],
+      ar: [
+        "عربة التسوق في تطبيقات التجارة الإلكترونية",
+        "التحقق من النماذج والحالة",
+        "تطبيقات الدردشة في الوقت الفعلي",
+        "موجز الأخبار مع التمرير اللانهائي",
+        "إدارة حالة المصادقة",
+      ],
+    ),
+    relatedCategories: [PK.architecturalPatterns, PK.behavioralPatterns],
+    learningPath: [
+      PK.provider,
+      PK.cubit,
+      PK.bloc,
+      PK.stateNotifier,
+      PK.unidirectionalDataFlow,
+      PK.redux,
+      PK.featureFirstStructure,
+      PK.presentationDomainData,
     ],
   ),
 ];
 
 const Map<String, DesignPattern> designPatterns = {
-  PatternKeys.factoryMethod: DesignPattern(
-    id: PatternKeys.factoryMethod,
+  PK.factoryMethod: DesignPattern(
+    id: PK.factoryMethod,
     title: LocalizedString(
       en: "Factory Method",
       ar: "طريقة المصنع (Factory Method)",
@@ -410,15 +763,11 @@ void main() {
         "الخلط بينه وبين أنماط المصنع البسيط أو المصنع المجرد",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.abstractFactory,
-      PatternKeys.prototype,
-      PatternKeys.templateMethod,
-    ],
-    oftenConfusedWith: [PatternKeys.abstractFactory],
+    relatedPatterns: [PK.abstractFactory, PK.prototype, PK.templateMethod],
+    oftenConfusedWith: [PK.abstractFactory],
   ),
-  PatternKeys.abstractFactory: DesignPattern(
-    id: PatternKeys.abstractFactory,
+  PK.abstractFactory: DesignPattern(
+    id: PK.abstractFactory,
     title: LocalizedString(
       en: "Abstract Factory",
       ar: "المصنع المجرد (Abstract Factory)",
@@ -679,15 +1028,11 @@ void main() {
         "عدم الحفاظ على الاتساق بين المنتجات في العائلة",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.factoryMethod,
-      PatternKeys.singleton,
-      PatternKeys.prototype,
-    ],
-    oftenConfusedWith: [PatternKeys.factoryMethod],
+    relatedPatterns: [PK.factoryMethod, PK.singleton, PK.prototype],
+    oftenConfusedWith: [PK.factoryMethod],
   ),
-  PatternKeys.builder: DesignPattern(
-    id: PatternKeys.builder,
+  PK.builder: DesignPattern(
+    id: PK.builder,
     title: LocalizedString(en: "Builder", ar: "البناء (Builder)"),
     description: LocalizedString(
       en: "Separates object construction from its representation, allowing step-by-step creation of complex objects",
@@ -931,15 +1276,11 @@ void main() {
         "نسيان التحقق من الحقول المطلوبة قبل استدعاء ()build",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.abstractFactory,
-      PatternKeys.composite,
-      PatternKeys.singleton,
-    ],
-    oftenConfusedWith: [PatternKeys.factoryMethod],
+    relatedPatterns: [PK.abstractFactory, PK.composite, PK.singleton],
+    oftenConfusedWith: [PK.factoryMethod],
   ),
-  PatternKeys.prototype: DesignPattern(
-    id: PatternKeys.prototype,
+  PK.prototype: DesignPattern(
+    id: PK.prototype,
     title: LocalizedString(en: "Prototype", ar: "النموذج الأولي (Prototype)"),
     description: LocalizedString(
       en: "Creates new objects by copying existing instances, avoiding dependency on concrete classes",
@@ -1167,15 +1508,11 @@ void main() {
         "عدم تنفيذ فحوصات مساواة مناسبة للكائنات المستنسخة",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.abstractFactory,
-      PatternKeys.composite,
-      PatternKeys.decorator,
-    ],
-    oftenConfusedWith: [PatternKeys.factoryMethod],
+    relatedPatterns: [PK.abstractFactory, PK.composite, PK.decorator],
+    oftenConfusedWith: [PK.factoryMethod],
   ),
-  PatternKeys.singleton: DesignPattern(
-    id: PatternKeys.singleton,
+  PK.singleton: DesignPattern(
+    id: PK.singleton,
     title: LocalizedString(en: "Singleton", ar: "المفرد (Singleton)"),
     description: LocalizedString(
       en: "Ensures a class has only one instance and provides global access to it",
@@ -1385,15 +1722,11 @@ void main() {
         "استخدام المفرد عندما يكون حقن الاعتمادية أفضل",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.abstractFactory,
-      PatternKeys.facade,
-      PatternKeys.flyweight,
-    ],
+    relatedPatterns: [PK.abstractFactory, PK.facade, PK.flyweight],
     // oftenConfusedWith: ["static-class"],
   ),
-  PatternKeys.objectPool: DesignPattern(
-    id: PatternKeys.objectPool,
+  PK.objectPool: DesignPattern(
+    id: PK.objectPool,
     title: LocalizedString(
       en: "Object Pool",
       ar: "تجمع الكائنات (Object Pool)",
@@ -1668,15 +2001,11 @@ void main() {
         "إنشاء تجمعات تنمو بلا حدود",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.singleton,
-      PatternKeys.factoryMethod,
-      PatternKeys.flyweight,
-    ],
-    oftenConfusedWith: [PatternKeys.flyweight],
+    relatedPatterns: [PK.singleton, PK.factoryMethod, PK.flyweight],
+    oftenConfusedWith: [PK.flyweight],
   ),
-  PatternKeys.lazyInitialization: DesignPattern(
-    id: PatternKeys.lazyInitialization,
+  PK.lazyInitialization: DesignPattern(
+    id: PK.lazyInitialization,
     title: LocalizedString(
       en: "Lazy Initialization",
       ar: "التهيئة الكسولة (Lazy Initialization)",
@@ -1911,15 +2240,11 @@ void main() {
         "نسيان التعامل مع فشل التهيئة",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.singleton,
-      PatternKeys.proxy,
-      PatternKeys.factoryMethod,
-    ],
-    oftenConfusedWith: [PatternKeys.proxy],
+    relatedPatterns: [PK.singleton, PK.proxy, PK.factoryMethod],
+    oftenConfusedWith: [PK.proxy],
   ),
-  PatternKeys.multiton: DesignPattern(
-    id: PatternKeys.multiton,
+  PK.multiton: DesignPattern(
+    id: PK.multiton,
     title: LocalizedString(en: "Multiton", ar: "المتعدد (Multiton)"),
     description: LocalizedString(
       en: "Ensures a class has a limited number of named instances, one per unique key",
@@ -2155,15 +2480,11 @@ void main() {
         "عدم تنظيف النسخ غير المستخدمة أبداً",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.singleton,
-      PatternKeys.factoryMethod,
-      PatternKeys.objectPool,
-    ],
-    oftenConfusedWith: [PatternKeys.singleton],
+    relatedPatterns: [PK.singleton, PK.factoryMethod, PK.objectPool],
+    oftenConfusedWith: [PK.singleton],
   ),
-  PatternKeys.factoryKit: DesignPattern(
-    id: PatternKeys.factoryKit,
+  PK.factoryKit: DesignPattern(
+    id: PK.factoryKit,
     title: LocalizedString(
       en: "Factory Kit",
       ar: "مجموعة المصنع (Factory Kit)",
@@ -2408,15 +2729,11 @@ void main() {
         "عدم التحقق من المصانع المُوفرة من المستخدم",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.abstractFactory,
-      PatternKeys.plugin,
-      PatternKeys.strategy,
-    ],
-    oftenConfusedWith: [PatternKeys.abstractFactory],
+    relatedPatterns: [PK.abstractFactory, PK.plugin, PK.strategy],
+    oftenConfusedWith: [PK.abstractFactory],
   ),
-  PatternKeys.adapter: DesignPattern(
-    id: PatternKeys.adapter,
+  PK.adapter: DesignPattern(
+    id: PK.adapter,
     title: LocalizedString(en: "Adapter", ar: "المُحوّل (Adapter)"),
     description: LocalizedString(
       en: "Converts one interface to another, allowing incompatible classes to work together",
@@ -2656,15 +2973,11 @@ void main() {
         "عدم التعامل مع جميع طرق الواجهة بشكل صحيح",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.bridge,
-      PatternKeys.decorator,
-      PatternKeys.proxy,
-    ],
-    oftenConfusedWith: [PatternKeys.facade, PatternKeys.decorator],
+    relatedPatterns: [PK.bridge, PK.decorator, PK.proxy],
+    oftenConfusedWith: [PK.facade, PK.decorator],
   ),
-  PatternKeys.bridge: DesignPattern(
-    id: PatternKeys.bridge,
+  PK.bridge: DesignPattern(
+    id: PK.bridge,
     title: LocalizedString(en: "Bridge", ar: "الجسر (Bridge)"),
     description: LocalizedString(
       en: "Separates abstraction from implementation so they can vary independently",
@@ -2926,15 +3239,11 @@ void main() {
         "التعقيد المفرط للتصاميم البسيطة",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.abstractFactory,
-      PatternKeys.adapter,
-      PatternKeys.strategy,
-    ],
-    oftenConfusedWith: [PatternKeys.adapter],
+    relatedPatterns: [PK.abstractFactory, PK.adapter, PK.strategy],
+    oftenConfusedWith: [PK.adapter],
   ),
-  PatternKeys.composite: DesignPattern(
-    id: PatternKeys.composite,
+  PK.composite: DesignPattern(
+    id: PK.composite,
     title: LocalizedString(en: "Composite", ar: "المُركب (Composite)"),
     description: LocalizedString(
       en: "Composes objects into tree structures and treats individual objects and compositions uniformly",
@@ -3196,15 +3505,11 @@ void main() {
         "عدم النظر في من يملك/يدير دورة حياة الأطفال",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.iterator,
-      PatternKeys.visitor,
-      PatternKeys.decorator,
-    ],
-    oftenConfusedWith: [PatternKeys.decorator],
+    relatedPatterns: [PK.iterator, PK.visitor, PK.decorator],
+    oftenConfusedWith: [PK.decorator],
   ),
-  PatternKeys.decorator: DesignPattern(
-    id: PatternKeys.decorator,
+  PK.decorator: DesignPattern(
+    id: PK.decorator,
     title: LocalizedString(en: "Decorator", ar: "المُزخرف (Decorator)"),
     description: LocalizedString(
       en: "Attaches additional responsibilities to objects dynamically without modifying their structure",
@@ -3446,15 +3751,11 @@ void main() {
         "إنشاء مُزخرفات تغير الوظيفة الأساسية",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.adapter,
-      PatternKeys.composite,
-      PatternKeys.strategy,
-    ],
-    oftenConfusedWith: [PatternKeys.adapter, PatternKeys.proxy],
+    relatedPatterns: [PK.adapter, PK.composite, PK.strategy],
+    oftenConfusedWith: [PK.adapter, PK.proxy],
   ),
-  PatternKeys.facade: DesignPattern(
-    id: PatternKeys.facade,
+  PK.facade: DesignPattern(
+    id: PK.facade,
     title: LocalizedString(en: "Facade", ar: "الواجهة (Facade)"),
     description: LocalizedString(
       en: "Provides a simplified interface to a complex subsystem",
@@ -3566,15 +3867,11 @@ void main() {
         "إنشاء واجهات متنافسة متعددة لنفس النظام الفرعي",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.adapter,
-      PatternKeys.singleton,
-      PatternKeys.abstractFactory,
-    ],
-    oftenConfusedWith: [PatternKeys.adapter],
+    relatedPatterns: [PK.adapter, PK.singleton, PK.abstractFactory],
+    oftenConfusedWith: [PK.adapter],
   ),
-  PatternKeys.flyweight: DesignPattern(
-    id: PatternKeys.flyweight,
+  PK.flyweight: DesignPattern(
+    id: PK.flyweight,
     title: LocalizedString(en: "Flyweight", ar: "وزن الريشة (Flyweight)"),
     description: LocalizedString(
       en: "Shares common state among multiple objects to reduce memory usage",
@@ -3686,15 +3983,11 @@ void main() {
         "التعقيد المفرط للسيناريوهات البسيطة",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.singleton,
-      PatternKeys.objectPool,
-      PatternKeys.composite,
-    ],
-    oftenConfusedWith: [PatternKeys.objectPool],
+    relatedPatterns: [PK.singleton, PK.objectPool, PK.composite],
+    oftenConfusedWith: [PK.objectPool],
   ),
-  PatternKeys.proxy: DesignPattern(
-    id: PatternKeys.proxy,
+  PK.proxy: DesignPattern(
+    id: PK.proxy,
     title: LocalizedString(en: "Proxy", ar: "الوكيل (Proxy)"),
     description: LocalizedString(
       en: "Provides a surrogate or placeholder for another object to control access to it",
@@ -3800,15 +4093,11 @@ void main() {
         "عدم التعامل مع أخطاء تهيئة الوكيل",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.adapter,
-      PatternKeys.decorator,
-      PatternKeys.facade,
-    ],
-    oftenConfusedWith: [PatternKeys.adapter, PatternKeys.decorator],
+    relatedPatterns: [PK.adapter, PK.decorator, PK.facade],
+    oftenConfusedWith: [PK.adapter, PK.decorator],
   ),
-  PatternKeys.wrapper: DesignPattern(
-    id: PatternKeys.wrapper,
+  PK.wrapper: DesignPattern(
+    id: PK.wrapper,
     title: LocalizedString(en: "Wrapper", ar: "الغلاف (Wrapper)"),
     description: LocalizedString(
       en: "A general term for patterns that wrap objects to extend or adapt their behavior",
@@ -3920,15 +4209,11 @@ void main() {
         "نسيان توجيه جميع الطرق الضرورية",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.adapter,
-      PatternKeys.decorator,
-      PatternKeys.proxy,
-    ],
-    oftenConfusedWith: [PatternKeys.decorator],
+    relatedPatterns: [PK.adapter, PK.decorator, PK.proxy],
+    oftenConfusedWith: [PK.decorator],
   ),
-  PatternKeys.dataMapper: DesignPattern(
-    id: PatternKeys.dataMapper,
+  PK.dataMapper: DesignPattern(
+    id: PK.dataMapper,
     title: LocalizedString(
       en: "Data Mapper",
       ar: "مُخطط البيانات (Data Mapper)",
@@ -4043,14 +4328,10 @@ void main() {
         "تجاهل مشاكل استعلام N+1",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.repository,
-      PatternKeys.unitOfWork,
-      PatternKeys.dto,
-    ],
+    relatedPatterns: [PK.repository, PK.unitOfWork, PK.dto],
   ),
-  PatternKeys.dto: DesignPattern(
-    id: PatternKeys.dto,
+  PK.dto: DesignPattern(
+    id: PK.dto,
     title: LocalizedString(
       en: "Data Transfer Object (DTO)",
       ar: "كائن نقل البيانات (DTO)",
@@ -4165,14 +4446,10 @@ void main() {
         "إنشاء DTOs معقدة بشكل مفرط",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.dataMapper,
-      PatternKeys.adapter,
-      PatternKeys.facade,
-    ],
+    relatedPatterns: [PK.dataMapper, PK.adapter, PK.facade],
   ),
-  PatternKeys.extensionObject: DesignPattern(
-    id: PatternKeys.extensionObject,
+  PK.extensionObject: DesignPattern(
+    id: PK.extensionObject,
     title: LocalizedString(
       en: "Extension Object",
       ar: "كائن التوسيع (Extension Object)",
@@ -4287,14 +4564,10 @@ void main() {
         "تجاهل مخاوف أمان الأنواع",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.visitor,
-      PatternKeys.decorator,
-      PatternKeys.plugin,
-    ],
+    relatedPatterns: [PK.visitor, PK.decorator, PK.plugin],
   ),
-  PatternKeys.plugin: DesignPattern(
-    id: PatternKeys.plugin,
+  PK.plugin: DesignPattern(
+    id: PK.plugin,
     title: LocalizedString(en: "Plugin", ar: "الإضافة (Plugin)"),
     description: LocalizedString(
       en: "Allows adding functionality to an application at runtime through loadable modules",
@@ -4406,14 +4679,10 @@ void main() {
         "عقود API إضافة غير واضحة",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.extensionObject,
-      PatternKeys.factoryKit,
-      PatternKeys.abstractFactory,
-    ],
+    relatedPatterns: [PK.extensionObject, PK.factoryKit, PK.abstractFactory],
   ),
-  PatternKeys.chainOfResponsibility: DesignPattern(
-    id: PatternKeys.chainOfResponsibility,
+  PK.chainOfResponsibility: DesignPattern(
+    id: PK.chainOfResponsibility,
     title: LocalizedString(
       en: "Chain of Responsibility",
       ar: "سلسلة المسؤولية (Chain of Responsibility)",
@@ -4688,14 +4957,10 @@ void main() {
         "عدم النظر في ترتيب السلسلة بعناية",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.command,
-      PatternKeys.composite,
-      PatternKeys.decorator,
-    ],
+    relatedPatterns: [PK.command, PK.composite, PK.decorator],
   ),
-  PatternKeys.command: DesignPattern(
-    id: PatternKeys.command,
+  PK.command: DesignPattern(
+    id: PK.command,
     title: LocalizedString(en: "Command", ar: "الأمر (Command)"),
     description: LocalizedString(
       en: "Encapsulates a request as an object, allowing parameterization and queuing",
@@ -4975,14 +5240,10 @@ void main() {
         "الاستخدام عندما تكفي الاستدعاءات البسيطة",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.chainOfResponsibility,
-      PatternKeys.memento,
-      PatternKeys.composite,
-    ],
+    relatedPatterns: [PK.chainOfResponsibility, PK.memento, PK.composite],
   ),
-  PatternKeys.interpreter: DesignPattern(
-    id: PatternKeys.interpreter,
+  PK.interpreter: DesignPattern(
+    id: PK.interpreter,
     title: LocalizedString(en: "Interpreter", ar: "المُفسّر (Interpreter)"),
     description: LocalizedString(
       en: "Defines a grammar and interpreter for a language",
@@ -5226,14 +5487,10 @@ void main() {
         "فصل سيئ بين التحليل والتفسير",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.composite,
-      PatternKeys.flyweight,
-      PatternKeys.iterator,
-    ],
+    relatedPatterns: [PK.composite, PK.flyweight, PK.iterator],
   ),
-  PatternKeys.iterator: DesignPattern(
-    id: PatternKeys.iterator,
+  PK.iterator: DesignPattern(
+    id: PK.iterator,
     title: LocalizedString(en: "Iterator", ar: "المُكرر (Iterator)"),
     description: LocalizedString(
       en: "Provides sequential access to elements without exposing underlying representation",
@@ -5505,14 +5762,10 @@ void main() {
         "عدم التحقق من ()hasNext قبل استدعاء ()next",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.composite,
-      PatternKeys.factoryMethod,
-      PatternKeys.visitor,
-    ],
+    relatedPatterns: [PK.composite, PK.factoryMethod, PK.visitor],
   ),
-  PatternKeys.mediator: DesignPattern(
-    id: PatternKeys.mediator,
+  PK.mediator: DesignPattern(
+    id: PK.mediator,
     title: LocalizedString(en: "Mediator", ar: "الوسيط (Mediator)"),
     description: LocalizedString(
       en: "Defines an object that encapsulates how a set of objects interact",
@@ -5732,14 +5985,10 @@ void main() {
         "الاستخدام عندما يكفي نمط المراقب البسيط",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.facade,
-      PatternKeys.observer,
-      PatternKeys.command,
-    ],
+    relatedPatterns: [PK.facade, PK.observer, PK.command],
   ),
-  PatternKeys.memento: DesignPattern(
-    id: PatternKeys.memento,
+  PK.memento: DesignPattern(
+    id: PK.memento,
     title: LocalizedString(en: "Memento", ar: "التذكار (Memento)"),
     description: LocalizedString(
       en: "Captures and restores an object's internal state without violating encapsulation",
@@ -5993,14 +6242,10 @@ void main() {
         "عدم التعامل مع فشل الاستعادة",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.command,
-      PatternKeys.iterator,
-      PatternKeys.prototype,
-    ],
+    relatedPatterns: [PK.command, PK.iterator, PK.prototype],
   ),
-  PatternKeys.observer: DesignPattern(
-    id: PatternKeys.observer,
+  PK.observer: DesignPattern(
+    id: PK.observer,
     title: LocalizedString(en: "Observer", ar: "المراقب (Observer)"),
     description: LocalizedString(
       en: "Defines a one-to-many dependency so when one object changes state, all dependents are notified",
@@ -6268,14 +6513,10 @@ void main() {
         "عدم النظر في ترتيب الإخطار",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.mediator,
-      PatternKeys.singleton,
-      PatternKeys.command,
-    ],
+    relatedPatterns: [PK.mediator, PK.singleton, PK.command],
   ),
-  PatternKeys.state: DesignPattern(
-    id: PatternKeys.state,
+  PK.state: DesignPattern(
+    id: PK.state,
     title: LocalizedString(en: "State", ar: "الحالة (State)"),
     description: LocalizedString(
       en: "Allows an object to alter its behavior when its internal state changes",
@@ -6557,15 +6798,11 @@ void main() {
         "إنشاء حالات ليست مختلفة حقاً",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.strategy,
-      PatternKeys.singleton,
-      PatternKeys.flyweight,
-    ],
-    oftenConfusedWith: [PatternKeys.strategy],
+    relatedPatterns: [PK.strategy, PK.singleton, PK.flyweight],
+    oftenConfusedWith: [PK.strategy],
   ),
-  PatternKeys.strategy: DesignPattern(
-    id: PatternKeys.strategy,
+  PK.strategy: DesignPattern(
+    id: PK.strategy,
     title: LocalizedString(en: "Strategy", ar: "الاستراتيجية (Strategy)"),
     description: LocalizedString(
       en: "Defines a family of algorithms and makes them interchangeable",
@@ -6813,15 +7050,11 @@ void main() {
         "كشف تفاصيل الاستراتيجية للعملاء",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.state,
-      PatternKeys.bridge,
-      PatternKeys.decorator,
-    ],
-    oftenConfusedWith: [PatternKeys.state],
+    relatedPatterns: [PK.state, PK.bridge, PK.decorator],
+    oftenConfusedWith: [PK.state],
   ),
-  PatternKeys.templateMethod: DesignPattern(
-    id: PatternKeys.templateMethod,
+  PK.templateMethod: DesignPattern(
+    id: PK.templateMethod,
     title: LocalizedString(
       en: "Template Method",
       ar: "طريقة القالب (Template Method)",
@@ -7150,15 +7383,11 @@ void main() {
         "نسيان جعل طريقة القالب نهائية لمنع التجاوز",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.factoryMethod,
-      PatternKeys.strategy,
-      PatternKeys.builder,
-    ],
-    oftenConfusedWith: [PatternKeys.strategy],
+    relatedPatterns: [PK.factoryMethod, PK.strategy, PK.builder],
+    oftenConfusedWith: [PK.strategy],
   ),
-  PatternKeys.visitor: DesignPattern(
-    id: PatternKeys.visitor,
+  PK.visitor: DesignPattern(
+    id: PK.visitor,
     title: LocalizedString(en: "Visitor", ar: "الزائر (Visitor)"),
     description: LocalizedString(
       en: "Separates algorithms from objects they operate on by moving operations into visitor classes",
@@ -7562,14 +7791,10 @@ void main() {
         "نسيان تحديث جميع الزوار عند إضافة عناصر",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.composite,
-      PatternKeys.interpreter,
-      PatternKeys.iterator,
-    ],
+    relatedPatterns: [PK.composite, PK.interpreter, PK.iterator],
   ),
-  PatternKeys.dependencyInjection: DesignPattern(
-    id: PatternKeys.dependencyInjection,
+  PK.dependencyInjection: DesignPattern(
+    id: PK.dependencyInjection,
     title: LocalizedString(
       en: "Dependency Injection",
       ar: "حقن الاعتمادية (Dependency Injection)",
@@ -7684,14 +7909,10 @@ void main() {
         "حقن تبعيات كثيرة جداً (رائحة كود)",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.factoryMethod,
-      PatternKeys.serviceLocator,
-      PatternKeys.singleton,
-    ],
+    relatedPatterns: [PK.factoryMethod, PK.serviceLocator, PK.singleton],
   ),
-  PatternKeys.serviceLocator: DesignPattern(
-    id: PatternKeys.serviceLocator,
+  PK.serviceLocator: DesignPattern(
+    id: PK.serviceLocator,
     title: LocalizedString(
       en: "Service Locator",
       ar: "موقع الخدمة (Service Locator)",
@@ -7808,14 +8029,10 @@ void main() {
         "جعله معقداً جداً",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.dependencyInjection,
-      PatternKeys.singleton,
-      PatternKeys.factoryMethod,
-    ],
+    relatedPatterns: [PK.dependencyInjection, PK.singleton, PK.factoryMethod],
   ),
-  PatternKeys.repository: DesignPattern(
-    id: PatternKeys.repository,
+  PK.repository: DesignPattern(
+    id: PK.repository,
     title: LocalizedString(en: "Repository", ar: "المستودع (Repository)"),
     description: LocalizedString(
       en: "Mediates between domain and data layers using a collection-like interface",
@@ -7927,14 +8144,10 @@ void main() {
         "عدم النظر في آثار الأداء",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.dataMapper,
-      PatternKeys.unitOfWork,
-      PatternKeys.specification,
-    ],
+    relatedPatterns: [PK.dataMapper, PK.unitOfWork, PK.specification],
   ),
-  PatternKeys.unitOfWork: DesignPattern(
-    id: PatternKeys.unitOfWork,
+  PK.unitOfWork: DesignPattern(
+    id: PK.unitOfWork,
     title: LocalizedString(en: "Unit of Work", ar: "وحدة العمل (Unit of Work)"),
     description: LocalizedString(
       en: "Maintains a list of changes and coordinates writing them to the database",
@@ -8046,14 +8259,10 @@ void main() {
         "الاستخدام عندما تكفي طرق أبسط",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.repository,
-      PatternKeys.dataMapper,
-      PatternKeys.memento,
-    ],
+    relatedPatterns: [PK.repository, PK.dataMapper, PK.memento],
   ),
-  PatternKeys.specification: DesignPattern(
-    id: PatternKeys.specification,
+  PK.specification: DesignPattern(
+    id: PK.specification,
     title: LocalizedString(en: "Specification", ar: "المواصفة (Specification)"),
     description: LocalizedString(
       en: "Encapsulates business rules as reusable and combinable objects",
@@ -8165,14 +8374,10 @@ void main() {
         "خلط المواصفة مع منطق الاستعلام",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.repository,
-      PatternKeys.strategy,
-      PatternKeys.composite,
-    ],
+    relatedPatterns: [PK.repository, PK.strategy, PK.composite],
   ),
-  PatternKeys.policy: DesignPattern(
-    id: PatternKeys.policy,
+  PK.policy: DesignPattern(
+    id: PK.policy,
     title: LocalizedString(en: "Policy", ar: "السياسة (Policy)"),
     description: LocalizedString(
       en: "Encapsulates business policies as pluggable strategy objects",
@@ -8284,14 +8489,10 @@ void main() {
         "ترميز اختيار السياسة بشكل ثابت",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.strategy,
-      PatternKeys.specification,
-      PatternKeys.chainOfResponsibility,
-    ],
+    relatedPatterns: [PK.strategy, PK.specification, PK.chainOfResponsibility],
   ),
-  PatternKeys.mvc: DesignPattern(
-    id: PatternKeys.mvc,
+  PK.mvc: DesignPattern(
+    id: PK.mvc,
     title: LocalizedString(
       en: "MVC (Model-View-Controller)",
       ar: "MVC (نموذج-عرض-متحكم)",
@@ -8369,10 +8570,10 @@ void main() {
       en: ["Putting logic in views", "Fat controllers", "Tight coupling"],
       ar: ["وضع المنطق في العروض", "متحكمات سمينة", "اقتران وثيق"],
     ),
-    relatedPatterns: [PatternKeys.mvp, PatternKeys.mvvm, PatternKeys.observer],
+    relatedPatterns: [PK.mvp, PK.mvvm, PK.observer],
   ),
-  PatternKeys.mvp: DesignPattern(
-    id: PatternKeys.mvp,
+  PK.mvp: DesignPattern(
+    id: PK.mvp,
     title: LocalizedString(
       en: "MVP (Model-View-Presenter)",
       ar: "MVP (نموذج-عرض-مقدم)",
@@ -8452,10 +8653,10 @@ void main() {
       ],
       ar: ["العرض يعرف عن النموذج", "المقدم يفعل الكثير", "تسريبات ذاكرة"],
     ),
-    relatedPatterns: [PatternKeys.mvc, PatternKeys.mvvm, PatternKeys.mediator],
+    relatedPatterns: [PK.mvc, PK.mvvm, PK.mediator],
   ),
-  PatternKeys.mvvm: DesignPattern(
-    id: PatternKeys.mvvm,
+  PK.mvvm: DesignPattern(
+    id: PK.mvvm,
     title: LocalizedString(
       en: "MVVM (Model-View-ViewModel)",
       ar: "MVVM (نموذج-عرض-نموذج العرض)",
@@ -8541,10 +8742,10 @@ void main() {
       en: ["Logic in View", "Fat ViewModels", "Breaking data binding"],
       ar: ["المنطق في العرض", "نماذج عرض سمينة", "كسر ربط البيانات"],
     ),
-    relatedPatterns: [PatternKeys.mvc, PatternKeys.mvp, PatternKeys.observer],
+    relatedPatterns: [PK.mvc, PK.mvp, PK.observer],
   ),
-  PatternKeys.mvu: DesignPattern(
-    id: PatternKeys.mvu,
+  PK.mvu: DesignPattern(
+    id: PK.mvu,
     title: LocalizedString(
       en: "MVU (Model-View-Update)",
       ar: "MVU (نموذج-عرض-تحديث)",
@@ -8634,14 +8835,10 @@ void main() {
         "عدم استخدام الرسائل",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.redux,
-      PatternKeys.unidirectionalDataFlow,
-      PatternKeys.command,
-    ],
+    relatedPatterns: [PK.redux, PK.unidirectionalDataFlow, PK.command],
   ),
-  PatternKeys.cleanArchitecture: DesignPattern(
-    id: PatternKeys.cleanArchitecture,
+  PK.cleanArchitecture: DesignPattern(
+    id: PK.cleanArchitecture,
     title: LocalizedString(
       en: "Clean Architecture",
       ar: "المعمارية النظيفة (Clean Architecture)",
@@ -8737,13 +8934,13 @@ void main() {
       ar: ["التبعيات تشير بالاتجاه الخاطئ", "طبقات كثيرة جداً", "هندسة مفرطة"],
     ),
     relatedPatterns: [
-      PatternKeys.hexagonal,
-      PatternKeys.layeredArchitecture,
-      PatternKeys.dependencyInjection,
+      PK.hexagonal,
+      PK.layeredArchitecture,
+      PK.dependencyInjection,
     ],
   ),
-  PatternKeys.hexagonal: DesignPattern(
-    id: PatternKeys.hexagonal,
+  PK.hexagonal: DesignPattern(
+    id: PK.hexagonal,
     title: LocalizedString(
       en: "Hexagonal Architecture (Ports and Adapters)",
       ar: "المعمارية السداسية (المنافذ والمحولات)",
@@ -8819,14 +9016,10 @@ void main() {
       en: ["Confusing with layered", "Too many ports", "Leaking details"],
       ar: ["الخلط مع الطبقات", "منافذ كثيرة جداً", "تسريب التفاصيل"],
     ),
-    relatedPatterns: [
-      PatternKeys.cleanArchitecture,
-      PatternKeys.adapter,
-      PatternKeys.dependencyInjection,
-    ],
+    relatedPatterns: [PK.cleanArchitecture, PK.adapter, PK.dependencyInjection],
   ),
-  PatternKeys.layeredArchitecture: DesignPattern(
-    id: PatternKeys.layeredArchitecture,
+  PK.layeredArchitecture: DesignPattern(
+    id: PK.layeredArchitecture,
     title: LocalizedString(
       en: "Layered Architecture",
       ar: "المعمارية الطبقية (Layered Architecture)",
@@ -8902,14 +9095,10 @@ void main() {
       en: ["Skipping layers", "Circular dependencies", "Fat layers"],
       ar: ["تخطي الطبقات", "تبعيات دائرية", "طبقات سمينة"],
     ),
-    relatedPatterns: [
-      PatternKeys.cleanArchitecture,
-      PatternKeys.mvc,
-      PatternKeys.facade,
-    ],
+    relatedPatterns: [PK.cleanArchitecture, PK.mvc, PK.facade],
   ),
-  PatternKeys.modularMonolith: DesignPattern(
-    id: PatternKeys.modularMonolith,
+  PK.modularMonolith: DesignPattern(
+    id: PK.modularMonolith,
     title: LocalizedString(
       en: "Modular Monolith",
       ar: "المتراص المعياري (Modular Monolith)",
@@ -9052,13 +9241,13 @@ void main() {
       ],
     ),
     relatedPatterns: [
-      PatternKeys.microservices,
-      PatternKeys.layeredArchitecture,
-      PatternKeys.cleanArchitecture,
+      PK.microservices,
+      PK.layeredArchitecture,
+      PK.cleanArchitecture,
     ],
   ),
-  PatternKeys.microservices: DesignPattern(
-    id: PatternKeys.microservices,
+  PK.microservices: DesignPattern(
+    id: PK.microservices,
     title: LocalizedString(
       en: "Microservices",
       ar: "الخدمات المصغرة (Microservices)",
@@ -9212,14 +9401,10 @@ void main() {
         "التقليل من التعقيد التشغيلي",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.modularMonolith,
-      PatternKeys.cqrs,
-      PatternKeys.eventSourcing,
-    ],
+    relatedPatterns: [PK.modularMonolith, PK.cqrs, PK.eventSourcing],
   ),
-  PatternKeys.cqrs: DesignPattern(
-    id: PatternKeys.cqrs,
+  PK.cqrs: DesignPattern(
+    id: PK.cqrs,
     title: LocalizedString(
       en: "CQRS (Command Query Responsibility Segregation)",
       ar: "CQRS (فصل مسؤولية الأوامر والاستعلامات)",
@@ -9365,14 +9550,10 @@ void main() {
         "تجاهل التعقيد الذي يُدخله",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.eventSourcing,
-      PatternKeys.command,
-      PatternKeys.repository,
-    ],
+    relatedPatterns: [PK.eventSourcing, PK.command, PK.repository],
   ),
-  PatternKeys.eventSourcing: DesignPattern(
-    id: PatternKeys.eventSourcing,
+  PK.eventSourcing: DesignPattern(
+    id: PK.eventSourcing,
     title: LocalizedString(
       en: "Event Sourcing",
       ar: "مصادر الأحداث (Event Sourcing)",
@@ -9522,14 +9703,10 @@ void main() {
         "تجاهل التعقيد لحالات الاستخدام البسيطة",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.cqrs,
-      PatternKeys.memento,
-      PatternKeys.command,
-    ],
+    relatedPatterns: [PK.cqrs, PK.memento, PK.command],
   ),
-  PatternKeys.bloc: DesignPattern(
-    id: PatternKeys.bloc,
+  PK.bloc: DesignPattern(
+    id: PK.bloc,
     title: LocalizedString(
       en: "BLoC (Business Logic Component)",
       ar: "BLoC (مكون منطق العمل)",
@@ -9665,14 +9842,10 @@ void main() {
         "التعقيد المفرط لتسلسلات الأحداث/الحالة",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.cubit,
-      PatternKeys.redux,
-      PatternKeys.observer,
-    ],
+    relatedPatterns: [PK.cubit, PK.redux, PK.observer],
   ),
-  PatternKeys.cubit: DesignPattern(
-    id: PatternKeys.cubit,
+  PK.cubit: DesignPattern(
+    id: PK.cubit,
     title: LocalizedString(en: "Cubit", ar: "Cubit"),
     description: LocalizedString(
       en: "Simplified BLoC that exposes functions instead of events",
@@ -9789,14 +9962,10 @@ void main() {
         "الاستخدام عندما تكون قابلية تتبع أحداث BLoC مطلوبة",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.bloc,
-      PatternKeys.provider,
-      PatternKeys.stateNotifier,
-    ],
+    relatedPatterns: [PK.bloc, PK.provider, PK.stateNotifier],
   ),
-  PatternKeys.provider: DesignPattern(
-    id: PatternKeys.provider,
+  PK.provider: DesignPattern(
+    id: PK.provider,
     title: LocalizedString(en: "Provider", ar: "Provider"),
     description: LocalizedString(
       en: "Dependency injection and state management using InheritedWidget",
@@ -9921,14 +10090,10 @@ void main() {
         "عدم التخلص من الموفرين بشكل صحيح",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.dependencyInjection,
-      PatternKeys.observer,
-      PatternKeys.cubit,
-    ],
+    relatedPatterns: [PK.dependencyInjection, PK.observer, PK.cubit],
   ),
-  PatternKeys.stateNotifier: DesignPattern(
-    id: PatternKeys.stateNotifier,
+  PK.stateNotifier: DesignPattern(
+    id: PK.stateNotifier,
     title: LocalizedString(en: "StateNotifier", ar: "StateNotifier"),
     description: LocalizedString(
       en: "Immutable state management with StateNotifier and Riverpod",
@@ -10047,14 +10212,10 @@ void main() {
         "عدم الاستفادة من توليد الكود",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.cubit,
-      PatternKeys.provider,
-      PatternKeys.redux,
-    ],
+    relatedPatterns: [PK.cubit, PK.provider, PK.redux],
   ),
-  PatternKeys.redux: DesignPattern(
-    id: PatternKeys.redux,
+  PK.redux: DesignPattern(
+    id: PK.redux,
     title: LocalizedString(en: "Redux", ar: "Redux"),
     description: LocalizedString(
       en: "Predictable state container with unidirectional data flow",
@@ -10179,14 +10340,10 @@ void main() {
         "عدم استخدام المحددات",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.bloc,
-      PatternKeys.mvu,
-      PatternKeys.unidirectionalDataFlow,
-    ],
+    relatedPatterns: [PK.bloc, PK.mvu, PK.unidirectionalDataFlow],
   ),
-  PatternKeys.unidirectionalDataFlow: DesignPattern(
-    id: PatternKeys.unidirectionalDataFlow,
+  PK.unidirectionalDataFlow: DesignPattern(
+    id: PK.unidirectionalDataFlow,
     title: LocalizedString(
       en: "Unidirectional Data Flow",
       ar: "تدفق البيانات أحادي الاتجاه",
@@ -10304,10 +10461,10 @@ void main() {
         "التعقيد المفرط للحالات البسيطة",
       ],
     ),
-    relatedPatterns: [PatternKeys.redux, PatternKeys.bloc, PatternKeys.mvu],
+    relatedPatterns: [PK.redux, PK.bloc, PK.mvu],
   ),
-  PatternKeys.featureFirstStructure: DesignPattern(
-    id: PatternKeys.featureFirstStructure,
+  PK.featureFirstStructure: DesignPattern(
+    id: PK.featureFirstStructure,
     title: LocalizedString(
       en: "Feature-First Structure",
       ar: "بنية الميزة أولاً",
@@ -10405,13 +10562,10 @@ void main() {
         "حدود ميزة غير واضحة",
       ],
     ),
-    relatedPatterns: [
-      PatternKeys.presentationDomainData,
-      PatternKeys.modularMonolith,
-    ],
+    relatedPatterns: [PK.presentationDomainData, PK.modularMonolith],
   ),
-  PatternKeys.presentationDomainData: DesignPattern(
-    id: PatternKeys.presentationDomainData,
+  PK.presentationDomainData: DesignPattern(
+    id: PK.presentationDomainData,
     title: LocalizedString(
       en: "Presentation-Domain-Data (Layer-First)",
       ar: "العرض-المجال-البيانات (الطبقة أولاً)",
@@ -10503,9 +10657,6 @@ void main() {
       en: ["Mixing layers", "Unclear dependencies", "Over-abstracting"],
       ar: ["خلط الطبقات", "تبعيات غير واضحة", "التجريد المفرط"],
     ),
-    relatedPatterns: [
-      PatternKeys.cleanArchitecture,
-      PatternKeys.featureFirstStructure,
-    ],
+    relatedPatterns: [PK.cleanArchitecture, PK.featureFirstStructure],
   ),
 };

@@ -106,12 +106,13 @@
     "stateManagementPattern": "نمط إدارة الحالة",
     "uiPattern": "نمط واجهة المستخدم (UI)",
     "projectStructurePattern": "نمط هيكلة المشروع",
-    "creationalPattern": "نمط الإنشاء (Creational)",
-    "structuralPattern": "نمط التركيب (Structural)",
-    "behavioralPattern": "نمط السلوك (Behavioral)",
+    "creationalPattern": "نمط إنشائي (Creational)",
+    "structuralPattern": "نمط هيكلي / تركيبي (Structural)",
+    "behavioralPattern": "نمط سلوكي (Behavioral)",
     "relatedPatterns": "أنماط متعلقة",
     "oftenConfusedWith": "غالباً ما يخطلت الأمر مع",
     "termNotFound": "المصطلح غير موجود",
+    "bookmarks": "المحفوظات",
 
     
   "termTypeConcept": "مفهوم",
@@ -171,5 +172,14 @@
   "popularityTierNiche": "متخصصة",
 
   "aliases": "أسماء بديلة",
-  "relatedTerms": "مصطلحات ذات صلة"
+  "relatedTerms": "مصطلحات ذات صلة",
+
+  "patternBeginnerLevel": "مبتدئ",
+  "patternIntermediateLevel": "متوسط",
+  "patternAdvancedLevel": "متقدم",
+  "patterns": "الأنماط",
+  "viewDetails": "عرض التفاصيل",
+  "keyCharacteristics": "المميزات الرئيسية",
+  "commonUseCases": "الاستخدامات الشائعة",
+  "realWorldExamples": "الإسهامات الحقيقية" 
 }

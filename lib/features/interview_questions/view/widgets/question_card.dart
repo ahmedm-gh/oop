@@ -22,7 +22,7 @@ class QuestionCard extends StatelessWidget {
 
     return Card(
       child: InkWell(
-        borderRadius: .circular(16),
+        // borderRadius: .circular(16),
         onTap: () {
           Navigator.pushNamed(
             context,
@@ -67,7 +67,7 @@ class QuestionCard extends StatelessWidget {
                       return state.bookmarkedQuestions.contains(question.id);
                     },
                     builder: (context, selected) {
-                      return BookmarkIconButton.compact(
+                      return BookmarkIconButton(
                         isActive: selected,
                         onPressed: () {
                           context.read<QuestionsCubit>().toggleBookmark(

@@ -22,7 +22,6 @@ class TermCard extends StatelessWidget {
 
     return Card(
       child: InkWell(
-        borderRadius: DL.inListCardBorderRadius,
         onTap: () {
           Navigator.pushNamed(
             context,
@@ -34,7 +33,7 @@ class TermCard extends StatelessWidget {
           padding: DL.inListCardPadding,
           child: Column(
             crossAxisAlignment: .start,
-            spacing: DL.compactSeparatorHeight,
+            spacing: DL.compactListSeparatorHeight,
             children: [
               Row(
                 crossAxisAlignment: .start,
@@ -83,7 +82,7 @@ class TermCard extends StatelessWidget {
                       return state.bookmarkedTerms.contains(term.id);
                     },
                     builder: (context, selected) {
-                      return BookmarkIconButton.compact(
+                      return BookmarkIconButton(
                         isActive: selected,
                         onPressed: () {
                           context.read<TermsCubit>().toggleBookmark(term.id);

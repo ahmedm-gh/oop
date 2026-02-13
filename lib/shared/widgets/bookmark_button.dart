@@ -9,6 +9,19 @@ class BookmarkIconButton extends StatelessWidget {
     this.tooltip,
     this.compact = false,
     super.key,
+    this.icon = const Icon(Icons.bookmark_outline_rounded),
+    this.activeIcon = const Icon(Icons.bookmark_rounded),
+  });
+
+  const BookmarkIconButton.bookmarks({
+    required this.onPressed,
+    this.isActive = false,
+    this.animated = false,
+    this.tooltip,
+    this.compact = false,
+    super.key,
+    this.icon = const Icon(Icons.bookmarks_outlined),
+    this.activeIcon = const Icon(Icons.bookmarks_rounded),
   });
 
   const BookmarkIconButton.compact({
@@ -17,7 +30,20 @@ class BookmarkIconButton extends StatelessWidget {
     this.animated = false,
     this.tooltip,
     super.key,
+    this.icon = const Icon(Icons.bookmark_outline_rounded),
+    this.activeIcon = const Icon(Icons.bookmark_rounded),
   }) : compact = true;
+
+  const BookmarkIconButton.bookmarksCompact({
+    required this.onPressed,
+    this.isActive = false,
+    this.animated = false,
+    this.tooltip,
+    super.key,
+    this.icon = const Icon(Icons.bookmarks_outlined),
+    this.activeIcon = const Icon(Icons.bookmarks_rounded),
+    this.compact = false,
+  });
 
   final VoidCallback? onPressed;
   final bool isActive;
@@ -25,15 +51,16 @@ class BookmarkIconButton extends StatelessWidget {
   final String? tooltip;
   final bool compact;
 
+  final Widget icon;
+  final Widget activeIcon;
+
   @override
   Widget build(BuildContext context) {
     final colors = context.colorScheme;
 
-    final icon = Icon(
-      key: ValueKey(isActive),
-      isActive ? Icons.bookmark_rounded : Icons.bookmark_outline_rounded,
-      color: isActive ? colors.primary : colors.onSurfaceVariant,
-    );
+    final fIcon = isActive
+        ? KeyedSubtree(key: const ValueKey(1), child: activeIcon)
+        : KeyedSubtree(key: const ValueKey(0), child: icon);
 
     return IconButton(
       tooltip: tooltip,
@@ -50,9 +77,9 @@ class BookmarkIconButton extends StatelessWidget {
       icon: animated
           ? AnimatedSwitcher(
               duration: const Duration(milliseconds: 200),
-              child: icon,
+              child: fIcon,
             )
-          : icon,
+          : fIcon,
     );
   }
 }

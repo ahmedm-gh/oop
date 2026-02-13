@@ -3,9 +3,9 @@ import "package:tuts/core/extensions/extensions.dart";
 import "package:tuts/shared/app_widgets.dart";
 import "package:tuts/shared/design_layouts.dart";
 
-import "../../core/models/design_patterns.dart";
-import "../../core/services/routes.dart";
-import "../../data/design_patterns.dart";
+import "../../../core/models/design_patterns.dart";
+import "../../../core/services/routes.dart";
+import "../../../data/design_patterns.dart";
 
 class PatternDetailsScreenArguments {
   const PatternDetailsScreenArguments({required this.pattern});
@@ -28,6 +28,27 @@ class PatternDetailsScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: Text(pattern.getLocalizedTitle(l10n.localeName)),
+          // actions: [
+          //   BlocBuilder<DesignPatternsCubit, DesignPatternsState>(
+          //     builder: (context, state) {
+          //       final isBookmarked = state.bookmarkedIds.contains(pattern.id);
+          //       return IconButton(
+          //         onPressed: () {
+          //           context.read<DesignPatternsCubit>().toggleBookmark(
+          //             pattern.id,
+          //           );
+          //         },
+          //         icon: Icon(
+          //           isBookmarked
+          //               ? Icons.bookmark_rounded
+          //               : Icons.bookmark_outline_rounded,
+          //           color: isBookmarked ? colors.primary : null,
+          //         ),
+          //       );
+          //     },
+          //   ),
+          //   const SizedBox(width: 8),
+          // ],
         ),
         body: SingleChildScrollView(
           padding: DL.listPadding,
@@ -35,13 +56,6 @@ class PatternDetailsScreen extends StatelessWidget {
             crossAxisAlignment: .stretch,
             spacing: DL.listSeparatorHeight,
             children: [
-              // MISSING
-              // - id
-              // - group
-              // - category
-              // - level
-              // - type
-
               // Question type and categories
               Column(
                 crossAxisAlignment: .start,

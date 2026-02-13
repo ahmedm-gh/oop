@@ -337,13 +337,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get projectStructurePattern => 'نمط هيكلة المشروع';
 
   @override
-  String get creationalPattern => 'نمط الإنشاء (Creational)';
+  String get creationalPattern => 'نمط إنشائي (Creational)';
 
   @override
-  String get structuralPattern => 'نمط التركيب (Structural)';
+  String get structuralPattern => 'نمط هيكلي / تركيبي (Structural)';
 
   @override
-  String get behavioralPattern => 'نمط السلوك (Behavioral)';
+  String get behavioralPattern => 'نمط سلوكي (Behavioral)';
 
   @override
   String get relatedPatterns => 'أنماط متعلقة';
@@ -353,6 +353,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get termNotFound => 'المصطلح غير موجود';
+
+  @override
+  String get bookmarks => 'المحفوظات';
 
   @override
   String get termTypeLanguage => 'لغة';
@@ -515,4 +518,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get relatedTerms => 'مصطلحات ذات صلة';
+
+  @override
+  String get patternBeginnerLevel => 'مبتدئ';
+
+  @override
+  String get patternIntermediateLevel => 'متوسط';
+
+  @override
+  String get patternAdvancedLevel => 'متقدم';
+
+  @override
+  String get patterns => 'الأنماط';
+
+  @override
+  String get viewDetails => 'عرض التفاصيل';
+
+  @override
+  String get keyCharacteristics => 'المميزات الرئيسية';
+
+  @override
+  String get commonUseCases => 'الاستخدامات الشائعة';
+
+  @override
+  String get realWorldExamples => 'الإسهامات الحقيقية';
 }

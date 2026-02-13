@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:tuts/core/extensions/extensions.dart";
 import "package:tuts/core/services/routes.dart";
-import "package:tuts/features/design_patterns/design_patterns_screen.dart";
 
 import "widgets/home_button.dart";
 
@@ -191,11 +190,9 @@ class HomeScreen extends StatelessWidget {
                 title: l10n.designPatterns,
                 icon: const Icon(Icons.architecture_rounded),
                 color: colors.primary,
-                onTap: () => Navigator.push(
+                onTap: () => Navigator.pushNamed(
                   context,
-                  MaterialPageRoute<void>(
-                    builder: (_) => const DesignPatternsScreen(),
-                  ),
+                  Routes.designPatternCategoriesScreen,
                 ),
               ),
               HomeMenuCard(

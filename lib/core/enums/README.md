@@ -4,17 +4,20 @@ This directory contains the various enums used throughout the application for ca
 
 ## List of Enums and Values
 
-**DifficultyLevel**: Challenge levels for questions.
+### DifficultyLevel:
+*Challenge levels for questions.*
   * `basic`
   * `intermediate`
   * `advanced`
   * `expert`
 
-**QuestionType**: Classifies questions.
+### QuestionType:
+*Classifies questions.*
   * `theoretical`
   * `practical`
 
-**QuestionCategory**: Domains for interview questions.
+### QuestionCategory:
+*Domains for interview questions.*
   * `basic`
   * `security`
   * `oop`
@@ -35,19 +38,23 @@ This directory contains the various enums used throughout the application for ca
   * `modernFeatures`
   * `deployment`
 
-**Era**: Historical context of terms.
+### Era:
+Historical context of terms.
   * `classic`
   * `modern`
   * `emerging`
 
-**PopularityTier**: Usage prevalence.
+### PopularityTier:
+*Usage prevalence.*
   * `veryHigh`
   * `high`
   * `medium`
   * `low`
   * `niche`
 
-**TermType**: Nature of programming terms.
+### TermType:
+*Nature of programming terms.*
+  * `language`
   * `concept`
   * `paradigm`
   * `pattern`
@@ -66,7 +73,8 @@ This directory contains the various enums used throughout the application for ca
   * `methodology`
   * `designSystem`
 
-**TermCategory**: Domain classification for programming terms.
+### TermCategory:
+*Domain classification for programming terms.*
   * `fundamentals`
   * `oop`
   * `functionalProgramming`
@@ -90,9 +98,11 @@ This directory contains the various enums used throughout the application for ca
   * `compilerInternals`
   * `versionControl`
   * `cloud`
+  * `nativePlatform`
   * `artificialIntelligence`
 
-**ProgrammingLanguage**: Supported technologies.
+### ProgrammingLanguage:
+*Supported technologies.*
   * `dart`
   * `flutter`
   * `java`
@@ -112,5 +122,10 @@ This directory contains the various enums used throughout the application for ca
   * `scala`
   * `haskell`
   * `sql`
+  * `react`
+  * `angular`
+  * `web`
+  * `android`
+  * `ios`
   * `html`
   * `css`

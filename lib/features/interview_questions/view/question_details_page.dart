@@ -85,7 +85,7 @@ class QuestionDetailsScreen extends StatelessWidget {
               ),
               child: Column(
                 crossAxisAlignment: .stretch,
-                spacing: DL.compactSeparatorHeight,
+                spacing: DL.compactListSeparatorHeight,
                 children: [
                   Text(
                     l10n.answer,

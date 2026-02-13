@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tuts/features/programming_terms/controller/cubit/terms_cubit.dart';
 import 'package:tuts/features/programming_terms/view/widgets/term_card.dart';
+import 'package:tuts/features/programming_terms/view/widgets/term_cards_wrapper.dart';
 import 'package:tuts/shared/app_widgets.dart';
 
 import '../../../core/enums/term_enums.dart';
@@ -45,7 +46,7 @@ class ProgrammingTermsScreen extends StatelessWidget {
                 BlocSelector<TermsCubit, TermsState, bool>(
                   selector: (state) => state.onlyBookmarked,
                   builder: (context, onlyBookmarked) {
-                    return BookmarkIconButton(
+                    return BookmarkIconButton.bookmarks(
                       tooltip: l10n.onlyBookmarked,
                       onPressed: cubit.toggleOnlyBookmarked,
                       isActive: onlyBookmarked,
@@ -102,53 +103,51 @@ class ProgrammingTermsScreen extends StatelessWidget {
 
           const LiteDivider(),
 
-          // Terms list
-          Expanded(
-            child: BlocSelector<TermsCubit, TermsState, bool>(
-              selector: (state) => state.terms.isEmpty,
-              builder: (context, isEmpty) {
-                if (isEmpty) {
-                  return Center(child: Text(l10n.noResults));
-                }
-
-                return CardTheme(
-                  elevation: 0,
-                  color: colors.surfaceContainerLow,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: DL.inListCardBorderRadius,
-                    side: BorderSide(
-                      color: colors.outlineVariant.withValues(alpha: 0.35),
-                    ),
-                  ),
-                  child:
-                      BlocSelector<
-                        TermsCubit,
-                        TermsState,
-                        Map<String, ProgrammingTerm>
-                      >(
-                        selector: (state) => state.terms,
-                        builder: (context, terms) {
-                          return ListView.separated(
-                            padding: DL.listPadding,
-                            itemBuilder: (context, index) {
-                              final term = terms.entries.elementAt(index);
-                              return TermCard(term: term.value);
-                            },
-                            separatorBuilder: (context, index) {
-                              return const SizedBox(
-                                height: DL.listSeparatorHeight,
-                              );
-                            },
-                            itemCount: terms.length,
-                          );
-                        },
-                      ),
-                );
-              },
-            ),
-          ),
+          const Expanded(child: _TermsList()),
         ],
       ),
+    );
+  }
+}
+
+class _TermsList extends StatelessWidget {
+  const _TermsList();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
+    return BlocSelector<TermsCubit, TermsState, bool>(
+      selector: (state) => state.terms.isEmpty,
+      builder: (context, isEmpty) {
+        if (isEmpty) {
+          return Center(child: Text(l10n.noResults));
+        }
+
+        return TermCardsWrapper(
+          child:
+              BlocSelector<
+                TermsCubit,
+                TermsState,
+                Map<String, ProgrammingTerm>
+              >(
+                selector: (state) => state.terms,
+                builder: (context, terms) {
+                  return ListView.separated(
+                    padding: DL.listPadding,
+                    itemBuilder: (context, index) {
+                      final term = terms.entries.elementAt(index);
+                      return TermCard(term: term.value);
+                    },
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(height: DL.listSeparatorHeight);
+                    },
+                    itemCount: terms.length,
+                  );
+                },
+              ),
+        );
+      },
     );
   }
 }
