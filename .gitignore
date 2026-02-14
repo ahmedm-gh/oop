@@ -43,3 +43,32 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Web/Node related
+node_modules/
+
+# Flutter
+build/
+.dart_tool/
+.packages
+.pub/
+.pub-cache/
+
+# IDE
+.vscode/
+.idea/
+
+# Firebase
+.firebase/
+.firebaserc
+
+# Google services
+
+google-services.json
+GoogleService-Info.plist
+**/google-services.json
+**/GoogleService-Info.plist
+
+# OS
+.DS_Store
+Thumbs.db
