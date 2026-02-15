@@ -15,8 +15,10 @@ class ContentViewer extends StatelessWidget {
     final textTheme = context.textTheme;
 
     return switch (content) {
+      // KEEP
       final StrContent value => Text(value.value),
 
+      // KEEP
       final ListContent value => Column(
         crossAxisAlignment: .stretch,
         spacing: 7.5,
@@ -34,18 +36,23 @@ class ContentViewer extends StatelessWidget {
         ],
       ),
 
+      // KEEP
       final CodeContent value => CodeBlockViewer.fromStrCodeBlock(value.code),
 
+      // UPDATE THIS ONE
       final NoteContent value => _buildNote(value, colors, textTheme),
 
+      // UPDATE THIS ONE
       final AnalogyContent value => _buildAnalogy(value, colors, textTheme),
 
+      // UPDATE THIS ONE
       final ComparisonContent value => _buildComparison(
         value,
         colors,
         textTheme,
       ),
 
+      // UPDATE THIS ONE
       final DiagramContent value => _buildDiagram(value, colors, textTheme),
     };
   }

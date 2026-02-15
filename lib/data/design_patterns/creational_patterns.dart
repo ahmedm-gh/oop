@@ -3138,4 +3138,2189 @@ void main() {
     relatedPatterns: [PK.abstractFactory, PK.composite, PK.singleton],
     oftenConfusedWith: [PK.factoryMethod],
   ),
+  PK.prototype: DesignPattern(
+    id: PK.prototype,
+    title: LocS(en: "Prototype", ar: "النموذج الأولي (Prototype)"),
+    description: LocS(
+      en: "Creates new objects by copying existing instances, avoiding dependency on concrete classes",
+      ar: "ينشئ كائنات جديدة من خلال نسخ نماذج موجودة (Cloning)، متجنباً الاعتماد على الفئات المحددة",
+    ),
+    group: .design,
+    type: .creational,
+    category: .GoF,
+    level: .intermediate,
+    content: LocV(
+      en: [
+        StrContent(
+          "The Prototype pattern creates new objects by cloning existing ones rather than constructing them from scratch. This is particularly valuable when object creation is expensive, complex, or you need copies that preserve state.",
+        ),
+        AnalogyContent(
+          "Think of a photocopier. Instead of rewriting a document from scratch, you place the original on the copier and press a button. The copier creates an exact duplicate in seconds. Similarly, Prototype clones objects instantly, preserving all their configured state.",
+        ),
+        StrContent(
+          "Instead of using constructors and the 'new' keyword, you call a clone() method on a prototype instance. This approach decouples your code from concrete classes - you don't need to know the exact type to create a copy.",
+        ),
+        ULContent(
+          title: "Key Components:",
+          value: [
+            "Prototype: Declares a cloning interface (typically a clone() or copy() method)",
+            "ConcretePrototype: Implements the cloning method to create a copy of itself",
+            "Client: Creates new objects by asking prototypes to clone themselves",
+            "PrototypeRegistry (optional): Maintains a catalog of frequently cloned objects",
+          ],
+        ),
+        DiagramContent(
+          "Pattern Flow:\nClient → Prototype.clone() → New Object (copy)\n         ↓\n   ConcretePrototype\n   (with all state)",
+        ),
+        StrContent(
+          "The pattern is especially useful when object creation involves expensive operations like database queries, file I/O, or complex calculations. Cloning can be orders of magnitude faster.",
+        ),
+        NoteContent(
+          "Shallow vs Deep Copy: Shallow copy duplicates the object but references the same nested objects. Deep copy recursively duplicates everything. Choose based on whether clones should share nested data.",
+          type: .important,
+        ),
+        StrContent(
+          "In Dart, this is commonly implemented using copy constructors, factory constructors (copyWith pattern), or explicit clone methods. Dart doesn't have built-in cloning like some languages, so you implement it explicitly.",
+        ),
+        NoteContent(
+          "In Flutter, the copyWith pattern is everywhere: TextStyle, ThemeData, EdgeInsets, etc. This is Prototype pattern in action!",
+          type: .tip,
+        ),
+        StrContent(
+          "Common use cases: creating game entities with default configurations, cloning complex UI state, duplicating document templates, managing object pools, and implementing undo/redo functionality.",
+        ),
+      ],
+      ar: [
+        StrContent(
+          "نمط النموذج الأولي (Prototype) ينشئ كائنات جديدة من خلال استنساخ (Cloning) كائنات موجودة بدلاً من بنائها من الصفر. هذا ذو قيمة خاصة عندما يكون إنشاء الكائن مكلفاً، معقداً، أو تحتاج نسخاً تحافظ على الحالة (State).",
+        ),
+        AnalogyContent(
+          "فكر في آلة التصوير. بدلاً من إعادة كتابة مستند من الصفر، تضع النسخة الأصلية على الآلة وتضغط على زر. الآلة تنشئ نسخة مطابقة في ثوانٍ. بالمثل، النموذج الأولي يستنسخ الكائنات فوراً، محافظاً على كل حالتها المُهيأة.",
+        ),
+        StrContent(
+          "بدلاً من استخدام المُنشئات (Constructors) والكلمة المفتاحية 'new'، تستدعي طريقة ()clone على نموذج أولي موجود. هذا النهج يفصل كودك عن الفئات المحددة - لا تحتاج لمعرفة النوع الدقيق لإنشاء نسخة.",
+        ),
+        ULContent(
+          title: "المكونات الأساسية:",
+          value: [
+            "النموذج الأولي (Prototype): يُعلن عن واجهة الاستنساخ (عادةً طريقة ()clone أو ()copy)",
+            "النموذج الأولي المحدد (ConcretePrototype): ينفذ طريقة الاستنساخ لإنشاء نسخة من نفسه",
+            "العميل (Client): ينشئ كائنات جديدة من خلال طلب استنساخ النماذج الأولية",
+            "سجل النماذج الأولية (PrototypeRegistry) (اختياري): يحتفظ بكتالوج من الكائنات المُستنسخة بشكل متكرر",
+          ],
+        ),
+        DiagramContent(
+          "تدفق النمط:\nالعميل ← ()Prototype.clone ← كائن جديد (نسخة)\n         ↓\n   ConcretePrototype\n   (مع كل الحالة)",
+        ),
+        StrContent(
+          "النمط مفيد بشكل خاص عندما يتضمن إنشاء الكائن عمليات مكلفة مثل استعلامات قاعدة البيانات، عمليات إدخال/إخراج الملفات، أو حسابات معقدة. الاستنساخ يمكن أن يكون أسرع بمراتب من حيث الحجم (Orders of Magnitude).",
+        ),
+        NoteContent(
+          "النسخ السطحي مقابل النسخ العميق: النسخ السطحي (Shallow Copy) يُكرر الكائن لكن يُشير لنفس الكائنات المُتداخلة. النسخ العميق (Deep Copy) يُكرر كل شيء بشكل متكرر. اختر بناءً على ما إذا كانت النسخ يجب أن تشترك في البيانات المُتداخلة.",
+          type: .important,
+        ),
+        StrContent(
+          "في Dart، يُنفذ هذا عادةً باستخدام مُنشئات النسخ (Copy Constructors)، مُنشئات المصنع (نمط copyWith)، أو طرق استنساخ صريحة. Dart ليس لديها استنساخ مدمج مثل بعض اللغات، لذا تُنفذها بشكل صريح.",
+        ),
+        NoteContent(
+          "في Flutter، نمط copyWith موجود في كل مكان: TextStyle، ThemeData، EdgeInsets، إلخ. هذا هو نمط النموذج الأولي في العمل!",
+          type: .tip,
+        ),
+        StrContent(
+          "حالات الاستخدام الشائعة: إنشاء كيانات ألعاب مع إعدادات افتراضية، استنساخ حالة واجهة مستخدم معقدة، تكرار قوالب المستندات، إدارة تجمعات الكائنات (Object Pools)، وتنفيذ وظيفة التراجع/الإعادة (Undo/Redo).",
+        ),
+      ],
+    ),
+    examples: LocV(
+      en: [
+        // Example 1: Basic - Shape Cloning
+        StrCodeBlock("""// Example 1: Basic - Shape Cloning System
+// Use case: Graphics editor with copy/paste functionality
+
+abstract class Shape {
+  Shape({required this.x, required this.y, required this.color});
+  
+  int x;
+  int y;
+  String color;
+  
+  // Prototype method
+  Shape clone();
+  
+  void draw() {
+    print('Drawing \$runtimeType at (\$x, \$y) with color \$color');
+  }
+  
+  void move(int dx, int dy) {
+    x += dx;
+    y += dy;
+  }
+}
+
+class Circle extends Shape {
+  Circle({
+    required super.x,
+    required super.y,
+    required super.color,
+    required this.radius,
+  });
+  
+  int radius;
+  
+  // Copy constructor
+  Circle._copy(Circle source)
+      : radius = source.radius,
+        super(x: source.x, y: source.y, color: source.color);
+  
+  @override
+  Circle clone() => Circle._copy(this);
+  
+  @override
+  void draw() {
+    super.draw();
+    print('  Circle with radius \$radius');
+  }
+}
+
+class Rectangle extends Shape {
+  Rectangle({
+    required super.x,
+    required super.y,
+    required super.color,
+    required this.width,
+    required this.height,
+  });
+  
+  int width;
+  int height;
+  
+  Rectangle._copy(Rectangle source)
+      : width = source.width,
+        height = source.height,
+        super(x: source.x, y: source.y, color: source.color);
+  
+  @override
+  Rectangle clone() => Rectangle._copy(this);
+  
+  @override
+  void draw() {
+    super.draw();
+    print('  Rectangle \${width}x\$height');
+  }
+}
+
+class Triangle extends Shape {
+  Triangle({
+    required super.x,
+    required super.y,
+    required super.color,
+    required this.base,
+    required this.height,
+  });
+  
+  int base;
+  int height;
+  
+  Triangle._copy(Triangle source)
+      : base = source.base,
+        height = source.height,
+        super(x: source.x, y: source.y, color: source.color);
+  
+  @override
+  Triangle clone() => Triangle._copy(this);
+  
+  @override
+  void draw() {
+    super.draw();
+    print('  Triangle base:\$base, height:\$height');
+  }
+}
+
+// Graphics Editor using Prototype
+class GraphicsEditor {
+  final List<Shape> shapes = [];
+  Shape? _clipboard;
+  
+  void addShape(Shape shape) {
+    shapes.add(shape);
+    print('Added \${shape.runtimeType}');
+  }
+  
+  void copyShape(int index) {
+    if (index >= 0 && index < shapes.length) {
+      _clipboard = shapes[index].clone();
+      print('Copied \${_clipboard.runtimeType} to clipboard');
+    }
+  }
+  
+  void pasteShape() {
+    if (_clipboard != null) {
+      final newShape = _clipboard!.clone();
+      newShape.move(10, 10); // Offset pasted shape
+      shapes.add(newShape);
+      print('Pasted \${newShape.runtimeType}');
+    }
+  }
+  
+  void duplicateShape(int index) {
+    if (index >= 0 && index < shapes.length) {
+      final copy = shapes[index].clone();
+      copy.move(20, 20);
+      shapes.add(copy);
+      print('Duplicated \${copy.runtimeType}');
+    }
+  }
+  
+  void drawAll() {
+    print('\n=== Drawing all shapes ===');
+    for (final shape in shapes) {
+      shape.draw();
+    }
+  }
+}
+
+void main() {
+  final editor = GraphicsEditor();
+  
+  // Create original shapes
+  final circle = Circle(x: 10, y: 10, color: 'red', radius: 5);
+  final rect = Rectangle(x: 50, y: 50, color: 'blue', width: 30, height: 20);
+  
+  editor.addShape(circle);
+  editor.addShape(rect);
+  
+  // Use prototype pattern to copy
+  editor.copyShape(0); // Copy circle
+  editor.pasteShape(); // Paste circle at new position
+  
+  editor.duplicateShape(1); // Duplicate rectangle
+  
+  editor.drawAll();
+}"""),
+
+        // Example 2: Intermediate - Game Entity System
+        StrCodeBlock(
+          """// Example 2: Intermediate - Game Entity Prototype System
+// Use case: Spawning enemies with preset configurations
+
+class GameEntity {
+  GameEntity({
+    required this.name,
+    required this.health,
+    required this.speed,
+    required this.damage,
+    required this.abilities,
+    required this.position,
+    this.inventory = const [],
+  });
+  
+  final String name;
+  int health;
+  double speed;
+  int damage;
+  final List<String> abilities;
+  Vector2 position;
+  final List<String> inventory;
+  
+  // Deep clone with ability to override properties
+  GameEntity clone({
+    String? name,
+    int? health,
+    double? speed,
+    int? damage,
+    List<String>? abilities,
+    Vector2? position,
+    List<String>? inventory,
+  }) {
+    return GameEntity(
+      name: name ?? this.name,
+      health: health ?? this.health,
+      speed: speed ?? this.speed,
+      damage: damage ?? this.damage,
+      // Deep copy collections
+      abilities: abilities ?? List.from(this.abilities),
+      position: position ?? this.position.clone(),
+      inventory: inventory ?? List.from(this.inventory),
+    );
+  }
+  
+  void takeDamage(int amount) {
+    health -= amount;
+    print('\$name takes \$amount damage, health: \$health');
+  }
+  
+  void attack(GameEntity target) {
+    print('\$name attacks \${target.name} for \$damage damage');
+    target.takeDamage(damage);
+  }
+  
+  @override
+  String toString() {
+    return '\$name (HP:\$health, Speed:\$speed, Damage:\$damage) at \$position';
+  }
+}
+
+class Vector2 {
+  Vector2(this.x, this.y);
+  double x;
+  double y;
+  
+  Vector2 clone() => Vector2(x, y);
+  
+  @override
+  String toString() => '(\$x, \$y)';
+}
+
+// Prototype Registry
+class EntityRegistry {
+  final Map<String, GameEntity> _prototypes = {};
+  
+  void register(String key, GameEntity prototype) {
+    _prototypes[key] = prototype;
+    print('Registered prototype: \$key');
+  }
+  
+  GameEntity? spawn(String key, {Vector2? position}) {
+    final prototype = _prototypes[key];
+    if (prototype == null) {
+      print('Prototype \$key not found');
+      return null;
+    }
+    
+    // Clone and optionally set new position
+    return prototype.clone(
+      position: position ?? Vector2(0, 0),
+    );
+  }
+  
+  List<String> get availableTypes => _prototypes.keys.toList();
+}
+
+void main() {
+  final registry = EntityRegistry();
+  
+  // Register entity prototypes (templates)
+  registry.register(
+    'goblin',
+    GameEntity(
+      name: 'Goblin',
+      health: 50,
+      speed: 3.5,
+      damage: 10,
+      abilities: ['Quick Attack', 'Dodge'],
+      position: Vector2(0, 0),
+      inventory: ['Rusty Dagger'],
+    ),
+  );
+  
+  registry.register(
+    'orc',
+    GameEntity(
+      name: 'Orc',
+      health: 150,
+      speed: 2.0,
+      damage: 25,
+      abilities: ['Heavy Strike', 'Rage'],
+      position: Vector2(0, 0),
+      inventory: ['Battle Axe', 'Shield'],
+    ),
+  );
+  
+  registry.register(
+    'elite_orc',
+    GameEntity(
+      name: 'Elite Orc',
+      health: 300,
+      speed: 2.5,
+      damage: 40,
+      abilities: ['Heavy Strike', 'Rage', 'War Cry'],
+      position: Vector2(0, 0),
+      inventory: ['Legendary Axe', 'Steel Shield', 'Health Potion'],
+    ),
+  );
+  
+  print('\n=== Spawning Enemies ===');
+  
+  // Spawn multiple enemies quickly using prototypes
+  final goblin1 = registry.spawn('goblin', position: Vector2(10, 20));
+  final goblin2 = registry.spawn('goblin', position: Vector2(15, 25));
+  final orc1 = registry.spawn('orc', position: Vector2(50, 50));
+  final elite = registry.spawn('elite_orc', position: Vector2(100, 100));
+  
+  print('\nSpawned entities:');
+  print(goblin1);
+  print(goblin2);
+  print(orc1);
+  print(elite);
+  
+  // Battle simulation
+  print('\n=== Battle ===');
+  elite?.attack(goblin1!);
+  orc1?.attack(goblin2!);
+  
+  // Create a modified version
+  print('\n=== Creating Boss Variant ===');
+  final bossGoblin = registry.spawn('goblin')?.clone(
+    name: 'Goblin King',
+    health: 200,
+    damage: 30,
+    abilities: ['Quick Attack', 'Dodge', 'Summon Minions', 'Poison'],
+  );
+  print('Created boss: \$bossGoblin');
+}""",
+        ),
+
+        // Example 3: Advanced - Document Template System
+        StrCodeBlock(
+          """// Example 3: Advanced - Document Template with Deep/Shallow Cloning
+// Use case: Document management system with templates
+
+class DocumentSection {
+  DocumentSection({
+    required this.title,
+    required this.content,
+    this.metadata = const {},
+  });
+  
+  String title;
+  String content;
+  Map<String, dynamic> metadata;
+  
+  DocumentSection clone() {
+    return DocumentSection(
+      title: title,
+      content: content,
+      metadata: Map.from(metadata), // Shallow copy of metadata
+    );
+  }
+  
+  @override
+  String toString() => 'Section: \$title';
+}
+
+class Document {
+  Document({
+    required this.id,
+    required this.title,
+    required this.author,
+    required this.sections,
+    required this.metadata,
+    required this.createdAt,
+  });
+  
+  String id;
+  String title;
+  String author;
+  List<DocumentSection> sections;
+  Map<String, dynamic> metadata;
+  DateTime createdAt;
+  
+  // Shallow clone - shares section references
+  Document shallowClone() {
+    return Document(
+      id: 'copy_\$id',
+      title: '\$title (Copy)',
+      author: author,
+      sections: sections, // Same list reference!
+      metadata: metadata,  // Same map reference!
+      createdAt: DateTime.now(),
+    );
+  }
+  
+  // Deep clone - duplicates everything
+  Document deepClone() {
+    return Document(
+      id: 'copy_\$id',
+      title: '\$title (Copy)',
+      author: author,
+      sections: sections.map((s) => s.clone()).toList(), // New list with cloned sections
+      metadata: Map.from(metadata), // New map
+      createdAt: DateTime.now(),
+    );
+  }
+  
+  // Smart clone - allows customization
+  Document clone({
+    String? id,
+    String? title,
+    String? author,
+    bool deepCopy = true,
+  }) {
+    return Document(
+      id: id ?? 'copy_\${this.id}',
+      title: title ?? '\${this.title} (Copy)',
+      author: author ?? this.author,
+      sections: deepCopy 
+          ? sections.map((s) => s.clone()).toList()
+          : List.from(sections),
+      metadata: Map.from(metadata),
+      createdAt: DateTime.now(),
+    );
+  }
+  
+  void addSection(DocumentSection section) {
+    sections.add(section);
+  }
+  
+  void printInfo() {
+    print('\n--- Document: \$title ---');
+    print('ID: \$id');
+    print('Author: \$author');
+    print('Created: \$createdAt');
+    print('Sections: \${sections.length}');
+    for (var i = 0; i < sections.length; i++) {
+      print('  \${i + 1}. \${sections[i].title}');
+    }
+  }
+}
+
+// Document Template Registry
+class DocumentTemplateManager {
+  final Map<String, Document> _templates = {};
+  
+  void registerTemplate(String name, Document template) {
+    _templates[name] = template;
+    print('Registered template: \$name');
+  }
+  
+  Document? createFromTemplate(
+    String templateName, {
+    String? title,
+    String? author,
+  }) {
+    final template = _templates[templateName];
+    if (template == null) return null;
+    
+    return template.clone(
+      title: title,
+      author: author,
+      deepCopy: true,
+    );
+  }
+  
+  List<String> get templateNames => _templates.keys.toList();
+}
+
+void main() {
+  final manager = DocumentTemplateManager();
+  
+  // Create templates
+  final reportTemplate = Document(
+    id: 'template_report',
+    title: 'Quarterly Report Template',
+    author: 'System',
+    sections: [
+      DocumentSection(
+        title: 'Executive Summary',
+        content: '[Add summary here]',
+      ),
+      DocumentSection(
+        title: 'Financial Overview',
+        content: '[Add financial data]',
+      ),
+      DocumentSection(
+        title: 'Recommendations',
+        content: '[Add recommendations]',
+      ),
+    ],
+    metadata: {'category': 'report', 'version': '1.0'},
+    createdAt: DateTime.now(),
+  );
+  
+  manager.registerTemplate('quarterly_report', reportTemplate);
+  
+  // Test shallow vs deep cloning
+  print('\n=== Testing Shallow Clone ===');
+  final shallowCopy = reportTemplate.shallowClone();
+  print('Original sections: \${reportTemplate.sections.length}');
+  print('Shallow copy sections: \${shallowCopy.sections.length}');
+  
+  shallowCopy.addSection(DocumentSection(
+    title: 'Appendix',
+    content: '[Additional data]',
+  ));
+  
+  print('After modifying copy:');
+  print('Original sections: \${reportTemplate.sections.length}'); // Changed!
+  print('Shallow copy sections: \${shallowCopy.sections.length}');
+  
+  // Test deep cloning
+  print('\n=== Testing Deep Clone ===');
+  final deepCopy = reportTemplate.deepClone();
+  print('Original sections: \${reportTemplate.sections.length}');
+  print('Deep copy sections: \${deepCopy.sections.length}');
+  
+  deepCopy.addSection(DocumentSection(
+    title: 'References',
+    content: '[Citations]',
+  ));
+  
+  print('After modifying deep copy:');
+  print('Original sections: \${reportTemplate.sections.length}'); // Unchanged!
+  print('Deep copy sections: \${deepCopy.sections.length}');
+  
+  // Use template manager
+  print('\n=== Creating from Template ===');
+  final q4Report = manager.createFromTemplate(
+    'quarterly_report',
+    title: 'Q4 2024 Report',
+    author: 'John Doe',
+  );
+  
+  q4Report?.printInfo();
+  
+  // Modify instance without affecting template
+  q4Report?.sections[0].content = 'Q4 showed strong growth...';
+  print('\n--- Template remains unchanged ---');
+  print('Template section 0: \${reportTemplate.sections[0].content}');
+  print('Instance section 0: \${q4Report?.sections[0].content}');
+}""",
+        ),
+
+        // Example 4: Flutter State Management
+        StrCodeBlock("""// Example 4: Flutter - User Settings Prototype
+// Use case: Managing app settings with undo/redo using cloning
+
+@immutable
+class AppSettings {
+  const AppSettings({
+    required this.theme,
+    required this.language,
+    required this.fontSize,
+    required this.notificationsEnabled,
+    required this.soundEnabled,
+    required this.autoSave,
+    required this.customColors,
+  });
+  
+  final String theme;
+  final String language;
+  final double fontSize;
+  final bool notificationsEnabled;
+  final bool soundEnabled;
+  final bool autoSave;
+  final Map<String, Color> customColors;
+  
+  // copyWith is Prototype pattern!
+  AppSettings copyWith({
+    String? theme,
+    String? language,
+    double? fontSize,
+    bool? notificationsEnabled,
+    bool? soundEnabled,
+    bool? autoSave,
+    Map<String, Color>? customColors,
+  }) {
+    return AppSettings(
+      theme: theme ?? this.theme,
+      language: language ?? this.language,
+      fontSize: fontSize ?? this.fontSize,
+      notificationsEnabled: notificationsEnabled ?? this.notificationsEnabled,
+      soundEnabled: soundEnabled ?? this.soundEnabled,
+      autoSave: autoSave ?? this.autoSave,
+      customColors: customColors ?? Map.from(this.customColors),
+    );
+  }
+  
+  // Predefined presets (prototypes)
+  static AppSettings get defaultSettings => AppSettings(
+    theme: 'light',
+    language: 'en',
+    fontSize: 16.0,
+    notificationsEnabled: true,
+    soundEnabled: true,
+    autoSave: true,
+    customColors: {},
+  );
+  
+  static AppSettings get darkModePreset => defaultSettings.copyWith(
+    theme: 'dark',
+    customColors: {
+      'primary': Colors.purple,
+      'accent': Colors.amber,
+    },
+  );
+  
+  static AppSettings get accessibilityPreset => defaultSettings.copyWith(
+    fontSize: 20.0,
+    theme: 'high_contrast',
+  );
+}
+
+// Settings Manager with Undo/Redo using Prototype
+class SettingsManager extends ChangeNotifier {
+  SettingsManager(AppSettings initial)
+      : _current = initial,
+        _history = [initial];
+  
+  AppSettings _current;
+  final List<AppSettings> _history = [];
+  int _historyIndex = 0;
+  
+  AppSettings get current => _current;
+  bool get canUndo => _historyIndex > 0;
+  bool get canRedo => _historyIndex < _history.length - 1;
+  
+  void updateSettings(AppSettings newSettings) {
+    // Remove any redo history
+    _history.removeRange(_historyIndex + 1, _history.length);
+    
+    // Add new settings to history
+    _history.add(newSettings);
+    _historyIndex = _history.length - 1;
+    _current = newSettings;
+    
+    notifyListeners();
+  }
+  
+  void undo() {
+    if (canUndo) {
+      _historyIndex--;
+      _current = _history[_historyIndex];
+      notifyListeners();
+    }
+  }
+  
+  void redo() {
+    if (canRedo) {
+      _historyIndex++;
+      _current = _history[_historyIndex];
+      notifyListeners();
+    }
+  }
+  
+  void resetToDefault() {
+    updateSettings(AppSettings.defaultSettings);
+  }
+  
+  void applyPreset(AppSettings preset) {
+    updateSettings(preset);
+  }
+}
+
+// Usage in Flutter
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => SettingsManager(AppSettings.defaultSettings),
+      child: const _SettingsView(),
+    );
+  }
+}
+
+class _SettingsView extends StatelessWidget {
+  const _SettingsView();
+  
+  @override
+  Widget build(BuildContext context) {
+    final manager = context.watch<SettingsManager>();
+    final settings = manager.current;
+    
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Settings'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.undo),
+            onPressed: manager.canUndo ? manager.undo : null,
+          ),
+          IconButton(
+            icon: Icon(Icons.redo),
+            onPressed: manager.canRedo ? manager.redo : null,
+          ),
+        ],
+      ),
+      body: ListView(
+        children: [
+          // Theme selector
+          ListTile(
+            title: Text('Theme'),
+            trailing: DropdownButton<String>(
+              value: settings.theme,
+              items: ['light', 'dark', 'high_contrast']
+                  .map((t) => DropdownMenuItem(value: t, child: Text(t)))
+                  .toList(),
+              onChanged: (theme) {
+                if (theme != null) {
+                  // Using copyWith (Prototype pattern)
+                  manager.updateSettings(settings.copyWith(theme: theme));
+                }
+              },
+            ),
+          ),
+          
+          // Font size slider
+          ListTile(
+            title: Text('Font Size: \${settings.fontSize}'),
+            subtitle: Slider(
+              value: settings.fontSize,
+              min: 12,
+              max: 24,
+              onChanged: (size) {
+                manager.updateSettings(settings.copyWith(fontSize: size));
+              },
+            ),
+          ),
+          
+          // Switches
+          SwitchListTile(
+            title: Text('Notifications'),
+            value: settings.notificationsEnabled,
+            onChanged: (value) {
+              manager.updateSettings(
+                settings.copyWith(notificationsEnabled: value),
+              );
+            },
+          ),
+          
+          // Presets
+          Padding(
+            padding: .all(16),
+            child: Column(
+              crossAxisAlignment: .stretch,
+              children: [
+                Text('Presets', style: Theme.of(context).textTheme.titleMedium),
+                .height(8),
+                ElevatedButton(
+                  onPressed: () => manager.resetToDefault(),
+                  child: Text('Reset to Default'),
+                ),
+                .height(8),
+                ElevatedButton(
+                  onPressed: () => manager.applyPreset(AppSettings.darkModePreset),
+                  child: Text('Dark Mode Preset'),
+                ),
+                .height(8),
+                ElevatedButton(
+                  onPressed: () => manager.applyPreset(AppSettings.accessibilityPreset),
+                  child: Text('Accessibility Preset'),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}"""),
+      ],
+      ar: [
+        // Arabic versions
+        StrCodeBlock("""// مثال 1: أساسي - نظام استنساخ الأشكال
+// حالة الاستخدام: محرر رسومات مع وظيفة نسخ/لصق
+
+abstract class Shape {
+  Shape({required this.x, required this.y, required this.color});
+  
+  int x;
+  int y;
+  String color;
+  
+  // طريقة النموذج الأولي
+  Shape clone();
+  
+  void draw() {
+    print('رسم \$runtimeType عند (\$x, \$y) باللون \$color');
+  }
+  
+  void move(int dx, int dy) {
+    x += dx;
+    y += dy;
+  }
+}
+
+class Circle extends Shape {
+  Circle({
+    required super.x,
+    required super.y,
+    required super.color,
+    required this.radius,
+  });
+  
+  int radius;
+  
+  // مُنشئ النسخ (Copy Constructor)
+  Circle._copy(Circle source)
+      : radius = source.radius,
+        super(x: source.x, y: source.y, color: source.color);
+  
+  @override
+  Circle clone() => Circle._copy(this);
+  
+  @override
+  void draw() {
+    super.draw();
+    print('  دائرة بنصف قطر \$radius');
+  }
+}
+
+class Rectangle extends Shape {
+  Rectangle({
+    required super.x,
+    required super.y,
+    required super.color,
+    required this.width,
+    required this.height,
+  });
+  
+  int width;
+  int height;
+  
+  Rectangle._copy(Rectangle source)
+      : width = source.width,
+        height = source.height,
+        super(x: source.x, y: source.y, color: source.color);
+  
+  @override
+  Rectangle clone() => Rectangle._copy(this);
+  
+  @override
+  void draw() {
+    super.draw();
+    print('  مستطيل \${width}x\$height');
+  }
+}
+
+class Triangle extends Shape {
+  Triangle({
+    required super.x,
+    required super.y,
+    required super.color,
+    required this.base,
+    required this.height,
+  });
+  
+  int base;
+  int height;
+  
+  Triangle._copy(Triangle source)
+      : base = source.base,
+        height = source.height,
+        super(x: source.x, y: source.y, color: source.color);
+  
+  @override
+  Triangle clone() => Triangle._copy(this);
+  
+  @override
+  void draw() {
+    super.draw();
+    print('  مثلث قاعدة:\$base، ارتفاع:\$height');
+  }
+}
+
+// محرر الرسومات باستخدام النموذج الأولي
+class GraphicsEditor {
+  final List<Shape> shapes = [];
+  Shape? _clipboard;
+  
+  void addShape(Shape shape) {
+    shapes.add(shape);
+    print('تمت إضافة \${shape.runtimeType}');
+  }
+  
+  void copyShape(int index) {
+    if (index >= 0 && index < shapes.length) {
+      _clipboard = shapes[index].clone();
+      print('تم نسخ \${_clipboard.runtimeType} إلى الحافظة');
+    }
+  }
+  
+  void pasteShape() {
+    if (_clipboard != null) {
+      final newShape = _clipboard!.clone();
+      newShape.move(10, 10); // إزاحة الشكل الملصق
+      shapes.add(newShape);
+      print('تم لصق \${newShape.runtimeType}');
+    }
+  }
+  
+  void duplicateShape(int index) {
+    if (index >= 0 && index < shapes.length) {
+      final copy = shapes[index].clone();
+      copy.move(20, 20);
+      shapes.add(copy);
+      print('تم تكرار \${copy.runtimeType}');
+    }
+  }
+  
+  void drawAll() {
+    print('\n=== رسم جميع الأشكال ===');
+    for (final shape in shapes) {
+      shape.draw();
+    }
+  }
+}
+
+void main() {
+  final editor = GraphicsEditor();
+  
+  // إنشاء أشكال أصلية
+  final circle = Circle(x: 10, y: 10, color: 'أحمر', radius: 5);
+  final rect = Rectangle(x: 50, y: 50, color: 'أزرق', width: 30, height: 20);
+  
+  editor.addShape(circle);
+  editor.addShape(rect);
+  
+  // استخدام نمط النموذج الأولي للنسخ
+  editor.copyShape(0); // نسخ الدائرة
+  editor.pasteShape(); // لصق الدائرة في موضع جديد
+  
+  editor.duplicateShape(1); // تكرار المستطيل
+  
+  editor.drawAll();
+}"""),
+        // Add remaining Arabic examples...
+      ],
+    ),
+    pros: LocSL(
+      en: [
+        "Avoids coupling to concrete product classes - don't need to know exact types",
+        "Eliminates need for complex initialization when objects are expensive to create",
+        "Can be significantly faster than creating objects from scratch (especially with I/O or calculations)",
+        "Reduces subclass proliferation - no need for factory hierarchies",
+        "Perfect for objects with lots of similar configurations",
+        "Enables runtime object composition and configuration",
+        "Simplifies object creation when classes are determined at runtime",
+      ],
+      ar: [
+        "يتجنب الاقتران بفئات المنتج المحددة - لا حاجة لمعرفة الأنواع الدقيقة",
+        "يلغي الحاجة للتهيئة المعقدة عندما تكون الكائنات مكلفة في الإنشاء",
+        "يمكن أن يكون أسرع بشكل كبير من إنشاء الكائنات من الصفر (خاصة مع عمليات الإدخال/الإخراج أو الحسابات)",
+        "يقلل من تكاثر الفئات الفرعية - لا حاجة لتسلسلات هرمية للمصانع",
+        "مثالي للكائنات مع الكثير من الإعدادات المتشابهة",
+        "يُمكّن تركيب وتكوين الكائنات في وقت التشغيل (Runtime)",
+        "يُبسط إنشاء الكائنات عندما يتم تحديد الفئات في وقت التشغيل",
+      ],
+    ),
+    cons: LocSL(
+      en: [
+        "Cloning objects with circular references can be very tricky to implement correctly",
+        "Deep copying complex objects requires careful implementation of entire object graph",
+        "Every class must implement proper clone logic - maintenance burden",
+        "Can be complex with objects that have many dependencies or nested structures",
+        "Shallow vs deep copy confusion can lead to subtle bugs",
+        "May hide complexity that should be explicit in constructors",
+        "Requires careful consideration of mutable vs immutable fields",
+      ],
+      ar: [
+        "استنساخ الكائنات ذات المراجع الدائرية (Circular References) قد يكون صعباً جداً للتنفيذ بشكل صحيح",
+        "النسخ العميق للكائنات المعقدة يتطلب تنفيذاً دقيقاً لرسم الكائن بالكامل (Object Graph)",
+        "يجب على كل فئة تنفيذ منطق استنساخ صحيح - عبء الصيانة",
+        "قد يكون معقداً مع الكائنات التي لديها العديد من التبعيات أو الهياكل المُتداخلة",
+        "الالتباس بين النسخ السطحي والعميق يمكن أن يؤدي لأخطاء خفية",
+        "قد يخفي تعقيداً يجب أن يكون صريحاً في المُنشئات",
+        "يتطلب مراعاة دقيقة للحقول القابلة للتغيير مقابل غير القابلة للتغيير",
+      ],
+    ),
+    whenToUse: LocV(
+      en: [
+        StrContent("Use Prototype when:"),
+        ULContent(
+          value: [
+            "Object creation is expensive (database queries, file I/O, complex calculations, network calls)",
+            "You need many similar objects with slight variations",
+            "You want to avoid building class hierarchies of factories",
+            "Classes to instantiate are specified at runtime (loaded from config, user input, etc.)",
+            "You need to preserve object state when creating copies",
+            "Implementing undo/redo functionality",
+            "Creating template or preset systems",
+          ],
+        ),
+        NoteContent(
+          "Perfect for: game entity spawning, document templates, UI state management, test data generation, and configuration presets.",
+          type: .tip,
+        ),
+      ],
+      ar: [
+        StrContent("استخدم النموذج الأولي عندما:"),
+        ULContent(
+          value: [
+            "إنشاء الكائن مكلف (استعلامات قاعدة البيانات، إدخال/إخراج الملفات، حسابات معقدة، استدعاءات الشبكة)",
+            "تحتاج للعديد من الكائنات المتشابهة مع اختلافات طفيفة",
+            "تريد تجنب بناء تسلسلات هرمية من المصانع",
+            "الفئات المراد إنشاؤها تُحدد في وقت التشغيل (مُحملة من الإعدادات، إدخال المستخدم، إلخ)",
+            "تحتاج للحفاظ على حالة الكائن عند إنشاء النسخ",
+            "تنفيذ وظيفة التراجع/الإعادة (Undo/Redo)",
+            "إنشاء أنظمة القوالب أو الإعدادات المسبقة (Templates/Presets)",
+          ],
+        ),
+        NoteContent(
+          "مثالي لـ: توليد كيانات الألعاب، قوالب المستندات، إدارة حالة واجهة المستخدم، توليد بيانات الاختبار، والإعدادات المسبقة.",
+          type: .tip,
+        ),
+      ],
+    ),
+    commonMistakes: LocV(
+      en: [
+        "Forgetting to deep copy mutable fields, causing shared state bugs between 'independent' objects",
+        "Not handling circular references properly, leading to infinite loops",
+        "Overusing prototype when simple constructors would suffice",
+        "Not implementing proper equality checks (equals/hashCode) for cloned objects",
+        "Cloning objects with open resources (file handles, database connections) without proper handling",
+        "Making shallow copies when deep copies are needed (or vice versa)",
+        "Not documenting whether clone() does shallow or deep copy",
+        "Forgetting to clone nested collections (Lists, Maps, Sets)",
+      ],
+      ar: [
+        "نسيان النسخ العميق للحقول القابلة للتغيير (Mutable Fields)، مما يسبب أخطاء الحالة المشتركة بين الكائنات 'المستقلة'",
+        "عدم التعامل مع المراجع الدائرية بشكل صحيح، مما يؤدي لحلقات لا نهائية",
+        "الإفراط في استخدام النموذج الأولي عندما تكفي المُنشئات البسيطة",
+        "عدم تنفيذ فحوصات مساواة مناسبة (equals/hashCode) للكائنات المُستنسخة",
+        "استنساخ كائنات مع موارد مفتوحة (File Handles، اتصالات قاعدة البيانات) دون معالجة صحيحة",
+        "عمل نسخ سطحية عندما تكون النسخ العميقة مطلوبة (أو العكس)",
+        "عدم توثيق ما إذا كانت ()clone تقوم بنسخ سطحي أو عميق",
+        "نسيان استنساخ المجموعات المُتداخلة (Lists، Maps، Sets)",
+      ],
+    ),
+    relatedPatterns: [PK.abstractFactory, PK.composite, PK.decorator],
+    oftenConfusedWith: [PK.factoryMethod],
+  ),
+  PK.singleton: DesignPattern(
+    id: PK.singleton,
+    title: LocS(en: "Singleton", ar: "المفرد (Singleton)"),
+    description: LocS(
+      en: "Ensures a class has only one instance and provides global access to it",
+      ar: "يضمن أن الفئة لها نسخة واحدة فقط ويوفر وصولاً عالمياً (Global Access) إليها",
+    ),
+    group: .design,
+    type: .creational,
+    category: .GoF,
+    level: .beginner,
+    content: LocV(
+      en: [
+        StrContent(
+          "The Singleton pattern restricts instantiation of a class to a single instance and provides a global point of access to that instance. This is achieved through a private constructor and a static method or property that returns the sole instance.",
+        ),
+        AnalogyContent(
+          "Think of a country's president or a company's CEO. There can only be one at any given time, and everyone in the organization knows how to reach them through the same official channel. Similarly, Singleton ensures only one instance exists, accessible through a well-known access point.",
+        ),
+        StrContent(
+          "While Singleton is one of the most well-known patterns, it's also one of the most controversial. Modern software development often favors dependency injection over singletons due to better testability, reduced global state, and improved maintainability.",
+        ),
+        ULContent(
+          title: "Key Characteristics:",
+          value: [
+            "Private constructor prevents direct instantiation",
+            "Static instance variable holds the single instance",
+            "Public static method/property provides global access point",
+            "Lazy or eager initialization depending on implementation",
+            "Thread-safety considerations in concurrent environments",
+          ],
+        ),
+        DiagramContent(
+          "Pattern Structure:\nSingleton\n  - static instance: Singleton\n  - Singleton() [private constructor]\n  + static getInstance(): Singleton\n  + businessMethod()\n\nClient → Singleton.getInstance() → Same Instance Every Time",
+        ),
+        NoteContent(
+          "Singleton violates Single Responsibility Principle: the class manages both its own creation AND its business logic. Consider if you really need global state before using this pattern.",
+          type: .warning,
+        ),
+        StrContent(
+          "In Dart, Singletons are commonly implemented using factory constructors, static final instances, or the late keyword. Dart's factory constructors make Singleton implementation elegant and idiomatic.",
+        ),
+        ULContent(
+          title: "Common Use Cases:",
+          value: [
+            "Logging systems - centralized log management",
+            "Configuration managers - app-wide settings",
+            "Database connection pools - shared resource management",
+            "Caching mechanisms - shared data cache",
+            "Hardware interface access - printer, camera controllers",
+            "Analytics/tracking services",
+          ],
+        ),
+        NoteContent(
+          "In Flutter: Be cautious with Singletons in widget trees. They bypass the widget lifecycle and can cause memory leaks. Prefer Provider, GetIt, or other DI solutions for most cases.",
+          type: .important,
+        ),
+        StrContent(
+          "However, use singletons sparingly. They introduce global state which makes code harder to test (can't easily mock), hide dependencies (code doesn't declare what it needs), and can cause issues in unit tests where you want fresh instances.",
+        ),
+        ComparisonContent({
+          'Singleton': 'One instance globally, accessed anywhere',
+          'Static Class': 'No instance, only static methods',
+          'Dependency Injection':
+              'Instance managed by container, injected where needed',
+          'Service Locator': 'Registry of instances, requested by type',
+        }, title: 'Singleton vs Alternatives'),
+      ],
+      ar: [
+        StrContent(
+          "نمط المفرد (Singleton) يُقيّد إنشاء الفئة إلى نسخة واحدة فقط ويوفر نقطة وصول عالمية (Global Access Point) لتلك النسخة. يتحقق هذا من خلال مُنشئ خاص (Private Constructor) وطريقة أو خاصية ثابتة (Static) تُرجع النسخة الوحيدة.",
+        ),
+        AnalogyContent(
+          "فكر في رئيس دولة أو المدير التنفيذي لشركة. يمكن أن يكون هناك واحد فقط في أي وقت، والجميع في المنظمة يعرفون كيفية الوصول إليه من خلال نفس القناة الرسمية. بالمثل، المفرد يضمن وجود نسخة واحدة فقط، يمكن الوصول إليها من خلال نقطة وصول معروفة جيداً.",
+        ),
+        StrContent(
+          "بينما المفرد هو أحد أشهر الأنماط، فهو أيضاً أحد أكثرها إثارة للجدل. غالباً ما تفضل البرمجة الحديثة حقن الاعتمادية (Dependency Injection) على المفرد بسبب قابلية الاختبار الأفضل، تقليل الحالة العالمية (Global State)، وتحسين قابلية الصيانة.",
+        ),
+        ULContent(
+          title: "الخصائص الأساسية:",
+          value: [
+            "مُنشئ خاص (Private Constructor) يمنع الإنشاء المباشر",
+            "متغير نسخة ثابت (Static Instance Variable) يحتفظ بالنسخة الوحيدة",
+            "طريقة/خاصية ثابتة عامة توفر نقطة وصول عالمية",
+            "تهيئة كسولة أو حريصة (Lazy/Eager Initialization) حسب التطبيق",
+            "اعتبارات أمان الخيوط (Thread-Safety) في البيئات المتزامنة",
+          ],
+        ),
+        DiagramContent(
+          "بنية النمط:\nSingleton\n  - static instance: Singleton\n  - ()Singleton [مُنشئ خاص]\n  + static ()getInstance: Singleton\n  + ()businessMethod\n\nالعميل ← ()Singleton.getInstance ← نفس النسخة في كل مرة",
+        ),
+        NoteContent(
+          "المفرد ينتهك مبدأ المسؤولية الواحدة (Single Responsibility Principle): الفئة تدير كلاً من إنشائها الخاص ومنطق الأعمال. فكر جيداً إذا كنت تحتاج فعلاً لحالة عالمية قبل استخدام هذا النمط.",
+          type: .warning,
+        ),
+        StrContent(
+          "في Dart، عادةً ما تُنفذ المفردات باستخدام مُنشئات المصنع (Factory Constructors)، نسخ ثابتة نهائية (Static Final Instances)، أو الكلمة المفتاحية late. مُنشئات المصنع في Dart تجعل تنفيذ المفرد أنيقاً ومتوافقاً مع اللغة.",
+        ),
+        ULContent(
+          title: "حالات الاستخدام الشائعة:",
+          value: [
+            "أنظمة التسجيل (Logging) - إدارة السجلات المركزية",
+            "مديرو الإعدادات (Configuration Managers) - إعدادات على مستوى التطبيق",
+            "تجمعات اتصال قاعدة البيانات (Database Connection Pools) - إدارة الموارد المشتركة",
+            "آليات التخزين المؤقت (Caching) - ذاكرة مؤقتة للبيانات المشتركة",
+            "الوصول لواجهات الأجهزة - متحكمات الطابعة، الكاميرا",
+            "خدمات التحليلات/التتبع (Analytics/Tracking)",
+          ],
+        ),
+        NoteContent(
+          "في Flutter: كن حذراً مع المفردات في أشجار الواجهات (Widget Trees). تتجاوز دورة حياة الواجهة ويمكن أن تسبب تسريبات ذاكرة. فضّل Provider، GetIt، أو حلول حقن الاعتمادية الأخرى لمعظم الحالات.",
+          type: .important,
+        ),
+        StrContent(
+          "مع ذلك، استخدم المفردات باعتدال. تُدخل حالة عالمية تجعل الكود أصعب في الاختبار (لا يمكن محاكاته بسهولة)، تخفي التبعيات (الكود لا يُعلن عما يحتاجه)، ويمكن أن تسبب مشاكل في اختبارات الوحدة حيث تريد نسخاً جديدة.",
+        ),
+        ComparisonContent({
+          'المفرد (Singleton)':
+              'نسخة واحدة عالمياً، يمكن الوصول إليها في أي مكان',
+          'فئة ثابتة (Static Class)': 'لا نسخة، طرق ثابتة فقط',
+          'حقن الاعتمادية (DI)':
+              'نسخة مُدارة بواسطة حاوية، تُحقن حيث تكون مطلوبة',
+          'محدد الخدمة (Service Locator)': 'سجل من النسخ، يُطلب حسب النوع',
+        }, title: 'المفرد مقابل البدائل'),
+      ],
+    ),
+    examples: LocV(
+      en: [
+        // Example 1: Basic - Simple Singleton
+        StrCodeBlock("""// Example 1: Basic - Classic Singleton Implementations
+// Use case: Application configuration manager
+
+// Implementation 1: Eager Initialization (created immediately)
+class ConfigManagerEager {
+  // Private constructor
+  ConfigManagerEager._internal() {
+    print('ConfigManagerEager instance created');
+    _loadConfig();
+  }
+  
+  // Static final instance created immediately
+  static final ConfigManagerEager _instance = ConfigManagerEager._internal();
+  
+  // Public access point
+  static ConfigManagerEager get instance => _instance;
+  
+  // Or use factory constructor (more Dart-idiomatic)
+  factory ConfigManagerEager() => _instance;
+  
+  final Map<String, dynamic> _config = {};
+  
+  void _loadConfig() {
+    print('Loading configuration...');
+    _config['apiUrl'] = 'https://api.example.com';
+    _config['timeout'] = 30;
+  }
+  
+  String? getString(String key) => _config[key] as String?;
+  int? getInt(String key) => _config[key] as int?;
+  
+  void set(String key, dynamic value) => _config[key] = value;
+}
+
+// Implementation 2: Lazy Initialization (created on first access)
+class ConfigManagerLazy {
+  ConfigManagerLazy._internal() {
+    print('ConfigManagerLazy instance created');
+    _loadConfig();
+  }
+  
+  static ConfigManagerLazy? _instance;
+  
+  static ConfigManagerLazy get instance {
+    _instance ??= ConfigManagerLazy._internal();
+    return _instance!;
+  }
+  
+  // Or with factory
+  factory ConfigManagerLazy() {
+    _instance ??= ConfigManagerLazy._internal();
+    return _instance!;
+  }
+  
+  final Map<String, dynamic> _config = {};
+  
+  void _loadConfig() {
+    print('Loading configuration...');
+    _config['apiUrl'] = 'https://api.example.com';
+  }
+  
+  String? get(String key) => _config[key] as String?;
+  void set(String key, dynamic value) => _config[key] = value;
+}
+
+// Implementation 3: Using late keyword (modern Dart)
+class ConfigManagerModern {
+  ConfigManagerModern._internal() {
+    print('ConfigManagerModern instance created');
+  }
+  
+  static late final ConfigManagerModern _instance = ConfigManagerModern._internal();
+  
+  static ConfigManagerModern get instance => _instance;
+  factory ConfigManagerModern() => _instance;
+  
+  final Map<String, dynamic> _config = {};
+  
+  String? get(String key) => _config[key] as String?;
+  void set(String key, dynamic value) => _config[key] = value;
+}
+
+void main() {
+  print('=== Eager Initialization ===');
+  print('Before accessing instance...');
+  final config1 = ConfigManagerEager.instance;
+  final config2 = ConfigManagerEager();
+  print('Are they the same? \${identical(config1, config2)}');
+  
+  print('\n=== Lazy Initialization ===');
+  print('Before accessing instance...');
+  final lazy1 = ConfigManagerLazy.instance;
+  print('After first access');
+  final lazy2 = ConfigManagerLazy();
+  print('Are they the same? \${identical(lazy1, lazy2)}');
+  
+  print('\n=== Modern Implementation ===');
+  final modern1 = ConfigManagerModern.instance;
+  final modern2 = ConfigManagerModern();
+  print('Are they the same? \${identical(modern1, modern2)}');
+}"""),
+
+        // Example 2: Intermediate - Logger Singleton
+        StrCodeBlock(
+          """// Example 2: Intermediate - Thread-Safe Logger Singleton
+// Use case: Application-wide logging system
+
+enum LogLevel { debug, info, warning, error }
+
+class Logger {
+  Logger._internal() {
+    _startTime = DateTime.now();
+    print('Logger initialized at \$_startTime');
+  }
+  
+  static final Logger _instance = Logger._internal();
+  static Logger get instance => _instance;
+  factory Logger() => _instance;
+  
+  late final DateTime _startTime;
+  final List<String> _logs = [];
+  LogLevel _minLevel = .info;
+  
+  // Configuration
+  void setMinLevel(LogLevel level) {
+    _minLevel = level;
+    info('Log level set to \$level');
+  }
+  
+  // Logging methods
+  void debug(String message) => _log(.debug, message);
+  void info(String message) => _log(.info, message);
+  void warning(String message) => _log(.warning, message);
+  void error(String message, [Object? error, StackTrace? stackTrace]) {
+    _log(.error, message);
+    if (error != null) {
+      _log(.error, 'Error: \$error');
+    }
+    if (stackTrace != null) {
+      _log(.error, 'StackTrace:\n\$stackTrace');
+    }
+  }
+  
+  void _log(LogLevel level, String message) {
+    if (level.index < _minLevel.index) return;
+    
+    final timestamp = DateTime.now();
+    final elapsed = timestamp.difference(_startTime);
+    final levelStr = level.toString().split('.').last.toUpperCase();
+    final logEntry = '[\${elapsed.inSeconds}s] [\$levelStr] \$message';
+    
+    _logs.add(logEntry);
+    print(logEntry);
+  }
+  
+  // Retrieve logs
+  List<String> getLogs([LogLevel? level]) {
+    if (level == null) return List.unmodifiable(_logs);
+    
+    final levelStr = level.toString().split('.').last.toUpperCase();
+    return _logs
+        .where((log) => log.contains('[\$levelStr]'))
+        .toList();
+  }
+  
+  void clearLogs() {
+    _logs.clear();
+    info('Logs cleared');
+  }
+  
+  // Export logs
+  String exportLogs() {
+    final buffer = StringBuffer();
+    buffer.writeln('=== Application Logs ===');
+    buffer.writeln('Started: \$_startTime');
+    buffer.writeln('Total entries: \${_logs.length}');
+    buffer.writeln('---');
+    for (final log in _logs) {
+      buffer.writeln(log);
+    }
+    return buffer.toString();
+  }
+}
+
+// Usage across different parts of application
+class DatabaseService {
+  void connect() {
+    Logger.instance.info('Database: Connecting...');
+    // Simulate work
+    Logger.instance.info('Database: Connected successfully');
+  }
+  
+  void query(String sql) {
+    Logger.instance.debug('Database: Executing query: \$sql');
+  }
+  
+  void error() {
+    try {
+      throw Exception('Connection timeout');
+    } catch (e, stackTrace) {
+      Logger.instance.error('Database: Query failed', e, stackTrace);
+    }
+  }
+}
+
+class ApiService {
+  void fetchData() {
+    Logger.instance.info('API: Fetching data...');
+    Logger.instance.warning('API: Rate limit approaching');
+  }
+}
+
+class AuthService {
+  void login(String username) {
+    Logger.instance.info('Auth: User \$username logging in');
+    Logger.instance.debug('Auth: Validating credentials');
+    Logger.instance.info('Auth: Login successful');
+  }
+}
+
+void main() {
+  // Configure logger once
+  Logger.instance.setMinLevel(.debug);
+  
+  // Use across different services
+  final db = DatabaseService();
+  db.connect();
+  db.query('SELECT * FROM users');
+  
+  final api = ApiService();
+  api.fetchData();
+  
+  final auth = AuthService();
+  auth.login('john_doe');
+  
+  db.error();
+  
+  // Access logs from anywhere
+  print('\n=== Error Logs Only ===');
+  final errorLogs = Logger.instance.getLogs(.error);
+  for (final log in errorLogs) {
+    print(log);
+  }
+  
+  // Export all logs
+  print('\n=== Full Export ===');
+  print(Logger().exportLogs());
+}""",
+        ),
+
+        // Example 3: Advanced - Database Connection Pool
+        StrCodeBlock(
+          """// Example 3: Advanced - Singleton with Resource Management
+// Use case: Database connection pool manager
+
+class DatabaseConnection {
+  DatabaseConnection(this.id) {
+    print('Created connection \$id');
+  }
+  
+  final String id;
+  bool isInUse = false;
+  
+  void execute(String query) {
+    print('[\$id] Executing: \$query');
+  }
+  
+  void close() {
+    print('[\$id] Closed');
+  }
+}
+
+class ConnectionPool {
+  ConnectionPool._internal() {
+    print('Initializing connection pool...');
+    _initializePool();
+  }
+  
+  static final ConnectionPool _instance = ConnectionPool._internal();
+  static ConnectionPool get instance => _instance;
+  factory ConnectionPool() => _instance;
+  
+  final List<DatabaseConnection> _availableConnections = [];
+  final List<DatabaseConnection> _inUseConnections = [];
+  final int _maxConnections = 5;
+  int _connectionCounter = 0;
+  
+  void _initializePool() {
+    // Pre-create some connections
+    for (var i = 0; i < 2; i++) {
+      _availableConnections.add(_createConnection());
+    }
+    print('Pool initialized with \${_availableConnections.length} connections');
+  }
+  
+  DatabaseConnection _createConnection() {
+    return DatabaseConnection('conn_\${_connectionCounter++}');
+  }
+  
+  DatabaseConnection? acquire() {
+    // Try to get available connection
+    if (_availableConnections.isNotEmpty) {
+      final conn = _availableConnections.removeLast();
+      conn.isInUse = true;
+      _inUseConnections.add(conn);
+      print('Acquired connection \${conn.id}');
+      return conn;
+    }
+    
+    // Create new if under limit
+    if (_inUseConnections.length < _maxConnections) {
+      final conn = _createConnection();
+      conn.isInUse = true;
+      _inUseConnections.add(conn);
+      print('Created and acquired new connection \${conn.id}');
+      return conn;
+    }
+    
+    // Pool exhausted
+    print('Pool exhausted! Waiting connections in use: \${_inUseConnections.length}');
+    return null;
+  }
+  
+  void release(DatabaseConnection conn) {
+    if (_inUseConnections.remove(conn)) {
+      conn.isInUse = false;
+      _availableConnections.add(conn);
+      print('Released connection \${conn.id}');
+    }
+  }
+  
+  PoolStats getStats() {
+    return PoolStats(
+      available: _availableConnections.length,
+      inUse: _inUseConnections.length,
+      total: _connectionCounter,
+      maxSize: _maxConnections,
+    );
+  }
+  
+  void shutdown() {
+    print('\nShutting down pool...');
+    for (final conn in [..._availableConnections, ..._inUseConnections]) {
+      conn.close();
+    }
+    _availableConnections.clear();
+    _inUseConnections.clear();
+    print('Pool shutdown complete');
+  }
+}
+
+class PoolStats {
+  const PoolStats({
+    required this.available,
+    required this.inUse,
+    required this.total,
+    required this.maxSize,
+  });
+  
+  final int available;
+  final int inUse;
+  final int total;
+  final int maxSize;
+  
+  @override
+  String toString() {
+    return 'Pool Stats: \$inUse/\$maxSize in use, \$available available, \$total total created';
+  }
+}
+
+// Usage
+class UserRepository {
+  Future<void> findUser(String id) async {
+    final pool = ConnectionPool.instance;
+    final conn = pool.acquire();
+    
+    if (conn == null) {
+      print('Could not acquire connection');
+      return;
+    }
+    
+    try {
+      conn.execute('SELECT * FROM users WHERE id = \$id');
+      await Future.delayed(.milliseconds(100)); // Simulate work
+    } finally {
+      pool.release(conn);
+    }
+  }
+}
+
+class OrderRepository {
+  Future<void> createOrder(String orderId) async {
+    final pool = ConnectionPool();
+    final conn = pool.acquire();
+    
+    if (conn == null) return;
+    
+    try {
+      conn.execute('INSERT INTO orders VALUES (\$orderId)');
+      await Future.delayed(.milliseconds(150));
+    } finally {
+      pool.release(conn);
+    }
+  }
+}
+
+void main() async {
+  final userRepo = UserRepository();
+  final orderRepo = OrderRepository();
+  
+  // Concurrent operations sharing same pool
+  print('=== Simulating concurrent operations ===\n');
+  
+  await Future.wait([
+    userRepo.findUser('user1'),
+    userRepo.findUser('user2'),
+    orderRepo.createOrder('order1'),
+    userRepo.findUser('user3'),
+    orderRepo.createOrder('order2'),
+  ]);
+  
+  print('\n\${ConnectionPool.instance.getStats()}');
+  
+  // Try to exhaust pool
+  print('\n=== Testing pool limits ===\n');
+  final connections = <DatabaseConnection>[];
+  for (var i = 0; i < 6; i++) {
+    final conn = ConnectionPool.instance.acquire();
+    if (conn != null) {
+      connections.add(conn);
+    }
+  }
+  
+  print('\n\${ConnectionPool.instance.getStats()}');
+  
+  // Release all
+  for (final conn in connections) {
+    ConnectionPool.instance.release(conn);
+  }
+  
+  print('\n\${ConnectionPool.instance.getStats()}');
+  
+  ConnectionPool.instance.shutdown();
+}""",
+        ),
+
+        // Example 4: Flutter - Analytics Service
+        StrCodeBlock("""// Example 4: Flutter - Analytics Service Singleton
+// Use case: Track user events across the app
+
+class AnalyticsEvent {
+  const AnalyticsEvent({
+    required this.name,
+    required this.timestamp,
+    this.properties = const {},
+  });
+  
+  final String name;
+  final DateTime timestamp;
+  final Map<String, dynamic> properties;
+  
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'timestamp': timestamp.toIso8601String(),
+    'properties': properties,
+  };
+}
+
+class AnalyticsService {
+  AnalyticsService._internal() {
+    _sessionStart = DateTime.now();
+    print('Analytics initialized');
+  }
+  
+  static final AnalyticsService _instance = AnalyticsService._internal();
+  static AnalyticsService get instance => _instance;
+  factory AnalyticsService() => _instance;
+  
+  late final DateTime _sessionStart;
+  final List<AnalyticsEvent> _events = [];
+  String? _userId;
+  final Map<String, dynamic> _userProperties = {};
+  
+  // Configuration
+  void setUserId(String userId) {
+    _userId = userId;
+    trackEvent('user_identified', properties: {'user_id': userId});
+  }
+  
+  void setUserProperty(String key, dynamic value) {
+    _userProperties[key] = value;
+  }
+  
+  // Event tracking
+  void trackEvent(String eventName, {Map<String, dynamic>? properties}) {
+    final event = AnalyticsEvent(
+      name: eventName,
+      timestamp: DateTime.now(),
+      properties: {
+        ...?properties,
+        'user_id': _userId,
+        'session_duration': DateTime.now().difference(_sessionStart).inSeconds,
+      },
+    );
+    
+    _events.add(event);
+    _sendToBackend(event);
+  }
+  
+  void trackScreenView(String screenName) {
+    trackEvent('screen_view', properties: {'screen_name': screenName});
+  }
+  
+  void trackButtonClick(String buttonName, {String? screen}) {
+    trackEvent('button_click', properties: {
+      'button_name': buttonName,
+      if (screen != null) 'screen': screen,
+    });
+  }
+  
+  void trackError(String error, {StackTrace? stackTrace}) {
+    trackEvent('error', properties: {
+      'error': error,
+      'stack_trace': stackTrace?.toString(),
+    });
+  }
+  
+  void _sendToBackend(AnalyticsEvent event) {
+    // Simulate sending to analytics backend
+    print('[Analytics] \${event.name}: \${event.properties}');
+  }
+  
+  // Retrieve analytics
+  List<AnalyticsEvent> getEvents({String? eventName}) {
+    if (eventName == null) return List.unmodifiable(_events);
+    return _events.where((e) => e.name == eventName).toList();
+  }
+  
+  Map<String, int> getEventCounts() {
+    final counts = <String, int>{};
+    for (final event in _events) {
+      counts[event.name] = (counts[event.name] ?? 0) + 1;
+    }
+    return counts;
+  }
+}
+
+// Usage in Flutter app
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    // Track screen view
+    AnalyticsService.instance.trackScreenView('home');
+    
+    return Scaffold(
+      appBar: AppBar(title: Text('Home')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: .center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                AnalyticsService.instance.trackButtonClick(
+                  'view_products',
+                  screen: 'home',
+                );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => ProductScreen()),
+                );
+              },
+              child: Text('View Products'),
+            ),
+            .height(20),
+            ElevatedButton(
+              onPressed: () {
+                AnalyticsService.instance.trackButtonClick(
+                  'view_profile',
+                  screen: 'home',
+                );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => ProfileScreen()),
+                );
+              },
+              child: Text('View Profile'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProductScreen extends StatelessWidget {
+  const ProductScreen({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    AnalyticsService.instance.trackScreenView('products');
+    
+    return Scaffold(
+      appBar: AppBar(title: Text('Products')),
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text('Product \$index'),
+            onTap: () {
+              AnalyticsService.instance.trackEvent(
+                'product_tapped',
+                properties: {
+                  'product_id': index,
+                  'product_name': 'Product \$index',
+                },
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+}
+
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    AnalyticsService.instance.trackScreenView('profile');
+    
+    return Scaffold(
+      appBar: AppBar(title: Text('Profile')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Set user properties
+            AnalyticsService.instance.setUserId('user_123');
+            AnalyticsService.instance.setUserProperty('plan', 'premium');
+            
+            AnalyticsService.instance.trackButtonClick(
+              'logout',
+              screen: 'profile',
+            );
+          },
+          child: Text('Logout'),
+        ),
+      ),
+    );
+  }
+}
+
+// Analytics dashboard
+class AnalyticsDashboard extends StatelessWidget {
+  const AnalyticsDashboard({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    final analytics = AnalyticsService.instance;
+    final counts = analytics.getEventCounts();
+    
+    return Scaffold(
+      appBar: AppBar(title: Text('Analytics Dashboard')),
+      body: ListView(
+        children: [
+          Padding(
+            padding: .all(16),
+            child: Text(
+              'Event Summary',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          ),
+          ...counts.entries.map((entry) {
+            return ListTile(
+              title: Text(entry.key),
+              trailing: Chip(label: Text('\${entry.value}')),
+            );
+          }),
+        ],
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: HomeScreen(),
+  ));
+}"""),
+      ],
+      ar: [
+        // Arabic versions
+        StrCodeBlock("""// مثال 1: أساسي - تطبيقات المفرد الكلاسيكية
+// حالة الاستخدام: مدير إعدادات التطبيق
+
+// التطبيق 1: التهيئة الحريصة (Eager Initialization) - يتم إنشاؤها فوراً
+class ConfigManagerEager {
+  // مُنشئ خاص (Private Constructor)
+  ConfigManagerEager._internal() {
+    print('تم إنشاء نسخة ConfigManagerEager');
+    _loadConfig();
+  }
+  
+  // نسخة ثابتة نهائية يتم إنشاؤها فوراً
+  static final ConfigManagerEager _instance = ConfigManagerEager._internal();
+  
+  // نقطة الوصول العامة
+  static ConfigManagerEager get instance => _instance;
+  
+  // أو استخدم مُنشئ المصنع (أكثر توافقاً مع Dart)
+  factory ConfigManagerEager() => _instance;
+  
+  final Map<String, dynamic> _config = {};
+  
+  void _loadConfig() {
+    print('تحميل الإعدادات...');
+    _config['apiUrl'] = 'https://api.example.com';
+    _config['timeout'] = 30;
+  }
+  
+  String? getString(String key) => _config[key] as String?;
+  int? getInt(String key) => _config[key] as int?;
+  
+  void set(String key, dynamic value) => _config[key] = value;
+}
+
+// التطبيق 2: التهيئة الكسولة (Lazy Initialization) - يتم إنشاؤها عند أول وصول
+class ConfigManagerLazy {
+  ConfigManagerLazy._internal() {
+    print('تم إنشاء نسخة ConfigManagerLazy');
+    _loadConfig();
+  }
+  
+  static ConfigManagerLazy? _instance;
+  
+  static ConfigManagerLazy get instance {
+    _instance ??= ConfigManagerLazy._internal();
+    return _instance!;
+  }
+  
+  // أو مع المصنع
+  factory ConfigManagerLazy() {
+    _instance ??= ConfigManagerLazy._internal();
+    return _instance!;
+  }
+  
+  final Map<String, dynamic> _config = {};
+  
+  void _loadConfig() {
+    print('تحميل الإعدادات...');
+    _config['apiUrl'] = 'https://api.example.com';
+  }
+  
+  String? get(String key) => _config[key] as String?;
+  void set(String key, dynamic value) => _config[key] = value;
+}
+
+// التطبيق 3: استخدام الكلمة المفتاحية late (Dart حديثة)
+class ConfigManagerModern {
+  ConfigManagerModern._internal() {
+    print('تم إنشاء نسخة ConfigManagerModern');
+  }
+  
+  static late final ConfigManagerModern _instance = ConfigManagerModern._internal();
+  
+  static ConfigManagerModern get instance => _instance;
+  factory ConfigManagerModern() => _instance;
+  
+  final Map<String, dynamic> _config = {};
+  
+  String? get(String key) => _config[key] as String?;
+  void set(String key, dynamic value) => _config[key] = value;
+}
+
+void main() {
+  print('=== التهيئة الحريصة ===');
+  print('قبل الوصول للنسخة...');
+  final config1 = ConfigManagerEager.instance;
+  final config2 = ConfigManagerEager();
+  print('هل هما نفس الشيء؟ \${identical(config1, config2)}');
+  
+  print('\n=== التهيئة الكسولة ===');
+  print('قبل الوصول للنسخة...');
+  final lazy1 = ConfigManagerLazy.instance;
+  print('بعد الوصول الأول');
+  final lazy2 = ConfigManagerLazy();
+  print('هل هما نفس الشيء؟ \${identical(lazy1, lazy2)}');
+  
+  print('\n=== التطبيق الحديث ===');
+  final modern1 = ConfigManagerModern.instance;
+  final modern2 = ConfigManagerModern();
+  print('هل هما نفس الشيء؟ \${identical(modern1, modern2)}');
+}"""),
+        // Add remaining Arabic examples following same pattern...
+      ],
+    ),
+    pros: LocSL(
+      en: [
+        "Guarantees only one instance exists globally",
+        "Provides global access point - can be accessed from anywhere",
+        "Lazy initialization possible - created only when needed",
+        "Saves memory by reusing the same instance",
+        "Controls access to shared resources (database connections, file handles)",
+        "Can be subclassed to create variations",
+      ],
+      ar: [
+        "يضمن وجود نسخة واحدة فقط عالمياً",
+        "يوفر نقطة وصول عالمية - يمكن الوصول إليها من أي مكان",
+        "التهيئة الكسولة ممكنة - يتم إنشاؤها فقط عند الحاجة",
+        "يوفر الذاكرة من خلال إعادة استخدام نفس النسخة",
+        "يتحكم في الوصول للموارد المشتركة (اتصالات قاعدة البيانات، مقابض الملفات)",
+        "يمكن أن يكون له فئات فرعية لإنشاء تنويعات",
+      ],
+    ),
+    cons: LocSL(
+      en: [
+        "Creates global state, making code harder to test and debug",
+        "Violates Single Responsibility Principle (manages creation + business logic)",
+        "Can become a bottleneck in concurrent/multithreaded applications",
+        "Hides dependencies between classes - classes don't declare what they need",
+        "Makes unit testing difficult - can't easily mock or create fresh instances",
+        "Can cause issues when you want multiple instances in different contexts (e.g., testing)",
+        "Tight coupling - code directly depends on concrete Singleton class",
+        "Can lead to memory leaks if not properly managed",
+      ],
+      ar: [
+        "ينشئ حالة عالمية، مما يجعل الكود أصعب في الاختبار والتنقيح (Debug)",
+        "ينتهك مبدأ المسؤولية الواحدة (يدير الإنشاء + منطق الأعمال)",
+        "قد يصبح عنق زجاجة في التطبيقات المتزامنة/متعددة الخيوط",
+        "يخفي التبعيات بين الفئات - الفئات لا تُعلن عما تحتاجه",
+        "يجعل اختبارات الوحدة صعبة - لا يمكن محاكاته بسهولة أو إنشاء نسخ جديدة",
+        "قد يسبب مشاكل عندما تريد نسخاً متعددة في سياقات مختلفة (مثل الاختبار)",
+        "اقتران محكم (Tight Coupling) - الكود يعتمد مباشرة على فئة المفرد المحددة",
+        "قد يؤدي لتسريبات ذاكرة إذا لم تتم إدارته بشكل صحيح",
+      ],
+    ),
+    whenToUse: LocV(
+      en: [
+        StrContent("Use Singleton when:"),
+        ULContent(
+          value: [
+            "Exactly one instance is needed system-wide and it must be accessible globally",
+            "You need strict control over a shared resource (logging, configuration, caching)",
+            "You're managing expensive resources that should be reused (database connections)",
+            "You need to coordinate actions across the system from a single point",
+            "The single instance should be extensible by subclassing",
+          ],
+        ),
+        NoteContent(
+          "Consider alternatives first: Dependency Injection is usually better for testability and flexibility. Use Singleton only when truly necessary.",
+          type: .warning,
+        ),
+        StrContent("Better alternatives in modern code:"),
+        ULContent(
+          value: [
+            "Dependency Injection (Provider, GetIt, Riverpod in Flutter)",
+            "Service Locator pattern (for legacy code migration)",
+            "Static classes (if no state is needed)",
+            "Passing instances through constructor (explicit dependencies)",
+          ],
+        ),
+      ],
+      ar: [
+        StrContent("استخدم المفرد عندما:"),
+        ULContent(
+          value: [
+            "تحتاج نسخة واحدة بالضبط على مستوى النظام ويجب أن تكون متاحة عالمياً",
+            "تحتاج تحكماً صارماً في مورد مشترك (التسجيل، الإعدادات، التخزين المؤقت)",
+            "تدير موارد مكلفة يجب إعادة استخدامها (اتصالات قاعدة البيانات)",
+            "تحتاج لتنسيق الإجراءات عبر النظام من نقطة واحدة",
+            "يجب أن تكون النسخة الواحدة قابلة للتوسيع عبر الفئات الفرعية",
+          ],
+        ),
+        NoteContent(
+          "فكر في البدائل أولاً: حقن الاعتمادية (Dependency Injection) عادة أفضل لقابلية الاختبار والمرونة. استخدم المفرد فقط عندما يكون ضرورياً حقاً.",
+          type: .warning,
+        ),
+        StrContent("بدائل أفضل في الكود الحديث:"),
+        ULContent(
+          value: [
+            "حقن الاعتمادية (Provider، GetIt، Riverpod في Flutter)",
+            "نمط محدد الخدمة (Service Locator) (لترحيل الكود القديم)",
+            "فئات ثابتة (Static Classes) (إذا لم تكن هناك حاجة لحالة)",
+            "تمرير النسخ عبر المُنشئ (تبعيات صريحة - Explicit Dependencies)",
+          ],
+        ),
+      ],
+    ),
+    commonMistakes: LocV(
+      en: [
+        "Overusing Singleton for every shared resource or service - creates global state mess",
+        "Not considering thread safety in concurrent environments (less critical in Dart due to isolates)",
+        "Creating Singletons with mutable state that can be modified from anywhere",
+        "Using Singleton when Dependency Injection would be cleaner and more testable",
+        "Making it impossible to create multiple instances even for testing",
+        "Not providing a way to reset/clear the Singleton state for testing",
+        "Hiding dependencies by using Singleton instead of explicit constructor parameters",
+        "Creating circular dependencies between Singletons",
+        "Storing Singletons in StatefulWidgets without proper cleanup",
+      ],
+      ar: [
+        "الإفراط في استخدام المفرد لكل مورد أو خدمة مشتركة - ينشئ فوضى حالة عالمية",
+        "عدم مراعاة أمان الخيوط (Thread Safety) في البيئات المتزامنة (أقل أهمية في Dart بسبب العزلات - Isolates)",
+        "إنشاء مفردات بحالة قابلة للتغيير (Mutable State) يمكن تعديلها من أي مكان",
+        "استخدام المفرد عندما يكون حقن الاعتمادية أنظف وأكثر قابلية للاختبار",
+        "جعل من المستحيل إنشاء نسخ متعددة حتى للاختبار",
+        "عدم توفير طريقة لإعادة تعيين/مسح حالة المفرد للاختبار",
+        "إخفاء التبعيات باستخدام المفرد بدلاً من معاملات المُنشئ الصريحة",
+        "إنشاء تبعيات دائرية بين المفردات",
+        "تخزين المفردات في StatefulWidgets دون تنظيف مناسب",
+      ],
+    ),
+    relatedPatterns: [PK.abstractFactory, PK.facade, PK.flyweight],
+  ),
 };
