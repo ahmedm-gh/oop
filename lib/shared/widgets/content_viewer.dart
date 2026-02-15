@@ -4,9 +4,7 @@ import 'package:loopsbase/core/extensions/extensions.dart';
 import 'package:loopsbase/core/models/content.dart';
 import 'package:loopsbase/core/services/platform.dart';
 import 'package:loopsbase/l10n/app_localizations.dart';
-
-import 'code_block.dart';
-import 'small_titled_list.dart';
+import 'package:loopsbase/shared/app_widgets.dart';
 
 class ContentViewer extends StatelessWidget {
   const ContentViewer(this.content, {super.key});
@@ -67,7 +65,7 @@ class ContentViewer extends StatelessWidget {
         l10n,
       ),
 
-      final SvgDiagramContent value => _buildSvgDiagram(value, colors, l10n),
+      final SvgDiagramContent value => SvgDiagramViewer(content: value),
     };
   }
 
@@ -185,31 +183,6 @@ class ContentViewer extends StatelessWidget {
     );
   }
 
-  Widget _buildSvgDiagram(
-    SvgDiagramContent content,
-    ColorScheme colors,
-    AppLocalizations l10n,
-  ) {
-    return SmallTitledList(
-      title: Text(l10n.structureDiagram),
-      icon: Icons.account_tree_outlined,
-      color: colors.primary,
-      content: Directionality(
-        textDirection: .ltr,
-        child: SizedBox(
-          width: .infinity,
-          child: PlatformHelper.isMobile
-              ? InteractiveViewer(
-                  child: SvgPicture.string(
-                    content.value(l10n.language, colors),
-                  ),
-                )
-              : SvgPicture.string(content.value(l10n.language, colors)),
-        ),
-      ),
-    );
-  }
-
   List<Widget> buildItems(ListContent content, ColorScheme colors) {
     return [
       for (var i = 0; i < content.value.length; i++)
@@ -253,5 +226,100 @@ class ContentViewer extends StatelessWidget {
           ],
         ),
     ];
+  }
+}
+
+class SvgDiagramViewer extends StatefulWidget {
+  const SvgDiagramViewer({required this.content, super.key});
+
+  final SvgDiagramContent content;
+
+  @override
+  State<SvgDiagramViewer> createState() => _SvgDiagramViewerState();
+}
+
+class _SvgDiagramViewerState extends State<SvgDiagramViewer> {
+  String locale = "en";
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        locale = context.l10n.localeName;
+      });
+    });
+    super.initState();
+  }
+
+  void toggleLocale() {
+    setState(() {
+      locale = locale == "en" ? "ar" : "en";
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final colors = context.colorScheme;
+
+    return Container(
+      padding: const .all(16),
+      decoration: BoxDecoration(
+        // gradient: LinearGradient(
+        //   colors: [
+        //     color.withValues(alpha: 0.02),
+        //     color.withValues(alpha: 0.05),
+        //     color.withValues(alpha: 0.02),
+        //   ],
+        //   begin: .topLeft,
+        //   end: .bottomRight,
+        // ),
+        color: colors.surface,
+        borderRadius: const .all(.circular(16)),
+        border: .all(
+          color: colors.surfaceContainerHighest.withValues(alpha: 0.1),
+        ),
+      ),
+      child: Column(
+        children: [
+          Row(
+            spacing: 10,
+            children: [
+              FilledIcon(
+                background: colors.primary.withValues(alpha: 0.1),
+                child: const Icon(Icons.account_tree_rounded, size: 24),
+              ),
+              Expanded(
+                child: Text(
+                  l10n.structureDiagram,
+                  style: const TextStyle(fontWeight: .w500, fontSize: 16),
+                ),
+              ),
+              IconButton(
+                visualDensity: .compact,
+                icon: const Icon(Icons.translate_rounded),
+                onPressed: toggleLocale,
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          const LiteDivider(),
+          const SizedBox(height: 10),
+          Directionality(
+            textDirection: .ltr,
+            child: SizedBox(
+              width: .infinity,
+              child: PlatformHelper.isMobile
+                  ? InteractiveViewer(
+                      child: SvgPicture.string(
+                        widget.content.value(locale, colors),
+                      ),
+                    )
+                  : SvgPicture.string(widget.content.value(locale, colors)),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

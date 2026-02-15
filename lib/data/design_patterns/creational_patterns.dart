@@ -7515,4 +7515,2446 @@ void main() {
     relatedPatterns: [PK.singleton, PK.proxy, PK.factoryMethod],
     oftenConfusedWith: [PK.proxy],
   ),
+  PK.multiton: DesignPattern(
+    id: PK.multiton,
+    title: LocS(en: "Multiton", ar: "المتعدد (Multiton)"),
+    description: LocS(
+      en: "Ensures a class has a limited number of named instances, one per unique key",
+      ar: "يضمن أن الفئة لها عدد محدود من النسخ المُسماة (Named Instances)، واحدة لكل مفتاح فريد",
+    ),
+    group: .design,
+    type: .creational,
+    category: .practical,
+    level: .intermediate,
+    content: LocV(
+      en: [
+        StrContent(
+          "The Multiton pattern extends the Singleton concept to manage multiple named instances. Instead of one global instance, you have exactly one instance per key, stored in a registry. Each unique key maps to its own singleton instance.",
+        ),
+        AnalogyContent(
+          "Think of embassy buildings in a capital city. Each country has exactly one embassy in that city - not zero, not two, but exactly one. When you need the French embassy, you always get the same building. When you need the German embassy, you get a different specific building. Multiton ensures one instance per 'country' (key), managed centrally.",
+        ),
+        StrContent(
+          "This pattern is useful when you need a controlled number of instances identified by keys, such as database connection pools for different databases, configuration objects for different environments, or logger instances for different modules.",
+        ),
+        ULContent(
+          title: "Key Characteristics:",
+          value: [
+            "Registry: Maintains a map of instances keyed by identifier",
+            "One-per-key: Each unique key maps to exactly one instance",
+            "Lazy or Eager: Can create instances on-demand or pre-populate",
+            "Centralized Access: All instances managed through single registry",
+            "Key Management: Keys are typically strings, enums, or other hashable types",
+          ],
+        ),
+        DiagramContent(
+          "Pattern Structure:\nClient → Multiton.getInstance(key)\n              ↓\n         Registry {key1 → instance1,\n                   key2 → instance2,\n                   key3 → instance3}\n              ↓\n    Return instance for key\n    (create if doesn't exist)",
+        ),
+        StrContent(
+          "Multiton is more flexible than pure Singleton because it allows multiple well-defined instances, but more controlled than unrestricted object creation because the number and identity of instances is managed.",
+        ),
+        NoteContent(
+          "Multiton vs Singleton: Singleton = one instance globally. Multiton = one instance per key. Both restrict instance creation, but Multiton allows multiple controlled instances.",
+          type: .important,
+        ),
+        StrContent(
+          "In Dart, Multiton is commonly implemented using factory constructors that return cached instances from a static map. The factory ensures that the same key always returns the same instance.",
+        ),
+        ComparisonContent({
+          'Multiton': 'Multiple instances, one per key, centrally managed',
+          'Singleton': 'Single instance globally',
+          'Factory Method': 'Creates new instances each time',
+          'Flyweight': 'Shares immutable state, many logical objects',
+        }, title: 'Multiton vs Similar Patterns'),
+        NoteContent(
+          "Like Singleton, Multiton introduces global state. Use dependency injection when possible for better testability. Multiton is best when you have a well-defined, limited set of logical instances.",
+          type: .warning,
+        ),
+        StrContent(
+          "Common use cases in Dart/Flutter: per-database connection managers, per-environment configurations, per-module loggers, per-theme style managers, per-language localization managers, and per-user session managers.",
+        ),
+        StrContent(
+          "Memory considerations: Multiton instances are never garbage collected unless explicitly removed from the registry. Be careful with unbounded key sets - they can cause memory leaks.",
+        ),
+      ],
+      ar: [
+        StrContent(
+          "نمط المتعدد (Multiton) يوسّع مفهوم المفرد (Singleton) لإدارة نسخ متعددة مُسماة. بدلاً من نسخة عالمية واحدة، لديك نسخة واحدة بالضبط لكل مفتاح، مُخزنة في سجل (Registry). كل مفتاح فريد يُربط بنسخته المفردة الخاصة.",
+        ),
+        AnalogyContent(
+          "فكر في مباني السفارات في العاصمة. كل دولة لديها سفارة واحدة بالضبط في تلك المدينة - ليس صفر، ليس اثنتين، بل واحدة بالضبط. عندما تحتاج للسفارة الفرنسية، تحصل دائماً على نفس المبنى. عندما تحتاج للسفارة الألمانية، تحصل على مبنى محدد مختلف. المتعدد يضمن نسخة واحدة لكل 'دولة' (مفتاح)، مُدارة مركزياً.",
+        ),
+        StrContent(
+          "هذا النمط مفيد عندما تحتاج لعدد محدود من النسخ المُحددة بمفاتيح، مثل تجمعات اتصال قاعدة البيانات لقواعد بيانات مختلفة، كائنات إعدادات لبيئات مختلفة، أو نسخ مُسجّل (Logger) لوحدات مختلفة.",
+        ),
+        ULContent(
+          title: "الخصائص الأساسية:",
+          value: [
+            "السجل (Registry): يحتفظ بخريطة من النسخ بمفاتيح محددة",
+            "واحد لكل مفتاح (One-per-key): كل مفتاح فريد يُربط بنسخة واحدة بالضبط",
+            "كسول أو حريص (Lazy/Eager): يمكن إنشاء النسخ عند الطلب أو ملء مسبق",
+            "وصول مركزي (Centralized Access): جميع النسخ تُدار من خلال سجل واحد",
+            "إدارة المفاتيح (Key Management): المفاتيح عادةً نصوص، تعدادات، أو أنواع قابلة للتجزئة (Hashable)",
+          ],
+        ),
+        DiagramContent(
+          "بنية النمط:\nالعميل ← (Multiton.getInstance(key\n              ↓\n         السجل {key1 ← instance1،\n                   key2 ← instance2،\n                   key3 ← instance3}\n              ↓\n    إرجاع النسخة للمفتاح\n    (إنشاء إذا لم تكن موجودة)",
+        ),
+        StrContent(
+          "المتعدد أكثر مرونة من المفرد النقي لأنه يسمح بنسخ متعددة محددة جيداً، لكن أكثر تحكماً من إنشاء الكائنات غير المقيد لأن عدد وهوية النسخ مُدارة.",
+        ),
+        NoteContent(
+          "المتعدد مقابل المفرد: المفرد = نسخة واحدة عالمياً. المتعدد = نسخة واحدة لكل مفتاح. كلاهما يقيّد إنشاء النسخ، لكن المتعدد يسمح بنسخ متعددة محكومة.",
+          type: .important,
+        ),
+        StrContent(
+          "في Dart، عادةً ما يُنفذ المتعدد باستخدام مُنشئات المصنع (Factory Constructors) التي تُرجع نسخاً مُخزنة مؤقتاً من خريطة ثابتة (Static Map). المصنع يضمن أن نفس المفتاح يُرجع دائماً نفس النسخة.",
+        ),
+        ComparisonContent({
+          'المتعدد (Multiton)': 'نسخ متعددة، واحدة لكل مفتاح، مُدارة مركزياً',
+          'المفرد (Singleton)': 'نسخة واحدة عالمياً',
+          'طريقة المصنع (Factory Method)': 'ينشئ نسخاً جديدة في كل مرة',
+          'الوزن الخفيف (Flyweight)':
+              'يشارك الحالة غير القابلة للتغيير، كائنات منطقية كثيرة',
+        }, title: 'المتعدد مقابل الأنماط المشابهة'),
+        NoteContent(
+          "مثل المفرد، المتعدد يُدخل حالة عالمية. استخدم حقن الاعتمادية (Dependency Injection) عندما يكون ممكناً لقابلية اختبار أفضل. المتعدد الأفضل عندما يكون لديك مجموعة محددة جيداً ومحدودة من النسخ المنطقية.",
+          type: .warning,
+        ),
+        StrContent(
+          "حالات الاستخدام الشائعة في Dart/Flutter: مديري اتصال لكل قاعدة بيانات، إعدادات لكل بيئة، مُسجّلات لكل وحدة، مديري أنماط لكل ثيم، مديري توطين لكل لغة، ومديري جلسة لكل مستخدم.",
+        ),
+        StrContent(
+          "اعتبارات الذاكرة: نسخ المتعدد لا يتم جمعها أبداً بواسطة جامع القمامة ما لم تُزال صراحةً من السجل. كن حذراً مع مجموعات المفاتيح غير المحدودة - يمكن أن تسبب تسريبات ذاكرة.",
+        ),
+      ],
+    ),
+    examples: LocV(
+      en: [
+        // Example 1: Basic - Database Connection Multiton
+        StrCodeBlock("""// Example 1: Basic - Database Connection Multiton
+// Use case: Managing connections to multiple databases
+
+class DatabaseConnection {
+  DatabaseConnection._(this.database) {
+    print('Creating connection to database: \$database');
+    _connect();
+  }
+  
+  final String database;
+  bool _isConnected = false;
+  
+  void _connect() {
+    print('Connected to \$database');
+    _isConnected = true;
+  }
+  
+  void query(String sql) {
+    if (!_isConnected) {
+      print('Error: Not connected to \$database');
+      return;
+    }
+    print('[\$database] Executing: \$sql');
+  }
+  
+  void disconnect() {
+    if (_isConnected) {
+      print('Disconnecting from \$database');
+      _isConnected = false;
+    }
+  }
+  
+  // Multiton implementation
+  static final Map<String, DatabaseConnection> _instances = {};
+  
+  factory DatabaseConnection(String database) {
+    return _instances.putIfAbsent(
+      database,
+      () => DatabaseConnection._(database),
+    );
+  }
+  
+  // Get all active connections
+  static List<String> get activeDatabases => _instances.keys.toList();
+  
+  // Close all connections
+  static void closeAll() {
+    for (final connection in _instances.values) {
+      connection.disconnect();
+    }
+    _instances.clear();
+  }
+}
+
+void main() {
+  print('=== Database Multiton Example ===\n');
+  
+  // First access creates instance
+  final userDb1 = DatabaseConnection('users_db');
+  userDb1.query('SELECT * FROM users');
+  
+  print('');
+  
+  // Same key returns same instance
+  final userDb2 = DatabaseConnection('users_db');
+  print('userDb1 == userDb2: \${identical(userDb1, userDb2)}');
+  userDb2.query('SELECT COUNT(*) FROM users');
+  
+  print('');
+  
+  // Different key creates different instance
+  final ordersDb = DatabaseConnection('orders_db');
+  ordersDb.query('SELECT * FROM orders');
+  
+  final productsDb = DatabaseConnection('products_db');
+  productsDb.query('SELECT * FROM products');
+  
+  print('\nActive databases: \${DatabaseConnection.activeDatabases}');
+  
+  print('\nClosing all connections...');
+  DatabaseConnection.closeAll();
+}"""),
+
+        // Example 2: Intermediate - Logger Multiton
+        StrCodeBlock("""// Example 2: Intermediate - Per-Module Logger System
+// Use case: Different loggers for different application modules
+
+enum LogLevel { debug, info, warning, error }
+
+class Logger {
+  Logger._(this.module) {
+    print('Creating logger for module: \$module');
+  }
+  
+  final String module;
+  LogLevel minLevel = .info;
+  final List<String> _logs = [];
+  
+  void setMinLevel(LogLevel level) {
+    minLevel = level;
+    info('Log level set to \$level');
+  }
+  
+  void debug(String message) => _log(.debug, message);
+  void info(String message) => _log(.info, message);
+  void warning(String message) => _log(.warning, message);
+  void error(String message) => _log(.error, message);
+  
+  void _log(LogLevel level, String message) {
+    if (level.index < minLevel.index) return;
+    
+    final timestamp = DateTime.now();
+    final levelStr = level.toString().split('.').last.toUpperCase();
+    final logEntry = '[\${timestamp.toIso8601String()}] [\$module] [\$levelStr] \$message';
+    
+    _logs.add(logEntry);
+    print(logEntry);
+  }
+  
+  List<String> get logs => List.unmodifiable(_logs);
+  
+  void clear() {
+    _logs.clear();
+    info('Logs cleared');
+  }
+  
+  // Multiton implementation
+  static final Map<String, Logger> _loggers = {};
+  
+  factory Logger.forModule(String module) {
+    return _loggers.putIfAbsent(
+      module,
+      () => Logger._(module),
+    );
+  }
+  
+  // Alternative: Use enum for well-defined modules
+  static Logger get auth => Logger.forModule('auth');
+  static Logger get database => Logger.forModule('database');
+  static Logger get api => Logger.forModule('api');
+  static Logger get ui => Logger.forModule('ui');
+  
+  // Registry management
+  static List<String> get modules => _loggers.keys.toList();
+  
+  static void setGlobalMinLevel(LogLevel level) {
+    for (final logger in _loggers.values) {
+      logger.setMinLevel(level);
+    }
+  }
+  
+  static Map<String, int> getLogCounts() {
+    return Map.fromEntries(
+      _loggers.entries.map((e) => MapEntry(e.key, e.value._logs.length)),
+    );
+  }
+}
+
+// Usage across different modules
+class AuthService {
+  final _logger = Logger.auth;
+  
+  void login(String username) {
+    _logger.info('User \$username attempting login');
+    _logger.debug('Validating credentials...');
+    _logger.info('Login successful for \$username');
+  }
+  
+  void logout(String username) {
+    _logger.info('User \$username logged out');
+  }
+}
+
+class DatabaseService {
+  final _logger = Logger.database;
+  
+  void connect() {
+    _logger.info('Connecting to database...');
+    _logger.debug('Using connection string: ...');
+    _logger.info('Database connected');
+  }
+  
+  void query(String sql) {
+    _logger.debug('Executing query: \$sql');
+  }
+}
+
+class ApiService {
+  final _logger = Logger.api;
+  
+  Future<void> fetchData() async {
+    _logger.info('Fetching data from API...');
+    await Future.delayed(.milliseconds(100));
+    _logger.warning('Rate limit approaching');
+    _logger.info('Data fetched successfully');
+  }
+}
+
+void main() async {
+  print('=== Logger Multiton Example ===\n');
+  
+  // Configure loggers
+  Logger.auth.setMinLevel(.debug);
+  Logger.database.setMinLevel(.info);
+  
+  print('');
+  
+  // Use services (each uses its own logger instance)
+  final auth = AuthService();
+  auth.login('john_doe');
+  
+  print('');
+  
+  final db = DatabaseService();
+  db.connect();
+  db.query('SELECT * FROM users');
+  
+  print('');
+  
+  final api = ApiService();
+  await api.fetchData();
+  
+  print('');
+  
+  // Access logger directly
+  final uiLogger = Logger.forModule('ui');
+  uiLogger.info('Rendering home screen');
+  
+  print('\n=== Logger Summary ===');
+  print('Active modules: \${Logger.modules}');
+  print('Log counts: \${Logger.getLogCounts()}');
+  
+  print('\nSetting global log level to ERROR...');
+  Logger.setGlobalMinLevel(.error);
+  
+  print('');
+  auth.login('jane_doe'); // Should not log (below ERROR level)
+  Logger.auth.error('Critical auth error'); // Should log
+}"""),
+
+        // Example 3: Advanced - Configuration Manager
+        StrCodeBlock("""// Example 3: Advanced - Multi-Environment Configuration
+// Use case: Different configurations for dev/staging/prod environments
+
+enum Environment { development, staging, production }
+
+class AppConfig {
+  AppConfig._({
+    required this.environment,
+    required this.apiBaseUrl,
+    required this.apiTimeout,
+    required this.enableLogging,
+    required this.enableAnalytics,
+    required this.databaseUrl,
+    required this.features,
+  }) {
+    print('Creating configuration for \$environment');
+  }
+  
+  final Environment environment;
+  final String apiBaseUrl;
+  final Duration apiTimeout;
+  final bool enableLogging;
+  final bool enableAnalytics;
+  final String databaseUrl;
+  final Map<String, bool> features;
+  
+  bool isFeatureEnabled(String feature) => features[feature] ?? false;
+  
+  // Multiton with factory methods for each environment
+  static final Map<Environment, AppConfig> _configs = {};
+  
+  factory AppConfig.forEnvironment(Environment env) {
+    return _configs.putIfAbsent(env, () => _createConfig(env));
+  }
+  
+  static AppConfig _createConfig(Environment env) {
+    return switch (env) {
+      .development => AppConfig._(
+        environment: env,
+        apiBaseUrl: 'http://localhost:3000',
+        apiTimeout: .seconds(60),
+        enableLogging: true,
+        enableAnalytics: false,
+        databaseUrl: 'sqlite:dev.db',
+        features: {
+          'new_ui': true,
+          'beta_features': true,
+          'debug_panel': true,
+        },
+      ),
+      .staging => AppConfig._(
+        environment: env,
+        apiBaseUrl: 'https://api.staging.example.com',
+        apiTimeout: .seconds(30),
+        enableLogging: true,
+        enableAnalytics: true,
+        databaseUrl: 'postgres://staging.db',
+        features: {
+          'new_ui': true,
+          'beta_features': true,
+          'debug_panel': false,
+        },
+      ),
+      .production => AppConfig._(
+        environment: env,
+        apiBaseUrl: 'https://api.example.com',
+        apiTimeout: .seconds(30),
+        enableLogging: false,
+        enableAnalytics: true,
+        databaseUrl: 'postgres://prod.db',
+        features: {
+          'new_ui': false,
+          'beta_features': false,
+          'debug_panel': false,
+        },
+      ),
+    };
+  }
+  
+  // Convenience getters
+  static AppConfig get dev => AppConfig.forEnvironment(.development);
+  static AppConfig get staging => AppConfig.forEnvironment(.staging);
+  static AppConfig get prod => AppConfig.forEnvironment(.production);
+  
+  // Current active config (could be set based on build flavor)
+  static Environment _currentEnvironment = .development;
+  static AppConfig get current => AppConfig.forEnvironment(_currentEnvironment);
+  
+  static void setEnvironment(Environment env) {
+    _currentEnvironment = env;
+    print('Switched to \$env environment');
+  }
+  
+  @override
+  String toString() {
+    return '''
+AppConfig(\$environment)
+  API: \$apiBaseUrl
+  Timeout: \$apiTimeout
+  Logging: \$enableLogging
+  Analytics: \$enableAnalytics
+  Database: \$databaseUrl
+  Features: \$features
+''';
+  }
+}
+
+// Service using configuration
+class ApiClient {
+  late final AppConfig _config = AppConfig.current;
+  
+  Future<void> fetchUsers() async {
+    print('\nFetching users from \${_config.apiBaseUrl}/users');
+    print('Timeout: \${_config.apiTimeout}');
+    
+    if (_config.enableLogging) {
+      print('Logging request...');
+    }
+    
+    if (_config.enableAnalytics) {
+      print('Tracking API call...');
+    }
+  }
+}
+
+void main() {
+  print('=== Configuration Multiton Example ===\n');
+  
+  // Access different environment configs
+  print('Development Config:');
+  print(AppConfig.dev);
+  
+  print('\nProduction Config:');
+  print(AppConfig.prod);
+  
+  // Verify same instance for same environment
+  final dev1 = AppConfig.forEnvironment(.development);
+  final dev2 = AppConfig.dev;
+  print('dev1 == dev2: \${identical(dev1, dev2)}');
+  
+  // Use current config
+  print('\n=== Using Current Config ===');
+  final client = ApiClient();
+  client.fetchUsers();
+  
+  // Switch environment
+  print('\n=== Switching to Production ===');
+  AppConfig.setEnvironment(.production);
+  client.fetchUsers();
+  
+  // Feature flags
+  print('\n=== Feature Flags ===');
+  print('Dev new_ui: \${AppConfig.dev.isFeatureEnabled('new_ui')}');
+  print('Prod new_ui: \${AppConfig.prod.isFeatureEnabled('new_ui')}');
+  print('Dev debug_panel: \${AppConfig.dev.isFeatureEnabled('debug_panel')}');
+  print('Prod debug_panel: \${AppConfig.prod.isFeatureEnabled('debug_panel')}');
+}"""),
+
+        // Example 4: Flutter - Theme Manager
+        StrCodeBlock("""// Example 4: Flutter - Per-Theme Style Manager
+// Use case: Managing different theme styles (light/dark/custom)
+
+enum ThemeType { light, dark, highContrast, custom }
+
+class ThemeStyle {
+  ThemeStyle._({
+    required this.type,
+    required this.primaryColor,
+    required this.backgroundColor,
+    required this.textColor,
+    required this.accentColor,
+    required this.errorColor,
+  }) {
+    print('Creating theme style: \$type');
+  }
+  
+  final ThemeType type;
+  final Color primaryColor;
+  final Color backgroundColor;
+  final Color textColor;
+  final Color accentColor;
+  final Color errorColor;
+  
+  ThemeData toThemeData() {
+    return ThemeData(
+      primaryColor: primaryColor,
+      scaffoldBackgroundColor: backgroundColor,
+      colorScheme: ColorScheme(
+        brightness: type == .light ? .light : .dark,
+        primary: primaryColor,
+        onPrimary: textColor,
+        secondary: accentColor,
+        onSecondary: textColor,
+        error: errorColor,
+        onError: Colors.white,
+        surface: backgroundColor,
+        onSurface: textColor,
+      ),
+    );
+  }
+  
+  // Multiton implementation
+  static final Map<ThemeType, ThemeStyle> _themes = {};
+  
+  factory ThemeStyle.forType(ThemeType type) {
+    return _themes.putIfAbsent(type, () => _createTheme(type));
+  }
+  
+  static ThemeStyle _createTheme(ThemeType type) {
+    return switch (type) {
+      .light => ThemeStyle._(
+        type: type,
+        primaryColor: Colors.blue,
+        backgroundColor: Colors.white,
+        textColor: Colors.black87,
+        accentColor: Colors.orange,
+        errorColor: Colors.red,
+      ),
+      .dark => ThemeStyle._(
+        type: type,
+        primaryColor: Colors.indigo,
+        backgroundColor: Color(0xFF121212),
+        textColor: Colors.white,
+        accentColor: Colors.amber,
+        errorColor: Colors.redAccent,
+      ),
+      .highContrast => ThemeStyle._(
+        type: type,
+        primaryColor: Colors.black,
+        backgroundColor: Colors.white,
+        textColor: Colors.black,
+        accentColor: Colors.yellow[700]!,
+        errorColor: Colors.red[900]!,
+      ),
+      .custom => ThemeStyle._(
+        type: type,
+        primaryColor: Colors.purple,
+        backgroundColor: Colors.grey[100]!,
+        textColor: Colors.black87,
+        accentColor: Colors.pink,
+        errorColor: Colors.deepOrange,
+      ),
+    };
+  }
+  
+  // Convenience getters
+  static ThemeStyle get light => ThemeStyle.forType(.light);
+  static ThemeStyle get dark => ThemeStyle.forType(.dark);
+  static ThemeStyle get highContrast => ThemeStyle.forType(.highContrast);
+  static ThemeStyle get custom => ThemeStyle.forType(.custom);
+  
+  // Get all available themes
+  static List<ThemeType> get availableThemes => ThemeType.values;
+}
+
+class ThemeManager extends ChangeNotifier {
+  ThemeType _currentTheme = .light;
+  
+  ThemeType get currentTheme => _currentTheme;
+  ThemeStyle get currentStyle => ThemeStyle.forType(_currentTheme);
+  ThemeData get themeData => currentStyle.toThemeData();
+  
+  void setTheme(ThemeType type) {
+    if (_currentTheme != type) {
+      _currentTheme = type;
+      print('Theme changed to: \$type');
+      notifyListeners();
+    }
+  }
+  
+  void toggleDarkMode() {
+    setTheme(_currentTheme == .light ? .dark : .light);
+  }
+}
+
+// Usage in Flutter app
+class ThemedApp extends StatelessWidget {
+  const ThemedApp({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => ThemeManager(),
+      child: Consumer<ThemeManager>(
+        builder: (context, themeManager, child) {
+          return MaterialApp(
+            theme: themeManager.themeData,
+            home: ThemeDemo(),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class ThemeDemo extends StatelessWidget {
+  const ThemeDemo({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    final themeManager = context.watch<ThemeManager>();
+    final theme = Theme.of(context);
+    
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Theme Multiton Demo'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: .center,
+          children: [
+            Text(
+              'Current Theme: \${themeManager.currentTheme}',
+              style: theme.textTheme.headlineSmall,
+            ),
+            .height(32),
+            Container(
+              padding: .all(16),
+              decoration: BoxDecoration(
+                color: theme.primaryColor,
+                borderRadius: .circular(8),
+              ),
+              child: Text(
+                'Primary Color',
+                style: TextStyle(color: theme.colorScheme.onPrimary),
+              ),
+            ),
+            .height(16),
+            Container(
+              padding: .all(16),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.secondary,
+                borderRadius: .circular(8),
+              ),
+              child: Text(
+                'Accent Color',
+                style: TextStyle(color: theme.colorScheme.onSecondary),
+              ),
+            ),
+            .height(32),
+            Wrap(
+              spacing: 8,
+              children: ThemeStyle.availableThemes.map((type) {
+                return ElevatedButton(
+                  onPressed: () => themeManager.setTheme(type),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: themeManager.currentTheme == type
+                        ? theme.primaryColor
+                        : theme.colorScheme.surface,
+                  ),
+                  child: Text(type.toString().split('.').last),
+                );
+              }).toList(),
+            ),
+            .height(16),
+            ElevatedButton(
+              onPressed: themeManager.toggleDarkMode,
+              child: Text('Toggle Light/Dark'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+void main() {
+  // Verify multiton behavior
+  print('=== Theme Multiton Verification ===\n');
+  
+  final light1 = ThemeStyle.light;
+  final light2 = ThemeStyle.forType(.light);
+  final dark = ThemeStyle.dark;
+  
+  print('light1 == light2: \${identical(light1, light2)}');
+  print('light1 == dark: \${identical(light1, dark)}');
+  
+  print('\nAvailable themes: \${ThemeStyle.availableThemes}');
+  
+  // Run Flutter app
+  runApp(ThemedApp());
+}"""),
+      ],
+      ar: [
+        // Arabic versions
+        StrCodeBlock("""// مثال 1: أساسي - متعدد اتصال قاعدة البيانات
+// حالة الاستخدام: إدارة الاتصالات لقواعد بيانات متعددة
+
+class DatabaseConnection {
+  DatabaseConnection._(this.database) {
+    print('إنشاء اتصال بقاعدة البيانات: \$database');
+    _connect();
+  }
+  
+  final String database;
+  bool _isConnected = false;
+  
+  void _connect() {
+    print('تم الاتصال بـ \$database');
+    _isConnected = true;
+  }
+  
+  void query(String sql) {
+    if (!_isConnected) {
+      print('خطأ: غير متصل بـ \$database');
+      return;
+    }
+    print('[\$database] تنفيذ: \$sql');
+  }
+  
+  void disconnect() {
+    if (_isConnected) {
+      print('قطع الاتصال من \$database');
+      _isConnected = false;
+    }
+  }
+  
+  // تطبيق المتعدد (Multiton)
+  static final Map<String, DatabaseConnection> _instances = {};
+  
+  factory DatabaseConnection(String database) {
+    return _instances.putIfAbsent(
+      database,
+      () => DatabaseConnection._(database),
+    );
+  }
+  
+  // الحصول على جميع الاتصالات النشطة
+  static List<String> get activeDatabases => _instances.keys.toList();
+  
+  // إغلاق جميع الاتصالات
+  static void closeAll() {
+    for (final connection in _instances.values) {
+      connection.disconnect();
+    }
+    _instances.clear();
+  }
+}
+
+void main() {
+  print('=== مثال متعدد قاعدة البيانات ===\n');
+  
+  // الوصول الأول ينشئ النسخة
+  final userDb1 = DatabaseConnection('users_db');
+  userDb1.query('SELECT * FROM users');
+  
+  print('');
+  
+  // نفس المفتاح يُرجع نفس النسخة
+  final userDb2 = DatabaseConnection('users_db');
+  print('userDb1 == userDb2: \${identical(userDb1, userDb2)}');
+  userDb2.query('SELECT COUNT(*) FROM users');
+  
+  print('');
+  
+  // مفتاح مختلف ينشئ نسخة مختلفة
+  final ordersDb = DatabaseConnection('orders_db');
+  ordersDb.query('SELECT * FROM orders');
+  
+  final productsDb = DatabaseConnection('products_db');
+  productsDb.query('SELECT * FROM products');
+  
+  print('\nقواعد البيانات النشطة: \${DatabaseConnection.activeDatabases}');
+  
+  print('\nإغلاق جميع الاتصالات...');
+  DatabaseConnection.closeAll();
+}"""),
+        // Add remaining Arabic examples...
+      ],
+    ),
+    pros: LocSL(
+      en: [
+        "Controls number of instances per key - prevents unlimited object creation",
+        "Provides centralized access to named instances",
+        "Reuses instances efficiently - same key always returns same instance",
+        "More flexible than pure Singleton - allows multiple well-defined instances",
+        "Easy to add new instance types by adding new keys",
+        "Simplifies management of related but distinct resources",
+        "Can be combined with lazy initialization for performance",
+      ],
+      ar: [
+        "يتحكم في عدد النسخ لكل مفتاح - يمنع إنشاء كائنات غير محدود",
+        "يوفر وصولاً مركزياً للنسخ المُسماة",
+        "يعيد استخدام النسخ بكفاءة - نفس المفتاح يُرجع دائماً نفس النسخة",
+        "أكثر مرونة من المفرد النقي - يسمح بنسخ متعددة محددة جيداً",
+        "سهل إضافة أنواع نسخ جديدة بإضافة مفاتيح جديدة",
+        "يُبسط إدارة الموارد المترابطة لكن المتميزة",
+        "يمكن دمجه مع التهيئة الكسولة للأداء",
+      ],
+    ),
+    cons: LocSL(
+      en: [
+        "Introduces global state - same issues as Singleton",
+        "Requires careful key management to avoid collisions or ambiguity",
+        "Potential memory leaks if instances never cleaned up from registry",
+        "Thread safety concerns with concurrent access (less critical in Dart)",
+        "Can be misused with unbounded key sets (defeats purpose)",
+        "Makes testing difficult - hard to mock or reset instances",
+        "Hides dependencies - classes don't declare what they need",
+        "Registry grows indefinitely unless manually cleaned",
+      ],
+      ar: [
+        "يُدخل حالة عالمية - نفس مشاكل المفرد",
+        "يتطلب إدارة دقيقة للمفاتيح لتجنب التصادمات أو الغموض",
+        "تسريبات ذاكرة محتملة إذا لم يتم تنظيف النسخ أبداً من السجل",
+        "مخاوف أمان الخيوط مع الوصول المتزامن (أقل أهمية في Dart)",
+        "يمكن إساءة استخدامه مع مجموعات مفاتيح غير محدودة (يُفشل الغرض)",
+        "يجعل الاختبار صعباً - صعب المحاكاة أو إعادة تعيين النسخ",
+        "يخفي التبعيات - الفئات لا تُعلن عما تحتاجه",
+        "السجل ينمو إلى ما لا نهاية ما لم يتم تنظيفه يدوياً",
+      ],
+    ),
+    whenToUse: LocV(
+      en: [
+        StrContent("Use Multiton when:"),
+        ULContent(
+          value: [
+            "You need more than one but a limited, well-defined number of instances",
+            "Instances are identified by keys or names (databases, environments, modules)",
+            "Each logical category should have exactly one instance",
+            "You want to avoid recreating expensive objects with the same identifier",
+            "Managing resources that are naturally partitioned by key (per-user, per-language, per-theme)",
+            "Need centralized control over instance lifecycle",
+          ],
+        ),
+        NoteContent(
+          "Best for: database connections per database, loggers per module, configs per environment, themes per type. NOT for: user sessions (unbounded), temporary objects, or when DI would be clearer.",
+          type: .tip,
+        ),
+        StrContent("When NOT to use:"),
+        ULContent(
+          value: [
+            "Key set is unbounded or unpredictable (use factory instead)",
+            "Only one instance needed globally (use Singleton)",
+            "Dependency injection would be clearer and more testable",
+            "Instances need to be garbage collected",
+            "Testing requires fresh instances frequently",
+          ],
+        ),
+      ],
+      ar: [
+        StrContent("استخدم المتعدد عندما:"),
+        ULContent(
+          value: [
+            "تحتاج لأكثر من نسخة واحدة لكن عدد محدود ومحدد جيداً من النسخ",
+            "النسخ مُحددة بمفاتيح أو أسماء (قواعد بيانات، بيئات، وحدات)",
+            "كل فئة منطقية يجب أن يكون لها نسخة واحدة بالضبط",
+            "تريد تجنب إعادة إنشاء كائنات مكلفة بنفس المُعرّف",
+            "إدارة موارد مُقسمة بشكل طبيعي حسب المفتاح (لكل مستخدم، لكل لغة، لكل ثيم)",
+            "تحتاج تحكماً مركزياً في دورة حياة النسخة",
+          ],
+        ),
+        NoteContent(
+          "الأفضل لـ: اتصالات قاعدة البيانات لكل قاعدة بيانات، مُسجّلات لكل وحدة، إعدادات لكل بيئة، ثيمات لكل نوع. ليس لـ: جلسات المستخدم (غير محدودة)، كائنات مؤقتة، أو عندما يكون حقن الاعتمادية أوضح.",
+          type: .tip,
+        ),
+        StrContent("متى لا تستخدمه:"),
+        ULContent(
+          value: [
+            "مجموعة المفاتيح غير محدودة أو غير قابلة للتنبؤ (استخدم المصنع بدلاً من ذلك)",
+            "نسخة واحدة فقط مطلوبة عالمياً (استخدم المفرد)",
+            "حقن الاعتمادية سيكون أوضح وأكثر قابلية للاختبار",
+            "النسخ تحتاج لأن يتم جمعها بواسطة جامع القمامة",
+            "الاختبار يتطلب نسخاً جديدة بشكل متكرر",
+          ],
+        ),
+      ],
+    ),
+    commonMistakes: LocV(
+      en: [
+        "Using arbitrary or unlimited keys - defeats the purpose and causes memory leaks",
+        "Not ensuring thread safety on instance map (though less critical in Dart isolates)",
+        "Allowing keys to collide or be ambiguous (e.g., case sensitivity issues)",
+        "Never cleaning up unused instances from the registry",
+        "Using Multiton when simple Singleton would suffice (over-engineering)",
+        "Not validating keys before creating instances",
+        "Mixing concerns - using same Multiton for unrelated resources",
+        "Forgetting to make constructors private - allowing direct instantiation",
+        "Not providing a way to clear/reset registry for testing",
+      ],
+      ar: [
+        "استخدام مفاتيح عشوائية أو غير محدودة - يُفشل الغرض ويسبب تسريبات ذاكرة",
+        "عدم ضمان أمان الخيوط على خريطة النسخ (رغم أنه أقل أهمية في عزلات Dart)",
+        "السماح للمفاتيح بالتصادم أو أن تكون غامضة (مثل مشاكل حساسية الأحرف الكبيرة/الصغيرة)",
+        "عدم تنظيف النسخ غير المستخدمة من السجل أبداً",
+        "استخدام المتعدد عندما يكفي المفرد البسيط (هندسة مفرطة - Over-engineering)",
+        "عدم التحقق من المفاتيح قبل إنشاء النسخ",
+        "خلط المسؤوليات - استخدام نفس المتعدد لموارد غير مترابطة",
+        "نسيان جعل المُنشئات خاصة - السماح بالإنشاء المباشر",
+        "عدم توفير طريقة لمسح/إعادة تعيين السجل للاختبار",
+      ],
+    ),
+    relatedPatterns: [PK.singleton, PK.factoryMethod, PK.objectPool],
+    oftenConfusedWith: [PK.singleton],
+  ),
+
+  PK.factoryKit: DesignPattern(
+    id: PK.factoryKit,
+    title: LocS(en: "Factory Kit", ar: "مجموعة المصنع (Factory Kit)"),
+    description: LocS(
+      en: "Allows clients to define object creation logic within controlled guidelines",
+      ar: "يسمح للعملاء بتعريف منطق إنشاء الكائنات ضمن إرشادات محكومة (Controlled Guidelines)",
+    ),
+    group: .design,
+    type: .creational,
+    category: .practical,
+    level: .advanced,
+    content: LocV(
+      en: [
+        StrContent(
+          "The Factory Kit pattern is a sophisticated creational pattern where the framework provides interfaces and registration mechanisms that allow external code to plug in custom creation logic. Think of it as a 'reverse factory' - instead of the framework knowing how to create objects, clients teach the framework how to create their custom objects.",
+        ),
+        AnalogyContent(
+          "Think of a food delivery app platform. The platform doesn't know how to prepare every restaurant's dishes - that would be impossible. Instead, it provides a standard interface (menu items, preparation instructions, delivery format), and each restaurant registers their own recipes and cooking methods. The platform orchestrates delivery, but restaurants define what and how they cook.",
+        ),
+        StrContent(
+          "This pattern is particularly useful in plugin architectures, game engines, or any extensible system where you want to give users controlled customization without exposing internal implementation details. The framework defines WHAT can be created (interfaces, constraints), while clients define HOW to create it (factories).",
+        ),
+        ULContent(
+          title: "Key Components:",
+          value: [
+            "Kit: Central registry that stores and manages factory functions",
+            "Factory Function: Client-provided function that creates instances",
+            "Product Interface: Defines what can be created (framework-controlled)",
+            "Registration: Mechanism for clients to register their factories",
+            "Creation: Framework uses registered factories to create instances",
+          ],
+        ),
+        DiagramContent(
+          "Pattern Flow:\nFramework defines → Product Interface\n                    ↓\nClient implements → ConcreteProduct + Factory Function\n                    ↓\nClient registers → Kit.register('key', factoryFn)\n                    ↓\nFramework uses → Kit.create('key') → calls factory → ConcreteProduct",
+        ),
+        StrContent(
+          "The pattern provides high customization while maintaining system integrity through well-defined extension points. The framework controls the 'contract' (what objects must implement), while clients control the 'implementation' (how objects are created).",
+        ),
+        NoteContent(
+          "Factory Kit vs Abstract Factory: Abstract Factory has pre-defined concrete factories. Factory Kit allows runtime registration of user-defined factories. Factory Kit is more flexible but requires more careful design of extension points.",
+          type: .important,
+        ),
+        StrContent(
+          "In Dart and Flutter, this pattern is commonly used for: plugin systems (register custom plugins), widget builders (register custom widget factories), serialization systems (register type serializers), game entity systems (register entity types), and theme/style registries.",
+        ),
+        ComparisonContent({
+          'Factory Kit':
+              'Clients register factories at runtime, framework orchestrates',
+          'Abstract Factory':
+              'Pre-defined factories in code, limited extensibility',
+          'Factory Method': 'Subclasses override creation, compile-time only',
+          'Strategy': 'Clients provide algorithms, not object creation',
+        }, title: 'Factory Kit vs Similar Patterns'),
+        NoteContent(
+          "Security consideration: Factory Kit allows external code execution. Always validate registered factories, sanitize inputs, and consider sandboxing in untrusted environments.",
+          type: .warning,
+        ),
+        StrContent(
+          "The pattern excels when: (1) you're building an extensible framework/platform, (2) object types can't be known at compile time, (3) users need to add custom types without modifying framework code, (4) you want type-safe extensibility with runtime flexibility.",
+        ),
+        StrContent(
+          "Design considerations: Define clear product interfaces, provide comprehensive extension documentation, validate registered factories, handle factory registration errors gracefully, and consider factory versioning for evolving APIs.",
+        ),
+      ],
+      ar: [
+        StrContent(
+          "نمط مجموعة المصنع (Factory Kit) هو نمط إنشائي متطور حيث يوفر الإطار واجهات وآليات تسجيل (Registration Mechanisms) تسمح للكود الخارجي بإضافة منطق إنشاء مخصص. فكر فيه كـ 'مصنع معكوس' - بدلاً من أن يعرف الإطار كيفية إنشاء الكائنات، العملاء يعلّمون الإطار كيفية إنشاء كائناتهم المخصصة.",
+        ),
+        AnalogyContent(
+          "فكر في منصة تطبيق توصيل طعام. المنصة لا تعرف كيفية تحضير أطباق كل مطعم - سيكون ذلك مستحيلاً. بدلاً من ذلك، توفر واجهة موحدة (عناصر القائمة، تعليمات التحضير، صيغة التوصيل)، وكل مطعم يُسجل وصفاته وطرق الطهي الخاصة به. المنصة تُنسق التوصيل، لكن المطاعم تُحدد ما يطهون وكيف يطهونه.",
+        ),
+        StrContent(
+          "هذا النمط مفيد بشكل خاص في معماريات الإضافات (Plugin Architectures)، محركات الألعاب، أو أي نظام قابل للتوسع حيث تريد منح المستخدمين تخصيصاً محكوماً دون كشف تفاصيل التنفيذ الداخلية. الإطار يُحدد ماذا يمكن إنشاؤه (الواجهات، القيود)، بينما العملاء يُحددون كيفية إنشائه (المصانع).",
+        ),
+        ULContent(
+          title: "المكونات الأساسية:",
+          value: [
+            "المجموعة (Kit): سجل مركزي يخزن ويدير دوال المصنع",
+            "دالة المصنع (Factory Function): دالة مُوفرة من العميل تُنشئ النسخ",
+            "واجهة المنتج (Product Interface): تُحدد ما يمكن إنشاؤه (محكومة من الإطار)",
+            "التسجيل (Registration): آلية للعملاء لتسجيل مصانعهم",
+            "الإنشاء (Creation): الإطار يستخدم المصانع المُسجلة لإنشاء النسخ",
+          ],
+        ),
+        DiagramContent(
+          "تدفق النمط:\nالإطار يُحدد ← واجهة المنتج\n                    ↓\nالعميل ينفذ ← منتج محدد + دالة المصنع\n                    ↓\nالعميل يُسجل ← (Kit.register('key', factoryFn\n                    ↓\nالإطار يستخدم ← ('Kit.create('key ← يستدعي المصنع ← منتج محدد",
+        ),
+        StrContent(
+          "يوفر النمط تخصيصاً عالياً مع الحفاظ على سلامة النظام من خلال نقاط توسع محددة جيداً (Well-Defined Extension Points). الإطار يتحكم في 'العقد' (ما يجب على الكائنات تنفيذه)، بينما العملاء يتحكمون في 'التطبيق' (كيفية إنشاء الكائنات).",
+        ),
+        NoteContent(
+          "مجموعة المصنع مقابل المصنع المجرد: المصنع المجرد لديه مصانع محددة مسبقاً. مجموعة المصنع تسمح بتسجيل مصانع معرّفة من المستخدم في وقت التشغيل (Runtime). مجموعة المصنع أكثر مرونة لكن تتطلب تصميماً أكثر دقة لنقاط التوسع.",
+          type: .important,
+        ),
+        StrContent(
+          "في Dart و Flutter، يُستخدم هذا النمط بشكل شائع لـ: أنظمة الإضافات (تسجيل إضافات مخصصة)، بناة الواجهات (تسجيل مصانع واجهات مخصصة)، أنظمة التسلسل (تسجيل مُسلسلات الأنواع)، أنظمة كيانات الألعاب (تسجيل أنواع الكيانات)، وسجلات الثيم/الأنماط.",
+        ),
+        ComparisonContent({
+          'مجموعة المصنع (Factory Kit)':
+              'العملاء يُسجلون المصانع في وقت التشغيل، الإطار يُنسق',
+          'المصنع المجرد (Abstract Factory)':
+              'مصانع محددة مسبقاً في الكود، قابلية توسع محدودة',
+          'طريقة المصنع (Factory Method)':
+              'الفئات الفرعية تُعيد تعريف الإنشاء، وقت الترجمة فقط',
+          'الاستراتيجية (Strategy)':
+              'العملاء يوفرون خوارزميات، وليس إنشاء كائنات',
+        }, title: 'مجموعة المصنع مقابل الأنماط المشابهة'),
+        NoteContent(
+          "اعتبارات الأمان: مجموعة المصنع تسمح بتنفيذ كود خارجي. تحقق دائماً من المصانع المُسجلة، نظّف المدخلات، وفكر في العزل (Sandboxing) في البيئات غير الموثوقة.",
+          type: .warning,
+        ),
+        StrContent(
+          "النمط يتفوق عندما: (1) تبني إطاراً/منصة قابلة للتوسع، (2) أنواع الكائنات لا يمكن معرفتها في وقت الترجمة، (3) المستخدمون يحتاجون لإضافة أنواع مخصصة دون تعديل كود الإطار، (4) تريد قابلية توسع آمنة من حيث الأنواع (Type-Safe) مع مرونة وقت التشغيل.",
+        ),
+        StrContent(
+          "اعتبارات التصميم: حدد واجهات منتج واضحة، وفر توثيقاً شاملاً للتوسع، تحقق من المصانع المُسجلة، تعامل مع أخطاء تسجيل المصنع بلطف، وفكر في إصدار المصانع (Factory Versioning) للـ APIs المتطورة.",
+        ),
+      ],
+    ),
+    examples: LocV(
+      en: [
+        // Example 1: Basic - Game Entity Factory Kit
+        StrCodeBlock(
+          """// Example 1: Basic - Simple Factory Kit for Game Entities
+// Use case: Allowing users to register custom enemy types in a game
+
+abstract class Enemy {
+  String get name;
+  int get health;
+  int get damage;
+  void attack();
+}
+
+typedef EnemyFactory = Enemy Function();
+
+class EnemyFactoryKit {
+  final Map<String, EnemyFactory> _factories = {};
+  
+  // Register a factory for a specific enemy type
+  void register(String type, EnemyFactory factory) {
+    if (_factories.containsKey(type)) {
+      print('Warning: Overwriting factory for type: \$type');
+    }
+    _factories[type] = factory;
+    print('Registered enemy factory: \$type');
+  }
+  
+  // Create an enemy of specified type
+  Enemy? create(String type) {
+    final factory = _factories[type];
+    if (factory == null) {
+      print('Error: No factory registered for type: \$type');
+      return null;
+    }
+    
+    print('Creating enemy: \$type');
+    return factory();
+  }
+  
+  // Bulk creation
+  List<Enemy> createMany(String type, int count) {
+    return List.generate(count, (_) => create(type))
+        .whereType<Enemy>()
+        .toList();
+  }
+  
+  // Query available types
+  List<String> get availableTypes => _factories.keys.toList();
+  
+  bool hasType(String type) => _factories.containsKey(type);
+  
+  // Unregister (useful for cleanup or hot-reload)
+  void unregister(String type) {
+    _factories.remove(type);
+    print('Unregistered enemy factory: \$type');
+  }
+  
+  void clear() {
+    _factories.clear();
+    print('Cleared all enemy factories');
+  }
+}
+
+// Built-in enemy types (provided by framework)
+class Goblin implements Enemy {
+  @override
+  String get name => 'Goblin';
+  
+  @override
+  int get health => 50;
+  
+  @override
+  int get damage => 10;
+  
+  @override
+  void attack() => print('\$name attacks with dagger!');
+}
+
+class Orc implements Enemy {
+  @override
+  String get name => 'Orc';
+  
+  @override
+  int get health => 150;
+  
+  @override
+  int get damage => 25;
+  
+  @override
+  void attack() => print('\$name swings axe!');
+}
+
+// User-defined custom enemy (client code)
+class Dragon implements Enemy {
+  @override
+  String get name => 'Dragon';
+  
+  @override
+  int get health => 500;
+  
+  @override
+  int get damage => 100;
+  
+  @override
+  void attack() => print('\$name breathes fire!');
+}
+
+class Skeleton implements Enemy {
+  @override
+  String get name => 'Skeleton';
+  
+  @override
+  int get health => 30;
+  
+  @override
+  int get damage => 8;
+  
+  @override
+  void attack() => print('\$name rattles bones menacingly!');
+}
+
+void main() {
+  print('=== Factory Kit Example ===\n');
+  
+  final enemyKit = EnemyFactoryKit();
+  
+  // Framework registers built-in types
+  enemyKit.register('goblin', () => Goblin());
+  enemyKit.register('orc', () => Orc());
+  
+  print('\nBuilt-in enemies: \${enemyKit.availableTypes}\n');
+  
+  // Users register custom types
+  enemyKit.register('dragon', () => Dragon());
+  enemyKit.register('skeleton', () => Skeleton());
+  
+  print('\nAll enemies: \${enemyKit.availableTypes}\n');
+  
+  // Create enemies
+  final goblin = enemyKit.create('goblin');
+  goblin?.attack();
+  
+  final dragon = enemyKit.create('dragon');
+  dragon?.attack();
+  
+  print('');
+  
+  // Bulk creation
+  final skeletons = enemyKit.createMany('skeleton', 3);
+  print('Created \${skeletons.length} skeletons');
+  for (final skeleton in skeletons) {
+    print('  - \${skeleton.name}: HP \${skeleton.health}, DMG \${skeleton.damage}');
+  }
+  
+  print('');
+  
+  // Try to create unregistered type
+  final zombie = enemyKit.create('zombie');
+}""",
+        ),
+
+        // Example 2: Intermediate - Widget Factory Kit
+        StrCodeBlock(
+          """// Example 2: Intermediate - Custom Widget Factory System
+// Use case: Plugin system for registering custom form field types
+
+abstract class FormField extends StatelessWidget {
+  const FormField({
+    required this.label,
+    required this.onChanged,
+    super.key,
+  });
+  
+  final String label;
+  final ValueChanged<String> onChanged;
+}
+
+typedef FormFieldFactory = FormField Function({
+  required String label,
+  required ValueChanged<String> onChanged,
+});
+
+class FormFieldFactoryKit {
+  final Map<String, FormFieldFactory> _factories = {};
+  final Map<String, String> _descriptions = {};
+  
+  void register({
+    required String type,
+    required FormFieldFactory factory,
+    String? description,
+  }) {
+    _factories[type] = factory;
+    if (description != null) {
+      _descriptions[type] = description;
+    }
+    print('Registered form field: \$type');
+  }
+  
+  FormField? create({
+    required String type,
+    required String label,
+    required ValueChanged<String> onChanged,
+  }) {
+    final factory = _factories[type];
+    if (factory == null) {
+      print('Unknown field type: \$type');
+      return null;
+    }
+    
+    return factory(label: label, onChanged: onChanged);
+  }
+  
+  List<String> get availableTypes => _factories.keys.toList();
+  
+  String? getDescription(String type) => _descriptions[type];
+  
+  Map<String, String> get typeDescriptions => Map.unmodifiable(_descriptions);
+}
+
+// Built-in field types
+class TextFormField extends FormField {
+  const TextFormField({
+    required super.label,
+    required super.onChanged,
+    super.key,
+  });
+  
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: .start,
+      children: [
+        Text(label, style: .bold),
+        .height(8),
+        TextField(
+          onChanged: onChanged,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: 'Enter \$label',
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class EmailFormField extends FormField {
+  const EmailFormField({
+    required super.label,
+    required super.onChanged,
+    super.key,
+  });
+  
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: .start,
+      children: [
+        Row(
+          children: [
+            Icon(Icons.email, size: 16),
+            .width(4),
+            Text(label, style: .bold),
+          ],
+        ),
+        .height(8),
+        TextField(
+          onChanged: onChanged,
+          keyboardType: .emailAddress,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: 'user@example.com',
+            prefixIcon: Icon(Icons.alternate_email),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// Custom user-defined field types
+class PhoneFormField extends FormField {
+  const PhoneFormField({
+    required super.label,
+    required super.onChanged,
+    super.key,
+  });
+  
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: .start,
+      children: [
+        Row(
+          children: [
+            Icon(Icons.phone, size: 16),
+            .width(4),
+            Text(label, style: .bold),
+          ],
+        ),
+        .height(8),
+        TextField(
+          onChanged: onChanged,
+          keyboardType: .phone,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: '+1 (555) 123-4567',
+            prefixIcon: Icon(Icons.phone),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class RatingFormField extends FormField {
+  const RatingFormField({
+    required super.label,
+    required super.onChanged,
+    super.key,
+  });
+  
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: .start,
+      children: [
+        Text(label, style: .bold),
+        .height(8),
+        _RatingWidget(onChanged: onChanged),
+      ],
+    );
+  }
+}
+
+class _RatingWidget extends StatefulWidget {
+  const _RatingWidget({required this.onChanged});
+  
+  final ValueChanged<String> onChanged;
+  
+  @override
+  State<_RatingWidget> createState() => _RatingWidgetState();
+}
+
+class _RatingWidgetState extends State<_RatingWidget> {
+  int _rating = 0;
+  
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: List.generate(5, (index) {
+        return IconButton(
+          icon: Icon(
+            index < _rating ? Icons.star : Icons.star_border,
+            color: Colors.amber,
+          ),
+          onPressed: () {
+            setState(() => _rating = index + 1);
+            widget.onChanged(_rating.toString());
+          },
+        );
+      }),
+    );
+  }
+}
+
+// Dynamic form builder using factory kit
+class DynamicFormBuilder extends StatefulWidget {
+  const DynamicFormBuilder({
+    required this.fieldKit,
+    required this.fieldConfig,
+    super.key,
+  });
+  
+  final FormFieldFactoryKit fieldKit;
+  final List<Map<String, String>> fieldConfig;
+  
+  @override
+  State<DynamicFormBuilder> createState() => _DynamicFormBuilderState();
+}
+
+class _DynamicFormBuilderState extends State<DynamicFormBuilder> {
+  final Map<String, String> _formData = {};
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Dynamic Form')),
+      body: ListView(
+        padding: .all(16),
+        children: [
+          ...widget.fieldConfig.map((config) {
+            final type = config['type'] ?? 'text';
+            final label = config['label'] ?? 'Field';
+            
+            final field = widget.fieldKit.create(
+              type: type,
+              label: label,
+              onChanged: (value) {
+                setState(() => _formData[label] = value);
+              },
+            );
+            
+            return field != null
+                ? Padding(
+                    padding: .only(bottom: 16),
+                    child: field,
+                  )
+                : Text('Unknown field type: \$type');
+          }),
+          .height(16),
+          ElevatedButton(
+            onPressed: () {
+              print('Form data: \$_formData');
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Form submitted! Check console.')),
+              );
+            },
+            child: Text('Submit'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+void main() {
+  final fieldKit = FormFieldFactoryKit();
+  
+  // Register built-in types
+  fieldKit.register(
+    type: 'text',
+    factory: ({required label, required onChanged}) =>
+        TextFormField(label: label, onChanged: onChanged),
+    description: 'Simple text input',
+  );
+  
+  fieldKit.register(
+    type: 'email',
+    factory: ({required label, required onChanged}) =>
+        EmailFormField(label: label, onChanged: onChanged),
+    description: 'Email address input',
+  );
+  
+  // Register custom types
+  fieldKit.register(
+    type: 'phone',
+    factory: ({required label, required onChanged}) =>
+        PhoneFormField(label: label, onChanged: onChanged),
+    description: 'Phone number input',
+  );
+  
+  fieldKit.register(
+    type: 'rating',
+    factory: ({required label, required onChanged}) =>
+        RatingFormField(label: label, onChanged: onChanged),
+    description: '5-star rating widget',
+  );
+  
+  print('Available field types: \${fieldKit.availableTypes}');
+  print('Descriptions: \${fieldKit.typeDescriptions}');
+  
+  // Dynamic form configuration (could come from API/database)
+  final formConfig = [
+    {'type': 'text', 'label': 'Name'},
+    {'type': 'email', 'label': 'Email'},
+    {'type': 'phone', 'label': 'Phone'},
+    {'type': 'rating', 'label': 'Rate our service'},
+  ];
+  
+  runApp(MaterialApp(
+    home: DynamicFormBuilder(
+      fieldKit: fieldKit,
+      fieldConfig: formConfig,
+    ),
+  ));
+}""",
+        ),
+
+        // Example 3: Advanced - Serialization Factory Kit
+        StrCodeBlock("""// Example 3: Advanced - Type-Safe Serialization System
+// Use case: Extensible JSON serialization with custom type support
+
+abstract class JsonSerializer<T> {
+  Map<String, dynamic> toJson(T object);
+  T fromJson(Map<String, dynamic> json);
+  String get typeName;
+}
+
+class SerializerFactoryKit {
+  final Map<String, JsonSerializer> _serializers = {};
+  final Map<Type, String> _typeToName = {};
+  
+  void register<T>(JsonSerializer<T> serializer) {
+    final typeName = serializer.typeName;
+    
+    if (_serializers.containsKey(typeName)) {
+      throw Exception('Serializer already registered: \$typeName');
+    }
+    
+    _serializers[typeName] = serializer;
+    _typeToName[T] = typeName;
+    
+    print('Registered serializer: \$typeName for type \$T');
+  }
+  
+  Map<String, dynamic> serialize<T>(T object) {
+    final typeName = _typeToName[T];
+    if (typeName == null) {
+      throw Exception('No serializer for type: \$T');
+    }
+    
+    final serializer = _serializers[typeName] as JsonSerializer<T>;
+    final json = serializer.toJson(object);
+    
+    // Add type information for deserialization
+    return {
+      '__type': typeName,
+      ...json,
+    };
+  }
+  
+  T deserialize<T>(Map<String, dynamic> json) {
+    final typeName = json['__type'] as String?;
+    if (typeName == null) {
+      throw Exception('Missing __type in JSON');
+    }
+    
+    final serializer = _serializers[typeName];
+    if (serializer == null) {
+      throw Exception('No serializer registered for: \$typeName');
+    }
+    
+    if (serializer is! JsonSerializer<T>) {
+      throw Exception('Type mismatch: expected \$T, got \${serializer.runtimeType}');
+    }
+    
+    final jsonCopy = Map<String, dynamic>.from(json)..remove('__type');
+    return serializer.fromJson(jsonCopy);
+  }
+  
+  // Deserialize without knowing type at compile time
+  dynamic deserializeDynamic(Map<String, dynamic> json) {
+    final typeName = json['__type'] as String?;
+    if (typeName == null) {
+      throw Exception('Missing __type in JSON');
+    }
+    
+    final serializer = _serializers[typeName];
+    if (serializer == null) {
+      throw Exception('No serializer registered for: \$typeName');
+    }
+    
+    final jsonCopy = Map<String, dynamic>.from(json)..remove('__type');
+    return serializer.fromJson(jsonCopy);
+  }
+  
+  List<String> get registeredTypes => _serializers.keys.toList();
+}
+
+// Domain objects
+class User {
+  User({required this.id, required this.name, required this.email});
+  
+  final String id;
+  final String name;
+  final String email;
+  
+  @override
+  String toString() => 'User(id: \$id, name: \$name, email: \$email)';
+}
+
+class Product {
+  Product({required this.id, required this.title, required this.price});
+  
+  final String id;
+  final String title;
+  final double price;
+  
+  @override
+  String toString() => 'Product(id: \$id, title: \$title, price: \$price)';
+}
+
+class Order {
+  Order({
+    required this.id,
+    required this.userId,
+    required this.items,
+    required this.total,
+  });
+  
+  final String id;
+  final String userId;
+  final List<String> items;
+  final double total;
+  
+  @override
+  String toString() => 'Order(id: \$id, userId: \$userId, items: \$items, total: \$total)';
+}
+
+// Serializers (can be defined by different teams/modules)
+class UserSerializer implements JsonSerializer<User> {
+  @override
+  String get typeName => 'User';
+  
+  @override
+  Map<String, dynamic> toJson(User object) {
+    return {
+      'id': object.id,
+      'name': object.name,
+      'email': object.email,
+    };
+  }
+  
+  @override
+  User fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      email: json['email'] as String,
+    );
+  }
+}
+
+class ProductSerializer implements JsonSerializer<Product> {
+  @override
+  String get typeName => 'Product';
+  
+  @override
+  Map<String, dynamic> toJson(Product object) {
+    return {
+      'id': object.id,
+      'title': object.title,
+      'price': object.price,
+    };
+  }
+  
+  @override
+  Product fromJson(Map<String, dynamic> json) {
+    return Product(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      price: (json['price'] as num).toDouble(),
+    );
+  }
+}
+
+class OrderSerializer implements JsonSerializer<Order> {
+  @override
+  String get typeName => 'Order';
+  
+  @override
+  Map<String, dynamic> toJson(Order object) {
+    return {
+      'id': object.id,
+      'userId': object.userId,
+      'items': object.items,
+      'total': object.total,
+    };
+  }
+  
+  @override
+  Order fromJson(Map<String, dynamic> json) {
+    return Order(
+      id: json['id'] as String,
+      userId: json['userId'] as String,
+      items: List<String>.from(json['items'] as List),
+      total: (json['total'] as num).toDouble(),
+    );
+  }
+}
+
+// Persistence layer using the factory kit
+class Repository {
+  Repository(this.serializerKit);
+  
+  final SerializerFactoryKit serializerKit;
+  final Map<String, Map<String, dynamic>> _storage = {};
+  
+  void save<T>(String id, T object) {
+    final json = serializerKit.serialize(object);
+    _storage[id] = json;
+    print('Saved \$id: \$json');
+  }
+  
+  T? load<T>(String id) {
+    final json = _storage[id];
+    if (json == null) return null;
+    
+    return serializerKit.deserialize<T>(json);
+  }
+  
+  List<dynamic> loadAll() {
+    return _storage.values
+        .map((json) => serializerKit.deserializeDynamic(json))
+        .toList();
+  }
+  
+  void clear() => _storage.clear();
+}
+
+void main() {
+  print('=== Serialization Factory Kit Example ===\n');
+  
+  final serializerKit = SerializerFactoryKit();
+  
+  // Register serializers (could be done by different modules/plugins)
+  serializerKit.register(UserSerializer());
+  serializerKit.register(ProductSerializer());
+  serializerKit.register(OrderSerializer());
+  
+  print('Registered types: \${serializerKit.registeredTypes}\n');
+  
+  // Create repository
+  final repo = Repository(serializerKit);
+  
+  // Save different types of objects
+  final user = User(id: '1', name: 'John Doe', email: 'john@example.com');
+  repo.save('user_1', user);
+  
+  final product = Product(id: '101', title: 'Laptop', price: 999.99);
+  repo.save('product_101', product);
+  
+  final order = Order(
+    id: 'order_1',
+    userId: '1',
+    items: ['101', '102'],
+    total: 1499.98,
+  );
+  repo.save('order_1', order);
+  
+  print('');
+  
+  // Load objects with type safety
+  final loadedUser = repo.load<User>('user_1');
+  print('Loaded user: \$loadedUser');
+  
+  final loadedProduct = repo.load<Product>('product_101');
+  print('Loaded product: \$loadedProduct');
+  
+  final loadedOrder = repo.load<Order>('order_1');
+  print('Loaded order: \$loadedOrder');
+  
+  print('');
+  
+  // Load all objects (dynamic deserialization)
+  print('Loading all objects:');
+  final allObjects = repo.loadAll();
+  for (final obj in allObjects) {
+    print('  - \$obj (\${obj.runtimeType})');
+  }
+}"""),
+
+        // Example 4: Game Plugin System
+        StrCodeBlock("""// Example 4: Flutter Game - Extensible Power-Up System
+// Use case: Allow mod creators to add custom power-ups
+
+abstract class PowerUp {
+  String get name;
+  String get description;
+  Duration get duration;
+  IconData get icon;
+  
+  void apply(GameCharacter character);
+  void remove(GameCharacter character);
+}
+
+class GameCharacter {
+  int health = 100;
+  double speed = 5.0;
+  int damage = 10;
+  bool isInvincible = false;
+  
+  final List<PowerUp> _activePowerUps = [];
+  
+  void applyPowerUp(PowerUp powerUp) {
+    _activePowerUps.add(powerUp);
+    powerUp.apply(this);
+    print('Applied: \${powerUp.name}');
+  }
+  
+  void removePowerUp(PowerUp powerUp) {
+    if (_activePowerUps.remove(powerUp)) {
+      powerUp.remove(this);
+      print('Removed: \${powerUp.name}');
+    }
+  }
+  
+  List<PowerUp> get activePowerUps => List.unmodifiable(_activePowerUps);
+  
+  @override
+  String toString() {
+    return 'Character(HP: \$health, Speed: \$speed, Damage: \$damage, Invincible: \$isInvincible)';
+  }
+}
+
+typedef PowerUpFactory = PowerUp Function();
+
+class PowerUpFactoryKit {
+  final Map<String, PowerUpFactory> _factories = {};
+  final Map<String, Map<String, dynamic>> _metadata = {};
+  
+  void register({
+    required String id,
+    required PowerUpFactory factory,
+    required String category,
+    int rarity = 1,
+  }) {
+    _factories[id] = factory;
+    _metadata[id] = {
+      'category': category,
+      'rarity': rarity,
+    };
+    print('Registered power-up: \$id (category: \$category, rarity: \$rarity)');
+  }
+  
+  PowerUp? create(String id) {
+    final factory = _factories[id];
+    return factory?.call();
+  }
+  
+  List<String> get allPowerUps => _factories.keys.toList();
+  
+  List<String> getPowerUpsByCategory(String category) {
+    return _metadata.entries
+        .where((e) => e.value['category'] == category)
+        .map((e) => e.key)
+        .toList();
+  }
+  
+  List<String> getPowerUpsByRarity(int minRarity) {
+    return _metadata.entries
+        .where((e) => (e.value['rarity'] as int) >= minRarity)
+        .map((e) => e.key)
+        .toList();
+  }
+}
+
+// Built-in power-ups
+class SpeedBoostPowerUp implements PowerUp {
+  @override
+  String get name => 'Speed Boost';
+  
+  @override
+  String get description => 'Increases movement speed by 50%';
+  
+  @override
+  Duration get duration => .seconds(10);
+  
+  @override
+  IconData get icon => Icons.speed;
+  
+  double? _originalSpeed;
+  
+  @override
+  void apply(GameCharacter character) {
+    _originalSpeed = character.speed;
+    character.speed *= 1.5;
+  }
+  
+  @override
+  void remove(GameCharacter character) {
+    if (_originalSpeed != null) {
+      character.speed = _originalSpeed!;
+    }
+  }
+}
+
+class HealthBoostPowerUp implements PowerUp {
+  @override
+  String get name => 'Health Boost';
+  
+  @override
+  String get description => 'Restores 50 health points';
+  
+  @override
+  Duration get duration => .zero; // Instant
+  
+  @override
+  IconData get icon => Icons.favorite;
+  
+  @override
+  void apply(GameCharacter character) {
+    character.health = (character.health + 50).clamp(0, 100);
+  }
+  
+  @override
+  void remove(GameCharacter character) {
+    // No effect to remove (instant heal)
+  }
+}
+
+// Custom mod power-ups (user-created)
+class InvincibilityPowerUp implements PowerUp {
+  @override
+  String get name => 'Invincibility';
+  
+  @override
+  String get description => 'Makes character invincible';
+  
+  @override
+  Duration get duration => .seconds(5);
+  
+  @override
+  IconData get icon => Icons.shield;
+  
+  @override
+  void apply(GameCharacter character) {
+    character.isInvincible = true;
+  }
+  
+  @override
+  void remove(GameCharacter character) {
+    character.isInvincible = false;
+  }
+}
+
+class DoubleDamagePowerUp implements PowerUp {
+  @override
+  String get name => 'Double Damage';
+  
+  @override
+  String get description => 'Doubles attack damage';
+  
+  @override
+  Duration get duration => .seconds(8);
+  
+  @override
+  IconData get icon => Icons.whatshot;
+  
+  int? _originalDamage;
+  
+  @override
+  void apply(GameCharacter character) {
+    _originalDamage = character.damage;
+    character.damage *= 2;
+  }
+  
+  @override
+  void remove(GameCharacter character) {
+    if (_originalDamage != null) {
+      character.damage = _originalDamage!;
+    }
+  }
+}
+
+// Game UI using power-up system
+class PowerUpDemo extends StatefulWidget {
+  const PowerUpDemo({required this.powerUpKit, super.key});
+  
+  final PowerUpFactoryKit powerUpKit;
+  
+  @override
+  State<PowerUpDemo> createState() => _PowerUpDemoState();
+}
+
+class _PowerUpDemoState extends State<PowerUpDemo> {
+  final GameCharacter _character = GameCharacter();
+  
+  void _usePowerUp(String id) {
+    final powerUp = widget.powerUpKit.create(id);
+    if (powerUp == null) return;
+    
+    setState(() {
+      _character.applyPowerUp(powerUp);
+    });
+    
+    // Auto-remove after duration
+    if (powerUp.duration > .zero) {
+      Future.delayed(powerUp.duration, () {
+        if (mounted) {
+          setState(() {
+            _character.removePowerUp(powerUp);
+          });
+        }
+      });
+    }
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Power-Up System')),
+      body: Column(
+        children: [
+          // Character stats
+          Container(
+            padding: .all(16),
+            color: Colors.grey[200],
+            child: Column(
+              crossAxisAlignment: .start,
+              children: [
+                Text(
+                  'Character Stats',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                .height(8),
+                Text('Health: \${_character.health}/100'),
+                Text('Speed: \${_character.speed.toStringAsFixed(1)}'),
+                Text('Damage: \${_character.damage}'),
+                Text('Invincible: \${_character.isInvincible}'),
+                .height(8),
+                Text(
+                  'Active Power-Ups: \${_character.activePowerUps.map((p) => p.name).join(', ')}',
+                  style: .caption,
+                ),
+              ],
+            ),
+          ),
+          
+          // Power-up buttons
+          Expanded(
+            child: ListView(
+              padding: .all(16),
+              children: widget.powerUpKit.allPowerUps.map((id) {
+                final powerUp = widget.powerUpKit.create(id)!;
+                return Card(
+                  child: ListTile(
+                    leading: Icon(powerUp.icon, size: 32),
+                    title: Text(powerUp.name),
+                    subtitle: Text(powerUp.description),
+                    trailing: ElevatedButton(
+                      onPressed: () => _usePowerUp(id),
+                      child: Text('Use'),
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+void main() {
+  print('=== Game Power-Up Factory Kit ===\n');
+  
+  final powerUpKit = PowerUpFactoryKit();
+  
+  // Register built-in power-ups
+  powerUpKit.register(
+    id: 'speed_boost',
+    factory: () => SpeedBoostPowerUp(),
+    category: 'movement',
+    rarity: 1,
+  );
+  
+  powerUpKit.register(
+    id: 'health_boost',
+    factory: () => HealthBoostPowerUp(),
+    category: 'healing',
+    rarity: 1,
+  );
+  
+  // Register mod power-ups
+  powerUpKit.register(
+    id: 'invincibility',
+    factory: () => InvincibilityPowerUp(),
+    category: 'defense',
+    rarity: 3,
+  );
+  
+  powerUpKit.register(
+    id: 'double_damage',
+    factory: () => DoubleDamagePowerUp(),
+    category: 'attack',
+    rarity: 2,
+  );
+  
+  print('All power-ups: \${powerUpKit.allPowerUps}');
+  print('Movement power-ups: \${powerUpKit.getPowerUpsByCategory('movement')}');
+  print('Rare power-ups: \${powerUpKit.getPowerUpsByRarity(2)}');
+  
+  runApp(MaterialApp(
+    home: PowerUpDemo(powerUpKit: powerUpKit),
+  ));
+}"""),
+      ],
+      ar: [
+        // Arabic versions
+        StrCodeBlock("""// مثال 1: أساسي - مجموعة مصنع كيانات اللعبة البسيطة
+// حالة الاستخدام: السماح للمستخدمين بتسجيل أنواع أعداء مخصصة في لعبة
+
+abstract class Enemy {
+  String get name;
+  int get health;
+  int get damage;
+  void attack();
+}
+
+typedef EnemyFactory = Enemy Function();
+
+class EnemyFactoryKit {
+  final Map<String, EnemyFactory> _factories = {};
+  
+  // تسجيل مصنع لنوع عدو محدد
+  void register(String type, EnemyFactory factory) {
+    if (_factories.containsKey(type)) {
+      print('تحذير: استبدال المصنع للنوع: \$type');
+    }
+    _factories[type] = factory;
+    print('تم تسجيل مصنع العدو: \$type');
+  }
+  
+  // إنشاء عدو من النوع المحدد
+  Enemy? create(String type) {
+    final factory = _factories[type];
+    if (factory == null) {
+      print('خطأ: لا يوجد مصنع مُسجل للنوع: \$type');
+      return null;
+    }
+    
+    print('إنشاء عدو: \$type');
+    return factory();
+  }
+  
+  // الإنشاء الجماعي
+  List<Enemy> createMany(String type, int count) {
+    return List.generate(count, (_) => create(type))
+        .whereType<Enemy>()
+        .toList();
+  }
+  
+  // الاستعلام عن الأنواع المتاحة
+  List<String> get availableTypes => _factories.keys.toList();
+  
+  bool hasType(String type) => _factories.containsKey(type);
+  
+  // إلغاء التسجيل (مفيد للتنظيف أو إعادة التحميل الساخن)
+  void unregister(String type) {
+    _factories.remove(type);
+    print('تم إلغاء تسجيل مصنع العدو: \$type');
+  }
+  
+  void clear() {
+    _factories.clear();
+    print('تم مسح جميع مصانع الأعداء');
+  }
+}
+
+// أنواع أعداء مدمجة (مُوفرة من الإطار)
+class Goblin implements Enemy {
+  @override
+  String get name => 'غول (Goblin)';
+  
+  @override
+  int get health => 50;
+  
+  @override
+  int get damage => 10;
+  
+  @override
+  void attack() => print('\$name يهاجم بخنجر!');
+}
+
+class Orc implements Enemy {
+  @override
+  String get name => 'أورك (Orc)';
+  
+  @override
+  int get health => 150;
+  
+  @override
+  int get damage => 25;
+  
+  @override
+  void attack() => print('\$name يلوّح بفأس!');
+}
+
+// عدو مخصص معرّف من المستخدم (كود العميل)
+class Dragon implements Enemy {
+  @override
+  String get name => 'تنين (Dragon)';
+  
+  @override
+  int get health => 500;
+  
+  @override
+  int get damage => 100;
+  
+  @override
+  void attack() => print('\$name ينفث ناراً!');
+}
+
+class Skeleton implements Enemy {
+  @override
+  String get name => 'هيكل عظمي (Skeleton)';
+  
+  @override
+  int get health => 30;
+  
+  @override
+  int get damage => 8;
+  
+  @override
+  void attack() => print('\$name يخشخش عظامه بتهديد!');
+}
+
+void main() {
+  print('=== مثال مجموعة المصنع ===\n');
+  
+  final enemyKit = EnemyFactoryKit();
+  
+  // الإطار يُسجل الأنواع المدمجة
+  enemyKit.register('goblin', () => Goblin());
+  enemyKit.register('orc', () => Orc());
+  
+  print('\nالأعداء المدمجون: \${enemyKit.availableTypes}\n');
+  
+  // المستخدمون يُسجلون أنواعاً مخصصة
+  enemyKit.register('dragon', () => Dragon());
+  enemyKit.register('skeleton', () => Skeleton());
+  
+  print('\nجميع الأعداء: \${enemyKit.availableTypes}\n');
+  
+  // إنشاء أعداء
+  final goblin = enemyKit.create('goblin');
+  goblin?.attack();
+  
+  final dragon = enemyKit.create('dragon');
+  dragon?.attack();
+  
+  print('');
+  
+  // الإنشاء الجماعي
+  final skeletons = enemyKit.createMany('skeleton', 3);
+  print('تم إنشاء \${skeletons.length} هياكل عظمية');
+  for (final skeleton in skeletons) {
+    print('  - \${skeleton.name}: نقاط الصحة \${skeleton.health}، الضرر \${skeleton.damage}');
+  }
+  
+  print('');
+  
+  // محاولة إنشاء نوع غير مُسجل
+  final zombie = enemyKit.create('zombie');
+}"""),
+        // Add remaining Arabic examples...
+      ],
+    ),
+    pros: LocSL(
+      en: [
+        "Extremely high customization and extensibility - users define what to create",
+        "Users can add new types without modifying framework code",
+        "Perfect for plugin and modular architectures",
+        "Maintains type safety while allowing runtime flexibility",
+        "Separates 'what' (interface) from 'how' (factory implementation)",
+        "Enables dynamic type registration based on user needs",
+        "Framework stays lean - only includes what users register",
+      ],
+      ar: [
+        "تخصيص وقابلية توسع عالية للغاية - المستخدمون يحددون ما يُنشأ",
+        "المستخدمون يمكنهم إضافة أنواع جديدة دون تعديل كود الإطار",
+        "مثالي لمعماريات الإضافات والمعيارية (Plugin/Modular Architectures)",
+        "يحافظ على أمان الأنواع (Type Safety) مع السماح بمرونة وقت التشغيل",
+        "يفصل 'ماذا' (الواجهة) عن 'كيف' (تطبيق المصنع)",
+        "يُمكّن تسجيل الأنواع الديناميكي بناءً على احتياجات المستخدمين",
+        "الإطار يبقى بسيطاً - يتضمن فقط ما يُسجله المستخدمون",
+      ],
+    ),
+    cons: LocSL(
+      en: [
+        "Complex to design and document properly - need clear extension points",
+        "Users can misuse extension points or register invalid factories",
+        "Difficult to enforce invariants and constraints on user-provided code",
+        "Can be hard to test all possible factory combinations",
+        "Runtime errors if factories aren't registered correctly",
+        "Versioning challenges - factories may break with framework updates",
+        "Security risks if accepting factories from untrusted sources",
+        "Debugging is harder - errors may be in user-provided factories",
+      ],
+      ar: [
+        "معقد في التصميم والتوثيق بشكل صحيح - تحتاج نقاط توسع واضحة",
+        "المستخدمون قد يسيئون استخدام نقاط التوسع أو يُسجلون مصانع غير صالحة",
+        "صعب فرض الثوابت والقيود (Invariants/Constraints) على الكود المُوفر من المستخدم",
+        "قد يكون صعباً اختبار جميع مجموعات المصانع الممكنة",
+        "أخطاء وقت التشغيل (Runtime Errors) إذا لم يتم تسجيل المصانع بشكل صحيح",
+        "تحديات الإصدار (Versioning) - قد تنكسر المصانع مع تحديثات الإطار",
+        "مخاطر أمنية إذا قبلت مصانع من مصادر غير موثوقة",
+        "التنقيح أصعب - قد تكون الأخطاء في مصانع مُوفرة من المستخدم",
+      ],
+    ),
+    whenToUse: LocV(
+      en: [
+        StrContent("Use Factory Kit when:"),
+        ULContent(
+          value: [
+            "Building frameworks, engines, or platforms with user-defined content",
+            "Need controlled extensibility points for object creation",
+            "Object types cannot be known at compile time",
+            "Plugin architecture requires custom object types from external code",
+            "Want to separate creation logic from framework code completely",
+            "Users need type-safe extensibility with runtime registration",
+            "Building modding systems, content creation tools, or game engines",
+          ],
+        ),
+        NoteContent(
+          "Best for: plugin systems, game modding, form builders, serialization frameworks, and any extensible platform. NOT for: simple applications, when types are known at compile time, or when security is critical.",
+          type: .tip,
+        ),
+        StrContent("When NOT to use:"),
+        ULContent(
+          value: [
+            "All types are known at compile time (use Abstract Factory)",
+            "No need for runtime extensibility (use Factory Method)",
+            "Security concerns with user-provided code",
+            "Simple applications without plugin requirements",
+            "Performance is critical (registration/lookup overhead)",
+          ],
+        ),
+      ],
+      ar: [
+        StrContent("استخدم مجموعة المصنع عندما:"),
+        ULContent(
+          value: [
+            "بناء أطر، محركات، أو منصات مع محتوى معرّف من المستخدم",
+            "تحتاج نقاط توسع محكومة لإنشاء الكائنات",
+            "أنواع الكائنات لا يمكن معرفتها في وقت الترجمة (Compile Time)",
+            "معمارية الإضافات تتطلب أنواع كائنات مخصصة من كود خارجي",
+            "تريد فصل منطق الإنشاء عن كود الإطار بالكامل",
+            "المستخدمون يحتاجون لقابلية توسع آمنة من حيث الأنواع مع تسجيل وقت التشغيل",
+            "بناء أنظمة التعديل (Modding Systems)، أدوات إنشاء المحتوى، أو محركات الألعاب",
+          ],
+        ),
+        NoteContent(
+          "الأفضل لـ: أنظمة الإضافات، تعديل الألعاب، بناة النماذج، أطر التسلسل، وأي منصة قابلة للتوسع. ليس لـ: التطبيقات البسيطة، عندما تكون الأنواع معروفة في وقت الترجمة، أو عندما يكون الأمان حرجاً.",
+          type: .tip,
+        ),
+        StrContent("متى لا تستخدمه:"),
+        ULContent(
+          value: [
+            "جميع الأنواع معروفة في وقت الترجمة (استخدم المصنع المجرد)",
+            "لا حاجة لقابلية التوسع في وقت التشغيل (استخدم طريقة المصنع)",
+            "مخاوف أمنية مع الكود المُوفر من المستخدم",
+            "التطبيقات البسيطة بدون متطلبات إضافات",
+            "الأداء حرج (عبء التسجيل/البحث - Registration/Lookup Overhead)",
+          ],
+        ),
+      ],
+    ),
+    commonMistakes: LocV(
+      en: [
+        "Exposing too much of internal structure to clients - breaks encapsulation",
+        "Not providing clear guidelines and documentation for factory implementation",
+        "Allowing inconsistent object creation across different factories",
+        "Missing validation of user-provided factories before registration",
+        "Not handling factory errors gracefully - crashes on bad user code",
+        "Forgetting to version factory interfaces - breaks compatibility",
+        "No error handling when requested type isn't registered",
+        "Allowing factory registration at any time - should restrict to initialization",
+        "Not providing examples and templates for users to follow",
+      ],
+      ar: [
+        "كشف الكثير من البنية الداخلية للعملاء - يكسر التغليف (Encapsulation)",
+        "عدم توفير إرشادات وتوثيق واضح لتنفيذ المصنع",
+        "السماح بإنشاء كائنات غير متسق عبر مصانع مختلفة",
+        "عدم التحقق من المصانع المُوفرة من المستخدم قبل التسجيل",
+        "عدم التعامل مع أخطاء المصنع بلطف - يتعطل عند كود مستخدم سيء",
+        "نسيان إصدار واجهات المصنع (Versioning) - يكسر التوافق",
+        "لا معالجة أخطاء عندما لا يكون النوع المطلوب مُسجلاً",
+        "السماح بتسجيل المصنع في أي وقت - يجب التقييد للتهيئة",
+        "عدم توفير أمثلة وقوالب للمستخدمين لمتابعتها",
+      ],
+    ),
+    relatedPatterns: [PK.abstractFactory, PK.factoryMethod, PK.strategy],
+    oftenConfusedWith: [PK.abstractFactory],
+  ),
 };

@@ -80,7 +80,7 @@ class PatternDetailsScreen extends StatelessWidget {
               Container(
                 padding: const .all(16),
                 decoration: BoxDecoration(
-                  color: colors.surfaceContainerLow,
+                  color: colors.surfaceContainerLow.withAlpha(150),
                   borderRadius: .circular(12),
                   border: .all(
                     color: colors.outlineVariant.withValues(alpha: 0.5),

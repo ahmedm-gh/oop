@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:loopsbase/core/models/localized_text.dart';
 
@@ -41,6 +43,8 @@ extension ColorToHex on Color {
 
 abstract class Diagrams {
   static String generateFactorySvg(String langCode, ColorScheme colors) {
+    log("generateFactorySvg: $langCode");
+
     // 1. Get the text content
     final data = const LocV(
       ar: FactoryDiagramData.ar(),
