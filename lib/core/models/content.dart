@@ -61,3 +61,27 @@ final class ULContent extends ListContent {
 final class OLContent extends ListContent {
   const OLContent({super.title, super.value});
 }
+
+enum NoteType { info, warning, tip, important }
+
+/// Important note or warning
+final class NoteContent extends Content<String> {
+  const NoteContent(super.value, {this.type = .info});
+  final NoteType type;
+}
+
+/// Analogy to help understand concept
+final class AnalogyContent extends Content<String> {
+  const AnalogyContent(super.value);
+}
+
+/// Comparison between concepts
+final class ComparisonContent extends Content<Map<String, String>> {
+  const ComparisonContent(super.value, {this.title});
+  final String? title;
+}
+
+/// Diagram description (textual description of structure)
+final class DiagramContent extends Content<String> {
+  const DiagramContent(super.value);
+}

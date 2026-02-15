@@ -44,3 +44,17 @@ flutter:
           weight: 600
         - asset: assets/fonts/firacode/bold.ttf
           weight: 700
+    - family: ReadexPro
+      fonts:
+        - asset: assets/fonts/readex_pro/extra-light.ttf
+          weight: 200
+        - asset: assets/fonts/readex_pro/light.ttf
+          weight: 300
+        - asset: assets/fonts/readex_pro/regular.ttf
+          weight: 400
+        - asset: assets/fonts/readex_pro/medium.ttf
+          weight: 500
+        - asset: assets/fonts/readex_pro/semi-bold.ttf
+          weight: 600
+        - asset: assets/fonts/readex_pro/bold.ttf
+          weight: 700

@@ -89,6 +89,7 @@ class App extends StatelessWidget {
               splashFactory: kIsWeb ? NoSplash.splashFactory : null,
               useMaterial3: true,
               colorScheme: colorScheme,
+              // fontFamily: "ReadexPro",
               buttonTheme: ButtonThemeData(
                 shape: RoundedRectangleBorder(borderRadius: .circular(7.5)),
               ),

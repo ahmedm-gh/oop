@@ -153,7 +153,7 @@ class _GreetingHeader extends StatelessWidget {
     final colors = context.colorScheme;
 
     return Column(
-      crossAxisAlignment: .start,
+      crossAxisAlignment: .stretch,
       children: [
         Text(
           l10n.welcomeBack.toUpperCase(),
