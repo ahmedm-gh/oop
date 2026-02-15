@@ -85,3 +85,8 @@ final class ComparisonContent extends Content<Map<String, String>> {
 final class DiagramContent extends Content<String> {
   const DiagramContent(super.value);
 }
+
+/// Diagram description (textual description of structure)
+final class SvgDiagramContent extends Content<String Function(String)> {
+  const SvgDiagramContent(super.value);
+}

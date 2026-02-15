@@ -4,21 +4,43 @@ import "package:loopsbase/core/models/code_block.dart";
 import "package:url_launcher/url_launcher.dart";
 import "package:loopsbase/core/extensions/extensions.dart";
 
-class CodeBlockViewer extends StatelessWidget {
+class CodeBlockViewer extends StatefulWidget {
   CodeBlockViewer({
     required String code,
     required CodeQuality codeQuality,
     this.enableHorizontalScroll = true,
+    this.initiallyExpanded = false,
     super.key,
   }) : code = StrCodeBlock(code, codeQuality: codeQuality);
 
   const CodeBlockViewer.fromStrCodeBlock(
     this.code, {
     this.enableHorizontalScroll = true,
+    this.initiallyExpanded = false,
     super.key,
   });
   final StrCodeBlock code;
   final bool enableHorizontalScroll;
+  final bool initiallyExpanded;
+
+  @override
+  State<CodeBlockViewer> createState() => _CodeBlockViewerState();
+}
+
+class _CodeBlockViewerState extends State<CodeBlockViewer> {
+  late bool _isExpanded;
+
+  @override
+  void initState() {
+    super.initState();
+    _isExpanded = widget.initiallyExpanded;
+  }
+
+  void _toggleExpanded() {
+    setState(() {
+      _isExpanded = !_isExpanded;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,40 +54,62 @@ class CodeBlockViewer extends StatelessWidget {
           color: colors.surfaceContainer,
           borderRadius: .circular(10),
           border: Border.all(
-            color: switch (code.codeQuality) {
+            color: switch (widget.code.codeQuality) {
               .good => Colors.green.withValues(alpha: 0.25),
               .bad => Colors.red.withValues(alpha: 0.25),
               _ => colors.outlineVariant,
             },
-            width: code.codeQuality.isBad ? 1.5 : 1,
+            width: widget.code.codeQuality.isBad ? 1.5 : 1,
           ),
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             _CodeHeader(
-              language: code.codeLanguage.displayName,
-              state: code.codeQuality,
-              code: code.value,
-              codeLanguage: code.codeLanguage,
+              language: widget.code.codeLanguage.displayName,
+              state: widget.code.codeQuality,
+              code: widget.code.value,
+              codeLanguage: widget.code.codeLanguage,
+              isExpanded: _isExpanded,
+              onToggleExpanded: _toggleExpanded,
             ),
-            SizedBox(
-              width: .infinity,
-              child: switch (enableHorizontalScroll) {
-                true => SingleChildScrollView(
-                  scrollDirection: .horizontal,
-                  child: buildCode(),
+            AnimatedSize(
+              duration: const Duration(milliseconds: 200),
+              curve: Curves.easeInOut,
+              alignment: Alignment.topCenter,
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 150),
+                switchInCurve: Curves.easeIn,
+                switchOutCurve: Curves.easeOut,
+                transitionBuilder: (child, animation) {
+                  return FadeTransition(opacity: animation, child: child);
+                },
+                child: SizedBox(
+                  key: ValueKey(_isExpanded),
+                  width: .infinity,
+                  child: switch (_isExpanded) {
+                    true => switch (widget.enableHorizontalScroll) {
+                      true => SingleChildScrollView(
+                        scrollDirection: .horizontal,
+                        child: _CodeContent(
+                          code: widget.code.value,
+                          codeLanguage: widget.code.codeLanguage,
+                        ),
+                      ),
+                      false => _CodeContent(
+                        code: widget.code.value,
+                        codeLanguage: widget.code.codeLanguage,
+                      ),
+                    },
+                    false => null,
+                  },
                 ),
-                false => buildCode(),
-              },
+              ),
             ),
           ],
         ),
       ),
     );
-  }
-
-  Widget buildCode() {
-    return _CodeContent(code: code.value, codeLanguage: code.codeLanguage);
   }
 }
 
@@ -75,11 +119,15 @@ class _CodeHeader extends StatelessWidget {
     required this.state,
     required this.code,
     required this.codeLanguage,
+    required this.isExpanded,
+    required this.onToggleExpanded,
   });
   final String? language;
   final CodeQuality state;
   final String code;
   final CodeLanguage codeLanguage;
+  final bool isExpanded;
+  final VoidCallback onToggleExpanded;
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +147,7 @@ class _CodeHeader extends StatelessWidget {
     };
 
     return Container(
-      padding: const .symmetric(horizontal: 16, vertical: 8),
+      padding: const .symmetric(horizontal: 8, vertical: 8),
       decoration: BoxDecoration(
         color: bgColor,
         border: Border(
@@ -113,6 +161,14 @@ class _CodeHeader extends StatelessWidget {
       child: Row(
         spacing: 8,
         children: [
+          // Expand/Collapse button
+          _ActionButton(
+            icon: isExpanded
+                ? Icons.keyboard_arrow_up_rounded
+                : Icons.keyboard_arrow_down_rounded,
+            tooltip: isExpanded ? "Collapse" : "Expand",
+            onPressed: onToggleExpanded,
+          ),
           if (language != null)
             Text(
               language!,
@@ -186,8 +242,8 @@ class _ActionButton extends StatelessWidget {
       onPressed: onPressed,
       color: isDark ? const Color(0xFF80CBC4) : const Color(0xFF00695C),
       splashRadius: 20,
-      visualDensity: .compact,
-      padding: .zero,
+      // visualDensity: .compact,
+      // padding: .zero,
       constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
     );
   }

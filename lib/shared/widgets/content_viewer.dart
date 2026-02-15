@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:loopsbase/core/extensions/extensions.dart';
 import 'package:loopsbase/core/models/content.dart';
 import 'package:loopsbase/l10n/app_localizations.dart';
@@ -64,6 +65,8 @@ class ContentViewer extends StatelessWidget {
         textTheme,
         l10n,
       ),
+
+      final SvgDiagramContent value => _buildSvgDiagram(value, colors, l10n),
     };
   }
 
@@ -111,7 +114,7 @@ class ContentViewer extends StatelessWidget {
       color: colors.primary,
       content: Text(
         content.value,
-        style: textTheme.bodyMedium?.copyWith(fontStyle: .italic, height: 1.5),
+        style: textTheme.bodyMedium?.copyWith(height: 1.5),
       ),
     );
   }
@@ -177,6 +180,27 @@ class ContentViewer extends StatelessWidget {
             letterSpacing: 0.2,
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildSvgDiagram(
+    SvgDiagramContent content,
+    ColorScheme colors,
+    AppLocalizations l10n,
+  ) {
+    return SmallTitledList(
+      title: Text(l10n.structureDiagram),
+      icon: Icons.account_tree_outlined,
+      color: colors.primary,
+      content: Container(
+        width: double.infinity,
+        padding: const .all(12),
+        decoration: BoxDecoration(
+          color: colors.surface,
+          borderRadius: .circular(6),
+        ),
+        child: SvgPicture.string(content.value(l10n.language)),
       ),
     );
   }

@@ -1,3 +1,5 @@
+import "package:loopsbase/data/diagrams/diagrams.dart";
+
 import "../../core/models/code_block.dart";
 import "../../core/models/content.dart";
 import "../../core/models/design_patterns.dart";
@@ -36,9 +38,10 @@ const Map<String, DesignPattern> creationalPatternsData = {
             "ConcreteCreator: Overrides the factory method to return specific ConcreteProduct instances",
           ],
         ),
-        DiagramContent(
-          "Structure Flow:\nClient → Creator.factoryMethod() → Product Interface\n         ↓                        ↓\n   ConcreteCreator          ConcreteProduct",
-        ),
+        // DiagramContent(
+        //   "Structure Flow:\nClient → Creator.factoryMethod() → Product Interface\n         ↓                        ↓\n   ConcreteCreator          ConcreteProduct",
+        // ),
+        SvgDiagramContent(Diagrams.generateFactorySvg),
         StrContent(
           "The pattern follows the Open/Closed Principle: you can introduce new product types without modifying existing client code. Just create new concrete creators and products.",
         ),
@@ -268,7 +271,7 @@ class CsvParser implements DocumentParser {
   @override
   String parse(String content) {
     print('Parsing CSV document');
-    final lines = content.split('\n');
+    final lines = content.split('');
     return 'Parsed CSV: \${lines.length} rows';
   }
   
@@ -688,7 +691,7 @@ class CsvParser implements DocumentParser {
   @override
   String parse(String content) {
     print('تحليل مستند CSV');
-    final lines = content.split('\n');
+    final lines = content.split('');
     return 'CSV محلل: \${lines.length} صفوف';
   }
   
@@ -2898,7 +2901,7 @@ void main() {
 
   // Multiple test users
   final users = UserBuilder().buildMany(5);
-  print('\nGenerated \${users.length} users');
+  print('Generated \${users.length} users');
   for (final user in users) {
     print('  - \${user.name} (\${user.id})');
   }
@@ -2908,7 +2911,7 @@ void main() {
       .name('Suspended User')
       .inactive
       .build();
-  print('\nInactive: \${inactiveUser.name} (active: \${inactiveUser.isActive})');
+  print('Inactive: \${inactiveUser.name} (active: \${inactiveUser.isActive})');
 }"""),
       ],
       ar: [
@@ -3372,7 +3375,7 @@ class GraphicsEditor {
   }
   
   void drawAll() {
-    print('\n=== Drawing all shapes ===');
+    print('=== Drawing all shapes ===');
     for (final shape in shapes) {
       shape.draw();
     }
@@ -3539,7 +3542,7 @@ void main() {
     ),
   );
   
-  print('\n=== Spawning Enemies ===');
+  print('=== Spawning Enemies ===');
   
   // Spawn multiple enemies quickly using prototypes
   final goblin1 = registry.spawn('goblin', position: Vector2(10, 20));
@@ -3547,19 +3550,19 @@ void main() {
   final orc1 = registry.spawn('orc', position: Vector2(50, 50));
   final elite = registry.spawn('elite_orc', position: Vector2(100, 100));
   
-  print('\nSpawned entities:');
+  print('Spawned entities:');
   print(goblin1);
   print(goblin2);
   print(orc1);
   print(elite);
   
   // Battle simulation
-  print('\n=== Battle ===');
+  print('=== Battle ===');
   elite?.attack(goblin1!);
   orc1?.attack(goblin2!);
   
   // Create a modified version
-  print('\n=== Creating Boss Variant ===');
+  print('=== Creating Boss Variant ===');
   final bossGoblin = registry.spawn('goblin')?.clone(
     name: 'Goblin King',
     health: 200,
@@ -3663,7 +3666,7 @@ class Document {
   }
   
   void printInfo() {
-    print('\n--- Document: \$title ---');
+    print('--- Document: \$title ---');
     print('ID: \$id');
     print('Author: \$author');
     print('Created: \$createdAt');
@@ -3730,7 +3733,7 @@ void main() {
   manager.registerTemplate('quarterly_report', reportTemplate);
   
   // Test shallow vs deep cloning
-  print('\n=== Testing Shallow Clone ===');
+  print('=== Testing Shallow Clone ===');
   final shallowCopy = reportTemplate.shallowClone();
   print('Original sections: \${reportTemplate.sections.length}');
   print('Shallow copy sections: \${shallowCopy.sections.length}');
@@ -3745,7 +3748,7 @@ void main() {
   print('Shallow copy sections: \${shallowCopy.sections.length}');
   
   // Test deep cloning
-  print('\n=== Testing Deep Clone ===');
+  print('=== Testing Deep Clone ===');
   final deepCopy = reportTemplate.deepClone();
   print('Original sections: \${reportTemplate.sections.length}');
   print('Deep copy sections: \${deepCopy.sections.length}');
@@ -3760,7 +3763,7 @@ void main() {
   print('Deep copy sections: \${deepCopy.sections.length}');
   
   // Use template manager
-  print('\n=== Creating from Template ===');
+  print('=== Creating from Template ===');
   final q4Report = manager.createFromTemplate(
     'quarterly_report',
     title: 'Q4 2024 Report',
@@ -3771,7 +3774,7 @@ void main() {
   
   // Modify instance without affecting template
   q4Report?.sections[0].content = 'Q4 showed strong growth...';
-  print('\n--- Template remains unchanged ---');
+  print('--- Template remains unchanged ---');
   print('Template section 0: \${reportTemplate.sections[0].content}');
   print('Instance section 0: \${q4Report?.sections[0].content}');
 }""",
@@ -4147,7 +4150,7 @@ class GraphicsEditor {
   }
   
   void drawAll() {
-    print('\n=== رسم جميع الأشكال ===');
+    print('=== رسم جميع الأشكال ===');
     for (final shape in shapes) {
       shape.draw();
     }
@@ -4496,14 +4499,14 @@ void main() {
   final config2 = ConfigManagerEager();
   print('Are they the same? \${identical(config1, config2)}');
   
-  print('\n=== Lazy Initialization ===');
+  print('=== Lazy Initialization ===');
   print('Before accessing instance...');
   final lazy1 = ConfigManagerLazy.instance;
   print('After first access');
   final lazy2 = ConfigManagerLazy();
   print('Are they the same? \${identical(lazy1, lazy2)}');
   
-  print('\n=== Modern Implementation ===');
+  print('=== Modern Implementation ===');
   final modern1 = ConfigManagerModern.instance;
   final modern2 = ConfigManagerModern();
   print('Are they the same? \${identical(modern1, modern2)}');
@@ -4645,14 +4648,14 @@ void main() {
   db.error();
   
   // Access logs from anywhere
-  print('\n=== Error Logs Only ===');
+  print('=== Error Logs Only ===');
   final errorLogs = Logger.instance.getLogs(.error);
   for (final log in errorLogs) {
     print(log);
   }
   
   // Export all logs
-  print('\n=== Full Export ===');
+  print('=== Full Export ===');
   print(Logger().exportLogs());
 }""",
         ),
@@ -4748,7 +4751,7 @@ class ConnectionPool {
   }
   
   void shutdown() {
-    print('\nShutting down pool...');
+    print('Shutting down pool...');
     for (final conn in [..._availableConnections, ..._inUseConnections]) {
       conn.close();
     }
@@ -4828,10 +4831,10 @@ void main() async {
     orderRepo.createOrder('order2'),
   ]);
   
-  print('\n\${ConnectionPool.instance.getStats()}');
+  print('\${ConnectionPool.instance.getStats()}');
   
   // Try to exhaust pool
-  print('\n=== Testing pool limits ===\n');
+  print('=== Testing pool limits ===\n');
   final connections = <DatabaseConnection>[];
   for (var i = 0; i < 6; i++) {
     final conn = ConnectionPool.instance.acquire();
@@ -4840,14 +4843,14 @@ void main() async {
     }
   }
   
-  print('\n\${ConnectionPool.instance.getStats()}');
+  print('\${ConnectionPool.instance.getStats()}');
   
   // Release all
   for (final conn in connections) {
     ConnectionPool.instance.release(conn);
   }
   
-  print('\n\${ConnectionPool.instance.getStats()}');
+  print('\${ConnectionPool.instance.getStats()}');
   
   ConnectionPool.instance.shutdown();
 }""",
@@ -5190,14 +5193,14 @@ void main() {
   final config2 = ConfigManagerEager();
   print('هل هما نفس الشيء؟ \${identical(config1, config2)}');
   
-  print('\n=== التهيئة الكسولة ===');
+  print('=== التهيئة الكسولة ===');
   print('قبل الوصول للنسخة...');
   final lazy1 = ConfigManagerLazy.instance;
   print('بعد الوصول الأول');
   final lazy2 = ConfigManagerLazy();
   print('هل هما نفس الشيء؟ \${identical(lazy1, lazy2)}');
   
-  print('\n=== التطبيق الحديث ===');
+  print('=== التطبيق الحديث ===');
   final modern1 = ConfigManagerModern.instance;
   final modern2 = ConfigManagerModern();
   print('هل هما نفس الشيء؟ \${identical(modern1, modern2)}');
@@ -5521,7 +5524,7 @@ class BufferPool {
   
   void printStats() {
     final stats = getStats();
-    print('\n=== Pool Statistics ===');
+    print('=== Pool Statistics ===');
     print('Available: \${stats.available}');
     print('In Use: \${stats.inUse}');
     print('Total Created: \${stats.total}');
@@ -5581,7 +5584,7 @@ void main() {
   try {
     final buf4 = pool.acquire(); // Should throw
   } catch (e) {
-    print('\nCaught exception: \$e');
+    print('Caught exception: \$e');
   }
   
   // Release all
@@ -5722,7 +5725,7 @@ class HttpConnectionPool {
   }
   
   void shutdown() {
-    print('\n=== Shutting down pool ===');
+    print('=== Shutting down pool ===');
     for (final conn in [..._available, ..._inUse]) {
       print('Connection \${conn.id}: \${conn.requestCount} requests');
       conn.close();
@@ -6066,16 +6069,16 @@ void main() async {
     
     // Trigger burst at specific times
     if (frame == 60) {
-      print('\n*** BURST 1 ***');
+      print('*** BURST 1 ***');
       emitter1.burst(50);
     }
     if (frame == 120) {
-      print('\n*** BURST 2 ***');
+      print('*** BURST 2 ***');
       emitter2.burst(75);
     }
   }
   
-  print('\nSimulation complete!');
+  print('Simulation complete!');
 }
 
 // Helper functions
@@ -6390,7 +6393,7 @@ class BufferPool {
   
   void printStats() {
     final stats = getStats();
-    print('\n=== إحصائيات التجمع ===');
+    print('=== إحصائيات التجمع ===');
     print('متاح: \${stats.available}');
     print('قيد الاستخدام: \${stats.inUse}');
     print('إجمالي المُنشأ: \${stats.total}');
@@ -6450,7 +6453,7 @@ void main() {
   try {
     final buf4 = pool.acquire(); // يجب أن يرمي استثناء
   } catch (e) {
-    print('\nتم اصطياد استثناء: \$e');
+    print('تم اصطياد استثناء: \$e');
   }
   
   // إطلاق الكل
@@ -6759,15 +6762,15 @@ class Application {
   late final ExpensiveResource lazyResource = ExpensiveResource();
   
   void useEagerResource() {
-    print('\nUsing eager resource:');
+    print('Using eager resource:');
     eagerResource.doWork();
   }
   
   void useLazyResource() {
-    print('\nUsing lazy resource (first access):');
+    print('Using lazy resource (first access):');
     lazyResource.doWork(); // Created here on first access
     
-    print('\nUsing lazy resource (second access):');
+    print('Using lazy resource (second access):');
     lazyResource.doWork(); // Reused from cache
   }
 }
@@ -6778,12 +6781,12 @@ void main() {
   final app = Application();
   print('Application started (notice eager resource already created)');
   
-  print('\n--- Wait 2 seconds before using lazy resource ---');
+  print('--- Wait 2 seconds before using lazy resource ---');
   // In real app: user navigates, performs other tasks
   
   app.useLazyResource();
   
-  print('\n=== Startup Time Comparison ===');
+  print('=== Startup Time Comparison ===');
   print('Eager: Slow startup (resource created immediately)');
   print('Lazy: Fast startup (resource created when needed)');
 }""",
@@ -6877,20 +6880,20 @@ void main() async {
   print('Accessing instance...');
   lazy1.instance.doSomething();
   
-  print('\n=== Pattern 2: Late ===');
+  print('=== Pattern 2: Late ===');
   final lazy2 = LazyWithLate();
   print('Created LazyWithLate');
   print('Accessing instance...');
   lazy2.instance.doSomething();
   
-  print('\n=== Pattern 3: Flag ===');
+  print('=== Pattern 3: Flag ===');
   final lazy3 = LazyWithFlag();
   print('Created LazyWithFlag');
   print('Is initialized? \${lazy3.isInitialized}');
   lazy3.instance.doSomething();
   print('Is initialized? \${lazy3.isInitialized}');
   
-  print('\n=== Pattern 4: Factory ===');
+  print('=== Pattern 4: Factory ===');
   final lazy4 = LazyWithFactory(() {
     print('Custom factory function called');
     return ExpensiveObject();
@@ -6902,7 +6905,7 @@ void main() async {
   print('Accessing after reset...');
   lazy4.instance.doSomething();
   
-  print('\n=== Pattern 5: Async ===');
+  print('=== Pattern 5: Async ===');
   final lazy5 = LazyAsync();
   print('Created LazyAsync');
   final obj = await lazy5.instance;
@@ -7037,7 +7040,7 @@ class AppConfig {
   }
   
   void printLoadedSections() {
-    print('\n=== Loaded Configuration Sections ===');
+    print('=== Loaded Configuration Sections ===');
     if (_loadedSections.isEmpty) {
       print('No sections loaded yet');
     } else {
@@ -7055,7 +7058,7 @@ class SimpleApp {
   SimpleApp(this.config);
   
   void run() {
-    print('\n=== Simple App (only needs API) ===');
+    print('=== Simple App (only needs API) ===');
     final apiUrl = config.apiConfig.baseUrl;
     print('Connecting to: \$apiUrl');
     // Database and features never loaded!
@@ -7068,7 +7071,7 @@ class ComplexApp {
   ComplexApp(this.config);
   
   void run() {
-    print('\n=== Complex App (needs everything) ===');
+    print('=== Complex App (needs everything) ===');
     
     // Connect to database
     print('Database: \${config.databaseConfig.host}:\${config.databaseConfig.port}');
@@ -7101,7 +7104,7 @@ void main() {
   complexApp.run();
   config.printLoadedSections();
   
-  print('\n=== Performance Impact ===');
+  print('=== Performance Impact ===');
   print('Simple app: Fast startup (only loaded API config)');
   print('Complex app: Slower (loaded everything as needed)');
   print('But: Simple app would be slower with eager loading!');
@@ -7351,15 +7354,15 @@ class Application {
   late final ExpensiveResource lazyResource = ExpensiveResource();
   
   void useEagerResource() {
-    print('\nاستخدام المورد الحريص:');
+    print('استخدام المورد الحريص:');
     eagerResource.doWork();
   }
   
   void useLazyResource() {
-    print('\nاستخدام المورد الكسول (الوصول الأول):');
+    print('استخدام المورد الكسول (الوصول الأول):');
     lazyResource.doWork(); // يتم إنشاؤه هنا عند الوصول الأول
     
-    print('\nاستخدام المورد الكسول (الوصول الثاني):');
+    print('استخدام المورد الكسول (الوصول الثاني):');
     lazyResource.doWork(); // يُعاد استخدامه من الذاكرة المؤقتة
   }
 }
@@ -7370,12 +7373,12 @@ void main() {
   final app = Application();
   print('بدأ التطبيق (لاحظ أن المورد الحريص تم إنشاؤه بالفعل)');
   
-  print('\n--- انتظر ثانيتين قبل استخدام المورد الكسول ---');
+  print('--- انتظر ثانيتين قبل استخدام المورد الكسول ---');
   // في التطبيق الحقيقي: المستخدم يتنقل، يؤدي مهام أخرى
   
   app.useLazyResource();
   
-  print('\n=== مقارنة وقت البدء ===');
+  print('=== مقارنة وقت البدء ===');
   print('الحريص: بدء بطيء (المورد يُنشأ فوراً)');
   print('الكسول: بدء سريع (المورد يُنشأ عند الحاجة)');
 }""",
