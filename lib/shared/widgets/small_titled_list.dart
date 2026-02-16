@@ -22,6 +22,8 @@ class SmallTitledList extends StatelessWidget {
     super.key,
     this.content,
     this.items,
+    this.spacing = 5,
+    this.itemsSpacing = 5,
   }) : type = .none;
 
   const SmallTitledList.notes({
@@ -31,6 +33,8 @@ class SmallTitledList extends StatelessWidget {
     this.items,
     this.icon = Icons.info_rounded,
     this.color = Colors.teal,
+    this.spacing = 5,
+    this.itemsSpacing = 5,
   }) : type = .notes;
 
   const SmallTitledList.whenToUse({
@@ -40,6 +44,8 @@ class SmallTitledList extends StatelessWidget {
     this.items,
     this.icon = Icons.lightbulb_rounded,
     this.color = Colors.blue,
+    this.spacing = 5,
+    this.itemsSpacing = 5,
   }) : type = .whenToUse;
 
   const SmallTitledList.advantages({
@@ -49,6 +55,8 @@ class SmallTitledList extends StatelessWidget {
     this.items,
     this.icon = Icons.thumb_up_rounded,
     this.color = Colors.green,
+    this.spacing = 5,
+    this.itemsSpacing = 5,
   }) : type = .advantages;
 
   const SmallTitledList.disadvantages({
@@ -58,6 +66,8 @@ class SmallTitledList extends StatelessWidget {
     this.items,
     this.icon = Icons.thumb_down_rounded,
     this.color = Colors.red,
+    this.spacing = 5,
+    this.itemsSpacing = 5,
   }) : type = .disadvantages;
 
   const SmallTitledList.bestFor({
@@ -67,6 +77,8 @@ class SmallTitledList extends StatelessWidget {
     this.items,
     this.icon = Icons.star_rounded,
     this.color = Colors.amber,
+    this.spacing = 5,
+    this.itemsSpacing = 5,
   }) : type = .bestFor;
 
   const SmallTitledList.commonMistakes({
@@ -76,6 +88,8 @@ class SmallTitledList extends StatelessWidget {
     this.items,
     this.icon = Icons.warning_rounded,
     this.color = Colors.orange,
+    this.spacing = 5,
+    this.itemsSpacing = 5,
   }) : type = .commonMistakes;
 
   final Widget? title;
@@ -84,6 +98,8 @@ class SmallTitledList extends StatelessWidget {
   final IconData icon;
   final Color color;
   final TitledListType type;
+  final double spacing;
+  final double itemsSpacing;
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +127,7 @@ class SmallTitledList extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: .stretch,
-        spacing: 5,
+        spacing: spacing,
         children: [
           if (title ?? _getTitle(context.l10n) case final title?)
             Row(
@@ -161,7 +177,7 @@ class SmallTitledList extends StatelessWidget {
           padding: const .symmetric(horizontal: 10),
           child: Column(
             crossAxisAlignment: .start,
-            spacing: 10,
+            spacing: itemsSpacing,
             children: items.map((e) => _buildItem(dir, e)).toList(),
           ),
         ),

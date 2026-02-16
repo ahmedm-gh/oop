@@ -14,3 +14,4 @@ export 'widgets/term_chips.dart';
 export 'widgets/tags.dart';
 export 'widgets/style_wrappers.dart';
 export 'widgets/id_text.dart';
+export 'widgets/font_scale.dart';

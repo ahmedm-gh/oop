@@ -40,7 +40,7 @@ class TermCard extends StatelessWidget {
                 mainAxisSize: .min,
                 crossAxisAlignment: .start,
                 children: [
-                  Flexible(
+                  Expanded(
                     child: Column(
                       mainAxisSize: .min,
                       crossAxisAlignment: .start,

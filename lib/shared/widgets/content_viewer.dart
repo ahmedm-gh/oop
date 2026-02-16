@@ -58,14 +58,16 @@ class ContentViewer extends StatelessWidget {
         l10n,
       ),
 
-      final DiagramContent value => _buildDiagram(
-        value,
-        colors,
-        textTheme,
-        l10n,
-      ),
+      // final DiagramContent value => _buildDiagram(
+      //   value,
+      //   colors,
+      //   textTheme,
+      //   l10n,
+      // ),
 
-      final SvgDiagramContent value => SvgDiagramViewer(content: value),
+      // final SvgDiagramContent value => SvgDiagramViewer(content: value),
+      final SvgDiagramContent _ => const SizedBox.shrink(),
+      final DiagramContent _ => const SizedBox.shrink(),
     };
   }
 
@@ -128,27 +130,35 @@ class ContentViewer extends StatelessWidget {
       title: Text(content.title ?? l10n.comparison),
       icon: Icons.compare_arrows_rounded,
       color: colors.tertiary,
+      itemsSpacing: 5,
       items: [
         for (final entry in content.value.entries)
-          Row(
-            crossAxisAlignment: .start,
-            children: [
-              Expanded(
-                flex: 2,
-                child: Text(
-                  entry.key,
-                  style: textTheme.bodyMedium?.copyWith(
-                    fontWeight: .w600,
-                    color: colors.tertiary,
+          DecoratedBox(
+            decoration: BoxDecoration(
+              border: Border(bottom: BorderSide(color: colors.outline)),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 2.5),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      entry.key,
+                      style: textTheme.bodyMedium?.copyWith(
+                        fontWeight: .w600,
+                        color: colors.tertiary,
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    flex: 3,
+                    child: Text(entry.value, style: textTheme.bodyMedium),
+                  ),
+                ],
               ),
-              const SizedBox(width: 16),
-              Expanded(
-                flex: 3,
-                child: Text(entry.value, style: textTheme.bodyMedium),
-              ),
-            ],
+            ),
           ),
       ],
     );

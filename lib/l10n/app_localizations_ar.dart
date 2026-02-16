@@ -547,6 +547,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get welcomeBack => 'أهلاً بعودتك';
 
   @override
+  String get welcomeTo => 'أهلاً بك';
+
+  @override
   String get featured => 'مميز';
 
   @override
@@ -594,4 +597,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get structureDiagram => 'مخطط هيكلي';
+
+  @override
+  String get headingFontSize => 'حجم خط العنوان';
+
+  @override
+  String get subheadingFontSize => 'حجم خط العنوان الفرعي';
+
+  @override
+  String get normalFontSize => 'حجم خط عادي';
+
+  @override
+  String get theDefault => 'الافتراضي';
+
+  @override
+  String get apply => 'تطبيق';
 }

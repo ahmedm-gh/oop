@@ -184,6 +184,7 @@
   "realWorldExamples": "الإسهامات الحقيقية",
 
    "welcomeBack": "أهلاً بعودتك",
+   "welcomeTo": "أهلاً بك",
    "featured": "مميز",
    "designPatternsSubtitle": "أتقن المخططات الأساسية للبرمجيات كائنية التوجه القابلة لإعادة الاستخدام.",
    "programmingTermsSubtitle": "مسرد ومصطلحات",
@@ -200,5 +201,11 @@
    "noteImportant": "مهم",
    "analogy": "تشبيه",
    "comparison": "مقارنة",
-   "structureDiagram": "مخطط هيكلي"
+   "structureDiagram": "مخطط هيكلي",
+
+   "headingFontSize": "حجم خط العنوان",
+   "subheadingFontSize": "حجم خط العنوان الفرعي",
+   "normalFontSize": "حجم خط عادي",
+   "theDefault": "الافتراضي",
+   "apply": "تطبيق"
 }

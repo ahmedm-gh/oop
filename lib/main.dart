@@ -2,6 +2,7 @@ import "dart:developer";
 
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:hydrated_bloc/hydrated_bloc.dart";
@@ -57,19 +58,23 @@ class App extends StatelessWidget {
             builder: (context, child) {
               if (child == null) return const SizedBox.shrink();
 
-              return MediaQuery(
-                data: MediaQuery.of(
-                  context,
-                ).copyWith(textScaler: TextScaler.linear(state.fontScale)),
-                child: Material(
-                  color: colorScheme.surface,
-                  // treat as a single unit
-                  child: FocusScope(
-                    child: Column(
-                      children: [
-                        Expanded(child: ClipRect(child: child)),
-                        const AppBottomBar(),
-                      ],
+              // transparent system ui widget
+              return SystemOverlay(
+                value: SystemUiPresets.light,
+                child: MediaQuery(
+                  data: MediaQuery.of(
+                    context,
+                  ).copyWith(textScaler: TextScaler.linear(state.fontScale)),
+                  child: Material(
+                    color: colorScheme.surface,
+                    // treat as a single unit
+                    child: FocusScope(
+                      child: Column(
+                        children: [
+                          Expanded(child: ClipRect(child: child)),
+                          const AppBottomBar(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -89,7 +94,8 @@ class App extends StatelessWidget {
               splashFactory: kIsWeb ? NoSplash.splashFactory : null,
               useMaterial3: true,
               colorScheme: colorScheme,
-              // fontFamily: "ReadexPro",
+              fontFamily: "ReadexPro",
+              // fontFamily: "SegoeUI",
               buttonTheme: ButtonThemeData(
                 shape: RoundedRectangleBorder(borderRadius: .circular(7.5)),
               ),
@@ -175,6 +181,7 @@ class AppBottomBar extends StatelessWidget {
                   spacing: 5,
                   runSpacing: 5,
                   crossAxisAlignment: .center,
+                  alignment: .center,
                   children: [
                     IconButton(
                       onPressed: cubit.toggleLocale,
@@ -195,7 +202,19 @@ class AppBottomBar extends StatelessWidget {
                     IconButton(
                       iconSize: 20,
                       icon: const Icon(Icons.text_fields_rounded),
-                      onPressed: cubit.changeFontScale,
+                      onPressed: () {
+                        if (App.currentContext case final context?) {
+                          if (FontScaler.isOpen) {
+                            Navigator.of(context).pop();
+                            return;
+                          }
+                          showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) => const FontScaler(),
+                          );
+                        }
+                      },
+                      // onPressed: cubit.changeFontScale,
                     ),
                     Icon(
                       Icons.square_rounded,
@@ -223,6 +242,117 @@ class AppBottomBar extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+/// A collection of predefined [SystemUiOverlayStyle] presets
+/// for consistent status bar and navigation bar appearances.
+///
+/// The [SystemUiPresets] class provides ready-to-use combinations
+/// of light and dark styles for both the status bar and the
+/// system navigation bar. These presets help maintain visual
+/// consistency across different app screens.
+///
+/// You can also define your own [SystemUiOverlayStyle] if you need
+/// more specific control over colors or brightness.
+abstract final class SystemUiPresets {
+  /// {@template light}
+  /// `light` status & navigation bar
+  /// {@endtemplate}
+  static const light = SystemUiOverlayStyle(
+    statusBarIconBrightness: Brightness.light,
+    systemNavigationBarIconBrightness: Brightness.light,
+    statusBarBrightness: Brightness.dark,
+    statusBarColor: Colors.transparent,
+    systemNavigationBarColor: Colors.transparent,
+  );
+
+  /// {@template dark}
+  /// `dark` status & navigation bar
+  /// {@endtemplate}
+  static const dark = SystemUiOverlayStyle(
+    statusBarIconBrightness: Brightness.dark,
+    systemNavigationBarIconBrightness: Brightness.dark,
+    statusBarBrightness: Brightness.light,
+    statusBarColor: Colors.transparent,
+    systemNavigationBarColor: Colors.transparent,
+  );
+
+  /// {@template light_status_bar_dark_nav_bar}
+  /// `light` status bar & `dark` navigation bar
+  /// {@endtemplate}
+  static const lightStatusBarDarkNavBar = SystemUiOverlayStyle(
+    statusBarIconBrightness: Brightness.light,
+    statusBarBrightness: Brightness.dark,
+    statusBarColor: Colors.transparent,
+    systemNavigationBarIconBrightness: Brightness.dark,
+    systemNavigationBarColor: Colors.transparent,
+  );
+
+  /// {@template dark_status_bar_light_nav_bar}
+  /// `dark` status bar & `light` navigation bar
+  /// {@endtemplate}
+  static const darkStatusBarLightNavBar = SystemUiOverlayStyle(
+    statusBarIconBrightness: Brightness.dark,
+    statusBarBrightness: Brightness.light,
+    statusBarColor: Colors.transparent,
+    systemNavigationBarIconBrightness: Brightness.light,
+    systemNavigationBarColor: Colors.transparent,
+  );
+}
+
+class SystemOverlay extends StatelessWidget {
+  const SystemOverlay({
+    required this.child,
+    required SystemUiOverlayStyle this.value,
+    super.key,
+  }) : _default = value;
+
+  /// {@macro light}
+  const SystemOverlay.light({required this.child, this.value, super.key})
+    : _default = SystemUiPresets.light;
+
+  /// {@macro dark}
+  const SystemOverlay.dark({required this.child, this.value, super.key})
+    : _default = SystemUiPresets.dark;
+
+  /// {@macro light_status_bar_dark_nav_bar}
+  const SystemOverlay.lightStatusBarDarkNavBar({
+    required this.child,
+    this.value,
+    super.key,
+  }) : _default = SystemUiPresets.lightStatusBarDarkNavBar;
+
+  /// {@macro dark_status_bar_light_nav_bar}
+  const SystemOverlay.darkStatusBarLightNavBar({
+    required this.child,
+    this.value,
+    super.key,
+  }) : _default = SystemUiPresets.darkStatusBarLightNavBar;
+  final Widget child;
+  final SystemUiOverlayStyle? value;
+  final SystemUiOverlayStyle _default;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnnotatedRegion<SystemUiOverlayStyle>(value: _value, child: child);
+  }
+
+  SystemUiOverlayStyle get _value {
+    if (_default == value) return _default;
+
+    return _default.copyWith(
+      systemNavigationBarColor: value?.systemNavigationBarColor,
+      systemNavigationBarDividerColor: value?.systemNavigationBarDividerColor,
+      systemNavigationBarIconBrightness:
+          value?.systemNavigationBarIconBrightness,
+      systemNavigationBarContrastEnforced:
+          value?.systemNavigationBarContrastEnforced,
+      statusBarColor: value?.statusBarColor,
+      statusBarBrightness: value?.statusBarBrightness,
+      statusBarIconBrightness: value?.statusBarIconBrightness,
+      systemStatusBarContrastEnforced: value?.systemStatusBarContrastEnforced,
     );
   }
 }

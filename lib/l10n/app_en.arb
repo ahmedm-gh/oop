@@ -183,6 +183,7 @@
     "realWorldExamples": "Real World Examples",
 
     "welcomeBack": "Welcome back",
+    "welcomeTo": "Welcome to",
     "featured": "Featured",
     "designPatternsSubtitle": "Master the blueprints of reusable object-oriented software.",
     "programmingTermsSubtitle": "Glossary & definitions",
@@ -199,5 +200,11 @@
     "noteImportant": "Important",
     "analogy": "Analogy",
     "comparison": "Comparison",
-    "structureDiagram": "Structure Diagram"
+    "structureDiagram": "Structure Diagram",
+
+    "headingFontSize": "Heading Font Size",
+    "subheadingFontSize": "Subheading Font Size",
+    "normalFontSize": "Normal Font Size",
+    "theDefault": "The Default",
+    "apply": "Apply"
 }

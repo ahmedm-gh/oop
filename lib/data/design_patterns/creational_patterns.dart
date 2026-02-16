@@ -41,7 +41,7 @@ const Map<String, DesignPattern> creationalPatternsData = {
         // DiagramContent(
         //   "Structure Flow:\nClient → Creator.factoryMethod() → Product Interface\n         ↓                        ↓\n   ConcreteCreator          ConcreteProduct",
         // ),
-        SvgDiagramContent(Diagrams.generateFactorySvg),
+        SvgDiagramContent(Diagrams.generateFactoryMethodSvg),
         StrContent(
           "The pattern follows the Open/Closed Principle: you can introduce new product types without modifying existing client code. Just create new concrete creators and products.",
         ),
@@ -76,7 +76,7 @@ const Map<String, DesignPattern> creationalPatternsData = {
         // DiagramContent(
         //   "تدفق البنية:\nالعميل ← Creator.factoryMethod() ← واجهة المنتج\n         ↓                        ↓\n   ConcreteCreator          ConcreteProduct",
         // ),
-        SvgDiagramContent(Diagrams.generateFactorySvg),
+        SvgDiagramContent(Diagrams.generateFactoryMethodSvg),
         StrContent(
           "يتبع النمط مبدأ المفتوح/المغلق (Open/Closed Principle): يمكنك إضافة أنواع منتجات جديدة دون تعديل كود العميل الموجود. فقط أنشئ مُنشئين ومنتجات محددة جديدة.",
         ),
@@ -1061,9 +1061,10 @@ class ThemedApp extends StatelessWidget {
             "Client: Uses only interfaces declared by AbstractFactory and AbstractProduct",
           ],
         ),
-        DiagramContent(
-          "Pattern Flow:\nClient → AbstractFactory → AbstractProduct1, AbstractProduct2\n         ↓                ↓\n   ConcreteFactory1    ConcreteProduct1A, ConcreteProduct2A\n   ConcreteFactory2    ConcreteProduct1B, ConcreteProduct2B",
-        ),
+        // DiagramContent(
+        //   "Pattern Flow:\nClient → AbstractFactory → AbstractProduct1, AbstractProduct2\n         ↓                ↓\n   ConcreteFactory1    ConcreteProduct1A, ConcreteProduct2A\n   ConcreteFactory2    ConcreteProduct1B, ConcreteProduct2B",
+        // ),
+        SvgDiagramContent(Diagrams.generateAbstractFactorySvg),
         StrContent(
           "The key benefit is enforcing consistency: products from the same factory are guaranteed to be compatible. This prevents mixing incompatible products (like using an Android button with an iOS text field).",
         ),
@@ -1095,9 +1096,10 @@ class ThemedApp extends StatelessWidget {
             "العميل (Client): يستخدم فقط الواجهات المُعلنة بواسطة AbstractFactory و AbstractProduct",
           ],
         ),
-        DiagramContent(
-          "تدفق النمط:\nالعميل ← المصنع المجرد ← المنتج المجرد1، المنتج المجرد2\n         ↓                ↓\n   مصنع محدد1    منتج محدد1A، منتج محدد2A\n   مصنع محدد2    منتج محدد1B، منتج محدد2B",
-        ),
+        // DiagramContent(
+        //   "تدفق النمط:\nالعميل ← المصنع المجرد ← المنتج المجرد1، المنتج المجرد2\n         ↓                ↓\n   مصنع محدد1    منتج محدد1A، منتج محدد2A\n   مصنع محدد2    منتج محدد1B، منتج محدد2B",
+        // ),
+        SvgDiagramContent(Diagrams.generateAbstractFactorySvg),
         StrContent(
           "الفائدة الرئيسية هي فرض الاتساق (Consistency): المنتجات من نفس المصنع مضمونة أن تكون متوافقة. هذا يمنع خلط منتجات غير متوافقة (مثل استخدام زر Android مع حقل نص iOS).",
         ),
@@ -2066,9 +2068,10 @@ void main() {
             "Director (optional): Orchestrates building steps in a specific order for common configurations",
           ],
         ),
-        DiagramContent(
-          "Pattern Flow:\nClient → Director → Builder → Product\n              ↓         ↓\n        orchestrates  step1()\n                      step2()\n                      build()",
-        ),
+        // DiagramContent(
+        //   "Pattern Flow:\nClient → Director → Builder → Product\n              ↓         ↓\n        orchestrates  step1()\n                      step2()\n                      build()",
+        // ),
+        SvgDiagramContent(Diagrams.generateBuilderSvg),
         StrContent(
           "In Dart and Flutter, builders are commonly implemented as fluent interfaces where each method returns the builder itself, allowing method chaining. This creates readable, self-documenting code.",
         ),
@@ -2103,9 +2106,10 @@ void main() {
             "المدير (Director) (اختياري): ينسق خطوات البناء بترتيب محدد للإعدادات الشائعة",
           ],
         ),
-        DiagramContent(
-          "تدفق النمط:\nالعميل ← المدير ← البناء ← المنتج\n              ↓         ↓\n        ينسق     ()step1\n                ()step2\n                ()build",
-        ),
+        // DiagramContent(
+        //   "تدفق النمط:\nالعميل ← المدير ← البناء ← المنتج\n              ↓         ↓\n        ينسق     ()step1\n                ()step2\n                ()build",
+        // ),
+        SvgDiagramContent(Diagrams.generateBuilderSvg),
         StrContent(
           "في Dart و Flutter، غالباً ما تُنفذ أدوات البناء كواجهات انسيابية (Fluent Interfaces) حيث تُرجع كل طريقة أداة البناء نفسها، مما يسمح بتسلسل الطرق (Method Chaining). هذا ينشئ كوداً قابلاً للقراءة ويوثق نفسه.",
         ),
@@ -3174,9 +3178,10 @@ void main() {
             "PrototypeRegistry (optional): Maintains a catalog of frequently cloned objects",
           ],
         ),
-        DiagramContent(
-          "Pattern Flow:\nClient → Prototype.clone() → New Object (copy)\n         ↓\n   ConcretePrototype\n   (with all state)",
-        ),
+        // DiagramContent(
+        //   "Pattern Flow:\nClient → Prototype.clone() → New Object (copy)\n         ↓\n   ConcretePrototype\n   (with all state)",
+        // ),
+        SvgDiagramContent(Diagrams.generatePrototypeSvg),
         StrContent(
           "The pattern is especially useful when object creation involves expensive operations like database queries, file I/O, or complex calculations. Cloning can be orders of magnitude faster.",
         ),
@@ -3214,9 +3219,10 @@ void main() {
             "سجل النماذج الأولية (PrototypeRegistry) (اختياري): يحتفظ بكتالوج من الكائنات المُستنسخة بشكل متكرر",
           ],
         ),
-        DiagramContent(
-          "تدفق النمط:\nالعميل ← ()Prototype.clone ← كائن جديد (نسخة)\n         ↓\n   ConcretePrototype\n   (مع كل الحالة)",
-        ),
+        // DiagramContent(
+        //   "تدفق النمط:\nالعميل ← ()Prototype.clone ← كائن جديد (نسخة)\n         ↓\n   ConcretePrototype\n   (مع كل الحالة)",
+        // ),
+        SvgDiagramContent(Diagrams.generatePrototypeSvg),
         StrContent(
           "النمط مفيد بشكل خاص عندما يتضمن إنشاء الكائن عمليات مكلفة مثل استعلامات قاعدة البيانات، عمليات إدخال/إخراج الملفات، أو حسابات معقدة. الاستنساخ يمكن أن يكون أسرع بمراتب من حيث الحجم (Orders of Magnitude).",
         ),
@@ -4315,9 +4321,10 @@ void main() {
             "Thread-safety considerations in concurrent environments",
           ],
         ),
-        DiagramContent(
-          "Pattern Structure:\nSingleton\n  - static instance: Singleton\n  - Singleton() [private constructor]\n  + static getInstance(): Singleton\n  + businessMethod()\n\nClient → Singleton.getInstance() → Same Instance Every Time",
-        ),
+        // DiagramContent(
+        //   "Pattern Structure:\nSingleton\n  - static instance: Singleton\n  - Singleton() [private constructor]\n  + static getInstance(): Singleton\n  + businessMethod()\n\nClient → Singleton.getInstance() → Same Instance Every Time",
+        // ),
+        SvgDiagramContent(Diagrams.generateSingletonSvg),
         NoteContent(
           "Singleton violates Single Responsibility Principle: the class manages both its own creation AND its business logic. Consider if you really need global state before using this pattern.",
           type: .warning,
@@ -4371,9 +4378,10 @@ void main() {
             "اعتبارات أمان الخيوط (Thread-Safety) في البيئات المتزامنة",
           ],
         ),
-        DiagramContent(
-          "بنية النمط:\nSingleton\n  - static instance: Singleton\n  - ()Singleton [مُنشئ خاص]\n  + static ()getInstance: Singleton\n  + ()businessMethod\n\nالعميل ← ()Singleton.getInstance ← نفس النسخة في كل مرة",
-        ),
+        // DiagramContent(
+        //   "بنية النمط:\nSingleton\n  - static instance: Singleton\n  - ()Singleton [مُنشئ خاص]\n  + static ()getInstance: Singleton\n  + ()businessMethod\n\nالعميل ← ()Singleton.getInstance ← نفس النسخة في كل مرة",
+        // ),
+        SvgDiagramContent(Diagrams.generateSingletonSvg),
         NoteContent(
           "المفرد ينتهك مبدأ المسؤولية الواحدة (Single Responsibility Principle): الفئة تدير كلاً من إنشائها الخاص ومنطق الأعمال. فكر جيداً إذا كنت تحتاج فعلاً لحالة عالمية قبل استخدام هذا النمط.",
           type: .warning,
@@ -5359,9 +5367,10 @@ void main() {
             "Pool Configuration: Max size, min size, creation/validation policies",
           ],
         ),
-        DiagramContent(
-          "Pattern Flow:\nClient → Pool.acquire() → Available Object (or create new)\n                ↓\n         Mark as in-use\n         Return object to client\n         \nClient → Pool.release(object) → Reset object state\n                         ↓\n                  Mark as available\n                  Add to pool",
-        ),
+        // DiagramContent(
+        //   "Pattern Flow:\nClient → Pool.acquire() → Available Object (or create new)\n                ↓\n         Mark as in-use\n         Return object to client\n         \nClient → Pool.release(object) → Reset object state\n                         ↓\n                  Mark as available\n                  Add to pool",
+        // ),
+        SvgDiagramContent(Diagrams.generateObjectPoolSvg),
         StrContent(
           "Modern garbage collectors are highly optimized, so object pooling is only beneficial for truly expensive objects or in performance-critical scenarios. Premature pooling can actually hurt performance and increase complexity.",
         ),
@@ -5405,9 +5414,10 @@ void main() {
             "إعدادات التجمع (Pool Configuration): الحجم الأقصى، الحجم الأدنى، سياسات الإنشاء/التحقق",
           ],
         ),
-        DiagramContent(
-          "تدفق النمط:\nالعميل ← ()Pool.acquire ← كائن متاح (أو إنشاء جديد)\n                ↓\n         تمييز كمُستخدم\n         إرجاع الكائن للعميل\n         \nالعميل ← (Pool.release(object ← إعادة تعيين حالة الكائن\n                         ↓\n                  تمييز كمتاح\n                  إضافة للتجمع",
-        ),
+        // DiagramContent(
+        //   "تدفق النمط:\nالعميل ← ()Pool.acquire ← كائن متاح (أو إنشاء جديد)\n                ↓\n         تمييز كمُستخدم\n         إرجاع الكائن للعميل\n         \nالعميل ← (Pool.release(object ← إعادة تعيين حالة الكائن\n                         ↓\n                  تمييز كمتاح\n                  إضافة للتجمع",
+        // ),
+        SvgDiagramContent(Diagrams.generateObjectPoolSvg),
         StrContent(
           "جامعو القمامة (Garbage Collectors) الحديثون مُحسّنون للغاية، لذا يكون تجميع الكائنات مفيداً فقط للكائنات المكلفة حقاً أو في السيناريوهات الحرجة للأداء. التجميع المبكر (Premature Pooling) يمكن أن يضر بالأداء ويزيد التعقيد.",
         ),
@@ -6632,9 +6642,10 @@ void main() {
             "Trade-off: faster startup vs. slower first access",
           ],
         ),
-        DiagramContent(
-          "Pattern Flow:\nFirst Access → Check if initialized → NO → Create & Cache → Return\n                                   ↓\n                                  YES → Return Cached\n\nSubsequent Access → Return Cached (fast)",
-        ),
+        // DiagramContent(
+        //   "Pattern Flow:\nFirst Access → Check if initialized → NO → Create & Cache → Return\n                                   ↓\n                                  YES → Return Cached\n\nSubsequent Access → Return Cached (fast)",
+        // ),
+        SvgDiagramContent(Diagrams.generateLazyInitializationSvg),
         StrContent(
           "In Dart, the `late` keyword provides built-in support for lazy initialization, making this pattern extremely easy to implement. The `late` keyword creates a variable that's initialized when first accessed, not when declared.",
         ),
@@ -6692,9 +6703,10 @@ void main() {
             "مقايضة: بدء أسرع مقابل وصول أول أبطأ",
           ],
         ),
-        DiagramContent(
-          "تدفق النمط:\nالوصول الأول ← التحقق من التهيئة ← لا ← إنشاء وتخزين مؤقت ← إرجاع\n                                   ↓\n                                 نعم ← إرجاع المُخزن\n\nالوصول اللاحق ← إرجاع المُخزن (سريع)",
-        ),
+        // DiagramContent(
+        //   "تدفق النمط:\nالوصول الأول ← التحقق من التهيئة ← لا ← إنشاء وتخزين مؤقت ← إرجاع\n                                   ↓\n                                 نعم ← إرجاع المُخزن\n\nالوصول اللاحق ← إرجاع المُخزن (سريع)",
+        // ),
+        SvgDiagramContent(Diagrams.generateLazyInitializationSvg),
         StrContent(
           "في Dart، توفر الكلمة المفتاحية `late` دعماً مدمجاً للتهيئة الكسولة، مما يجعل تنفيذ هذا النمط سهلاً للغاية. الكلمة المفتاحية `late` تُنشئ متغيراً يتم تهيئته عند الوصول الأول، وليس عند الإعلان.",
         ),
@@ -7547,9 +7559,10 @@ void main() {
             "Key Management: Keys are typically strings, enums, or other hashable types",
           ],
         ),
-        DiagramContent(
-          "Pattern Structure:\nClient → Multiton.getInstance(key)\n              ↓\n         Registry {key1 → instance1,\n                   key2 → instance2,\n                   key3 → instance3}\n              ↓\n    Return instance for key\n    (create if doesn't exist)",
-        ),
+        // DiagramContent(
+        //   "Pattern Structure:\nClient → Multiton.getInstance(key)\n              ↓\n         Registry {key1 → instance1,\n                   key2 → instance2,\n                   key3 → instance3}\n              ↓\n    Return instance for key\n    (create if doesn't exist)",
+        // ),
+        SvgDiagramContent(Diagrams.generateMultitonSvg),
         StrContent(
           "Multiton is more flexible than pure Singleton because it allows multiple well-defined instances, but more controlled than unrestricted object creation because the number and identity of instances is managed.",
         ),
@@ -7597,9 +7610,10 @@ void main() {
             "إدارة المفاتيح (Key Management): المفاتيح عادةً نصوص، تعدادات، أو أنواع قابلة للتجزئة (Hashable)",
           ],
         ),
-        DiagramContent(
-          "بنية النمط:\nالعميل ← (Multiton.getInstance(key\n              ↓\n         السجل {key1 ← instance1،\n                   key2 ← instance2،\n                   key3 ← instance3}\n              ↓\n    إرجاع النسخة للمفتاح\n    (إنشاء إذا لم تكن موجودة)",
-        ),
+        // DiagramContent(
+        //   "بنية النمط:\nالعميل ← (Multiton.getInstance(key\n              ↓\n         السجل {key1 ← instance1،\n                   key2 ← instance2،\n                   key3 ← instance3}\n              ↓\n    إرجاع النسخة للمفتاح\n    (إنشاء إذا لم تكن موجودة)",
+        // ),
+        SvgDiagramContent(Diagrams.generateMultitonSvg),
         StrContent(
           "المتعدد أكثر مرونة من المفرد النقي لأنه يسمح بنسخ متعددة محددة جيداً، لكن أكثر تحكماً من إنشاء الكائنات غير المقيد لأن عدد وهوية النسخ مُدارة.",
         ),
@@ -8501,9 +8515,10 @@ void main() {
             "Creation: Framework uses registered factories to create instances",
           ],
         ),
-        DiagramContent(
-          "Pattern Flow:\nFramework defines → Product Interface\n                    ↓\nClient implements → ConcreteProduct + Factory Function\n                    ↓\nClient registers → Kit.register('key', factoryFn)\n                    ↓\nFramework uses → Kit.create('key') → calls factory → ConcreteProduct",
-        ),
+        // DiagramContent(
+        //   "Pattern Flow:\nFramework defines → Product Interface\n                    ↓\nClient implements → ConcreteProduct + Factory Function\n                    ↓\nClient registers → Kit.register('key', factoryFn)\n                    ↓\nFramework uses → Kit.create('key') → calls factory → ConcreteProduct",
+        // ),
+        SvgDiagramContent(Diagrams.generateFactoryKitSvg),
         StrContent(
           "The pattern provides high customization while maintaining system integrity through well-defined extension points. The framework controls the 'contract' (what objects must implement), while clients control the 'implementation' (how objects are created).",
         ),
@@ -8553,9 +8568,10 @@ void main() {
             "الإنشاء (Creation): الإطار يستخدم المصانع المُسجلة لإنشاء النسخ",
           ],
         ),
-        DiagramContent(
-          "تدفق النمط:\nالإطار يُحدد ← واجهة المنتج\n                    ↓\nالعميل ينفذ ← منتج محدد + دالة المصنع\n                    ↓\nالعميل يُسجل ← (Kit.register('key', factoryFn\n                    ↓\nالإطار يستخدم ← ('Kit.create('key ← يستدعي المصنع ← منتج محدد",
-        ),
+        // DiagramContent(
+        //   "تدفق النمط:\nالإطار يُحدد ← واجهة المنتج\n                    ↓\nالعميل ينفذ ← منتج محدد + دالة المصنع\n                    ↓\nالعميل يُسجل ← (Kit.register('key', factoryFn\n                    ↓\nالإطار يستخدم ← ('Kit.create('key ← يستدعي المصنع ← منتج محدد",
+        // ),
+        SvgDiagramContent(Diagrams.generateFactoryKitSvg),
         StrContent(
           "يوفر النمط تخصيصاً عالياً مع الحفاظ على سلامة النظام من خلال نقاط توسع محددة جيداً (Well-Defined Extension Points). الإطار يتحكم في 'العقد' (ما يجب على الكائنات تنفيذه)، بينما العملاء يتحكمون في 'التطبيق' (كيفية إنشاء الكائنات).",
         ),

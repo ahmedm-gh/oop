@@ -103,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: .w300,
                           color: colors.onSurfaceVariant,
-                          fontSize: 12,
+                          fontSize: 14,
                         ),
                       ),
                     ],
@@ -156,7 +156,7 @@ class _GreetingHeader extends StatelessWidget {
       crossAxisAlignment: .stretch,
       children: [
         Text(
-          l10n.welcomeBack.toUpperCase(),
+          l10n.welcomeTo.toUpperCase(),
           style: TextStyle(
             fontSize: 12,
             color: colors.onSurfaceVariant,

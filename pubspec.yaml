@@ -58,3 +58,15 @@ flutter:
           weight: 600
         - asset: assets/fonts/readex_pro/bold.ttf
           weight: 700
+    - family: SegoeUI
+      fonts:
+        - asset: assets/fonts/segoe_ui/light.ttf
+          weight: 200
+        - asset: assets/fonts/segoe_ui/semi-light.ttf
+          weight: 300
+        - asset: assets/fonts/segoe_ui/regular.ttf
+          weight: 400
+        - asset: assets/fonts/segoe_ui/semi-bold.ttf
+          weight: 600
+        - asset: assets/fonts/segoe_ui/bold.ttf
+          weight: 700

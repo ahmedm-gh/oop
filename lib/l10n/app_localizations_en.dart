@@ -540,6 +540,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get welcomeBack => 'Welcome back';
 
   @override
+  String get welcomeTo => 'Welcome to';
+
+  @override
   String get featured => 'Featured';
 
   @override
@@ -587,4 +590,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get structureDiagram => 'Structure Diagram';
+
+  @override
+  String get headingFontSize => 'Heading Font Size';
+
+  @override
+  String get subheadingFontSize => 'Subheading Font Size';
+
+  @override
+  String get normalFontSize => 'Normal Font Size';
+
+  @override
+  String get theDefault => 'The Default';
+
+  @override
+  String get apply => 'Apply';
 }

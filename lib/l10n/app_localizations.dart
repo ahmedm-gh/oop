@@ -1154,6 +1154,12 @@ abstract class AppLocalizations {
   /// **'Welcome back'**
   String get welcomeBack;
 
+  /// No description provided for @welcomeTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to'**
+  String get welcomeTo;
+
   /// No description provided for @featured.
   ///
   /// In en, this message translates to:
@@ -1249,6 +1255,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Structure Diagram'**
   String get structureDiagram;
+
+  /// No description provided for @headingFontSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Heading Font Size'**
+  String get headingFontSize;
+
+  /// No description provided for @subheadingFontSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Subheading Font Size'**
+  String get subheadingFontSize;
+
+  /// No description provided for @normalFontSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal Font Size'**
+  String get normalFontSize;
+
+  /// No description provided for @theDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'The Default'**
+  String get theDefault;
+
+  /// No description provided for @apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
 }
 
 class _AppLocalizationsDelegate

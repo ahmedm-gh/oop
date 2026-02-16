@@ -137,17 +137,17 @@ class _TermsList extends StatelessWidget {
               >(
                 selector: (state) => state.terms,
                 builder: (context, terms) {
-                  return FlexGrid(
-                    itemBuilder: (context, index) {
-                      final term = terms.entries.elementAt(index);
-                      return TermCard(term: term.value);
-                    },
-                    itemCount: terms.length,
-                    padding: DL.listPadding,
-                    spacing: DL.listSeparatorHeight,
-                    runSpacing: DL.listSeparatorHeight,
-                    crossAxisCount: crossAxisCount,
-                  );
+                  // return FlexGrid(
+                  //   itemBuilder: (context, index) {
+                  //     final term = terms.entries.elementAt(index);
+                  //     return TermCard(term: term.value);
+                  //   },
+                  //   itemCount: terms.length,
+                  //   padding: DL.listPadding,
+                  //   spacing: DL.listSeparatorHeight,
+                  //   runSpacing: DL.listSeparatorHeight,
+                  //   crossAxisCount: crossAxisCount,
+                  // );
                   return ListView.separated(
                     padding: DL.listPadding,
                     itemBuilder: (context, index) {
