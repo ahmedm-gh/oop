@@ -92,7 +92,7 @@ const Map<String, DesignPattern> creationalPatternsData = {
     examples: LocV(
       en: [
         // Example 1: Basic - Dialog Factory
-        StrCodeBlock("""// Example 1: Basic - Platform-Specific Dialog Factory
+        StrCodeBlock(r'''// Example 1: Basic - Platform-Specific Dialog Factory
 // Use case: Creating platform-specific UI components
 
 abstract class Dialog {
@@ -150,10 +150,10 @@ void main() {
   }
   
   factory.showDialog(); // Creates appropriate dialog
-}"""),
+}'''),
 
         // Example 2: Intermediate - HTTP Client Factory
-        StrCodeBlock("""// Example 2: Intermediate - Network Client Factory
+        StrCodeBlock(r'''// Example 2: Intermediate - Network Client Factory
 // Use case: Different HTTP clients for different environments
 
 abstract class HttpClient {
@@ -164,14 +164,14 @@ abstract class HttpClient {
 class ProductionHttpClient implements HttpClient {
   @override
   Future<Response> get(String url) async {
-    print('Production GET: \$url');
+    print('Production GET: $url');
     // Real network call
     return Response(200, 'Real data');
   }
   
   @override
   Future<Response> post(String url, Map<String, dynamic> data) async {
-    print('Production POST: \$url');
+    print('Production POST: $url');
     return Response(201, 'Created');
   }
 }
@@ -179,14 +179,14 @@ class ProductionHttpClient implements HttpClient {
 class MockHttpClient implements HttpClient {
   @override
   Future<Response> get(String url) async {
-    print('Mock GET: \$url');
+    print('Mock GET: $url');
     await Future.delayed(Duration(seconds: 1));
     return Response(200, '{"mock": "data"}');
   }
   
   @override
   Future<Response> post(String url, Map<String, dynamic> data) async {
-    print('Mock POST: \$url with \$data');
+    print('Mock POST: $url with $data');
     return Response(200, '{"success": true}');
   }
 }
@@ -222,7 +222,7 @@ void main() async {
       : ProductionApiService();
   
   final users = await apiService.getUsers();
-  print('Fetched \${users.length} users');
+  print('Fetched ${users.length} users');
 }
 
 class Response {
@@ -234,10 +234,10 @@ class Response {
 class User {
   User(this.name);
   final String name;
-}"""),
+}'''),
 
         // Example 3: Advanced - Document Parser Factory
-        StrCodeBlock("""// Example 3: Advanced - Document Parser with Cache
+        StrCodeBlock(r'''// Example 3: Advanced - Document Parser with Cache
 // Use case: Parsing different document formats efficiently
 
 abstract class DocumentParser {
@@ -250,7 +250,7 @@ class JsonParser implements DocumentParser {
   String parse(String content) {
     print('Parsing JSON document');
     // Complex JSON parsing logic
-    return 'Parsed JSON: \${content.length} chars';
+    return 'Parsed JSON: ${content.length} chars';
   }
   
   @override
@@ -262,7 +262,7 @@ class XmlParser implements DocumentParser {
   String parse(String content) {
     print('Parsing XML document');
     // Complex XML parsing logic
-    return 'Parsed XML: \${content.length} chars';
+    return 'Parsed XML: ${content.length} chars';
   }
   
   @override
@@ -274,7 +274,7 @@ class CsvParser implements DocumentParser {
   String parse(String content) {
     print('Parsing CSV document');
     final lines = content.split('');
-    return 'Parsed CSV: \${lines.length} rows';
+    return 'Parsed CSV: ${lines.length} rows';
   }
   
   @override
@@ -299,7 +299,7 @@ abstract class DocumentProcessor {
     );
     
     if (!parser.canParse(extension)) {
-      throw Exception('Parser cannot handle \$extension files');
+      throw Exception('Parser cannot handle $extension files');
     }
     
     return parser.parse(content);
@@ -307,7 +307,7 @@ abstract class DocumentProcessor {
   
   String _getExtension(String path) {
     final parts = path.split('.');
-    return parts.isEmpty ? '' : '.\${parts.last}';
+    return parts.isEmpty ? '' : '.${parts.last}';
   }
 }
 
@@ -319,7 +319,7 @@ class StandardDocumentProcessor extends DocumentProcessor {
       '.json' => JsonParser(),
       '.xml' => XmlParser(),
       '.csv' => CsvParser(),
-      _ => throw Exception('Unsupported format: \$extension'),
+      _ => throw Exception('Unsupported format: $extension'),
     };
   }
 }
@@ -354,10 +354,10 @@ void main() {
   
   // Parser reused from cache on second call
   print(processor.processDocument('another.json', '{}'));
-}"""),
+}'''),
 
         // Example 4: Flutter Widget Factory
-        StrCodeBlock("""// Example 4: Flutter - Theme-Aware Button Factory
+        StrCodeBlock(r'''// Example 4: Flutter - Theme-Aware Button Factory
 // Use case: Creating buttons that match app theme
 
 abstract class ThemedButton extends StatelessWidget {
@@ -510,11 +510,11 @@ class ThemedApp extends StatelessWidget {
       ),
     );
   }
-}"""),
+}'''),
       ],
       ar: [
         // Same examples with Arabic comments
-        StrCodeBlock("""// مثال 1: أساسي - مصنع مربعات الحوار الخاصة بالمنصة
+        StrCodeBlock(r'''// مثال 1: أساسي - مصنع مربعات الحوار الخاصة بالمنصة
 // حالة الاستخدام: إنشاء مكونات واجهة مستخدم خاصة بالمنصة
 
 abstract class Dialog {
@@ -572,9 +572,9 @@ void main() {
   }
   
   factory.showDialog(); // ينشئ مربع الحوار المناسب
-}"""),
+}'''),
 
-        StrCodeBlock("""// مثال 2: متوسط - مصنع عميل HTTP
+        StrCodeBlock(r'''// مثال 2: متوسط - مصنع عميل HTTP
 // حالة الاستخدام: عملاء HTTP مختلفون لبيئات مختلفة
 
 abstract class HttpClient {
@@ -585,14 +585,14 @@ abstract class HttpClient {
 class ProductionHttpClient implements HttpClient {
   @override
   Future<Response> get(String url) async {
-    print('إنتاج GET: \$url');
+    print('إنتاج GET: $url');
     // استدعاء شبكة حقيقي
     return Response(200, 'بيانات حقيقية');
   }
   
   @override
   Future<Response> post(String url, Map<String, dynamic> data) async {
-    print('إنتاج POST: \$url');
+    print('إنتاج POST: $url');
     return Response(201, 'تم الإنشاء');
   }
 }
@@ -600,14 +600,14 @@ class ProductionHttpClient implements HttpClient {
 class MockHttpClient implements HttpClient {
   @override
   Future<Response> get(String url) async {
-    print('وهمي GET: \$url');
+    print('وهمي GET: $url');
     await Future.delayed(Duration(seconds: 1));
     return Response(200, '{"mock": "data"}');
   }
   
   @override
   Future<Response> post(String url, Map<String, dynamic> data) async {
-    print('وهمي POST: \$url مع \$data');
+    print('وهمي POST: $url مع $data');
     return Response(200, '{"success": true}');
   }
 }
@@ -643,7 +643,7 @@ void main() async {
       : ProductionApiService();
   
   final users = await apiService.getUsers();
-  print('تم جلب \${users.length} مستخدمين');
+  print('تم جلب ${users.length} مستخدمين');
 }
 
 class Response {
@@ -655,9 +655,9 @@ class Response {
 class User {
   User(this.name);
   final String name;
-}"""),
+}'''),
 
-        StrCodeBlock("""// مثال 3: متقدم - محلل المستندات مع التخزين المؤقت
+        StrCodeBlock(r'''// مثال 3: متقدم - محلل المستندات مع التخزين المؤقت
 // حالة الاستخدام: تحليل تنسيقات مستندات مختلفة بكفاءة
 
 abstract class DocumentParser {
@@ -670,7 +670,7 @@ class JsonParser implements DocumentParser {
   String parse(String content) {
     print('تحليل مستند JSON');
     // منطق تحليل JSON معقد
-    return 'JSON محلل: \${content.length} حرف';
+    return 'JSON محلل: ${content.length} حرف';
   }
   
   @override
@@ -682,7 +682,7 @@ class XmlParser implements DocumentParser {
   String parse(String content) {
     print('تحليل مستند XML');
     // منطق تحليل XML معقد
-    return 'XML محلل: \${content.length} حرف';
+    return 'XML محلل: ${content.length} حرف';
   }
   
   @override
@@ -694,7 +694,7 @@ class CsvParser implements DocumentParser {
   String parse(String content) {
     print('تحليل مستند CSV');
     final lines = content.split('');
-    return 'CSV محلل: \${lines.length} صفوف';
+    return 'CSV محلل: ${lines.length} صفوف';
   }
   
   @override
@@ -719,7 +719,7 @@ abstract class DocumentProcessor {
     );
     
     if (!parser.canParse(extension)) {
-      throw Exception('المحلل لا يمكنه معالجة ملفات \$extension');
+      throw Exception('المحلل لا يمكنه معالجة ملفات $extension');
     }
     
     return parser.parse(content);
@@ -727,7 +727,7 @@ abstract class DocumentProcessor {
   
   String _getExtension(String path) {
     final parts = path.split('.');
-    return parts.isEmpty ? '' : '.\${parts.last}';
+    return parts.isEmpty ? '' : '.${parts.last}';
   }
 }
 
@@ -739,7 +739,7 @@ class StandardDocumentProcessor extends DocumentProcessor {
       '.json' => JsonParser(),
       '.xml' => XmlParser(),
       '.csv' => CsvParser(),
-      _ => throw Exception('تنسيق غير مدعوم: \$extension'),
+      _ => throw Exception('تنسيق غير مدعوم: $extension'),
     };
   }
 }
@@ -774,9 +774,9 @@ void main() {
   
   // المحلل يُعاد استخدامه من الذاكرة المؤقتة في الاستدعاء الثاني
   print(processor.processDocument('another.json', '{}'));
-}"""),
+}'''),
 
-        StrCodeBlock("""// مثال 4: Flutter - مصنع أزرار واعٍ بالثيم
+        StrCodeBlock(r'''// مثال 4: Flutter - مصنع أزرار واعٍ بالثيم
 // حالة الاستخدام: إنشاء أزرار تتطابق مع ثيم التطبيق
 
 abstract class ThemedButton extends StatelessWidget {
@@ -929,7 +929,7 @@ class ThemedApp extends StatelessWidget {
       ),
     );
   }
-}"""),
+}'''),
       ],
     ),
     pros: LocSL(
@@ -1115,7 +1115,7 @@ class ThemedApp extends StatelessWidget {
     examples: LocV(
       en: [
         // Example 1: Basic UI Factory
-        StrCodeBlock("""// Example 1: Basic - Complete UI Theme Factory
+        StrCodeBlock(r'''// Example 1: Basic - Complete UI Theme Factory
 // Use case: Ensuring consistent UI component families
 
 abstract class Button {
@@ -1277,10 +1277,10 @@ void main() {
   runApp(MaterialApp(
     home: LoginScreen(factory),
   ));
-}"""),
+}'''),
 
         // Example 2: Data Layer Factory
-        StrCodeBlock("""// Example 2: Intermediate - Data Layer Factory
+        StrCodeBlock(r'''// Example 2: Intermediate - Data Layer Factory
 // Use case: Complete data layer with matching components
 
 abstract class UserRepository {
@@ -1314,20 +1314,20 @@ class ProductionUserRepository implements UserRepository {
   @override
   Future<User> getUser(String id) async {
     // Check cache first
-    final cached = await cache.get<User>('user_\$id');
+    final cached = await cache.get<User>('user_$id');
     if (cached != null) return cached;
     
     // Fetch from data source
     final data = await dataSource.fetch(id);
     final user = User.fromJson(data);
-    await cache.set('user_\$id', user);
+    await cache.set('user_$id', user);
     return user;
   }
   
   @override
   Future<void> saveUser(User user) async {
     await dataSource.save(user.toJson());
-    await cache.set('user_\${user.id}', user);
+    await cache.set('user_${user.id}', user);
   }
 }
 
@@ -1336,14 +1336,14 @@ class ApiDataSource implements DataSource {
   
   @override
   Future<Map<String, dynamic>> fetch(String id) async {
-    print('Fetching from API: /users/\$id');
+    print('Fetching from API: /users/$id');
     // Real API call
     return {'id': id, 'name': 'John'};
   }
   
   @override
   Future<void> save(Map<String, dynamic> data) async {
-    print('Saving to API: \$data');
+    print('Saving to API: $data');
     // Real API call
   }
 }
@@ -1351,14 +1351,14 @@ class ApiDataSource implements DataSource {
 class RedisCache implements Cache {
   @override
   Future<T?> get<T>(String key) async {
-    print('Redis GET: \$key');
+    print('Redis GET: $key');
     // Real Redis call
     return null;
   }
   
   @override
   Future<void> set<T>(String key, T value) async {
-    print('Redis SET: \$key');
+    print('Redis SET: $key');
     // Real Redis call
   }
 }
@@ -1399,13 +1399,13 @@ class TestUserRepository implements UserRepository {
 class MockDataSource implements DataSource {
   @override
   Future<Map<String, dynamic>> fetch(String id) async {
-    print('Mock fetch: \$id');
+    print('Mock fetch: $id');
     return {'id': id, 'name': 'Mock User'};
   }
   
   @override
   Future<void> save(Map<String, dynamic> data) async {
-    print('Mock save: \$data');
+    print('Mock save: $data');
   }
 }
 
@@ -1414,13 +1414,13 @@ class InMemoryCache implements Cache {
   
   @override
   Future<T?> get<T>(String key) async {
-    print('Memory GET: \$key');
+    print('Memory GET: $key');
     return _cache[key] as T?;
   }
   
   @override
   Future<void> set<T>(String key, T value) async {
-    print('Memory SET: \$key');
+    print('Memory SET: $key');
     _cache[key] = value;
   }
 }
@@ -1449,7 +1449,7 @@ class UserService {
   
   Future<void> loadUser(String id) async {
     final user = await repository.getUser(id);
-    print('Loaded: \${user.name}');
+    print('Loaded: ${user.name}');
   }
 }
 
@@ -1472,11 +1472,10 @@ class User {
       User(json['id'], json['name']);
   
   Map<String, dynamic> toJson() => {'id': id, 'name': name};
-}"""),
+}'''),
 
         // Example 3: Advanced - Game Entity Factory
-        StrCodeBlock(
-          """// Example 3: Advanced - Game Entity Factory with Pooling
+        StrCodeBlock(r'''// Example 3: Advanced - Game Entity Factory with Pooling
 // Use case: Creating complete game entity families efficiently
 
 abstract class Sprite {
@@ -1537,7 +1536,7 @@ class PooledSprite implements Sprite {
   
   @override
   void render() {
-    if (_active) print('Rendering pooled sprite: \$assetPath');
+    if (_active) print('Rendering pooled sprite: $assetPath');
   }
   
   @override
@@ -1573,11 +1572,11 @@ class OptimizedAudioPlayer implements AudioPlayer {
     final buffer = _audioCache.putIfAbsent(
       sound,
       () {
-        print('Loading audio: \$sound');
+        print('Loading audio: $sound');
         return AudioBuffer(sound);
       },
     );
-    print('Playing cached audio: \$sound');
+    print('Playing cached audio: $sound');
   }
   
   @override
@@ -1591,7 +1590,7 @@ class BatchedParticleEffect implements ParticleEffect {
   
   @override
   void emit(Vector2 position) {
-    print('Batched emit at \$position');
+    print('Batched emit at $position');
     _particles.add(Particle(position));
   }
   
@@ -1650,7 +1649,7 @@ class SimpleSprite implements Sprite {
   final String assetPath;
   
   @override
-  void render() => print('Rendering simple sprite: \$assetPath');
+  void render() => print('Rendering simple sprite: $assetPath');
   
   @override
   void update(double dt) => print('Updating simple sprite');
@@ -1669,7 +1668,7 @@ class SimpleCollider implements Collider {
 
 class SimpleAudioPlayer implements AudioPlayer {
   @override
-  void play(String sound) => print('Playing: \$sound');
+  void play(String sound) => print('Playing: $sound');
   
   @override
   void stop() => print('Stopping');
@@ -1680,7 +1679,7 @@ class SimpleParticleEffect implements ParticleEffect {
   final String type;
   
   @override
-  void emit(Vector2 position) => print('Emit at \$position');
+  void emit(Vector2 position) => print('Emit at $position');
   
   @override
   void update(double dt) => print('Update particles');
@@ -1771,12 +1770,12 @@ class Particle {
   final Vector2 position;
   bool isDead = false;
   void update(double dt) {}
-}""",
+}''',
         ),
       ],
       ar: [
         // Arabic versions with same structure but Arabic comments
-        StrCodeBlock("""// مثال 1: أساسي - مصنع ثيم UI كامل
+        StrCodeBlock(r'''// مثال 1: أساسي - مصنع ثيم UI كامل
 // حالة الاستخدام: ضمان عائلات مكونات واجهة مستخدم متسقة
 
 abstract class Button {
@@ -1938,7 +1937,7 @@ void main() {
   runApp(MaterialApp(
     home: LoginScreen(factory),
   ));
-}"""),
+}'''),
         // Add other Arabic examples similarly...
       ],
     ),
@@ -2129,7 +2128,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - HTTP Request Builder
-        StrCodeBlock("""// Example 1: Basic - HTTP Request Builder
+        StrCodeBlock(r'''// Example 1: Basic - HTTP Request Builder
 // Use case: Building complex HTTP requests with many optional parameters
 
 class HttpRequest {
@@ -2151,7 +2150,7 @@ class HttpRequest {
 
   @override
   String toString() {
-    return 'HttpRequest(\$method \$url, headers: \$headers, timeout: \$timeout)';
+    return 'HttpRequest($method $url, headers: $headers, timeout: $timeout)';
   }
 }
 
@@ -2247,10 +2246,10 @@ void main() {
   //   body: {'name': 'John', 'email': 'john@example.com'},
   //   timeout: Duration(seconds: 60),
   // );
-}"""),
+}'''),
 
         // Example 2: Intermediate - Widget Builder
-        StrCodeBlock("""// Example 2: Intermediate - Complex Widget Builder
+        StrCodeBlock(r'''// Example 2: Intermediate - Complex Widget Builder
 // Use case: Building complex Flutter widgets with many customization options
 
 class CustomCard {
@@ -2472,11 +2471,10 @@ class CardDemo extends StatelessWidget {
       ],
     );
   }
-}"""),
+}'''),
 
         // Example 3: Advanced - Query Builder with Validation
-        StrCodeBlock(
-          """// Example 3: Advanced - SQL Query Builder with Validation
+        StrCodeBlock(r'''// Example 3: Advanced - SQL Query Builder with Validation
 // Use case: Building complex database queries with type safety
 
 class QueryResult {
@@ -2485,7 +2483,7 @@ class QueryResult {
   final List<dynamic> parameters;
 
   @override
-  String toString() => 'SQL: \$sql\nParams: \$parameters';
+  String toString() => 'SQL: $sql\nParams: $parameters';
 }
 
 enum JoinType { inner, left, right, full }
@@ -2536,7 +2534,7 @@ class QueryBuilder {
       throw ArgumentError('WHERE IN values cannot be empty');
     }
     final placeholders = List.filled(values.length, '?').join(', ');
-    _whereClauses.add(WhereClause(column, 'IN', '(\$placeholders)'));
+    _whereClauses.add(WhereClause(column, 'IN', '($placeholders)'));
     _parameters.addAll(values);
     return this;
   }
@@ -2561,13 +2559,13 @@ class QueryBuilder {
       .right => 'RIGHT JOIN',
       .full => 'FULL OUTER JOIN',
     };
-    _joins.add('\$joinType \$table ON \$condition');
+    _joins.add('$joinType $table ON $condition');
     return this;
   }
 
   QueryBuilder orderBy(String column, [OrderDirection direction = .asc]) {
     final dir = direction == .asc ? 'ASC' : 'DESC';
-    _orderBy.add('\$column \$dir');
+    _orderBy.add('$column $dir');
     return this;
   }
 
@@ -2604,14 +2602,14 @@ class QueryBuilder {
     final params = <dynamic>[];
 
     // SELECT
-    sql.write('SELECT \${_columns.join(', ')} ');
+    sql.write('SELECT ${_columns.join(', ')} ');
 
     // FROM
-    sql.write('FROM \$_table ');
+    sql.write('FROM $_table ');
 
     // JOINS
     if (_joins.isNotEmpty) {
-      sql.write('\${_joins.join(' ')} ');
+      sql.write('${_joins.join(' ')} ');
     }
 
     // WHERE
@@ -2620,11 +2618,11 @@ class QueryBuilder {
       final conditions = <String>[];
       for (final clause in _whereClauses) {
         if (clause.value == 'NULL') {
-          conditions.add('\${clause.column} \${clause.operator} NULL');
+          conditions.add('${clause.column} ${clause.operator} NULL');
         } else if (clause.operator == 'IN') {
-          conditions.add('\${clause.column} IN \${clause.value}');
+          conditions.add('${clause.column} IN ${clause.value}');
         } else {
-          conditions.add('\${clause.column} \${clause.operator} ?');
+          conditions.add('${clause.column} ${clause.operator} ?');
           params.add(clause.value);
         }
       }
@@ -2634,17 +2632,17 @@ class QueryBuilder {
 
     // ORDER BY
     if (_orderBy.isNotEmpty) {
-      sql.write('ORDER BY \${_orderBy.join(', ')} ');
+      sql.write('ORDER BY ${_orderBy.join(', ')} ');
     }
 
     // LIMIT
     if (_limit != null) {
-      sql.write('LIMIT \$_limit ');
+      sql.write('LIMIT $_limit ');
     }
 
     // OFFSET
     if (_offset != null) {
-      sql.write('OFFSET \$_offset ');
+      sql.write('OFFSET $_offset ');
     }
 
     params.addAll(_parameters);
@@ -2709,14 +2707,14 @@ void main() {
       .limit(5)
       .build();
 
-  print('Cheap products:\n\$cheapProducts');
+  print('Cheap products:\n$cheapProducts');
   print('---');
-  print('Expensive products:\n\$expensiveProducts');
-}""",
+  print('Expensive products:\n$expensiveProducts');
+}''',
         ),
 
         // Example 4: Test Data Builder
-        StrCodeBlock("""// Example 4: Test Data Builder Pattern
+        StrCodeBlock(r'''// Example 4: Test Data Builder Pattern
 // Use case: Creating test objects with sensible defaults
 
 class User {
@@ -2770,7 +2768,7 @@ class User {
 class UserBuilder {
   static int _idCounter = 1;
 
-  String _id = 'user_\${_idCounter++}';
+  String _id = 'user_${_idCounter++}';
   String _name = 'Test User';
   String _email = 'test@example.com';
   int _age = 25;
@@ -2860,7 +2858,7 @@ class UserBuilder {
   User build() {
     // Auto-generate email from name if using default
     if (_email == 'test@example.com' && _name != 'Test User') {
-      _email = '\${_name.toLowerCase().replaceAll(' ', '.')}@example.com';
+      _email = '${_name.toLowerCase().replaceAll(' ', '.')}@example.com';
     }
 
     return User(
@@ -2889,11 +2887,11 @@ class UserBuilder {
 void main() {
   // Simple test user
   final user1 = UserBuilder().build();
-  print('User 1: \${user1.name} (\${user1.role})');
+  print('User 1: ${user1.name} (${user1.role})');
 
   // Admin user
   final admin = UserBuilder().admin.build();
-  print('Admin: \${admin.name} (\${admin.role})');
+  print('Admin: ${admin.name} (${admin.role})');
 
   // Custom user
   final user2 = UserBuilder()
@@ -2903,13 +2901,13 @@ void main() {
       .veteran
       .preference('theme', 'dark')
       .build();
-  print('User 2: \${user2.name}, created: \${user2.createdAt}');
+  print('User 2: ${user2.name}, created: ${user2.createdAt}');
 
   // Multiple test users
   final users = UserBuilder().buildMany(5);
-  print('Generated \${users.length} users');
+  print('Generated ${users.length} users');
   for (final user in users) {
-    print('  - \${user.name} (\${user.id})');
+    print('  - ${user.name} (${user.id})');
   }
 
   // Test scenario: inactive user
@@ -2917,12 +2915,12 @@ void main() {
       .name('Suspended User')
       .inactive
       .build();
-  print('Inactive: \${inactiveUser.name} (active: \${inactiveUser.isActive})');
-}"""),
+  print('Inactive: ${inactiveUser.name} (active: ${inactiveUser.isActive})');
+}'''),
       ],
       ar: [
         // Arabic versions
-        StrCodeBlock("""// مثال 1: أساسي - بناء طلبات HTTP
+        StrCodeBlock(r'''// مثال 1: أساسي - بناء طلبات HTTP
 // حالة الاستخدام: بناء طلبات HTTP معقدة مع العديد من المعاملات الاختيارية
 
 class HttpRequest {
@@ -2944,7 +2942,7 @@ class HttpRequest {
 
   @override
   String toString() {
-    return 'HttpRequest(\$method \$url, headers: \$headers, timeout: \$timeout)';
+    return 'HttpRequest($method $url, headers: $headers, timeout: $timeout)';
   }
 }
 
@@ -3040,7 +3038,7 @@ void main() {
   //   body: {'name': 'John', 'email': 'john@example.com'},
   //   timeout: Duration(seconds: 60),
   // );
-}"""),
+}'''),
         // Add other Arabic examples following same pattern...
       ],
     ),
@@ -3245,7 +3243,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Shape Cloning
-        StrCodeBlock("""// Example 1: Basic - Shape Cloning System
+        StrCodeBlock(r'''// Example 1: Basic - Shape Cloning System
 // Use case: Graphics editor with copy/paste functionality
 
 abstract class Shape {
@@ -3259,7 +3257,7 @@ abstract class Shape {
   Shape clone();
   
   void draw() {
-    print('Drawing \$runtimeType at (\$x, \$y) with color \$color');
+    print('Drawing $runtimeType at ($x, $y) with color $color');
   }
   
   void move(int dx, int dy) {
@@ -3289,7 +3287,7 @@ class Circle extends Shape {
   @override
   void draw() {
     super.draw();
-    print('  Circle with radius \$radius');
+    print('  Circle with radius $radius');
   }
 }
 
@@ -3316,7 +3314,7 @@ class Rectangle extends Shape {
   @override
   void draw() {
     super.draw();
-    print('  Rectangle \${width}x\$height');
+    print('  Rectangle ${width}x$height');
   }
 }
 
@@ -3343,7 +3341,7 @@ class Triangle extends Shape {
   @override
   void draw() {
     super.draw();
-    print('  Triangle base:\$base, height:\$height');
+    print('  Triangle base:$base, height:$height');
   }
 }
 
@@ -3354,13 +3352,13 @@ class GraphicsEditor {
   
   void addShape(Shape shape) {
     shapes.add(shape);
-    print('Added \${shape.runtimeType}');
+    print('Added ${shape.runtimeType}');
   }
   
   void copyShape(int index) {
     if (index >= 0 && index < shapes.length) {
       _clipboard = shapes[index].clone();
-      print('Copied \${_clipboard.runtimeType} to clipboard');
+      print('Copied ${_clipboard.runtimeType} to clipboard');
     }
   }
   
@@ -3369,7 +3367,7 @@ class GraphicsEditor {
       final newShape = _clipboard!.clone();
       newShape.move(10, 10); // Offset pasted shape
       shapes.add(newShape);
-      print('Pasted \${newShape.runtimeType}');
+      print('Pasted ${newShape.runtimeType}');
     }
   }
   
@@ -3378,7 +3376,7 @@ class GraphicsEditor {
       final copy = shapes[index].clone();
       copy.move(20, 20);
       shapes.add(copy);
-      print('Duplicated \${copy.runtimeType}');
+      print('Duplicated ${copy.runtimeType}');
     }
   }
   
@@ -3407,11 +3405,10 @@ void main() {
   editor.duplicateShape(1); // Duplicate rectangle
   
   editor.drawAll();
-}"""),
+}'''),
 
         // Example 2: Intermediate - Game Entity System
-        StrCodeBlock(
-          """// Example 2: Intermediate - Game Entity Prototype System
+        StrCodeBlock(r'''// Example 2: Intermediate - Game Entity Prototype System
 // Use case: Spawning enemies with preset configurations
 
 class GameEntity {
@@ -3457,17 +3454,17 @@ class GameEntity {
   
   void takeDamage(int amount) {
     health -= amount;
-    print('\$name takes \$amount damage, health: \$health');
+    print('$name takes $amount damage, health: $health');
   }
   
   void attack(GameEntity target) {
-    print('\$name attacks \${target.name} for \$damage damage');
+    print('$name attacks ${target.name} for $damage damage');
     target.takeDamage(damage);
   }
   
   @override
   String toString() {
-    return '\$name (HP:\$health, Speed:\$speed, Damage:\$damage) at \$position';
+    return '$name (HP:$health, Speed:$speed, Damage:$damage) at $position';
   }
 }
 
@@ -3479,7 +3476,7 @@ class Vector2 {
   Vector2 clone() => Vector2(x, y);
   
   @override
-  String toString() => '(\$x, \$y)';
+  String toString() => '($x, $y)';
 }
 
 // Prototype Registry
@@ -3488,13 +3485,13 @@ class EntityRegistry {
   
   void register(String key, GameEntity prototype) {
     _prototypes[key] = prototype;
-    print('Registered prototype: \$key');
+    print('Registered prototype: $key');
   }
   
   GameEntity? spawn(String key, {Vector2? position}) {
     final prototype = _prototypes[key];
     if (prototype == null) {
-      print('Prototype \$key not found');
+      print('Prototype $key not found');
       return null;
     }
     
@@ -3577,13 +3574,12 @@ void main() {
     damage: 30,
     abilities: ['Quick Attack', 'Dodge', 'Summon Minions', 'Poison'],
   );
-  print('Created boss: \$bossGoblin');
-}""",
+  print('Created boss: $bossGoblin');
+}''',
         ),
 
         // Example 3: Advanced - Document Template System
-        StrCodeBlock(
-          """// Example 3: Advanced - Document Template with Deep/Shallow Cloning
+        StrCodeBlock(r'''// Example 3: Advanced - Document Template with Deep/Shallow Cloning
 // Use case: Document management system with templates
 
 class DocumentSection {
@@ -3606,7 +3602,7 @@ class DocumentSection {
   }
   
   @override
-  String toString() => 'Section: \$title';
+  String toString() => 'Section: $title';
 }
 
 class Document {
@@ -3629,8 +3625,8 @@ class Document {
   // Shallow clone - shares section references
   Document shallowClone() {
     return Document(
-      id: 'copy_\$id',
-      title: '\$title (Copy)',
+      id: 'copy_$id',
+      title: '$title (Copy)',
       author: author,
       sections: sections, // Same list reference!
       metadata: metadata,  // Same map reference!
@@ -3641,8 +3637,8 @@ class Document {
   // Deep clone - duplicates everything
   Document deepClone() {
     return Document(
-      id: 'copy_\$id',
-      title: '\$title (Copy)',
+      id: 'copy_$id',
+      title: '$title (Copy)',
       author: author,
       sections: sections.map((s) => s.clone()).toList(), // New list with cloned sections
       metadata: Map.from(metadata), // New map
@@ -3658,8 +3654,8 @@ class Document {
     bool deepCopy = true,
   }) {
     return Document(
-      id: id ?? 'copy_\${this.id}',
-      title: title ?? '\${this.title} (Copy)',
+      id: id ?? 'copy_${this.id}',
+      title: title ?? '${this.title} (Copy)',
       author: author ?? this.author,
       sections: deepCopy 
           ? sections.map((s) => s.clone()).toList()
@@ -3674,13 +3670,13 @@ class Document {
   }
   
   void printInfo() {
-    print('--- Document: \$title ---');
-    print('ID: \$id');
-    print('Author: \$author');
-    print('Created: \$createdAt');
-    print('Sections: \${sections.length}');
+    print('--- Document: $title ---');
+    print('ID: $id');
+    print('Author: $author');
+    print('Created: $createdAt');
+    print('Sections: ${sections.length}');
     for (var i = 0; i < sections.length; i++) {
-      print('  \${i + 1}. \${sections[i].title}');
+      print('  ${i + 1}. ${sections[i].title}');
     }
   }
 }
@@ -3691,7 +3687,7 @@ class DocumentTemplateManager {
   
   void registerTemplate(String name, Document template) {
     _templates[name] = template;
-    print('Registered template: \$name');
+    print('Registered template: $name');
   }
   
   Document? createFromTemplate(
@@ -3743,8 +3739,8 @@ void main() {
   // Test shallow vs deep cloning
   print('=== Testing Shallow Clone ===');
   final shallowCopy = reportTemplate.shallowClone();
-  print('Original sections: \${reportTemplate.sections.length}');
-  print('Shallow copy sections: \${shallowCopy.sections.length}');
+  print('Original sections: ${reportTemplate.sections.length}');
+  print('Shallow copy sections: ${shallowCopy.sections.length}');
   
   shallowCopy.addSection(DocumentSection(
     title: 'Appendix',
@@ -3752,14 +3748,14 @@ void main() {
   ));
   
   print('After modifying copy:');
-  print('Original sections: \${reportTemplate.sections.length}'); // Changed!
-  print('Shallow copy sections: \${shallowCopy.sections.length}');
+  print('Original sections: ${reportTemplate.sections.length}'); // Changed!
+  print('Shallow copy sections: ${shallowCopy.sections.length}');
   
   // Test deep cloning
   print('=== Testing Deep Clone ===');
   final deepCopy = reportTemplate.deepClone();
-  print('Original sections: \${reportTemplate.sections.length}');
-  print('Deep copy sections: \${deepCopy.sections.length}');
+  print('Original sections: ${reportTemplate.sections.length}');
+  print('Deep copy sections: ${deepCopy.sections.length}');
   
   deepCopy.addSection(DocumentSection(
     title: 'References',
@@ -3767,8 +3763,8 @@ void main() {
   ));
   
   print('After modifying deep copy:');
-  print('Original sections: \${reportTemplate.sections.length}'); // Unchanged!
-  print('Deep copy sections: \${deepCopy.sections.length}');
+  print('Original sections: ${reportTemplate.sections.length}'); // Unchanged!
+  print('Deep copy sections: ${deepCopy.sections.length}');
   
   // Use template manager
   print('=== Creating from Template ===');
@@ -3783,13 +3779,13 @@ void main() {
   // Modify instance without affecting template
   q4Report?.sections[0].content = 'Q4 showed strong growth...';
   print('--- Template remains unchanged ---');
-  print('Template section 0: \${reportTemplate.sections[0].content}');
-  print('Instance section 0: \${q4Report?.sections[0].content}');
-}""",
+  print('Template section 0: ${reportTemplate.sections[0].content}');
+  print('Instance section 0: ${q4Report?.sections[0].content}');
+}''',
         ),
 
         // Example 4: Flutter State Management
-        StrCodeBlock("""// Example 4: Flutter - User Settings Prototype
+        StrCodeBlock(r'''// Example 4: Flutter - User Settings Prototype
 // Use case: Managing app settings with undo/redo using cloning
 
 @immutable
@@ -3965,7 +3961,7 @@ class _SettingsView extends StatelessWidget {
           
           // Font size slider
           ListTile(
-            title: Text('Font Size: \${settings.fontSize}'),
+            title: Text('Font Size: ${settings.fontSize}'),
             subtitle: Slider(
               value: settings.fontSize,
               min: 12,
@@ -4016,11 +4012,11 @@ class _SettingsView extends StatelessWidget {
       ),
     );
   }
-}"""),
+}'''),
       ],
       ar: [
         // Arabic versions
-        StrCodeBlock("""// مثال 1: أساسي - نظام استنساخ الأشكال
+        StrCodeBlock(r'''// مثال 1: أساسي - نظام استنساخ الأشكال
 // حالة الاستخدام: محرر رسومات مع وظيفة نسخ/لصق
 
 abstract class Shape {
@@ -4034,7 +4030,7 @@ abstract class Shape {
   Shape clone();
   
   void draw() {
-    print('رسم \$runtimeType عند (\$x, \$y) باللون \$color');
+    print('رسم $runtimeType عند ($x, $y) باللون $color');
   }
   
   void move(int dx, int dy) {
@@ -4064,7 +4060,7 @@ class Circle extends Shape {
   @override
   void draw() {
     super.draw();
-    print('  دائرة بنصف قطر \$radius');
+    print('  دائرة بنصف قطر $radius');
   }
 }
 
@@ -4091,7 +4087,7 @@ class Rectangle extends Shape {
   @override
   void draw() {
     super.draw();
-    print('  مستطيل \${width}x\$height');
+    print('  مستطيل ${width}x$height');
   }
 }
 
@@ -4118,7 +4114,7 @@ class Triangle extends Shape {
   @override
   void draw() {
     super.draw();
-    print('  مثلث قاعدة:\$base، ارتفاع:\$height');
+    print('  مثلث قاعدة:$base، ارتفاع:$height');
   }
 }
 
@@ -4129,13 +4125,13 @@ class GraphicsEditor {
   
   void addShape(Shape shape) {
     shapes.add(shape);
-    print('تمت إضافة \${shape.runtimeType}');
+    print('تمت إضافة ${shape.runtimeType}');
   }
   
   void copyShape(int index) {
     if (index >= 0 && index < shapes.length) {
       _clipboard = shapes[index].clone();
-      print('تم نسخ \${_clipboard.runtimeType} إلى الحافظة');
+      print('تم نسخ ${_clipboard.runtimeType} إلى الحافظة');
     }
   }
   
@@ -4144,7 +4140,7 @@ class GraphicsEditor {
       final newShape = _clipboard!.clone();
       newShape.move(10, 10); // إزاحة الشكل الملصق
       shapes.add(newShape);
-      print('تم لصق \${newShape.runtimeType}');
+      print('تم لصق ${newShape.runtimeType}');
     }
   }
   
@@ -4153,7 +4149,7 @@ class GraphicsEditor {
       final copy = shapes[index].clone();
       copy.move(20, 20);
       shapes.add(copy);
-      print('تم تكرار \${copy.runtimeType}');
+      print('تم تكرار ${copy.runtimeType}');
     }
   }
   
@@ -4182,7 +4178,7 @@ void main() {
   editor.duplicateShape(1); // تكرار المستطيل
   
   editor.drawAll();
-}"""),
+}'''),
         // Add remaining Arabic examples...
       ],
     ),
@@ -4420,7 +4416,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Simple Singleton
-        StrCodeBlock("""// Example 1: Basic - Classic Singleton Implementations
+        StrCodeBlock(r'''// Example 1: Basic - Classic Singleton Implementations
 // Use case: Application configuration manager
 
 // Implementation 1: Eager Initialization (created immediately)
@@ -4507,24 +4503,23 @@ void main() {
   print('Before accessing instance...');
   final config1 = ConfigManagerEager.instance;
   final config2 = ConfigManagerEager();
-  print('Are they the same? \${identical(config1, config2)}');
+  print('Are they the same? ${identical(config1, config2)}');
   
   print('=== Lazy Initialization ===');
   print('Before accessing instance...');
   final lazy1 = ConfigManagerLazy.instance;
   print('After first access');
   final lazy2 = ConfigManagerLazy();
-  print('Are they the same? \${identical(lazy1, lazy2)}');
+  print('Are they the same? ${identical(lazy1, lazy2)}');
   
   print('=== Modern Implementation ===');
   final modern1 = ConfigManagerModern.instance;
   final modern2 = ConfigManagerModern();
-  print('Are they the same? \${identical(modern1, modern2)}');
-}"""),
+  print('Are they the same? ${identical(modern1, modern2)}');
+}'''),
 
         // Example 2: Intermediate - Logger Singleton
-        StrCodeBlock(
-          """// Example 2: Intermediate - Thread-Safe Logger Singleton
+        StrCodeBlock(r'''// Example 2: Intermediate - Thread-Safe Logger Singleton
 // Use case: Application-wide logging system
 
 enum LogLevel { debug, info, warning, error }
@@ -4532,7 +4527,7 @@ enum LogLevel { debug, info, warning, error }
 class Logger {
   Logger._internal() {
     _startTime = DateTime.now();
-    print('Logger initialized at \$_startTime');
+    print('Logger initialized at $_startTime');
   }
   
   static final Logger _instance = Logger._internal();
@@ -4546,7 +4541,7 @@ class Logger {
   // Configuration
   void setMinLevel(LogLevel level) {
     _minLevel = level;
-    info('Log level set to \$level');
+    info('Log level set to $level');
   }
   
   // Logging methods
@@ -4556,10 +4551,10 @@ class Logger {
   void error(String message, [Object? error, StackTrace? stackTrace]) {
     _log(.error, message);
     if (error != null) {
-      _log(.error, 'Error: \$error');
+      _log(.error, 'Error: $error');
     }
     if (stackTrace != null) {
-      _log(.error, 'StackTrace:\n\$stackTrace');
+      _log(.error, 'StackTrace:\n$stackTrace');
     }
   }
   
@@ -4569,7 +4564,7 @@ class Logger {
     final timestamp = DateTime.now();
     final elapsed = timestamp.difference(_startTime);
     final levelStr = level.toString().split('.').last.toUpperCase();
-    final logEntry = '[\${elapsed.inSeconds}s] [\$levelStr] \$message';
+    final logEntry = '[${elapsed.inSeconds}s] [$levelStr] $message';
     
     _logs.add(logEntry);
     print(logEntry);
@@ -4581,7 +4576,7 @@ class Logger {
     
     final levelStr = level.toString().split('.').last.toUpperCase();
     return _logs
-        .where((log) => log.contains('[\$levelStr]'))
+        .where((log) => log.contains('[$levelStr]'))
         .toList();
   }
   
@@ -4594,8 +4589,8 @@ class Logger {
   String exportLogs() {
     final buffer = StringBuffer();
     buffer.writeln('=== Application Logs ===');
-    buffer.writeln('Started: \$_startTime');
-    buffer.writeln('Total entries: \${_logs.length}');
+    buffer.writeln('Started: $_startTime');
+    buffer.writeln('Total entries: ${_logs.length}');
     buffer.writeln('---');
     for (final log in _logs) {
       buffer.writeln(log);
@@ -4613,7 +4608,7 @@ class DatabaseService {
   }
   
   void query(String sql) {
-    Logger.instance.debug('Database: Executing query: \$sql');
+    Logger.instance.debug('Database: Executing query: $sql');
   }
   
   void error() {
@@ -4634,7 +4629,7 @@ class ApiService {
 
 class AuthService {
   void login(String username) {
-    Logger.instance.info('Auth: User \$username logging in');
+    Logger.instance.info('Auth: User $username logging in');
     Logger.instance.debug('Auth: Validating credentials');
     Logger.instance.info('Auth: Login successful');
   }
@@ -4667,28 +4662,27 @@ void main() {
   // Export all logs
   print('=== Full Export ===');
   print(Logger().exportLogs());
-}""",
+}''',
         ),
 
         // Example 3: Advanced - Database Connection Pool
-        StrCodeBlock(
-          """// Example 3: Advanced - Singleton with Resource Management
+        StrCodeBlock(r'''// Example 3: Advanced - Singleton with Resource Management
 // Use case: Database connection pool manager
 
 class DatabaseConnection {
   DatabaseConnection(this.id) {
-    print('Created connection \$id');
+    print('Created connection $id');
   }
   
   final String id;
   bool isInUse = false;
   
   void execute(String query) {
-    print('[\$id] Executing: \$query');
+    print('[$id] Executing: $query');
   }
   
   void close() {
-    print('[\$id] Closed');
+    print('[$id] Closed');
   }
 }
 
@@ -4712,11 +4706,11 @@ class ConnectionPool {
     for (var i = 0; i < 2; i++) {
       _availableConnections.add(_createConnection());
     }
-    print('Pool initialized with \${_availableConnections.length} connections');
+    print('Pool initialized with ${_availableConnections.length} connections');
   }
   
   DatabaseConnection _createConnection() {
-    return DatabaseConnection('conn_\${_connectionCounter++}');
+    return DatabaseConnection('conn_${_connectionCounter++}');
   }
   
   DatabaseConnection? acquire() {
@@ -4725,7 +4719,7 @@ class ConnectionPool {
       final conn = _availableConnections.removeLast();
       conn.isInUse = true;
       _inUseConnections.add(conn);
-      print('Acquired connection \${conn.id}');
+      print('Acquired connection ${conn.id}');
       return conn;
     }
     
@@ -4734,12 +4728,12 @@ class ConnectionPool {
       final conn = _createConnection();
       conn.isInUse = true;
       _inUseConnections.add(conn);
-      print('Created and acquired new connection \${conn.id}');
+      print('Created and acquired new connection ${conn.id}');
       return conn;
     }
     
     // Pool exhausted
-    print('Pool exhausted! Waiting connections in use: \${_inUseConnections.length}');
+    print('Pool exhausted! Waiting connections in use: ${_inUseConnections.length}');
     return null;
   }
   
@@ -4747,7 +4741,7 @@ class ConnectionPool {
     if (_inUseConnections.remove(conn)) {
       conn.isInUse = false;
       _availableConnections.add(conn);
-      print('Released connection \${conn.id}');
+      print('Released connection ${conn.id}');
     }
   }
   
@@ -4786,7 +4780,7 @@ class PoolStats {
   
   @override
   String toString() {
-    return 'Pool Stats: \$inUse/\$maxSize in use, \$available available, \$total total created';
+    return 'Pool Stats: $inUse/$maxSize in use, $available available, $total total created';
   }
 }
 
@@ -4802,7 +4796,7 @@ class UserRepository {
     }
     
     try {
-      conn.execute('SELECT * FROM users WHERE id = \$id');
+      conn.execute('SELECT * FROM users WHERE id = $id');
       await Future.delayed(Duration(milliseconds: 100)); // Simulate work
     } finally {
       pool.release(conn);
@@ -4818,7 +4812,7 @@ class OrderRepository {
     if (conn == null) return;
     
     try {
-      conn.execute('INSERT INTO orders VALUES (\$orderId)');
+      conn.execute('INSERT INTO orders VALUES ($orderId)');
       await Future.delayed(Duration(milliseconds: 150));
     } finally {
       pool.release(conn);
@@ -4841,7 +4835,7 @@ void main() async {
     orderRepo.createOrder('order2'),
   ]);
   
-  print('\${ConnectionPool.instance.getStats()}');
+  print('${ConnectionPool.instance.getStats()}');
   
   // Try to exhaust pool
   print('=== Testing pool limits ===\n');
@@ -4853,21 +4847,21 @@ void main() async {
     }
   }
   
-  print('\${ConnectionPool.instance.getStats()}');
+  print('${ConnectionPool.instance.getStats()}');
   
   // Release all
   for (final conn in connections) {
     ConnectionPool.instance.release(conn);
   }
   
-  print('\${ConnectionPool.instance.getStats()}');
+  print('${ConnectionPool.instance.getStats()}');
   
   ConnectionPool.instance.shutdown();
-}""",
+}''',
         ),
 
         // Example 4: Flutter - Analytics Service
-        StrCodeBlock("""// Example 4: Flutter - Analytics Service Singleton
+        StrCodeBlock(r'''// Example 4: Flutter - Analytics Service Singleton
 // Use case: Track user events across the app
 
 class AnalyticsEvent {
@@ -4949,7 +4943,7 @@ class AnalyticsService {
   
   void _sendToBackend(AnalyticsEvent event) {
     // Simulate sending to analytics backend
-    print('[Analytics] \${event.name}: \${event.properties}');
+    print('[Analytics] ${event.name}: ${event.properties}');
   }
   
   // Retrieve analytics
@@ -5029,13 +5023,13 @@ class ProductScreen extends StatelessWidget {
         itemCount: 10,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text('Product \$index'),
+            title: Text('Product $index'),
             onTap: () {
               AnalyticsService.instance.trackEvent(
                 'product_tapped',
                 properties: {
                   'product_id': index,
-                  'product_name': 'Product \$index',
+                  'product_name': 'Product $index',
                 },
               );
             },
@@ -5097,7 +5091,7 @@ class AnalyticsDashboard extends StatelessWidget {
           ...counts.entries.map((entry) {
             return ListTile(
               title: Text(entry.key),
-              trailing: Chip(label: Text('\${entry.value}')),
+              trailing: Chip(label: Text('${entry.value}')),
             );
           }),
         ],
@@ -5110,11 +5104,11 @@ void main() {
   runApp(MaterialApp(
     home: HomeScreen(),
   ));
-}"""),
+}'''),
       ],
       ar: [
         // Arabic versions
-        StrCodeBlock("""// مثال 1: أساسي - تطبيقات المفرد الكلاسيكية
+        StrCodeBlock(r'''// مثال 1: أساسي - تطبيقات المفرد الكلاسيكية
 // حالة الاستخدام: مدير إعدادات التطبيق
 
 // التطبيق 1: التهيئة الحريصة (Eager Initialization) - يتم إنشاؤها فوراً
@@ -5201,20 +5195,20 @@ void main() {
   print('قبل الوصول للنسخة...');
   final config1 = ConfigManagerEager.instance;
   final config2 = ConfigManagerEager();
-  print('هل هما نفس الشيء؟ \${identical(config1, config2)}');
+  print('هل هما نفس الشيء؟ ${identical(config1, config2)}');
   
   print('=== التهيئة الكسولة ===');
   print('قبل الوصول للنسخة...');
   final lazy1 = ConfigManagerLazy.instance;
   print('بعد الوصول الأول');
   final lazy2 = ConfigManagerLazy();
-  print('هل هما نفس الشيء؟ \${identical(lazy1, lazy2)}');
+  print('هل هما نفس الشيء؟ ${identical(lazy1, lazy2)}');
   
   print('=== التطبيق الحديث ===');
   final modern1 = ConfigManagerModern.instance;
   final modern2 = ConfigManagerModern();
-  print('هل هما نفس الشيء؟ \${identical(modern1, modern2)}');
-}"""),
+  print('هل هما نفس الشيء؟ ${identical(modern1, modern2)}');
+}'''),
         // Add remaining Arabic examples following same pattern...
       ],
     ),
@@ -5449,7 +5443,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Simple Object Pool
-        StrCodeBlock("""// Example 1: Basic - Generic Object Pool
+        StrCodeBlock(r'''// Example 1: Basic - Generic Object Pool
 // Use case: Reusable buffer pool for data processing
 
 class Buffer {
@@ -5468,7 +5462,7 @@ class Buffer {
       _data[i] = data[i];
     }
     _size = data.length;
-    print('[\$id] Wrote \$_size bytes');
+    print('[$id] Wrote $_size bytes');
   }
   
   List<int> read() {
@@ -5480,7 +5474,7 @@ class Buffer {
     for (var i = 0; i < capacity; i++) {
       _data[i] = 0;
     }
-    print('[\$id] Cleared');
+    print('[$id] Cleared');
   }
   
   bool get isEmpty => _size == 0;
@@ -5500,28 +5494,28 @@ class BufferPool {
     if (_available.isNotEmpty) {
       final buffer = _available.removeLast();
       _inUse.add(buffer);
-      print('Acquired existing buffer \${buffer.id} from pool');
+      print('Acquired existing buffer ${buffer.id} from pool');
       return buffer;
     }
     
     // Create new if under limit
     if (_createdCount < maxPoolSize) {
-      final buffer = Buffer('buffer_\$_createdCount', bufferSize);
+      final buffer = Buffer('buffer_$_createdCount', bufferSize);
       _createdCount++;
       _inUse.add(buffer);
-      print('Created new buffer \${buffer.id}');
+      print('Created new buffer ${buffer.id}');
       return buffer;
     }
     
     // Pool exhausted
-    throw Exception('Buffer pool exhausted! Max: \$maxPoolSize');
+    throw Exception('Buffer pool exhausted! Max: $maxPoolSize');
   }
   
   void release(Buffer buffer) {
     if (_inUse.remove(buffer)) {
       buffer.clear(); // Reset state - CRITICAL!
       _available.add(buffer);
-      print('Released buffer \${buffer.id} back to pool');
+      print('Released buffer ${buffer.id} back to pool');
     }
   }
   
@@ -5537,11 +5531,11 @@ class BufferPool {
   void printStats() {
     final stats = getStats();
     print('=== Pool Statistics ===');
-    print('Available: \${stats.available}');
-    print('In Use: \${stats.inUse}');
-    print('Total Created: \${stats.total}');
-    print('Max Size: \${stats.maxSize}');
-    print('Utilization: \${(stats.inUse / stats.total * 100).toStringAsFixed(1)}%');
+    print('Available: ${stats.available}');
+    print('In Use: ${stats.inUse}');
+    print('Total Created: ${stats.total}');
+    print('Max Size: ${stats.maxSize}');
+    print('Utilization: ${(stats.inUse / stats.total * 100).toStringAsFixed(1)}%');
   }
 }
 
@@ -5573,7 +5567,7 @@ void main() {
   // Acquire, use, release pattern
   final buffer1 = pool.acquire();
   buffer1.write(data1);
-  print('Processed \${buffer1.read().length} bytes');
+  print('Processed ${buffer1.read().length} bytes');
   pool.release(buffer1);
   
   print('');
@@ -5596,7 +5590,7 @@ void main() {
   try {
     final buf4 = pool.acquire(); // Should throw
   } catch (e) {
-    print('Caught exception: \$e');
+    print('Caught exception: $e');
   }
   
   // Release all
@@ -5605,15 +5599,15 @@ void main() {
   pool.release(buf3);
   
   pool.printStats();
-}"""),
+}'''),
 
         // Example 2: Intermediate - HTTP Connection Pool
-        StrCodeBlock("""// Example 2: Intermediate - HTTP Connection Pool
+        StrCodeBlock(r'''// Example 2: Intermediate - HTTP Connection Pool
 // Use case: Managing expensive HTTP connections
 
 class HttpConnection {
   HttpConnection(this.id, this.baseUrl) {
-    print('[\$id] Creating HTTP connection to \$baseUrl...');
+    print('[$id] Creating HTTP connection to $baseUrl...');
     // Simulate expensive connection setup
     _connected = true;
   }
@@ -5633,12 +5627,12 @@ class HttpConnection {
     _lastUsed = DateTime.now();
     _requestCount++;
     
-    print('[\$id] GET \$baseUrl\$endpoint (request #\$_requestCount)');
+    print('[$id] GET $baseUrl$endpoint (request #$_requestCount)');
     
     // Simulate network delay
     await Future.delayed(Duration(milliseconds: 50));
     
-    return '{"status": "success", "data": "response from \$endpoint"}';
+    return '{"status": "success", "data": "response from $endpoint"}';
   }
   
   bool isHealthy() {
@@ -5647,20 +5641,20 @@ class HttpConnection {
       final idleTime = DateTime.now().difference(_lastUsed!);
       if (idleTime.inMinutes > 5) {
         _isHealthy = false;
-        print('[\$id] Connection idle too long, marked unhealthy');
+        print('[$id] Connection idle too long, marked unhealthy');
       }
     }
     return _isHealthy;
   }
   
   void reset() {
-    print('[\$id] Resetting connection state');
+    print('[$id] Resetting connection state');
     // Don't reset connection itself, just metadata
     _lastUsed = null;
   }
   
   void close() {
-    print('[\$id] Closing connection');
+    print('[$id] Closing connection');
     _connected = false;
   }
   
@@ -5685,7 +5679,7 @@ class HttpConnectionPool {
   int _connectionCounter = 0;
   
   void _initializePool() {
-    print('Initializing connection pool with \$minConnections connections...');
+    print('Initializing connection pool with $minConnections connections...');
     for (var i = 0; i < minConnections; i++) {
       _available.add(_createConnection());
     }
@@ -5693,7 +5687,7 @@ class HttpConnectionPool {
   }
   
   HttpConnection _createConnection() {
-    return HttpConnection('conn_\$_connectionCounter', baseUrl)
+    return HttpConnection('conn_$_connectionCounter', baseUrl)
       .._connectionCounter++;
   }
   
@@ -5705,12 +5699,12 @@ class HttpConnectionPool {
       // Validate health
       if (conn.isHealthy()) {
         _inUse.add(conn);
-        print('Acquired healthy connection \${conn.id}');
+        print('Acquired healthy connection ${conn.id}');
         return conn;
       } else {
         // Connection unhealthy, close and discard
         conn.close();
-        print('Discarded unhealthy connection \${conn.id}');
+        print('Discarded unhealthy connection ${conn.id}');
       }
     }
     
@@ -5732,14 +5726,14 @@ class HttpConnectionPool {
     if (_inUse.remove(conn)) {
       conn.reset();
       _available.add(conn);
-      print('Released connection \${conn.id} back to pool\n');
+      print('Released connection ${conn.id} back to pool\n');
     }
   }
   
   void shutdown() {
     print('=== Shutting down pool ===');
     for (final conn in [..._available, ..._inUse]) {
-      print('Connection \${conn.id}: \${conn.requestCount} requests');
+      print('Connection ${conn.id}: ${conn.requestCount} requests');
       conn.close();
     }
     _available.clear();
@@ -5767,7 +5761,7 @@ class ApiService {
     final conn = await pool.acquire();
     try {
       final response = await conn.request('/users');
-      print('Response: \$response\n');
+      print('Response: $response\n');
     } finally {
       pool.release(conn);
     }
@@ -5777,7 +5771,7 @@ class ApiService {
     final conn = await pool.acquire();
     try {
       final response = await conn.request('/orders');
-      print('Response: \$response\n');
+      print('Response: $response\n');
     } finally {
       pool.release(conn);
     }
@@ -5810,14 +5804,13 @@ void main() async {
   ]);
   
   final stats = pool.getStats();
-  print('Pool stats: \${stats.inUse} in use, \${stats.available} available');
+  print('Pool stats: ${stats.inUse} in use, ${stats.available} available');
   
   pool.shutdown();
-}"""),
+}'''),
 
         // Example 3: Advanced - Particle System Pool
-        StrCodeBlock(
-          """// Example 3: Advanced - Game Particle System with Object Pool
+        StrCodeBlock(r'''// Example 3: Advanced - Game Particle System with Object Pool
 // Use case: High-performance particle effects
 
 class Vector2 {
@@ -5904,7 +5897,7 @@ class Particle {
   void render() {
     if (!active) return;
     // Simulate rendering
-    // print('Render particle \$id at (\${position.x}, \${position.y})');
+    // print('Render particle $id at (${position.x}, ${position.y})');
   }
 }
 
@@ -5918,7 +5911,7 @@ class ParticlePool {
   int _nextAvailableIndex = 0;
   
   void _initializePool() {
-    print('Pre-allocating \$maxParticles particles...');
+    print('Pre-allocating $maxParticles particles...');
     for (var i = 0; i < maxParticles; i++) {
       _particles.add(Particle(i));
     }
@@ -5954,7 +5947,7 @@ class ParticlePool {
       }
     }
     // Uncomment for debugging
-    // print('Active particles: \$activeCount / \$maxParticles');
+    // print('Active particles: $activeCount / $maxParticles');
   }
   
   void renderAll() {
@@ -6075,8 +6068,8 @@ void main() async {
     // Print stats every second
     if (frame % 60 == 0) {
       final time = (frame * dt).toStringAsFixed(1);
-      print('Time: \${time}s | Active: \${pool.activeCount}/1000 | ' +
-            'Utilization: \${pool.utilizationPercent.toStringAsFixed(1)}%');
+      print('Time: ${time}s | Active: ${pool.activeCount}/1000 | ' +
+            'Utilization: ${pool.utilizationPercent.toStringAsFixed(1)}%');
     }
     
     // Trigger burst at specific times
@@ -6100,11 +6093,11 @@ double sin(double radians) => radians.sin();
 class Random {
   static final _random = math.Random();
   double nextDouble() => _random.nextDouble();
-}""",
+}''',
         ),
 
         // Example 4: Flutter - Widget Pool for ListView
-        StrCodeBlock("""// Example 4: Flutter - Reusable Complex Widget Pool
+        StrCodeBlock(r'''// Example 4: Flutter - Reusable Complex Widget Pool
 // Use case: Expensive widget recycling in custom list
 
 class ExpensiveWidgetData {
@@ -6175,7 +6168,7 @@ class _ExpensiveWidgetState extends State<ExpensiveWidget> {
                     height: 150,
                     color: Colors.grey[300],
                     child: Center(
-                      child: Text('Image: \${widget.data.imageUrl}'),
+                      child: Text('Image: ${widget.data.imageUrl}'),
                     ),
                   ),
                   .height(8),
@@ -6266,10 +6259,10 @@ class _PooledListViewState extends State<PooledListView> {
     // Generate test data
     for (var i = 0; i < 50; i++) {
       _items.add(ExpensiveWidgetData(
-        id: 'item_\$i',
-        title: 'Item \$i',
-        imageUrl: 'https://example.com/image\$i.jpg',
-        description: 'Description for item \$i with lots of text...',
+        id: 'item_$i',
+        title: 'Item $i',
+        imageUrl: 'https://example.com/image$i.jpg',
+        description: 'Description for item $i with lots of text...',
       ));
     }
   }
@@ -6284,8 +6277,8 @@ class _PooledListViewState extends State<PooledListView> {
             child: Padding(
               padding: .symmetric(horizontal: 16),
               child: Text(
-                'Pool: \${_poolManager.pooledCount} | ' +
-                'Active: \${_poolManager.activeCount}',
+                'Pool: ${_poolManager.pooledCount} | ' +
+                'Active: ${_poolManager.activeCount}',
                 style: .white,
               ),
             ),
@@ -6314,11 +6307,11 @@ void main() {
   runApp(MaterialApp(
     home: PooledListView(),
   ));
-}"""),
+}'''),
       ],
       ar: [
         // Arabic versions
-        StrCodeBlock("""// مثال 1: أساسي - تجمع كائنات عام
+        StrCodeBlock(r'''// مثال 1: أساسي - تجمع كائنات عام
 // حالة الاستخدام: تجمع مخازن قابلة لإعادة الاستخدام لمعالجة البيانات
 
 class Buffer {
@@ -6337,7 +6330,7 @@ class Buffer {
       _data[i] = data[i];
     }
     _size = data.length;
-    print('[\$id] تمت كتابة \$_size بايت');
+    print('[$id] تمت كتابة $_size بايت');
   }
   
   List<int> read() {
@@ -6349,7 +6342,7 @@ class Buffer {
     for (var i = 0; i < capacity; i++) {
       _data[i] = 0;
     }
-    print('[\$id] تم المسح');
+    print('[$id] تم المسح');
   }
   
   bool get isEmpty => _size == 0;
@@ -6369,28 +6362,28 @@ class BufferPool {
     if (_available.isNotEmpty) {
       final buffer = _available.removeLast();
       _inUse.add(buffer);
-      print('تم الحصول على مخزن موجود \${buffer.id} من التجمع');
+      print('تم الحصول على مخزن موجود ${buffer.id} من التجمع');
       return buffer;
     }
     
     // إنشاء جديد إذا كان تحت الحد
     if (_createdCount < maxPoolSize) {
-      final buffer = Buffer('buffer_\$_createdCount', bufferSize);
+      final buffer = Buffer('buffer_$_createdCount', bufferSize);
       _createdCount++;
       _inUse.add(buffer);
-      print('تم إنشاء مخزن جديد \${buffer.id}');
+      print('تم إنشاء مخزن جديد ${buffer.id}');
       return buffer;
     }
     
     // التجمع مُستنفد
-    throw Exception('تجمع المخازن مُستنفد! الحد الأقصى: \$maxPoolSize');
+    throw Exception('تجمع المخازن مُستنفد! الحد الأقصى: $maxPoolSize');
   }
   
   void release(Buffer buffer) {
     if (_inUse.remove(buffer)) {
       buffer.clear(); // إعادة تعيين الحالة - حاسم!
       _available.add(buffer);
-      print('تم إطلاق المخزن \${buffer.id} إلى التجمع');
+      print('تم إطلاق المخزن ${buffer.id} إلى التجمع');
     }
   }
   
@@ -6406,11 +6399,11 @@ class BufferPool {
   void printStats() {
     final stats = getStats();
     print('=== إحصائيات التجمع ===');
-    print('متاح: \${stats.available}');
-    print('قيد الاستخدام: \${stats.inUse}');
-    print('إجمالي المُنشأ: \${stats.total}');
-    print('الحد الأقصى: \${stats.maxSize}');
-    print('الاستخدام: \${(stats.inUse / stats.total * 100).toStringAsFixed(1)}%');
+    print('متاح: ${stats.available}');
+    print('قيد الاستخدام: ${stats.inUse}');
+    print('إجمالي المُنشأ: ${stats.total}');
+    print('الحد الأقصى: ${stats.maxSize}');
+    print('الاستخدام: ${(stats.inUse / stats.total * 100).toStringAsFixed(1)}%');
   }
 }
 
@@ -6442,7 +6435,7 @@ void main() {
   // نمط الحصول، الاستخدام، الإطلاق
   final buffer1 = pool.acquire();
   buffer1.write(data1);
-  print('تمت معالجة \${buffer1.read().length} بايت');
+  print('تمت معالجة ${buffer1.read().length} بايت');
   pool.release(buffer1);
   
   print('');
@@ -6465,7 +6458,7 @@ void main() {
   try {
     final buf4 = pool.acquire(); // يجب أن يرمي استثناء
   } catch (e) {
-    print('تم اصطياد استثناء: \$e');
+    print('تم اصطياد استثناء: $e');
   }
   
   // إطلاق الكل
@@ -6474,7 +6467,7 @@ void main() {
   pool.release(buf3);
   
   pool.printStats();
-}"""),
+}'''),
         // Add remaining Arabic examples...
       ],
     ),
@@ -6747,8 +6740,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Lazy with late keyword
-        StrCodeBlock(
-          """// Example 1: Basic - Dart's late keyword for Lazy Initialization
+        StrCodeBlock(r'''// Example 1: Basic - Dart's late keyword for Lazy Initialization
 // Use case: Expensive resources that may not be used
 
 class ExpensiveResource {
@@ -6803,12 +6795,11 @@ void main() {
   print('=== Startup Time Comparison ===');
   print('Eager: Slow startup (resource created immediately)');
   print('Lazy: Fast startup (resource created when needed)');
-}""",
+}''',
         ),
 
         // Example 2: Intermediate - Manual Lazy Implementation
-        StrCodeBlock(
-          """// Example 2: Intermediate - Manual Lazy Initialization Patterns
+        StrCodeBlock(r'''// Example 2: Intermediate - Manual Lazy Initialization Patterns
 // Use case: Different lazy initialization strategies
 
 // Pattern 1: Lazy with nullable + null check
@@ -6903,9 +6894,9 @@ void main() async {
   print('=== Pattern 3: Flag ===');
   final lazy3 = LazyWithFlag();
   print('Created LazyWithFlag');
-  print('Is initialized? \${lazy3.isInitialized}');
+  print('Is initialized? ${lazy3.isInitialized}');
   lazy3.instance.doSomething();
-  print('Is initialized? \${lazy3.isInitialized}');
+  print('Is initialized? ${lazy3.isInitialized}');
   
   print('=== Pattern 4: Factory ===');
   final lazy4 = LazyWithFactory(() {
@@ -6924,11 +6915,11 @@ void main() async {
   print('Created LazyAsync');
   final obj = await lazy5.instance;
   obj.doSomething();
-}""",
+}''',
         ),
 
         // Example 3: Advanced - Configuration Manager
-        StrCodeBlock("""// Example 3: Advanced - Lazy Configuration Manager
+        StrCodeBlock(r'''// Example 3: Advanced - Lazy Configuration Manager
 // Use case: App configuration with lazy-loaded sections
 
 abstract class ConfigSection {
@@ -7034,7 +7025,7 @@ class AppConfig {
   void _trackAccess(String section) {
     if (!_loadedSections.contains(section)) {
       _loadedSections.add(section);
-      print('  [\$section] First access - loaded');
+      print('  [$section] First access - loaded');
     }
   }
   
@@ -7059,7 +7050,7 @@ class AppConfig {
       print('No sections loaded yet');
     } else {
       for (final section in _loadedSections) {
-        print('  - \$section');
+        print('  - $section');
       }
     }
   }
@@ -7074,7 +7065,7 @@ class SimpleApp {
   void run() {
     print('=== Simple App (only needs API) ===');
     final apiUrl = config.apiConfig.baseUrl;
-    print('Connecting to: \$apiUrl');
+    print('Connecting to: $apiUrl');
     // Database and features never loaded!
   }
 }
@@ -7088,10 +7079,10 @@ class ComplexApp {
     print('=== Complex App (needs everything) ===');
     
     // Connect to database
-    print('Database: \${config.databaseConfig.host}:\${config.databaseConfig.port}');
+    print('Database: ${config.databaseConfig.host}:${config.databaseConfig.port}');
     
     // Make API calls
-    print('API: \${config.apiConfig.baseUrl}');
+    print('API: ${config.apiConfig.baseUrl}');
     
     // Check features
     if (config.featuresConfig.isEnabled('new_ui')) {
@@ -7122,11 +7113,10 @@ void main() {
   print('Simple app: Fast startup (only loaded API config)');
   print('Complex app: Slower (loaded everything as needed)');
   print('But: Simple app would be slower with eager loading!');
-}"""),
+}'''),
 
         // Example 4: Flutter - Lazy Widget Loading
-        StrCodeBlock(
-          """// Example 4: Flutter - Lazy Screen/Widget Initialization
+        StrCodeBlock(r'''// Example 4: Flutter - Lazy Screen/Widget Initialization
 // Use case: Lazy loading expensive screens in navigation
 
 abstract class Screen extends StatelessWidget {
@@ -7334,13 +7324,12 @@ void main() {
     home: HomeScreen(),
     debugShowCheckedModeBanner: false,
   ));
-}""",
+}''',
         ),
       ],
       ar: [
         // Arabic versions
-        StrCodeBlock(
-          """// مثال 1: أساسي - الكلمة المفتاحية late للتهيئة الكسولة في Dart
+        StrCodeBlock(r'''// مثال 1: أساسي - الكلمة المفتاحية late للتهيئة الكسولة في Dart
 // حالة الاستخدام: موارد مكلفة قد لا يتم استخدامها
 
 class ExpensiveResource {
@@ -7395,7 +7384,7 @@ void main() {
   print('=== مقارنة وقت البدء ===');
   print('الحريص: بدء بطيء (المورد يُنشأ فوراً)');
   print('الكسول: بدء سريع (المورد يُنشأ عند الحاجة)');
-}""",
+}''',
         ),
         // Add remaining Arabic examples...
       ],
@@ -7646,12 +7635,12 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Database Connection Multiton
-        StrCodeBlock("""// Example 1: Basic - Database Connection Multiton
+        StrCodeBlock(r'''// Example 1: Basic - Database Connection Multiton
 // Use case: Managing connections to multiple databases
 
 class DatabaseConnection {
   DatabaseConnection._(this.database) {
-    print('Creating connection to database: \$database');
+    print('Creating connection to database: $database');
     _connect();
   }
   
@@ -7659,21 +7648,21 @@ class DatabaseConnection {
   bool _isConnected = false;
   
   void _connect() {
-    print('Connected to \$database');
+    print('Connected to $database');
     _isConnected = true;
   }
   
   void query(String sql) {
     if (!_isConnected) {
-      print('Error: Not connected to \$database');
+      print('Error: Not connected to $database');
       return;
     }
-    print('[\$database] Executing: \$sql');
+    print('[$database] Executing: $sql');
   }
   
   void disconnect() {
     if (_isConnected) {
-      print('Disconnecting from \$database');
+      print('Disconnecting from $database');
       _isConnected = false;
     }
   }
@@ -7711,7 +7700,7 @@ void main() {
   
   // Same key returns same instance
   final userDb2 = DatabaseConnection('users_db');
-  print('userDb1 == userDb2: \${identical(userDb1, userDb2)}');
+  print('userDb1 == userDb2: ${identical(userDb1, userDb2)}');
   userDb2.query('SELECT COUNT(*) FROM users');
   
   print('');
@@ -7723,21 +7712,21 @@ void main() {
   final productsDb = DatabaseConnection('products_db');
   productsDb.query('SELECT * FROM products');
   
-  print('\nActive databases: \${DatabaseConnection.activeDatabases}');
+  print('\nActive databases: ${DatabaseConnection.activeDatabases}');
   
   print('\nClosing all connections...');
   DatabaseConnection.closeAll();
-}"""),
+}'''),
 
         // Example 2: Intermediate - Logger Multiton
-        StrCodeBlock("""// Example 2: Intermediate - Per-Module Logger System
+        StrCodeBlock(r'''// Example 2: Intermediate - Per-Module Logger System
 // Use case: Different loggers for different application modules
 
 enum LogLevel { debug, info, warning, error }
 
 class Logger {
   Logger._(this.module) {
-    print('Creating logger for module: \$module');
+    print('Creating logger for module: $module');
   }
   
   final String module;
@@ -7746,7 +7735,7 @@ class Logger {
   
   void setMinLevel(LogLevel level) {
     minLevel = level;
-    info('Log level set to \$level');
+    info('Log level set to $level');
   }
   
   void debug(String message) => _log(.debug, message);
@@ -7759,7 +7748,7 @@ class Logger {
     
     final timestamp = DateTime.now();
     final levelStr = level.toString().split('.').last.toUpperCase();
-    final logEntry = '[\${timestamp.toIso8601String()}] [\$module] [\$levelStr] \$message';
+    final logEntry = '[${timestamp.toIso8601String()}] [$module] [$levelStr] $message';
     
     _logs.add(logEntry);
     print(logEntry);
@@ -7809,13 +7798,13 @@ class AuthService {
   final _logger = Logger.auth;
   
   void login(String username) {
-    _logger.info('User \$username attempting login');
+    _logger.info('User $username attempting login');
     _logger.debug('Validating credentials...');
-    _logger.info('Login successful for \$username');
+    _logger.info('Login successful for $username');
   }
   
   void logout(String username) {
-    _logger.info('User \$username logged out');
+    _logger.info('User $username logged out');
   }
 }
 
@@ -7829,7 +7818,7 @@ class DatabaseService {
   }
   
   void query(String sql) {
-    _logger.debug('Executing query: \$sql');
+    _logger.debug('Executing query: $sql');
   }
 }
 
@@ -7875,8 +7864,8 @@ void main() async {
   uiLogger.info('Rendering home screen');
   
   print('\n=== Logger Summary ===');
-  print('Active modules: \${Logger.modules}');
-  print('Log counts: \${Logger.getLogCounts()}');
+  print('Active modules: ${Logger.modules}');
+  print('Log counts: ${Logger.getLogCounts()}');
   
   print('\nSetting global log level to ERROR...');
   Logger.setGlobalMinLevel(.error);
@@ -7884,10 +7873,10 @@ void main() async {
   print('');
   auth.login('jane_doe'); // Should not log (below ERROR level)
   Logger.auth.error('Critical auth error'); // Should log
-}"""),
+}'''),
 
         // Example 3: Advanced - Configuration Manager
-        StrCodeBlock("""// Example 3: Advanced - Multi-Environment Configuration
+        StrCodeBlock(r'''// Example 3: Advanced - Multi-Environment Configuration
 // Use case: Different configurations for dev/staging/prod environments
 
 enum Environment { development, staging, production }
@@ -7902,7 +7891,7 @@ class AppConfig {
     required this.databaseUrl,
     required this.features,
   }) {
-    print('Creating configuration for \$environment');
+    print('Creating configuration for $environment');
   }
   
   final Environment environment;
@@ -7977,20 +7966,20 @@ class AppConfig {
   
   static void setEnvironment(Environment env) {
     _currentEnvironment = env;
-    print('Switched to \$env environment');
+    print('Switched to $env environment');
   }
   
   @override
   String toString() {
-    return '''
-AppConfig(\$environment)
-  API: \$apiBaseUrl
-  Timeout: \$apiTimeout
-  Logging: \$enableLogging
-  Analytics: \$enableAnalytics
-  Database: \$databaseUrl
-  Features: \$features
-''';
+    return """
+AppConfig($environment)
+  API: $apiBaseUrl
+  Timeout: $apiTimeout
+  Logging: $enableLogging
+  Analytics: $enableAnalytics
+  Database: $databaseUrl
+  Features: $features
+""";
   }
 }
 
@@ -7999,8 +7988,8 @@ class ApiClient {
   late final AppConfig _config = AppConfig.current;
   
   Future<void> fetchUsers() async {
-    print('\nFetching users from \${_config.apiBaseUrl}/users');
-    print('Timeout: \${_config.apiTimeout}');
+    print('\nFetching users from ${_config.apiBaseUrl}/users');
+    print('Timeout: ${_config.apiTimeout}');
     
     if (_config.enableLogging) {
       print('Logging request...');
@@ -8025,7 +8014,7 @@ void main() {
   // Verify same instance for same environment
   final dev1 = AppConfig.forEnvironment(.development);
   final dev2 = AppConfig.dev;
-  print('dev1 == dev2: \${identical(dev1, dev2)}');
+  print('dev1 == dev2: ${identical(dev1, dev2)}');
   
   // Use current config
   print('\n=== Using Current Config ===');
@@ -8039,14 +8028,14 @@ void main() {
   
   // Feature flags
   print('\n=== Feature Flags ===');
-  print('Dev new_ui: \${AppConfig.dev.isFeatureEnabled('new_ui')}');
-  print('Prod new_ui: \${AppConfig.prod.isFeatureEnabled('new_ui')}');
-  print('Dev debug_panel: \${AppConfig.dev.isFeatureEnabled('debug_panel')}');
-  print('Prod debug_panel: \${AppConfig.prod.isFeatureEnabled('debug_panel')}');
-}"""),
+  print('Dev new_ui: ${AppConfig.dev.isFeatureEnabled('new_ui')}');
+  print('Prod new_ui: ${AppConfig.prod.isFeatureEnabled('new_ui')}');
+  print('Dev debug_panel: ${AppConfig.dev.isFeatureEnabled('debug_panel')}');
+  print('Prod debug_panel: ${AppConfig.prod.isFeatureEnabled('debug_panel')}');
+}'''),
 
         // Example 4: Flutter - Theme Manager
-        StrCodeBlock("""// Example 4: Flutter - Per-Theme Style Manager
+        StrCodeBlock(r'''// Example 4: Flutter - Per-Theme Style Manager
 // Use case: Managing different theme styles (light/dark/custom)
 
 enum ThemeType { light, dark, highContrast, custom }
@@ -8060,7 +8049,7 @@ class ThemeStyle {
     required this.accentColor,
     required this.errorColor,
   }) {
-    print('Creating theme style: \$type');
+    print('Creating theme style: $type');
   }
   
   final ThemeType type;
@@ -8152,7 +8141,7 @@ class ThemeManager extends ChangeNotifier {
   void setTheme(ThemeType type) {
     if (_currentTheme != type) {
       _currentTheme = type;
-      print('Theme changed to: \$type');
+      print('Theme changed to: $type');
       notifyListeners();
     }
   }
@@ -8199,7 +8188,7 @@ class ThemeDemo extends StatelessWidget {
           mainAxisAlignment: .center,
           children: [
             Text(
-              'Current Theme: \${themeManager.currentTheme}',
+              'Current Theme: ${themeManager.currentTheme}',
               style: theme.textTheme.headlineSmall,
             ),
             .height(32),
@@ -8261,23 +8250,23 @@ void main() {
   final light2 = ThemeStyle.forType(.light);
   final dark = ThemeStyle.dark;
   
-  print('light1 == light2: \${identical(light1, light2)}');
-  print('light1 == dark: \${identical(light1, dark)}');
+  print('light1 == light2: ${identical(light1, light2)}');
+  print('light1 == dark: ${identical(light1, dark)}');
   
-  print('\nAvailable themes: \${ThemeStyle.availableThemes}');
+  print('\nAvailable themes: ${ThemeStyle.availableThemes}');
   
   // Run Flutter app
   runApp(ThemedApp());
-}"""),
+}'''),
       ],
       ar: [
         // Arabic versions
-        StrCodeBlock("""// مثال 1: أساسي - متعدد اتصال قاعدة البيانات
+        StrCodeBlock(r'''// مثال 1: أساسي - متعدد اتصال قاعدة البيانات
 // حالة الاستخدام: إدارة الاتصالات لقواعد بيانات متعددة
 
 class DatabaseConnection {
   DatabaseConnection._(this.database) {
-    print('إنشاء اتصال بقاعدة البيانات: \$database');
+    print('إنشاء اتصال بقاعدة البيانات: $database');
     _connect();
   }
   
@@ -8285,21 +8274,21 @@ class DatabaseConnection {
   bool _isConnected = false;
   
   void _connect() {
-    print('تم الاتصال بـ \$database');
+    print('تم الاتصال بـ $database');
     _isConnected = true;
   }
   
   void query(String sql) {
     if (!_isConnected) {
-      print('خطأ: غير متصل بـ \$database');
+      print('خطأ: غير متصل بـ $database');
       return;
     }
-    print('[\$database] تنفيذ: \$sql');
+    print('[$database] تنفيذ: $sql');
   }
   
   void disconnect() {
     if (_isConnected) {
-      print('قطع الاتصال من \$database');
+      print('قطع الاتصال من $database');
       _isConnected = false;
     }
   }
@@ -8337,7 +8326,7 @@ void main() {
   
   // نفس المفتاح يُرجع نفس النسخة
   final userDb2 = DatabaseConnection('users_db');
-  print('userDb1 == userDb2: \${identical(userDb1, userDb2)}');
+  print('userDb1 == userDb2: ${identical(userDb1, userDb2)}');
   userDb2.query('SELECT COUNT(*) FROM users');
   
   print('');
@@ -8349,11 +8338,11 @@ void main() {
   final productsDb = DatabaseConnection('products_db');
   productsDb.query('SELECT * FROM products');
   
-  print('\nقواعد البيانات النشطة: \${DatabaseConnection.activeDatabases}');
+  print('\nقواعد البيانات النشطة: ${DatabaseConnection.activeDatabases}');
   
   print('\nإغلاق جميع الاتصالات...');
   DatabaseConnection.closeAll();
-}"""),
+}'''),
         // Add remaining Arabic examples...
       ],
     ),
@@ -8482,7 +8471,6 @@ void main() {
     relatedPatterns: [PK.singleton, PK.factoryMethod, PK.objectPool],
     oftenConfusedWith: [PK.singleton],
   ),
-
   PK.factoryKit: DesignPattern(
     id: PK.factoryKit,
     title: LocS(en: "Factory Kit", ar: "مجموعة المصنع (Factory Kit)"),
@@ -8607,8 +8595,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Game Entity Factory Kit
-        StrCodeBlock(
-          """// Example 1: Basic - Simple Factory Kit for Game Entities
+        StrCodeBlock(r'''// Example 1: Basic - Simple Factory Kit for Game Entities
 // Use case: Allowing users to register custom enemy types in a game
 
 abstract class Enemy {
@@ -8626,21 +8613,21 @@ class EnemyFactoryKit {
   // Register a factory for a specific enemy type
   void register(String type, EnemyFactory factory) {
     if (_factories.containsKey(type)) {
-      print('Warning: Overwriting factory for type: \$type');
+      print('Warning: Overwriting factory for type: $type');
     }
     _factories[type] = factory;
-    print('Registered enemy factory: \$type');
+    print('Registered enemy factory: $type');
   }
   
   // Create an enemy of specified type
   Enemy? create(String type) {
     final factory = _factories[type];
     if (factory == null) {
-      print('Error: No factory registered for type: \$type');
+      print('Error: No factory registered for type: $type');
       return null;
     }
     
-    print('Creating enemy: \$type');
+    print('Creating enemy: $type');
     return factory();
   }
   
@@ -8659,7 +8646,7 @@ class EnemyFactoryKit {
   // Unregister (useful for cleanup or hot-reload)
   void unregister(String type) {
     _factories.remove(type);
-    print('Unregistered enemy factory: \$type');
+    print('Unregistered enemy factory: $type');
   }
   
   void clear() {
@@ -8680,7 +8667,7 @@ class Goblin implements Enemy {
   int get damage => 10;
   
   @override
-  void attack() => print('\$name attacks with dagger!');
+  void attack() => print('$name attacks with dagger!');
 }
 
 class Orc implements Enemy {
@@ -8694,7 +8681,7 @@ class Orc implements Enemy {
   int get damage => 25;
   
   @override
-  void attack() => print('\$name swings axe!');
+  void attack() => print('$name swings axe!');
 }
 
 // User-defined custom enemy (client code)
@@ -8709,7 +8696,7 @@ class Dragon implements Enemy {
   int get damage => 100;
   
   @override
-  void attack() => print('\$name breathes fire!');
+  void attack() => print('$name breathes fire!');
 }
 
 class Skeleton implements Enemy {
@@ -8723,7 +8710,7 @@ class Skeleton implements Enemy {
   int get damage => 8;
   
   @override
-  void attack() => print('\$name rattles bones menacingly!');
+  void attack() => print('$name rattles bones menacingly!');
 }
 
 void main() {
@@ -8735,13 +8722,13 @@ void main() {
   enemyKit.register('goblin', () => Goblin());
   enemyKit.register('orc', () => Orc());
   
-  print('\nBuilt-in enemies: \${enemyKit.availableTypes}\n');
+  print('\nBuilt-in enemies: ${enemyKit.availableTypes}\n');
   
   // Users register custom types
   enemyKit.register('dragon', () => Dragon());
   enemyKit.register('skeleton', () => Skeleton());
   
-  print('\nAll enemies: \${enemyKit.availableTypes}\n');
+  print('\nAll enemies: ${enemyKit.availableTypes}\n');
   
   // Create enemies
   final goblin = enemyKit.create('goblin');
@@ -8754,21 +8741,20 @@ void main() {
   
   // Bulk creation
   final skeletons = enemyKit.createMany('skeleton', 3);
-  print('Created \${skeletons.length} skeletons');
+  print('Created ${skeletons.length} skeletons');
   for (final skeleton in skeletons) {
-    print('  - \${skeleton.name}: HP \${skeleton.health}, DMG \${skeleton.damage}');
+    print('  - ${skeleton.name}: HP ${skeleton.health}, DMG ${skeleton.damage}');
   }
   
   print('');
   
   // Try to create unregistered type
   final zombie = enemyKit.create('zombie');
-}""",
+}''',
         ),
 
         // Example 2: Intermediate - Widget Factory Kit
-        StrCodeBlock(
-          """// Example 2: Intermediate - Custom Widget Factory System
+        StrCodeBlock(r'''// Example 2: Intermediate - Custom Widget Factory System
 // Use case: Plugin system for registering custom form field types
 
 abstract class FormField extends StatelessWidget {
@@ -8800,7 +8786,7 @@ class FormFieldFactoryKit {
     if (description != null) {
       _descriptions[type] = description;
     }
-    print('Registered form field: \$type');
+    print('Registered form field: $type');
   }
   
   FormField? create({
@@ -8810,7 +8796,7 @@ class FormFieldFactoryKit {
   }) {
     final factory = _factories[type];
     if (factory == null) {
-      print('Unknown field type: \$type');
+      print('Unknown field type: $type');
       return null;
     }
     
@@ -8843,7 +8829,7 @@ class TextFormField extends FormField {
           onChanged: onChanged,
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Enter \$label',
+            hintText: 'Enter $label',
           ),
         ),
       ],
@@ -9013,12 +8999,12 @@ class _DynamicFormBuilderState extends State<DynamicFormBuilder> {
                     padding: .only(bottom: 16),
                     child: field,
                   )
-                : Text('Unknown field type: \$type');
+                : Text('Unknown field type: $type');
           }),
           .height(16),
           ElevatedButton(
             onPressed: () {
-              print('Form data: \$_formData');
+              print('Form data: $_formData');
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Form submitted! Check console.')),
               );
@@ -9064,8 +9050,8 @@ void main() {
     description: '5-star rating widget',
   );
   
-  print('Available field types: \${fieldKit.availableTypes}');
-  print('Descriptions: \${fieldKit.typeDescriptions}');
+  print('Available field types: ${fieldKit.availableTypes}');
+  print('Descriptions: ${fieldKit.typeDescriptions}');
   
   // Dynamic form configuration (could come from API/database)
   final formConfig = [
@@ -9081,11 +9067,11 @@ void main() {
       fieldConfig: formConfig,
     ),
   ));
-}""",
+}''',
         ),
 
         // Example 3: Advanced - Serialization Factory Kit
-        StrCodeBlock("""// Example 3: Advanced - Type-Safe Serialization System
+        StrCodeBlock(r'''// Example 3: Advanced - Type-Safe Serialization System
 // Use case: Extensible JSON serialization with custom type support
 
 abstract class JsonSerializer<T> {
@@ -9102,19 +9088,19 @@ class SerializerFactoryKit {
     final typeName = serializer.typeName;
     
     if (_serializers.containsKey(typeName)) {
-      throw Exception('Serializer already registered: \$typeName');
+      throw Exception('Serializer already registered: $typeName');
     }
     
     _serializers[typeName] = serializer;
     _typeToName[T] = typeName;
     
-    print('Registered serializer: \$typeName for type \$T');
+    print('Registered serializer: $typeName for type $T');
   }
   
   Map<String, dynamic> serialize<T>(T object) {
     final typeName = _typeToName[T];
     if (typeName == null) {
-      throw Exception('No serializer for type: \$T');
+      throw Exception('No serializer for type: $T');
     }
     
     final serializer = _serializers[typeName] as JsonSerializer<T>;
@@ -9135,11 +9121,11 @@ class SerializerFactoryKit {
     
     final serializer = _serializers[typeName];
     if (serializer == null) {
-      throw Exception('No serializer registered for: \$typeName');
+      throw Exception('No serializer registered for: $typeName');
     }
     
     if (serializer is! JsonSerializer<T>) {
-      throw Exception('Type mismatch: expected \$T, got \${serializer.runtimeType}');
+      throw Exception('Type mismatch: expected $T, got ${serializer.runtimeType}');
     }
     
     final jsonCopy = Map<String, dynamic>.from(json)..remove('__type');
@@ -9155,7 +9141,7 @@ class SerializerFactoryKit {
     
     final serializer = _serializers[typeName];
     if (serializer == null) {
-      throw Exception('No serializer registered for: \$typeName');
+      throw Exception('No serializer registered for: $typeName');
     }
     
     final jsonCopy = Map<String, dynamic>.from(json)..remove('__type');
@@ -9174,7 +9160,7 @@ class User {
   final String email;
   
   @override
-  String toString() => 'User(id: \$id, name: \$name, email: \$email)';
+  String toString() => 'User(id: $id, name: $name, email: $email)';
 }
 
 class Product {
@@ -9185,7 +9171,7 @@ class Product {
   final double price;
   
   @override
-  String toString() => 'Product(id: \$id, title: \$title, price: \$price)';
+  String toString() => 'Product(id: $id, title: $title, price: $price)';
 }
 
 class Order {
@@ -9202,7 +9188,7 @@ class Order {
   final double total;
   
   @override
-  String toString() => 'Order(id: \$id, userId: \$userId, items: \$items, total: \$total)';
+  String toString() => 'Order(id: $id, userId: $userId, items: $items, total: $total)';
 }
 
 // Serializers (can be defined by different teams/modules)
@@ -9287,7 +9273,7 @@ class Repository {
   void save<T>(String id, T object) {
     final json = serializerKit.serialize(object);
     _storage[id] = json;
-    print('Saved \$id: \$json');
+    print('Saved $id: $json');
   }
   
   T? load<T>(String id) {
@@ -9316,7 +9302,7 @@ void main() {
   serializerKit.register(ProductSerializer());
   serializerKit.register(OrderSerializer());
   
-  print('Registered types: \${serializerKit.registeredTypes}\n');
+  print('Registered types: ${serializerKit.registeredTypes}\n');
   
   // Create repository
   final repo = Repository(serializerKit);
@@ -9340,13 +9326,13 @@ void main() {
   
   // Load objects with type safety
   final loadedUser = repo.load<User>('user_1');
-  print('Loaded user: \$loadedUser');
+  print('Loaded user: $loadedUser');
   
   final loadedProduct = repo.load<Product>('product_101');
-  print('Loaded product: \$loadedProduct');
+  print('Loaded product: $loadedProduct');
   
   final loadedOrder = repo.load<Order>('order_1');
-  print('Loaded order: \$loadedOrder');
+  print('Loaded order: $loadedOrder');
   
   print('');
   
@@ -9354,12 +9340,12 @@ void main() {
   print('Loading all objects:');
   final allObjects = repo.loadAll();
   for (final obj in allObjects) {
-    print('  - \$obj (\${obj.runtimeType})');
+    print('  - $obj (${obj.runtimeType})');
   }
-}"""),
+}'''),
 
         // Example 4: Game Plugin System
-        StrCodeBlock("""// Example 4: Flutter Game - Extensible Power-Up System
+        StrCodeBlock(r'''// Example 4: Flutter Game - Extensible Power-Up System
 // Use case: Allow mod creators to add custom power-ups
 
 abstract class PowerUp {
@@ -9383,13 +9369,13 @@ class GameCharacter {
   void applyPowerUp(PowerUp powerUp) {
     _activePowerUps.add(powerUp);
     powerUp.apply(this);
-    print('Applied: \${powerUp.name}');
+    print('Applied: ${powerUp.name}');
   }
   
   void removePowerUp(PowerUp powerUp) {
     if (_activePowerUps.remove(powerUp)) {
       powerUp.remove(this);
-      print('Removed: \${powerUp.name}');
+      print('Removed: ${powerUp.name}');
     }
   }
   
@@ -9397,7 +9383,7 @@ class GameCharacter {
   
   @override
   String toString() {
-    return 'Character(HP: \$health, Speed: \$speed, Damage: \$damage, Invincible: \$isInvincible)';
+    return 'Character(HP: $health, Speed: $speed, Damage: $damage, Invincible: $isInvincible)';
   }
 }
 
@@ -9418,7 +9404,7 @@ class PowerUpFactoryKit {
       'category': category,
       'rarity': rarity,
     };
-    print('Registered power-up: \$id (category: \$category, rarity: \$rarity)');
+    print('Registered power-up: $id (category: $category, rarity: $rarity)');
   }
   
   PowerUp? create(String id) {
@@ -9602,13 +9588,13 @@ class _PowerUpDemoState extends State<PowerUpDemo> {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 .height(8),
-                Text('Health: \${_character.health}/100'),
-                Text('Speed: \${_character.speed.toStringAsFixed(1)}'),
-                Text('Damage: \${_character.damage}'),
-                Text('Invincible: \${_character.isInvincible}'),
+                Text('Health: ${_character.health}/100'),
+                Text('Speed: ${_character.speed.toStringAsFixed(1)}'),
+                Text('Damage: ${_character.damage}'),
+                Text('Invincible: ${_character.isInvincible}'),
                 .height(8),
                 Text(
-                  'Active Power-Ups: \${_character.activePowerUps.map((p) => p.name).join(', ')}',
+                  'Active Power-Ups: ${_character.activePowerUps.map((p) => p.name).join(', ')}',
                   style: .caption,
                 ),
               ],
@@ -9676,18 +9662,18 @@ void main() {
     rarity: 2,
   );
   
-  print('All power-ups: \${powerUpKit.allPowerUps}');
-  print('Movement power-ups: \${powerUpKit.getPowerUpsByCategory('movement')}');
-  print('Rare power-ups: \${powerUpKit.getPowerUpsByRarity(2)}');
+  print('All power-ups: ${powerUpKit.allPowerUps}');
+  print('Movement power-ups: ${powerUpKit.getPowerUpsByCategory('movement')}');
+  print('Rare power-ups: ${powerUpKit.getPowerUpsByRarity(2)}');
   
   runApp(MaterialApp(
     home: PowerUpDemo(powerUpKit: powerUpKit),
   ));
-}"""),
+}'''),
       ],
       ar: [
         // Arabic versions
-        StrCodeBlock("""// مثال 1: أساسي - مجموعة مصنع كيانات اللعبة البسيطة
+        StrCodeBlock(r'''// مثال 1: أساسي - مجموعة مصنع كيانات اللعبة البسيطة
 // حالة الاستخدام: السماح للمستخدمين بتسجيل أنواع أعداء مخصصة في لعبة
 
 abstract class Enemy {
@@ -9705,21 +9691,21 @@ class EnemyFactoryKit {
   // تسجيل مصنع لنوع عدو محدد
   void register(String type, EnemyFactory factory) {
     if (_factories.containsKey(type)) {
-      print('تحذير: استبدال المصنع للنوع: \$type');
+      print('تحذير: استبدال المصنع للنوع: $type');
     }
     _factories[type] = factory;
-    print('تم تسجيل مصنع العدو: \$type');
+    print('تم تسجيل مصنع العدو: $type');
   }
   
   // إنشاء عدو من النوع المحدد
   Enemy? create(String type) {
     final factory = _factories[type];
     if (factory == null) {
-      print('خطأ: لا يوجد مصنع مُسجل للنوع: \$type');
+      print('خطأ: لا يوجد مصنع مُسجل للنوع: $type');
       return null;
     }
     
-    print('إنشاء عدو: \$type');
+    print('إنشاء عدو: $type');
     return factory();
   }
   
@@ -9738,7 +9724,7 @@ class EnemyFactoryKit {
   // إلغاء التسجيل (مفيد للتنظيف أو إعادة التحميل الساخن)
   void unregister(String type) {
     _factories.remove(type);
-    print('تم إلغاء تسجيل مصنع العدو: \$type');
+    print('تم إلغاء تسجيل مصنع العدو: $type');
   }
   
   void clear() {
@@ -9759,7 +9745,7 @@ class Goblin implements Enemy {
   int get damage => 10;
   
   @override
-  void attack() => print('\$name يهاجم بخنجر!');
+  void attack() => print('$name يهاجم بخنجر!');
 }
 
 class Orc implements Enemy {
@@ -9773,7 +9759,7 @@ class Orc implements Enemy {
   int get damage => 25;
   
   @override
-  void attack() => print('\$name يلوّح بفأس!');
+  void attack() => print('$name يلوّح بفأس!');
 }
 
 // عدو مخصص معرّف من المستخدم (كود العميل)
@@ -9788,7 +9774,7 @@ class Dragon implements Enemy {
   int get damage => 100;
   
   @override
-  void attack() => print('\$name ينفث ناراً!');
+  void attack() => print('$name ينفث ناراً!');
 }
 
 class Skeleton implements Enemy {
@@ -9802,7 +9788,7 @@ class Skeleton implements Enemy {
   int get damage => 8;
   
   @override
-  void attack() => print('\$name يخشخش عظامه بتهديد!');
+  void attack() => print('$name يخشخش عظامه بتهديد!');
 }
 
 void main() {
@@ -9814,13 +9800,13 @@ void main() {
   enemyKit.register('goblin', () => Goblin());
   enemyKit.register('orc', () => Orc());
   
-  print('\nالأعداء المدمجون: \${enemyKit.availableTypes}\n');
+  print('\nالأعداء المدمجون: ${enemyKit.availableTypes}\n');
   
   // المستخدمون يُسجلون أنواعاً مخصصة
   enemyKit.register('dragon', () => Dragon());
   enemyKit.register('skeleton', () => Skeleton());
   
-  print('\nجميع الأعداء: \${enemyKit.availableTypes}\n');
+  print('\nجميع الأعداء: ${enemyKit.availableTypes}\n');
   
   // إنشاء أعداء
   final goblin = enemyKit.create('goblin');
@@ -9833,16 +9819,16 @@ void main() {
   
   // الإنشاء الجماعي
   final skeletons = enemyKit.createMany('skeleton', 3);
-  print('تم إنشاء \${skeletons.length} هياكل عظمية');
+  print('تم إنشاء ${skeletons.length} هياكل عظمية');
   for (final skeleton in skeletons) {
-    print('  - \${skeleton.name}: نقاط الصحة \${skeleton.health}، الضرر \${skeleton.damage}');
+    print('  - ${skeleton.name}: نقاط الصحة ${skeleton.health}، الضرر ${skeleton.damage}');
   }
   
   print('');
   
   // محاولة إنشاء نوع غير مُسجل
   final zombie = enemyKit.create('zombie');
-}"""),
+}'''),
         // Add remaining Arabic examples...
       ],
     ),

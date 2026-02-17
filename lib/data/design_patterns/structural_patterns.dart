@@ -100,7 +100,7 @@ const Map<String, DesignPattern> structuralPatternsData = {
       en: [
         // Example 1: Basic - Third-Party Library Adaptation
         StrCodeBlock(
-          """// Example 1: Basic - Adapting Third-Party Payment Library
+          r'''// Example 1: Basic - Adapting Third-Party Payment Library
 // Use case: Integrating external payment processor with incompatible interface
 
 // Your application's expected interface
@@ -124,16 +124,16 @@ class PaymentResult {
 // Third-party library with different interface (you can't modify this)
 class StripePaymentSDK {
   Map<String, dynamic> charge(int amountInCents, String currencyCode) {
-    print('Stripe: Charging \$amountInCents \$currencyCode');
+    print('Stripe: Charging $amountInCents $currencyCode');
     return {
       'success': true,
-      'charge_id': 'ch_\${DateTime.now().millisecondsSinceEpoch}',
+      'charge_id': 'ch_${DateTime.now().millisecondsSinceEpoch}',
       'amount': amountInCents,
     };
   }
   
   bool refundCharge(String chargeId) {
-    print('Stripe: Refunding \$chargeId');
+    print('Stripe: Refunding $chargeId');
     return true;
   }
 }
@@ -172,7 +172,7 @@ class StripeAdapter implements PaymentProcessor {
     try {
       return _stripe.refundCharge(transactionId);
     } catch (e) {
-      print('Refund failed: \$e');
+      print('Refund failed: $e');
       return false;
     }
   }
@@ -181,13 +181,13 @@ class StripeAdapter implements PaymentProcessor {
 // Another third-party library with yet another different interface
 class PayPalSDK {
   Future<String> makePayment(String amount, String currency) async {
-    print('PayPal: Processing \$amount \$currency');
+    print('PayPal: Processing $amount $currency');
     await Future.delayed(Duration(milliseconds: 100));
-    return 'PAYPAL-\${DateTime.now().millisecondsSinceEpoch}';
+    return 'PAYPAL-${DateTime.now().millisecondsSinceEpoch}';
   }
   
   Future<void> cancelTransaction(String txnId) async {
-    print('PayPal: Cancelling \$txnId');
+    print('PayPal: Cancelling $txnId');
     await Future.delayed(Duration(milliseconds: 50));
   }
 }
@@ -222,7 +222,7 @@ class PayPalAdapter implements PaymentProcessor {
       await _paypal.cancelTransaction(transactionId);
       return true;
     } catch (e) {
-      print('Refund failed: \$e');
+      print('Refund failed: $e');
       return false;
     }
   }
@@ -235,14 +235,14 @@ class CheckoutService {
   CheckoutService(this._processor);
   
   Future<void> checkout(double amount) async {
-    print('=== Processing checkout: \\\$\$amount ===');
+    print('=== Processing checkout: \$$amount ===');
     
     final result = await _processor.processPayment(amount, 'USD');
     
     if (result.success) {
-      print('✓ Payment successful! Transaction: \${result.transactionId}');
+      print('✓ Payment successful! Transaction: ${result.transactionId}');
     } else {
-      print('✗ Payment failed: \${result.errorMessage}');
+      print('✗ Payment failed: ${result.errorMessage}');
     }
   }
 }
@@ -260,11 +260,11 @@ void main() async {
     PayPalAdapter(PayPalSDK()),
   );
   await paypalCheckout.checkout(149.99);
-}""",
+}''',
         ),
 
         // Example 2: Intermediate - Data Format Adapter
-        StrCodeBlock("""// Example 2: Intermediate - Adapting Data Formats
+        StrCodeBlock(r'''// Example 2: Intermediate - Adapting Data Formats
 // Use case: Making old XML-based system work with new JSON-based code
 
 // Modern interface your app uses (JSON-based)
@@ -277,14 +277,14 @@ abstract class DataProvider {
 class LegacyXmlDatabase {
   String fetchRecord(String recordId) {
     // Returns XML string
-    return '''
+    return """
       <record>
-        <id>\$recordId</id>
-        <name>Product \$recordId</name>
+        <id>$recordId</id>
+        <name>Product $recordId</name>
         <price>99.99</price>
         <stock>42</stock>
       </record>
-    ''';
+    """;
   }
   
   List<String> queryRecords(String searchTerm) {
@@ -350,7 +350,7 @@ class RestApiProvider implements DataProvider {
     // In real code, make HTTP request
     return {
       'id': id,
-      'name': 'Product \$id',
+      'name': 'Product $id',
       'price': 149.99,
       'stock': 100,
     };
@@ -374,17 +374,17 @@ class ProductService {
   void displayProduct(String id) {
     final product = _dataProvider.getData(id);
     print('\nProduct Details:');
-    print('  ID: \${product['id']}');
-    print('  Name: \${product['name']}');
-    print('  Price: \$\${product['price']}');
-    print('  Stock: \${product['stock']} units');
+    print('  ID: ${product['id']}');
+    print('  Name: ${product['name']}');
+    print('  Price: $${product['price']}');
+    print('  Stock: ${product['stock']} units');
   }
   
   void searchProducts(String query) {
     final results = _dataProvider.searchData(query);
-    print('\nSearch Results for "\$query":');
+    print('\nSearch Results for "$query":');
     for (final product in results) {
-      print('  - \${product['id']}: \${product['name']}');
+      print('  - ${product['id']}: ${product['name']}');
     }
   }
 }
@@ -403,10 +403,10 @@ void main() {
   );
   modernService.displayProduct('67890');
   modernService.searchProducts('product');
-}"""),
+}'''),
 
         // Example 3: Advanced - Multiple Interface Adaptation
-        StrCodeBlock("""// Example 3: Advanced - Two-Way Adapter Pattern
+        StrCodeBlock(r'''// Example 3: Advanced - Two-Way Adapter Pattern
 // Use case: Adapting between different logging frameworks
 
 // Your application's logging interface
@@ -425,25 +425,25 @@ class Log4DartLogger {
   String _levelFilter = 'INFO';
   
   void d(String tag, String msg) {
-    if (_shouldLog('DEBUG')) print('[DEBUG][\$tag] \$msg');
+    if (_shouldLog('DEBUG')) print('[DEBUG][$tag] $msg');
   }
   
   void i(String tag, String msg) {
-    if (_shouldLog('INFO')) print('[INFO][\$tag] \$msg');
+    if (_shouldLog('INFO')) print('[INFO][$tag] $msg');
   }
   
   void w(String tag, String msg, [Object? throwable]) {
     if (_shouldLog('WARN')) {
-      print('[WARN][\$tag] \$msg');
-      if (throwable != null) print('  Caused by: \$throwable');
+      print('[WARN][$tag] $msg');
+      if (throwable != null) print('  Caused by: $throwable');
     }
   }
   
   void e(String tag, String msg, Object throwable, [Object? trace]) {
     if (_shouldLog('ERROR')) {
-      print('[ERROR][\$tag] \$msg');
-      print('  Exception: \$throwable');
-      if (trace != null) print('  Trace: \$trace');
+      print('[ERROR][$tag] $msg');
+      print('  Exception: $throwable');
+      if (trace != null) print('  Trace: $trace');
     }
   }
   
@@ -502,13 +502,13 @@ class SimpleLogger {
       final levelNames = ['DEBUG', 'INFO', 'WARN', 'ERROR'];
       final level = levelNames[severity];
       final fullMessage = context != null 
-          ? '\$message | Context: \$context' 
+          ? '$message | Context: $context' 
           : message;
       
       if (onLog != null) {
         onLog!(level, fullMessage);
       } else {
-        print('[\$level] \$fullMessage');
+        print('[$level] $fullMessage');
       }
     }
   }
@@ -567,7 +567,7 @@ class UserService {
   UserService(this._logger);
   
   Future<void> createUser(String username) async {
-    _logger.info('Creating user: \$username');
+    _logger.info('Creating user: $username');
     
     try {
       // Simulate work
@@ -606,11 +606,11 @@ void main() async {
   } catch (e) {
     print('Caught error (as expected)');
   }
-}"""),
+}'''),
 
         // Example 4: Flutter - Platform Adapter
         StrCodeBlock(
-          """// Example 4: Flutter - Platform-Specific Storage Adapter
+          r'''// Example 4: Flutter - Platform-Specific Storage Adapter
 // Use case: Unified storage interface across different platforms
 
 // Your app's unified storage interface
@@ -759,14 +759,14 @@ class SettingsService {
   }) async {
     await _storage.saveString('username', username);
     await _storage.saveInt('theme', theme);
-    print('Saved preferences: \$username, theme \$theme');
+    print('Saved preferences: $username, theme $theme');
   }
   
   Future<Map<String, dynamic>> loadUserPreferences() async {
     final username = await _storage.getString('username') ?? 'Guest';
     final theme = await _storage.getInt('theme') ?? 0;
     
-    print('Loaded preferences: \$username, theme \$theme');
+    print('Loaded preferences: $username, theme $theme');
     return {'username': username, 'theme': theme};
   }
 }
@@ -797,7 +797,7 @@ void main() async {
   await webSettings.loadUserPreferences();
   
   print('\n✓ Same SettingsService code works on both platforms!');
-}""",
+}''',
         ),
       ],
       // TODO: Add examples
@@ -999,7 +999,7 @@ void main() async {
       en: [
         // Example 1: Basic - Shape Rendering
         StrCodeBlock(
-          """// Example 1: Basic - Shape Rendering with Multiple Backends
+          r'''// Example 1: Basic - Shape Rendering with Multiple Backends
 // Use case: Drawing shapes with different rendering technologies
 
 // Implementation hierarchy: How to render
@@ -1012,34 +1012,34 @@ abstract class Renderer {
 class VectorRenderer implements Renderer {
   @override
   void renderCircle(double x, double y, double radius) {
-    print('Vector: Drawing circle at (\$x, \$y) with radius \$radius');
-    print('  <circle cx="\$x" cy="\$y" r="\$radius" />');
+    print('Vector: Drawing circle at ($x, $y) with radius $radius');
+    print('  <circle cx="$x" cy="$y" r="$radius" />');
   }
   
   @override
   void renderRectangle(double x, double y, double width, double height) {
-    print('Vector: Drawing rectangle at (\$x, \$y) size \${width}x\$height');
-    print('  <rect x="\$x" y="\$y" width="\$width" height="\$height" />');
+    print('Vector: Drawing rectangle at ($x, $y) size ${width}x$height');
+    print('  <rect x="$x" y="$y" width="$width" height="$height" />');
   }
   
   @override
   void renderTriangle(double x1, double y1, double x2, double y2, double x3, double y3) {
     print('Vector: Drawing triangle');
-    print('  <polygon points="\$x1,\$y1 \$x2,\$y2 \$x3,\$y3" />');
+    print('  <polygon points="$x1,$y1 $x2,$y2 $x3,$y3" />');
   }
 }
 
 class RasterRenderer implements Renderer {
   @override
   void renderCircle(double x, double y, double radius) {
-    print('Raster: Plotting circle pixels at (\$x, \$y) radius \$radius');
+    print('Raster: Plotting circle pixels at ($x, $y) radius $radius');
     // Simulate pixel-by-pixel rendering
-    print('  Filling pixels using Bresenham\'s circle algorithm');
+    print('  Filling pixels using Bresenham's circle algorithm');
   }
   
   @override
   void renderRectangle(double x, double y, double width, double height) {
-    print('Raster: Plotting rectangle pixels at (\$x, \$y) size \${width}x\$height');
+    print('Raster: Plotting rectangle pixels at ($x, $y) size ${width}x$height');
     print('  Filling pixels row by row');
   }
   
@@ -1053,21 +1053,21 @@ class RasterRenderer implements Renderer {
 class CanvasRenderer implements Renderer {
   @override
   void renderCircle(double x, double y, double radius) {
-    print('Canvas: ctx.arc(\$x, \$y, \$radius, 0, 2*PI)');
+    print('Canvas: ctx.arc($x, $y, $radius, 0, 2*PI)');
     print('Canvas: ctx.fill()');
   }
   
   @override
   void renderRectangle(double x, double y, double width, double height) {
-    print('Canvas: ctx.fillRect(\$x, \$y, \$width, \$height)');
+    print('Canvas: ctx.fillRect($x, $y, $width, $height)');
   }
   
   @override
   void renderTriangle(double x1, double y1, double x2, double y2, double x3, double y3) {
     print('Canvas: ctx.beginPath()');
-    print('Canvas: ctx.moveTo(\$x1, \$y1)');
-    print('Canvas: ctx.lineTo(\$x2, \$y2)');
-    print('Canvas: ctx.lineTo(\$x3, \$y3)');
+    print('Canvas: ctx.moveTo($x1, $y1)');
+    print('Canvas: ctx.lineTo($x2, $y2)');
+    print('Canvas: ctx.lineTo($x3, $y3)');
     print('Canvas: ctx.fill()');
   }
 }
@@ -1095,7 +1095,7 @@ class Circle extends Shape {
   @override
   void resize(double factor) {
     radius *= factor;
-    print('Circle resized to radius \$radius');
+    print('Circle resized to radius $radius');
   }
 }
 
@@ -1113,7 +1113,7 @@ class Rectangle extends Shape {
   void resize(double factor) {
     width *= factor;
     height *= factor;
-    print('Rectangle resized to \${width}x\$height');
+    print('Rectangle resized to ${width}x$height');
   }
 }
 
@@ -1132,7 +1132,7 @@ class Triangle extends Shape {
     x1 *= factor; y1 *= factor;
     x2 *= factor; y2 *= factor;
     x3 *= factor; y3 *= factor;
-    print('Triangle resized by factor \$factor');
+    print('Triangle resized by factor $factor');
   }
 }
 
@@ -1167,12 +1167,12 @@ void main() {
   rect3.draw();
   
   print('\n✓ Shapes and renderers vary independently!');
-}""",
+}''',
         ),
 
         // Example 2: Intermediate - Cross-Platform UI
         StrCodeBlock(
-          """// Example 2: Intermediate - Cross-Platform UI Components
+          r'''// Example 2: Intermediate - Cross-Platform UI Components
 // Use case: Building UI that works across different platforms
 
 // Implementation: Platform-specific rendering
@@ -1186,24 +1186,24 @@ class AndroidUI implements UIPlatform {
   @override
   void renderButton(String label, bool enabled) {
     print('Android: <Button');
-    print('  android:text="\$label"');
-    print('  android:enabled="\$enabled"');
+    print('  android:text="$label"');
+    print('  android:enabled="$enabled"');
     print('  style="@style/MaterialButton" />');
   }
   
   @override
   void renderTextField(String placeholder, String value) {
     print('Android: <EditText');
-    print('  android:hint="\$placeholder"');
-    print('  android:text="\$value"');
+    print('  android:hint="$placeholder"');
+    print('  android:text="$value"');
     print('  style="@style/MaterialTextField" />');
   }
   
   @override
   void renderCheckbox(String label, bool checked) {
     print('Android: <CheckBox');
-    print('  android:text="\$label"');
-    print('  android:checked="\$checked"');
+    print('  android:text="$label"');
+    print('  android:checked="$checked"');
     print('  style="@style/MaterialCheckBox" />');
   }
 }
@@ -1212,24 +1212,24 @@ class iOSUI implements UIPlatform {
   @override
   void renderButton(String label, bool enabled) {
     print('iOS: UIButton(');
-    print('  title: "\$label",');
-    print('  isEnabled: \$enabled,');
+    print('  title: "$label",');
+    print('  isEnabled: $enabled,');
     print('  style: .system)');
   }
   
   @override
   void renderTextField(String placeholder, String value) {
     print('iOS: UITextField(');
-    print('  placeholder: "\$placeholder",');
-    print('  text: "\$value",');
+    print('  placeholder: "$placeholder",');
+    print('  text: "$value",');
     print('  borderStyle: .roundedRect)');
   }
   
   @override
   void renderCheckbox(String label, bool checked) {
     print('iOS: UISwitch( // iOS uses switches for checkboxes');
-    print('  label: "\$label",');
-    print('  isOn: \$checked)');
+    print('  label: "$label",');
+    print('  isOn: $checked)');
   }
 }
 
@@ -1237,18 +1237,18 @@ class WebUI implements UIPlatform {
   @override
   void renderButton(String label, bool enabled) {
     final disabled = enabled ? '' : 'disabled';
-    print('Web: <button \$disabled class="btn">\$label</button>');
+    print('Web: <button $disabled class="btn">$label</button>');
   }
   
   @override
   void renderTextField(String placeholder, String value) {
-    print('Web: <input type="text" placeholder="\$placeholder" value="\$value" />');
+    print('Web: <input type="text" placeholder="$placeholder" value="$value" />');
   }
   
   @override
   void renderCheckbox(String label, bool checked) {
     final checkedAttr = checked ? 'checked' : '';
-    print('Web: <input type="checkbox" \$checkedAttr /> <label>\$label</label>');
+    print('Web: <input type="checkbox" $checkedAttr /> <label>$label</label>');
   }
 }
 
@@ -1351,12 +1351,12 @@ void main() {
   webForm.render();
   
   print('✓ Same form components, different platform rendering!');
-}""",
+}''',
         ),
 
         // Example 3: Advanced - Database Abstraction
         StrCodeBlock(
-          """// Example 3: Advanced - Database Access Layer with Multiple Drivers
+          r'''// Example 3: Advanced - Database Access Layer with Multiple Drivers
 // Use case: Application that supports multiple database backends
 
 // Implementation: Database-specific operations
@@ -1378,7 +1378,7 @@ class PostgreSQLDriver implements DatabaseDriver {
   
   @override
   Future<void> connect(String connectionString) async {
-    print('PostgreSQL: Connecting to \$connectionString');
+    print('PostgreSQL: Connecting to $connectionString');
     await Future.delayed(Duration(milliseconds: 100));
     _connected = true;
     print('PostgreSQL: Connected');
@@ -1392,7 +1392,7 @@ class PostgreSQLDriver implements DatabaseDriver {
   
   @override
   Future<List<Map<String, dynamic>>> executeQuery(String query, List<dynamic> params) async {
-    print('PostgreSQL: \$query with params \$params');
+    print('PostgreSQL: $query with params $params');
     await Future.delayed(Duration(milliseconds: 50));
     return [
       {'id': 1, 'name': 'Alice'},
@@ -1402,7 +1402,7 @@ class PostgreSQLDriver implements DatabaseDriver {
   
   @override
   Future<int> executeUpdate(String query, List<dynamic> params) async {
-    print('PostgreSQL: \$query with params \$params');
+    print('PostgreSQL: $query with params $params');
     await Future.delayed(Duration(milliseconds: 50));
     return 1; // rows affected
   }
@@ -1426,10 +1426,10 @@ class PostgreSQLDriver implements DatabaseDriver {
   }
   
   @override
-  String escapeIdentifier(String identifier) => '"\$identifier"';
+  String escapeIdentifier(String identifier) => '"$identifier"';
   
   @override
-  String getPlaceholder(int index) => '\\\$\${index + 1}'; // \$1, \$2, etc.
+  String getPlaceholder(int index) => '\$${index + 1}'; // $1, $2, etc.
 }
 
 class MySQLDriver implements DatabaseDriver {
@@ -1438,7 +1438,7 @@ class MySQLDriver implements DatabaseDriver {
   
   @override
   Future<void> connect(String connectionString) async {
-    print('MySQL: Connecting to \$connectionString');
+    print('MySQL: Connecting to $connectionString');
     await Future.delayed(Duration(milliseconds: 100));
     _connected = true;
     print('MySQL: Connected');
@@ -1452,7 +1452,7 @@ class MySQLDriver implements DatabaseDriver {
   
   @override
   Future<List<Map<String, dynamic>>> executeQuery(String query, List<dynamic> params) async {
-    print('MySQL: \$query with params \$params');
+    print('MySQL: $query with params $params');
     await Future.delayed(Duration(milliseconds: 50));
     return [
       {'id': 1, 'name': 'Alice'},
@@ -1462,7 +1462,7 @@ class MySQLDriver implements DatabaseDriver {
   
   @override
   Future<int> executeUpdate(String query, List<dynamic> params) async {
-    print('MySQL: \$query with params \$params');
+    print('MySQL: $query with params $params');
     await Future.delayed(Duration(milliseconds: 50));
     return 1;
   }
@@ -1486,7 +1486,7 @@ class MySQLDriver implements DatabaseDriver {
   }
   
   @override
-  String escapeIdentifier(String identifier) => '`\$identifier`';
+  String escapeIdentifier(String identifier) => '`$identifier`';
   
   @override
   String getPlaceholder(int index) => '?'; // MySQL uses ? for all params
@@ -1497,7 +1497,7 @@ class SQLiteDriver implements DatabaseDriver {
   
   @override
   Future<void> connect(String connectionString) async {
-    print('SQLite: Opening database at \$connectionString');
+    print('SQLite: Opening database at $connectionString');
     await Future.delayed(Duration(milliseconds: 50));
     _connected = true;
     print('SQLite: Database opened');
@@ -1511,7 +1511,7 @@ class SQLiteDriver implements DatabaseDriver {
   
   @override
   Future<List<Map<String, dynamic>>> executeQuery(String query, List<dynamic> params) async {
-    print('SQLite: \$query with params \$params');
+    print('SQLite: $query with params $params');
     await Future.delayed(Duration(milliseconds: 30));
     return [
       {'id': 1, 'name': 'Alice'},
@@ -1521,7 +1521,7 @@ class SQLiteDriver implements DatabaseDriver {
   
   @override
   Future<int> executeUpdate(String query, List<dynamic> params) async {
-    print('SQLite: \$query with params \$params');
+    print('SQLite: $query with params $params');
     await Future.delayed(Duration(milliseconds: 30));
     return 1;
   }
@@ -1542,7 +1542,7 @@ class SQLiteDriver implements DatabaseDriver {
   }
   
   @override
-  String escapeIdentifier(String identifier) => '"\$identifier"';
+  String escapeIdentifier(String identifier) => '"$identifier"';
   
   @override
   String getPlaceholder(int index) => '?';
@@ -1563,14 +1563,14 @@ class UserRepository extends Repository {
   
   Future<List<Map<String, dynamic>>> findAll() async {
     final table = driver.escapeIdentifier('users');
-    final query = 'SELECT * FROM \$table';
+    final query = 'SELECT * FROM $table';
     return await driver.executeQuery(query, []);
   }
   
   Future<Map<String, dynamic>?> findById(int id) async {
     final table = driver.escapeIdentifier('users');
     final ph = driver.getPlaceholder(0);
-    final query = 'SELECT * FROM \$table WHERE id = \$ph';
+    final query = 'SELECT * FROM $table WHERE id = $ph';
     
     final results = await driver.executeQuery(query, [id]);
     return results.isNotEmpty ? results.first : null;
@@ -1583,7 +1583,7 @@ class UserRepository extends Repository {
     final ph1 = driver.getPlaceholder(0);
     final ph2 = driver.getPlaceholder(1);
     
-    final query = 'INSERT INTO \$table (\$col1, \$col2) VALUES (\$ph1, \$ph2)';
+    final query = 'INSERT INTO $table ($col1, $col2) VALUES ($ph1, $ph2)';
     await driver.executeUpdate(query, [name, email]);
   }
   
@@ -1597,7 +1597,7 @@ class UserRepository extends Repository {
       final ph1 = driver.getPlaceholder(0);
       final ph2 = driver.getPlaceholder(1);
       
-      final query = 'UPDATE \$table SET \$deptCol = \$ph1 WHERE id = \$ph2';
+      final query = 'UPDATE $table SET $deptCol = $ph1 WHERE id = $ph2';
       await driver.executeUpdate(query, [newDepartment, userId]);
       
       await driver.commit();
@@ -1631,12 +1631,12 @@ void main() async {
   await sqliteRepo.disconnect();
   
   print('\n✓ Same repository code works with all database drivers!');
-}""",
+}''',
         ),
 
         // Example 4: Flutter - Theme System
         StrCodeBlock(
-          """// Example 4: Flutter - Theme System with Multiple Renderers
+          r'''// Example 4: Flutter - Theme System with Multiple Renderers
 // Use case: Applying themes with different rendering strategies
 
 // Implementation: How to apply theme
@@ -1907,7 +1907,7 @@ void main() {
   runApp(MaterialApp(
     home: ThemeSwitcherDemo(),
   ));
-}""",
+}''',
         ),
       ],
       ar: [
@@ -2116,7 +2116,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - File System
-        StrCodeBlock("""// Example 1: Basic - File System Hierarchy
+        StrCodeBlock(r'''// Example 1: Basic - File System Hierarchy
 // Use case: Representing files and folders with uniform operations
 
 // Component: Common interface for files and folders
@@ -2142,7 +2142,7 @@ class File implements FileSystemEntity {
   @override
   void display([int depth = 0]) {
     final indent = '  ' * depth;
-    print('\$indent📄 \$name (\$size bytes)');
+    print('$indent📄 $name ($size bytes)');
   }
   
   @override
@@ -2181,7 +2181,7 @@ class Directory implements FileSystemEntity {
   @override
   void display([int depth = 0]) {
     final indent = '  ' * depth;
-    print('\$indent📁 \$name/');
+    print('$indent📁 $name/');
     for (final child in _children) {
       child.display(depth + 1);
     }
@@ -2221,19 +2221,19 @@ class FileSystemExplorer {
   }
   
   void showSize(FileSystemEntity entity) {
-    print('\n\${entity.name} total size: \${entity.getSize()} bytes');
+    print('\n${entity.name} total size: ${entity.getSize()} bytes');
   }
   
   void searchFiles(FileSystemEntity root, String query) {
     final results = <FileSystemEntity>[];
     root.search(query, results);
     
-    print('=== Search results for "\$query" ===');
+    print('=== Search results for "$query" ===');
     if (results.isEmpty) {
       print('No results found');
     } else {
       for (final result in results) {
-        print('Found: \${result.name}');
+        print('Found: ${result.name}');
       }
     }
   }
@@ -2274,11 +2274,11 @@ void main() {
   explorer.searchFiles(root, 'project');
   explorer.searchFiles(root, 'readme');
   
-  print('\nTotal files in root: \${root.getFileCount()}');
-}"""),
+  print('\nTotal files in root: ${root.getFileCount()}');
+}'''),
 
         // Example 2: Intermediate - UI Component Tree
-        StrCodeBlock("""// Example 2: Intermediate - UI Component Hierarchy
+        StrCodeBlock(r'''// Example 2: Intermediate - UI Component Hierarchy
 // Use case: Building complex UI from simple and composite components
 
 // Component: Base UI element
@@ -2304,7 +2304,7 @@ class Button implements UIComponent {
   void render([int depth = 0]) {
     final indent = '  ' * depth;
     final state = _enabled ? 'enabled' : 'disabled';
-    print('\$indent<Button name="\$name" state="\$state">\$label</Button>');
+    print('$indent<Button name="$name" state="$state">$label</Button>');
   }
   
   @override
@@ -2342,7 +2342,7 @@ class TextInput implements UIComponent {
     final indent = '  ' * depth;
     final state = _enabled ? 'enabled' : 'disabled';
     final req = required ? 'required' : 'optional';
-    print('\$indent<Input name="\$name" state="\$state" \$req placeholder="\$placeholder" value="\$value" />');
+    print('$indent<Input name="$name" state="$state" $req placeholder="$placeholder" value="$value" />');
   }
   
   @override
@@ -2357,7 +2357,7 @@ class TextInput implements UIComponent {
   @override
   List<String> validate() {
     if (required && value.isEmpty) {
-      return ['\$name is required'];
+      return ['$name is required'];
     }
     return [];
   }
@@ -2383,7 +2383,7 @@ class Checkbox implements UIComponent {
     final indent = '  ' * depth;
     final state = _enabled ? 'enabled' : 'disabled';
     final check = checked ? 'checked' : 'unchecked';
-    print('\$indent<Checkbox name="\$name" state="\$state" \$check>\$label</Checkbox>');
+    print('$indent<Checkbox name="$name" state="$state" $check>$label</Checkbox>');
   }
   
   @override
@@ -2420,11 +2420,11 @@ class Panel implements UIComponent {
   void render([int depth = 0]) {
     final indent = '  ' * depth;
     final state = _enabled ? 'enabled' : 'disabled';
-    print('\$indent<Panel name="\$name" state="\$state">');
+    print('$indent<Panel name="$name" state="$state">');
     for (final component in _components) {
       component.render(depth + 1);
     }
-    print('\$indent</Panel>');
+    print('$indent</Panel>');
   }
   
   @override
@@ -2474,12 +2474,12 @@ class Form extends Panel {
     final errors = validate();
     
     if (errors.isEmpty) {
-      print('\n✓ Form "\$name" submitted successfully');
+      print('\n✓ Form "$name" submitted successfully');
       return true;
     } else {
-      print('\n✗ Form "\$name" validation failed:');
+      print('\n✗ Form "$name" validation failed:');
       for (final error in errors) {
-        print('  - \$error');
+        print('  - $error');
       }
       return false;
     }
@@ -2532,12 +2532,12 @@ void main() {
   // Re-enable
   loginForm.enable();
   
-  print('\nTotal components in form: \${loginForm.componentCount}');
-}"""),
+  print('\nTotal components in form: ${loginForm.componentCount}');
+}'''),
 
         // Example 3: Advanced - Mathematical Expression Tree
         StrCodeBlock(
-          """// Example 3: Advanced - Mathematical Expression Evaluator
+          r'''// Example 3: Advanced - Mathematical Expression Evaluator
 // Use case: Building and evaluating complex mathematical expressions
 
 // Component: Expression element
@@ -2577,7 +2577,7 @@ class Variable implements Expression {
   @override
   double evaluate() {
     if (!_context.containsKey(name)) {
-      throw Exception('Variable \$name is not defined');
+      throw Exception('Variable $name is not defined');
     }
     return _context[name]!;
   }
@@ -2608,12 +2608,12 @@ abstract class BinaryOperation implements Expression {
   
   @override
   String toInfix() {
-    return '(\${left.toInfix()} \$operator \${right.toInfix()})';
+    return '(${left.toInfix()} $operator ${right.toInfix()})';
   }
   
   @override
   String toPostfix() {
-    return '\${left.toPostfix()} \${right.toPostfix()} \$operator';
+    return '${left.toPostfix()} ${right.toPostfix()} $operator';
   }
   
   @override
@@ -2693,10 +2693,10 @@ abstract class UnaryOperation implements Expression {
   }
   
   @override
-  String toInfix() => '\$operator(\${operand.toInfix()})';
+  String toInfix() => '$operator(${operand.toInfix()})';
   
   @override
-  String toPostfix() => '\${operand.toPostfix()} \$operator';
+  String toPostfix() => '${operand.toPostfix()} $operator';
   
   @override
   List<String> getVariables() => operand.getVariables();
@@ -2759,9 +2759,9 @@ void main() {
     builder.num(4),
   );
   
-  print('Infix: \${expr1.toInfix()}');
-  print('Postfix: \${expr1.toPostfix()}');
-  print('Result: \${expr1.evaluate()}');
+  print('Infix: ${expr1.toInfix()}');
+  print('Postfix: ${expr1.toPostfix()}');
+  print('Result: ${expr1.evaluate()}');
   
   // Build expression with variables: x^2 + 2*x + 1
   print('=== Example 2: x^2 + 2*x + 1 ===');
@@ -2776,12 +2776,12 @@ void main() {
     builder.num(1),
   );
   
-  print('Infix: \${expr2.toInfix()}');
-  print('Variables: \${expr2.getVariables().toSet()}');
-  print('When x=3: \${expr2.evaluate()}');
+  print('Infix: ${expr2.toInfix()}');
+  print('Variables: ${expr2.getVariables().toSet()}');
+  print('When x=3: ${expr2.evaluate()}');
   
   builder.setVariable('x', 5);
-  print('When x=5: \${expr2.evaluate()}');
+  print('When x=5: ${expr2.evaluate()}');
   
   // Complex expression: sqrt(a^2 + b^2) (Pythagorean theorem)
   print('=== Example 3: sqrt(a^2 + b^2) ===');
@@ -2795,9 +2795,9 @@ void main() {
     ),
   );
   
-  print('Infix: \${expr3.toInfix()}');
-  print('Postfix: \${expr3.toPostfix()}');
-  print('When a=3, b=4: \${expr3.evaluate()}');
+  print('Infix: ${expr3.toInfix()}');
+  print('Postfix: ${expr3.toPostfix()}');
+  print('When a=3, b=4: ${expr3.evaluate()}');
   
   // Expression with negation: -(x - 5)
   print('=== Example 4: -(x - 5) ===');
@@ -2807,16 +2807,16 @@ void main() {
     builder.sub(builder.variable('x'), builder.num(5)),
   );
   
-  print('Infix: \${expr4.toInfix()}');
-  print('When x=10: \${expr4.evaluate()}');
+  print('Infix: ${expr4.toInfix()}');
+  print('When x=10: ${expr4.evaluate()}');
 }
 
 // Import for math functions
-import 'dart:math';""",
+import 'dart:math';''',
         ),
 
         // Example 4: Flutter - Nested Menu System
-        StrCodeBlock("""// Example 4: Flutter - Hierarchical Menu System
+        StrCodeBlock(r'''// Example 4: Flutter - Hierarchical Menu System
 // Use case: Building complex nested menus with uniform operations
 
 // Component: Menu item
@@ -3049,7 +3049,7 @@ class MenuDemo extends StatelessWidget {
       bottomNavigationBar: Container(
         padding: .all(8),
         child: Text(
-          'Total menu items: \${_countItems(items)}',
+          'Total menu items: ${_countItems(items)}',
           textAlign: .center,
           style: .caption,
         ),
@@ -3072,7 +3072,7 @@ void main() {
   runApp(MaterialApp(
     home: MenuDemo(),
   ));
-}"""),
+}'''),
       ],
       ar: [
         // Arabic versions would go here
@@ -3280,7 +3280,7 @@ void main() {
     ),
     // ... continues with examples
     // TODO: Add examples
-    examples: LocV(en: [StrCodeBlock("""// MISSING EXAMPLES""")], ar: []),
+    examples: LocV(en: [StrCodeBlock(r'''// MISSING EXAMPLES''')], ar: []),
     pros: LocSL(
       en: [
         "More flexible than static inheritance - add behavior at runtime",
@@ -3472,21 +3472,21 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Home Theater System
-        StrCodeBlock("""// Example 1: Basic - Home Theater Facade
+        StrCodeBlock(r'''// Example 1: Basic - Home Theater Facade
 // Use case: Simplifying complex home theater setup
 
 // Complex subsystem classes
 class Amplifier {
   void on() => print('Amplifier: Powering on');
   void off() => print('Amplifier: Powering off');
-  void setVolume(int level) => print('Amplifier: Setting volume to \$level');
+  void setVolume(int level) => print('Amplifier: Setting volume to $level');
   void setSurroundSound() => print('Amplifier: Surround sound mode activated');
 }
 
 class DVDPlayer {
   void on() => print('DVD Player: Powering on');
   void off() => print('DVD Player: Powering off');
-  void play(String movie) => print('DVD Player: Playing "\$movie"');
+  void play(String movie) => print('DVD Player: Playing "$movie"');
   void stop() => print('DVD Player: Stopped');
   void eject() => print('DVD Player: Ejecting disc');
 }
@@ -3495,11 +3495,11 @@ class Projector {
   void on() => print('Projector: Powering on');
   void off() => print('Projector: Powering off');
   void wideScreenMode() => print('Projector: Wide screen mode (16:9)');
-  void setInput(String source) => print('Projector: Setting input to \$source');
+  void setInput(String source) => print('Projector: Setting input to $source');
 }
 
 class Lights {
-  void dim(int level) => print('Lights: Dimming to \$level%');
+  void dim(int level) => print('Lights: Dimming to $level%');
   void on() => print('Lights: Full brightness');
 }
 
@@ -3511,7 +3511,7 @@ class Screen {
 class SoundSystem {
   void on() => print('Sound System: Powering on');
   void off() => print('Sound System: Powering off');
-  void setMode(String mode) => print('Sound System: Mode set to \$mode');
+  void setMode(String mode) => print('Sound System: Mode set to $mode');
 }
 
 // Facade: Simplifies the complex subsystem
@@ -3534,7 +3534,7 @@ class HomeTheaterFacade {
   
   // Simple interface for common operations
   void watchMovie(String movie) {
-    print('=== Get ready to watch "\$movie" ===\n');
+    print('=== Get ready to watch "$movie" ===\n');
     
     _lights.dim(10);
     _screen.down();
@@ -3560,7 +3560,7 @@ class HomeTheaterFacade {
   }
   
   void listenToMusic(String source) {
-    print('=== Setting up music from \$source ===\n');
+    print('=== Setting up music from $source ===\n');
     
     _lights.dim(30);
     _amp.on();
@@ -3616,10 +3616,10 @@ void main() {
   print('=== Direct subsystem access ===');
   projector.on();
   projector.setInput('HDMI-2');
-}"""),
+}'''),
 
         // Example 2: Intermediate - Database Facade
-        StrCodeBlock("""// Example 2: Intermediate - Database Operations Facade
+        StrCodeBlock(r'''// Example 2: Intermediate - Database Operations Facade
 // Use case: Simplifying complex database operations
 
 // Complex subsystem: Connection management
@@ -3720,7 +3720,7 @@ class QueryBuilder {
   }
   
   QueryBuilder orderBy(String column, {bool desc = false}) {
-    _orderBy.add('\$column \${desc ? 'DESC' : 'ASC'}');
+    _orderBy.add('$column ${desc ? 'DESC' : 'ASC'}');
     return this;
   }
   
@@ -3731,18 +3731,18 @@ class QueryBuilder {
   
   String build() {
     final cols = _columns.join(', ');
-    var sql = 'SELECT \$cols FROM \$_table';
+    var sql = 'SELECT $cols FROM $_table';
     
     if (_where != null) {
-      sql += ' WHERE \$_where';
+      sql += ' WHERE $_where';
     }
     
     if (_orderBy.isNotEmpty) {
-      sql += ' ORDER BY \${_orderBy.join(', ')}';
+      sql += ' ORDER BY ${_orderBy.join(', ')}';
     }
     
     if (_limit != null) {
-      sql += ' LIMIT \$_limit';
+      sql += ' LIMIT $_limit';
     }
     
     return sql;
@@ -3756,26 +3756,26 @@ class QueryCache {
   final Map<String, DateTime> _timestamps = {};
   
   void put(String key, QueryResult result) {
-    print('Cache: Storing result for key: \$key');
+    print('Cache: Storing result for key: $key');
     _cache[key] = result;
     _timestamps[key] = DateTime.now();
   }
   
   QueryResult? get(String key) {
     if (!_cache.containsKey(key)) {
-      print('Cache: MISS for key: \$key');
+      print('Cache: MISS for key: $key');
       return null;
     }
     
     final timestamp = _timestamps[key]!;
     if (DateTime.now().difference(timestamp) > _ttl) {
-      print('Cache: EXPIRED for key: \$key');
+      print('Cache: EXPIRED for key: $key');
       _cache.remove(key);
       _timestamps.remove(key);
       return null;
     }
     
-    print('Cache: HIT for key: \$key');
+    print('Cache: HIT for key: $key');
     return _cache[key];
   }
   
@@ -3795,7 +3795,7 @@ class DatabaseFacade {
   
   // Simple interface for common operations
   Future<List<Map<String, dynamic>>> findAll(String table) async {
-    final cacheKey = 'findAll_\$table';
+    final cacheKey = 'findAll_$table';
     
     // Check cache
     final cached = _cache.get(cacheKey);
@@ -3821,7 +3821,7 @@ class DatabaseFacade {
   }
   
   Future<Map<String, dynamic>?> findById(String table, int id) async {
-    final cacheKey = 'findById_\${table}_\$id';
+    final cacheKey = 'findById_${table}_$id';
     
     final cached = _cache.get(cacheKey);
     if (cached != null) {
@@ -3832,7 +3832,7 @@ class DatabaseFacade {
     try {
       final sql = QueryBuilder()
           .table(table)
-          .where('id = \$id')
+          .where('id = $id')
           .limit(1)
           .build();
       
@@ -3854,7 +3854,7 @@ class DatabaseFacade {
     try {
       final sql = QueryBuilder()
           .table(table)
-          .where('\$column LIKE \'%\$value%\'')
+          .where('$column LIKE '%$value%'')
           .orderBy(column)
           .build();
       
@@ -3872,7 +3872,7 @@ class DatabaseFacade {
       
       final columns = data.keys.join(', ');
       final placeholders = List.filled(data.length, '?').join(', ');
-      final sql = 'INSERT INTO \$table (\$columns) VALUES (\$placeholders)';
+      final sql = 'INSERT INTO $table ($columns) VALUES ($placeholders)';
       
       conn.execute(sql, data.values.toList());
       conn.commit();
@@ -3921,10 +3921,10 @@ void main() async {
   
   print('');
   db.shutdown();
-}"""),
+}'''),
 
         // Example 3: Advanced - Payment Processing Facade
-        StrCodeBlock("""// Example 3: Advanced - Multi-Provider Payment System
+        StrCodeBlock(r'''// Example 3: Advanced - Multi-Provider Payment System
 // Use case: Simplifying payment processing across multiple providers
 
 // Complex subsystem: Payment providers
@@ -3940,7 +3940,7 @@ class StripeProvider implements PaymentProvider {
   
   @override
   Future<PaymentResponse> charge(PaymentRequest request) async {
-    print('Stripe: Processing charge for \$\${request.amount}');
+    print('Stripe: Processing charge for $${request.amount}');
     await Future.delayed(Duration(milliseconds: 100));
     
     // Simulate Stripe-specific validation
@@ -3953,14 +3953,14 @@ class StripeProvider implements PaymentProvider {
     
     return PaymentResponse(
       success: true,
-      transactionId: 'stripe_\${DateTime.now().millisecondsSinceEpoch}',
+      transactionId: 'stripe_${DateTime.now().millisecondsSinceEpoch}',
       message: 'Charged via Stripe',
     );
   }
   
   @override
   Future<bool> refund(String transactionId) async {
-    print('Stripe: Refunding \$transactionId');
+    print('Stripe: Refunding $transactionId');
     await Future.delayed(Duration(milliseconds: 50));
     return true;
   }
@@ -3972,19 +3972,19 @@ class PayPalProvider implements PaymentProvider {
   
   @override
   Future<PaymentResponse> charge(PaymentRequest request) async {
-    print('PayPal: Processing charge for \$\${request.amount}');
+    print('PayPal: Processing charge for $${request.amount}');
     await Future.delayed(Duration(milliseconds: 150));
     
     return PaymentResponse(
       success: true,
-      transactionId: 'paypal_\${DateTime.now().millisecondsSinceEpoch}',
+      transactionId: 'paypal_${DateTime.now().millisecondsSinceEpoch}',
       message: 'Charged via PayPal',
     );
   }
   
   @override
   Future<bool> refund(String transactionId) async {
-    print('PayPal: Refunding \$transactionId');
+    print('PayPal: Refunding $transactionId');
     await Future.delayed(Duration(milliseconds: 50));
     return true;
   }
@@ -4025,14 +4025,14 @@ class TransactionLogger {
   final List<TransactionLog> _logs = [];
   
   void log(TransactionLog entry) {
-    print('Logger: Recording transaction \${entry.transactionId}');
+    print('Logger: Recording transaction ${entry.transactionId}');
     _logs.add(entry);
   }
   
   List<TransactionLog> getHistory() => List.unmodifiable(_logs);
   
   void exportToFile(String filename) {
-    print('Logger: Exporting \${_logs.length} transactions to \$filename');
+    print('Logger: Exporting ${_logs.length} transactions to $filename');
   }
 }
 
@@ -4062,7 +4062,7 @@ class CurrencyConverter {
   };
   
   double convert(double amount, String from, String to) {
-    print('CurrencyConverter: Converting \$amount from \$from to \$to');
+    print('CurrencyConverter: Converting $amount from $from to $to');
     final amountInUSD = amount / _rates[from]!;
     return amountInUSD * _rates[to]!;
   }
@@ -4121,14 +4121,14 @@ class PaymentFacade {
     String? preferredProvider,
   }) async {
     print('=== Processing Payment ===');
-    print('Amount: \$amount \$currency');
-    print('Customer: \$customerEmail\n');
+    print('Amount: $amount $currency');
+    print('Customer: $customerEmail\n');
     
     // Step 1: Convert to USD if needed
     double amountInUSD = amount;
     if (currency != 'USD') {
       amountInUSD = _currencyConverter.convert(amount, currency, 'USD');
-      print('Converted to USD: \$\${amountInUSD.toStringAsFixed(2)}\n');
+      print('Converted to USD: $${amountInUSD.toStringAsFixed(2)}\n');
     }
     
     final request = PaymentRequest(
@@ -4140,13 +4140,13 @@ class PaymentFacade {
     
     // Step 2: Fraud check
     final fraudCheck = await _fraudDetector.check(request);
-    print('Fraud check: \${fraudCheck.message}');
+    print('Fraud check: ${fraudCheck.message}');
     
     if (fraudCheck.risk == RiskLevel.high) {
       print('⚠️  Transaction blocked due to high risk\n');
       
       _logger.log(TransactionLog(
-        transactionId: 'blocked_\${DateTime.now().millisecondsSinceEpoch}',
+        transactionId: 'blocked_${DateTime.now().millisecondsSinceEpoch}',
         amount: amountInUSD,
         provider: 'none',
         success: false,
@@ -4168,7 +4168,7 @@ class PaymentFacade {
       provider = _providers.first;
     }
     
-    print('Using provider: \${provider.name}\n');
+    print('Using provider: ${provider.name}\n');
     
     // Step 4: Process payment
     final response = await provider.charge(request);
@@ -4185,7 +4185,7 @@ class PaymentFacade {
     if (response.success) {
       print('✓ Payment successful!');
     } else {
-      print('✗ Payment failed: \${response.message}');
+      print('✗ Payment failed: ${response.message}');
     }
     
     return response;
@@ -4193,7 +4193,7 @@ class PaymentFacade {
   
   Future<bool> refundPayment(String transactionId) async {
     print('=== Processing Refund ===');
-    print('Transaction: \$transactionId\n');
+    print('Transaction: $transactionId\n');
     
     // Find original transaction
     final log = _logger.getHistory()
@@ -4208,7 +4208,7 @@ class PaymentFacade {
     if (success) {
       print('✓ Refund successful!');
       _logger.log(TransactionLog(
-        transactionId: 'refund_\$transactionId',
+        transactionId: 'refund_$transactionId',
         amount: -log.amount,
         provider: log.provider,
         success: true,
@@ -4225,16 +4225,16 @@ class PaymentFacade {
     print('=== Transaction Report ===');
     final history = _logger.getHistory();
     
-    print('Total transactions: \${history.length}');
+    print('Total transactions: ${history.length}');
     
     final successful = history.where((l) => l.success).length;
-    print('Successful: \$successful');
-    print('Failed: \${history.length - successful}');
+    print('Successful: $successful');
+    print('Failed: ${history.length - successful}');
     
     final totalAmount = history
         .where((l) => l.success && l.amount > 0)
         .fold(0.0, (sum, log) => sum + log.amount);
-    print('Total processed: \$\${totalAmount.toStringAsFixed(2)} USD');
+    print('Total processed: $${totalAmount.toStringAsFixed(2)} USD');
   }
 }
 
@@ -4283,10 +4283,10 @@ void main() async {
   );
   
   payment.generateReport();
-}"""),
+}'''),
 
         // Example 4: Flutter - Camera Facade
-        StrCodeBlock("""// Example 4: Flutter - Camera Operations Facade
+        StrCodeBlock(r'''// Example 4: Flutter - Camera Operations Facade
 // Use case: Simplifying complex camera API
 
 // Complex subsystem classes (simulated)
@@ -4309,19 +4309,19 @@ class CameraController {
     if (!_isInitialized) throw Exception('Camera not initialized');
     print('CameraController: Capturing image');
     await Future.delayed(Duration(milliseconds: 200));
-    return '/path/to/image_\${DateTime.now().millisecondsSinceEpoch}.jpg';
+    return '/path/to/image_${DateTime.now().millisecondsSinceEpoch}.jpg';
   }
   
   void setFlashMode(FlashMode mode) {
-    print('CameraController: Flash mode set to \$mode');
+    print('CameraController: Flash mode set to $mode');
   }
   
   void setFocusMode(FocusMode mode) {
-    print('CameraController: Focus mode set to \$mode');
+    print('CameraController: Focus mode set to $mode');
   }
   
   void setZoom(double level) {
-    print('CameraController: Zoom set to \$level');
+    print('CameraController: Zoom set to $level');
   }
 }
 
@@ -4330,25 +4330,25 @@ enum FocusMode { auto, locked, continuous }
 
 class ImageProcessor {
   Future<String> compress(String path, int quality) async {
-    print('ImageProcessor: Compressing image (quality: \$quality)');
+    print('ImageProcessor: Compressing image (quality: $quality)');
     await Future.delayed(Duration(milliseconds: 100));
     return path.replaceAll('.jpg', '_compressed.jpg');
   }
   
   Future<String> crop(String path, int width, int height) async {
-    print('ImageProcessor: Cropping to \${width}x\$height');
+    print('ImageProcessor: Cropping to ${width}x$height');
     await Future.delayed(Duration(milliseconds: 100));
     return path.replaceAll('.jpg', '_cropped.jpg');
   }
   
   Future<String> rotate(String path, int degrees) async {
-    print('ImageProcessor: Rotating \$degrees degrees');
+    print('ImageProcessor: Rotating $degrees degrees');
     await Future.delayed(Duration(milliseconds: 50));
     return path.replaceAll('.jpg', '_rotated.jpg');
   }
   
   Future<String> addWatermark(String path, String text) async {
-    print('ImageProcessor: Adding watermark: \$text');
+    print('ImageProcessor: Adding watermark: $text');
     await Future.delayed(Duration(milliseconds: 80));
     return path.replaceAll('.jpg', '_watermarked.jpg');
   }
@@ -4358,17 +4358,17 @@ class StorageService {
   Future<String> saveToGallery(String path) async {
     print('StorageService: Saving to gallery');
     await Future.delayed(Duration(milliseconds: 150));
-    return '/gallery/\${path.split('/').last}';
+    return '/gallery/${path.split('/').last}';
   }
   
   Future<String> uploadToCloud(String path) async {
     print('StorageService: Uploading to cloud');
     await Future.delayed(Duration(milliseconds: 300));
-    return 'https://cloud.example.com/\${path.split('/').last}';
+    return 'https://cloud.example.com/${path.split('/').last}';
   }
   
   Future<void> deleteLocal(String path) async {
-    print('StorageService: Deleting local file: \$path');
+    print('StorageService: Deleting local file: $path');
   }
 }
 
@@ -4527,7 +4527,7 @@ class CameraDemo extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 final path = await simpleCam.captureAndSave(flash: true);
-                print('Result: \$path');
+                print('Result: $path');
               },
               child: Text('Quick Photo'),
             ),
@@ -4540,7 +4540,7 @@ class CameraDemo extends StatelessWidget {
                   cropHeight: 600,
                   watermark: '© 2026',
                 );
-                print('Result: \$path');
+                print('Result: $path');
               },
               child: Text('Photo with Processing'),
             ),
@@ -4548,7 +4548,7 @@ class CameraDemo extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 final url = await simpleCam.captureAndUpload();
-                print('Result: \$url');
+                print('Result: $url');
               },
               child: Text('Photo to Cloud'),
             ),
@@ -4563,7 +4563,7 @@ void main() {
   runApp(MaterialApp(
     home: CameraDemo(),
   ));
-}"""),
+}'''),
       ],
       ar: [
         // Arabic versions would go here
@@ -4779,7 +4779,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Character Rendering
-        StrCodeBlock("""// Example 1: Basic - Text Character Flyweights
+        StrCodeBlock(r'''// Example 1: Basic - Text Character Flyweights
 // Use case: Rendering thousands of characters efficiently
 
 // Flyweight: Shared character glyph (intrinsic state)
@@ -4798,7 +4798,7 @@ class CharacterGlyph {
     required this.bold,
     required this.italic,
   }) {
-    print('Creating glyph for "\$character" (font: \$fontFamily, size: \$fontSize)');
+    print('Creating glyph for "$character" (font: $fontFamily, size: $fontSize)');
   }
   
   // Render using extrinsic state (position, color)
@@ -4808,7 +4808,7 @@ class CharacterGlyph {
       if (italic) 'italic',
     ].join(' ');
     
-    print('Rendering "\$character" at (\$x, \$y) in \$color \$style');
+    print('Rendering "$character" at ($x, $y) in $color $style');
   }
   
   int getMemorySize() {
@@ -4829,7 +4829,7 @@ class GlyphFactory {
     bool italic = false,
   }) {
     // Create unique key for this combination
-    final key = '\$character-\$fontFamily-\$fontSize-\$bold-\$italic';
+    final key = '$character-$fontFamily-$fontSize-$bold-$italic';
     
     // Return existing or create new
     return _glyphs.putIfAbsent(
@@ -4904,17 +4904,17 @@ class TextDocument {
     final withoutFlyweight = _characters.length * 50; // Approximate full object size
     
     print('=== Memory Statistics ===');
-    print('Characters: \${_characters.length}');
-    print('Unique glyphs: \${_glyphFactory.glyphCount}');
+    print('Characters: ${_characters.length}');
+    print('Unique glyphs: ${_glyphFactory.glyphCount}');
     print('');
     print('With Flyweight:');
-    print('  Glyph memory: \$glyphMemory bytes');
-    print('  Context memory: \$contextMemory bytes');
-    print('  Total: \$totalMemory bytes');
+    print('  Glyph memory: $glyphMemory bytes');
+    print('  Context memory: $contextMemory bytes');
+    print('  Total: $totalMemory bytes');
     print('');
-    print('Without Flyweight (estimated): \$withoutFlyweight bytes');
-    print('Memory saved: \${withoutFlyweight - totalMemory} bytes');
-    print('Reduction: \${((1 - totalMemory / withoutFlyweight) * 100).toStringAsFixed(1)}%');
+    print('Without Flyweight (estimated): $withoutFlyweight bytes');
+    print('Memory saved: ${withoutFlyweight - totalMemory} bytes');
+    print('Reduction: ${((1 - totalMemory / withoutFlyweight) * 100).toStringAsFixed(1)}%');
   }
 }
 
@@ -4928,11 +4928,11 @@ void main() {
   
   doc.render();
   doc.printMemoryStats();
-}"""),
+}'''),
 
         // Example 2: Intermediate - Game Particle System
         StrCodeBlock(
-          """// Example 2: Intermediate - Particle System with Flyweight
+          r'''// Example 2: Intermediate - Particle System with Flyweight
 // Use case: Rendering thousands of particles efficiently
 
 import 'dart:math';
@@ -4950,7 +4950,7 @@ class ParticleType {
     required this.baseSize,
     required this.baseColor,
   }) {
-    print('Created particle type: \$name (texture: \$texture)');
+    print('Created particle type: $name (texture: $texture)');
   }
   
   // Render using extrinsic state
@@ -4962,8 +4962,8 @@ class ParticleType {
     required double opacity,
   }) {
     final size = baseSize * scale;
-    print('Draw \$name at (\${x.toStringAsFixed(1)}, \${y.toStringAsFixed(1)}) '
-        'size: \${size.toStringAsFixed(1)} opacity: \${opacity.toStringAsFixed(2)}');
+    print('Draw $name at (${x.toStringAsFixed(1)}, ${y.toStringAsFixed(1)}) '
+        'size: ${size.toStringAsFixed(1)} opacity: ${opacity.toStringAsFixed(2)}');
   }
 }
 
@@ -4999,7 +4999,7 @@ class ParticleTypeFactory {
           baseSize: 12.0,
           baseColor: Colors.purple,
         ),
-        _ => throw Exception('Unknown particle type: \$name'),
+        _ => throw Exception('Unknown particle type: $name'),
       };
     });
   }
@@ -5084,7 +5084,7 @@ class ParticleSystem {
       ));
     }
     
-    print('Emitted \$count \$typeName particles');
+    print('Emitted $count $typeName particles');
   }
   
   void update(double deltaTime) {
@@ -5104,9 +5104,9 @@ class ParticleSystem {
   
   void printStats() {
     print('=== Particle System Stats ===');
-    print('Active particles: \${_particles.length}');
-    print('Particle types: \${_typeFactory.typeCount}');
-    print('Memory efficiency: \${_particles.length} particles share \${_typeFactory.typeCount} textures');
+    print('Active particles: ${_particles.length}');
+    print('Particle types: ${_typeFactory.typeCount}');
+    print('Memory efficiency: ${_particles.length} particles share ${_typeFactory.typeCount} textures');
   }
 }
 
@@ -5132,11 +5132,11 @@ void main() {
   print('Without Flyweight: 270 particles × ~1KB = 270KB');
   print('With Flyweight: 4 types × 1KB + 270 particles × 64 bytes = ~21KB');
   print('Memory saved: ~92%!');
-}""",
+}''',
         ),
 
         // Example 3: Advanced - Forest Rendering
-        StrCodeBlock("""// Example 3: Advanced - Forest with Millions of Trees
+        StrCodeBlock(r'''// Example 3: Advanced - Forest with Millions of Trees
 // Use case: Rendering massive number of similar objects
 
 import 'dart:math';
@@ -5156,7 +5156,7 @@ class TreeModel {
     required this.baseHeight,
     required this.baseWidth,
   }) {
-    print('Loading tree model: \$species (mesh: \${meshData.length} bytes)');
+    print('Loading tree model: $species (mesh: ${meshData.length} bytes)');
   }
   
   void render({
@@ -5168,8 +5168,8 @@ class TreeModel {
     required Color tint,
   }) {
     // Simulate rendering with scaled model
-    print('Render \$species at (\${x.toStringAsFixed(1)}, \${y.toStringAsFixed(1)}, \${z.toStringAsFixed(1)}) '
-        'h:\${height.toStringAsFixed(1)}m rot:\${rotation.toStringAsFixed(0)}°');
+    print('Render $species at (${x.toStringAsFixed(1)}, ${y.toStringAsFixed(1)}, ${z.toStringAsFixed(1)}) '
+        'h:${height.toStringAsFixed(1)}m rot:${rotation.toStringAsFixed(0)}°');
   }
   
   int getMemorySize() {
@@ -5216,7 +5216,7 @@ class TreeModelFactory {
         baseHeight: 18.0,
         baseWidth: 3.5,
       ),
-      _ => throw Exception('Unknown species: \$species'),
+      _ => throw Exception('Unknown species: $species'),
     };
   }
   
@@ -5294,7 +5294,7 @@ class Forest {
   }
   
   void generateForest(int treeCount, double areaSize) {
-    print('Generating forest with \$treeCount trees...');
+    print('Generating forest with $treeCount trees...');
     
     final speciesList = ['oak', 'pine', 'birch', 'maple'];
     
@@ -5323,7 +5323,7 @@ class Forest {
         rendered++;
         
         if (rendered >= 5) {
-          print('... (\${_trees.length - rendered} more trees)');
+          print('... (${_trees.length - rendered} more trees)');
           break;
         }
       }
@@ -5340,19 +5340,19 @@ class Forest {
       sum + tree.getMemorySize() + tree.model.getMemorySize());
     
     print('=== Forest Memory Statistics ===');
-    print('Total trees: \${_trees.length}');
-    print('Unique species: \${_modelFactory.modelCount}');
+    print('Total trees: ${_trees.length}');
+    print('Unique species: ${_modelFactory.modelCount}');
     print('');
     print('With Flyweight:');
-    print('  Model memory: \${(modelMemory / 1024).toStringAsFixed(1)} KB');
-    print('  Tree instance memory: \${(treeMemory / 1024).toStringAsFixed(1)} KB');
-    print('  Total: \${(totalMemory / 1024).toStringAsFixed(1)} KB');
+    print('  Model memory: ${(modelMemory / 1024).toStringAsFixed(1)} KB');
+    print('  Tree instance memory: ${(treeMemory / 1024).toStringAsFixed(1)} KB');
+    print('  Total: ${(totalMemory / 1024).toStringAsFixed(1)} KB');
     print('');
     print('Without Flyweight (estimated):');
-    print('  Total: \${(withoutFlyweight / 1024).toStringAsFixed(1)} KB');
+    print('  Total: ${(withoutFlyweight / 1024).toStringAsFixed(1)} KB');
     print('');
-    print('Memory saved: \${((withoutFlyweight - totalMemory) / 1024).toStringAsFixed(1)} KB');
-    print('Reduction: \${((1 - totalMemory / withoutFlyweight) * 100).toStringAsFixed(1)}%');
+    print('Memory saved: ${((withoutFlyweight - totalMemory) / 1024).toStringAsFixed(1)} KB');
+    print('Reduction: ${((1 - totalMemory / withoutFlyweight) * 100).toStringAsFixed(1)}%');
   }
 }
 
@@ -5376,10 +5376,10 @@ void main() {
   print('  - Memory reduction: 99.93%!');
 }
 
-import 'dart:math';"""),
+import 'dart:math';'''),
 
         // Example 4: Flutter - Icon System
-        StrCodeBlock("""// Example 4: Flutter - Shared Icon System
+        StrCodeBlock(r'''// Example 4: Flutter - Shared Icon System
 // Use case: Efficient icon rendering in Flutter apps
 
 // Flyweight: Icon data (intrinsic state)
@@ -5393,7 +5393,7 @@ class IconData {
     required this.svgPath,
     required this.codePoint,
   }) {
-    print('Loaded icon: \$name');
+    print('Loaded icon: $name');
   }
   
   Widget build({
@@ -5585,13 +5585,13 @@ class IconFlyweightDemo extends StatelessWidget {
               style: .titleMedium?.copyWith(fontWeight: .bold),
             ),
             .height(8),
-            Text('Icon instances: \$instanceCount'),
-            Text('Shared IconData objects: \${registry.iconCount}'),
+            Text('Icon instances: $instanceCount'),
+            Text('Shared IconData objects: ${registry.iconCount}'),
             .height(8),
-            Text('With Flyweight: ~\${(totalMemory / 1024).toStringAsFixed(1)} KB'),
-            Text('Without Flyweight: ~\${(withoutFlyweight / 1024).toStringAsFixed(1)} KB'),
+            Text('With Flyweight: ~${(totalMemory / 1024).toStringAsFixed(1)} KB'),
+            Text('Without Flyweight: ~${(withoutFlyweight / 1024).toStringAsFixed(1)} KB'),
             Text(
-              'Memory saved: \${((1 - totalMemory / withoutFlyweight) * 100).toStringAsFixed(0)}%',
+              'Memory saved: ${((1 - totalMemory / withoutFlyweight) * 100).toStringAsFixed(0)}%',
               style: .titleSmall?.copyWith(
                 color: Colors.green,
                 fontWeight: .bold,
@@ -5608,7 +5608,7 @@ void main() {
   runApp(MaterialApp(
     home: IconFlyweightDemo(),
   ));
-}"""),
+}'''),
       ],
       ar: [
         // Arabic versions would go here
@@ -5825,7 +5825,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Virtual Proxy (Lazy Loading)
-        StrCodeBlock("""// Example 1: Basic - Virtual Proxy (Lazy Loading)
+        StrCodeBlock(r'''// Example 1: Basic - Virtual Proxy (Lazy Loading)
 // Use case: Defer expensive image loading until actually needed
 
 // Subject: Common interface
@@ -5849,17 +5849,17 @@ class HighResolutionImage implements Image {
   }
   
   void _loadFromDisk() {
-    print('Loading high-res image from disk: \$filename (expensive!)');
+    print('Loading high-res image from disk: $filename (expensive!)');
     // Simulate expensive loading
     _width = 4000;
     _height = 3000;
-    _imageData = 'BINARY_IMAGE_DATA_\$filename';
-    print('Image loaded: \${_imageData.length} bytes');
+    _imageData = 'BINARY_IMAGE_DATA_$filename';
+    print('Image loaded: ${_imageData.length} bytes');
   }
   
   @override
   void display() {
-    print('Displaying \$filename (\${_width}x\$_height)');
+    print('Displaying $filename (${_width}x$_height)');
   }
   
   @override
@@ -5876,7 +5876,7 @@ class ImageProxy implements Image {
   HighResolutionImage? _realImage; // null until accessed
   
   ImageProxy(this.filename) {
-    print('Proxy created for: \$filename (image NOT loaded yet)');
+    print('Proxy created for: $filename (image NOT loaded yet)');
   }
   
   // Lazy initialization - create real image only on demand
@@ -5925,7 +5925,7 @@ class ImageGallery {
     print('\n=== Gallery Status ===');
     for (final image in _images) {
       if (image is ImageProxy) {
-        print('\${image.filename}: \${image.isLoaded ? "loaded" : "not loaded"}');
+        print('${image.filename}: ${image.isLoaded ? "loaded" : "not loaded"}');
       }
     }
   }
@@ -5956,11 +5956,11 @@ void main() {
   gallery.showStatus();
   
   print('\n✓ Images 1, 3, 5 were never loaded - saving memory and time!');
-}"""),
+}'''),
 
         // Example 2: Intermediate - Protection Proxy
         StrCodeBlock(
-          """// Example 2: Intermediate - Protection Proxy (Access Control)
+          r'''// Example 2: Intermediate - Protection Proxy (Access Control)
 // Use case: Role-based access control for sensitive operations
 
 enum UserRole { guest, user, admin, superAdmin }
@@ -5972,7 +5972,7 @@ class User {
   User(this.name, this.role);
   
   @override
-  String toString() => '\$name (\$role)';
+  String toString() => '$name ($role)';
 }
 
 // Subject: File system operations
@@ -5994,7 +5994,7 @@ class LocalFileSystem implements FileSystem {
   
   @override
   List<String> listFiles(String path) {
-    print('FileSystem: Listing files in \$path');
+    print('FileSystem: Listing files in $path');
     return _files.keys
         .where((k) => k.startsWith(path))
         .toList();
@@ -6002,25 +6002,25 @@ class LocalFileSystem implements FileSystem {
   
   @override
   String readFile(String path) {
-    print('FileSystem: Reading \$path');
+    print('FileSystem: Reading $path');
     return _files[path] ?? 'File not found';
   }
   
   @override
   void writeFile(String path, String content) {
-    print('FileSystem: Writing to \$path');
+    print('FileSystem: Writing to $path');
     _files[path] = content;
   }
   
   @override
   void deleteFile(String path) {
-    print('FileSystem: Deleting \$path');
+    print('FileSystem: Deleting $path');
     _files.remove(path);
   }
   
   @override
   void createDirectory(String path) {
-    print('FileSystem: Creating directory \$path');
+    print('FileSystem: Creating directory $path');
   }
 }
 
@@ -6041,7 +6041,7 @@ class ProtectedFileSystem implements FileSystem {
     
     if (!hasAccess) {
       throw UnauthorizedException(
-        'User \$_currentUser does not have permission to \$operation: \$path',
+        'User $_currentUser does not have permission to $operation: $path',
       );
     }
     
@@ -6054,7 +6054,7 @@ class ProtectedFileSystem implements FileSystem {
       }
     }
     
-    print('✓ Permission granted: \$_currentUser can \$operation \$path');
+    print('✓ Permission granted: $_currentUser can $operation $path');
   }
   
   @override
@@ -6093,18 +6093,18 @@ class UnauthorizedException implements Exception {
   UnauthorizedException(this.message);
   
   @override
-  String toString() => '🚫 Unauthorized: \$message';
+  String toString() => '🚫 Unauthorized: $message';
 }
 
 // Client code
 void testAccess(FileSystem fs, String label) {
-  print('\n=== \$label ===');
+  print('\n=== $label ===');
   
   final operations = [
-    () => print('List /public: \${fs.listFiles('/public')}'),
-    () => print('Read /public/readme.txt: \${fs.readFile('/public/readme.txt')}'),
-    () => print('Read /private/config.json: \${fs.readFile('/private/config.json')}'),
-    () => print('Read /admin/users.db: \${fs.readFile('/admin/users.db')}'),
+    () => print('List /public: ${fs.listFiles('/public')}'),
+    () => print('Read /public/readme.txt: ${fs.readFile('/public/readme.txt')}'),
+    () => print('Read /private/config.json: ${fs.readFile('/private/config.json')}'),
+    () => print('Read /admin/users.db: ${fs.readFile('/admin/users.db')}'),
     () { fs.writeFile('/public/test.txt', 'test'); print('Write: success'); },
     () { fs.deleteFile('/admin/users.db'); print('Delete admin file: success'); },
   ];
@@ -6141,11 +6141,11 @@ void main() {
     ProtectedFileSystem(realFileSystem, User('Dave', UserRole.superAdmin)),
     'Super Admin Access',
   );
-}""",
+}''',
         ),
 
         // Example 3: Advanced - Caching + Logging Proxy
-        StrCodeBlock("""// Example 3: Advanced - Caching and Logging Proxy
+        StrCodeBlock(r'''// Example 3: Advanced - Caching and Logging Proxy
 // Use case: Transparent caching and audit logging for API calls
 
 // Subject: Data service interface
@@ -6163,13 +6163,13 @@ class RemoteUserService implements UserDataService {
   @override
   Future<Map<String, dynamic>> getUser(int id) async {
     _callCount++;
-    print('API: GET /users/\$id (call #\$_callCount)');
+    print('API: GET /users/$id (call #$_callCount)');
     await Future.delayed(.milliseconds(200)); // Simulate network
     
     return {
       'id': id,
-      'name': 'User \$id',
-      'email': 'user\$id@example.com',
+      'name': 'User $id',
+      'email': 'user$id@example.com',
       'role': 'user',
       'createdAt': DateTime.now().toIso8601String(),
     };
@@ -6178,19 +6178,19 @@ class RemoteUserService implements UserDataService {
   @override
   Future<List<Map<String, dynamic>>> searchUsers(String query) async {
     _callCount++;
-    print('API: GET /users?q=\$query (call #\$_callCount)');
+    print('API: GET /users?q=$query (call #$_callCount)');
     await Future.delayed(.milliseconds(300));
     
     return [
-      {'id': 1, 'name': 'Alice \$query'},
-      {'id': 2, 'name': 'Bob \$query'},
+      {'id': 1, 'name': 'Alice $query'},
+      {'id': 2, 'name': 'Bob $query'},
     ];
   }
   
   @override
   Future<bool> updateUser(int id, Map<String, dynamic> data) async {
     _callCount++;
-    print('API: PUT /users/\$id (call #\$_callCount)');
+    print('API: PUT /users/$id (call #$_callCount)');
     await Future.delayed(.milliseconds(150));
     return true;
   }
@@ -6198,7 +6198,7 @@ class RemoteUserService implements UserDataService {
   @override
   Future<bool> deleteUser(int id) async {
     _callCount++;
-    print('API: DELETE /users/\$id (call #\$_callCount)');
+    print('API: DELETE /users/$id (call #$_callCount)');
     await Future.delayed(.milliseconds(150));
     return true;
   }
@@ -6229,7 +6229,7 @@ class CachingUserServiceProxy implements UserDataService {
   
   T _getFromCache<T>(String key) {
     _cacheHits++;
-    print('Cache HIT: \$key');
+    print('Cache HIT: $key');
     return _cache[key] as T;
   }
   
@@ -6237,12 +6237,12 @@ class CachingUserServiceProxy implements UserDataService {
     _cacheMisses++;
     _cache[key] = value;
     _cacheTimestamps[key] = DateTime.now();
-    print('Cache STORED: \$key');
+    print('Cache STORED: $key');
   }
   
   void _invalidateUserCache(int id) {
     final keysToRemove = _cache.keys
-        .where((k) => k.contains('user_\$id') || k.contains('search_'))
+        .where((k) => k.contains('user_$id') || k.contains('search_'))
         .toList();
     
     for (final key in keysToRemove) {
@@ -6250,12 +6250,12 @@ class CachingUserServiceProxy implements UserDataService {
       _cacheTimestamps.remove(key);
     }
     
-    print('Cache INVALIDATED: keys for user \$id');
+    print('Cache INVALIDATED: keys for user $id');
   }
   
   @override
   Future<Map<String, dynamic>> getUser(int id) async {
-    final key = 'user_\$id';
+    final key = 'user_$id';
     
     if (_isCacheValid(key)) {
       return _getFromCache(key);
@@ -6268,7 +6268,7 @@ class CachingUserServiceProxy implements UserDataService {
   
   @override
   Future<List<Map<String, dynamic>>> searchUsers(String query) async {
-    final key = 'search_\$query';
+    final key = 'search_$query';
     
     if (_isCacheValid(key)) {
       return _getFromCache(key);
@@ -6299,13 +6299,13 @@ class CachingUserServiceProxy implements UserDataService {
   
   void printStats() {
     print('\n=== Cache Statistics ===');
-    print('Cache hits: \$_cacheHits');
-    print('Cache misses: \$_cacheMisses');
+    print('Cache hits: $_cacheHits');
+    print('Cache misses: $_cacheMisses');
     final total = _cacheHits + _cacheMisses;
     if (total > 0) {
-      print('Hit rate: \${(_cacheHits / total * 100).toStringAsFixed(1)}%');
+      print('Hit rate: ${(_cacheHits / total * 100).toStringAsFixed(1)}%');
     }
-    print('Cached entries: \${_cache.length}');
+    print('Cached entries: ${_cache.length}');
   }
 }
 
@@ -6323,7 +6323,7 @@ class LoggingUserServiceProxy implements UserDataService {
     Future<T> Function() action,
   ) async {
     final start = DateTime.now();
-    print('AUDIT: \$_userId performing \$operation on \$resource');
+    print('AUDIT: $_userId performing $operation on $resource');
     
     try {
       final result = await action();
@@ -6338,7 +6338,7 @@ class LoggingUserServiceProxy implements UserDataService {
         timestamp: start,
       ));
       
-      print('AUDIT: \$operation \$resource completed in \${duration.inMilliseconds}ms');
+      print('AUDIT: $operation $resource completed in ${duration.inMilliseconds}ms');
       return result;
     } catch (e) {
       _auditLog.add(AuditLog(
@@ -6350,29 +6350,29 @@ class LoggingUserServiceProxy implements UserDataService {
         timestamp: start,
       ));
       
-      print('AUDIT: \$operation \$resource FAILED: \$e');
+      print('AUDIT: $operation $resource FAILED: $e');
       rethrow;
     }
   }
   
   @override
   Future<Map<String, dynamic>> getUser(int id) {
-    return _logOperation('READ', 'users/\$id', () => _realService.getUser(id));
+    return _logOperation('READ', 'users/$id', () => _realService.getUser(id));
   }
   
   @override
   Future<List<Map<String, dynamic>>> searchUsers(String query) {
-    return _logOperation('SEARCH', 'users?q=\$query', () => _realService.searchUsers(query));
+    return _logOperation('SEARCH', 'users?q=$query', () => _realService.searchUsers(query));
   }
   
   @override
   Future<bool> updateUser(int id, Map<String, dynamic> data) {
-    return _logOperation('UPDATE', 'users/\$id', () => _realService.updateUser(id, data));
+    return _logOperation('UPDATE', 'users/$id', () => _realService.updateUser(id, data));
   }
   
   @override
   Future<bool> deleteUser(int id) {
-    return _logOperation('DELETE', 'users/\$id', () => _realService.deleteUser(id));
+    return _logOperation('DELETE', 'users/$id', () => _realService.deleteUser(id));
   }
   
   void printAuditLog() {
@@ -6405,8 +6405,8 @@ class AuditLog {
   @override
   String toString() {
     final status = success ? '✓' : '✗';
-    final durationStr = duration != null ? '\${duration!.inMilliseconds}ms' : '';
-    return '[\$timestamp] \$status \$userId | \$operation \$resource \$durationStr \${error ?? ''}';
+    final durationStr = duration != null ? '${duration!.inMilliseconds}ms' : '';
+    return '[$timestamp] $status $userId | $operation $resource $durationStr ${error ?? ''}';
   }
 }
 
@@ -6439,13 +6439,13 @@ void main() async {
   cachingService.printStats();
   loggingService.printAuditLog();
   
-  print('\nDirect API calls made: \${realService.callCount}');
+  print('\nDirect API calls made: ${realService.callCount}');
   print('Total requests made: 7');
-  print('API calls saved by cache: \${7 - realService.callCount}');
-}"""),
+  print('API calls saved by cache: ${7 - realService.callCount}');
+}'''),
 
         // Example 4: Flutter - Network Request Proxy
-        StrCodeBlock("""// Example 4: Flutter - Smart API Client Proxy
+        StrCodeBlock(r'''// Example 4: Flutter - Smart API Client Proxy
 // Use case: Transparent retry, auth, and offline support
 
 // Subject: API client interface
@@ -6469,33 +6469,33 @@ class HttpApiClient implements ApiClient {
   
   Map<String, String> get _headers => {
     'Content-Type': 'application/json',
-    if (_authToken != null) 'Authorization': 'Bearer \$_authToken',
+    if (_authToken != null) 'Authorization': 'Bearer $_authToken',
   };
   
   @override
   Future<Map<String, dynamic>> get(String endpoint) async {
-    print('HTTP GET: \$baseUrl\$endpoint');
+    print('HTTP GET: $baseUrl$endpoint');
     await Future.delayed(.milliseconds(100));
-    return {'data': 'GET response from \$endpoint', 'status': 200};
+    return {'data': 'GET response from $endpoint', 'status': 200};
   }
   
   @override
   Future<Map<String, dynamic>> post(String endpoint, Map<String, dynamic> body) async {
-    print('HTTP POST: \$baseUrl\$endpoint body: \$body');
+    print('HTTP POST: $baseUrl$endpoint body: $body');
     await Future.delayed(.milliseconds(150));
     return {'data': 'POST response', 'status': 201};
   }
   
   @override
   Future<Map<String, dynamic>> put(String endpoint, Map<String, dynamic> body) async {
-    print('HTTP PUT: \$baseUrl\$endpoint body: \$body');
+    print('HTTP PUT: $baseUrl$endpoint body: $body');
     await Future.delayed(.milliseconds(150));
     return {'data': 'PUT response', 'status': 200};
   }
   
   @override
   Future<bool> delete(String endpoint) async {
-    print('HTTP DELETE: \$baseUrl\$endpoint');
+    print('HTTP DELETE: $baseUrl$endpoint');
     await Future.delayed(.milliseconds(100));
     return true;
   }
@@ -6523,7 +6523,7 @@ class SmartApiClientProxy implements ApiClient {
   
   void setOnlineStatus(bool isOnline) {
     _isOnline = isOnline;
-    print('Network status: \${isOnline ? 'ONLINE' : 'OFFLINE'}');
+    print('Network status: ${isOnline ? 'ONLINE' : 'OFFLINE'}');
   }
   
   Future<Map<String, dynamic>> _withRetry(
@@ -6532,7 +6532,7 @@ class SmartApiClientProxy implements ApiClient {
   ) async {
     // Deduplication: if same request is in-flight, reuse it
     if (_pendingRequests.containsKey(key)) {
-      print('Dedup: Reusing in-flight request for \$key');
+      print('Dedup: Reusing in-flight request for $key');
       return _pendingRequests[key]!;
     }
     
@@ -6554,10 +6554,10 @@ class SmartApiClientProxy implements ApiClient {
     // Offline: return cached data
     if (!_isOnline) {
       if (_offlineCache.containsKey(key)) {
-        print('Offline: Returning cached data for \$key');
+        print('Offline: Returning cached data for $key');
         return {..._offlineCache[key]!, '_cached': true};
       }
-      throw Exception('Offline and no cached data for \$key');
+      throw Exception('Offline and no cached data for $key');
     }
     
     // Retry logic
@@ -6573,11 +6573,11 @@ class SmartApiClientProxy implements ApiClient {
         return result;
       } catch (e) {
         if (attempt < _maxRetries) {
-          print('Request failed (attempt \$attempt/\$_maxRetries): \$e');
-          print('Retrying in \${_retryDelay.inSeconds}s...');
+          print('Request failed (attempt $attempt/$_maxRetries): $e');
+          print('Retrying in ${_retryDelay.inSeconds}s...');
           await Future.delayed(_retryDelay);
         } else {
-          print('All \$_maxRetries attempts failed');
+          print('All $_maxRetries attempts failed');
           
           // Last resort: return cached data if available
           if (_offlineCache.containsKey(key)) {
@@ -6596,7 +6596,7 @@ class SmartApiClientProxy implements ApiClient {
   @override
   Future<Map<String, dynamic>> get(String endpoint) {
     return _withRetry(
-      'GET:\$endpoint',
+      'GET:$endpoint',
       () => _realClient.get(endpoint),
     );
   }
@@ -6607,7 +6607,7 @@ class SmartApiClientProxy implements ApiClient {
     Map<String, dynamic> body,
   ) {
     return _withRetry(
-      'POST:\$endpoint:\${body.hashCode}',
+      'POST:$endpoint:${body.hashCode}',
       () => _realClient.post(endpoint, body),
     );
   }
@@ -6618,7 +6618,7 @@ class SmartApiClientProxy implements ApiClient {
     Map<String, dynamic> body,
   ) {
     return _withRetry(
-      'PUT:\$endpoint',
+      'PUT:$endpoint',
       () => _realClient.put(endpoint, body),
     );
   }
@@ -6672,9 +6672,9 @@ class _ApiProxyDemoState extends State<ApiProxyDemo> {
   Future<void> _fetchUser() async {
     try {
       final result = await _api.get('/users/1');
-      _addLog('✓ GET /users/1: \${result['_stale'] == true ? "(stale)" : ""}');
+      _addLog('✓ GET /users/1: ${result['_stale'] == true ? "(stale)" : ""}');
     } catch (e) {
-      _addLog('✗ GET failed: \$e');
+      _addLog('✗ GET failed: $e');
     }
   }
   
@@ -6683,7 +6683,7 @@ class _ApiProxyDemoState extends State<ApiProxyDemo> {
       _isOnline = !_isOnline;
       _api.setOnlineStatus(_isOnline);
     });
-    _addLog('Network: \${_isOnline ? "ONLINE" : "OFFLINE"}');
+    _addLog('Network: ${_isOnline ? "ONLINE" : "OFFLINE"}');
   }
   
   @override
@@ -6738,7 +6738,7 @@ class _ApiProxyDemoState extends State<ApiProxyDemo> {
                 .width(8),
                 Text(_isOnline ? 'Online' : 'Offline'),
                 Spacer(),
-                Text('Cached: \${_api.cachedEndpoints} endpoints'),
+                Text('Cached: ${_api.cachedEndpoints} endpoints'),
               ],
             ),
           ),
@@ -6766,7 +6766,7 @@ void main() {
   runApp(MaterialApp(
     home: ApiProxyDemo(),
   ));
-}"""),
+}'''),
       ],
       ar: [
         // Arabic versions would go here
@@ -6980,7 +6980,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Comparing all wrapper types
-        StrCodeBlock("""// Example 1: All Wrapper Types Side by Side
+        StrCodeBlock(r'''// Example 1: All Wrapper Types Side by Side
 // Use case: Understanding the difference between wrapper patterns
 
 // Original class (the thing being wrapped)
@@ -6991,8 +6991,8 @@ abstract class DataService {
 class RealDataService implements DataService {
   @override
   String fetchData(String query) {
-    print('Fetching data for: \$query');
-    return 'Data for \$query';
+    print('Fetching data for: $query');
+    return 'Data for $query';
   }
 }
 
@@ -7002,7 +7002,7 @@ class RealDataService implements DataService {
 class LegacyXmlService {
   // Incompatible interface
   String getXmlData(String searchTerm) {
-    return '<data><result>\$searchTerm result</result></data>';
+    return '<data><result>$searchTerm result</result></data>';
   }
 }
 
@@ -7022,7 +7022,7 @@ class XmlToJsonAdapter implements DataService {
   
   String _parseXmlToJson(String xml) {
     final match = RegExp(r'<result>(.*?)</result>').firstMatch(xml);
-    return '{"result": "\${match?.group(1) ?? ''}"}';
+    return '{"result": "${match?.group(1) ?? ''}"}';
   }
 }
 
@@ -7038,7 +7038,7 @@ class CachingDecorator implements DataService {
   @override
   String fetchData(String query) {
     if (_cache.containsKey(query)) {
-      print('Cache HIT for: \$query');
+      print('Cache HIT for: $query');
       return _cache[query]!;
     }
     
@@ -7074,7 +7074,7 @@ class UnauthorizedException implements Exception {
   final String message;
   UnauthorizedException(this.message);
   @override
-  String toString() => 'Unauthorized: \$message';
+  String toString() => 'Unauthorized: $message';
 }
 
 void main() {
@@ -7085,7 +7085,7 @@ void main() {
   final xmlAdapter = XmlToJsonAdapter(LegacyXmlService());
   // Works with new interface even though source uses old interface
   final result1 = xmlAdapter.fetchData('flutter');
-  print('Result: \$result1\n');
+  print('Result: $result1\n');
   
   // ── Decorator ──
   print('--- Decorator: Adds caching behavior ---');
@@ -7105,7 +7105,7 @@ void main() {
   try {
     noAuth.fetchData('dart'); // Blocked by proxy
   } catch (e) {
-    print('\$e');
+    print('$e');
   }
   print('');
   
@@ -7117,11 +7117,11 @@ void main() {
   );
   combined.fetchData('flutter'); // Auth check → cache miss → fetch
   combined.fetchData('flutter'); // Auth check → cache hit
-}"""),
+}'''),
 
         // Example 2: Intermediate - Progressive Enhancement
         StrCodeBlock(
-          """// Example 2: Intermediate - Progressive Enhancement with Wrappers
+          r'''// Example 2: Intermediate - Progressive Enhancement with Wrappers
 // Use case: Building up a service with multiple wrapper layers
 
 abstract class HttpClient {
@@ -7133,16 +7133,16 @@ abstract class HttpClient {
 class BasicHttpClient implements HttpClient {
   @override
   Future<String> get(String url) async {
-    print('HTTP GET: \$url');
+    print('HTTP GET: $url');
     await Future.delayed(.milliseconds(50));
-    return 'Response from \$url';
+    return 'Response from $url';
   }
   
   @override
   Future<String> post(String url, String body) async {
-    print('HTTP POST: \$url | \$body');
+    print('HTTP POST: $url | $body');
     await Future.delayed(.milliseconds(80));
-    return 'Created at \$url';
+    return 'Created at $url';
   }
 }
 
@@ -7155,19 +7155,19 @@ class LoggingHttpClient implements HttpClient {
   
   @override
   Future<String> get(String url) async {
-    _requestLog.add('GET \$url');
-    print('LOG: GET \$url');
+    _requestLog.add('GET $url');
+    print('LOG: GET $url');
     final response = await _inner.get(url);
-    print('LOG: Response: \${response.substring(0, 20)}...');
+    print('LOG: Response: ${response.substring(0, 20)}...');
     return response;
   }
   
   @override
   Future<String> post(String url, String body) async {
-    _requestLog.add('POST \$url');
-    print('LOG: POST \$url');
+    _requestLog.add('POST $url');
+    print('LOG: POST $url');
     final response = await _inner.post(url, body);
-    print('LOG: Response: \${response.substring(0, 20)}...');
+    print('LOG: Response: ${response.substring(0, 20)}...');
     return response;
   }
   
@@ -7183,14 +7183,14 @@ class AuthHttpClient implements HttpClient {
   
   @override
   Future<String> get(String url) {
-    print('AUTH: Adding token to GET \$url');
-    return _inner.get('\$url?token=\$_token');
+    print('AUTH: Adding token to GET $url');
+    return _inner.get('$url?token=$_token');
   }
   
   @override
   Future<String> post(String url, String body) {
-    print('AUTH: Adding token to POST \$url');
-    return _inner.post(url, '{"token": "\$_token", "data": \$body}');
+    print('AUTH: Adding token to POST $url');
+    return _inner.post(url, '{"token": "$_token", "data": $body}');
   }
 }
 
@@ -7209,7 +7209,7 @@ class RetryHttpClient implements HttpClient {
         return await request();
       } catch (e) {
         if (i < maxRetries) {
-          print('RETRY: Attempt \$i failed, retrying...');
+          print('RETRY: Attempt $i failed, retrying...');
           await Future.delayed(Duration(milliseconds: 100 * i));
         } else {
           rethrow;
@@ -7239,10 +7239,10 @@ class CacheHttpClient implements HttpClient {
   @override
   Future<String> get(String url) async {
     if (_cache.containsKey(url)) {
-      print('CACHE: HIT for \$url');
+      print('CACHE: HIT for $url');
       return _cache[url]!;
     }
-    print('CACHE: MISS for \$url');
+    print('CACHE: MISS for $url');
     final response = await _inner.get(url);
     _cache[url] = response;
     return response;
@@ -7278,14 +7278,14 @@ void main() async {
   await cached.post('https://api.example.com/users', '{"name": "Alice"}');
   
   print('\n=== Statistics ===');
-  print('Log entries: \${logged.requestLog.length}');
-  print('Cache size: \${cached.cacheSize}');
-  print('Total HTTP attempts: \${retried.totalAttempts}');
-}""",
+  print('Log entries: ${logged.requestLog.length}');
+  print('Cache size: ${cached.cacheSize}');
+  print('Total HTTP attempts: ${retried.totalAttempts}');
+}''',
         ),
 
         // Example 3: Advanced - Flutter Widget Wrapper
-        StrCodeBlock("""// Example 3: Advanced - Flutter Widget Wrappers
+        StrCodeBlock(r'''// Example 3: Advanced - Flutter Widget Wrappers
 // Use case: Applying the wrapper concept to Flutter widgets
 
 // Subject: Widget interface (Flutter's Widget IS the interface)
@@ -7310,7 +7310,7 @@ class AnalyticsWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('Analytics: Event "\$eventName" \${properties ?? ''}');
+        print('Analytics: Event "$eventName" ${properties ?? ''}');
       },
       child: child, // Delegate to original widget
     );
@@ -7447,7 +7447,7 @@ class PermissionGuard extends StatelessWidget {
           mainAxisSize: .min,
           children: [
             Icon(Icons.lock, size: 48),
-            Text('\$permissionName required'),
+            Text('$permissionName required'),
             ElevatedButton(
               onPressed: onRequestPermission,
               child: Text('Grant Permission'),
@@ -7550,7 +7550,7 @@ class _WrapperDemoState extends State<WrapperDemo> {
 
 void main() {
   runApp(MaterialApp(home: WrapperDemo()));
-}"""),
+}'''),
       ],
       ar: [
         // Arabic versions would go here
@@ -7756,7 +7756,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - JSON API Mapper
-        StrCodeBlock("""// Example 1: Basic - JSON API Response Mapper
+        StrCodeBlock(r'''// Example 1: Basic - JSON API Response Mapper
 // Use case: Mapping API responses to clean domain objects
 
 // Domain Objects: Pure business logic, no JSON knowledge
@@ -7785,7 +7785,7 @@ class User {
 
   @override
   String toString() =>
-      'User(id: \$id, name: \$name, email: \$email, premium: \$isPremium)';
+      'User(id: $id, name: $name, email: $email, premium: $isPremium)';
 }
 
 class Address {
@@ -7801,7 +7801,7 @@ class Address {
     required this.zipCode,
   });
 
-  String get fullAddress => '\$street, \$city, \$country \$zipCode';
+  String get fullAddress => '$street, $city, $country $zipCode';
 }
 
 // Mapper: Handles all translation between JSON and domain objects
@@ -7883,14 +7883,14 @@ void main() {
   print('=== API Response → Domain Object ===');
   final user = mapper.fromJson(apiResponse);
   print(user);
-  print('Display name: \${user.displayName}');
-  print('Is new user: \${user.isNewUser}');
-  print('Can access premium: \${user.canAccessPremiumContent()}');
-  print('Full address: \${user.address.fullAddress}');
+  print('Display name: ${user.displayName}');
+  print('Is new user: ${user.isNewUser}');
+  print('Can access premium: ${user.canAccessPremiumContent()}');
+  print('Full address: ${user.address.fullAddress}');
 
   print('=== Domain Object → API Payload ===');
   final payload = mapper.toJson(user);
-  print('Payload: \$payload');
+  print('Payload: $payload');
 
   print('=== Mapping a list ===');
   final apiList = [
@@ -7914,10 +7914,10 @@ void main() {
   for (final u in users) {
     print(u);
   }
-}"""),
+}'''),
 
         // Example 2: Intermediate - SQLite Database Mapper
-        StrCodeBlock("""// Example 2: Intermediate - SQLite Database Mapper
+        StrCodeBlock(r'''// Example 2: Intermediate - SQLite Database Mapper
 // Use case: Mapping between domain objects and database rows
 
 // Domain Objects: No SQL knowledge whatsoever
@@ -7976,7 +7976,7 @@ class Money {
 
   @override
   String toString() =>
-      '\${currency}\${amount.toStringAsFixed(2)}';
+      '${currency}${amount.toStringAsFixed(2)}';
 }
 
 enum Category { electronics, clothing, food, books, sports }
@@ -8087,14 +8087,14 @@ class ProductRepository {
 
   Future<void> save(Product product) async {
     final row = _mapper.fromDomain(product);
-    print('DB: INSERT/UPDATE product \${product.id}');
-    print('    Row: \${row.toMap()}');
+    print('DB: INSERT/UPDATE product ${product.id}');
+    print('    Row: ${row.toMap()}');
     _db.removeWhere((r) => r['id'] == product.id);
     _db.add(row.toMap());
   }
 
   Future<Product?> findById(String id) async {
-    print('DB: SELECT * FROM products WHERE id = \$id');
+    print('DB: SELECT * FROM products WHERE id = $id');
     final map = _db.cast<Map<String, dynamic>?>().firstWhere(
       (r) => r?['id'] == id,
       orElse: () => null,
@@ -8111,7 +8111,7 @@ class ProductRepository {
   }
 
   Future<List<Product>> findByCategory(Category category) async {
-    print('DB: SELECT * FROM products WHERE category_name = \${category.name}');
+    print('DB: SELECT * FROM products WHERE category_name = ${category.name}');
     return _db
         .where((r) =>
             r['category_name'] == category.name &&
@@ -8151,22 +8151,22 @@ void main() async {
 
   print('=== Finding Products ===');
   final found = await repo.findById('prod_001');
-  print('Found: \$found');
-  print('Is available: \${found?.isAvailable}');
-  print('Price: \${found?.price}');
+  print('Found: $found');
+  print('Is available: ${found?.isAvailable}');
+  print('Price: ${found?.price}');
 
   print('=== Finding by Category ===');
   final electronics = await repo.findByCategory(.electronics);
-  print('Electronics count: \${electronics.length}');
+  print('Electronics count: ${electronics.length}');
   for (final p in electronics) {
-    print('  - \${p.name} (\${p.price}) stock: \${p.stockQuantity}');
+    print('  - ${p.name} (${p.price}) stock: ${p.stockQuantity}');
     if (p.isLowStock) print('    ⚠️ Low stock!');
   }
-}"""),
+}'''),
 
         // Example 3: Advanced - Multi-Source Mapper with Identity Map
         StrCodeBlock(
-          """// Example 3: Advanced - Multi-Source Mapper with Identity Map
+          r'''// Example 3: Advanced - Multi-Source Mapper with Identity Map
 // Use case: Mapping from multiple sources with object identity tracking
 
 // Domain Objects
@@ -8249,11 +8249,11 @@ class OrderMapper {
 
     // Check identity map first
     if (_identityMap.has(orderId)) {
-      print('IdentityMap: Returning cached Order \$orderId');
+      print('IdentityMap: Returning cached Order $orderId');
       return _identityMap.get(orderId)!;
     }
 
-    print('IdentityMap: Mapping new Order \$orderId');
+    print('IdentityMap: Mapping new Order $orderId');
 
     final customer = _mapCustomer(
       json['customer'] as Map<String, dynamic>,
@@ -8309,7 +8309,7 @@ class OrderMapper {
     final customerId = json['customer_id'] as String;
 
     if (_customerMap.has(customerId)) {
-      print('IdentityMap: Reusing Customer \$customerId');
+      print('IdentityMap: Reusing Customer $customerId');
       return _customerMap.get(customerId)!;
     }
 
@@ -8358,7 +8358,7 @@ class OrderMapper {
   }
 
   void printStats() {
-    print('IdentityMap: \${_identityMap.size} orders, \${_customerMap.size} customers cached');
+    print('IdentityMap: ${_identityMap.size} orders, ${_customerMap.size} customers cached');
   }
 }
 
@@ -8422,22 +8422,22 @@ void main() {
 
   print('=== Order Details ===');
   for (final order in orders) {
-    print('Order \${order.id}:');
-    print('  Customer: \${order.customer.name}');
-    print('  Items: \${order.items.length}');
-    print('  Total: \${order.total}');
-    print('  Can cancel: \${order.canBeCancelled}');
+    print('Order ${order.id}:');
+    print('  Customer: ${order.customer.name}');
+    print('  Items: ${order.items.length}');
+    print('  Total: ${order.total}');
+    print('  Can cancel: ${order.canBeCancelled}');
   }
 
   print('=== Same Customer Object? ===');
   // Both orders share exact same Customer instance
-  print('Same instance: \${identical(orders[0].customer, orders[1].customer)}');
-}""",
+  print('Same instance: ${identical(orders[0].customer, orders[1].customer)}');
+}''',
         ),
 
         // Example 4: Flutter - API to Domain Model Mapper
         StrCodeBlock(
-          """// Example 4: Flutter - Complete Feature with Data Mapper
+          r'''// Example 4: Flutter - Complete Feature with Data Mapper
 // Use case: News feed with clean domain layer
 
 // Domain Objects: Purely business focused
@@ -8473,9 +8473,9 @@ class Article {
       DateTime.now().difference(publishedAt).inHours < 24;
   String get timeAgo {
     final diff = DateTime.now().difference(publishedAt);
-    if (diff.inMinutes < 60) return '\${diff.inMinutes}m ago';
-    if (diff.inHours < 24) return '\${diff.inHours}h ago';
-    return '\${diff.inDays}d ago';
+    if (diff.inMinutes < 60) return '${diff.inMinutes}m ago';
+    if (diff.inHours < 24) return '${diff.inHours}h ago';
+    return '${diff.inDays}d ago';
   }
 }
 
@@ -8702,7 +8702,7 @@ class ArticleCard extends StatelessWidget {
                     const Spacer(),
                     Text(article.timeAgo),
                     const SizedBox(width: 8),
-                    Text('\${article.readTimeMinutes} min read'),
+                    Text('${article.readTimeMinutes} min read'),
                   ],
                 ),
               ],
@@ -8730,7 +8730,7 @@ class NewsApp extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasError) {
-            return Center(child: Text('Error: \${snapshot.error}'));
+            return Center(child: Text('Error: ${snapshot.error}'));
           }
           final articles = snapshot.data ?? [];
           return ListView.builder(
@@ -8746,7 +8746,7 @@ class NewsApp extends StatelessWidget {
 
 void main() {
   runApp(MaterialApp(home: NewsApp()));
-}""",
+}''',
         ),
       ],
       ar: [],
@@ -8946,7 +8946,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - API DTOs
-        StrCodeBlock("""// Example 1: Basic - API Request/Response DTOs
+        StrCodeBlock(r'''// Example 1: Basic - API Request/Response DTOs
 // Use case: Clean data contracts for API communication
 
 // ── REQUEST DTOs ──────────────────────────────────────────────
@@ -9107,7 +9107,7 @@ class ApiErrorResponse {
 class UserApiService {
   Future<UserResponse> createUser(CreateUserRequest request) async {
     print('POST /users');
-    print('Request body: \${request.toJson()}');
+    print('Request body: ${request.toJson()}');
 
     await Future.delayed(const Duration(milliseconds: 100));
 
@@ -9124,7 +9124,7 @@ class UserApiService {
   Future<PaginatedResponse<UserResponse>> getUsers(
     PaginationRequest pagination,
   ) async {
-    print('GET /users?\${pagination.toQueryParams()}');
+    print('GET /users?${pagination.toQueryParams()}');
 
     await Future.delayed(const Duration(milliseconds: 100));
 
@@ -9164,8 +9164,8 @@ void main() async {
     referralCode: 'FRIEND123',
   );
   final newUser = await service.createUser(createRequest);
-  print('Created: \${newUser.id} - \${newUser.name}');
-  print('Verified: \${newUser.isVerified}');
+  print('Created: ${newUser.id} - ${newUser.name}');
+  print('Verified: ${newUser.isVerified}');
 
   print('=== Get Paginated Users ===');
   final pagination = PaginationRequest(
@@ -9174,20 +9174,20 @@ void main() async {
     sortBy: 'name',
   );
   final usersPage = await service.getUsers(pagination);
-  print('Total: \${usersPage.totalCount}, Page: \${usersPage.currentPage}/\${usersPage.totalPages}');
+  print('Total: ${usersPage.totalCount}, Page: ${usersPage.currentPage}/${usersPage.totalPages}');
   for (final user in usersPage.items) {
-    print('  \${user.id}: \${user.name} (\${user.isVerified ? "✓" : "✗"})');
+    print('  ${user.id}: ${user.name} (${user.isVerified ? "✓" : "✗"})');
   }
 
   print('=== Update Profile (partial) ===');
   final updateRequest = UpdateProfileRequest(bio: 'Flutter developer');
-  print('Has changes: \${updateRequest.hasChanges}');
-  print('Payload: \${updateRequest.toJson()}');
-}"""),
+  print('Has changes: ${updateRequest.hasChanges}');
+  print('Payload: ${updateRequest.toJson()}');
+}'''),
 
         // Example 2: Intermediate - Layer DTOs
         StrCodeBlock(
-          """// Example 2: Intermediate - DTOs Between Application Layers
+          r'''// Example 2: Intermediate - DTOs Between Application Layers
 // Use case: Clean data contracts between UI, Service, and Repository layers
 
 // ── REPOSITORY LAYER DTOs ─────────────────────────────────────
@@ -9356,7 +9356,7 @@ class ProductCardViewModel {
   // Presentation only - how to display stock status
   String get stockBadgeText {
     if (!canAddToCart) return 'Out of Stock';
-    if (stockLabel.contains('Low')) return '⚠️ \$stockLabel';
+    if (stockLabel.contains('Low')) return '⚠️ $stockLabel';
     return stockLabel;
   }
 }
@@ -9374,7 +9374,7 @@ class ProductAssembler {
       category: _categoryName(record.categoryId),
       inStock: record.stock > 0,
       imageUrl: record.imageFilePath != null
-          ? 'https://cdn.example.com/\${record.imageFilePath}'
+          ? 'https://cdn.example.com/${record.imageFilePath}'
           : null,
     );
   }
@@ -9384,7 +9384,7 @@ class ProductAssembler {
     return ProductCardViewModel(
       id: dto.id,
       title: dto.name,
-      formattedPrice: '\${dto.currency}\${dto.price.toStringAsFixed(2)}',
+      formattedPrice: '${dto.currency}${dto.price.toStringAsFixed(2)}',
       imageUrl: dto.imageUrl,
       stockLabel: dto.inStock ? 'In Stock' : 'Out of Stock',
       canAddToCart: dto.inStock,
@@ -9415,24 +9415,24 @@ void main() {
   );
 
   print('--- DB Layer (raw) ---');
-  print('DB Record: \${dbRecord.toMap()}');
+  print('DB Record: ${dbRecord.toMap()}');
 
   // DB → Service layer DTO
   final summaryDto = ProductAssembler.toSummary(dbRecord);
   print('--- Service Layer DTO ---');
-  print('ID: \${summaryDto.id}');
-  print('Name: \${summaryDto.name}');
-  print('Price: \${summaryDto.currency}\${summaryDto.price}');
-  print('Category: \${summaryDto.category}');
-  print('In stock: \${summaryDto.inStock}');
+  print('ID: ${summaryDto.id}');
+  print('Name: ${summaryDto.name}');
+  print('Price: ${summaryDto.currency}${summaryDto.price}');
+  print('Category: ${summaryDto.category}');
+  print('In stock: ${summaryDto.inStock}');
 
   // Service → UI layer ViewModel
   final viewModel = ProductAssembler.toViewModel(summaryDto);
   print('--- UI ViewModel ---');
-  print('Title: \${viewModel.title}');
-  print('Price: \${viewModel.formattedPrice}');
-  print('Stock badge: \${viewModel.stockBadgeText}');
-  print('Can add to cart: \${viewModel.canAddToCart}');
+  print('Title: ${viewModel.title}');
+  print('Price: ${viewModel.formattedPrice}');
+  print('Stock badge: ${viewModel.stockBadgeText}');
+  print('Can add to cart: ${viewModel.canAddToCart}');
 
   // Cart DTO example
   final cart = CartSummaryDto(
@@ -9454,16 +9454,16 @@ void main() {
   );
 
   print('--- Cart Summary DTO ---');
-  print('Items: \${cart.itemCount}');
-  print('Subtotal: \${cart.currency}\${cart.subtotal}');
-  print('Discount: \${cart.currency}\${cart.discount}');
-  print('Total: \${cart.currency}\${cart.total}');
-}""",
+  print('Items: ${cart.itemCount}');
+  print('Subtotal: ${cart.currency}${cart.subtotal}');
+  print('Discount: ${cart.currency}${cart.discount}');
+  print('Total: ${cart.currency}${cart.total}');
+}''',
         ),
 
         // Example 3: Advanced - Isolate-safe DTOs
         StrCodeBlock(
-          """// Example 3: Advanced - Isolate-Safe DTOs for Heavy Computation
+          r'''// Example 3: Advanced - Isolate-Safe DTOs for Heavy Computation
 // Use case: Passing data safely between Flutter isolates
 
 import 'dart:isolate';
@@ -9611,13 +9611,13 @@ ImageProcessingResult _processImage(ImageProcessingRequest request) {
   final start = DateTime.now();
 
   try {
-    print('Isolate: Processing \${request.imageBytes.length} bytes');
-    print('Isolate: Resize to \${request.targetWidth}x\${request.targetHeight}');
-    print('Isolate: Applying \${request.filters.length} filters');
+    print('Isolate: Processing ${request.imageBytes.length} bytes');
+    print('Isolate: Resize to ${request.targetWidth}x${request.targetHeight}');
+    print('Isolate: Applying ${request.filters.length} filters');
 
     // Simulate heavy processing
     for (final filter in request.filters) {
-      print('Isolate: Applying \${filter.type} filter (value: \${filter.value})');
+      print('Isolate: Applying ${filter.type} filter (value: ${filter.value})');
     }
 
     // Simulate output (in reality this would be processed bytes)
@@ -9682,28 +9682,28 @@ void main() async {
   );
 
   print('Sending request to background isolate...');
-  print('Request: \${request.imageBytes.length} bytes, '
-      '\${request.targetWidth}x\${request.targetHeight}');
+  print('Request: ${request.imageBytes.length} bytes, '
+      '${request.targetWidth}x${request.targetHeight}');
 
   // DTOs are safely transferable between isolates
   final result = await processImageInBackground(request);
 
   if (result.success) {
     print('Processing successful!');
-    print('Time: \${result.processingTimeMs}ms');
-    print('Output: \${result.processedBytes?.length} bytes');
+    print('Time: ${result.processingTimeMs}ms');
+    print('Output: ${result.processedBytes?.length} bytes');
     if (result.metadata != null) {
-      print('Output size: \${result.metadata!.width}x\${result.metadata!.height}');
-      print('Format: \${result.metadata!.format}');
+      print('Output size: ${result.metadata!.width}x${result.metadata!.height}');
+      print('Format: ${result.metadata!.format}');
     }
   } else {
-    print('Processing failed: \${result.errorMessage}');
+    print('Processing failed: ${result.errorMessage}');
   }
-}""",
+}''',
         ),
 
         // Example 4: Flutter - Form DTO with State Management
-        StrCodeBlock("""// Example 4: Flutter - Form DTOs with Validation
+        StrCodeBlock(r'''// Example 4: Flutter - Form DTOs with Validation
 // Use case: Clean form data handling with DTOs
 
 // ── FORM INPUT DTO ────────────────────────────────────────────
@@ -9767,7 +9767,7 @@ class RegistrationFormDto {
 
     if (email.trim().isEmpty) {
       errors['email'] = 'Email is required';
-    } else if (!RegExp(r'^[\\w.-]+@[\\w.-]+\\.\\w+\$').hasMatch(email)) {
+    } else if (!RegExp(r'^[\w.-]+@[\w.-]+\.\w+$').hasMatch(email)) {
       errors['email'] = 'Enter a valid email';
     }
 
@@ -9796,7 +9796,7 @@ class RegistrationFormDto {
   CreateUserRequest toApiRequest() {
     assert(isValid, 'Cannot convert invalid form to API request');
     return CreateUserRequest(
-      name: '\$firstName \$lastName',
+      name: '$firstName $lastName',
       email: email,
       password: password,
     );
@@ -9856,12 +9856,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     setState(() => _submitted = true);
 
     if (!_form.isValid) {
-      print('Form invalid: \${_form.validationErrors}');
+      print('Form invalid: ${_form.validationErrors}');
       return;
     }
 
     final request = _form.toApiRequest();
-    print('Submitting: \${request.toJson()}');
+    print('Submitting: ${request.toJson()}');
 
     // Show success
     if (!mounted) return;
@@ -9946,7 +9946,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 child: Text(
                   _form.isValid
                       ? '✓ Form is valid'
-                      : '✗ \${_form.validationErrors.length} error(s)',
+                      : '✗ ${_form.validationErrors.length} error(s)',
                   style: TextStyle(
                     color:
                         _form.isValid ? Colors.green : Colors.red,
@@ -9987,7 +9987,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
 void main() {
   runApp(const MaterialApp(home: RegistrationScreen()));
-}"""),
+}'''),
       ],
       ar: [],
     ),
@@ -10189,7 +10189,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Widget Capability System
-        StrCodeBlock("""// Example 1: Basic - Widget Capability Extensions
+        StrCodeBlock(r'''// Example 1: Basic - Widget Capability Extensions
 // Use case: Adding optional capabilities to widgets at runtime
 
 // Extension interface: Base for all extensions
@@ -10211,7 +10211,7 @@ class CoreWidget {
   void addExtension(WidgetExtension extension) {
     _extensions[extension.extensionId] = extension;
     extension.initialize(this);
-    print('[\$name] Extension added: \${extension.extensionId}');
+    print('[$name] Extension added: ${extension.extensionId}');
   }
 
   // Query for a specific extension
@@ -10227,7 +10227,7 @@ class CoreWidget {
   void removeExtension(String extensionId) {
     _extensions[extensionId]?.dispose();
     _extensions.remove(extensionId);
-    print('[\$name] Extension removed: \$extensionId');
+    print('[$name] Extension removed: $extensionId');
   }
 
   void dispose() {
@@ -10290,19 +10290,19 @@ class AnalyticsExtensionImpl implements AnalyticsExtension {
   @override
   void initialize(CoreWidget widget) {
     _widget = widget;
-    print('Analytics tracking started for \${widget.name}');
+    print('Analytics tracking started for ${widget.name}');
   }
 
   @override
   void dispose() {
-    print('Analytics flushing \${_history.length} events');
+    print('Analytics flushing ${_history.length} events');
   }
 
   @override
   void trackEvent(String eventName, {Map<String, dynamic>? properties}) {
-    final entry = '\$eventName \${properties ?? ''}';
+    final entry = '$eventName ${properties ?? ''}';
     _history.add(entry);
-    print('Analytics [\${_widget.name}]: \$entry');
+    print('Analytics [${_widget.name}]: $entry');
   }
 
   @override
@@ -10331,7 +10331,7 @@ class InMemoryCachingExtension implements CachingExtension {
   @override
   void cacheData(String key, dynamic value) {
     _cache[key] = value;
-    print('Cached: \$key');
+    print('Cached: $key');
   }
 
   @override
@@ -10347,13 +10347,13 @@ class InMemoryCachingExtension implements CachingExtension {
 // Client code: Queries for capabilities
 class WidgetRenderer {
   void render(CoreWidget widget) {
-    print('Rendering widget: \${widget.name}');
+    print('Rendering widget: ${widget.name}');
 
     // Check and use accessibility extension if available
     final accessibility =
         widget.getExtension<AccessibilityExtension>('accessibility');
     if (accessibility != null && accessibility.isAccessible) {
-      print('  Semantic label: \${accessibility.getSemanticLabel()}');
+      print('  Semantic label: ${accessibility.getSemanticLabel()}');
     } else {
       print('  No accessibility support');
     }
@@ -10392,20 +10392,20 @@ void main() {
       enhancedWidget.getExtension<CachingExtension>('caching');
   cache?.cacheData('lastTapTime', DateTime.now().millisecondsSinceEpoch);
   final lastTap = cache?.getCachedData<int>('lastTapTime');
-  print('Last tap cached: \$lastTap');
+  print('Last tap cached: $lastTap');
 
   // Check analytics history
   final analytics =
       enhancedWidget.getExtension<AnalyticsExtension>('analytics');
-  print('Events logged: \${analytics?.getEventHistory().length}');
+  print('Events logged: ${analytics?.getEventHistory().length}');
 
   // Cleanup
   enhancedWidget.dispose();
-}"""),
+}'''),
 
         // Example 2: Intermediate - Node Extension System
         StrCodeBlock(
-          """// Example 2: Intermediate - Document Node with Extensions
+          r'''// Example 2: Intermediate - Document Node with Extensions
 // Use case: Extensible document node system
 
 // Extension interfaces
@@ -10509,12 +10509,12 @@ class ContentValidatableExtension implements ValidatableExtension {
     final errors = <String>[];
 
     if (_required && _node.content.trim().isEmpty) {
-      errors.add('Content is required for \${_node.nodeType} node');
+      errors.add('Content is required for ${_node.nodeType} node');
     }
 
     if (_node.content.length > _maxLength) {
       errors.add(
-        'Content exceeds \$_maxLength chars (\${_node.content.length})',
+        'Content exceeds $_maxLength chars (${_node.content.length})',
       );
     }
 
@@ -10533,9 +10533,9 @@ class AuditLoggableExtension implements LoggableExtension {
 
   @override
   void log(String action) {
-    final entry = '\${DateTime.now().toIso8601String()} [\${_node.nodeId}] \$action';
+    final entry = '${DateTime.now().toIso8601String()} [${_node.nodeId}] $action';
     _logs.add(entry);
-    print('AUDIT: \$entry');
+    print('AUDIT: $entry');
   }
 
   @override
@@ -10545,7 +10545,7 @@ class AuditLoggableExtension implements LoggableExtension {
 // Document system that works with extensible nodes
 class DocumentProcessor {
   void processNode(DocumentNode node) {
-    print('Processing node: \${node.nodeId} (\${node.nodeType})');
+    print('Processing node: ${node.nodeId} (${node.nodeType})');
 
     // Log if supported
     node.extension<LoggableExtension>(LoggableExtension.id)
@@ -10559,7 +10559,7 @@ class DocumentProcessor {
         final errors = validator.validate();
         print('  Validation errors:');
         for (final error in errors) {
-          print('    - \$error');
+          print('    - $error');
         }
         return;
       }
@@ -10571,16 +10571,16 @@ class DocumentProcessor {
         node.extension<SerializableExtension>(SerializableExtension.id);
     if (serializer != null) {
       final data = serializer.serialize();
-      print('  Serialized: \$data');
+      print('  Serialized: $data');
     }
 
     node.extension<LoggableExtension>(LoggableExtension.id)
         ?.log('Processing completed');
 
     print('  Capabilities: '
-        '\${node.supports(SerializableExtension.id) ? "serialize " : ""}'
-        '\${node.supports(ValidatableExtension.id) ? "validate " : ""}'
-        '\${node.supports(LoggableExtension.id) ? "log" : ""}');
+        '${node.supports(SerializableExtension.id) ? "serialize " : ""}'
+        '${node.supports(ValidatableExtension.id) ? "validate " : ""}'
+        '${node.supports(LoggableExtension.id) ? "log" : ""}');
   }
 }
 
@@ -10618,7 +10618,7 @@ void main() {
   processor.processNode(richNode);
 
   print('Audit log entries: '
-      '\${(richNode.extension<LoggableExtension>(LoggableExtension.id) as AuditLoggableExtension?)?.getLogs().length}');
+      '${(richNode.extension<LoggableExtension>(LoggableExtension.id) as AuditLoggableExtension?)?.getLogs().length}');
 
   // Node with validation error
   print('=== Node with Validation Error ===');
@@ -10636,11 +10636,12 @@ void main() {
     ),
   );
   processor.processNode(invalidNode);
-}""",
+}''',
         ),
 
         // Example 3: Advanced - Plugin-Based Extension System
-        StrCodeBlock("""// Example 3: Advanced - Runtime Plugin Extension System
+        StrCodeBlock(
+          r'''// Example 3: Advanced - Runtime Plugin Extension System
 // Use case: Third-party plugins adding capabilities to core entities
 
 // ── CORE INTERFACES ───────────────────────────────────────────
@@ -10657,7 +10658,7 @@ mixin Extensible {
 
   void addExtension(Extension ext) {
     if (_extensions.containsKey(ext.id)) {
-      throw StateError('Extension \${ext.id} already attached');
+      throw StateError('Extension ${ext.id} already attached');
     }
     _extensions[ext.id] = ext;
     ext.onAttached(this);
@@ -10694,7 +10695,7 @@ class Product with Extensible {
   });
 
   @override
-  String toString() => 'Product(\$id: \$name @ \$price)';
+  String toString() => 'Product($id: $name @ $price)';
 }
 
 // ── EXTENSION INTERFACES ──────────────────────────────────────
@@ -10743,7 +10744,7 @@ class DiscountPricingExtension implements PricingExtension {
   void onAttached(Extensible host) {
     _host = host;
     final product = host as Product;
-    print('Discount pricing attached to \${product.name} (\$discountPercent% off)');
+    print('Discount pricing attached to ${product.name} ($discountPercent% off)');
   }
 
   @override
@@ -10755,7 +10756,7 @@ class DiscountPricingExtension implements PricingExtension {
   }
 
   @override
-  String get pricingStrategy => 'discount_\${discountPercent}pct';
+  String get pricingStrategy => 'discount_${discountPercent}pct';
 }
 
 class BundlePricingExtension implements PricingExtension {
@@ -10784,7 +10785,7 @@ class BundlePricingExtension implements PricingExtension {
 
   @override
   String get pricingStrategy =>
-      'bundle_\${bundledProductIds.length}_items';
+      'bundle_${bundledProductIds.length}_items';
 }
 
 // Inventory plugins
@@ -10801,7 +10802,7 @@ class WarehouseInventoryExtension implements InventoryExtension {
   @override
   void onAttached(Extensible host) {
     _product = host as Product;
-    print('Warehouse inventory tracking: \${_product.name} @ \$warehouseId');
+    print('Warehouse inventory tracking: ${_product.name} @ $warehouseId');
   }
 
   @override
@@ -10817,14 +10818,14 @@ class WarehouseInventoryExtension implements InventoryExtension {
   void reserve(int quantity) {
     if (!canFulfill(quantity)) throw Exception('Insufficient stock');
     _reserved += quantity;
-    print('Reserved \$quantity units of \${_product.name} '
-        '(reserved: \$_reserved/\${_product.stock})');
+    print('Reserved $quantity units of ${_product.name} '
+        '(reserved: $_reserved/${_product.stock})');
   }
 
   @override
   void release(int quantity) {
     _reserved = (_reserved - quantity).clamp(0, _product.stock);
-    print('Released \$quantity units of \${_product.name}');
+    print('Released $quantity units of ${_product.name}');
   }
 }
 
@@ -10874,7 +10875,7 @@ class ExtensibleProductService {
     }
 
     final finalPrice = pricing.calculateFinalPrice(product.price);
-    print('Strategy: \${pricing.pricingStrategy}');
+    print('Strategy: ${pricing.pricingStrategy}');
     return finalPrice;
   }
 
@@ -10904,12 +10905,12 @@ class ExtensibleProductService {
     if (rec == null) return [];
 
     final score = rec.getRelevanceScore(userId);
-    print('Relevance score for \$userId: \${score.toStringAsFixed(2)}');
+    print('Relevance score for $userId: ${score.toStringAsFixed(2)}');
     return rec.getRelatedProductIds();
   }
 
   void printProductCapabilities(Product product) {
-    print('Product \${product.name} capabilities: \${product.extensionIds.join(', ')}');
+    print('Product ${product.name} capabilities: ${product.extensionIds.join(', ')}');
   }
 }
 
@@ -10938,16 +10939,16 @@ void main() {
 
   print('=== Pricing ===');
   final price = service.getPriceForUser(laptop, 'user_alice');
-  print('Final price: \\\$\${price.toStringAsFixed(2)} '
-      '(base: \\\$\${laptop.price})');
+  print('Final price: \$${price.toStringAsFixed(2)} '
+      '(base: \$${laptop.price})');
 
   print('=== Inventory ===');
   final ordered = service.processOrder(laptop, 3);
-  print('Order processed: \$ordered');
+  print('Order processed: $ordered');
 
   print('=== Recommendations ===');
   final recs = service.getRecommendations(laptop, 'user_alice');
-  print('Recommended: \$recs');
+  print('Recommended: $recs');
 
   // Product without all extensions
   print('=== Basic Product ===');
@@ -10960,11 +10961,12 @@ void main() {
   // No extensions attached
   service.printProductCapabilities(usb);
   final usbPrice = service.getPriceForUser(usb, 'user_alice');
-  print('USB price: \\\$\${usbPrice.toStringAsFixed(2)}');
-}"""),
+  print('USB price: \$${usbPrice.toStringAsFixed(2)}');
+}''',
+        ),
 
         // Example 4: Flutter - Widget Extension System
-        StrCodeBlock("""// Example 4: Flutter - Widget Extension Capabilities
+        StrCodeBlock(r'''// Example 4: Flutter - Widget Extension Capabilities
 // Use case: Adding optional features to screens at runtime
 
 // Extension interfaces
@@ -11057,13 +11059,13 @@ class AnalyticsScreenExtension implements ScreenExtension {
   @override
   void mount(ExtensibleScreen screen) {
     _isTracking = true;
-    print('Analytics: Tracking screen "\$screenName"');
+    print('Analytics: Tracking screen "$screenName"');
   }
 
   @override
   void unmount() {
     _isTracking = false;
-    print('Analytics: Stopped tracking "\$screenName"');
+    print('Analytics: Stopped tracking "$screenName"');
   }
 
   @override
@@ -11086,7 +11088,7 @@ class TutorialOverlayExtension implements ScreenExtension {
 
   @override
   void mount(ExtensibleScreen screen) {
-    print('Tutorial: Started with \${steps.length} steps');
+    print('Tutorial: Started with ${steps.length} steps');
   }
 
   @override
@@ -11112,7 +11114,7 @@ class TutorialOverlayExtension implements ScreenExtension {
                   mainAxisSize: .min,
                   children: [
                     Text(
-                      'Step \${_currentStep + 1}/\${steps.length}',
+                      'Step ${_currentStep + 1}/${steps.length}',
                       style: const TextStyle(
                         color: Colors.white70,
                         fontSize: 12,
@@ -11170,7 +11172,7 @@ class FeedbackExtension implements ScreenExtension {
       child: Row(
         mainAxisAlignment: .spaceBetween,
         children: [
-          Text('How do you like \$featureName?'),
+          Text('How do you like $featureName?'),
           Row(
             children: [
               IconButton(
@@ -11218,7 +11220,7 @@ class ExtensionDemo extends StatelessWidget {
           10,
           (i) => ListTile(
             leading: const Icon(Icons.check_circle),
-            title: Text('Feature Item \${i + 1}'),
+            title: Text('Feature Item ${i + 1}'),
           ),
         ),
       ],
@@ -11245,7 +11247,7 @@ class ExtensionDemo extends StatelessWidget {
 
 void main() {
   runApp(MaterialApp(home: ExtensionDemo()));
-}"""),
+}'''),
       ],
       ar: [],
     ),
@@ -11439,7 +11441,7 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Storage Plugin System
-        StrCodeBlock("""// Example 1: Basic - Storage Provider Plugin System
+        StrCodeBlock(r'''// Example 1: Basic - Storage Provider Plugin System
 // Use case: Swappable storage backends as plugins
 
 // ── PLUGIN CONTRACT ───────────────────────────────────────────
@@ -11470,19 +11472,19 @@ class StoragePluginRegistry {
   String? _activePluginId;
 
   void register(StoragePlugin plugin) {
-    print('Registry: Registering plugin "\${plugin.pluginId}" v\${plugin.version}');
+    print('Registry: Registering plugin "${plugin.pluginId}" v${plugin.version}');
     _plugins[plugin.pluginId] = plugin;
   }
 
   Future<void> activate(String pluginId, {Map<String, dynamic>? config}) async {
     final plugin = _plugins[pluginId];
     if (plugin == null) {
-      throw Exception('Plugin not found: \$pluginId');
+      throw Exception('Plugin not found: $pluginId');
     }
-    print('Registry: Activating "\${plugin.displayName}"');
+    print('Registry: Activating "${plugin.displayName}"');
     await plugin.initialize(config ?? {});
     _activePluginId = pluginId;
-    print('Registry: "\${plugin.displayName}" is now active');
+    print('Registry: "${plugin.displayName}" is now active');
   }
 
   StoragePlugin get active {
@@ -11495,11 +11497,11 @@ class StoragePluginRegistry {
   List<String> get availablePlugins => _plugins.keys.toList();
 
   void printInfo() {
-    print('Available plugins: \${_plugins.length}');
+    print('Available plugins: ${_plugins.length}');
     for (final plugin in _plugins.values) {
       final isActive = plugin.pluginId == _activePluginId;
-      print('  \${isActive ? "▶" : " "} \${plugin.displayName} v\${plugin.version}');
-      print('    Platforms: \${plugin.supportedPlatforms.join(", ")}');
+      print('  ${isActive ? "▶" : " "} ${plugin.displayName} v${plugin.version}');
+      print('    Platforms: ${plugin.supportedPlatforms.join(", ")}');
     }
   }
 }
@@ -11533,7 +11535,7 @@ class InMemoryStoragePlugin implements StoragePlugin {
   @override
   Future<void> write(String key, String value) async {
     _store[key] = value;
-    print('InMemory: Wrote \$key');
+    print('InMemory: Wrote $key');
   }
 
   @override
@@ -11570,7 +11572,7 @@ class EncryptedStoragePlugin implements StoragePlugin {
   @override
   Future<void> initialize(Map<String, dynamic> config) async {
     _encryptionKey = config['key'] as String? ?? 'default_key_abc';
-    print('Encrypted: Initialized with key: \${_encryptionKey.substring(0, 3)}***');
+    print('Encrypted: Initialized with key: ${_encryptionKey.substring(0, 3)}***');
   }
 
   @override
@@ -11579,13 +11581,13 @@ class EncryptedStoragePlugin implements StoragePlugin {
     print('Encrypted: Disposed and cleared');
   }
 
-  String _encrypt(String value) => 'enc[\$value]'; // Simplified
+  String _encrypt(String value) => 'enc[$value]'; // Simplified
   String _decrypt(String value) => value.replaceAll(RegExp(r'enc\[|\]'), '');
 
   @override
   Future<void> write(String key, String value) async {
     _store[key] = _encrypt(value);
-    print('Encrypted: Wrote \$key (encrypted)');
+    print('Encrypted: Wrote $key (encrypted)');
   }
 
   @override
@@ -11621,7 +11623,7 @@ class CloudStoragePlugin implements StoragePlugin {
   @override
   Future<void> initialize(Map<String, dynamic> config) async {
     _apiKey = config['api_key'] as String? ?? 'demo_key';
-    print('Cloud: Connected with key: \${_apiKey.substring(0, 4)}***');
+    print('Cloud: Connected with key: ${_apiKey.substring(0, 4)}***');
     await Future.delayed(const Duration(milliseconds: 50)); // Simulate connect
     print('Cloud: Ready');
   }
@@ -11636,7 +11638,7 @@ class CloudStoragePlugin implements StoragePlugin {
   Future<void> write(String key, String value) async {
     await Future.delayed(const Duration(milliseconds: 30)); // Simulate network
     _localCache[key] = value;
-    print('Cloud: Synced \$key to cloud');
+    print('Cloud: Synced $key to cloud');
   }
 
   @override
@@ -11700,23 +11702,23 @@ void main() async {
     'language': 'en',
     'notifications': 'true',
   });
-  print('theme: \${await settings.load("theme")}');
+  print('theme: ${await settings.load("theme")}');
 
   print('=== Switching to Encrypted Plugin ===');
   await registry.activate('encrypted', config: {'key': 'super_secret_key_456'});
   await settings.save('auth_token', 'eyJhbGc...');
-  print('token: \${await settings.load("auth_token")}');
+  print('token: ${await settings.load("auth_token")}');
 
   print('=== Switching to Cloud Plugin ===');
   await registry.activate('cloud', config: {'api_key': 'cloud_api_789'});
   await settings.save('sync_enabled', 'true');
-  print('sync: \${await settings.load("sync_enabled")}');
-  print('keys: \${await registry.active.listKeys()}');
-}"""),
+  print('sync: ${await settings.load("sync_enabled")}');
+  print('keys: ${await registry.active.listKeys()}');
+}'''),
 
         // Example 2: Intermediate - Authentication Plugin System
         StrCodeBlock(
-          """// Example 2: Intermediate - Authentication Plugin System
+          r'''// Example 2: Intermediate - Authentication Plugin System
 // Use case: Swappable auth providers as plugins
 
 // Plugin interface
@@ -11822,7 +11824,7 @@ class EmailPasswordAuthPlugin implements AuthPlugin {
       return AuthResult.failure('Email and password required');
     }
 
-    print('EmailAuth: Signing in \$email');
+    print('EmailAuth: Signing in $email');
     await Future.delayed(const Duration(milliseconds: 100));
 
     if (password.length < 6) {
@@ -11830,7 +11832,7 @@ class EmailPasswordAuthPlugin implements AuthPlugin {
     }
 
     _currentUser = UserInfo(
-      id: 'uid_\${email.hashCode.abs()}',
+      id: 'uid_${email.hashCode.abs()}',
       email: email,
       displayName: email.split('@').first,
       provider: providerName,
@@ -11839,8 +11841,8 @@ class EmailPasswordAuthPlugin implements AuthPlugin {
     _authStateController.add(.signedIn);
 
     return AuthResult.success(
-      accessToken: 'email_token_\${DateTime.now().millisecondsSinceEpoch}',
-      refreshToken: 'refresh_\${email.hashCode}',
+      accessToken: 'email_token_${DateTime.now().millisecondsSinceEpoch}',
+      refreshToken: 'refresh_${email.hashCode}',
       user: _currentUser,
     );
   }
@@ -11857,7 +11859,7 @@ class EmailPasswordAuthPlugin implements AuthPlugin {
   Future<AuthResult> refreshToken(String refreshToken) async {
     print('EmailAuth: Refreshing token');
     return AuthResult.success(
-      accessToken: 'new_token_\${DateTime.now().millisecondsSinceEpoch}',
+      accessToken: 'new_token_${DateTime.now().millisecondsSinceEpoch}',
       refreshToken: refreshToken,
     );
   }
@@ -11910,7 +11912,7 @@ class GoogleAuthPlugin implements AuthPlugin {
     _authStateController.add(.signedIn);
 
     return AuthResult.success(
-      accessToken: 'google_token_\${DateTime.now().millisecondsSinceEpoch}',
+      accessToken: 'google_token_${DateTime.now().millisecondsSinceEpoch}',
       user: _currentUser,
     );
   }
@@ -11927,7 +11929,7 @@ class GoogleAuthPlugin implements AuthPlugin {
   Future<AuthResult> refreshToken(String refreshToken) async {
     print('GoogleAuth: Refreshing via OAuth');
     return AuthResult.success(
-      accessToken: 'google_new_\${DateTime.now().millisecondsSinceEpoch}',
+      accessToken: 'google_new_${DateTime.now().millisecondsSinceEpoch}',
     );
   }
 
@@ -11948,16 +11950,16 @@ class AuthPluginRegistry {
 
   void register(AuthPlugin plugin) {
     _plugins[plugin.pluginId] = plugin;
-    print('AuthRegistry: Registered "\${plugin.providerName}"');
+    print('AuthRegistry: Registered "${plugin.providerName}"');
   }
 
   Future<void> setActive(String pluginId) async {
     final plugin = _plugins[pluginId];
-    if (plugin == null) throw Exception('Auth plugin not found: \$pluginId');
+    if (plugin == null) throw Exception('Auth plugin not found: $pluginId');
 
     _active = plugin;
     await plugin.initialize();
-    print('AuthRegistry: Active provider: \${plugin.providerName}');
+    print('AuthRegistry: Active provider: ${plugin.providerName}');
   }
 
   AuthPlugin get active {
@@ -12005,12 +12007,12 @@ void main() async {
   );
 
   if (loginResult.success) {
-    print('Logged in as: \${loginResult.user?.displayName}');
-    print('Token: \${loginResult.accessToken?.substring(0, 20)}...');
+    print('Logged in as: ${loginResult.user?.displayName}');
+    print('Token: ${loginResult.accessToken?.substring(0, 20)}...');
   }
 
   final user = await auth.currentUser;
-  print('Current user: \${user?.email}');
+  print('Current user: ${user?.email}');
 
   await auth.logout();
 
@@ -12020,13 +12022,13 @@ void main() async {
   final googleResult = await auth.login();
 
   if (googleResult.success) {
-    print('Signed in via Google: \${googleResult.user?.displayName}');
-    print('Email: \${googleResult.user?.email}');
-    print('Photo: \${googleResult.user?.photoUrl}');
+    print('Signed in via Google: ${googleResult.user?.displayName}');
+    print('Email: ${googleResult.user?.email}');
+    print('Photo: ${googleResult.user?.photoUrl}');
   }
 
   final isLoggedIn = await auth.isLoggedIn;
-  print('Is logged in: \$isLoggedIn');
+  print('Is logged in: $isLoggedIn');
 
   print('=== Switching Auth Provider at Runtime ===');
   await auth.logout();
@@ -12034,11 +12036,11 @@ void main() async {
   print('Switched back to email/password');
 
   print('Application code never changed! Only the plugin did.');
-}""",
+}''',
         ),
 
         // Example 3: Advanced - Analytics Plugin Architecture
-        StrCodeBlock("""// Example 3: Advanced - Analytics Plugin Architecture
+        StrCodeBlock(r'''// Example 3: Advanced - Analytics Plugin Architecture
 // Use case: Multiple analytics providers as interchangeable plugins
 
 // Plugin contract
@@ -12119,13 +12121,13 @@ class MixpanelPlugin implements AnalyticsPlugin {
   @override
   Future<void> initialize(AnalyticsConfig config) async {
     _config = config;
-    print('Mixpanel: Initialized with key \${config.apiKey.substring(0, 4)}***');
+    print('Mixpanel: Initialized with key ${config.apiKey.substring(0, 4)}***');
     if (config.debugMode) print('Mixpanel: Debug mode ON');
   }
 
   @override
   Future<void> dispose() async {
-    print('Mixpanel: Flushing \$_eventCount events and disposing');
+    print('Mixpanel: Flushing $_eventCount events and disposing');
   }
 
   @override
@@ -12134,23 +12136,23 @@ class MixpanelPlugin implements AnalyticsPlugin {
     if (_config.excludedEvents.contains(event.name)) return;
 
     _eventCount++;
-    print('Mixpanel: track("\${event.name}", \${event.properties})');
+    print('Mixpanel: track("${event.name}", ${event.properties})');
   }
 
   @override
   Future<void> trackScreen(String screenName, {Map<String, dynamic>? properties}) async {
     if (!_isEnabled) return;
-    print('Mixpanel: trackView("\$screenName")');
+    print('Mixpanel: trackView("$screenName")');
   }
 
   @override
   Future<void> setUserProperties(String userId, Map<String, dynamic> properties) async {
-    print('Mixpanel: identify("\$userId") + people.set(\$properties)');
+    print('Mixpanel: identify("$userId") + people.set($properties)');
   }
 
   @override
   Future<void> trackError(AnalyticsError error) async {
-    print('Mixpanel: track("Error", {message: "\${error.message}", fatal: \${error.fatal}})');
+    print('Mixpanel: track("Error", {message: "${error.message}", fatal: ${error.fatal}})');
   }
 
   @override
@@ -12174,7 +12176,7 @@ class FirebaseAnalyticsPlugin implements AnalyticsPlugin {
   @override
   Future<void> initialize(AnalyticsConfig config) async {
     _config = config;
-    print('Firebase: Analytics initialized, project: \${config.apiKey.substring(0, 6)}');
+    print('Firebase: Analytics initialized, project: ${config.apiKey.substring(0, 6)}');
   }
 
   @override
@@ -12191,26 +12193,26 @@ class FirebaseAnalyticsPlugin implements AnalyticsPlugin {
         .replaceAll(RegExp(r'[^a-zA-Z0-9_]'), '_')
         .toLowerCase();
 
-    print('Firebase: logEvent("\$fbEventName", \${event.properties})');
+    print('Firebase: logEvent("$fbEventName", ${event.properties})');
   }
 
   @override
   Future<void> trackScreen(String screenName, {Map<String, dynamic>? properties}) async {
     if (!_isEnabled) return;
-    print('Firebase: setCurrentScreen("\$screenName")');
+    print('Firebase: setCurrentScreen("$screenName")');
   }
 
   @override
   Future<void> setUserProperties(String userId, Map<String, dynamic> properties) async {
-    print('Firebase: setUserId("\$userId")');
+    print('Firebase: setUserId("$userId")');
     for (final entry in properties.entries) {
-      print('Firebase: setUserProperty("\${entry.key}", "\${entry.value}")');
+      print('Firebase: setUserProperty("${entry.key}", "${entry.value}")');
     }
   }
 
   @override
   Future<void> trackError(AnalyticsError error) async {
-    print('Firebase: Crashlytics.recordError("\${error.message}", fatal: \${error.fatal})');
+    print('Firebase: Crashlytics.recordError("${error.message}", fatal: ${error.fatal})');
   }
 
   @override
@@ -12226,7 +12228,7 @@ class AnalyticsManager {
 
   void addPlugin(AnalyticsPlugin plugin) {
     _plugins.add(plugin);
-    print('AnalyticsManager: Added \${plugin.providerName}');
+    print('AnalyticsManager: Added ${plugin.providerName}');
   }
 
   void removePlugin(String pluginId) {
@@ -12237,7 +12239,7 @@ class AnalyticsManager {
     for (final plugin in _plugins) {
       await plugin.initialize(config);
     }
-    print('AnalyticsManager: All \${_plugins.length} plugins initialized');
+    print('AnalyticsManager: All ${_plugins.length} plugins initialized');
   }
 
   // Broadcast to all plugins
@@ -12247,7 +12249,7 @@ class AnalyticsManager {
       properties: properties ?? {},
     );
 
-    print('Broadcasting "\$eventName" to \${_plugins.length} plugins...');
+    print('Broadcasting "$eventName" to ${_plugins.length} plugins...');
     for (final plugin in _plugins) {
       await plugin.trackEvent(event);
     }
@@ -12276,7 +12278,7 @@ class AnalyticsManager {
     _plugins
         .firstWhere((p) => p.pluginId == pluginId)
         .setEnabled(false);
-    print('Disabled plugin: \$pluginId');
+    print('Disabled plugin: $pluginId');
   }
 }
 
@@ -12319,10 +12321,10 @@ void main() async {
   await analytics.track('some_event'); // Only Firebase receives it
 
   print('All app code used the same analytics.track() API!');
-}"""),
+}'''),
 
         // Example 4: Flutter - Payment Plugin System
-        StrCodeBlock("""// Example 4: Flutter - Payment Provider Plugin System
+        StrCodeBlock(r'''// Example 4: Flutter - Payment Provider Plugin System
 // Use case: Swappable payment processors in a Flutter shop
 
 // Plugin contract
@@ -12410,11 +12412,11 @@ class StripePlugin implements PaymentPlugin {
 
   @override
   Future<PaymentSheet> createPaymentSheet(PaymentDetails details) async {
-    print('Stripe: Creating payment intent for \${details.amount} \${details.currency}');
+    print('Stripe: Creating payment intent for ${details.amount} ${details.currency}');
     await Future.delayed(const Duration(milliseconds: 100));
 
     return PaymentSheet(
-      sessionId: 'pi_\${DateTime.now().millisecondsSinceEpoch}',
+      sessionId: 'pi_${DateTime.now().millisecondsSinceEpoch}',
       providerData: 'stripe_client_secret_xyz',
       details: details,
     );
@@ -12428,7 +12430,7 @@ class StripePlugin implements PaymentPlugin {
 
     return PaymentResult(
       success: true,
-      transactionId: 'ch_\${DateTime.now().millisecondsSinceEpoch}',
+      transactionId: 'ch_${DateTime.now().millisecondsSinceEpoch}',
       receipt: {
         'provider': 'stripe',
         'amount': sheet.details.amount,
@@ -12439,12 +12441,12 @@ class StripePlugin implements PaymentPlugin {
 
   @override
   Future<RefundResult> refund(String transactionId, double amount) async {
-    print('Stripe: Refunding \$amount for \$transactionId');
+    print('Stripe: Refunding $amount for $transactionId');
     await Future.delayed(const Duration(milliseconds: 150));
 
     return RefundResult(
       success: true,
-      refundId: 're_\${DateTime.now().millisecondsSinceEpoch}',
+      refundId: 're_${DateTime.now().millisecondsSinceEpoch}',
     );
   }
 }
@@ -12468,11 +12470,11 @@ class PayPalPlugin implements PaymentPlugin {
 
   @override
   Future<PaymentSheet> createPaymentSheet(PaymentDetails details) async {
-    print('PayPal: Creating order for \${details.amount} \${details.currency}');
+    print('PayPal: Creating order for ${details.amount} ${details.currency}');
     await Future.delayed(const Duration(milliseconds: 120));
 
     return PaymentSheet(
-      sessionId: 'paypal_order_\${DateTime.now().millisecondsSinceEpoch}',
+      sessionId: 'paypal_order_${DateTime.now().millisecondsSinceEpoch}',
       providerData: 'paypal_approval_url_xyz',
       details: details,
     );
@@ -12486,7 +12488,7 @@ class PayPalPlugin implements PaymentPlugin {
 
     return PaymentResult(
       success: true,
-      transactionId: 'paypal_txn_\${DateTime.now().millisecondsSinceEpoch}',
+      transactionId: 'paypal_txn_${DateTime.now().millisecondsSinceEpoch}',
       receipt: {
         'provider': 'paypal',
         'order_id': sheet.sessionId,
@@ -12496,7 +12498,7 @@ class PayPalPlugin implements PaymentPlugin {
 
   @override
   Future<RefundResult> refund(String transactionId, double amount) async {
-    print('PayPal: Processing refund for \$transactionId');
+    print('PayPal: Processing refund for $transactionId');
     await Future.delayed(const Duration(milliseconds: 200));
     return RefundResult(success: true, refundId: 'paypal_refund_123');
   }
@@ -12555,14 +12557,14 @@ class _PaymentMethodSelectorState extends State<PaymentMethodSelector> {
         widget.onSuccess(result);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Payment successful! TX: \${result.transactionId}'),
+            content: Text('Payment successful! TX: ${result.transactionId}'),
             backgroundColor: Colors.green,
           ),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Payment failed: \${result.error}'),
+            content: Text('Payment failed: ${result.error}'),
             backgroundColor: Colors.red,
           ),
         );
@@ -12593,7 +12595,7 @@ class _PaymentMethodSelectorState extends State<PaymentMethodSelector> {
           onChanged: (v) => setState(() => _selectedPlugin = v),
           title: Text(plugin.displayName),
           subtitle: Text(
-            'Supports: \${plugin.supportedCurrencies.join(", ")}',
+            'Supports: ${plugin.supportedCurrencies.join(", ")}',
           ),
         )),
         const SizedBox(height: 8),
@@ -12610,8 +12612,8 @@ class _PaymentMethodSelectorState extends State<PaymentMethodSelector> {
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
                   : Text(
-                      'Pay \${widget.paymentDetails.currency}'
-                      '\${widget.paymentDetails.amount.toStringAsFixed(2)}',
+                      'Pay ${widget.paymentDetails.currency}'
+                      '${widget.paymentDetails.amount.toStringAsFixed(2)}',
                     ),
             ),
           ),
@@ -12644,7 +12646,7 @@ class ShopDemo extends StatelessWidget {
                 children: const [
                   ListTile(
                     title: Text('Developer Laptop'),
-                    trailing: Text('\$999.00'),
+                    trailing: Text('$999.00'),
                   ),
                   Divider(),
                   ListTile(
@@ -12653,7 +12655,7 @@ class ShopDemo extends StatelessWidget {
                       style: TextStyle(fontWeight: .bold),
                     ),
                     trailing: Text(
-                      '\$999.00',
+                      '$999.00',
                       style: TextStyle(fontWeight: .bold),
                     ),
                   ),
@@ -12673,7 +12675,7 @@ class ShopDemo extends StatelessWidget {
               ),
               registry: registry,
               onSuccess: (result) {
-                print('App received success: \${result.transactionId}');
+                print('App received success: ${result.transactionId}');
               },
             ),
           ),
@@ -12685,7 +12687,7 @@ class ShopDemo extends StatelessWidget {
 
 void main() {
   runApp(MaterialApp(home: ShopDemo()));
-}"""),
+}'''),
       ],
       ar: [],
     ),
@@ -12783,7 +12785,12 @@ void main() {
         "نسيان إدارة دورة حياة الإضافات (التخلص، التنظيف)",
       ],
     ),
-    relatedPatterns: [PK.extensionObject, PK.strategy, PK.factoryMethod, PK.observer],
+    relatedPatterns: [
+      PK.extensionObject,
+      PK.strategy,
+      PK.factoryMethod,
+      PK.observer,
+    ],
     oftenConfusedWith: [PK.extensionObject, PK.strategy],
   ),
 };
