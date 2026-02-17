@@ -182,13 +182,13 @@ class StripeAdapter implements PaymentProcessor {
 class PayPalSDK {
   Future<String> makePayment(String amount, String currency) async {
     print('PayPal: Processing \$amount \$currency');
-    await Future.delayed(.milliseconds(100));
+    await Future.delayed(Duration(milliseconds: 100));
     return 'PAYPAL-\${DateTime.now().millisecondsSinceEpoch}';
   }
   
   Future<void> cancelTransaction(String txnId) async {
     print('PayPal: Cancelling \$txnId');
-    await Future.delayed(.milliseconds(50));
+    await Future.delayed(Duration(milliseconds: 50));
   }
 }
 
@@ -235,7 +235,7 @@ class CheckoutService {
   CheckoutService(this._processor);
   
   Future<void> checkout(double amount) async {
-    print('\n=== Processing checkout: \\\$\$amount ===');
+    print('=== Processing checkout: \\\$\$amount ===');
     
     final result = await _processor.processPayment(amount, 'USD');
     
@@ -397,7 +397,7 @@ void main() {
   legacyService.displayProduct('12345');
   legacyService.searchProducts('product');
   
-  print('\n=== Using Modern REST API ===');
+  print('=== Using Modern REST API ===');
   final modernService = ProductService(
     RestApiProvider(),
   );
@@ -571,7 +571,7 @@ class UserService {
     
     try {
       // Simulate work
-      await Future.delayed(.milliseconds(100));
+      await Future.delayed(Duration(milliseconds: 100));
       
       if (username.isEmpty) {
         throw Exception('Username cannot be empty');
@@ -593,14 +593,14 @@ void main() async {
   final userService1 = UserService(log4dart);
   await userService1.createUser('alice');
   
-  print('\n=== Using SimpleLogger (Adapted) ===');
+  print('=== Using SimpleLogger (Adapted) ===');
   final simpleLogger = SimpleLoggerAdapter(SimpleLogger());
   simpleLogger.setLevel(.info);
   
   final userService2 = UserService(simpleLogger);
   await userService2.createUser('bob');
   
-  print('\n=== Testing Error Handling ===');
+  print('=== Testing Error Handling ===');
   try {
     await userService1.createUser('');
   } catch (e) {
@@ -784,7 +784,7 @@ void main() async {
   );
   await mobileSettings.loadUserPreferences();
   
-  print('\n=== Web Platform (LocalStorage) ===');
+  print('=== Web Platform (LocalStorage) ===');
   final webStorage = LocalStorageAdapter(
     LocalStorageWrapper(),
   );
@@ -800,10 +800,8 @@ void main() async {
 }""",
         ),
       ],
-      ar: [
-        // Arabic versions would go here - keeping structure same as English
-        // For brevity, I'll note that each example needs full Arabic translation
-      ],
+      // TODO: Add examples
+      ar: [],
     ),
     pros: LocSL(
       en: [
@@ -1151,7 +1149,7 @@ void main() {
   print('');
   rect1.draw();
   
-  print('\n=== Raster Rendering ===');
+  print('=== Raster Rendering ===');
   final rasterRenderer = RasterRenderer();
   final circle2 = Circle(rasterRenderer, 10, 10, 5);
   final triangle2 = Triangle(rasterRenderer, 0, 0, 10, 0, 5, 10);
@@ -1160,7 +1158,7 @@ void main() {
   print('');
   triangle2.draw();
   
-  print('\n=== Canvas Rendering ===');
+  print('=== Canvas Rendering ===');
   final canvasRenderer = CanvasRenderer();
   final rect3 = Rectangle(canvasRenderer, 50, 50, 100, 80);
   
@@ -1332,7 +1330,7 @@ class LoginForm extends UIComponent {
     passwordField.render();
     rememberMe.render();
     loginButton.render();
-    print('------------------\n');
+    print('------------------');
   }
 }
 
@@ -1381,7 +1379,7 @@ class PostgreSQLDriver implements DatabaseDriver {
   @override
   Future<void> connect(String connectionString) async {
     print('PostgreSQL: Connecting to \$connectionString');
-    await Future.delayed(.milliseconds(100));
+    await Future.delayed(Duration(milliseconds: 100));
     _connected = true;
     print('PostgreSQL: Connected');
   }
@@ -1395,7 +1393,7 @@ class PostgreSQLDriver implements DatabaseDriver {
   @override
   Future<List<Map<String, dynamic>>> executeQuery(String query, List<dynamic> params) async {
     print('PostgreSQL: \$query with params \$params');
-    await Future.delayed(.milliseconds(50));
+    await Future.delayed(Duration(milliseconds: 50));
     return [
       {'id': 1, 'name': 'Alice'},
       {'id': 2, 'name': 'Bob'},
@@ -1405,7 +1403,7 @@ class PostgreSQLDriver implements DatabaseDriver {
   @override
   Future<int> executeUpdate(String query, List<dynamic> params) async {
     print('PostgreSQL: \$query with params \$params');
-    await Future.delayed(.milliseconds(50));
+    await Future.delayed(Duration(milliseconds: 50));
     return 1; // rows affected
   }
   
@@ -1441,7 +1439,7 @@ class MySQLDriver implements DatabaseDriver {
   @override
   Future<void> connect(String connectionString) async {
     print('MySQL: Connecting to \$connectionString');
-    await Future.delayed(.milliseconds(100));
+    await Future.delayed(Duration(milliseconds: 100));
     _connected = true;
     print('MySQL: Connected');
   }
@@ -1455,7 +1453,7 @@ class MySQLDriver implements DatabaseDriver {
   @override
   Future<List<Map<String, dynamic>>> executeQuery(String query, List<dynamic> params) async {
     print('MySQL: \$query with params \$params');
-    await Future.delayed(.milliseconds(50));
+    await Future.delayed(Duration(milliseconds: 50));
     return [
       {'id': 1, 'name': 'Alice'},
       {'id': 2, 'name': 'Bob'},
@@ -1465,7 +1463,7 @@ class MySQLDriver implements DatabaseDriver {
   @override
   Future<int> executeUpdate(String query, List<dynamic> params) async {
     print('MySQL: \$query with params \$params');
-    await Future.delayed(.milliseconds(50));
+    await Future.delayed(Duration(milliseconds: 50));
     return 1;
   }
   
@@ -1500,7 +1498,7 @@ class SQLiteDriver implements DatabaseDriver {
   @override
   Future<void> connect(String connectionString) async {
     print('SQLite: Opening database at \$connectionString');
-    await Future.delayed(.milliseconds(50));
+    await Future.delayed(Duration(milliseconds: 50));
     _connected = true;
     print('SQLite: Database opened');
   }
@@ -1514,7 +1512,7 @@ class SQLiteDriver implements DatabaseDriver {
   @override
   Future<List<Map<String, dynamic>>> executeQuery(String query, List<dynamic> params) async {
     print('SQLite: \$query with params \$params');
-    await Future.delayed(.milliseconds(30));
+    await Future.delayed(Duration(milliseconds: 30));
     return [
       {'id': 1, 'name': 'Alice'},
       {'id': 2, 'name': 'Bob'},
@@ -1524,7 +1522,7 @@ class SQLiteDriver implements DatabaseDriver {
   @override
   Future<int> executeUpdate(String query, List<dynamic> params) async {
     print('SQLite: \$query with params \$params');
-    await Future.delayed(.milliseconds(30));
+    await Future.delayed(Duration(milliseconds: 30));
     return 1;
   }
   
@@ -1620,13 +1618,13 @@ void main() async {
   await pgRepo.insert('Charlie', 'charlie@example.com');
   await pgRepo.disconnect();
   
-  print('\n=== MySQL ===');
+  print('=== MySQL ===');
   final mysqlRepo = UserRepository(MySQLDriver());
   await mysqlRepo.connect('mysql://localhost/mydb');
   await mysqlRepo.findById(1);
   await mysqlRepo.disconnect();
   
-  print('\n=== SQLite ===');
+  print('=== SQLite ===');
   final sqliteRepo = UserRepository(SQLiteDriver());
   await sqliteRepo.connect('./app.db');
   await sqliteRepo.transferUser(1, 'Engineering');
@@ -2218,7 +2216,7 @@ class Directory implements FileSystemEntity {
 // Client code works uniformly with files and directories
 class FileSystemExplorer {
   void printTree(FileSystemEntity entity) {
-    print('\n=== File System Tree ===');
+    print('=== File System Tree ===');
     entity.display();
   }
   
@@ -2230,7 +2228,7 @@ class FileSystemExplorer {
     final results = <FileSystemEntity>[];
     root.search(query, results);
     
-    print('\n=== Search results for "\$query" ===');
+    print('=== Search results for "\$query" ===');
     if (results.isEmpty) {
       print('No results found');
     } else {
@@ -2520,14 +2518,14 @@ void main() {
   (loginForm._components[0] as TextInput).value = 'john_doe';
   (loginForm._components[1] as TextInput).value = 'secret123';
   
-  print('\n=== After filling values ===');
+  print('=== After filling values ===');
   loginForm.render();
   
   // Try to submit
   loginForm.submit();
   
   // Disable entire form (affects all children)
-  print('\n=== Disabled Form ===');
+  print('=== Disabled Form ===');
   loginForm.disable();
   loginForm.render();
   
@@ -2766,7 +2764,7 @@ void main() {
   print('Result: \${expr1.evaluate()}');
   
   // Build expression with variables: x^2 + 2*x + 1
-  print('\n=== Example 2: x^2 + 2*x + 1 ===');
+  print('=== Example 2: x^2 + 2*x + 1 ===');
   builder.setVariable('x', 3);
   
   final x = builder.variable('x');
@@ -2786,7 +2784,7 @@ void main() {
   print('When x=5: \${expr2.evaluate()}');
   
   // Complex expression: sqrt(a^2 + b^2) (Pythagorean theorem)
-  print('\n=== Example 3: sqrt(a^2 + b^2) ===');
+  print('=== Example 3: sqrt(a^2 + b^2) ===');
   builder.setVariable('a', 3);
   builder.setVariable('b', 4);
   
@@ -2802,7 +2800,7 @@ void main() {
   print('When a=3, b=4: \${expr3.evaluate()}');
   
   // Expression with negation: -(x - 5)
-  print('\n=== Example 4: -(x - 5) ===');
+  print('=== Example 4: -(x - 5) ===');
   builder.setVariable('x', 10);
   
   final expr4 = builder.neg(
@@ -3281,15 +3279,8 @@ void main() {
       ],
     ),
     // ... continues with examples
-    examples: LocV(
-      en: [
-        StrCodeBlock(
-          """// I'll provide the comprehensive examples in the next message
-// to keep the response manageable""",
-        ),
-      ],
-      ar: [],
-    ),
+    // TODO: Add examples
+    examples: LocV(en: [StrCodeBlock("""// MISSING EXAMPLES""")], ar: []),
     pros: LocSL(
       en: [
         "More flexible than static inheritance - add behavior at runtime",
@@ -3543,7 +3534,7 @@ class HomeTheaterFacade {
   
   // Simple interface for common operations
   void watchMovie(String movie) {
-    print('\n=== Get ready to watch "\$movie" ===\n');
+    print('=== Get ready to watch "\$movie" ===\n');
     
     _lights.dim(10);
     _screen.down();
@@ -3557,7 +3548,7 @@ class HomeTheaterFacade {
   }
   
   void endMovie() {
-    print('\n=== Shutting down movie theater ===\n');
+    print('=== Shutting down movie theater ===\n');
     
     _dvd.stop();
     _dvd.eject();
@@ -3569,7 +3560,7 @@ class HomeTheaterFacade {
   }
   
   void listenToMusic(String source) {
-    print('\n=== Setting up music from \$source ===\n');
+    print('=== Setting up music from \$source ===\n');
     
     _lights.dim(30);
     _amp.on();
@@ -3580,7 +3571,7 @@ class HomeTheaterFacade {
   }
   
   void endMusic() {
-    print('\n=== Ending music session ===\n');
+    print('=== Ending music session ===\n');
     
     _sound.off();
     _amp.off();
@@ -3622,7 +3613,7 @@ void main() {
   homeTheater.endMusic();
   
   // Client can still access subsystems directly if needed
-  print('\n=== Direct subsystem access ===');
+  print('=== Direct subsystem access ===');
   projector.on();
   projector.setInput('HDMI-2');
 }"""),
@@ -3899,7 +3890,7 @@ class DatabaseFacade {
   }
   
   void shutdown() {
-    print('\n=== Shutting down database ===');
+    print('=== Shutting down database ===');
     _cache.clear();
     _pool.closeAll();
   }
@@ -3950,7 +3941,7 @@ class StripeProvider implements PaymentProvider {
   @override
   Future<PaymentResponse> charge(PaymentRequest request) async {
     print('Stripe: Processing charge for \$\${request.amount}');
-    await Future.delayed(.milliseconds(100));
+    await Future.delayed(Duration(milliseconds: 100));
     
     // Simulate Stripe-specific validation
     if (request.amount > 10000) {
@@ -3970,7 +3961,7 @@ class StripeProvider implements PaymentProvider {
   @override
   Future<bool> refund(String transactionId) async {
     print('Stripe: Refunding \$transactionId');
-    await Future.delayed(.milliseconds(50));
+    await Future.delayed(Duration(milliseconds: 50));
     return true;
   }
 }
@@ -3982,7 +3973,7 @@ class PayPalProvider implements PaymentProvider {
   @override
   Future<PaymentResponse> charge(PaymentRequest request) async {
     print('PayPal: Processing charge for \$\${request.amount}');
-    await Future.delayed(.milliseconds(150));
+    await Future.delayed(Duration(milliseconds: 150));
     
     return PaymentResponse(
       success: true,
@@ -3994,7 +3985,7 @@ class PayPalProvider implements PaymentProvider {
   @override
   Future<bool> refund(String transactionId) async {
     print('PayPal: Refunding \$transactionId');
-    await Future.delayed(.milliseconds(50));
+    await Future.delayed(Duration(milliseconds: 50));
     return true;
   }
 }
@@ -4003,7 +3994,7 @@ class PayPalProvider implements PaymentProvider {
 class FraudDetector {
   Future<FraudCheckResult> check(PaymentRequest request) async {
     print('FraudDetector: Checking transaction');
-    await Future.delayed(.milliseconds(50));
+    await Future.delayed(Duration(milliseconds: 50));
     
     // Simulate fraud checks
     if (request.amount > 5000) {
@@ -4129,7 +4120,7 @@ class PaymentFacade {
     required String customerEmail,
     String? preferredProvider,
   }) async {
-    print('\n=== Processing Payment ===');
+    print('=== Processing Payment ===');
     print('Amount: \$amount \$currency');
     print('Customer: \$customerEmail\n');
     
@@ -4201,7 +4192,7 @@ class PaymentFacade {
   }
   
   Future<bool> refundPayment(String transactionId) async {
-    print('\n=== Processing Refund ===');
+    print('=== Processing Refund ===');
     print('Transaction: \$transactionId\n');
     
     // Find original transaction
@@ -4231,7 +4222,7 @@ class PaymentFacade {
   }
   
   void generateReport() {
-    print('\n=== Transaction Report ===');
+    print('=== Transaction Report ===');
     final history = _logger.getHistory();
     
     print('Total transactions: \${history.length}');
@@ -4304,7 +4295,7 @@ class CameraController {
   
   Future<void> initialize() async {
     print('CameraController: Initializing camera');
-    await Future.delayed(.milliseconds(500));
+    await Future.delayed(Duration(milliseconds: 500));
     _isInitialized = true;
     print('CameraController: Initialized');
   }
@@ -4317,7 +4308,7 @@ class CameraController {
   Future<String> takePicture() async {
     if (!_isInitialized) throw Exception('Camera not initialized');
     print('CameraController: Capturing image');
-    await Future.delayed(.milliseconds(200));
+    await Future.delayed(Duration(milliseconds: 200));
     return '/path/to/image_\${DateTime.now().millisecondsSinceEpoch}.jpg';
   }
   
@@ -4340,25 +4331,25 @@ enum FocusMode { auto, locked, continuous }
 class ImageProcessor {
   Future<String> compress(String path, int quality) async {
     print('ImageProcessor: Compressing image (quality: \$quality)');
-    await Future.delayed(.milliseconds(100));
+    await Future.delayed(Duration(milliseconds: 100));
     return path.replaceAll('.jpg', '_compressed.jpg');
   }
   
   Future<String> crop(String path, int width, int height) async {
     print('ImageProcessor: Cropping to \${width}x\$height');
-    await Future.delayed(.milliseconds(100));
+    await Future.delayed(Duration(milliseconds: 100));
     return path.replaceAll('.jpg', '_cropped.jpg');
   }
   
   Future<String> rotate(String path, int degrees) async {
     print('ImageProcessor: Rotating \$degrees degrees');
-    await Future.delayed(.milliseconds(50));
+    await Future.delayed(Duration(milliseconds: 50));
     return path.replaceAll('.jpg', '_rotated.jpg');
   }
   
   Future<String> addWatermark(String path, String text) async {
     print('ImageProcessor: Adding watermark: \$text');
-    await Future.delayed(.milliseconds(80));
+    await Future.delayed(Duration(milliseconds: 80));
     return path.replaceAll('.jpg', '_watermarked.jpg');
   }
 }
@@ -4366,13 +4357,13 @@ class ImageProcessor {
 class StorageService {
   Future<String> saveToGallery(String path) async {
     print('StorageService: Saving to gallery');
-    await Future.delayed(.milliseconds(150));
+    await Future.delayed(Duration(milliseconds: 150));
     return '/gallery/\${path.split('/').last}';
   }
   
   Future<String> uploadToCloud(String path) async {
     print('StorageService: Uploading to cloud');
-    await Future.delayed(.milliseconds(300));
+    await Future.delayed(Duration(milliseconds: 300));
     return 'https://cloud.example.com/\${path.split('/').last}';
   }
   
@@ -4384,13 +4375,13 @@ class StorageService {
 class PermissionHandler {
   Future<bool> requestCameraPermission() async {
     print('PermissionHandler: Requesting camera permission');
-    await Future.delayed(.milliseconds(100));
+    await Future.delayed(Duration(milliseconds: 100));
     return true; // Simulate granted
   }
   
   Future<bool> requestStoragePermission() async {
     print('PermissionHandler: Requesting storage permission');
-    await Future.delayed(.milliseconds(100));
+    await Future.delayed(Duration(milliseconds: 100));
     return true; // Simulate granted
   }
 }
@@ -4417,7 +4408,7 @@ class SimpleCameraFacade {
     bool flash = false,
     bool saveToGallery = true,
   }) async {
-    print('\n=== Capture and Save ===\n');
+    print('=== Capture and Save ===\n');
     
     // Handle all the complexity internally
     final cameraGranted = await _permissions.requestCameraPermission();
@@ -4456,7 +4447,7 @@ class SimpleCameraFacade {
     int? cropHeight,
     String? watermark,
   }) async {
-    print('\n=== Capture with Processing ===\n');
+    print('=== Capture with Processing ===\n');
     
     await _permissions.requestCameraPermission();
     
@@ -4484,7 +4475,7 @@ class SimpleCameraFacade {
   
   // Simple method: Take photo and upload
   Future<String?> captureAndUpload() async {
-    print('\n=== Capture and Upload ===\n');
+    print('=== Capture and Upload ===\n');
     
     await _permissions.requestCameraPermission();
     
@@ -4898,7 +4889,7 @@ class TextDocument {
   }
   
   void render() {
-    print('\n=== Rendering Document ===');
+    print('=== Rendering Document ===');
     for (final char in _characters) {
       char.render();
     }
@@ -4912,7 +4903,7 @@ class TextDocument {
     // Calculate memory without flyweight
     final withoutFlyweight = _characters.length * 50; // Approximate full object size
     
-    print('\n=== Memory Statistics ===');
+    print('=== Memory Statistics ===');
     print('Characters: \${_characters.length}');
     print('Unique glyphs: \${_glyphFactory.glyphCount}');
     print('');
@@ -5112,7 +5103,7 @@ class ParticleSystem {
   }
   
   void printStats() {
-    print('\n=== Particle System Stats ===');
+    print('=== Particle System Stats ===');
     print('Active particles: \${_particles.length}');
     print('Particle types: \${_typeFactory.typeCount}');
     print('Memory efficiency: \${_particles.length} particles share \${_typeFactory.typeCount} textures');
@@ -5133,7 +5124,7 @@ void main() {
   
   system.printStats();
   
-  print('\n=== Simulating one frame ===');
+  print('=== Simulating one frame ===');
   system.update(0.016); // ~60 FPS
   system.render();
   
@@ -5321,7 +5312,7 @@ class Forest {
   void renderVisibleTrees(double cameraX, double cameraZ, double viewDistance) {
     int rendered = 0;
     
-    print('\n=== Rendering Trees ===');
+    print('=== Rendering Trees ===');
     for (final tree in _trees) {
       final dx = tree.x - cameraX;
       final dz = tree.z - cameraZ;
@@ -5348,7 +5339,7 @@ class Forest {
     final withoutFlyweight = _trees.fold(0, (sum, tree) => 
       sum + tree.getMemorySize() + tree.model.getMemorySize());
     
-    print('\n=== Forest Memory Statistics ===');
+    print('=== Forest Memory Statistics ===');
     print('Total trees: \${_trees.length}');
     print('Unique species: \${_modelFactory.modelCount}');
     print('');
@@ -5724,10 +5715,6 @@ void main() {
     relatedPatterns: [PK.singleton, PK.objectPool, PK.composite, PK.state],
     oftenConfusedWith: [PK.objectPool, PK.singleton],
   ),
-
-  // OLD
-  // OLD
-  // OLD
   PK.proxy: DesignPattern(
     id: PK.proxy,
     title: LocS(en: "Proxy", ar: "الوكيل (Proxy)"),
@@ -5742,59 +5729,1085 @@ void main() {
     content: LocV(
       en: [
         StrContent(
-          "The Proxy pattern provides a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.",
+          "The Proxy pattern provides a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object - without the client knowing.",
+        ),
+        AnalogyContent(
+          "Think of a celebrity's manager. Fans can't directly contact the celebrity - requests go through the manager (proxy) first. The manager checks who's calling, screens requests, schedules appearances, and handles routine matters. For important requests, they forward to the celebrity. The manager and celebrity have the same 'public interface' - both can respond to requests - but the manager adds control, filtering, and convenience.",
+        ),
+        StrContent(
+          "Proxy implements the same interface as the real subject, making it transparent to clients. This is the key difference from Decorator (which adds behavior) and Adapter (which changes interface). Proxy controls access while maintaining the same interface.",
         ),
         ULContent(
-          title: "Common Types:",
+          title: "Common Proxy Types:",
           value: [
-            "Virtual Proxy: Lazy initialization of expensive objects",
-            "Remote Proxy: Represents object in different address space",
-            "Protection Proxy: Controls access based on permissions",
-            "Caching Proxy: Caches results of expensive operations",
+            "Virtual Proxy: Defers expensive object creation until actually needed (lazy initialization)",
+            "Remote Proxy: Represents object in different address space, handles communication",
+            "Protection Proxy: Controls access based on permissions or authentication",
+            "Caching Proxy: Caches results of expensive operations to avoid repetition",
+            "Logging Proxy: Records all interactions for debugging or auditing",
+            "Smart Reference: Manages lifecycle, reference counting, or locking",
           ],
+        ),
+        DiagramContent(
+          "Pattern Structure:\nClient → Subject Interface\n             ↙          ↘\n      RealSubject      Proxy\n                          ↓\n               (wraps RealSubject)\n                  before/after\n                    logic",
+        ),
+        StrContent(
+          "All proxy types share the same structure: they implement the Subject interface and hold a reference to the RealSubject. The difference is in what they do before/after forwarding the request: Virtual Proxy creates the object, Protection Proxy checks permissions, Caching Proxy checks cache, etc.",
+        ),
+        NoteContent(
+          "Proxy vs Decorator: Both wrap an object with the same interface. Proxy controls ACCESS (who can call, when to call, whether to call at all). Decorator adds BEHAVIOR (do something extra around the call). Proxy is about control, Decorator is about enhancement.",
+          type: .important,
+        ),
+        ComparisonContent({
+          'Proxy':
+              'Controls access, same interface, usually one proxy per object',
+          'Decorator':
+              'Adds behavior, same interface, stackable multiple times',
+          'Facade': 'Simplifies interface to subsystem',
+          'Adapter': 'Changes interface to match expected one',
+        }, title: 'Proxy vs Similar Patterns'),
+        StrContent(
+          "Common use cases in Flutter/Dart: lazy loading of expensive resources, API request caching, authentication/authorization guards, network request interceptors, service locators, mock objects in testing, and logging/monitoring wrappers.",
+        ),
+        NoteContent(
+          "In Flutter, packages like `dio` use interceptors (a proxy-like mechanism) to add auth headers, logging, and retry logic transparently. Riverpod providers act as virtual proxies for lazily-created services.",
+          type: .tip,
         ),
       ],
       ar: [
         StrContent(
-          "نمط الوكيل يوفر بديلاً أو عنصراً نائباً لكائن آخر. الوكيل يتحكم في الوصول للكائن الأصلي، مما يسمح لك بتنفيذ شيء ما قبل أو بعد وصول الطلب للكائن الأصلي.",
+          "نمط الوكيل يوفر بديلاً أو عنصراً نائباً لكائن آخر. الوكيل يتحكم في الوصول للكائن الأصلي، مما يسمح لك بتنفيذ شيء ما قبل أو بعد وصول الطلب للكائن الأصلي - دون علم العميل.",
+        ),
+        AnalogyContent(
+          "فكر في مدير نجم مشهور. المعجبون لا يمكنهم الاتصال بالنجم مباشرة - الطلبات تمر أولاً عبر المدير (الوكيل). المدير يتحقق من المتصل، يفحص الطلبات، يجدول الظهور، ويتعامل مع الأمور الروتينية. للطلبات المهمة، يحيل للنجم. المدير والنجم لديهما نفس 'الواجهة العامة' - كلاهما يمكنه الاستجابة للطلبات - لكن المدير يضيف التحكم والتصفية والراحة.",
+        ),
+        StrContent(
+          "الوكيل ينفذ نفس واجهة الموضوع الحقيقي، مما يجعله شفافاً للعملاء. هذا هو الفرق الأساسي عن المُزخرف (الذي يضيف سلوكاً) والمُحوّل (الذي يغير الواجهة). الوكيل يتحكم في الوصول مع الحفاظ على نفس الواجهة.",
         ),
         ULContent(
-          title: "الأنواع الشائعة:",
+          title: "أنواع الوكيل الشائعة:",
           value: [
-            "الوكيل الافتراضي: تهيئة كسولة للكائنات المكلفة",
-            "الوكيل البعيد: يمثل كائناً في مساحة عنوان مختلفة",
-            "وكيل الحماية: يتحكم في الوصول بناءً على الأذونات",
-            "وكيل التخزين المؤقت: يخزن نتائج العمليات المكلفة مؤقتاً",
+            "الوكيل الافتراضي (Virtual Proxy): يؤجل إنشاء الكائنات المكلفة حتى الحاجة الفعلية (تهيئة كسولة)",
+            "الوكيل البعيد (Remote Proxy): يمثل كائناً في مساحة عنوان مختلفة، يتعامل مع الاتصال",
+            "وكيل الحماية (Protection Proxy): يتحكم في الوصول بناءً على الأذونات أو المصادقة",
+            "وكيل التخزين المؤقت (Caching Proxy): يخزن نتائج العمليات المكلفة مؤقتاً لتجنب التكرار",
+            "وكيل التسجيل (Logging Proxy): يسجل جميع التفاعلات للتنقيح أو التدقيق",
+            "المرجع الذكي (Smart Reference): يدير دورة الحياة، عد المراجع، أو القفل",
           ],
         ),
+        DiagramContent(
+          "بنية النمط:\nالعميل ← واجهة الموضوع\n             ↙          ↘\n      الموضوع الحقيقي      الوكيل\n                          ↓\n               (يلف الموضوع الحقيقي)\n                  منطق قبل/بعد",
+        ),
+        StrContent(
+          "جميع أنواع الوكيل تشارك نفس البنية: تنفذ واجهة الموضوع وتحتفظ بمرجع للموضوع الحقيقي. الفرق في ما تفعله قبل/بعد توجيه الطلب: الوكيل الافتراضي ينشئ الكائن، وكيل الحماية يتحقق من الأذونات، وكيل التخزين المؤقت يتحقق من الذاكرة المؤقتة، إلخ.",
+        ),
+        NoteContent(
+          "الوكيل مقابل المُزخرف: كلاهما يلف كائناً بنفس الواجهة. الوكيل يتحكم في الوصول (من يمكنه الاستدعاء، متى يستدعي، هل يستدعي أصلاً). المُزخرف يضيف سلوكاً (يقوم بشيء إضافي حول الاستدعاء). الوكيل يتعلق بالتحكم، المُزخرف يتعلق بالتحسين.",
+          type: .important,
+        ),
+        ComparisonContent({
+          'الوكيل (Proxy)':
+              'يتحكم في الوصول، نفس الواجهة، عادةً وكيل واحد لكل كائن',
+          'المُزخرف (Decorator)':
+              'يضيف سلوكاً، نفس الواجهة، قابل للتكديس عدة مرات',
+          'الواجهة (Facade)': 'يُبسط الواجهة لنظام فرعي',
+          'المُحوّل (Adapter)': 'يغير الواجهة لتطابق المتوقعة',
+        }, title: 'الوكيل مقابل الأنماط المشابهة'),
+        StrContent(
+          "حالات الاستخدام الشائعة في Flutter/Dart: التحميل الكسول للموارد المكلفة، تخزين طلبات API مؤقتاً، حراس المصادقة/التفويض، معترضات طلبات الشبكة، محددات موقع الخدمة، كائنات وهمية في الاختبار، وأغلفة التسجيل/المراقبة.",
+        ),
+        NoteContent(
+          "في Flutter، حزم مثل `dio` تستخدم المعترضات (Interceptors) (آلية شبيهة بالوكيل) لإضافة رؤوس المصادقة والتسجيل ومنطق إعادة المحاولة بشفافية. موفرو Riverpod يعملون كوكلاء افتراضيين للخدمات التي يتم إنشاؤها بكسل.",
+          type: .tip,
+        ),
+      ],
+    ),
+    examples: LocV(
+      en: [
+        // Example 1: Basic - Virtual Proxy (Lazy Loading)
+        StrCodeBlock("""// Example 1: Basic - Virtual Proxy (Lazy Loading)
+// Use case: Defer expensive image loading until actually needed
+
+// Subject: Common interface
+abstract class Image {
+  String get filename;
+  void display();
+  int get width;
+  int get height;
+}
+
+// Real Subject: Expensive to create
+class HighResolutionImage implements Image {
+  @override
+  final String filename;
+  late final int _width;
+  late final int _height;
+  late final String _imageData;
+  
+  HighResolutionImage(this.filename) {
+    _loadFromDisk();
+  }
+  
+  void _loadFromDisk() {
+    print('Loading high-res image from disk: \$filename (expensive!)');
+    // Simulate expensive loading
+    _width = 4000;
+    _height = 3000;
+    _imageData = 'BINARY_IMAGE_DATA_\$filename';
+    print('Image loaded: \${_imageData.length} bytes');
+  }
+  
+  @override
+  void display() {
+    print('Displaying \$filename (\${_width}x\$_height)');
+  }
+  
+  @override
+  int get width => _width;
+  
+  @override
+  int get height => _height;
+}
+
+// Virtual Proxy: Creates real image only when needed
+class ImageProxy implements Image {
+  @override
+  final String filename;
+  HighResolutionImage? _realImage; // null until accessed
+  
+  ImageProxy(this.filename) {
+    print('Proxy created for: \$filename (image NOT loaded yet)');
+  }
+  
+  // Lazy initialization - create real image only on demand
+  HighResolutionImage get _image {
+    _realImage ??= HighResolutionImage(filename);
+    return _realImage!;
+  }
+  
+  @override
+  void display() {
+    print('\n--- Proxy: display() called ---');
+    _image.display(); // Load real image now
+  }
+  
+  @override
+  int get width => _image.width;
+  
+  @override
+  int get height => _image.height;
+  
+  bool get isLoaded => _realImage != null;
+}
+
+// Image gallery using proxies
+class ImageGallery {
+  final List<Image> _images = [];
+  
+  void addImage(String filename) {
+    // Add proxy, not real image - very fast!
+    _images.add(ImageProxy(filename));
+  }
+  
+  void displayImageAt(int index) {
+    if (index < _images.length) {
+      _images[index].display(); // Only this image gets loaded
+    }
+  }
+  
+  void displayAll() {
+    for (final image in _images) {
+      image.display();
+    }
+  }
+  
+  void showStatus() {
+    print('\n=== Gallery Status ===');
+    for (final image in _images) {
+      if (image is ImageProxy) {
+        print('\${image.filename}: \${image.isLoaded ? "loaded" : "not loaded"}');
+      }
+    }
+  }
+}
+
+void main() {
+  print('=== Virtual Proxy Demo ===\n');
+  
+  final gallery = ImageGallery();
+  
+  // Add 5 images - all proxies, no loading yet
+  print('--- Adding images to gallery ---');
+  gallery.addImage('photo1.jpg');
+  gallery.addImage('photo2.jpg');
+  gallery.addImage('photo3.jpg');
+  gallery.addImage('photo4.jpg');
+  gallery.addImage('photo5.jpg');
+  
+  gallery.showStatus();
+  
+  // Display only image 2 - only that one loads
+  print('\n--- User views image 2 ---');
+  gallery.displayImageAt(1);
+  
+  print('\n--- User views image 4 ---');
+  gallery.displayImageAt(3);
+  
+  gallery.showStatus();
+  
+  print('\n✓ Images 1, 3, 5 were never loaded - saving memory and time!');
+}"""),
+
+        // Example 2: Intermediate - Protection Proxy
+        StrCodeBlock(
+          """// Example 2: Intermediate - Protection Proxy (Access Control)
+// Use case: Role-based access control for sensitive operations
+
+enum UserRole { guest, user, admin, superAdmin }
+
+class User {
+  final String name;
+  final UserRole role;
+  
+  User(this.name, this.role);
+  
+  @override
+  String toString() => '\$name (\$role)';
+}
+
+// Subject: File system operations
+abstract class FileSystem {
+  List<String> listFiles(String path);
+  String readFile(String path);
+  void writeFile(String path, String content);
+  void deleteFile(String path);
+  void createDirectory(String path);
+}
+
+// Real Subject
+class LocalFileSystem implements FileSystem {
+  final Map<String, String> _files = {
+    '/public/readme.txt': 'Welcome to the system',
+    '/private/config.json': '{"api_key": "secret123"}',
+    '/admin/users.db': 'admin:password\nuser:pass123',
+  };
+  
+  @override
+  List<String> listFiles(String path) {
+    print('FileSystem: Listing files in \$path');
+    return _files.keys
+        .where((k) => k.startsWith(path))
+        .toList();
+  }
+  
+  @override
+  String readFile(String path) {
+    print('FileSystem: Reading \$path');
+    return _files[path] ?? 'File not found';
+  }
+  
+  @override
+  void writeFile(String path, String content) {
+    print('FileSystem: Writing to \$path');
+    _files[path] = content;
+  }
+  
+  @override
+  void deleteFile(String path) {
+    print('FileSystem: Deleting \$path');
+    _files.remove(path);
+  }
+  
+  @override
+  void createDirectory(String path) {
+    print('FileSystem: Creating directory \$path');
+  }
+}
+
+// Protection Proxy: Enforces access rules
+class ProtectedFileSystem implements FileSystem {
+  final FileSystem _realFileSystem;
+  final User _currentUser;
+  
+  ProtectedFileSystem(this._realFileSystem, this._currentUser);
+  
+  void _checkPermission(String operation, String path) {
+    final hasAccess = switch (_currentUser.role) {
+      UserRole.superAdmin => true, // Full access
+      UserRole.admin => !path.startsWith('/system'), // Can't touch /system
+      UserRole.user => path.startsWith('/public') || path.startsWith('/user'), // Limited
+      UserRole.guest => path.startsWith('/public'), // Read-only public
+    };
+    
+    if (!hasAccess) {
+      throw UnauthorizedException(
+        'User \$_currentUser does not have permission to \$operation: \$path',
+      );
+    }
+    
+    // Additional write restrictions
+    if (['write', 'delete', 'create'].contains(operation)) {
+      if (_currentUser.role == UserRole.guest) {
+        throw UnauthorizedException(
+          'Guests cannot perform write operations',
+        );
+      }
+    }
+    
+    print('✓ Permission granted: \$_currentUser can \$operation \$path');
+  }
+  
+  @override
+  List<String> listFiles(String path) {
+    _checkPermission('list', path);
+    return _realFileSystem.listFiles(path);
+  }
+  
+  @override
+  String readFile(String path) {
+    _checkPermission('read', path);
+    return _realFileSystem.readFile(path);
+  }
+  
+  @override
+  void writeFile(String path, String content) {
+    _checkPermission('write', path);
+    _realFileSystem.writeFile(path, content);
+  }
+  
+  @override
+  void deleteFile(String path) {
+    _checkPermission('delete', path);
+    _realFileSystem.deleteFile(path);
+  }
+  
+  @override
+  void createDirectory(String path) {
+    _checkPermission('create', path);
+    _realFileSystem.createDirectory(path);
+  }
+}
+
+class UnauthorizedException implements Exception {
+  final String message;
+  UnauthorizedException(this.message);
+  
+  @override
+  String toString() => '🚫 Unauthorized: \$message';
+}
+
+// Client code
+void testAccess(FileSystem fs, String label) {
+  print('\n=== \$label ===');
+  
+  final operations = [
+    () => print('List /public: \${fs.listFiles('/public')}'),
+    () => print('Read /public/readme.txt: \${fs.readFile('/public/readme.txt')}'),
+    () => print('Read /private/config.json: \${fs.readFile('/private/config.json')}'),
+    () => print('Read /admin/users.db: \${fs.readFile('/admin/users.db')}'),
+    () { fs.writeFile('/public/test.txt', 'test'); print('Write: success'); },
+    () { fs.deleteFile('/admin/users.db'); print('Delete admin file: success'); },
+  ];
+  
+  for (final op in operations) {
+    try {
+      op();
+    } catch (e) {
+      print(e);
+    }
+  }
+}
+
+void main() {
+  final realFileSystem = LocalFileSystem();
+  
+  // Test with different user roles
+  testAccess(
+    ProtectedFileSystem(realFileSystem, User('Alice', UserRole.guest)),
+    'Guest Access',
+  );
+  
+  testAccess(
+    ProtectedFileSystem(realFileSystem, User('Bob', UserRole.user)),
+    'Regular User Access',
+  );
+  
+  testAccess(
+    ProtectedFileSystem(realFileSystem, User('Carol', UserRole.admin)),
+    'Admin Access',
+  );
+  
+  testAccess(
+    ProtectedFileSystem(realFileSystem, User('Dave', UserRole.superAdmin)),
+    'Super Admin Access',
+  );
+}""",
+        ),
+
+        // Example 3: Advanced - Caching + Logging Proxy
+        StrCodeBlock("""// Example 3: Advanced - Caching and Logging Proxy
+// Use case: Transparent caching and audit logging for API calls
+
+// Subject: Data service interface
+abstract class UserDataService {
+  Future<Map<String, dynamic>> getUser(int id);
+  Future<List<Map<String, dynamic>>> searchUsers(String query);
+  Future<bool> updateUser(int id, Map<String, dynamic> data);
+  Future<bool> deleteUser(int id);
+}
+
+// Real Subject: Actual API calls
+class RemoteUserService implements UserDataService {
+  int _callCount = 0;
+  
+  @override
+  Future<Map<String, dynamic>> getUser(int id) async {
+    _callCount++;
+    print('API: GET /users/\$id (call #\$_callCount)');
+    await Future.delayed(.milliseconds(200)); // Simulate network
+    
+    return {
+      'id': id,
+      'name': 'User \$id',
+      'email': 'user\$id@example.com',
+      'role': 'user',
+      'createdAt': DateTime.now().toIso8601String(),
+    };
+  }
+  
+  @override
+  Future<List<Map<String, dynamic>>> searchUsers(String query) async {
+    _callCount++;
+    print('API: GET /users?q=\$query (call #\$_callCount)');
+    await Future.delayed(.milliseconds(300));
+    
+    return [
+      {'id': 1, 'name': 'Alice \$query'},
+      {'id': 2, 'name': 'Bob \$query'},
+    ];
+  }
+  
+  @override
+  Future<bool> updateUser(int id, Map<String, dynamic> data) async {
+    _callCount++;
+    print('API: PUT /users/\$id (call #\$_callCount)');
+    await Future.delayed(.milliseconds(150));
+    return true;
+  }
+  
+  @override
+  Future<bool> deleteUser(int id) async {
+    _callCount++;
+    print('API: DELETE /users/\$id (call #\$_callCount)');
+    await Future.delayed(.milliseconds(150));
+    return true;
+  }
+  
+  int get callCount => _callCount;
+}
+
+// Caching Proxy: Transparent caching layer
+class CachingUserServiceProxy implements UserDataService {
+  final UserDataService _realService;
+  final Map<String, dynamic> _cache = {};
+  final Map<String, DateTime> _cacheTimestamps = {};
+  final Duration _cacheDuration;
+  
+  int _cacheHits = 0;
+  int _cacheMisses = 0;
+  
+  CachingUserServiceProxy(
+    this._realService, {
+    Duration cacheDuration = const Duration(minutes: 5),
+  }) : _cacheDuration = cacheDuration;
+  
+  bool _isCacheValid(String key) {
+    if (!_cache.containsKey(key)) return false;
+    final age = DateTime.now().difference(_cacheTimestamps[key]!);
+    return age < _cacheDuration;
+  }
+  
+  T _getFromCache<T>(String key) {
+    _cacheHits++;
+    print('Cache HIT: \$key');
+    return _cache[key] as T;
+  }
+  
+  void _storeInCache(String key, dynamic value) {
+    _cacheMisses++;
+    _cache[key] = value;
+    _cacheTimestamps[key] = DateTime.now();
+    print('Cache STORED: \$key');
+  }
+  
+  void _invalidateUserCache(int id) {
+    final keysToRemove = _cache.keys
+        .where((k) => k.contains('user_\$id') || k.contains('search_'))
+        .toList();
+    
+    for (final key in keysToRemove) {
+      _cache.remove(key);
+      _cacheTimestamps.remove(key);
+    }
+    
+    print('Cache INVALIDATED: keys for user \$id');
+  }
+  
+  @override
+  Future<Map<String, dynamic>> getUser(int id) async {
+    final key = 'user_\$id';
+    
+    if (_isCacheValid(key)) {
+      return _getFromCache(key);
+    }
+    
+    final user = await _realService.getUser(id);
+    _storeInCache(key, user);
+    return user;
+  }
+  
+  @override
+  Future<List<Map<String, dynamic>>> searchUsers(String query) async {
+    final key = 'search_\$query';
+    
+    if (_isCacheValid(key)) {
+      return _getFromCache(key);
+    }
+    
+    final results = await _realService.searchUsers(query);
+    _storeInCache(key, results);
+    return results;
+  }
+  
+  @override
+  Future<bool> updateUser(int id, Map<String, dynamic> data) async {
+    final result = await _realService.updateUser(id, data);
+    if (result) {
+      _invalidateUserCache(id);
+    }
+    return result;
+  }
+  
+  @override
+  Future<bool> deleteUser(int id) async {
+    final result = await _realService.deleteUser(id);
+    if (result) {
+      _invalidateUserCache(id);
+    }
+    return result;
+  }
+  
+  void printStats() {
+    print('\n=== Cache Statistics ===');
+    print('Cache hits: \$_cacheHits');
+    print('Cache misses: \$_cacheMisses');
+    final total = _cacheHits + _cacheMisses;
+    if (total > 0) {
+      print('Hit rate: \${(_cacheHits / total * 100).toStringAsFixed(1)}%');
+    }
+    print('Cached entries: \${_cache.length}');
+  }
+}
+
+// Logging Proxy: Transparent audit logging layer
+class LoggingUserServiceProxy implements UserDataService {
+  final UserDataService _realService;
+  final String _userId; // Who's making the requests
+  final List<AuditLog> _auditLog = [];
+  
+  LoggingUserServiceProxy(this._realService, this._userId);
+  
+  Future<T> _logOperation<T>(
+    String operation,
+    String resource,
+    Future<T> Function() action,
+  ) async {
+    final start = DateTime.now();
+    print('AUDIT: \$_userId performing \$operation on \$resource');
+    
+    try {
+      final result = await action();
+      final duration = DateTime.now().difference(start);
+      
+      _auditLog.add(AuditLog(
+        userId: _userId,
+        operation: operation,
+        resource: resource,
+        success: true,
+        duration: duration,
+        timestamp: start,
+      ));
+      
+      print('AUDIT: \$operation \$resource completed in \${duration.inMilliseconds}ms');
+      return result;
+    } catch (e) {
+      _auditLog.add(AuditLog(
+        userId: _userId,
+        operation: operation,
+        resource: resource,
+        success: false,
+        error: e.toString(),
+        timestamp: start,
+      ));
+      
+      print('AUDIT: \$operation \$resource FAILED: \$e');
+      rethrow;
+    }
+  }
+  
+  @override
+  Future<Map<String, dynamic>> getUser(int id) {
+    return _logOperation('READ', 'users/\$id', () => _realService.getUser(id));
+  }
+  
+  @override
+  Future<List<Map<String, dynamic>>> searchUsers(String query) {
+    return _logOperation('SEARCH', 'users?q=\$query', () => _realService.searchUsers(query));
+  }
+  
+  @override
+  Future<bool> updateUser(int id, Map<String, dynamic> data) {
+    return _logOperation('UPDATE', 'users/\$id', () => _realService.updateUser(id, data));
+  }
+  
+  @override
+  Future<bool> deleteUser(int id) {
+    return _logOperation('DELETE', 'users/\$id', () => _realService.deleteUser(id));
+  }
+  
+  void printAuditLog() {
+    print('\n=== Audit Log ===');
+    for (final log in _auditLog) {
+      print(log);
+    }
+  }
+}
+
+class AuditLog {
+  final String userId;
+  final String operation;
+  final String resource;
+  final bool success;
+  final String? error;
+  final Duration? duration;
+  final DateTime timestamp;
+  
+  AuditLog({
+    required this.userId,
+    required this.operation,
+    required this.resource,
+    required this.success,
+    this.error,
+    this.duration,
+    required this.timestamp,
+  });
+  
+  @override
+  String toString() {
+    final status = success ? '✓' : '✗';
+    final durationStr = duration != null ? '\${duration!.inMilliseconds}ms' : '';
+    return '[\$timestamp] \$status \$userId | \$operation \$resource \$durationStr \${error ?? ''}';
+  }
+}
+
+void main() async {
+  print('=== Proxy Chain Demo ===\n');
+  
+  // Chain proxies: Client → Logging → Caching → Real Service
+  final realService = RemoteUserService();
+  final cachingService = CachingUserServiceProxy(realService);
+  final loggingService = LoggingUserServiceProxy(cachingService, 'admin@example.com');
+  
+  // Use as if it's a simple service
+  print('--- First requests (cache misses) ---');
+  await loggingService.getUser(1);
+  await loggingService.getUser(2);
+  await loggingService.searchUsers('alice');
+  
+  print('\n--- Same requests (cache hits!) ---');
+  await loggingService.getUser(1); // Cache hit
+  await loggingService.getUser(1); // Cache hit again
+  await loggingService.searchUsers('alice'); // Cache hit
+  
+  print('\n--- Write operation (invalidates cache) ---');
+  await loggingService.updateUser(1, {'name': 'Alice Updated'});
+  
+  print('\n--- Re-fetch after update (cache miss - was invalidated) ---');
+  await loggingService.getUser(1); // Cache miss after invalidation
+  
+  // Print stats from each proxy layer
+  cachingService.printStats();
+  loggingService.printAuditLog();
+  
+  print('\nDirect API calls made: \${realService.callCount}');
+  print('Total requests made: 7');
+  print('API calls saved by cache: \${7 - realService.callCount}');
+}"""),
+
+        // Example 4: Flutter - Network Request Proxy
+        StrCodeBlock("""// Example 4: Flutter - Smart API Client Proxy
+// Use case: Transparent retry, auth, and offline support
+
+// Subject: API client interface
+abstract class ApiClient {
+  Future<Map<String, dynamic>> get(String endpoint);
+  Future<Map<String, dynamic>> post(String endpoint, Map<String, dynamic> body);
+  Future<Map<String, dynamic>> put(String endpoint, Map<String, dynamic> body);
+  Future<bool> delete(String endpoint);
+}
+
+// Real Subject: Basic HTTP client
+class HttpApiClient implements ApiClient {
+  final String baseUrl;
+  String? _authToken;
+  
+  HttpApiClient(this.baseUrl);
+  
+  void setAuthToken(String token) {
+    _authToken = token;
+  }
+  
+  Map<String, String> get _headers => {
+    'Content-Type': 'application/json',
+    if (_authToken != null) 'Authorization': 'Bearer \$_authToken',
+  };
+  
+  @override
+  Future<Map<String, dynamic>> get(String endpoint) async {
+    print('HTTP GET: \$baseUrl\$endpoint');
+    await Future.delayed(.milliseconds(100));
+    return {'data': 'GET response from \$endpoint', 'status': 200};
+  }
+  
+  @override
+  Future<Map<String, dynamic>> post(String endpoint, Map<String, dynamic> body) async {
+    print('HTTP POST: \$baseUrl\$endpoint body: \$body');
+    await Future.delayed(.milliseconds(150));
+    return {'data': 'POST response', 'status': 201};
+  }
+  
+  @override
+  Future<Map<String, dynamic>> put(String endpoint, Map<String, dynamic> body) async {
+    print('HTTP PUT: \$baseUrl\$endpoint body: \$body');
+    await Future.delayed(.milliseconds(150));
+    return {'data': 'PUT response', 'status': 200};
+  }
+  
+  @override
+  Future<bool> delete(String endpoint) async {
+    print('HTTP DELETE: \$baseUrl\$endpoint');
+    await Future.delayed(.milliseconds(100));
+    return true;
+  }
+}
+
+// Smart Proxy: Adds retry, offline cache, and request deduplication
+class SmartApiClientProxy implements ApiClient {
+  final ApiClient _realClient;
+  final int _maxRetries;
+  final Duration _retryDelay;
+  
+  // Offline cache
+  final Map<String, Map<String, dynamic>> _offlineCache = {};
+  bool _isOnline = true;
+  
+  // Request deduplication (in-flight requests)
+  final Map<String, Future<Map<String, dynamic>>> _pendingRequests = {};
+  
+  SmartApiClientProxy(
+    this._realClient, {
+    int maxRetries = 3,
+    Duration retryDelay = const Duration(seconds: 1),
+  })  : _maxRetries = maxRetries,
+        _retryDelay = retryDelay;
+  
+  void setOnlineStatus(bool isOnline) {
+    _isOnline = isOnline;
+    print('Network status: \${isOnline ? 'ONLINE' : 'OFFLINE'}');
+  }
+  
+  Future<Map<String, dynamic>> _withRetry(
+    String key,
+    Future<Map<String, dynamic>> Function() request,
+  ) async {
+    // Deduplication: if same request is in-flight, reuse it
+    if (_pendingRequests.containsKey(key)) {
+      print('Dedup: Reusing in-flight request for \$key');
+      return _pendingRequests[key]!;
+    }
+    
+    final future = _executeWithRetry(key, request);
+    _pendingRequests[key] = future;
+    
+    try {
+      final result = await future;
+      return result;
+    } finally {
+      _pendingRequests.remove(key);
+    }
+  }
+  
+  Future<Map<String, dynamic>> _executeWithRetry(
+    String key,
+    Future<Map<String, dynamic>> Function() request,
+  ) async {
+    // Offline: return cached data
+    if (!_isOnline) {
+      if (_offlineCache.containsKey(key)) {
+        print('Offline: Returning cached data for \$key');
+        return {..._offlineCache[key]!, '_cached': true};
+      }
+      throw Exception('Offline and no cached data for \$key');
+    }
+    
+    // Retry logic
+    for (int attempt = 1; attempt <= _maxRetries; attempt++) {
+      try {
+        final result = await request();
+        
+        // Cache successful GET responses
+        if (key.startsWith('GET:')) {
+          _offlineCache[key] = result;
+        }
+        
+        return result;
+      } catch (e) {
+        if (attempt < _maxRetries) {
+          print('Request failed (attempt \$attempt/\$_maxRetries): \$e');
+          print('Retrying in \${_retryDelay.inSeconds}s...');
+          await Future.delayed(_retryDelay);
+        } else {
+          print('All \$_maxRetries attempts failed');
+          
+          // Last resort: return cached data if available
+          if (_offlineCache.containsKey(key)) {
+            print('Returning stale cached data as fallback');
+            return {..._offlineCache[key]!, '_stale': true};
+          }
+          
+          rethrow;
+        }
+      }
+    }
+    
+    throw Exception('Unreachable');
+  }
+  
+  @override
+  Future<Map<String, dynamic>> get(String endpoint) {
+    return _withRetry(
+      'GET:\$endpoint',
+      () => _realClient.get(endpoint),
+    );
+  }
+  
+  @override
+  Future<Map<String, dynamic>> post(
+    String endpoint,
+    Map<String, dynamic> body,
+  ) {
+    return _withRetry(
+      'POST:\$endpoint:\${body.hashCode}',
+      () => _realClient.post(endpoint, body),
+    );
+  }
+  
+  @override
+  Future<Map<String, dynamic>> put(
+    String endpoint,
+    Map<String, dynamic> body,
+  ) {
+    return _withRetry(
+      'PUT:\$endpoint',
+      () => _realClient.put(endpoint, body),
+    );
+  }
+  
+  @override
+  Future<bool> delete(String endpoint) async {
+    if (!_isOnline) throw Exception('Cannot delete while offline');
+    
+    for (int attempt = 1; attempt <= _maxRetries; attempt++) {
+      try {
+        return await _realClient.delete(endpoint);
+      } catch (e) {
+        if (attempt >= _maxRetries) rethrow;
+        await Future.delayed(_retryDelay);
+      }
+    }
+    return false;
+  }
+  
+  int get cachedEndpoints => _offlineCache.length;
+}
+
+// Demo widget
+class ApiProxyDemo extends StatefulWidget {
+  const ApiProxyDemo({super.key});
+  
+  @override
+  State<ApiProxyDemo> createState() => _ApiProxyDemoState();
+}
+
+class _ApiProxyDemoState extends State<ApiProxyDemo> {
+  late final SmartApiClientProxy _api;
+  final List<String> _log = [];
+  bool _isOnline = true;
+  
+  @override
+  void initState() {
+    super.initState();
+    final httpClient = HttpApiClient('https://api.example.com');
+    _api = SmartApiClientProxy(
+      httpClient,
+      maxRetries: 3,
+      retryDelay: .milliseconds(500),
+    );
+  }
+  
+  void _addLog(String message) {
+    setState(() => _log.insert(0, message));
+  }
+  
+  Future<void> _fetchUser() async {
+    try {
+      final result = await _api.get('/users/1');
+      _addLog('✓ GET /users/1: \${result['_stale'] == true ? "(stale)" : ""}');
+    } catch (e) {
+      _addLog('✗ GET failed: \$e');
+    }
+  }
+  
+  void _toggleNetwork() {
+    setState(() {
+      _isOnline = !_isOnline;
+      _api.setOnlineStatus(_isOnline);
+    });
+    _addLog('Network: \${_isOnline ? "ONLINE" : "OFFLINE"}');
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Smart API Proxy Demo')),
+      body: Column(
+        children: [
+          // Controls
+          Padding(
+            padding: .all(16),
+            child: Row(
+              mainAxisAlignment: .spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: _fetchUser,
+                  child: Text('GET /users/1'),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    // Parallel same requests (dedup demo)
+                    await Future.wait([
+                      _api.get('/users/1'),
+                      _api.get('/users/1'),
+                      _api.get('/users/1'),
+                    ]);
+                    _addLog('✓ 3 parallel requests deduped to 1');
+                  },
+                  child: Text('Dedup Test'),
+                ),
+                ElevatedButton(
+                  onPressed: _toggleNetwork,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: _isOnline ? Colors.green : Colors.red,
+                  ),
+                  child: Text(_isOnline ? 'Go Offline' : 'Go Online'),
+                ),
+              ],
+            ),
+          ),
+          
+          // Status
+          Container(
+            padding: .symmetric(horizontal: 16, vertical: 8),
+            color: Colors.grey[100],
+            child: Row(
+              children: [
+                Icon(
+                  _isOnline ? Icons.wifi : Icons.wifi_off,
+                  color: _isOnline ? Colors.green : Colors.red,
+                ),
+                .width(8),
+                Text(_isOnline ? 'Online' : 'Offline'),
+                Spacer(),
+                Text('Cached: \${_api.cachedEndpoints} endpoints'),
+              ],
+            ),
+          ),
+          
+          // Log
+          Expanded(
+            child: ListView.builder(
+              padding: .all(16),
+              itemCount: _log.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: .symmetric(vertical: 2),
+                  child: Text(_log[index]),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: ApiProxyDemo(),
+  ));
+}"""),
+      ],
+      ar: [
+        // Arabic versions would go here
       ],
     ),
     pros: LocSL(
       en: [
-        "Controls access to objects",
-        "Can add functionality transparently",
-        "Supports lazy initialization",
-        "Can add security, caching, or logging",
+        "Controls access to objects transparently - client doesn't know about proxy",
+        "Can introduce new behavior without changing service or client",
+        "Supports lazy initialization - expensive objects created only when needed",
+        "Can add security, caching, logging without touching real implementation",
+        "Open/Closed Principle - add new behavior without modifying existing code",
+        "Enables remote object access as if it were local",
+        "Useful for testing - mock proxy can replace real service",
       ],
       ar: [
-        "يتحكم في الوصول للكائنات",
-        "يمكن إضافة وظائف بشفافية",
-        "يدعم التهيئة الكسولة",
-        "يمكن إضافة الأمان أو التخزين المؤقت أو التسجيل",
+        "يتحكم في الوصول للكائنات بشفافية - العميل لا يعلم بوجود الوكيل",
+        "يمكن تقديم سلوك جديد دون تغيير الخدمة أو العميل",
+        "يدعم التهيئة الكسولة - الكائنات المكلفة تُنشأ فقط عند الحاجة",
+        "يمكن إضافة الأمان والتخزين المؤقت والتسجيل دون المساس بالتطبيق الحقيقي",
+        "مبدأ المفتوح/المغلق - إضافة سلوك جديد دون تعديل الكود الموجود",
+        "يُمكّن الوصول للكائنات البعيدة كأنها محلية",
+        "مفيد للاختبار - وكيل وهمي يمكن أن يستبدل الخدمة الحقيقية",
       ],
     ),
     cons: LocSL(
       en: [
-        "Adds extra layer and complexity",
-        "Response time may increase",
-        "Requires maintaining proxy and real object in sync",
-        "Can make debugging harder",
+        "Adds extra layer and complexity to the codebase",
+        "Response time may increase due to proxy overhead",
+        "Need to keep proxy and real object interface in sync",
+        "Can make debugging harder - need to trace through proxy",
+        "Virtual proxy delays errors until first use - harder to diagnose",
+        "Too many proxy layers can create performance issues",
       ],
       ar: [
-        "يضيف طبقة وتعقيداً إضافياً",
-        "قد يزيد وقت الاستجابة",
-        "يتطلب الحفاظ على تزامن الوكيل والكائن الحقيقي",
-        "قد يجعل تصحيح الأخطاء أصعب",
+        "يضيف طبقة إضافية وتعقيداً للكود",
+        "قد يزيد وقت الاستجابة بسبب عبء الوكيل",
+        "تحتاج للحفاظ على تزامن واجهة الوكيل والكائن الحقيقي",
+        "قد يجعل التنقيح أصعب - تحتاج لتتبع من خلال الوكيل",
+        "الوكيل الافتراضي يؤخر الأخطاء حتى الاستخدام الأول - أصعب في التشخيص",
+        "طبقات وكيل كثيرة جداً يمكن أن تخلق مشاكل أداء",
       ],
     ),
     whenToUse: LocV(
@@ -5802,43 +6815,62 @@ void main() {
         StrContent("Use Proxy when:"),
         ULContent(
           value: [
-            "You need lazy initialization of expensive objects",
-            "You want to add access control",
-            "You need remote object access",
-            "You want caching or logging without changing the object",
+            "You need lazy initialization for expensive-to-create objects",
+            "Access control is required - only authorized clients should use the object",
+            "Need caching for expensive operations that are called frequently",
+            "Logging or auditing of object usage is required",
+            "Working with remote objects that need local representation",
+            "Smart reference counting or lifecycle management is needed",
+            "You need to mock objects for testing purposes",
           ],
+        ),
+        NoteContent(
+          "Choose proxy type based on need: Virtual for lazy init, Protection for auth, Caching for performance, Logging for auditing, Remote for distributed systems.",
+          type: .tip,
         ),
       ],
       ar: [
         StrContent("استخدم الوكيل عندما:"),
         ULContent(
           value: [
-            "تحتاج لتهيئة كسولة للكائنات المكلفة",
-            "تريد إضافة تحكم في الوصول",
-            "تحتاج للوصول لكائن بعيد",
-            "تريد التخزين المؤقت أو التسجيل دون تغيير الكائن",
+            "تحتاج لتهيئة كسولة للكائنات المكلفة الإنشاء",
+            "التحكم في الوصول مطلوب - فقط العملاء المصرح لهم يجب أن يستخدموا الكائن",
+            "تحتاج لتخزين مؤقت للعمليات المكلفة التي تُستدعى بكثرة",
+            "التسجيل أو التدقيق لاستخدام الكائن مطلوب",
+            "العمل مع كائنات بعيدة تحتاج لتمثيل محلي",
+            "عد المراجع الذكي أو إدارة دورة الحياة مطلوب",
+            "تحتاج لمحاكاة الكائنات لأغراض الاختبار",
           ],
+        ),
+        NoteContent(
+          "اختر نوع الوكيل بناءً على الحاجة: افتراضي للتهيئة الكسولة، حماية للمصادقة، تخزين مؤقت للأداء، تسجيل للتدقيق، بعيد للأنظمة الموزعة.",
+          type: .tip,
         ),
       ],
     ),
     commonMistakes: LocV(
       en: [
-        "Not implementing same interface as real object",
-        "Adding too much logic to proxy",
+        "Not implementing same interface as real object - breaks transparency",
+        "Adding too much logic to proxy - it should control access, not implement business logic",
         "Using when simple direct access suffices",
-        "Not handling proxy initialization errors",
+        "Not handling proxy initialization errors gracefully",
+        "Creating too many proxy layers reducing performance",
+        "Confusing with Decorator - Proxy controls access, Decorator adds behavior",
+        "Making proxy stateful in ways that cause issues with multiple clients",
       ],
       ar: [
-        "عدم تنفيذ نفس واجهة الكائن الحقيقي",
-        "إضافة الكثير من المنطق للوكيل",
+        "عدم تنفيذ نفس واجهة الكائن الحقيقي - يكسر الشفافية",
+        "إضافة الكثير من المنطق للوكيل - يجب أن يتحكم في الوصول، وليس تنفيذ منطق العمل",
         "الاستخدام عندما يكفي الوصول المباشر البسيط",
-        "عدم التعامل مع أخطاء تهيئة الوكيل",
+        "عدم التعامل مع أخطاء تهيئة الوكيل بلطف",
+        "إنشاء طبقات وكيل كثيرة جداً مما يقلل الأداء",
+        "الخلط مع المُزخرف - الوكيل يتحكم في الوصول، المُزخرف يضيف سلوكاً",
+        "جعل الوكيل حالياً بطرق تسبب مشاكل مع عملاء متعددين",
       ],
     ),
-    relatedPatterns: [PK.adapter, PK.decorator, PK.facade],
+    relatedPatterns: [PK.adapter, PK.decorator, PK.facade, PK.flyweight],
     oftenConfusedWith: [PK.adapter, PK.decorator],
   ),
-
   PK.wrapper: DesignPattern(
     id: PK.wrapper,
     title: LocS(en: "Wrapper", ar: "الغلاف (Wrapper)"),
@@ -5853,182 +6885,1908 @@ void main() {
     content: LocV(
       en: [
         StrContent(
-          "Wrapper is a general term that encompasses patterns like Adapter and Decorator. It refers to any pattern where one object wraps another to modify or extend its interface or behavior.",
+          "Wrapper is a general concept (not a standalone GoF pattern) that encompasses Adapter, Decorator, and Proxy. Any object that contains another object and delegates some work to it is a wrapper. Understanding wrapper as a concept helps you reason about when and why to use these related patterns.",
+        ),
+        AnalogyContent(
+          "Think of gift wrapping. The gift inside doesn't change - the box it came in is still there. But the wrapper changes how it looks (Decorator), or makes it compatible with the gift-giving protocol (Adapter), or controls who can open it (Proxy). All three are wrappers - they contain and delegate to the original - but each serves a different purpose.",
         ),
         StrContent(
-          "While not a standalone GoF pattern, the wrapper concept is fundamental to understanding how objects can be enhanced or adapted through composition rather than inheritance.",
+          "The wrapper concept is fundamental to composition over inheritance. Instead of modifying a class directly or extending it via inheritance, you create a new class that wraps the original, intercepting calls and optionally modifying behavior. This allows runtime flexibility that compile-time inheritance cannot provide.",
         ),
         ULContent(
-          title: "Common Wrapper Uses:",
+          title: "Wrapper Variants and Their Purpose:",
           value: [
-            "Adapting interfaces (Adapter pattern)",
-            "Adding behavior (Decorator pattern)",
-            "Controlling access (Proxy pattern)",
-            "Simplifying interfaces (Facade pattern)",
+            "Adapter: Wrap to change the interface - 'make it fit'",
+            "Decorator: Wrap to add behavior - 'make it better'",
+            "Proxy: Wrap to control access - 'make it safe/smart'",
+            "Facade: Wrap a subsystem to simplify - 'make it easy'",
           ],
+        ),
+        DiagramContent(
+          "Wrapper Concept:\n┌─────────────────┐\n│    Wrapper      │\n│  ┌───────────┐  │\n│  │  Wrapped  │  │\n│  │  Object   │  │\n│  └───────────┘  │\n│ + extra logic   │\n└─────────────────┘\n\nAdapter: changes interface\nDecorator: adds behavior\nProxy: controls access",
+        ),
+        StrContent(
+          "All wrapper patterns follow the same structural template: implement the same interface as the wrapped object, store a reference to the wrapped object, delegate calls to the wrapped object, and optionally do something before/after the delegation.",
+        ),
+        NoteContent(
+          "When choosing which wrapper pattern to use: Adapter if the interface doesn't match. Decorator if you want to add new behavior. Proxy if you want to control how/when the object is accessed. Facade if you want to simplify a complex subsystem.",
+          type: .important,
+        ),
+        ComparisonContent({
+          'Adapter':
+              'Changes interface → compatible, different output interface',
+          'Decorator':
+              'Same interface + new behavior → enhanced, same output interface',
+          'Proxy':
+              'Same interface + access control → controlled, same output interface',
+          'Facade':
+              'New simpler interface → simplified, hides subsystem details',
+        }, title: 'Choosing the Right Wrapper'),
+        StrContent(
+          "In Dart/Flutter, wrapper patterns are everywhere: StreamTransformer wraps streams (Decorator), http.BaseClient wraps HTTP (Decorator/Proxy), Scaffold wraps body content (Facade), Platform.isAndroid checks wrap native calls (Adapter), and Riverpod providers wrap services (Proxy).",
+        ),
+        NoteContent(
+          "Prefer composition (wrapping) over inheritance when: you don't own the source class, you need runtime flexibility, you want to combine multiple behaviors, or the class is final and can't be extended.",
+          type: .tip,
         ),
       ],
       ar: [
         StrContent(
-          "الغلاف مصطلح عام يشمل أنماطاً مثل المُحوّل والمُزخرف. يشير إلى أي نمط حيث يلف كائن آخر لتعديل أو توسيع واجهته أو سلوكه.",
+          "الغلاف مفهوم عام (وليس نمط GoF مستقلاً) يشمل المُحوّل والمُزخرف والوكيل. أي كائن يحتوي على كائن آخر ويُفوض بعض العمل له هو غلاف. فهم الغلاف كمفهوم يساعدك على التفكير في متى ولماذا تستخدم هذه الأنماط المترابطة.",
+        ),
+        AnalogyContent(
+          "فكر في تغليف الهدايا. الهدية بالداخل لا تتغير - الصندوق الذي جاءت فيه لا يزال موجوداً. لكن الغلاف يغير مظهرها (مُزخرف)، أو يجعلها متوافقة مع بروتوكول إعطاء الهدايا (مُحوّل)، أو يتحكم في من يمكنه فتحها (وكيل). الثلاثة جميعها أغلفة - تحتوي وتُفوض للأصل - لكن كل منها يخدم غرضاً مختلفاً.",
         ),
         StrContent(
-          "بينما ليس نمطاً منفصلاً من GoF، مفهوم الغلاف أساسي لفهم كيف يمكن تعزيز أو تكييف الكائنات من خلال التركيب بدلاً من الوراثة.",
+          "مفهوم الغلاف أساسي للتركيب على الوراثة. بدلاً من تعديل فئة مباشرة أو توسيعها عبر الوراثة، تنشئ فئة جديدة تلف الأصلية، تعترض الاستدعاءات وتعدل السلوك اختيارياً. هذا يسمح بمرونة وقت التشغيل التي لا يمكن للوراثة في وقت الترجمة توفيرها.",
         ),
         ULContent(
-          title: "استخدامات الغلاف الشائعة:",
+          title: "متغيرات الغلاف وأغراضها:",
           value: [
-            "تكييف الواجهات (نمط المُحوّل)",
-            "إضافة السلوك (نمط المُزخرف)",
-            "التحكم في الوصول (نمط الوكيل)",
-            "تبسيط الواجهات (نمط الواجهة)",
+            "المُحوّل (Adapter): يلف لتغيير الواجهة - 'اجعلها تناسب'",
+            "المُزخرف (Decorator): يلف لإضافة سلوك - 'اجعلها أفضل'",
+            "الوكيل (Proxy): يلف للتحكم في الوصول - 'اجعلها آمنة/ذكية'",
+            "الواجهة (Facade): يلف نظاماً فرعياً للتبسيط - 'اجعلها سهلة'",
           ],
         ),
+        DiagramContent(
+          "مفهوم الغلاف:\n┌─────────────────┐\n│    الغلاف       │\n│  ┌───────────┐  │\n│  │  الكائن   │  │\n│  │  الملفوف  │  │\n│  └───────────┘  │\n│ + منطق إضافي   │\n└─────────────────┘\n\nمُحوّل: يغير الواجهة\nمُزخرف: يضيف سلوكاً\nوكيل: يتحكم في الوصول",
+        ),
+        StrContent(
+          "جميع أنماط الغلاف تتبع نفس القالب الهيكلي: تنفذ نفس واجهة الكائن الملفوف، تخزن مرجعاً للكائن الملفوف، تُفوض الاستدعاءات للكائن الملفوف، وتفعل شيئاً اختيارياً قبل/بعد التفويض.",
+        ),
+        NoteContent(
+          "عند اختيار نمط الغلاف المناسب: مُحوّل إذا كانت الواجهة لا تتطابق. مُزخرف إذا أردت إضافة سلوك جديد. وكيل إذا أردت التحكم في كيفية/وقت الوصول للكائن. واجهة إذا أردت تبسيط نظام فرعي معقد.",
+          type: .important,
+        ),
+        ComparisonContent({
+          'المُحوّل (Adapter)': 'يغير الواجهة ← متوافق، واجهة إخراج مختلفة',
+          'المُزخرف (Decorator)':
+              'نفس الواجهة + سلوك جديد ← مُحسّن، نفس واجهة الإخراج',
+          'الوكيل (Proxy)':
+              'نفس الواجهة + التحكم في الوصول ← محكوم، نفس واجهة الإخراج',
+          'الواجهة (Facade)':
+              'واجهة أبسط جديدة ← مُبسّط، يخفي تفاصيل النظام الفرعي',
+        }, title: 'اختيار الغلاف المناسب'),
+        StrContent(
+          "في Dart/Flutter، أنماط الغلاف في كل مكان: StreamTransformer يلف التدفقات (مُزخرف)، http.BaseClient يلف HTTP (مُزخرف/وكيل)، Scaffold يلف محتوى الجسم (واجهة)، فحوصات Platform.isAndroid تلف الاستدعاءات الأصلية (مُحوّل)، وموفرو Riverpod يلفون الخدمات (وكيل).",
+        ),
+        NoteContent(
+          "فضّل التركيب (الالتفاف) على الوراثة عندما: لا تملك الفئة المصدر، تحتاج لمرونة وقت التشغيل، تريد دمج سلوكيات متعددة، أو الفئة نهائية (final) ولا يمكن توسيعها.",
+          type: .tip,
+        ),
+      ],
+    ),
+    examples: LocV(
+      en: [
+        // Example 1: Basic - Comparing all wrapper types
+        StrCodeBlock("""// Example 1: All Wrapper Types Side by Side
+// Use case: Understanding the difference between wrapper patterns
+
+// Original class (the thing being wrapped)
+abstract class DataService {
+  String fetchData(String query);
+}
+
+class RealDataService implements DataService {
+  @override
+  String fetchData(String query) {
+    print('Fetching data for: \$query');
+    return 'Data for \$query';
+  }
+}
+
+// ── ADAPTER WRAPPER ──────────────────────────────────────────
+// Wraps to CHANGE INTERFACE: Legacy XML service → new JSON interface
+
+class LegacyXmlService {
+  // Incompatible interface
+  String getXmlData(String searchTerm) {
+    return '<data><result>\$searchTerm result</result></data>';
+  }
+}
+
+// Adapter wraps LegacyXmlService, exposes DataService interface
+class XmlToJsonAdapter implements DataService {
+  final LegacyXmlService _xmlService;
+  
+  XmlToJsonAdapter(this._xmlService);
+  
+  @override
+  String fetchData(String query) {
+    // Translate interface
+    final xml = _xmlService.getXmlData(query);
+    final jsonData = _parseXmlToJson(xml);
+    return jsonData;
+  }
+  
+  String _parseXmlToJson(String xml) {
+    final match = RegExp(r'<result>(.*?)</result>').firstMatch(xml);
+    return '{"result": "\${match?.group(1) ?? ''}"}';
+  }
+}
+
+// ── DECORATOR WRAPPER ─────────────────────────────────────────
+// Wraps to ADD BEHAVIOR: same interface + caching on top
+
+class CachingDecorator implements DataService {
+  final DataService _service;
+  final Map<String, String> _cache = {};
+  
+  CachingDecorator(this._service);
+  
+  @override
+  String fetchData(String query) {
+    if (_cache.containsKey(query)) {
+      print('Cache HIT for: \$query');
+      return _cache[query]!;
+    }
+    
+    print('Cache MISS - fetching...');
+    final data = _service.fetchData(query); // Delegate
+    _cache[query] = data; // Add behavior: cache result
+    return data;
+  }
+}
+
+// ── PROXY WRAPPER ─────────────────────────────────────────────
+// Wraps to CONTROL ACCESS: same interface + auth check
+
+class AuthProxy implements DataService {
+  final DataService _service;
+  final String? _token;
+  
+  AuthProxy(this._service, this._token);
+  
+  @override
+  String fetchData(String query) {
+    // Control access: check auth before delegating
+    if (_token == null || _token.isEmpty) {
+      throw UnauthorizedException('Authentication required');
+    }
+    
+    print('Auth OK - forwarding request');
+    return _service.fetchData(query);
+  }
+}
+
+class UnauthorizedException implements Exception {
+  final String message;
+  UnauthorizedException(this.message);
+  @override
+  String toString() => 'Unauthorized: \$message';
+}
+
+void main() {
+  print('=== Wrapper Patterns Comparison ===\n');
+  
+  // ── Adapter ──
+  print('--- Adapter: Changes incompatible interface ---');
+  final xmlAdapter = XmlToJsonAdapter(LegacyXmlService());
+  // Works with new interface even though source uses old interface
+  final result1 = xmlAdapter.fetchData('flutter');
+  print('Result: \$result1\n');
+  
+  // ── Decorator ──
+  print('--- Decorator: Adds caching behavior ---');
+  final cached = CachingDecorator(RealDataService());
+  cached.fetchData('dart'); // Miss
+  cached.fetchData('dart'); // Hit - behavior added
+  cached.fetchData('dart'); // Hit - behavior added
+  print('');
+  
+  // ── Proxy ──
+  print('--- Proxy: Controls access ---');
+  final withAuth = AuthProxy(RealDataService(), 'valid_token_123');
+  final noAuth = AuthProxy(RealDataService(), null);
+  
+  withAuth.fetchData('dart'); // Allowed
+  
+  try {
+    noAuth.fetchData('dart'); // Blocked by proxy
+  } catch (e) {
+    print('\$e');
+  }
+  print('');
+  
+  // ── Combined Wrappers ──
+  print('--- Combined: Auth + Cache + Real Service ---');
+  final combined = AuthProxy(
+    CachingDecorator(RealDataService()),
+    'valid_token',
+  );
+  combined.fetchData('flutter'); // Auth check → cache miss → fetch
+  combined.fetchData('flutter'); // Auth check → cache hit
+}"""),
+
+        // Example 2: Intermediate - Progressive Enhancement
+        StrCodeBlock(
+          """// Example 2: Intermediate - Progressive Enhancement with Wrappers
+// Use case: Building up a service with multiple wrapper layers
+
+abstract class HttpClient {
+  Future<String> get(String url);
+  Future<String> post(String url, String body);
+}
+
+// Base implementation
+class BasicHttpClient implements HttpClient {
+  @override
+  Future<String> get(String url) async {
+    print('HTTP GET: \$url');
+    await Future.delayed(.milliseconds(50));
+    return 'Response from \$url';
+  }
+  
+  @override
+  Future<String> post(String url, String body) async {
+    print('HTTP POST: \$url | \$body');
+    await Future.delayed(.milliseconds(80));
+    return 'Created at \$url';
+  }
+}
+
+// Layer 1: Logging Decorator
+class LoggingHttpClient implements HttpClient {
+  final HttpClient _inner;
+  final List<String> _requestLog = [];
+  
+  LoggingHttpClient(this._inner);
+  
+  @override
+  Future<String> get(String url) async {
+    _requestLog.add('GET \$url');
+    print('LOG: GET \$url');
+    final response = await _inner.get(url);
+    print('LOG: Response: \${response.substring(0, 20)}...');
+    return response;
+  }
+  
+  @override
+  Future<String> post(String url, String body) async {
+    _requestLog.add('POST \$url');
+    print('LOG: POST \$url');
+    final response = await _inner.post(url, body);
+    print('LOG: Response: \${response.substring(0, 20)}...');
+    return response;
+  }
+  
+  List<String> get requestLog => List.unmodifiable(_requestLog);
+}
+
+// Layer 2: Auth Decorator
+class AuthHttpClient implements HttpClient {
+  final HttpClient _inner;
+  final String _token;
+  
+  AuthHttpClient(this._inner, this._token);
+  
+  @override
+  Future<String> get(String url) {
+    print('AUTH: Adding token to GET \$url');
+    return _inner.get('\$url?token=\$_token');
+  }
+  
+  @override
+  Future<String> post(String url, String body) {
+    print('AUTH: Adding token to POST \$url');
+    return _inner.post(url, '{"token": "\$_token", "data": \$body}');
+  }
+}
+
+// Layer 3: Retry Decorator
+class RetryHttpClient implements HttpClient {
+  final HttpClient _inner;
+  final int maxRetries;
+  int _attemptCount = 0;
+  
+  RetryHttpClient(this._inner, {this.maxRetries = 3});
+  
+  Future<T> _withRetry<T>(Future<T> Function() request) async {
+    for (int i = 1; i <= maxRetries; i++) {
+      try {
+        _attemptCount++;
+        return await request();
+      } catch (e) {
+        if (i < maxRetries) {
+          print('RETRY: Attempt \$i failed, retrying...');
+          await Future.delayed(Duration(milliseconds: 100 * i));
+        } else {
+          rethrow;
+        }
+      }
+    }
+    throw Exception('Unreachable');
+  }
+  
+  @override
+  Future<String> get(String url) => _withRetry(() => _inner.get(url));
+  
+  @override
+  Future<String> post(String url, String body) =>
+      _withRetry(() => _inner.post(url, body));
+  
+  int get totalAttempts => _attemptCount;
+}
+
+// Layer 4: Cache Decorator
+class CacheHttpClient implements HttpClient {
+  final HttpClient _inner;
+  final Map<String, String> _cache = {};
+  
+  CacheHttpClient(this._inner);
+  
+  @override
+  Future<String> get(String url) async {
+    if (_cache.containsKey(url)) {
+      print('CACHE: HIT for \$url');
+      return _cache[url]!;
+    }
+    print('CACHE: MISS for \$url');
+    final response = await _inner.get(url);
+    _cache[url] = response;
+    return response;
+  }
+  
+  @override
+  Future<String> post(String url, String body) {
+    // Don't cache POST
+    return _inner.post(url, body);
+  }
+  
+  int get cacheSize => _cache.length;
+}
+
+void main() async {
+  print('=== Progressive Wrapper Enhancement ===\n');
+  
+  // Build up the stack layer by layer
+  final base = BasicHttpClient();
+  final logged = LoggingHttpClient(base);
+  final authed = AuthHttpClient(logged, 'token_abc123');
+  final retried = RetryHttpClient(authed, maxRetries: 3);
+  final cached = CacheHttpClient(retried);
+  
+  // Final client has: caching + retry + auth + logging
+  print('--- Request 1 (cache miss) ---');
+  await cached.get('https://api.example.com/users');
+  
+  print('\n--- Request 2 (cache hit) ---');
+  await cached.get('https://api.example.com/users');
+  
+  print('\n--- POST request ---');
+  await cached.post('https://api.example.com/users', '{"name": "Alice"}');
+  
+  print('\n=== Statistics ===');
+  print('Log entries: \${logged.requestLog.length}');
+  print('Cache size: \${cached.cacheSize}');
+  print('Total HTTP attempts: \${retried.totalAttempts}');
+}""",
+        ),
+
+        // Example 3: Advanced - Flutter Widget Wrapper
+        StrCodeBlock("""// Example 3: Advanced - Flutter Widget Wrappers
+// Use case: Applying the wrapper concept to Flutter widgets
+
+// Subject: Widget interface (Flutter's Widget IS the interface)
+// All Flutter widgets are essentially components in a Composite/Decorator pattern
+
+// ── DECORATOR: Adding behavior to widgets ────────────────────
+
+// Analytics Decorator - tracks taps on any widget
+class AnalyticsWrapper extends StatelessWidget {
+  final Widget child;
+  final String eventName;
+  final Map<String, dynamic>? properties;
+  
+  const AnalyticsWrapper({
+    required this.child,
+    required this.eventName,
+    this.properties,
+    super.key,
+  });
+  
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        print('Analytics: Event "\$eventName" \${properties ?? ''}');
+      },
+      child: child, // Delegate to original widget
+    );
+  }
+}
+
+// Loading State Decorator - adds loading overlay to any widget
+class LoadingWrapper extends StatelessWidget {
+  final Widget child;
+  final bool isLoading;
+  final String? loadingMessage;
+  
+  const LoadingWrapper({
+    required this.child,
+    required this.isLoading,
+    this.loadingMessage,
+    super.key,
+  });
+  
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        child, // Delegate to original widget
+        if (isLoading)
+          Container(
+            color: Colors.black38,
+            child: Center(
+              child: Column(
+                mainAxisSize: .min,
+                children: [
+                  CircularProgressIndicator(),
+                  if (loadingMessage != null) ...[
+                    .height(16),
+                    Text(
+                      loadingMessage!,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+// Error Boundary Decorator - catches and displays errors
+class ErrorBoundary extends StatefulWidget {
+  final Widget child;
+  final Widget Function(Object error)? errorBuilder;
+  
+  const ErrorBoundary({
+    required this.child,
+    this.errorBuilder,
+    super.key,
+  });
+  
+  @override
+  State<ErrorBoundary> createState() => _ErrorBoundaryState();
+}
+
+class _ErrorBoundaryState extends State<ErrorBoundary> {
+  Object? _error;
+  
+  @override
+  Widget build(BuildContext context) {
+    if (_error != null) {
+      return widget.errorBuilder?.call(_error!) ??
+          Center(
+            child: Column(
+              mainAxisSize: .min,
+              children: [
+                Icon(Icons.error, color: Colors.red, size: 48),
+                Text('Something went wrong'),
+                TextButton(
+                  onPressed: () => setState(() => _error = null),
+                  child: Text('Retry'),
+                ),
+              ],
+            ),
+          );
+    }
+    
+    return widget.child;
+  }
+}
+
+// ── PROXY: Controlling access to widgets ─────────────────────
+
+// Auth Guard - shows login screen if not authenticated
+class AuthGuard extends StatelessWidget {
+  final Widget child;
+  final Widget loginWidget;
+  final bool isAuthenticated;
+  
+  const AuthGuard({
+    required this.child,
+    required this.loginWidget,
+    required this.isAuthenticated,
+    super.key,
+  });
+  
+  @override
+  Widget build(BuildContext context) {
+    if (!isAuthenticated) {
+      return loginWidget; // Block access, show alternative
+    }
+    return child; // Grant access
+  }
+}
+
+// Permission Guard - shows permission request if not granted
+class PermissionGuard extends StatelessWidget {
+  final Widget child;
+  final String permissionName;
+  final bool hasPermission;
+  final VoidCallback onRequestPermission;
+  
+  const PermissionGuard({
+    required this.child,
+    required this.permissionName,
+    required this.hasPermission,
+    required this.onRequestPermission,
+    super.key,
+  });
+  
+  @override
+  Widget build(BuildContext context) {
+    if (!hasPermission) {
+      return Center(
+        child: Column(
+          mainAxisSize: .min,
+          children: [
+            Icon(Icons.lock, size: 48),
+            Text('\$permissionName required'),
+            ElevatedButton(
+              onPressed: onRequestPermission,
+              child: Text('Grant Permission'),
+            ),
+          ],
+        ),
+      );
+    }
+    return child;
+  }
+}
+
+// Demo App
+class WrapperDemo extends StatefulWidget {
+  const WrapperDemo({super.key});
+  
+  @override
+  State<WrapperDemo> createState() => _WrapperDemoState();
+}
+
+class _WrapperDemoState extends State<WrapperDemo> {
+  bool _isLoading = false;
+  bool _isAuthenticated = true;
+  bool _hasPermission = true;
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Widget Wrapper Demo')),
+      body: Column(
+        children: [
+          // Controls
+          Padding(
+            padding: .all(8),
+            child: Row(
+              mainAxisAlignment: .spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () => setState(() => _isLoading = !_isLoading),
+                  child: Text(_isLoading ? 'Stop Loading' : 'Show Loading'),
+                ),
+                ElevatedButton(
+                  onPressed: () => setState(() => _isAuthenticated = !_isAuthenticated),
+                  child: Text(_isAuthenticated ? 'Logout' : 'Login'),
+                ),
+                ElevatedButton(
+                  onPressed: () => setState(() => _hasPermission = !_hasPermission),
+                  child: Text(_hasPermission ? 'Revoke' : 'Grant'),
+                ),
+              ],
+            ),
+          ),
+          
+          Expanded(
+            // Proxy: Auth Guard
+            child: AuthGuard(
+              isAuthenticated: _isAuthenticated,
+              loginWidget: Center(child: Text('Please login')),
+              
+              // Proxy: Permission Guard
+              child: PermissionGuard(
+                permissionName: 'Camera',
+                hasPermission: _hasPermission,
+                onRequestPermission: () => setState(() => _hasPermission = true),
+                
+                // Decorator: Loading wrapper
+                child: LoadingWrapper(
+                  isLoading: _isLoading,
+                  loadingMessage: 'Processing...',
+                  
+                  // Decorator: Analytics wrapper
+                  child: AnalyticsWrapper(
+                    eventName: 'main_content_tap',
+                    properties: {'screen': 'home'},
+                    
+                    // The actual content
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: .center,
+                        children: [
+                          Text(
+                            'Protected Content',
+                            style: .headlineMedium,
+                          ),
+                          .height(16),
+                          Text('Tap anywhere to track analytics'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(home: WrapperDemo()));
+}"""),
+      ],
+      ar: [
+        // Arabic versions would go here
       ],
     ),
     pros: LocSL(
       en: [
-        "Composition over inheritance",
-        "Runtime behavior modification",
-        "Separation of concerns",
-        "Flexible and reusable",
+        "Composition over inheritance - more flexible at runtime",
+        "Can add/remove behavior without modifying original class",
+        "Follows Open/Closed Principle - extend without modifying",
+        "Multiple behaviors can be combined by stacking wrappers",
+        "Works with classes you don't own or can't modify (final classes, libraries)",
+        "Enables testing through mock wrappers",
+        "Clear separation of concerns - each wrapper has one responsibility",
       ],
       ar: [
-        "التركيب على الوراثة",
-        "تعديل السلوك في وقت التشغيل",
-        "فصل الاهتمامات",
-        "مرن وقابل لإعادة الاستخدام",
+        "التركيب على الوراثة - أكثر مرونة في وقت التشغيل",
+        "يمكن إضافة/إزالة السلوك دون تعديل الفئة الأصلية",
+        "يتبع مبدأ المفتوح/المغلق - يوسع دون تعديل",
+        "يمكن دمج سلوكيات متعددة بتكديس الأغلفة",
+        "يعمل مع الفئات التي لا تملكها أو لا يمكنك تعديلها (فئات final، مكتبات)",
+        "يُمكّن الاختبار من خلال أغلفة وهمية",
+        "فصل واضح للاهتمامات - كل غلاف لديه مسؤولية واحدة",
       ],
     ),
     cons: LocSL(
       en: [
-        "Can add complexity with multiple layers",
-        "May impact performance",
-        "Can make code harder to debug",
-        "Requires careful interface design",
+        "Can add complexity with multiple wrapper layers",
+        "May impact performance due to extra method calls",
+        "Can make debugging harder - need to trace through layers",
+        "Need to maintain all wrappers when wrapped class changes",
+        "Order of wrappers matters and can be confusing",
+        "Runtime type checking issues - instanceof checks may not work as expected",
       ],
       ar: [
-        "قد يضيف تعقيداً مع طبقات متعددة",
-        "قد يؤثر على الأداء",
-        "قد يجعل الكود أصعب في تصحيح الأخطاء",
-        "يتطلب تصميم واجهة دقيق",
+        "قد يضيف تعقيداً مع طبقات غلاف متعددة",
+        "قد يؤثر على الأداء بسبب استدعاءات طرق إضافية",
+        "قد يجعل التنقيح أصعب - تحتاج لتتبع عبر الطبقات",
+        "تحتاج للحفاظ على جميع الأغلفة عندما تتغير الفئة الملفوفة",
+        "ترتيب الأغلفة مهم ويمكن أن يكون مُربكاً",
+        "مشاكل التحقق من النوع في وقت التشغيل - فحوصات instanceof قد لا تعمل كما هو متوقع",
       ],
     ),
     whenToUse: LocV(
       en: [
-        StrContent("Use Wrapper concept when:"),
+        StrContent("Use the Wrapper concept when:"),
         ULContent(
           value: [
-            "You need to extend functionality without inheritance",
-            "You want to add cross-cutting concerns",
-            "You need to adapt existing interfaces",
-            "Runtime behavior modification is required",
+            "You need to extend functionality without modifying the original class",
+            "You want to add cross-cutting concerns (logging, caching, auth) transparently",
+            "You can't modify the source class (third-party, final, legacy)",
+            "You need runtime flexibility to add/remove behaviors",
+            "You want to combine multiple behaviors in different ways",
+            "You're testing and need to mock dependencies",
           ],
+        ),
+        NoteContent(
+          "Choose the specific wrapper pattern based on intent: Adapter (compatibility), Decorator (enhancement), Proxy (control), Facade (simplification).",
+          type: .tip,
         ),
       ],
       ar: [
         StrContent("استخدم مفهوم الغلاف عندما:"),
         ULContent(
           value: [
-            "تحتاج لتوسيع الوظائف دون وراثة",
-            "تريد إضافة اهتمامات شاملة",
-            "تحتاج لتكييف واجهات موجودة",
-            "تعديل السلوك في وقت التشغيل مطلوب",
+            "تحتاج لتوسيع الوظائف دون تعديل الفئة الأصلية",
+            "تريد إضافة اهتمامات شاملة (تسجيل، تخزين مؤقت، مصادقة) بشفافية",
+            "لا يمكنك تعديل الفئة المصدر (طرف ثالث، نهائي، قديم)",
+            "تحتاج لمرونة وقت التشغيل لإضافة/إزالة السلوكيات",
+            "تريد دمج سلوكيات متعددة بطرق مختلفة",
+            "تختبر وتحتاج لمحاكاة التبعيات",
           ],
+        ),
+        NoteContent(
+          "اختر نمط الغلاف المحدد بناءً على النية: مُحوّل (التوافق)، مُزخرف (التحسين)، وكيل (التحكم)، واجهة (التبسيط).",
+          type: .tip,
         ),
       ],
     ),
     commonMistakes: LocV(
       en: [
-        "Creating too many wrapper layers",
-        "Not maintaining interface consistency",
-        "Using when simple inheritance would suffice",
-        "Forgetting to forward all necessary methods",
+        "Creating too many wrapper layers reducing readability",
+        "Not maintaining interface consistency across wrappers",
+        "Using wrappers when simple inheritance would be cleaner",
+        "Forgetting to forward all necessary methods to wrapped object",
+        "Mixing different wrapper concerns in one class (e.g., caching + logging + auth)",
+        "Not documenting wrapper behavior clearly for team members",
       ],
       ar: [
-        "إنشاء طبقات غلاف كثيرة جداً",
-        "عدم الحفاظ على اتساق الواجهة",
-        "الاستخدام عندما تكفي الوراثة البسيطة",
-        "نسيان توجيه جميع الطرق الضرورية",
+        "إنشاء طبقات غلاف كثيرة جداً مما يقلل من قابلية القراءة",
+        "عدم الحفاظ على اتساق الواجهة عبر الأغلفة",
+        "استخدام الأغلفة عندما تكون الوراثة البسيطة أوضح",
+        "نسيان توجيه جميع الطرق الضرورية للكائن الملفوف",
+        "خلط اهتمامات غلاف مختلفة في فئة واحدة (مثل تخزين مؤقت + تسجيل + مصادقة)",
+        "عدم توثيق سلوك الغلاف بوضوح لأعضاء الفريق",
       ],
     ),
-    relatedPatterns: [PK.adapter, PK.decorator, PK.proxy],
-    oftenConfusedWith: [PK.decorator],
+    relatedPatterns: [PK.adapter, PK.decorator, PK.proxy, PK.facade],
+    oftenConfusedWith: [PK.decorator, PK.proxy],
   ),
-
   PK.dataMapper: DesignPattern(
     id: PK.dataMapper,
-    title: LocS(en: "Data Mapper", ar: "مُخطط البيانات (Data Mapper)"),
+    title: LocS(en: "Data Mapper", ar: "مُعيّن البيانات (Data Mapper)"),
     description: LocS(
-      en: "Separates domain objects from database access logic",
-      ar: "يفصل كائنات المجال عن منطق الوصول لقاعدة البيانات",
+      en: "Separates domain objects from database representation using a mapper layer",
+      ar: "يفصل كائنات النطاق عن تمثيل قاعدة البيانات باستخدام طبقة تعيين",
     ),
     group: .design,
     type: .structural,
     category: .practical,
-    level: .advanced,
+    level: .intermediate,
     content: LocV(
       en: [
         StrContent(
-          "Data Mapper is a layer that moves data between objects and a database while keeping them independent of each other. Domain objects have no knowledge of how they're persisted.",
+          "The Data Mapper pattern separates the in-memory objects from the database. Domain objects know nothing about the database structure. A separate mapper layer handles all data translation between the two representations, keeping domain logic clean and persistence concerns isolated.",
+        ),
+        AnalogyContent(
+          "Think of a professional translator working at the UN. Delegates speak their own language freely (domain objects). The translator (mapper) converts speech to/from the official UN language (database format). The delegates don't need to learn UN protocol, and the UN doesn't need to understand every language - the translator handles everything in between.",
         ),
         StrContent(
-          "This pattern is essential for maintaining clean separation between your business logic and data access layers, allowing each to evolve independently.",
+          "Unlike Active Record (where objects know how to save themselves), Data Mapper completely decouples domain logic from persistence. Your User class has no save(), find(), or database-related methods. All that responsibility belongs to the UserMapper. This makes domain objects pure and testable without a database.",
         ),
         ULContent(
           title: "Key Components:",
           value: [
-            "Domain Model: Pure business objects without persistence logic",
-            "Mapper: Handles data transfer between domain and database",
-            "Database Layer: Actual data storage mechanism",
-            "Identity Map (optional): Ensures single instance per record",
+            "Domain Object: Pure business object with no database knowledge",
+            "Mapper: Translates between domain objects and database rows",
+            "Data Source: Database, API, or any external storage",
+            "Identity Map: Optional - tracks loaded objects to prevent duplicates",
+            "Unit of Work: Optional - tracks changes for batch persistence",
           ],
+        ),
+        DiagramContent(
+          "Pattern Structure:\nDomain Object  ←→  Mapper  ←→  Database\n(pure business)    (translate)   (storage)\n\nUser            UserMapper    users table\n- name          map()         - user_id\n- email         unmap()       - email_addr\n- address       findById()    - created_at",
+        ),
+        NoteContent(
+          "Data Mapper vs Active Record: Active Record is simpler (object knows how to persist itself). Data Mapper is more powerful (complete separation). Use Active Record for simple CRUD apps. Use Data Mapper when domain logic is complex and shouldn't be polluted with persistence concerns.",
+          type: .important,
+        ),
+        ComparisonContent({
+          'Data Mapper':
+              'Separate mapper class, domain objects are pure, more complex',
+          'Active Record':
+              'Object maps itself, simpler, domain mixed with persistence',
+          'Repository':
+              'Collection-like interface, often uses Data Mapper internally',
+          'DAO':
+              'Data Access Object, similar but less strict about domain purity',
+        }, title: 'Data Mapper vs Similar Patterns'),
+        StrContent(
+          "Common use cases in Flutter/Dart: JSON API response mapping, SQLite/database ORM mapping, converting between API models and domain models, mapping GraphQL responses, and any scenario where external data format differs from your domain model.",
+        ),
+        NoteContent(
+          "In Flutter, this pattern appears in packages like `floor`, `drift`, and `isar`. Every time you write fromJson()/toJson() in a separate service class (not in the model itself), you're applying Data Mapper thinking.",
+          type: .tip,
         ),
       ],
       ar: [
         StrContent(
-          "مُخطط البيانات هو طبقة تنقل البيانات بين الكائنات وقاعدة البيانات مع إبقائها مستقلة عن بعضها. كائنات المجال ليس لديها معرفة بكيفية حفظها.",
+          "نمط مُعيّن البيانات يفصل الكائنات في الذاكرة عن قاعدة البيانات. كائنات النطاق لا تعرف شيئاً عن بنية قاعدة البيانات. طبقة تعيين منفصلة تتعامل مع جميع ترجمات البيانات بين التمثيلين، مما يبقي منطق النطاق نظيفاً واهتمامات الاستمرارية معزولة.",
+        ),
+        AnalogyContent(
+          "فكر في مترجم محترف يعمل في الأمم المتحدة. المندوبون يتحدثون بلغتهم الخاصة بحرية (كائنات النطاق). المترجم (المُعيّن) يحوّل الكلام من/إلى اللغة الرسمية للأمم المتحدة (تنسيق قاعدة البيانات). المندوبون لا يحتاجون لتعلم بروتوكول الأمم المتحدة، والأمم المتحدة لا تحتاج لفهم كل لغة - المترجم يتعامل مع كل شيء في المنتصف.",
         ),
         StrContent(
-          "هذا النمط أساسي للحفاظ على فصل نظيف بين منطق العمل وطبقات الوصول للبيانات، مما يسمح لكل منها بالتطور بشكل مستقل.",
+          "على عكس Active Record (حيث تعرف الكائنات كيفية حفظ نفسها)، مُعيّن البيانات يفصل تماماً منطق النطاق عن الاستمرارية. فئة User لديك لا تحتوي على save() أو find() أو طرق متعلقة بقاعدة البيانات. كل تلك المسؤولية تنتمي لـ UserMapper. هذا يجعل كائنات النطاق نقية وقابلة للاختبار دون قاعدة بيانات.",
         ),
         ULContent(
           title: "المكونات الأساسية:",
           value: [
-            "نموذج المجال: كائنات عمل نقية بدون منطق حفظ",
-            "المُخطط: يتعامل مع نقل البيانات بين المجال وقاعدة البيانات",
-            "طبقة قاعدة البيانات: آلية التخزين الفعلية للبيانات",
-            "خريطة الهوية (اختياري): يضمن نسخة واحدة لكل سجل",
+            "كائن النطاق (Domain Object): كائن أعمال نقي بدون معرفة بقاعدة البيانات",
+            "المُعيّن (Mapper): يترجم بين كائنات النطاق وصفوف قاعدة البيانات",
+            "مصدر البيانات (Data Source): قاعدة البيانات، API، أو أي تخزين خارجي",
+            "خريطة الهوية (Identity Map): اختيارية - تتتبع الكائنات المحملة لمنع التكرار",
+            "وحدة العمل (Unit of Work): اختيارية - تتتبع التغييرات للاستمرارية الدُفعية",
           ],
+        ),
+        DiagramContent(
+          "بنية النمط:\nكائن النطاق  ←→  المُعيّن  ←→  قاعدة البيانات\n(أعمال نقية)    (ترجمة)      (تخزين)\n\nUser           UserMapper    جدول users\n- name         map()         - user_id\n- email        unmap()       - email_addr\n- address      findById()    - created_at",
+        ),
+        NoteContent(
+          "مُعيّن البيانات مقابل Active Record: Active Record أبسط (الكائن يعرف كيفية استمراريته). مُعيّن البيانات أقوى (فصل كامل). استخدم Active Record للتطبيقات البسيطة ذات CRUD. استخدم مُعيّن البيانات عندما يكون منطق النطاق معقداً ولا يجب أن يتلوث باهتمامات الاستمرارية.",
+          type: .important,
+        ),
+        ComparisonContent({
+          'مُعيّن البيانات (Data Mapper)':
+              'فئة مُعيّن منفصلة، كائنات النطاق نقية، أكثر تعقيداً',
+          'Active Record':
+              'الكائن يعيّن نفسه، أبسط، النطاق مختلط مع الاستمرارية',
+          'المستودع (Repository)':
+              'واجهة تشبه المجموعة، غالباً تستخدم مُعيّن البيانات داخلياً',
+          'DAO': 'كائن وصول البيانات، مشابه لكن أقل صرامة حول نقاء النطاق',
+        }, title: 'مُعيّن البيانات مقابل الأنماط المشابهة'),
+        StrContent(
+          "حالات الاستخدام الشائعة في Flutter/Dart: تعيين استجابات JSON API، تعيين SQLite/ORM، التحويل بين نماذج API ونماذج النطاق، تعيين استجابات GraphQL، وأي سيناريو يختلف فيه تنسيق البيانات الخارجية عن نموذج نطاقك.",
+        ),
+        NoteContent(
+          "في Flutter، يظهر هذا النمط في حزم مثل `floor` و`drift` و`isar`. في كل مرة تكتب فيها fromJson()/toJson() في فئة خدمة منفصلة (وليس في النموذج نفسه)، فأنت تطبق تفكير مُعيّن البيانات.",
+          type: .tip,
         ),
       ],
     ),
+    examples: LocV(
+      en: [
+        // Example 1: Basic - JSON API Mapper
+        StrCodeBlock("""// Example 1: Basic - JSON API Response Mapper
+// Use case: Mapping API responses to clean domain objects
+
+// Domain Objects: Pure business logic, no JSON knowledge
+class User {
+  final String id;
+  final String name;
+  final String email;
+  final Address address;
+  final DateTime createdAt;
+  final bool isPremium;
+
+  User({
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.address,
+    required this.createdAt,
+    required this.isPremium,
+  });
+
+  // Pure business logic methods
+  bool canAccessPremiumContent() => isPremium;
+  String get displayName => name.split(' ').first;
+  bool get isNewUser =>
+      DateTime.now().difference(createdAt).inDays < 30;
+
+  @override
+  String toString() =>
+      'User(id: \$id, name: \$name, email: \$email, premium: \$isPremium)';
+}
+
+class Address {
+  final String street;
+  final String city;
+  final String country;
+  final String zipCode;
+
+  Address({
+    required this.street,
+    required this.city,
+    required this.country,
+    required this.zipCode,
+  });
+
+  String get fullAddress => '\$street, \$city, \$country \$zipCode';
+}
+
+// Mapper: Handles all translation between JSON and domain objects
+class UserMapper {
+  // Map from API response (JSON) to domain object
+  User fromJson(Map<String, dynamic> json) {
+    return User(
+      // API uses snake_case, domain uses camelCase
+      id: json['user_id'] as String,
+      name: json['full_name'] as String,
+      email: json['email_address'] as String,
+      address: _mapAddress(json['home_address'] as Map<String, dynamic>),
+      // API stores as Unix timestamp, domain uses DateTime
+      createdAt: DateTime.fromMillisecondsSinceEpoch(
+        (json['created_timestamp'] as int) * 1000,
+      ),
+      // API uses int (0/1), domain uses bool
+      isPremium: (json['premium_tier'] as int) == 1,
+    );
+  }
+
+  // Map from domain object to API payload (for creating/updating)
+  Map<String, dynamic> toJson(User user) {
+    return {
+      'user_id': user.id,
+      'full_name': user.name,
+      'email_address': user.email,
+      'home_address': _addressToJson(user.address),
+      'created_timestamp':
+          user.createdAt.millisecondsSinceEpoch ~/ 1000,
+      'premium_tier': user.isPremium ? 1 : 0,
+    };
+  }
+
+  // Map list of users
+  List<User> fromJsonList(List<dynamic> jsonList) {
+    return jsonList
+        .map((json) => fromJson(json as Map<String, dynamic>))
+        .toList();
+  }
+
+  Address _mapAddress(Map<String, dynamic> json) {
+    return Address(
+      street: json['street_line_1'] as String,
+      city: json['city_name'] as String,
+      country: json['country_code'] as String,
+      zipCode: json['postal_code'] as String,
+    );
+  }
+
+  Map<String, dynamic> _addressToJson(Address address) {
+    return {
+      'street_line_1': address.street,
+      'city_name': address.city,
+      'country_code': address.country,
+      'postal_code': address.zipCode,
+    };
+  }
+}
+
+void main() {
+  final mapper = UserMapper();
+
+  // Simulate raw API response (messy, API-specific format)
+  final apiResponse = {
+    'user_id': 'usr_abc123',
+    'full_name': 'Alice Johnson',
+    'email_address': 'alice@example.com',
+    'home_address': {
+      'street_line_1': '123 Main St',
+      'city_name': 'Springfield',
+      'country_code': 'US',
+      'postal_code': '12345',
+    },
+    'created_timestamp': 1700000000,
+    'premium_tier': 1,
+  };
+
+  print('=== API Response → Domain Object ===');
+  final user = mapper.fromJson(apiResponse);
+  print(user);
+  print('Display name: \${user.displayName}');
+  print('Is new user: \${user.isNewUser}');
+  print('Can access premium: \${user.canAccessPremiumContent()}');
+  print('Full address: \${user.address.fullAddress}');
+
+  print('=== Domain Object → API Payload ===');
+  final payload = mapper.toJson(user);
+  print('Payload: \$payload');
+
+  print('=== Mapping a list ===');
+  final apiList = [
+    apiResponse,
+    {
+      'user_id': 'usr_def456',
+      'full_name': 'Bob Smith',
+      'email_address': 'bob@example.com',
+      'home_address': {
+        'street_line_1': '456 Oak Ave',
+        'city_name': 'Shelbyville',
+        'country_code': 'US',
+        'postal_code': '67890',
+      },
+      'created_timestamp': 1710000000,
+      'premium_tier': 0,
+    },
+  ];
+
+  final users = mapper.fromJsonList(apiList);
+  for (final u in users) {
+    print(u);
+  }
+}"""),
+
+        // Example 2: Intermediate - SQLite Database Mapper
+        StrCodeBlock("""// Example 2: Intermediate - SQLite Database Mapper
+// Use case: Mapping between domain objects and database rows
+
+// Domain Objects: No SQL knowledge whatsoever
+class Product {
+  final String id;
+  final String name;
+  final String description;
+  final Money price;
+  final Category category;
+  final int stockQuantity;
+  final List<String> tags;
+  final DateTime? deletedAt;
+
+  Product({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.price,
+    required this.category,
+    required this.stockQuantity,
+    required this.tags,
+    this.deletedAt,
+  });
+
+  bool get isAvailable => stockQuantity > 0 && deletedAt == null;
+  bool get isLowStock => stockQuantity > 0 && stockQuantity < 10;
+  bool get isDeleted => deletedAt != null;
+
+  Product copyWith({
+    String? name,
+    String? description,
+    Money? price,
+    int? stockQuantity,
+    List<String>? tags,
+  }) {
+    return Product(
+      id: id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      price: price ?? this.price,
+      category: category,
+      stockQuantity: stockQuantity ?? this.stockQuantity,
+      tags: tags ?? this.tags,
+      deletedAt: deletedAt,
+    );
+  }
+}
+
+class Money {
+  final int amountCents; // Always store as cents to avoid float issues
+  final String currency;
+
+  Money(this.amountCents, this.currency);
+
+  double get amount => amountCents / 100;
+
+  @override
+  String toString() =>
+      '\${currency}\${amount.toStringAsFixed(2)}';
+}
+
+enum Category { electronics, clothing, food, books, sports }
+
+// Database row representation (what SQLite actually stores)
+class ProductRow {
+  final String id;
+  final String name;
+  final String description;
+  final int priceAmountCents;
+  final String priceCurrency;
+  final String categoryName;
+  final int stockQuantity;
+  final String tagsJson; // Stored as JSON string in SQLite
+  final int? deletedAtMs; // Stored as milliseconds
+
+  ProductRow({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.priceAmountCents,
+    required this.priceCurrency,
+    required this.categoryName,
+    required this.stockQuantity,
+    required this.tagsJson,
+    this.deletedAtMs,
+  });
+
+  Map<String, dynamic> toMap() => {
+    'id': id,
+    'name': name,
+    'description': description,
+    'price_amount_cents': priceAmountCents,
+    'price_currency': priceCurrency,
+    'category_name': categoryName,
+    'stock_quantity': stockQuantity,
+    'tags_json': tagsJson,
+    'deleted_at_ms': deletedAtMs,
+  };
+
+  factory ProductRow.fromMap(Map<String, dynamic> map) => ProductRow(
+    id: map['id'] as String,
+    name: map['name'] as String,
+    description: map['description'] as String,
+    priceAmountCents: map['price_amount_cents'] as int,
+    priceCurrency: map['price_currency'] as String,
+    categoryName: map['category_name'] as String,
+    stockQuantity: map['stock_quantity'] as int,
+    tagsJson: map['tags_json'] as String,
+    deletedAtMs: map['deleted_at_ms'] as int?,
+  );
+}
+
+// Mapper: Translates between Product domain objects and ProductRows
+class ProductMapper {
+  static const _tagsSeparator = '|';
+
+  Product toDomain(ProductRow row) {
+    return Product(
+      id: row.id,
+      name: row.name,
+      description: row.description,
+      price: Money(row.priceAmountCents, row.priceCurrency),
+      category: Category.values.firstWhere(
+        (c) => c.name == row.categoryName,
+      ),
+      stockQuantity: row.stockQuantity,
+      tags: row.tagsJson.isEmpty
+          ? []
+          : row.tagsJson.split(_tagsSeparator),
+      deletedAt: row.deletedAtMs != null
+          ? DateTime.fromMillisecondsSinceEpoch(row.deletedAtMs!)
+          : null,
+    );
+  }
+
+  ProductRow fromDomain(Product product) {
+    return ProductRow(
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      priceAmountCents: product.price.amountCents,
+      priceCurrency: product.price.currency,
+      categoryName: product.category.name,
+      stockQuantity: product.stockQuantity,
+      tagsJson: product.tags.join(_tagsSeparator),
+      deletedAtMs: product.deletedAt?.millisecondsSinceEpoch,
+    );
+  }
+
+  List<Product> toDomainList(List<ProductRow> rows) =>
+      rows.map(toDomain).toList();
+
+  List<ProductRow> fromDomainList(List<Product> products) =>
+      products.map(fromDomain).toList();
+
+  // Map directly from raw database map
+  Product fromMap(Map<String, dynamic> map) =>
+      toDomain(ProductRow.fromMap(map));
+}
+
+// Repository using the mapper (separation of concerns in action)
+class ProductRepository {
+  final ProductMapper _mapper = ProductMapper();
+
+  // Simulated database
+  final List<Map<String, dynamic>> _db = [];
+
+  Future<void> save(Product product) async {
+    final row = _mapper.fromDomain(product);
+    print('DB: INSERT/UPDATE product \${product.id}');
+    print('    Row: \${row.toMap()}');
+    _db.removeWhere((r) => r['id'] == product.id);
+    _db.add(row.toMap());
+  }
+
+  Future<Product?> findById(String id) async {
+    print('DB: SELECT * FROM products WHERE id = \$id');
+    final map = _db.cast<Map<String, dynamic>?>().firstWhere(
+      (r) => r?['id'] == id,
+      orElse: () => null,
+    );
+    return map != null ? _mapper.fromMap(map) : null;
+  }
+
+  Future<List<Product>> findAll() async {
+    print('DB: SELECT * FROM products WHERE deleted_at_ms IS NULL');
+    return _db
+        .where((r) => r['deleted_at_ms'] == null)
+        .map((r) => _mapper.fromMap(r))
+        .toList();
+  }
+
+  Future<List<Product>> findByCategory(Category category) async {
+    print('DB: SELECT * FROM products WHERE category_name = \${category.name}');
+    return _db
+        .where((r) =>
+            r['category_name'] == category.name &&
+            r['deleted_at_ms'] == null)
+        .map((r) => _mapper.fromMap(r))
+        .toList();
+  }
+}
+
+void main() async {
+  final repo = ProductRepository();
+
+  // Domain objects know nothing about the database
+  final laptop = Product(
+    id: 'prod_001',
+    name: 'MacBook Pro',
+    description: 'Powerful laptop for developers',
+    price: Money(249900, 'USD'),
+    category: .electronics,
+    stockQuantity: 50,
+    tags: ['laptop', 'apple', 'developer'],
+  );
+
+  final shirt = Product(
+    id: 'prod_002',
+    name: 'Flutter T-Shirt',
+    description: 'Show your love for Flutter',
+    price: Money(2999, 'USD'),
+    category: .clothing,
+    stockQuantity: 5,
+    tags: ['flutter', 'developer', 'tshirt'],
+  );
+
+  print('=== Saving Products ===');
+  await repo.save(laptop);
+  await repo.save(shirt);
+
+  print('=== Finding Products ===');
+  final found = await repo.findById('prod_001');
+  print('Found: \$found');
+  print('Is available: \${found?.isAvailable}');
+  print('Price: \${found?.price}');
+
+  print('=== Finding by Category ===');
+  final electronics = await repo.findByCategory(.electronics);
+  print('Electronics count: \${electronics.length}');
+  for (final p in electronics) {
+    print('  - \${p.name} (\${p.price}) stock: \${p.stockQuantity}');
+    if (p.isLowStock) print('    ⚠️ Low stock!');
+  }
+}"""),
+
+        // Example 3: Advanced - Multi-Source Mapper with Identity Map
+        StrCodeBlock(
+          """// Example 3: Advanced - Multi-Source Mapper with Identity Map
+// Use case: Mapping from multiple sources with object identity tracking
+
+// Domain Objects
+class Order {
+  final String id;
+  final Customer customer;
+  final List<OrderItem> items;
+  final OrderStatus status;
+  final DateTime placedAt;
+  final Address? shippingAddress;
+
+  Order({
+    required this.id,
+    required this.customer,
+    required this.items,
+    required this.status,
+    required this.placedAt,
+    this.shippingAddress,
+  });
+
+  Money get total => items.fold(
+    Money(0, 'USD'),
+    (sum, item) => Money(
+      sum.amountCents + item.totalPrice.amountCents,
+      sum.currency,
+    ),
+  );
+
+  bool get canBeCancelled =>
+      status == OrderStatus.pending || status == OrderStatus.confirmed;
+}
+
+class Customer {
+  final String id;
+  final String name;
+  final String email;
+
+  Customer({required this.id, required this.name, required this.email});
+}
+
+class OrderItem {
+  final String productId;
+  final String productName;
+  final int quantity;
+  final Money unitPrice;
+
+  OrderItem({
+    required this.productId,
+    required this.productName,
+    required this.quantity,
+    required this.unitPrice,
+  });
+
+  Money get totalPrice =>
+      Money(unitPrice.amountCents * quantity, unitPrice.currency);
+}
+
+enum OrderStatus { pending, confirmed, shipped, delivered, cancelled }
+
+// Identity Map: Prevents loading same object twice
+class IdentityMap<T> {
+  final Map<String, T> _map = {};
+
+  bool has(String id) => _map.containsKey(id);
+  T? get(String id) => _map[id];
+  void put(String id, T object) => _map[id] = object;
+  void remove(String id) => _map.remove(id);
+  void clear() => _map.clear();
+
+  int get size => _map.length;
+}
+
+// Mapper with identity map support
+class OrderMapper {
+  final IdentityMap<Order> _identityMap = IdentityMap();
+  final IdentityMap<Customer> _customerMap = IdentityMap();
+
+  Order fromOrderApiResponse(Map<String, dynamic> json) {
+    final orderId = json['order_id'] as String;
+
+    // Check identity map first
+    if (_identityMap.has(orderId)) {
+      print('IdentityMap: Returning cached Order \$orderId');
+      return _identityMap.get(orderId)!;
+    }
+
+    print('IdentityMap: Mapping new Order \$orderId');
+
+    final customer = _mapCustomer(
+      json['customer'] as Map<String, dynamic>,
+    );
+
+    final items = (json['line_items'] as List<dynamic>)
+        .map((item) => _mapOrderItem(item as Map<String, dynamic>))
+        .toList();
+
+    final order = Order(
+      id: orderId,
+      customer: customer,
+      items: items,
+      status: _parseStatus(json['order_status'] as String),
+      placedAt: DateTime.parse(json['placed_at'] as String),
+      shippingAddress: json['shipping'] != null
+          ? _mapAddress(json['shipping'] as Map<String, dynamic>)
+          : null,
+    );
+
+    _identityMap.put(orderId, order);
+    return order;
+  }
+
+  List<Order> fromOrderList(List<dynamic> jsonList) {
+    return jsonList
+        .map((j) => fromOrderApiResponse(j as Map<String, dynamic>))
+        .toList();
+  }
+
+  Map<String, dynamic> toApiPayload(Order order) {
+    return {
+      'order_id': order.id,
+      'customer': {
+        'customer_id': order.customer.id,
+        'full_name': order.customer.name,
+        'email_address': order.customer.email,
+      },
+      'line_items': order.items.map((item) => {
+        'product_id': item.productId,
+        'product_name': item.productName,
+        'qty': item.quantity,
+        'unit_price_cents': item.unitPrice.amountCents,
+        'unit_price_currency': item.unitPrice.currency,
+      }).toList(),
+      'order_status': order.status.name,
+      'placed_at': order.placedAt.toIso8601String(),
+      'total_cents': order.total.amountCents,
+    };
+  }
+
+  Customer _mapCustomer(Map<String, dynamic> json) {
+    final customerId = json['customer_id'] as String;
+
+    if (_customerMap.has(customerId)) {
+      print('IdentityMap: Reusing Customer \$customerId');
+      return _customerMap.get(customerId)!;
+    }
+
+    final customer = Customer(
+      id: customerId,
+      name: json['full_name'] as String,
+      email: json['email_address'] as String,
+    );
+
+    _customerMap.put(customerId, customer);
+    return customer;
+  }
+
+  OrderItem _mapOrderItem(Map<String, dynamic> json) {
+    return OrderItem(
+      productId: json['product_id'] as String,
+      productName: json['product_name'] as String,
+      quantity: json['qty'] as int,
+      unitPrice: Money(
+        json['unit_price_cents'] as int,
+        json['unit_price_currency'] as String,
+      ),
+    );
+  }
+
+  OrderStatus _parseStatus(String status) {
+    return OrderStatus.values.firstWhere(
+      (s) => s.name == status,
+      orElse: () => .pending,
+    );
+  }
+
+  Address _mapAddress(Map<String, dynamic> json) {
+    return Address(
+      street: json['street'] as String,
+      city: json['city'] as String,
+      country: json['country'] as String,
+      zipCode: json['zip'] as String,
+    );
+  }
+
+  void clearCache() {
+    _identityMap.clear();
+    _customerMap.clear();
+    print('IdentityMap: Cleared');
+  }
+
+  void printStats() {
+    print('IdentityMap: \${_identityMap.size} orders, \${_customerMap.size} customers cached');
+  }
+}
+
+void main() {
+  final mapper = OrderMapper();
+
+  // Simulate API responses with shared customer
+  final sharedCustomer = {
+    'customer_id': 'cust_001',
+    'full_name': 'Alice Johnson',
+    'email_address': 'alice@example.com',
+  };
+
+  final apiOrders = [
+    {
+      'order_id': 'ord_001',
+      'customer': sharedCustomer,
+      'line_items': [
+        {
+          'product_id': 'prod_001',
+          'product_name': 'Laptop',
+          'qty': 1,
+          'unit_price_cents': 99900,
+          'unit_price_currency': 'USD',
+        },
+      ],
+      'order_status': 'confirmed',
+      'placed_at': '2024-01-15T10:30:00Z',
+      'shipping': {
+        'street': '123 Main St',
+        'city': 'Springfield',
+        'country': 'US',
+        'zip': '12345',
+      },
+    },
+    {
+      'order_id': 'ord_002',
+      'customer': sharedCustomer, // Same customer!
+      'line_items': [
+        {
+          'product_id': 'prod_002',
+          'product_name': 'Mouse',
+          'qty': 2,
+          'unit_price_cents': 2999,
+          'unit_price_currency': 'USD',
+        },
+      ],
+      'order_status': 'pending',
+      'placed_at': '2024-01-16T14:00:00Z',
+      'shipping': null,
+    },
+  ];
+
+  print('=== Mapping Orders ===');
+  final orders = mapper.fromOrderList(apiOrders);
+
+  print('=== Loading Same Order Again ===');
+  mapper.fromOrderApiResponse(apiOrders[0] as Map<String, dynamic>);
+
+  mapper.printStats();
+
+  print('=== Order Details ===');
+  for (final order in orders) {
+    print('Order \${order.id}:');
+    print('  Customer: \${order.customer.name}');
+    print('  Items: \${order.items.length}');
+    print('  Total: \${order.total}');
+    print('  Can cancel: \${order.canBeCancelled}');
+  }
+
+  print('=== Same Customer Object? ===');
+  // Both orders share exact same Customer instance
+  print('Same instance: \${identical(orders[0].customer, orders[1].customer)}');
+}""",
+        ),
+
+        // Example 4: Flutter - API to Domain Model Mapper
+        StrCodeBlock(
+          """// Example 4: Flutter - Complete Feature with Data Mapper
+// Use case: News feed with clean domain layer
+
+// Domain Objects: Purely business focused
+class Article {
+  final String id;
+  final String title;
+  final String summary;
+  final String content;
+  final Author author;
+  final DateTime publishedAt;
+  final List<String> tags;
+  final ArticleCategory category;
+  final int readTimeMinutes;
+  final Uri? imageUrl;
+  final int viewCount;
+
+  Article({
+    required this.id,
+    required this.title,
+    required this.summary,
+    required this.content,
+    required this.author,
+    required this.publishedAt,
+    required this.tags,
+    required this.category,
+    required this.readTimeMinutes,
+    this.imageUrl,
+    required this.viewCount,
+  });
+
+  bool get isTrending => viewCount > 10000;
+  bool get isNew =>
+      DateTime.now().difference(publishedAt).inHours < 24;
+  String get timeAgo {
+    final diff = DateTime.now().difference(publishedAt);
+    if (diff.inMinutes < 60) return '\${diff.inMinutes}m ago';
+    if (diff.inHours < 24) return '\${diff.inHours}h ago';
+    return '\${diff.inDays}d ago';
+  }
+}
+
+class Author {
+  final String id;
+  final String name;
+  final String bio;
+  final Uri? avatarUrl;
+
+  Author({
+    required this.id,
+    required this.name,
+    required this.bio,
+    this.avatarUrl,
+  });
+}
+
+enum ArticleCategory { technology, science, business, health, sports }
+
+// Data Mapper
+class ArticleMapper {
+  Article fromJson(Map<String, dynamic> json) {
+    return Article(
+      id: json['_id'] as String,
+      // API might return null for some fields
+      title: (json['headline'] as String?) ?? 'Untitled',
+      summary: (json['excerpt'] as String?) ?? '',
+      content: (json['body_html'] as String?) ?? '',
+      author: _mapAuthor(json['byline'] as Map<String, dynamic>),
+      publishedAt: DateTime.parse(json['pub_date'] as String),
+      tags: List<String>.from(
+        (json['keywords'] as List<dynamic>?) ?? [],
+      ),
+      category: _parseCategory(json['section'] as String?),
+      readTimeMinutes: _estimateReadTime(
+        (json['body_html'] as String?) ?? '',
+      ),
+      imageUrl: json['lead_image_url'] != null
+          ? Uri.tryParse(json['lead_image_url'] as String)
+          : null,
+      viewCount: (json['view_count'] as int?) ?? 0,
+    );
+  }
+
+  List<Article> fromJsonList(List<dynamic> jsonList) =>
+      jsonList
+          .map((j) => fromJson(j as Map<String, dynamic>))
+          .toList();
+
+  Author _mapAuthor(Map<String, dynamic> json) {
+    return Author(
+      id: json['author_id'] as String,
+      name: json['display_name'] as String,
+      bio: (json['bio_text'] as String?) ?? '',
+      avatarUrl: json['profile_image'] != null
+          ? Uri.tryParse(json['profile_image'] as String)
+          : null,
+    );
+  }
+
+  ArticleCategory _parseCategory(String? section) {
+    return switch (section?.toLowerCase()) {
+      'tech' || 'technology' => .technology,
+      'science' || 'sci' => .science,
+      'business' || 'finance' => .business,
+      'health' || 'wellness' => .health,
+      'sports' || 'sport' => .sports,
+      _ => .technology,
+    };
+  }
+
+  int _estimateReadTime(String html) {
+    // ~200 words per minute, average 5 chars per word
+    final charCount = html.replaceAll(RegExp(r'<[^>]*>'), '').length;
+    return (charCount / 1000).ceil().clamp(1, 60);
+  }
+}
+
+// Repository using mapper
+class ArticleRepository {
+  final ArticleMapper _mapper = ArticleMapper();
+
+  Future<List<Article>> fetchTopArticles() async {
+    // Simulate API response
+    await Future.delayed(const Duration(milliseconds: 300));
+
+    final rawJson = [
+      {
+        '_id': 'art_001',
+        'headline': 'Flutter 4.0 Released with Amazing Features',
+        'excerpt': 'The Flutter team announces major update...',
+        'body_html': '<p>Flutter 4.0 brings incredible new features...</p>',
+        'byline': {
+          'author_id': 'aut_001',
+          'display_name': 'Jane Developer',
+          'bio_text': 'Senior Flutter engineer',
+          'profile_image': null,
+        },
+        'pub_date': DateTime.now()
+            .subtract(const Duration(hours: 2))
+            .toIso8601String(),
+        'keywords': ['flutter', 'dart', 'mobile'],
+        'section': 'tech',
+        'lead_image_url': 'https://example.com/flutter.jpg',
+        'view_count': 15000,
+      },
+      {
+        '_id': 'art_002',
+        'headline': 'Dart 4 Language Features Deep Dive',
+        'excerpt': 'Exploring the new Dart language features...',
+        'body_html': '<p>Dart 4 introduces significant improvements...</p>',
+        'byline': {
+          'author_id': 'aut_002',
+          'display_name': 'Bob Engineer',
+          'bio_text': 'Dart core team member',
+          'profile_image': null,
+        },
+        'pub_date': DateTime.now()
+            .subtract(const Duration(hours: 5))
+            .toIso8601String(),
+        'keywords': ['dart', 'programming'],
+        'section': 'tech',
+        'lead_image_url': null,
+        'view_count': 8000,
+      },
+    ];
+
+    return _mapper.fromJsonList(rawJson);
+  }
+}
+
+// Flutter Widget: Works only with clean domain objects
+class ArticleCard extends StatelessWidget {
+  final Article article;
+
+  const ArticleCard(this.article, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Column(
+        crossAxisAlignment: .start,
+        children: [
+          if (article.imageUrl != null)
+            Image.network(
+              article.imageUrl.toString(),
+              height: 200,
+              width: double.infinity,
+              fit: .cover,
+              errorBuilder: (_, __, ___) => Container(
+                height: 200,
+                color: Colors.grey[200],
+                child: const Icon(Icons.image, size: 48),
+              ),
+            ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: .start,
+              children: [
+                Row(
+                  children: [
+                    if (article.isTrending)
+                      Container(
+                        margin: const EdgeInsets.only(right: 8),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.orange,
+                          borderRadius: .circular(12),
+                        ),
+                        child: const Text(
+                          '🔥 Trending',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    if (article.isNew)
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: .circular(12),
+                        ),
+                        child: const Text(
+                          'New',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  article.title,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: .bold,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  article.summary,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  maxLines: 2,
+                  overflow: .ellipsis,
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  children: [
+                    Text(
+                      article.author.name,
+                      style: const TextStyle(fontWeight: .w500),
+                    ),
+                    const Spacer(),
+                    Text(article.timeAgo),
+                    const SizedBox(width: 8),
+                    Text('\${article.readTimeMinutes} min read'),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class NewsApp extends StatelessWidget {
+  final ArticleRepository _repo = ArticleRepository();
+
+  NewsApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Top Stories')),
+      body: FutureBuilder<List<Article>>(
+        future: _repo.fetchTopArticles(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == .waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return Center(child: Text('Error: \${snapshot.error}'));
+          }
+          final articles = snapshot.data ?? [];
+          return ListView.builder(
+            itemCount: articles.length,
+            itemBuilder: (context, index) =>
+                ArticleCard(articles[index]),
+          );
+        },
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(home: NewsApp()));
+}""",
+        ),
+      ],
+      ar: [],
+    ),
     pros: LocSL(
       en: [
-        "Keeps domain objects clean of persistence concerns",
-        "Allows independent evolution of domain and data layers",
-        "Easier to test domain logic",
-        "Supports multiple data sources",
+        "Domain objects stay pure - no database or persistence logic",
+        "Easier to test domain logic - no database required",
+        "Database schema can change without touching domain objects",
+        "Domain model can evolve independently from database structure",
+        "Multiple mappers can target different storage backends",
+        "Clear separation of concerns - mapping is one mapper's only job",
+        "Domain objects can use types that don't exist in databases (enums, value objects)",
       ],
       ar: [
-        "يبقي كائنات المجال نظيفة من اهتمامات الحفظ",
-        "يسمح بتطور مستقل لطبقات المجال والبيانات",
-        "أسهل في اختبار منطق المجال",
-        "يدعم مصادر بيانات متعددة",
+        "كائنات النطاق تبقى نقية - لا منطق قاعدة بيانات أو استمرارية",
+        "أسهل في اختبار منطق النطاق - لا حاجة لقاعدة بيانات",
+        "مخطط قاعدة البيانات يمكن تغييره دون المساس بكائنات النطاق",
+        "نموذج النطاق يمكن أن يتطور بشكل مستقل عن بنية قاعدة البيانات",
+        "يمكن لمعيّنين متعددين استهداف خلفيات تخزين مختلفة",
+        "فصل واضح للاهتمامات - التعيين هو المهمة الوحيدة للمُعيّن",
+        "كائنات النطاق يمكنها استخدام أنواع غير موجودة في قواعد البيانات (تعدادات، كائنات القيمة)",
       ],
     ),
     cons: LocSL(
       en: [
-        "Adds complexity with additional layer",
-        "Requires more code and classes",
-        "Can have performance overhead",
-        "Mapping logic can become complex",
+        "More code required - mapper classes add complexity",
+        "Synchronization needed between domain object, mapper, and database schema",
+        "Can be overkill for simple CRUD applications",
+        "Additional layer to debug when things go wrong",
+        "Mapping complex object graphs can be tricky",
+        "Performance overhead from mapping operations",
       ],
       ar: [
-        "يضيف تعقيداً مع طبقة إضافية",
-        "يتطلب المزيد من الكود والفئات",
-        "قد يكون له عبء أداء",
-        "منطق التخطيط قد يصبح معقداً",
+        "مزيد من الكود مطلوب - فئات المُعيّن تضيف تعقيداً",
+        "مزامنة مطلوبة بين كائن النطاق والمُعيّن ومخطط قاعدة البيانات",
+        "قد يكون مبالغاً فيه لتطبيقات CRUD البسيطة",
+        "طبقة إضافية لتنقيحها عند حدوث مشاكل",
+        "تعيين رسوم بيانية الكائنات المعقدة قد يكون صعباً",
+        "عبء أداء من عمليات التعيين",
       ],
     ),
     whenToUse: LocV(
@@ -6036,51 +8794,64 @@ void main() {
         StrContent("Use Data Mapper when:"),
         ULContent(
           value: [
-            "You want rich domain models free of persistence logic",
-            "Domain and database schemas differ significantly",
-            "You need to support multiple data sources",
-            "You want maximum testability of domain logic",
+            "Domain objects need to stay clean and free of persistence logic",
+            "Database schema is significantly different from domain model",
+            "Multiple data sources require different mapping strategies",
+            "You need to test business logic without database infrastructure",
+            "Domain objects use types that don't map directly to database types",
+            "The application has complex business logic worth protecting from persistence concerns",
           ],
+        ),
+        NoteContent(
+          "For simple CRUD apps, Active Record is simpler. Use Data Mapper when your domain is complex enough that mixing persistence logic would be harmful.",
+          type: .tip,
         ),
       ],
       ar: [
-        StrContent("استخدم مُخطط البيانات عندما:"),
+        StrContent("استخدم مُعيّن البيانات عندما:"),
         ULContent(
           value: [
-            "تريد نماذج مجال غنية خالية من منطق الحفظ",
-            "مخططات المجال وقاعدة البيانات تختلف بشكل كبير",
-            "تحتاج لدعم مصادر بيانات متعددة",
-            "تريد أقصى قابلية اختبار لمنطق المجال",
+            "كائنات النطاق تحتاج للبقاء نظيفة وخالية من منطق الاستمرارية",
+            "مخطط قاعدة البيانات مختلف بشكل كبير عن نموذج النطاق",
+            "مصادر بيانات متعددة تتطلب استراتيجيات تعيين مختلفة",
+            "تحتاج لاختبار منطق العمل دون بنية تحتية لقاعدة البيانات",
+            "كائنات النطاق تستخدم أنواعاً لا تُعيَّن مباشرة لأنواع قاعدة البيانات",
+            "التطبيق له منطق أعمال معقد يستحق الحماية من اهتمامات الاستمرارية",
           ],
+        ),
+        NoteContent(
+          "لتطبيقات CRUD البسيطة، Active Record أبسط. استخدم مُعيّن البيانات عندما يكون نطاقك معقداً بما يكفي بحيث يكون مزج منطق الاستمرارية ضاراً.",
+          type: .tip,
         ),
       ],
     ),
     commonMistakes: LocV(
       en: [
-        "Putting business logic in mappers",
-        "Creating bidirectional dependencies",
-        "Not handling complex object graphs properly",
-        "Ignoring N+1 query problems",
+        "Putting mapping logic in domain objects - defeats the purpose",
+        "Creating mappers too tightly coupled to specific databases",
+        "Over-engineering with Data Mapper when Active Record would suffice",
+        "Not handling null values and missing fields gracefully",
+        "Ignoring the need for reverse mapping (domain back to storage)",
+        "Creating one giant mapper class instead of focused ones per aggregate",
       ],
       ar: [
-        "وضع منطق العمل في المُخططات",
-        "إنشاء تبعيات ثنائية الاتجاه",
-        "عدم التعامل مع رسوم الكائنات المعقدة بشكل صحيح",
-        "تجاهل مشاكل استعلام N+1",
+        "وضع منطق التعيين في كائنات النطاق - يُفشل الغرض",
+        "إنشاء مُعيّنين مرتبطين ارتباطاً وثيقاً بقواعد بيانات محددة",
+        "الإفراط في الهندسة مع مُعيّن البيانات عندما يكفي Active Record",
+        "عدم التعامل مع قيم null والحقول المفقودة بلطف",
+        "تجاهل الحاجة للتعيين العكسي (النطاق إلى التخزين)",
+        "إنشاء فئة مُعيّن ضخمة واحدة بدلاً من مُعيّنين مركزين لكل مجموعة",
       ],
     ),
-    relatedPatterns: [PK.repository, PK.unitOfWork, PK.dto],
+    relatedPatterns: [PK.dto, PK.proxy, PK.adapter, PK.facade],
+    oftenConfusedWith: [PK.dto, PK.adapter],
   ),
-
   PK.dto: DesignPattern(
     id: PK.dto,
-    title: LocS(
-      en: "Data Transfer Object (DTO)",
-      ar: "كائن نقل البيانات (DTO)",
-    ),
+    title: LocS(en: "Data Transfer Object", ar: "كائن نقل البيانات (DTO)"),
     description: LocS(
-      en: "Transfers data between software application subsystems",
-      ar: "ينقل البيانات بين أنظمة فرعية للتطبيق البرمجي",
+      en: "Carries data between processes or layers using simple objects with no behavior",
+      ar: "ينقل البيانات بين العمليات أو الطبقات باستخدام كائنات بسيطة بلا سلوك",
     ),
     group: .design,
     type: .structural,
@@ -6089,65 +8860,1173 @@ void main() {
     content: LocV(
       en: [
         StrContent(
-          "A DTO is a simple object that carries data between processes. It has no behavior except for storage and retrieval of its own data (accessors and mutators).",
+          "A Data Transfer Object is a simple object designed solely to carry data from one layer or system to another. DTOs have no business logic - they are just structured containers. They reduce the number of method calls needed to transfer data and provide a clear contract for what data is exchanged between layers.",
+        ),
+        AnalogyContent(
+          "Think of a shipping form when sending a package. The form has fields for name, address, weight, and contents. It carries all needed information in one structured document. The form itself does nothing - it's just data. The shipper reads it, the carrier uses it, the recipient sees it. No behavior, just structured data transfer.",
         ),
         StrContent(
-          "DTOs are commonly used to transfer data across network boundaries, between layers, or when you need to aggregate data from multiple sources into a single object.",
+          "DTOs solve the 'chatty interface' problem. Instead of calling getFirstName(), getLastName(), getEmail() separately, you return one UserDTO with all fields. This also decouples your API contract from your internal domain objects - you can change internals without breaking external consumers.",
         ),
         ULContent(
-          title: "Common Use Cases:",
+          title: "Key Characteristics:",
           value: [
-            "API request/response objects",
-            "Data transfer between client and server",
-            "Aggregating data from multiple domain objects",
-            "Isolating internal models from external interfaces",
+            "No business logic: Only getters/setters or final fields",
+            "Serializable: Easily converted to/from JSON, XML, etc.",
+            "Flat: Usually flatten nested domain objects for transfer",
+            "Purpose-built: Different DTOs for different use cases",
+            "Immutable preferred: Prevents accidental mutation during transfer",
           ],
+        ),
+        DiagramContent(
+          "Data Flow:\nPresentation ← DTO → Service → Data Mapper → Domain\n    Layer          (simple    Layer       (translate)    Object\n (consumes)       container)                          (pure logic)",
+        ),
+        NoteContent(
+          "DTO vs Domain Object: Domain objects have behavior (methods) and enforce business rules. DTOs are pure data containers with no logic. Never add business logic to a DTO - that's the domain object's job.",
+          type: .important,
+        ),
+        ComparisonContent({
+          'DTO': 'No behavior, carries data, serializable, layer boundary',
+          'Domain Object':
+              'Has behavior, enforces rules, not serializable directly',
+          'Value Object': 'Immutable, identity by value, may have behavior',
+          'Entity': 'Has identity, mutable state, rich behavior',
+        }, title: 'DTO vs Related Concepts'),
+        StrContent(
+          "Common use cases in Flutter/Dart: API request/response bodies, form data objects, state management payloads, inter-isolate message passing, and data passed between app layers (UI → service → repository).",
+        ),
+        NoteContent(
+          "In Flutter, DTOs are often called 'models' in practice. The distinction is that a true DTO has no behavior, while a 'model' might have fromJson/toJson methods (which is fine - those are still serialization helpers, not business logic).",
+          type: .tip,
         ),
       ],
       ar: [
         StrContent(
-          "DTO هو كائن بسيط ينقل البيانات بين العمليات. ليس له سلوك إلا لتخزين واسترجاع بياناته الخاصة (الموصلات والمغيرات).",
+          "كائن نقل البيانات هو كائن بسيط مصمم فقط لنقل البيانات من طبقة أو نظام إلى آخر. كائنات DTO لا تحتوي على منطق أعمال - إنها فقط حاويات مُهيكلة. تقلل عدد استدعاءات الطرق اللازمة لنقل البيانات وتوفر عقداً واضحاً لما يُتبادل بين الطبقات.",
+        ),
+        AnalogyContent(
+          "فكر في استمارة الشحن عند إرسال طرد. الاستمارة لها حقول للاسم والعنوان والوزن والمحتويات. تحمل جميع المعلومات المطلوبة في مستند واحد مُهيكل. الاستمارة نفسها لا تفعل شيئاً - إنها مجرد بيانات. المُرسل يقرأها، الناقل يستخدمها، المستلم يراها. لا سلوك، فقط نقل بيانات مُهيكل.",
         ),
         StrContent(
-          "تُستخدم DTOs عادة لنقل البيانات عبر حدود الشبكة، بين الطبقات، أو عندما تحتاج لتجميع البيانات من مصادر متعددة في كائن واحد.",
+          "كائنات DTO تحل مشكلة 'الواجهة الثرثارة'. بدلاً من استدعاء getFirstName() و getLastName() و getEmail() بشكل منفصل، تُرجع UserDTO واحداً بجميع الحقول. هذا أيضاً يفصل عقد API الخاص بك عن كائنات النطاق الداخلية - يمكنك تغيير الداخليات دون كسر المستهلكين الخارجيين.",
         ),
         ULContent(
-          title: "حالات الاستخدام الشائعة:",
+          title: "الخصائص الأساسية:",
           value: [
-            "كائنات طلب/استجابة API",
-            "نقل البيانات بين العميل والخادم",
-            "تجميع البيانات من عدة كائنات مجال",
-            "عزل النماذج الداخلية عن الواجهات الخارجية",
+            "لا منطق أعمال: فقط getters/setters أو حقول final",
+            "قابل للتسلسل: يمكن تحويله بسهولة من/إلى JSON وXML وغيره",
+            "مسطح: عادةً يُسطّح كائنات النطاق المتداخلة للنقل",
+            "مبني لغرض محدد: كائنات DTO مختلفة لحالات استخدام مختلفة",
+            "يُفضَّل الثبات: يمنع التحول العرضي أثناء النقل",
           ],
+        ),
+        DiagramContent(
+          "تدفق البيانات:\nالعرض ← DTO → الخدمة → مُعيّن البيانات → النطاق\n(يستهلك)  (حاوية    (طبقة)    (ترجمة)         (كائن نقي)\n          بسيطة)",
+        ),
+        NoteContent(
+          "DTO مقابل كائن النطاق: كائنات النطاق لها سلوك (طرق) وتُطبق قواعد العمل. كائنات DTO هي حاويات بيانات نقية بلا منطق. لا تضيف منطق أعمال أبداً لـ DTO - تلك مهمة كائن النطاق.",
+          type: .important,
+        ),
+        ComparisonContent({
+          'DTO': 'لا سلوك، ينقل البيانات، قابل للتسلسل، حدود الطبقة',
+          'كائن النطاق (Domain Object)':
+              'له سلوك، يُطبق القواعد، غير قابل للتسلسل مباشرة',
+          'كائن القيمة (Value Object)': 'ثابت، الهوية بالقيمة، قد يكون له سلوك',
+          'الكيان (Entity)': 'له هوية، حالة قابلة للتغيير، سلوك غني',
+        }, title: 'DTO مقابل المفاهيم ذات الصلة'),
+        StrContent(
+          "حالات الاستخدام الشائعة في Flutter/Dart: هياكل طلب/استجابة API، كائنات بيانات النماذج، حمولات إدارة الحالة، تمرير الرسائل بين العوازل (Isolates)، والبيانات المُمررة بين طبقات التطبيق (واجهة مستخدم → خدمة → مستودع).",
+        ),
+        NoteContent(
+          "في Flutter، تُسمى كائنات DTO في الغالب 'نماذج' (Models) في الممارسة العملية. الفرق هو أن DTO الحقيقي لا يحتوي على سلوك، بينما قد يحتوي 'النموذج' على طرق fromJson()/toJson() (وهذا جيد - تلك لا تزال مساعدات تسلسل، وليست منطق أعمال).",
+          type: .tip,
         ),
       ],
     ),
+    examples: LocV(
+      en: [
+        // Example 1: Basic - API DTOs
+        StrCodeBlock("""// Example 1: Basic - API Request/Response DTOs
+// Use case: Clean data contracts for API communication
+
+// ── REQUEST DTOs ──────────────────────────────────────────────
+
+class CreateUserRequest {
+  final String name;
+  final String email;
+  final String password;
+  final String? phoneNumber;
+  final String? referralCode;
+
+  const CreateUserRequest({
+    required this.name,
+    required this.email,
+    required this.password,
+    this.phoneNumber,
+    this.referralCode,
+  });
+
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'email': email,
+    'password': password,
+    if (phoneNumber != null) 'phone_number': phoneNumber,
+    if (referralCode != null) 'referral_code': referralCode,
+  };
+}
+
+class UpdateProfileRequest {
+  final String? name;
+  final String? bio;
+  final String? avatarBase64;
+
+  const UpdateProfileRequest({
+    this.name,
+    this.bio,
+    this.avatarBase64,
+  });
+
+  Map<String, dynamic> toJson() => {
+    if (name != null) 'name': name,
+    if (bio != null) 'bio': bio,
+    if (avatarBase64 != null) 'avatar': avatarBase64,
+  };
+
+  bool get hasChanges => name != null || bio != null || avatarBase64 != null;
+}
+
+class PaginationRequest {
+  final int page;
+  final int pageSize;
+  final String? sortBy;
+  final bool ascending;
+
+  const PaginationRequest({
+    this.page = 1,
+    this.pageSize = 20,
+    this.sortBy,
+    this.ascending = true,
+  });
+
+  Map<String, dynamic> toQueryParams() => {
+    'page': page.toString(),
+    'per_page': pageSize.toString(),
+    if (sortBy != null) 'sort_by': sortBy,
+    'order': ascending ? 'asc' : 'desc',
+  };
+}
+
+// ── RESPONSE DTOs ─────────────────────────────────────────────
+
+class UserResponse {
+  final String id;
+  final String name;
+  final String email;
+  final String? avatarUrl;
+  final bool isVerified;
+  final String createdAt;
+
+  const UserResponse({
+    required this.id,
+    required this.name,
+    required this.email,
+    this.avatarUrl,
+    required this.isVerified,
+    required this.createdAt,
+  });
+
+  factory UserResponse.fromJson(Map<String, dynamic> json) => UserResponse(
+    id: json['id'] as String,
+    name: json['name'] as String,
+    email: json['email'] as String,
+    avatarUrl: json['avatar_url'] as String?,
+    isVerified: json['is_verified'] as bool,
+    createdAt: json['created_at'] as String,
+  );
+}
+
+class PaginatedResponse<T> {
+  final List<T> items;
+  final int totalCount;
+  final int currentPage;
+  final int totalPages;
+  final bool hasNextPage;
+
+  const PaginatedResponse({
+    required this.items,
+    required this.totalCount,
+    required this.currentPage,
+    required this.totalPages,
+    required this.hasNextPage,
+  });
+
+  factory PaginatedResponse.fromJson(
+    Map<String, dynamic> json,
+    T Function(Map<String, dynamic>) itemFromJson,
+  ) {
+    return PaginatedResponse(
+      items: (json['data'] as List<dynamic>)
+          .map((i) => itemFromJson(i as Map<String, dynamic>))
+          .toList(),
+      totalCount: json['total_count'] as int,
+      currentPage: json['current_page'] as int,
+      totalPages: json['total_pages'] as int,
+      hasNextPage: json['has_next_page'] as bool,
+    );
+  }
+}
+
+class ApiErrorResponse {
+  final String code;
+  final String message;
+  final Map<String, List<String>>? fieldErrors;
+
+  const ApiErrorResponse({
+    required this.code,
+    required this.message,
+    this.fieldErrors,
+  });
+
+  factory ApiErrorResponse.fromJson(Map<String, dynamic> json) =>
+      ApiErrorResponse(
+        code: json['error_code'] as String,
+        message: json['error_message'] as String,
+        fieldErrors: (json['field_errors'] as Map<String, dynamic>?)?.map(
+          (key, value) => MapEntry(
+            key,
+            List<String>.from(value as List<dynamic>),
+          ),
+        ),
+      );
+
+  bool get hasFieldErrors =>
+      fieldErrors != null && fieldErrors!.isNotEmpty;
+}
+
+// Service using DTOs
+class UserApiService {
+  Future<UserResponse> createUser(CreateUserRequest request) async {
+    print('POST /users');
+    print('Request body: \${request.toJson()}');
+
+    await Future.delayed(const Duration(milliseconds: 100));
+
+    // Simulate API response
+    return UserResponse(
+      id: 'usr_new_001',
+      name: request.name,
+      email: request.email,
+      isVerified: false,
+      createdAt: DateTime.now().toIso8601String(),
+    );
+  }
+
+  Future<PaginatedResponse<UserResponse>> getUsers(
+    PaginationRequest pagination,
+  ) async {
+    print('GET /users?\${pagination.toQueryParams()}');
+
+    await Future.delayed(const Duration(milliseconds: 100));
+
+    return PaginatedResponse(
+      items: [
+        UserResponse(
+          id: 'usr_001',
+          name: 'Alice',
+          email: 'alice@example.com',
+          isVerified: true,
+          createdAt: DateTime.now().toIso8601String(),
+        ),
+        UserResponse(
+          id: 'usr_002',
+          name: 'Bob',
+          email: 'bob@example.com',
+          isVerified: false,
+          createdAt: DateTime.now().toIso8601String(),
+        ),
+      ],
+      totalCount: 2,
+      currentPage: 1,
+      totalPages: 1,
+      hasNextPage: false,
+    );
+  }
+}
+
+void main() async {
+  final service = UserApiService();
+
+  print('=== Create User ===');
+  final createRequest = CreateUserRequest(
+    name: 'Charlie Brown',
+    email: 'charlie@example.com',
+    password: 's3cur3P@ss',
+    referralCode: 'FRIEND123',
+  );
+  final newUser = await service.createUser(createRequest);
+  print('Created: \${newUser.id} - \${newUser.name}');
+  print('Verified: \${newUser.isVerified}');
+
+  print('=== Get Paginated Users ===');
+  final pagination = PaginationRequest(
+    page: 1,
+    pageSize: 10,
+    sortBy: 'name',
+  );
+  final usersPage = await service.getUsers(pagination);
+  print('Total: \${usersPage.totalCount}, Page: \${usersPage.currentPage}/\${usersPage.totalPages}');
+  for (final user in usersPage.items) {
+    print('  \${user.id}: \${user.name} (\${user.isVerified ? "✓" : "✗"})');
+  }
+
+  print('=== Update Profile (partial) ===');
+  final updateRequest = UpdateProfileRequest(bio: 'Flutter developer');
+  print('Has changes: \${updateRequest.hasChanges}');
+  print('Payload: \${updateRequest.toJson()}');
+}"""),
+
+        // Example 2: Intermediate - Layer DTOs
+        StrCodeBlock(
+          """// Example 2: Intermediate - DTOs Between Application Layers
+// Use case: Clean data contracts between UI, Service, and Repository layers
+
+// ── REPOSITORY LAYER DTOs ─────────────────────────────────────
+// What comes in/out of the database
+
+class ProductDbRecord {
+  final String id;
+  final String name;
+  final int priceInCents;
+  final String categoryId;
+  final int stock;
+  final String? imageFilePath;
+  final int createdAtMs;
+
+  const ProductDbRecord({
+    required this.id,
+    required this.name,
+    required this.priceInCents,
+    required this.categoryId,
+    required this.stock,
+    this.imageFilePath,
+    required this.createdAtMs,
+  });
+
+  factory ProductDbRecord.fromMap(Map<String, dynamic> map) =>
+      ProductDbRecord(
+        id: map['id'] as String,
+        name: map['name'] as String,
+        priceInCents: map['price_cents'] as int,
+        categoryId: map['category_id'] as String,
+        stock: map['stock'] as int,
+        imageFilePath: map['image_path'] as String?,
+        createdAtMs: map['created_at_ms'] as int,
+      );
+
+  Map<String, dynamic> toMap() => {
+    'id': id,
+    'name': name,
+    'price_cents': priceInCents,
+    'category_id': categoryId,
+    'stock': stock,
+    'image_path': imageFilePath,
+    'created_at_ms': createdAtMs,
+  };
+}
+
+// ── SERVICE LAYER DTOs ────────────────────────────────────────
+// What the business logic works with
+
+class ProductSummaryDto {
+  final String id;
+  final String name;
+  final double price;
+  final String currency;
+  final String category;
+  final bool inStock;
+  final String? imageUrl;
+
+  const ProductSummaryDto({
+    required this.id,
+    required this.name,
+    required this.price,
+    required this.currency,
+    required this.category,
+    required this.inStock,
+    this.imageUrl,
+  });
+}
+
+class ProductDetailDto {
+  final String id;
+  final String name;
+  final double price;
+  final String currency;
+  final String category;
+  final int stockQuantity;
+  final String? imageUrl;
+  final DateTime createdAt;
+  final List<ProductSummaryDto> relatedProducts;
+
+  const ProductDetailDto({
+    required this.id,
+    required this.name,
+    required this.price,
+    required this.currency,
+    required this.category,
+    required this.stockQuantity,
+    this.imageUrl,
+    required this.createdAt,
+    required this.relatedProducts,
+  });
+
+  bool get isLowStock => stockQuantity > 0 && stockQuantity < 5;
+}
+
+class AddToCartDto {
+  final String productId;
+  final int quantity;
+  final String? couponCode;
+
+  const AddToCartDto({
+    required this.productId,
+    required this.quantity,
+    this.couponCode,
+  });
+}
+
+class CartItemDto {
+  final String productId;
+  final String productName;
+  final int quantity;
+  final double unitPrice;
+  final double totalPrice;
+  final String currency;
+
+  const CartItemDto({
+    required this.productId,
+    required this.productName,
+    required this.quantity,
+    required this.unitPrice,
+    required this.totalPrice,
+    required this.currency,
+  });
+}
+
+class CartSummaryDto {
+  final List<CartItemDto> items;
+  final double subtotal;
+  final double discount;
+  final double total;
+  final String currency;
+  final int itemCount;
+
+  const CartSummaryDto({
+    required this.items,
+    required this.subtotal,
+    required this.discount,
+    required this.total,
+    required this.currency,
+    required this.itemCount,
+  });
+}
+
+// ── UI LAYER DTOs ─────────────────────────────────────────────
+// What the UI receives and displays
+
+class ProductCardViewModel {
+  final String id;
+  final String title;
+  final String formattedPrice;
+  final String? imageUrl;
+  final String stockLabel;
+  final bool canAddToCart;
+  final String categoryLabel;
+
+  const ProductCardViewModel({
+    required this.id,
+    required this.title,
+    required this.formattedPrice,
+    this.imageUrl,
+    required this.stockLabel,
+    required this.canAddToCart,
+    required this.categoryLabel,
+  });
+
+  // Presentation only - how to display stock status
+  String get stockBadgeText {
+    if (!canAddToCart) return 'Out of Stock';
+    if (stockLabel.contains('Low')) return '⚠️ \$stockLabel';
+    return stockLabel;
+  }
+}
+
+// ── ASSEMBLERS: Convert between DTO layers ────────────────────
+
+class ProductAssembler {
+  // DB Record → Service DTO
+  static ProductSummaryDto toSummary(ProductDbRecord record) {
+    return ProductSummaryDto(
+      id: record.id,
+      name: record.name,
+      price: record.priceInCents / 100,
+      currency: 'USD',
+      category: _categoryName(record.categoryId),
+      inStock: record.stock > 0,
+      imageUrl: record.imageFilePath != null
+          ? 'https://cdn.example.com/\${record.imageFilePath}'
+          : null,
+    );
+  }
+
+  // Service DTO → UI ViewModel
+  static ProductCardViewModel toViewModel(ProductSummaryDto dto) {
+    return ProductCardViewModel(
+      id: dto.id,
+      title: dto.name,
+      formattedPrice: '\${dto.currency}\${dto.price.toStringAsFixed(2)}',
+      imageUrl: dto.imageUrl,
+      stockLabel: dto.inStock ? 'In Stock' : 'Out of Stock',
+      canAddToCart: dto.inStock,
+      categoryLabel: dto.category,
+    );
+  }
+
+  static String _categoryName(String categoryId) => switch (categoryId) {
+    'cat_elec' => 'Electronics',
+    'cat_cloth' => 'Clothing',
+    'cat_food' => 'Food',
+    _ => 'Other',
+  };
+}
+
+void main() {
+  print('=== DTO Layer Flow Demo ===');
+
+  // Simulate DB record coming from SQLite
+  final dbRecord = ProductDbRecord(
+    id: 'prod_001',
+    name: 'Wireless Keyboard',
+    priceInCents: 7999,
+    categoryId: 'cat_elec',
+    stock: 3,
+    imageFilePath: 'products/keyboard.jpg',
+    createdAtMs: DateTime.now().millisecondsSinceEpoch,
+  );
+
+  print('--- DB Layer (raw) ---');
+  print('DB Record: \${dbRecord.toMap()}');
+
+  // DB → Service layer DTO
+  final summaryDto = ProductAssembler.toSummary(dbRecord);
+  print('--- Service Layer DTO ---');
+  print('ID: \${summaryDto.id}');
+  print('Name: \${summaryDto.name}');
+  print('Price: \${summaryDto.currency}\${summaryDto.price}');
+  print('Category: \${summaryDto.category}');
+  print('In stock: \${summaryDto.inStock}');
+
+  // Service → UI layer ViewModel
+  final viewModel = ProductAssembler.toViewModel(summaryDto);
+  print('--- UI ViewModel ---');
+  print('Title: \${viewModel.title}');
+  print('Price: \${viewModel.formattedPrice}');
+  print('Stock badge: \${viewModel.stockBadgeText}');
+  print('Can add to cart: \${viewModel.canAddToCart}');
+
+  // Cart DTO example
+  final cart = CartSummaryDto(
+    items: [
+      CartItemDto(
+        productId: 'prod_001',
+        productName: 'Wireless Keyboard',
+        quantity: 2,
+        unitPrice: 79.99,
+        totalPrice: 159.98,
+        currency: 'USD',
+      ),
+    ],
+    subtotal: 159.98,
+    discount: 10.00,
+    total: 149.98,
+    currency: 'USD',
+    itemCount: 2,
+  );
+
+  print('--- Cart Summary DTO ---');
+  print('Items: \${cart.itemCount}');
+  print('Subtotal: \${cart.currency}\${cart.subtotal}');
+  print('Discount: \${cart.currency}\${cart.discount}');
+  print('Total: \${cart.currency}\${cart.total}');
+}""",
+        ),
+
+        // Example 3: Advanced - Isolate-safe DTOs
+        StrCodeBlock(
+          """// Example 3: Advanced - Isolate-Safe DTOs for Heavy Computation
+// Use case: Passing data safely between Flutter isolates
+
+import 'dart:isolate';
+
+// DTOs must be simple, serializable types for isolate message passing
+// (No complex objects, no closures, no native handles)
+
+class ImageProcessingRequest {
+  final List<int> imageBytes; // Raw bytes - safe to send
+  final int targetWidth;
+  final int targetHeight;
+  final int quality;
+  final String format; // 'jpeg', 'png', 'webp'
+  final List<FilterDto> filters;
+
+  const ImageProcessingRequest({
+    required this.imageBytes,
+    required this.targetWidth,
+    required this.targetHeight,
+    this.quality = 85,
+    this.format = 'jpeg',
+    this.filters = const [],
+  });
+
+  // Must be serializable for isolate transfer
+  Map<String, dynamic> toMap() => {
+    'imageBytes': imageBytes,
+    'targetWidth': targetWidth,
+    'targetHeight': targetHeight,
+    'quality': quality,
+    'format': format,
+    'filters': filters.map((f) => f.toMap()).toList(),
+  };
+
+  factory ImageProcessingRequest.fromMap(Map<String, dynamic> map) =>
+      ImageProcessingRequest(
+        imageBytes: List<int>.from(map['imageBytes'] as List<dynamic>),
+        targetWidth: map['targetWidth'] as int,
+        targetHeight: map['targetHeight'] as int,
+        quality: map['quality'] as int,
+        format: map['format'] as String,
+        filters: (map['filters'] as List<dynamic>)
+            .map((f) => FilterDto.fromMap(f as Map<String, dynamic>))
+            .toList(),
+      );
+}
+
+class FilterDto {
+  final String type; // 'brightness', 'contrast', 'saturation', 'blur'
+  final double value;
+
+  const FilterDto({required this.type, required this.value});
+
+  Map<String, dynamic> toMap() => {'type': type, 'value': value};
+
+  factory FilterDto.fromMap(Map<String, dynamic> map) => FilterDto(
+    type: map['type'] as String,
+    value: map['value'] as double,
+  );
+}
+
+class ImageProcessingResult {
+  final bool success;
+  final List<int>? processedBytes;
+  final String? errorMessage;
+  final int processingTimeMs;
+  final ImageMetadataDto? metadata;
+
+  const ImageProcessingResult({
+    required this.success,
+    this.processedBytes,
+    this.errorMessage,
+    required this.processingTimeMs,
+    this.metadata,
+  });
+
+  Map<String, dynamic> toMap() => {
+    'success': success,
+    'processedBytes': processedBytes,
+    'errorMessage': errorMessage,
+    'processingTimeMs': processingTimeMs,
+    'metadata': metadata?.toMap(),
+  };
+
+  factory ImageProcessingResult.fromMap(Map<String, dynamic> map) =>
+      ImageProcessingResult(
+        success: map['success'] as bool,
+        processedBytes: map['processedBytes'] != null
+            ? List<int>.from(map['processedBytes'] as List<dynamic>)
+            : null,
+        errorMessage: map['errorMessage'] as String?,
+        processingTimeMs: map['processingTimeMs'] as int,
+        metadata: map['metadata'] != null
+            ? ImageMetadataDto.fromMap(
+                map['metadata'] as Map<String, dynamic>)
+            : null,
+      );
+}
+
+class ImageMetadataDto {
+  final int width;
+  final int height;
+  final String format;
+  final int fileSizeBytes;
+
+  const ImageMetadataDto({
+    required this.width,
+    required this.height,
+    required this.format,
+    required this.fileSizeBytes,
+  });
+
+  Map<String, dynamic> toMap() => {
+    'width': width,
+    'height': height,
+    'format': format,
+    'fileSizeBytes': fileSizeBytes,
+  };
+
+  factory ImageMetadataDto.fromMap(Map<String, dynamic> map) =>
+      ImageMetadataDto(
+        width: map['width'] as int,
+        height: map['height'] as int,
+        format: map['format'] as String,
+        fileSizeBytes: map['fileSizeBytes'] as int,
+      );
+}
+
+// Isolate worker function - only receives/sends DTO maps
+void imageProcessorIsolate(SendPort sendPort) {
+  final receivePort = ReceivePort();
+  sendPort.send(receivePort.sendPort);
+
+  receivePort.listen((message) {
+    if (message is Map<String, dynamic>) {
+      final request =
+          ImageProcessingRequest.fromMap(message);
+      final result = _processImage(request);
+      sendPort.send(result.toMap());
+    }
+  });
+}
+
+ImageProcessingResult _processImage(ImageProcessingRequest request) {
+  final start = DateTime.now();
+
+  try {
+    print('Isolate: Processing \${request.imageBytes.length} bytes');
+    print('Isolate: Resize to \${request.targetWidth}x\${request.targetHeight}');
+    print('Isolate: Applying \${request.filters.length} filters');
+
+    // Simulate heavy processing
+    for (final filter in request.filters) {
+      print('Isolate: Applying \${filter.type} filter (value: \${filter.value})');
+    }
+
+    // Simulate output (in reality this would be processed bytes)
+    final processedBytes = List<int>.filled(1000, 0);
+
+    final processingTime =
+        DateTime.now().difference(start).inMilliseconds;
+
+    return ImageProcessingResult(
+      success: true,
+      processedBytes: processedBytes,
+      processingTimeMs: processingTime,
+      metadata: ImageMetadataDto(
+        width: request.targetWidth,
+        height: request.targetHeight,
+        format: request.format,
+        fileSizeBytes: processedBytes.length,
+      ),
+    );
+  } catch (e) {
+    return ImageProcessingResult(
+      success: false,
+      errorMessage: e.toString(),
+      processingTimeMs:
+          DateTime.now().difference(start).inMilliseconds,
+    );
+  }
+}
+
+// Main isolate - uses DTOs to communicate
+Future<ImageProcessingResult> processImageInBackground(
+  ImageProcessingRequest request,
+) async {
+  final receivePort = ReceivePort();
+
+  await Isolate.spawn(imageProcessorIsolate, receivePort.sendPort);
+
+  final sendPort = await receivePort.first as SendPort;
+
+  final responsePort = ReceivePort();
+  sendPort.send(request.toMap()); // Send DTO as map
+
+  final resultMap =
+      await responsePort.first as Map<String, dynamic>;
+  return ImageProcessingResult.fromMap(resultMap);
+}
+
+void main() async {
+  print('=== Isolate DTO Demo ===');
+
+  final request = ImageProcessingRequest(
+    imageBytes: List<int>.filled(5000, 128), // Simulate image bytes
+    targetWidth: 800,
+    targetHeight: 600,
+    quality: 90,
+    format: 'jpeg',
+    filters: [
+      FilterDto(type: 'brightness', value: 1.2),
+      FilterDto(type: 'contrast', value: 1.1),
+      FilterDto(type: 'saturation', value: 0.9),
+    ],
+  );
+
+  print('Sending request to background isolate...');
+  print('Request: \${request.imageBytes.length} bytes, '
+      '\${request.targetWidth}x\${request.targetHeight}');
+
+  // DTOs are safely transferable between isolates
+  final result = await processImageInBackground(request);
+
+  if (result.success) {
+    print('Processing successful!');
+    print('Time: \${result.processingTimeMs}ms');
+    print('Output: \${result.processedBytes?.length} bytes');
+    if (result.metadata != null) {
+      print('Output size: \${result.metadata!.width}x\${result.metadata!.height}');
+      print('Format: \${result.metadata!.format}');
+    }
+  } else {
+    print('Processing failed: \${result.errorMessage}');
+  }
+}""",
+        ),
+
+        // Example 4: Flutter - Form DTO with State Management
+        StrCodeBlock("""// Example 4: Flutter - Form DTOs with Validation
+// Use case: Clean form data handling with DTOs
+
+// ── FORM INPUT DTO ────────────────────────────────────────────
+
+class RegistrationFormDto {
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String password;
+  final String confirmPassword;
+  final DateTime? dateOfBirth;
+  final String country;
+  final bool agreedToTerms;
+
+  const RegistrationFormDto({
+    this.firstName = '',
+    this.lastName = '',
+    this.email = '',
+    this.password = '',
+    this.confirmPassword = '',
+    this.dateOfBirth,
+    this.country = '',
+    this.agreedToTerms = false,
+  });
+
+  RegistrationFormDto copyWith({
+    String? firstName,
+    String? lastName,
+    String? email,
+    String? password,
+    String? confirmPassword,
+    DateTime? dateOfBirth,
+    String? country,
+    bool? agreedToTerms,
+  }) {
+    return RegistrationFormDto(
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      email: email ?? this.email,
+      password: password ?? this.password,
+      confirmPassword: confirmPassword ?? this.confirmPassword,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      country: country ?? this.country,
+      agreedToTerms: agreedToTerms ?? this.agreedToTerms,
+    );
+  }
+
+  // Validation - only about data shape, not business rules
+  Map<String, String> get validationErrors {
+    final errors = <String, String>{};
+
+    if (firstName.trim().isEmpty) {
+      errors['firstName'] = 'First name is required';
+    } else if (firstName.trim().length < 2) {
+      errors['firstName'] = 'First name must be at least 2 characters';
+    }
+
+    if (lastName.trim().isEmpty) {
+      errors['lastName'] = 'Last name is required';
+    }
+
+    if (email.trim().isEmpty) {
+      errors['email'] = 'Email is required';
+    } else if (!RegExp(r'^[\\w.-]+@[\\w.-]+\\.\\w+\$').hasMatch(email)) {
+      errors['email'] = 'Enter a valid email';
+    }
+
+    if (password.isEmpty) {
+      errors['password'] = 'Password is required';
+    } else if (password.length < 8) {
+      errors['password'] = 'Password must be at least 8 characters';
+    } else if (!RegExp(r'[A-Z]').hasMatch(password)) {
+      errors['password'] = 'Password must contain an uppercase letter';
+    }
+
+    if (confirmPassword != password) {
+      errors['confirmPassword'] = 'Passwords do not match';
+    }
+
+    if (!agreedToTerms) {
+      errors['agreedToTerms'] = 'You must agree to the terms';
+    }
+
+    return errors;
+  }
+
+  bool get isValid => validationErrors.isEmpty;
+
+  // Convert to API request DTO when valid
+  CreateUserRequest toApiRequest() {
+    assert(isValid, 'Cannot convert invalid form to API request');
+    return CreateUserRequest(
+      name: '\$firstName \$lastName',
+      email: email,
+      password: password,
+    );
+  }
+}
+
+class CreateUserRequest {
+  final String name;
+  final String email;
+  final String password;
+
+  const CreateUserRequest({
+    required this.name,
+    required this.email,
+    required this.password,
+  });
+
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'email': email,
+    'password': password,
+  };
+}
+
+// ── FLUTTER FORM WIDGET ───────────────────────────────────────
+
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({super.key});
+
+  @override
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
+}
+
+class _RegistrationScreenState extends State<RegistrationScreen> {
+  RegistrationFormDto _form = const RegistrationFormDto();
+  bool _submitted = false;
+
+  Map<String, String> get _errors =>
+      _submitted ? _form.validationErrors : {};
+
+  void _updateField(String field, dynamic value) {
+    setState(() {
+      _form = switch (field) {
+        'firstName' => _form.copyWith(firstName: value as String),
+        'lastName' => _form.copyWith(lastName: value as String),
+        'email' => _form.copyWith(email: value as String),
+        'password' => _form.copyWith(password: value as String),
+        'confirmPassword' =>
+          _form.copyWith(confirmPassword: value as String),
+        'agreedToTerms' => _form.copyWith(agreedToTerms: value as bool),
+        _ => _form,
+      };
+    });
+  }
+
+  Future<void> _submit() async {
+    setState(() => _submitted = true);
+
+    if (!_form.isValid) {
+      print('Form invalid: \${_form.validationErrors}');
+      return;
+    }
+
+    final request = _form.toApiRequest();
+    print('Submitting: \${request.toJson()}');
+
+    // Show success
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Registration successful!')),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Register')),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: .start,
+          children: [
+            _buildTextField(
+              label: 'First Name',
+              field: 'firstName',
+              error: _errors['firstName'],
+              onChanged: (v) => _updateField('firstName', v),
+            ),
+            const SizedBox(height: 12),
+            _buildTextField(
+              label: 'Last Name',
+              field: 'lastName',
+              error: _errors['lastName'],
+              onChanged: (v) => _updateField('lastName', v),
+            ),
+            const SizedBox(height: 12),
+            _buildTextField(
+              label: 'Email',
+              field: 'email',
+              error: _errors['email'],
+              keyboardType: .emailAddress,
+              onChanged: (v) => _updateField('email', v),
+            ),
+            const SizedBox(height: 12),
+            _buildTextField(
+              label: 'Password',
+              field: 'password',
+              error: _errors['password'],
+              obscureText: true,
+              onChanged: (v) => _updateField('password', v),
+            ),
+            const SizedBox(height: 12),
+            _buildTextField(
+              label: 'Confirm Password',
+              field: 'confirmPassword',
+              error: _errors['confirmPassword'],
+              obscureText: true,
+              onChanged: (v) => _updateField('confirmPassword', v),
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Checkbox(
+                  value: _form.agreedToTerms,
+                  onChanged: (v) =>
+                      _updateField('agreedToTerms', v ?? false),
+                ),
+                const Text('I agree to the Terms of Service'),
+              ],
+            ),
+            if (_errors['agreedToTerms'] != null)
+              Text(
+                _errors['agreedToTerms']!,
+                style: const TextStyle(color: Colors.red, fontSize: 12),
+              ),
+            const SizedBox(height: 24),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: _submit,
+                child: const Text('Register'),
+              ),
+            ),
+            if (_submitted)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Text(
+                  _form.isValid
+                      ? '✓ Form is valid'
+                      : '✗ \${_form.validationErrors.length} error(s)',
+                  style: TextStyle(
+                    color:
+                        _form.isValid ? Colors.green : Colors.red,
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextField({
+    required String label,
+    required String field,
+    required ValueChanged<String> onChanged,
+    String? error,
+    bool obscureText = false,
+    TextInputType keyboardType = TextInputType.text,
+  }) {
+    return Column(
+      crossAxisAlignment: .start,
+      children: [
+        TextField(
+          decoration: InputDecoration(
+            labelText: label,
+            errorText: error,
+            border: const OutlineInputBorder(),
+          ),
+          obscureText: obscureText,
+          keyboardType: keyboardType,
+          onChanged: onChanged,
+        ),
+      ],
+    );
+  }
+}
+
+void main() {
+  runApp(const MaterialApp(home: RegistrationScreen()));
+}"""),
+      ],
+      ar: [],
+    ),
     pros: LocSL(
       en: [
-        "Reduces network calls by batching data",
-        "Decouples internal models from external contracts",
-        "Simplifies serialization",
-        "Clear data contracts",
+        "Clear API contracts - explicit about what data is transferred",
+        "Reduces chatty interfaces - one call instead of many",
+        "Decouples internal domain from external representation",
+        "Easy to serialize/deserialize for APIs and databases",
+        "Versioning becomes easier - create new DTO version without breaking old",
+        "Simple to understand and use - just data, no behavior",
+        "Safe for isolate/thread message passing",
       ],
       ar: [
-        "يقلل استدعاءات الشبكة من خلال تجميع البيانات",
-        "يفصل النماذج الداخلية عن العقود الخارجية",
-        "يبسط التسلسل",
-        "عقود بيانات واضحة",
+        "عقود API واضحة - صريحة حول ما يُنقل من البيانات",
+        "يقلل الواجهات الثرثارة - استدعاء واحد بدلاً من كثير",
+        "يفصل النطاق الداخلي عن التمثيل الخارجي",
+        "سهل التسلسل/إلغاء التسلسل لواجهات API وقواعد البيانات",
+        "الإصدار يصبح أسهل - إنشاء إصدار DTO جديد دون كسر القديم",
+        "بسيط الفهم والاستخدام - مجرد بيانات، لا سلوك",
+        "آمن لتمرير رسائل العوازل (Isolates)/الخيوط",
       ],
     ),
     cons: LocSL(
       en: [
-        "Requires mapping between DTOs and domain objects",
-        "Additional boilerplate code",
-        "Can lead to anemic domain models if overused",
-        "Duplication of property definitions",
+        "Proliferation of classes - many DTOs for different scenarios",
+        "Mapping overhead between DTOs and domain objects",
+        "Risk of anemic domain - developers put logic in DTOs instead of domain",
+        "Keeping DTOs synchronized with changing domain objects",
+        "Can be confused with domain objects if not clearly named",
+        "Boilerplate code for copyWith, toJson, fromJson",
       ],
       ar: [
-        "يتطلب التخطيط بين DTOs وكائنات المجال",
-        "كود قالبي إضافي",
-        "قد يؤدي لنماذج مجال فقيرة إذا استُخدم بكثرة",
-        "تكرار تعريفات الخصائص",
+        "تكاثر الفئات - كائنات DTO كثيرة لسيناريوهات مختلفة",
+        "عبء التعيين بين كائنات DTO وكائنات النطاق",
+        "خطر النطاق الفقير - المطورون يضعون المنطق في كائنات DTO بدلاً من النطاق",
+        "الحفاظ على مزامنة كائنات DTO مع كائنات النطاق المتغيرة",
+        "قد تُخلط مع كائنات النطاق إذا لم تُسمَّ بوضوح",
+        "كود نمطي (Boilerplate) لـ copyWith وtoJson وfromJson",
       ],
     ),
     whenToUse: LocV(
@@ -6155,48 +10034,64 @@ void main() {
         StrContent("Use DTO when:"),
         ULContent(
           value: [
-            "Transferring data across network boundaries",
-            "Aggregating data from multiple sources",
-            "You need different representations for different consumers",
-            "Separating API contracts from domain models",
+            "Transferring data between application layers or systems",
+            "API contracts need to be stable regardless of internal changes",
+            "You need to reduce multiple fine-grained calls into one coarse-grained call",
+            "Data must be serializable for network, database, or isolate transfer",
+            "You want to expose only specific fields to specific consumers",
+            "Form data needs a structured container with validation",
           ],
+        ),
+        NoteContent(
+          "Keep DTOs dumb. If you find yourself adding complex methods to a DTO, those probably belong in the domain object instead.",
+          type: .warning,
         ),
       ],
       ar: [
         StrContent("استخدم DTO عندما:"),
         ULContent(
           value: [
-            "نقل البيانات عبر حدود الشبكة",
-            "تجميع البيانات من مصادر متعددة",
-            "تحتاج تمثيلات مختلفة لمستهلكين مختلفين",
-            "فصل عقود API عن نماذج المجال",
+            "نقل البيانات بين طبقات التطبيق أو الأنظمة",
+            "عقود API تحتاج للثبات بغض النظر عن التغييرات الداخلية",
+            "تحتاج لتقليل استدعاءات دقيقة متعددة إلى استدعاء خشن واحد",
+            "البيانات يجب أن تكون قابلة للتسلسل للشبكة أو قاعدة البيانات أو نقل العوازل",
+            "تريد الكشف عن حقول محددة فقط لمستهلكين محددين",
+            "بيانات النموذج تحتاج لحاوية مُهيكلة مع التحقق",
           ],
+        ),
+        NoteContent(
+          "أبقِ كائنات DTO بسيطة. إذا وجدت نفسك تضيف طرقاً معقدة لـ DTO، فمن المرجح أن تلك الطرق تنتمي لكائن النطاق بدلاً من ذلك.",
+          type: .warning,
         ),
       ],
     ),
     commonMistakes: LocV(
       en: [
-        "Adding business logic to DTOs",
-        "Using DTOs everywhere instead of domain objects",
-        "Not validating DTO data",
-        "Creating overly complex DTOs",
+        "Adding business logic to DTOs - they should be pure data containers",
+        "Using domain objects directly as DTOs - exposes internals",
+        "Creating one DTO for all use cases - create purpose-specific DTOs instead",
+        "Mutable DTOs that can be accidentally modified during transfer",
+        "Not validating DTOs at the boundary where they enter the system",
+        "Nesting complex objects in DTOs instead of flattening for the consumer",
       ],
       ar: [
-        "إضافة منطق عمل إلى DTOs",
-        "استخدام DTOs في كل مكان بدلاً من كائنات المجال",
-        "عدم التحقق من بيانات DTO",
-        "إنشاء DTOs معقدة بشكل مفرط",
+        "إضافة منطق أعمال لكائنات DTO - يجب أن تكون حاويات بيانات نقية",
+        "استخدام كائنات النطاق مباشرة ككائنات DTO - يكشف الداخليات",
+        "إنشاء DTO واحد لجميع حالات الاستخدام - أنشئ كائنات DTO خاصة بالغرض بدلاً من ذلك",
+        "كائنات DTO قابلة للتغيير يمكن تعديلها عرضاً أثناء النقل",
+        "عدم التحقق من كائنات DTO عند الحدود حيث تدخل النظام",
+        "تداخل كائنات معقدة في كائنات DTO بدلاً من تسطيحها للمستهلك",
       ],
     ),
     relatedPatterns: [PK.dataMapper, PK.adapter, PK.facade],
+    oftenConfusedWith: [PK.dataMapper],
   ),
-
   PK.extensionObject: DesignPattern(
     id: PK.extensionObject,
-    title: LocS(en: "Extension Object", ar: "كائن التوسيع (Extension Object)"),
+    title: LocS(en: "Extension Object", ar: "كائن التوسعة (Extension Object)"),
     description: LocS(
-      en: "Allows extending objects with new functionality at runtime",
-      ar: "يسمح بتوسيع الكائنات بوظائف جديدة في وقت التشغيل",
+      en: "Adds new functionality to objects without subclassing by attaching extension objects",
+      ar: "يضيف وظائف جديدة للكائنات دون الفئات الفرعية من خلال إرفاق كائنات التوسعة",
     ),
     group: .design,
     type: .structural,
@@ -6205,65 +10100,1191 @@ void main() {
     content: LocV(
       en: [
         StrContent(
-          "The Extension Object pattern allows clients to add new functionality to objects without modifying their classes. It provides a way to anticipate future extensions.",
+          "The Extension Object pattern lets you add new interfaces (capabilities) to existing objects at runtime by attaching 'extension objects'. An object can acquire new behaviors without modifying its class or using inheritance. Clients query an object for a specific extension interface, and the object either returns it or null.",
+        ),
+        AnalogyContent(
+          "Think of a smartphone and its accessories. A phone has basic capabilities (call, text). You attach a camera lens extension → it gains photography capability. You attach a gaming controller → it gains gaming capability. You attach a medical sensor → it gains health monitoring. The phone itself doesn't change - it just knows how to provide access to attached extensions.",
         ),
         StrContent(
-          "This pattern is particularly useful in framework design where you want to allow plugins or extensions without knowing in advance what they'll be.",
+          "This pattern is valuable when you have a stable object hierarchy but need to add new capabilities without modifying existing classes. It's widely used in IDEs (Eclipse's extension point system), game engines (component systems), and plugin architectures where third parties need to extend core objects.",
         ),
         ULContent(
-          title: "Implementation Approaches:",
+          title: "Key Components:",
           value: [
-            "Extension registry: Objects register extensions by name/type",
-            "Extension methods: Static methods that appear as instance methods",
-            "Plugin architecture: Loadable modules that extend functionality",
-            "Visitor-like approach: Double dispatch for extensions",
+            "Subject: The core object that can be extended with capabilities",
+            "Extension: Interface for the specific capability being added",
+            "Extension Object: Concrete implementation of a specific Extension interface",
+            "Extension Registry: Manages which extensions are attached to which subjects",
+            "Client: Queries subject for specific extension; handles null if not available",
           ],
+        ),
+        DiagramContent(
+          "Pattern Structure:\nSubject ─── getExtension<T>() ─── Extension Registry\n   │                                        │\n   └── extensions map                  Extension Objects\n         ├─ 'serializable' → JsonExtension\n         ├─ 'loggable'    → LogExtension\n         └─ 'cacheable'   → CacheExtension",
+        ),
+        NoteContent(
+          "Extension Object vs Decorator: Decorator wraps the object and modifies existing behavior. Extension Object adds entirely new interfaces/capabilities to an existing object without changing its core interface.",
+          type: .important,
+        ),
+        ComparisonContent({
+          'Extension Object':
+              'Adds new interfaces, runtime attachment, query-based access',
+          'Decorator':
+              'Wraps and extends same interface, compile-time selection',
+          'Mixin': 'Compile-time capability addition, modifies class hierarchy',
+          'Visitor':
+              'Adds operations without modifying classes, separate hierarchy',
+        }, title: 'Extension Object vs Similar Patterns'),
+        StrContent(
+          "Common use cases in Flutter/Dart: plugin systems, capability-based APIs (does this widget support accessibility?), feature flags at object level, IDE extension points, and any architecture where objects need optional capabilities that not all instances need.",
+        ),
+        NoteContent(
+          "Dart's extension methods provide compile-time extensions on types, but Extension Object pattern provides runtime attachment of capabilities to specific instances. They solve different problems.",
+          type: .tip,
         ),
       ],
       ar: [
         StrContent(
-          "نمط كائن التوسيع يسمح للعملاء بإضافة وظائف جديدة للكائنات دون تعديل فئاتها. يوفر طريقة لتوقع التوسعات المستقبلية.",
+          "نمط كائن التوسعة يتيح لك إضافة واجهات (قدرات) جديدة للكائنات الموجودة في وقت التشغيل من خلال إرفاق 'كائنات التوسعة'. يمكن لكائن اكتساب سلوكيات جديدة دون تعديل فئته أو استخدام الوراثة. يستعلم العملاء عن كائن لواجهة تمديد محددة، والكائن إما يُرجعها أو null.",
+        ),
+        AnalogyContent(
+          "فكر في هاتف ذكي وملحقاته. الهاتف لديه قدرات أساسية (مكالمة، رسائل). ترفق عدسة كاميرا → يكتسب قدرة التصوير. ترفق وحدة تحكم للألعاب → يكتسب قدرة الألعاب. ترفق مستشعراً طبياً → يكتسب مراقبة الصحة. الهاتف نفسه لا يتغير - فقط يعرف كيفية توفير الوصول للتوسعات المُرفقة.",
         ),
         StrContent(
-          "هذا النمط مفيد بشكل خاص في تصميم الأطر حيث تريد السماح بالإضافات أو التوسعات دون معرفة مسبقة بما ستكون.",
+          "هذا النمط قيم عندما يكون لديك تسلسل هرمي للكائنات مستقر لكنك تحتاج لإضافة قدرات جديدة دون تعديل الفئات الموجودة. يُستخدم على نطاق واسع في بيئات التطوير المتكاملة (نظام نقاط التوسعة في Eclipse)، محركات الألعاب (أنظمة المكونات)، ومعمارية الإضافات حيث يحتاج الطرف الثالث لتوسيع الكائنات الأساسية.",
         ),
         ULContent(
-          title: "طرق التنفيذ:",
+          title: "المكونات الأساسية:",
           value: [
-            "سجل التوسيع: الكائنات تسجل التوسعات بالاسم/النوع",
-            "طرق التوسيع: طرق ثابتة تظهر كطرق نسخة",
-            "معمارية الإضافات: وحدات قابلة للتحميل تُوسع الوظائف",
-            "نهج شبيه بالزائر: إرسال مزدوج للتوسعات",
+            "الموضوع (Subject): الكائن الأساسي الذي يمكن توسيعه بالقدرات",
+            "التوسعة (Extension): واجهة القدرة المحددة التي يتم إضافتها",
+            "كائن التوسعة (Extension Object): تطبيق محدد لواجهة توسعة معينة",
+            "سجل التوسعة (Extension Registry): يدير التوسعات المُرفقة بالمواضيع",
+            "العميل (Client): يستعلم الموضوع عن توسعة محددة؛ يتعامل مع null إذا لم تكن متاحة",
           ],
+        ),
+        DiagramContent(
+          "بنية النمط:\nالموضوع ─── getExtension<T>() ─── سجل التوسعة\n   │                                        │\n   └── خريطة التوسعات               كائنات التوسعة\n         ├─ 'serializable' → JsonExtension\n         ├─ 'loggable'    → LogExtension\n         └─ 'cacheable'   → CacheExtension",
+        ),
+        NoteContent(
+          "كائن التوسعة مقابل المُزخرف: المُزخرف يلف الكائن ويعدل السلوك الموجود. كائن التوسعة يضيف واجهات/قدرات جديدة تماماً لكائن موجود دون تغيير واجهته الأساسية.",
+          type: .important,
+        ),
+        ComparisonContent({
+          'كائن التوسعة (Extension Object)':
+              'يضيف واجهات جديدة، إرفاق في وقت التشغيل، وصول قائم على الاستعلام',
+          'المُزخرف (Decorator)':
+              'يلف ويوسع نفس الواجهة، اختيار في وقت الترجمة',
+          'المزج (Mixin)': 'إضافة قدرة في وقت الترجمة، يعدل تسلسل الفئة الهرمي',
+          'الزائر (Visitor)': 'يضيف عمليات دون تعديل الفئات، تسلسل هرمي منفصل',
+        }, title: 'كائن التوسعة مقابل الأنماط المشابهة'),
+        StrContent(
+          "حالات الاستخدام الشائعة في Flutter/Dart: أنظمة الإضافات، APIs القائمة على القدرات (هل تدعم هذه الواجهة إمكانية الوصول؟)، أعلام الميزات على مستوى الكائن، نقاط توسعة بيئة التطوير، وأي معمارية تحتاج فيها الكائنات قدرات اختيارية لا تحتاجها جميع النسخ.",
+        ),
+        NoteContent(
+          "طرق توسعة Dart توفر توسعات في وقت الترجمة على الأنواع، لكن نمط كائن التوسعة يوفر إرفاق قدرات في وقت التشغيل لنسخ محددة. يحلان مشاكل مختلفة.",
+          type: .tip,
         ),
       ],
     ),
+    examples: LocV(
+      en: [
+        // Example 1: Basic - Widget Capability System
+        StrCodeBlock("""// Example 1: Basic - Widget Capability Extensions
+// Use case: Adding optional capabilities to widgets at runtime
+
+// Extension interface: Base for all extensions
+abstract class WidgetExtension {
+  String get extensionId;
+  void initialize(CoreWidget widget);
+  void dispose();
+}
+
+// Subject: Core widget that can have extensions
+class CoreWidget {
+  final String id;
+  final String name;
+  final Map<String, WidgetExtension> _extensions = {};
+
+  CoreWidget(this.id, this.name);
+
+  // Attach an extension
+  void addExtension(WidgetExtension extension) {
+    _extensions[extension.extensionId] = extension;
+    extension.initialize(this);
+    print('[\$name] Extension added: \${extension.extensionId}');
+  }
+
+  // Query for a specific extension
+  T? getExtension<T extends WidgetExtension>(String extensionId) {
+    final ext = _extensions[extensionId];
+    if (ext is T) return ext;
+    return null;
+  }
+
+  bool hasExtension(String extensionId) =>
+      _extensions.containsKey(extensionId);
+
+  void removeExtension(String extensionId) {
+    _extensions[extensionId]?.dispose();
+    _extensions.remove(extensionId);
+    print('[\$name] Extension removed: \$extensionId');
+  }
+
+  void dispose() {
+    for (final ext in _extensions.values) {
+      ext.dispose();
+    }
+    _extensions.clear();
+  }
+}
+
+// Concrete Extensions: Each adds a specific capability
+
+// Accessibility extension
+abstract class AccessibilityExtension implements WidgetExtension {
+  String getSemanticLabel();
+  bool get isAccessible;
+}
+
+class StandardAccessibilityExtension implements AccessibilityExtension {
+  late CoreWidget _widget;
+  final String _label;
+  final String _hint;
+
+  StandardAccessibilityExtension(this._label, {String? hint})
+      : _hint = hint ?? '';
+
+  @override
+  String get extensionId => 'accessibility';
+
+  @override
+  void initialize(CoreWidget widget) {
+    _widget = widget;
+  }
+
+  @override
+  void dispose() {}
+
+  @override
+  String getSemanticLabel() => _label;
+
+  @override
+  bool get isAccessible => true;
+
+  String get hint => _hint;
+}
+
+// Analytics extension
+abstract class AnalyticsExtension implements WidgetExtension {
+  void trackEvent(String eventName, {Map<String, dynamic>? properties});
+  List<String> getEventHistory();
+}
+
+class AnalyticsExtensionImpl implements AnalyticsExtension {
+  late CoreWidget _widget;
+  final List<String> _history = [];
+
+  @override
+  String get extensionId => 'analytics';
+
+  @override
+  void initialize(CoreWidget widget) {
+    _widget = widget;
+    print('Analytics tracking started for \${widget.name}');
+  }
+
+  @override
+  void dispose() {
+    print('Analytics flushing \${_history.length} events');
+  }
+
+  @override
+  void trackEvent(String eventName, {Map<String, dynamic>? properties}) {
+    final entry = '\$eventName \${properties ?? ''}';
+    _history.add(entry);
+    print('Analytics [\${_widget.name}]: \$entry');
+  }
+
+  @override
+  List<String> getEventHistory() => List.unmodifiable(_history);
+}
+
+// Caching extension
+abstract class CachingExtension implements WidgetExtension {
+  void cacheData(String key, dynamic value);
+  T? getCachedData<T>(String key);
+  void clearCache();
+}
+
+class InMemoryCachingExtension implements CachingExtension {
+  final Map<String, dynamic> _cache = {};
+
+  @override
+  String get extensionId => 'caching';
+
+  @override
+  void initialize(CoreWidget widget) {}
+
+  @override
+  void dispose() => _cache.clear();
+
+  @override
+  void cacheData(String key, dynamic value) {
+    _cache[key] = value;
+    print('Cached: \$key');
+  }
+
+  @override
+  T? getCachedData<T>(String key) {
+    final value = _cache[key];
+    return value is T ? value : null;
+  }
+
+  @override
+  void clearCache() => _cache.clear();
+}
+
+// Client code: Queries for capabilities
+class WidgetRenderer {
+  void render(CoreWidget widget) {
+    print('Rendering widget: \${widget.name}');
+
+    // Check and use accessibility extension if available
+    final accessibility =
+        widget.getExtension<AccessibilityExtension>('accessibility');
+    if (accessibility != null && accessibility.isAccessible) {
+      print('  Semantic label: \${accessibility.getSemanticLabel()}');
+    } else {
+      print('  No accessibility support');
+    }
+
+    // Track render event if analytics available
+    final analytics =
+        widget.getExtension<AnalyticsExtension>('analytics');
+    analytics?.trackEvent('widget_rendered', properties: {'id': widget.id});
+  }
+}
+
+void main() {
+  final renderer = WidgetRenderer();
+
+  // Basic widget - no extensions
+  print('=== Basic Widget ===');
+  final basicWidget = CoreWidget('w1', 'Button');
+  renderer.render(basicWidget);
+
+  // Widget with all extensions
+  print('=== Enhanced Widget ===');
+  final enhancedWidget = CoreWidget('w2', 'SmartButton');
+  enhancedWidget.addExtension(
+    StandardAccessibilityExtension(
+      'Submit form button',
+      hint: 'Double tap to submit',
+    ),
+  );
+  enhancedWidget.addExtension(AnalyticsExtensionImpl());
+  enhancedWidget.addExtension(InMemoryCachingExtension());
+
+  renderer.render(enhancedWidget);
+
+  // Use caching extension
+  final cache =
+      enhancedWidget.getExtension<CachingExtension>('caching');
+  cache?.cacheData('lastTapTime', DateTime.now().millisecondsSinceEpoch);
+  final lastTap = cache?.getCachedData<int>('lastTapTime');
+  print('Last tap cached: \$lastTap');
+
+  // Check analytics history
+  final analytics =
+      enhancedWidget.getExtension<AnalyticsExtension>('analytics');
+  print('Events logged: \${analytics?.getEventHistory().length}');
+
+  // Cleanup
+  enhancedWidget.dispose();
+}"""),
+
+        // Example 2: Intermediate - Node Extension System
+        StrCodeBlock(
+          """// Example 2: Intermediate - Document Node with Extensions
+// Use case: Extensible document node system
+
+// Extension interfaces
+abstract class SerializableExtension {
+  static const String id = 'serializable';
+  Map<String, dynamic> serialize();
+  void deserialize(Map<String, dynamic> data);
+}
+
+abstract class ValidatableExtension {
+  static const String id = 'validatable';
+  List<String> validate();
+  bool get isValid;
+}
+
+abstract class LoggableExtension {
+  static const String id = 'loggable';
+  void log(String action);
+  List<String> getLogs();
+}
+
+// Extension registry
+class ExtensionRegistry {
+  final Map<String, Object Function()> _factories = {};
+
+  void register<T>(String id, T Function() factory) {
+    _factories[id] = factory as Object Function();
+  }
+
+  T? create<T>(String id) {
+    final factory = _factories[id];
+    if (factory == null) return null;
+    final instance = factory();
+    return instance is T ? instance : null;
+  }
+}
+
+// Subject: Document Node
+class DocumentNode {
+  final String nodeId;
+  String content;
+  final String nodeType;
+  final Map<String, Object> _extensions = {};
+
+  DocumentNode({
+    required this.nodeId,
+    required this.content,
+    required this.nodeType,
+  });
+
+  void attach(String extensionId, Object extension) {
+    _extensions[extensionId] = extension;
+  }
+
+  T? extension<T>(String extensionId) {
+    final ext = _extensions[extensionId];
+    return ext is T ? ext : null;
+  }
+
+  bool supports(String extensionId) =>
+      _extensions.containsKey(extensionId);
+}
+
+// Concrete Extensions
+
+class JsonSerializableExtension implements SerializableExtension {
+  final DocumentNode _node;
+
+  JsonSerializableExtension(this._node);
+
+  @override
+  Map<String, dynamic> serialize() {
+    return {
+      'nodeId': _node.nodeId,
+      'nodeType': _node.nodeType,
+      'content': _node.content,
+      'serializedAt': DateTime.now().toIso8601String(),
+    };
+  }
+
+  @override
+  void deserialize(Map<String, dynamic> data) {
+    _node.content = data['content'] as String;
+  }
+}
+
+class ContentValidatableExtension implements ValidatableExtension {
+  final DocumentNode _node;
+  final int _maxLength;
+  final bool _required;
+
+  ContentValidatableExtension(
+    this._node, {
+    int maxLength = 1000,
+    bool required = false,
+  })  : _maxLength = maxLength,
+        _required = required;
+
+  @override
+  List<String> validate() {
+    final errors = <String>[];
+
+    if (_required && _node.content.trim().isEmpty) {
+      errors.add('Content is required for \${_node.nodeType} node');
+    }
+
+    if (_node.content.length > _maxLength) {
+      errors.add(
+        'Content exceeds \$_maxLength chars (\${_node.content.length})',
+      );
+    }
+
+    return errors;
+  }
+
+  @override
+  bool get isValid => validate().isEmpty;
+}
+
+class AuditLoggableExtension implements LoggableExtension {
+  final DocumentNode _node;
+  final List<String> _logs = [];
+
+  AuditLoggableExtension(this._node);
+
+  @override
+  void log(String action) {
+    final entry = '\${DateTime.now().toIso8601String()} [\${_node.nodeId}] \$action';
+    _logs.add(entry);
+    print('AUDIT: \$entry');
+  }
+
+  @override
+  List<String> getLogs() => List.unmodifiable(_logs);
+}
+
+// Document system that works with extensible nodes
+class DocumentProcessor {
+  void processNode(DocumentNode node) {
+    print('Processing node: \${node.nodeId} (\${node.nodeType})');
+
+    // Log if supported
+    node.extension<LoggableExtension>(LoggableExtension.id)
+        ?.log('Processing started');
+
+    // Validate if supported
+    final validator =
+        node.extension<ValidatableExtension>(ValidatableExtension.id);
+    if (validator != null) {
+      if (!validator.isValid) {
+        final errors = validator.validate();
+        print('  Validation errors:');
+        for (final error in errors) {
+          print('    - \$error');
+        }
+        return;
+      }
+      print('  Validation passed');
+    }
+
+    // Serialize if supported
+    final serializer =
+        node.extension<SerializableExtension>(SerializableExtension.id);
+    if (serializer != null) {
+      final data = serializer.serialize();
+      print('  Serialized: \$data');
+    }
+
+    node.extension<LoggableExtension>(LoggableExtension.id)
+        ?.log('Processing completed');
+
+    print('  Capabilities: '
+        '\${node.supports(SerializableExtension.id) ? "serialize " : ""}'
+        '\${node.supports(ValidatableExtension.id) ? "validate " : ""}'
+        '\${node.supports(LoggableExtension.id) ? "log" : ""}');
+  }
+}
+
+void main() {
+  final processor = DocumentProcessor();
+
+  // Minimal node - no extensions
+  print('=== Minimal Node ===');
+  final minNode = DocumentNode(
+    nodeId: 'n001',
+    content: 'Simple text',
+    nodeType: 'text',
+  );
+  processor.processNode(minNode);
+
+  // Full-featured node
+  print('=== Full-Featured Node ===');
+  final richNode = DocumentNode(
+    nodeId: 'n002',
+    content: 'Important heading',
+    nodeType: 'heading',
+  );
+  richNode.attach(
+    SerializableExtension.id,
+    JsonSerializableExtension(richNode),
+  );
+  richNode.attach(
+    ValidatableExtension.id,
+    ContentValidatableExtension(richNode, maxLength: 100, required: true),
+  );
+  richNode.attach(
+    LoggableExtension.id,
+    AuditLoggableExtension(richNode),
+  );
+  processor.processNode(richNode);
+
+  print('Audit log entries: '
+      '\${(richNode.extension<LoggableExtension>(LoggableExtension.id) as AuditLoggableExtension?)?.getLogs().length}');
+
+  // Node with validation error
+  print('=== Node with Validation Error ===');
+  final invalidNode = DocumentNode(
+    nodeId: 'n003',
+    content: '', // Empty, but required
+    nodeType: 'title',
+  );
+  invalidNode.attach(
+    ValidatableExtension.id,
+    ContentValidatableExtension(
+      invalidNode,
+      maxLength: 50,
+      required: true,
+    ),
+  );
+  processor.processNode(invalidNode);
+}""",
+        ),
+
+        // Example 3: Advanced - Plugin-Based Extension System
+        StrCodeBlock("""// Example 3: Advanced - Runtime Plugin Extension System
+// Use case: Third-party plugins adding capabilities to core entities
+
+// ── CORE INTERFACES ───────────────────────────────────────────
+
+abstract class Extension {
+  String get id;
+  Type get targetType;
+  void onAttached(Extensible host);
+  void onDetached();
+}
+
+mixin Extensible {
+  final Map<String, Extension> _extensions = {};
+
+  void addExtension(Extension ext) {
+    if (_extensions.containsKey(ext.id)) {
+      throw StateError('Extension \${ext.id} already attached');
+    }
+    _extensions[ext.id] = ext;
+    ext.onAttached(this);
+  }
+
+  void removeExtension(String id) {
+    _extensions[id]?.onDetached();
+    _extensions.remove(id);
+  }
+
+  T? getExtension<T>(String id) {
+    final ext = _extensions[id];
+    return ext is T ? ext : null;
+  }
+
+  bool hasExtension(String id) => _extensions.containsKey(id);
+
+  Iterable<String> get extensionIds => _extensions.keys;
+}
+
+// ── CORE DOMAIN OBJECTS ───────────────────────────────────────
+
+class Product with Extensible {
+  final String id;
+  String name;
+  double price;
+  int stock;
+
+  Product({
+    required this.id,
+    required this.name,
+    required this.price,
+    required this.stock,
+  });
+
+  @override
+  String toString() => 'Product(\$id: \$name @ \$price)';
+}
+
+// ── EXTENSION INTERFACES ──────────────────────────────────────
+
+abstract class PricingExtension extends Extension {
+  static const String extensionId = 'pricing';
+  @override
+  String get id => extensionId;
+
+  double calculateFinalPrice(double basePrice);
+  String get pricingStrategy;
+}
+
+abstract class InventoryExtension extends Extension {
+  static const String extensionId = 'inventory';
+  @override
+  String get id => extensionId;
+
+  bool canFulfill(int quantity);
+  void reserve(int quantity);
+  void release(int quantity);
+}
+
+abstract class RecommendationExtension extends Extension {
+  static const String extensionId = 'recommendation';
+  @override
+  String get id => extensionId;
+
+  List<String> getRelatedProductIds();
+  double getRelevanceScore(String userId);
+}
+
+// ── PLUGIN IMPLEMENTATIONS ────────────────────────────────────
+
+// Pricing plugins
+class DiscountPricingExtension implements PricingExtension {
+  late Extensible _host;
+  final double discountPercent;
+
+  DiscountPricingExtension(this.discountPercent);
+
+  @override
+  Type get targetType => Product;
+
+  @override
+  void onAttached(Extensible host) {
+    _host = host;
+    final product = host as Product;
+    print('Discount pricing attached to \${product.name} (\$discountPercent% off)');
+  }
+
+  @override
+  void onDetached() => print('Discount pricing detached');
+
+  @override
+  double calculateFinalPrice(double basePrice) {
+    return basePrice * (1 - discountPercent / 100);
+  }
+
+  @override
+  String get pricingStrategy => 'discount_\${discountPercent}pct';
+}
+
+class BundlePricingExtension implements PricingExtension {
+  late Extensible _host;
+  final List<String> bundledProductIds;
+  final double bundleDiscount;
+
+  BundlePricingExtension({
+    required this.bundledProductIds,
+    required this.bundleDiscount,
+  });
+
+  @override
+  Type get targetType => Product;
+
+  @override
+  void onAttached(Extensible host) => _host = host;
+
+  @override
+  void onDetached() {}
+
+  @override
+  double calculateFinalPrice(double basePrice) {
+    return basePrice * (1 - bundleDiscount / 100);
+  }
+
+  @override
+  String get pricingStrategy =>
+      'bundle_\${bundledProductIds.length}_items';
+}
+
+// Inventory plugins
+class WarehouseInventoryExtension implements InventoryExtension {
+  late Product _product;
+  final String warehouseId;
+  int _reserved = 0;
+
+  WarehouseInventoryExtension(this.warehouseId);
+
+  @override
+  Type get targetType => Product;
+
+  @override
+  void onAttached(Extensible host) {
+    _product = host as Product;
+    print('Warehouse inventory tracking: \${_product.name} @ \$warehouseId');
+  }
+
+  @override
+  void onDetached() {}
+
+  @override
+  bool canFulfill(int quantity) {
+    final available = _product.stock - _reserved;
+    return available >= quantity;
+  }
+
+  @override
+  void reserve(int quantity) {
+    if (!canFulfill(quantity)) throw Exception('Insufficient stock');
+    _reserved += quantity;
+    print('Reserved \$quantity units of \${_product.name} '
+        '(reserved: \$_reserved/\${_product.stock})');
+  }
+
+  @override
+  void release(int quantity) {
+    _reserved = (_reserved - quantity).clamp(0, _product.stock);
+    print('Released \$quantity units of \${_product.name}');
+  }
+}
+
+// Recommendation plugins
+class MLRecommendationExtension implements RecommendationExtension {
+  late Product _product;
+  final Map<String, List<String>> _userAffinities;
+
+  MLRecommendationExtension(this._userAffinities);
+
+  @override
+  String get extensionId => RecommendationExtension.extensionId;
+
+  @override
+  Type get targetType => Product;
+
+  @override
+  void onAttached(Extensible host) {
+    _product = host as Product;
+  }
+
+  @override
+  void onDetached() {}
+
+  @override
+  List<String> getRelatedProductIds() {
+    return ['prod_002', 'prod_003', 'prod_007'];
+  }
+
+  @override
+  double getRelevanceScore(String userId) {
+    final affinities = _userAffinities[userId] ?? [];
+    return affinities.contains(_product.id) ? 0.95 : 0.60;
+  }
+}
+
+// ── PRODUCT SERVICE ───────────────────────────────────────────
+
+class ExtensibleProductService {
+  double getPriceForUser(Product product, String userId) {
+    final pricing =
+        product.getExtension<PricingExtension>(PricingExtension.extensionId);
+
+    if (pricing == null) {
+      print('No pricing extension - using base price');
+      return product.price;
+    }
+
+    final finalPrice = pricing.calculateFinalPrice(product.price);
+    print('Strategy: \${pricing.pricingStrategy}');
+    return finalPrice;
+  }
+
+  bool processOrder(Product product, int quantity) {
+    final inventory = product
+        .getExtension<InventoryExtension>(InventoryExtension.extensionId);
+
+    if (inventory == null) {
+      print('No inventory extension - basic stock check');
+      return product.stock >= quantity;
+    }
+
+    if (!inventory.canFulfill(quantity)) {
+      print('Order rejected: insufficient stock');
+      return false;
+    }
+
+    inventory.reserve(quantity);
+    return true;
+  }
+
+  List<String> getRecommendations(Product product, String userId) {
+    final rec = product.getExtension<RecommendationExtension>(
+      RecommendationExtension.extensionId,
+    );
+
+    if (rec == null) return [];
+
+    final score = rec.getRelevanceScore(userId);
+    print('Relevance score for \$userId: \${score.toStringAsFixed(2)}');
+    return rec.getRelatedProductIds();
+  }
+
+  void printProductCapabilities(Product product) {
+    print('Product \${product.name} capabilities: \${product.extensionIds.join(', ')}');
+  }
+}
+
+void main() {
+  final service = ExtensibleProductService();
+
+  // Create product
+  final laptop = Product(
+    id: 'prod_001',
+    name: 'Developer Laptop',
+    price: 1499.99,
+    stock: 25,
+  );
+
+  // Attach extensions at runtime
+  laptop.addExtension(DiscountPricingExtension(15)); // 15% off
+  laptop.addExtension(WarehouseInventoryExtension('WH-EAST'));
+  laptop.addExtension(
+    MLRecommendationExtension({
+      'user_alice': ['prod_001'],
+      'user_bob': [],
+    }),
+  );
+
+  service.printProductCapabilities(laptop);
+
+  print('=== Pricing ===');
+  final price = service.getPriceForUser(laptop, 'user_alice');
+  print('Final price: \\\$\${price.toStringAsFixed(2)} '
+      '(base: \\\$\${laptop.price})');
+
+  print('=== Inventory ===');
+  final ordered = service.processOrder(laptop, 3);
+  print('Order processed: \$ordered');
+
+  print('=== Recommendations ===');
+  final recs = service.getRecommendations(laptop, 'user_alice');
+  print('Recommended: \$recs');
+
+  // Product without all extensions
+  print('=== Basic Product ===');
+  final usb = Product(
+    id: 'prod_002',
+    name: 'USB Hub',
+    price: 29.99,
+    stock: 100,
+  );
+  // No extensions attached
+  service.printProductCapabilities(usb);
+  final usbPrice = service.getPriceForUser(usb, 'user_alice');
+  print('USB price: \\\$\${usbPrice.toStringAsFixed(2)}');
+}"""),
+
+        // Example 4: Flutter - Widget Extension System
+        StrCodeBlock("""// Example 4: Flutter - Widget Extension Capabilities
+// Use case: Adding optional features to screens at runtime
+
+// Extension interfaces
+abstract class ScreenExtension {
+  String get extensionId;
+  void mount(ExtensibleScreen screen);
+  void unmount();
+  List<Widget> buildOverlays(BuildContext context);
+  Widget? buildBottomBar(BuildContext context) => null;
+}
+
+// Subject: Screen that accepts extensions
+class ExtensibleScreen extends StatefulWidget {
+  final String title;
+  final Widget body;
+  final List<ScreenExtension> extensions;
+
+  const ExtensibleScreen({
+    required this.title,
+    required this.body,
+    this.extensions = const [],
+    super.key,
+  });
+
+  @override
+  State<ExtensibleScreen> createState() => _ExtensibleScreenState();
+}
+
+class _ExtensibleScreenState extends State<ExtensibleScreen> {
+  final Map<String, ScreenExtension> _extensions = {};
+
+  @override
+  void initState() {
+    super.initState();
+    for (final ext in widget.extensions) {
+      _extensions[ext.extensionId] = ext;
+      ext.mount(widget);
+    }
+  }
+
+  @override
+  void dispose() {
+    for (final ext in _extensions.values) {
+      ext.unmount();
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final overlays = _extensions.values
+        .expand((ext) => ext.buildOverlays(context))
+        .toList();
+
+    final bottomBars = _extensions.values
+        .map((ext) => ext.buildBottomBar(context))
+        .whereType<Widget>()
+        .toList();
+
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.title)),
+      body: Stack(
+        children: [
+          widget.body,
+          ...overlays,
+        ],
+      ),
+      bottomNavigationBar: bottomBars.isNotEmpty
+          ? Column(
+              mainAxisSize: .min,
+              children: bottomBars,
+            )
+          : null,
+    );
+  }
+}
+
+// Concrete Extensions
+
+// Analytics Tracking Extension
+class AnalyticsScreenExtension implements ScreenExtension {
+  final String screenName;
+  bool _isTracking = false;
+
+  AnalyticsScreenExtension(this.screenName);
+
+  @override
+  String get extensionId => 'analytics';
+
+  @override
+  void mount(ExtensibleScreen screen) {
+    _isTracking = true;
+    print('Analytics: Tracking screen "\$screenName"');
+  }
+
+  @override
+  void unmount() {
+    _isTracking = false;
+    print('Analytics: Stopped tracking "\$screenName"');
+  }
+
+  @override
+  List<Widget> buildOverlays(BuildContext context) => [];
+
+  @override
+  Widget? buildBottomBar(BuildContext context) => null;
+}
+
+// Tutorial Overlay Extension
+class TutorialOverlayExtension implements ScreenExtension {
+  final List<String> steps;
+  int _currentStep = 0;
+  late StateSetter _setState;
+
+  TutorialOverlayExtension(this.steps);
+
+  @override
+  String get extensionId => 'tutorial';
+
+  @override
+  void mount(ExtensibleScreen screen) {
+    print('Tutorial: Started with \${steps.length} steps');
+  }
+
+  @override
+  void unmount() {}
+
+  @override
+  List<Widget> buildOverlays(BuildContext context) {
+    if (_currentStep >= steps.length) return [];
+
+    return [
+      Positioned(
+        bottom: 80,
+        left: 16,
+        right: 16,
+        child: StatefulBuilder(
+          builder: (context, setState) {
+            _setState = setState;
+            return Card(
+              color: Colors.blue[900],
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  mainAxisSize: .min,
+                  children: [
+                    Text(
+                      'Step \${_currentStep + 1}/\${steps.length}',
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 12,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      steps[_currentStep],
+                      style: const TextStyle(color: Colors.white),
+                      textAlign: .center,
+                    ),
+                    const SizedBox(height: 12),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() => _currentStep++);
+                      },
+                      child: Text(
+                        _currentStep < steps.length - 1 ? 'Next' : 'Done',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    ];
+  }
+}
+
+// Feedback Extension
+class FeedbackExtension implements ScreenExtension {
+  final String featureName;
+
+  FeedbackExtension(this.featureName);
+
+  @override
+  String get extensionId => 'feedback';
+
+  @override
+  void mount(ExtensibleScreen screen) {}
+
+  @override
+  void unmount() {}
+
+  @override
+  List<Widget> buildOverlays(BuildContext context) => [];
+
+  @override
+  Widget? buildBottomBar(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      color: Colors.grey[100],
+      child: Row(
+        mainAxisAlignment: .spaceBetween,
+        children: [
+          Text('How do you like \$featureName?'),
+          Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.thumb_up_outlined),
+                onPressed: () =>
+                    ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Thanks for the feedback!')),
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.thumb_down_outlined),
+                onPressed: () =>
+                    ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Sorry to hear that!')),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// Demo app
+class ExtensionDemo extends StatelessWidget {
+  const ExtensionDemo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Same screen body, different extensions per use case
+    final screenBody = ListView(
+      padding: const EdgeInsets.all(16),
+      children: [
+        const Text(
+          'Extension Object Pattern Demo',
+          style: TextStyle(fontSize: 24, fontWeight: .bold),
+        ),
+        const SizedBox(height: 16),
+        const Text(
+          'This screen has optional capabilities attached as extension objects.',
+        ),
+        const SizedBox(height: 16),
+        ...List.generate(
+          10,
+          (i) => ListTile(
+            leading: const Icon(Icons.check_circle),
+            title: Text('Feature Item \${i + 1}'),
+          ),
+        ),
+      ],
+    );
+
+    return ExtensibleScreen(
+      title: 'Extensible Screen',
+      body: screenBody,
+      extensions: [
+        // Attach analytics tracking
+        AnalyticsScreenExtension('home_screen'),
+        // Attach tutorial for new users
+        TutorialOverlayExtension([
+          'Welcome! This is your home screen.',
+          'Browse items by scrolling down.',
+          'Tap any item to see details.',
+        ]),
+        // Attach feedback widget
+        FeedbackExtension('home screen'),
+      ],
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(home: ExtensionDemo()));
+}"""),
+      ],
+      ar: [],
+    ),
     pros: LocSL(
       en: [
-        "Allows runtime extension",
-        "Avoids class proliferation",
-        "Supports open/closed principle",
-        "Flexible plugin architecture",
+        "Open/Closed Principle: add capabilities without modifying existing classes",
+        "Runtime flexibility: capabilities can be added/removed dynamically",
+        "Avoids class explosion from multiple inheritance combinations",
+        "Third parties can extend core objects without source access",
+        "Clients can query for capabilities and gracefully handle absence",
+        "Extensions are independent and can be developed separately",
+        "Separates optional concerns from the core object",
       ],
       ar: [
-        "يسمح بالتوسع في وقت التشغيل",
-        "يتجنب تكاثر الفئات",
-        "يدعم مبدأ المفتوح/المغلق",
-        "معمارية إضافات مرنة",
+        "مبدأ المفتوح/المغلق: إضافة قدرات دون تعديل الفئات الموجودة",
+        "مرونة وقت التشغيل: يمكن إضافة/إزالة القدرات ديناميكياً",
+        "يتجنب انفجار الفئات من مجموعات الوراثة المتعددة",
+        "يمكن لأطراف ثالثة توسيع الكائنات الأساسية دون وصول للمصدر",
+        "يمكن للعملاء الاستعلام عن القدرات والتعامل بلطف مع غيابها",
+        "التوسعات مستقلة ويمكن تطويرها بشكل منفصل",
+        "يفصل الاهتمامات الاختيارية عن الكائن الأساسي",
       ],
     ),
     cons: LocSL(
       en: [
-        "Can make code harder to follow",
-        "Type safety challenges",
-        "Potential performance overhead",
-        "Complexity in managing extensions",
+        "More complex than simple inheritance or composition",
+        "Runtime type checking and casting required",
+        "Clients must handle null (extension not present)",
+        "Extension interfaces must be well-defined upfront",
+        "Debugging can be hard when behavior comes from attached extensions",
+        "Can lead to 'extension soup' if too many extensions pile up",
       ],
       ar: [
-        "قد يجعل الكود أصعب في المتابعة",
-        "تحديات أمان الأنواع",
-        "عبء أداء محتمل",
-        "تعقيد في إدارة التوسعات",
+        "أكثر تعقيداً من الوراثة أو التركيب البسيط",
+        "التحقق من النوع في وقت التشغيل والإرسال مطلوبان",
+        "يجب على العملاء التعامل مع null (التوسعة غير موجودة)",
+        "يجب تعريف واجهات التوسعة بشكل جيد مسبقاً",
+        "التنقيح قد يكون صعباً عندما يأتي السلوك من توسعات مُرفقة",
+        "يمكن أن يؤدي إلى 'حساء التوسعات' إذا تراكمت توسعات كثيرة جداً",
       ],
     ),
     whenToUse: LocV(
@@ -6271,48 +11292,56 @@ void main() {
         StrContent("Use Extension Object when:"),
         ULContent(
           value: [
-            "You need to add features to objects without subclassing",
-            "Building a framework with plugin support",
-            "Future extensions are anticipated but unknown",
-            "You want to avoid heavy inheritance hierarchies",
+            "You need to add capabilities to existing classes without modifying them",
+            "Capabilities are optional and not all instances need them",
+            "Third parties need to extend your core objects without source access",
+            "Multiple independent capabilities need to be combined at runtime",
+            "You want to avoid N×M class explosion from multiple inheritance",
+            "Building plugin architectures where capabilities arrive at runtime",
           ],
         ),
       ],
       ar: [
-        StrContent("استخدم كائن التوسيع عندما:"),
+        StrContent("استخدم كائن التوسعة عندما:"),
         ULContent(
           value: [
-            "تحتاج لإضافة ميزات للكائنات دون فئات فرعية",
-            "بناء إطار مع دعم الإضافات",
-            "التوسعات المستقبلية متوقعة لكن غير معروفة",
-            "تريد تجنب التسلسلات الهرمية الثقيلة للوراثة",
+            "تحتاج لإضافة قدرات للفئات الموجودة دون تعديلها",
+            "القدرات اختيارية وليس كل النسخ تحتاجها",
+            "أطراف ثالثة تحتاج لتوسيع كائناتك الأساسية دون وصول للمصدر",
+            "قدرات مستقلة متعددة تحتاج للدمج في وقت التشغيل",
+            "تريد تجنب انفجار N×M للفئات من الوراثة المتعددة",
+            "بناء معماريات إضافات حيث تصل القدرات في وقت التشغيل",
           ],
         ),
       ],
     ),
     commonMistakes: LocV(
       en: [
-        "Overusing when simple inheritance would work",
-        "Not properly managing extension lifecycles",
-        "Creating tight coupling between extensions",
-        "Ignoring type safety concerns",
+        "Putting too much logic in extensions - keep core behavior in the subject",
+        "Not handling extension absence gracefully in client code",
+        "Tight coupling between extensions - each extension should be independent",
+        "Not defining clear extension interfaces upfront",
+        "Using when simple Decorator or mixin would suffice",
+        "Forgetting to unmount/dispose extensions when subject is destroyed",
       ],
       ar: [
-        "الإفراط في الاستخدام عندما تكفي الوراثة البسيطة",
-        "عدم إدارة دورات حياة التوسيع بشكل صحيح",
-        "إنشاء اقتران وثيق بين التوسعات",
-        "تجاهل مخاوف أمان الأنواع",
+        "وضع الكثير من المنطق في التوسعات - أبقِ السلوك الأساسي في الموضوع",
+        "عدم التعامل مع غياب التوسعة بلطف في كود العميل",
+        "اقتران وثيق بين التوسعات - يجب أن تكون كل توسعة مستقلة",
+        "عدم تعريف واجهات توسعة واضحة مسبقاً",
+        "الاستخدام عندما يكفي المُزخرف أو المزج البسيط",
+        "نسيان إلغاء التثبيت/التخلص من التوسعات عند تدمير الموضوع",
       ],
     ),
-    relatedPatterns: [PK.visitor, PK.decorator, PK.plugin],
+    relatedPatterns: [PK.decorator, PK.visitor, PK.composite, PK.plugin],
+    oftenConfusedWith: [PK.decorator, PK.plugin],
   ),
-
   PK.plugin: DesignPattern(
     id: PK.plugin,
     title: LocS(en: "Plugin", ar: "الإضافة (Plugin)"),
     description: LocS(
-      en: "Allows adding functionality to an application at runtime through loadable modules",
-      ar: "يسمح بإضافة وظائف للتطبيق في وقت التشغيل من خلال وحدات قابلة للتحميل",
+      en: "Extends application behavior through dynamically loaded, independently-developed components",
+      ar: "يوسع سلوك التطبيق من خلال مكونات مُحملة ديناميكياً ومُطورة بشكل مستقل",
     ),
     group: .design,
     type: .structural,
@@ -6321,65 +11350,1381 @@ void main() {
     content: LocV(
       en: [
         StrContent(
-          "The Plugin pattern enables extending application functionality without modifying the core code. Plugins are modules that can be added, removed, or updated independently.",
+          "The Plugin pattern provides a way to extend application behavior through components that can be developed, deployed, and replaced independently of the main application. The core app defines plugin interfaces; plugins implement them. The core loads and uses plugins without knowing their concrete implementations.",
+        ),
+        AnalogyContent(
+          "Think of a DAW (Digital Audio Workstation) like GarageBand or Ableton. The core DAW handles audio playback, recording, and mixing. VST plugins (synthesizers, effects, instruments) can be added by anyone. The DAW defines the plugin interface (VST standard); plugin developers implement it. You can add third-party reverb, third-party synthesizers, and third-party compressors - all without changing the core DAW.",
         ),
         StrContent(
-          "This pattern is fundamental to creating extensible applications like IDEs, browsers, content management systems, and frameworks.",
+          "Plugins differ from Extension Object in scope and intent. Extension Object adds capabilities to individual object instances. Plugin adds capabilities to the entire application system - it's an architectural pattern. Plugins usually have their own lifecycle (load, activate, deactivate, unload) and can contribute to multiple parts of the application.",
         ),
         ULContent(
-          title: "Key Elements:",
+          title: "Key Components:",
           value: [
-            "Plugin Interface: Contract that plugins must implement",
-            "Plugin Manager: Discovers, loads, and manages plugins",
-            "Host Application: Core app that plugins extend",
-            "Plugin Lifecycle: Registration, initialization, execution, cleanup",
+            "Plugin Interface: Contract that all plugins must implement",
+            "Plugin Registry: Manages plugin discovery, registration, and lifecycle",
+            "Plugin Host/Core: The application that loads and uses plugins",
+            "Concrete Plugin: An implementation of the plugin interface",
+            "Plugin Metadata: Version, dependencies, capabilities info",
+            "Plugin Lifecycle: Load, activate, deactivate, unload hooks",
           ],
+        ),
+        DiagramContent(
+          "Architecture:\nCore Application\n    │\n    ├── Plugin Registry ── discovers & loads\n    │         │\n    │    [Plugin A] [Plugin B] [Plugin C]\n    │         │\n    └── Plugin Interfaces (contracts)\n\n(Core depends only on interfaces, not concrete plugins)",
+        ),
+        NoteContent(
+          "Plugin vs Strategy: Strategy provides interchangeable algorithms for one specific behavior. Plugin provides an entire subsystem of behaviors - a plugin might implement dozens of interfaces and contribute to many parts of the application.",
+          type: .important,
+        ),
+        ComparisonContent({
+          'Plugin':
+              'System-level extensibility, full lifecycle, many contributions',
+          'Extension Object': 'Instance-level capability, simpler lifecycle',
+          'Strategy': 'Algorithm interchangeability, single behavior point',
+          'Observer': 'Event notification, no lifecycle management',
+        }, title: 'Plugin vs Similar Patterns'),
+        StrContent(
+          "Common use cases in Flutter/Dart: pub.dev packages (each is essentially a plugin for your app), Flutter's own platform plugin system (camera, geolocator, etc.), payment providers, analytics providers, authentication providers, and any architecture designed for third-party extension.",
+        ),
+        NoteContent(
+          "In Flutter, `platform channels` and the `flutter_plugin_registrant` are the official plugin infrastructure. pub.dev packages like `camera`, `google_maps_flutter`, and `firebase_auth` all follow plugin patterns - they implement core interfaces without the app knowing their internals.",
+          type: .tip,
         ),
       ],
       ar: [
         StrContent(
-          "نمط الإضافة يمكّن من توسيع وظائف التطبيق دون تعديل الكود الأساسي. الإضافات هي وحدات يمكن إضافتها أو إزالتها أو تحديثها بشكل مستقل.",
+          "نمط الإضافة يوفر طريقة لتوسيع سلوك التطبيق من خلال مكونات يمكن تطويرها ونشرها واستبدالها بشكل مستقل عن التطبيق الرئيسي. يُعرّف التطبيق الأساسي واجهات الإضافات؛ الإضافات تنفذها. يقوم التطبيق الأساسي بتحميل واستخدام الإضافات دون معرفة تطبيقاتها المحددة.",
+        ),
+        AnalogyContent(
+          "فكر في برنامج Digital Audio Workstation مثل GarageBand أو Ableton. التطبيق الأساسي يتعامل مع تشغيل الصوت والتسجيل والمزج. إضافات VST (مُركّبات أصوات، مؤثرات، آلات موسيقية) يمكن إضافتها من قبل أي شخص. التطبيق يُعرّف واجهة الإضافة (معيار VST)؛ مطورو الإضافات ينفذونها. يمكنك إضافة صدى من طرف ثالث، مُركّبات أصوات من طرف ثالث، وضاغطات من طرف ثالث - كل ذلك دون تغيير التطبيق الأساسي.",
         ),
         StrContent(
-          "هذا النمط أساسي لإنشاء تطبيقات قابلة للتوسيع مثل بيئات التطوير المتكاملة والمتصفحات وأنظمة إدارة المحتوى والأطر.",
+          "الإضافات تختلف عن كائن التوسعة في النطاق والهدف. كائن التوسعة يضيف قدرات لنسخ كائنات فردية. الإضافة تضيف قدرات لنظام التطبيق بأكمله - إنه نمط معماري. الإضافات عادةً لها دورة حياة خاصة بها (تحميل، تفعيل، إلغاء تفعيل، إلغاء تحميل) ويمكنها المساهمة في أجزاء متعددة من التطبيق.",
         ),
         ULContent(
-          title: "العناصر الأساسية:",
+          title: "المكونات الأساسية:",
           value: [
-            "واجهة الإضافة: العقد الذي يجب أن تنفذه الإضافات",
-            "مدير الإضافات: يكتشف ويحمل ويدير الإضافات",
-            "التطبيق المضيف: التطبيق الأساسي الذي توسعه الإضافات",
-            "دورة حياة الإضافة: التسجيل، التهيئة، التنفيذ، التنظيف",
+            "واجهة الإضافة (Plugin Interface): العقد الذي يجب أن تنفذه جميع الإضافات",
+            "سجل الإضافات (Plugin Registry): يدير اكتشاف الإضافات وتسجيلها ودورة حياتها",
+            "مضيف/نواة الإضافة (Plugin Host/Core): التطبيق الذي يُحمّل ويستخدم الإضافات",
+            "الإضافة المحددة (Concrete Plugin): تطبيق لواجهة الإضافة",
+            "بيانات الإضافة الوصفية (Plugin Metadata): معلومات الإصدار والتبعيات والقدرات",
+            "دورة حياة الإضافة (Plugin Lifecycle): ربط التحميل والتفعيل وإلغاء التفعيل وإلغاء التحميل",
           ],
+        ),
+        DiagramContent(
+          "المعمارية:\nالتطبيق الأساسي\n    │\n    ├── سجل الإضافات ── يكتشف ويُحمّل\n    │         │\n    │    [إضافة أ] [إضافة ب] [إضافة ج]\n    │         │\n    └── واجهات الإضافات (العقود)\n\n(الأساسي يعتمد فقط على الواجهات، وليس الإضافات المحددة)",
+        ),
+        NoteContent(
+          "الإضافة مقابل الاستراتيجية: الاستراتيجية توفر خوارزميات قابلة للتبادل لسلوك محدد واحد. الإضافة توفر نظاماً فرعياً كاملاً من السلوكيات - قد تنفذ إضافة واحدة عشرات الواجهات وتساهم في أجزاء كثيرة من التطبيق.",
+          type: .important,
+        ),
+        ComparisonContent({
+          'الإضافة (Plugin)':
+              'قابلية توسع على مستوى النظام، دورة حياة كاملة، مساهمات كثيرة',
+          'كائن التوسعة (Extension Object)':
+              'قدرة على مستوى النسخة، دورة حياة أبسط',
+          'الاستراتيجية (Strategy)': 'تبادلية الخوارزميات، نقطة سلوك واحدة',
+          'المراقب (Observer)': 'إشعار الأحداث، لا إدارة لدورة الحياة',
+        }, title: 'الإضافة مقابل الأنماط المشابهة'),
+        StrContent(
+          "حالات الاستخدام الشائعة في Flutter/Dart: حزم pub.dev (كل منها هو في الأساس إضافة لتطبيقك)، نظام إضافات المنصة الرسمي في Flutter (الكاميرا، موقع GPS، إلخ)، موفرو الدفع، موفرو التحليلات، موفرو المصادقة، وأي معمارية مصممة للتوسيع من قبل أطراف ثالثة.",
+        ),
+        NoteContent(
+          "في Flutter، `platform channels` و`flutter_plugin_registrant` هي البنية التحتية الرسمية للإضافات. حزم pub.dev مثل `camera` و`google_maps_flutter` و`firebase_auth` تتبع جميعها أنماط الإضافات - تنفذ واجهات أساسية دون أن يعرف التطبيق داخلياتها.",
+          type: .tip,
         ),
       ],
     ),
+    examples: LocV(
+      en: [
+        // Example 1: Basic - Storage Plugin System
+        StrCodeBlock("""// Example 1: Basic - Storage Provider Plugin System
+// Use case: Swappable storage backends as plugins
+
+// ── PLUGIN CONTRACT ───────────────────────────────────────────
+
+abstract class StoragePlugin {
+  // Plugin metadata
+  String get pluginId;
+  String get displayName;
+  String get version;
+  List<String> get supportedPlatforms;
+
+  // Lifecycle
+  Future<void> initialize(Map<String, dynamic> config);
+  Future<void> dispose();
+
+  // Core operations
+  Future<void> write(String key, String value);
+  Future<String?> read(String key);
+  Future<void> delete(String key);
+  Future<bool> exists(String key);
+  Future<List<String>> listKeys();
+}
+
+// ── PLUGIN REGISTRY ───────────────────────────────────────────
+
+class StoragePluginRegistry {
+  final Map<String, StoragePlugin> _plugins = {};
+  String? _activePluginId;
+
+  void register(StoragePlugin plugin) {
+    print('Registry: Registering plugin "\${plugin.pluginId}" v\${plugin.version}');
+    _plugins[plugin.pluginId] = plugin;
+  }
+
+  Future<void> activate(String pluginId, {Map<String, dynamic>? config}) async {
+    final plugin = _plugins[pluginId];
+    if (plugin == null) {
+      throw Exception('Plugin not found: \$pluginId');
+    }
+    print('Registry: Activating "\${plugin.displayName}"');
+    await plugin.initialize(config ?? {});
+    _activePluginId = pluginId;
+    print('Registry: "\${plugin.displayName}" is now active');
+  }
+
+  StoragePlugin get active {
+    if (_activePluginId == null) {
+      throw StateError('No active storage plugin');
+    }
+    return _plugins[_activePluginId]!;
+  }
+
+  List<String> get availablePlugins => _plugins.keys.toList();
+
+  void printInfo() {
+    print('Available plugins: \${_plugins.length}');
+    for (final plugin in _plugins.values) {
+      final isActive = plugin.pluginId == _activePluginId;
+      print('  \${isActive ? "▶" : " "} \${plugin.displayName} v\${plugin.version}');
+      print('    Platforms: \${plugin.supportedPlatforms.join(", ")}');
+    }
+  }
+}
+
+// ── CONCRETE PLUGINS ──────────────────────────────────────────
+
+// In-Memory storage plugin
+class InMemoryStoragePlugin implements StoragePlugin {
+  final Map<String, String> _store = {};
+
+  @override
+  String get pluginId => 'in_memory';
+  @override
+  String get displayName => 'In-Memory Storage';
+  @override
+  String get version => '1.0.0';
+  @override
+  List<String> get supportedPlatforms => ['all'];
+
+  @override
+  Future<void> initialize(Map<String, dynamic> config) async {
+    print('InMemory: Initialized');
+  }
+
+  @override
+  Future<void> dispose() async {
+    _store.clear();
+    print('InMemory: Disposed');
+  }
+
+  @override
+  Future<void> write(String key, String value) async {
+    _store[key] = value;
+    print('InMemory: Wrote \$key');
+  }
+
+  @override
+  Future<String?> read(String key) async {
+    return _store[key];
+  }
+
+  @override
+  Future<void> delete(String key) async {
+    _store.remove(key);
+  }
+
+  @override
+  Future<bool> exists(String key) async => _store.containsKey(key);
+
+  @override
+  Future<List<String>> listKeys() async => _store.keys.toList();
+}
+
+// Encrypted storage plugin
+class EncryptedStoragePlugin implements StoragePlugin {
+  final Map<String, String> _store = {};
+  late String _encryptionKey;
+
+  @override
+  String get pluginId => 'encrypted';
+  @override
+  String get displayName => 'Encrypted Storage';
+  @override
+  String get version => '2.1.0';
+  @override
+  List<String> get supportedPlatforms => ['android', 'ios'];
+
+  @override
+  Future<void> initialize(Map<String, dynamic> config) async {
+    _encryptionKey = config['key'] as String? ?? 'default_key_abc';
+    print('Encrypted: Initialized with key: \${_encryptionKey.substring(0, 3)}***');
+  }
+
+  @override
+  Future<void> dispose() async {
+    _store.clear();
+    print('Encrypted: Disposed and cleared');
+  }
+
+  String _encrypt(String value) => 'enc[\$value]'; // Simplified
+  String _decrypt(String value) => value.replaceAll(RegExp(r'enc\[|\]'), '');
+
+  @override
+  Future<void> write(String key, String value) async {
+    _store[key] = _encrypt(value);
+    print('Encrypted: Wrote \$key (encrypted)');
+  }
+
+  @override
+  Future<String?> read(String key) async {
+    final encrypted = _store[key];
+    return encrypted != null ? _decrypt(encrypted) : null;
+  }
+
+  @override
+  Future<void> delete(String key) async => _store.remove(key);
+
+  @override
+  Future<bool> exists(String key) async => _store.containsKey(key);
+
+  @override
+  Future<List<String>> listKeys() async => _store.keys.toList();
+}
+
+// Cloud storage plugin
+class CloudStoragePlugin implements StoragePlugin {
+  final Map<String, String> _localCache = {};
+  late String _apiKey;
+
+  @override
+  String get pluginId => 'cloud';
+  @override
+  String get displayName => 'Cloud Storage';
+  @override
+  String get version => '3.0.1';
+  @override
+  List<String> get supportedPlatforms => ['android', 'ios', 'web'];
+
+  @override
+  Future<void> initialize(Map<String, dynamic> config) async {
+    _apiKey = config['api_key'] as String? ?? 'demo_key';
+    print('Cloud: Connected with key: \${_apiKey.substring(0, 4)}***');
+    await Future.delayed(const Duration(milliseconds: 50)); // Simulate connect
+    print('Cloud: Ready');
+  }
+
+  @override
+  Future<void> dispose() async {
+    _localCache.clear();
+    print('Cloud: Disconnected');
+  }
+
+  @override
+  Future<void> write(String key, String value) async {
+    await Future.delayed(const Duration(milliseconds: 30)); // Simulate network
+    _localCache[key] = value;
+    print('Cloud: Synced \$key to cloud');
+  }
+
+  @override
+  Future<String?> read(String key) async {
+    await Future.delayed(const Duration(milliseconds: 20));
+    return _localCache[key];
+  }
+
+  @override
+  Future<void> delete(String key) async {
+    _localCache.remove(key);
+  }
+
+  @override
+  Future<bool> exists(String key) async => _localCache.containsKey(key);
+
+  @override
+  Future<List<String>> listKeys() async => _localCache.keys.toList();
+}
+
+// ── APPLICATION CODE ──────────────────────────────────────────
+
+class AppSettings {
+  final StoragePluginRegistry _registry;
+
+  AppSettings(this._registry);
+
+  Future<void> save(String key, String value) async {
+    await _registry.active.write(key, value);
+  }
+
+  Future<String?> load(String key) async {
+    return _registry.active.read(key);
+  }
+
+  Future<void> saveAll(Map<String, String> settings) async {
+    for (final entry in settings.entries) {
+      await save(entry.key, entry.value);
+    }
+  }
+}
+
+void main() async {
+  print('=== Plugin System Demo ===');
+
+  final registry = StoragePluginRegistry();
+
+  // Register all available plugins
+  registry.register(InMemoryStoragePlugin());
+  registry.register(EncryptedStoragePlugin());
+  registry.register(CloudStoragePlugin());
+
+  registry.printInfo();
+
+  final settings = AppSettings(registry);
+
+  print('=== Using In-Memory Plugin ===');
+  await registry.activate('in_memory');
+  await settings.saveAll({
+    'theme': 'dark',
+    'language': 'en',
+    'notifications': 'true',
+  });
+  print('theme: \${await settings.load("theme")}');
+
+  print('=== Switching to Encrypted Plugin ===');
+  await registry.activate('encrypted', config: {'key': 'super_secret_key_456'});
+  await settings.save('auth_token', 'eyJhbGc...');
+  print('token: \${await settings.load("auth_token")}');
+
+  print('=== Switching to Cloud Plugin ===');
+  await registry.activate('cloud', config: {'api_key': 'cloud_api_789'});
+  await settings.save('sync_enabled', 'true');
+  print('sync: \${await settings.load("sync_enabled")}');
+  print('keys: \${await registry.active.listKeys()}');
+}"""),
+
+        // Example 2: Intermediate - Authentication Plugin System
+        StrCodeBlock(
+          """// Example 2: Intermediate - Authentication Plugin System
+// Use case: Swappable auth providers as plugins
+
+// Plugin interface
+abstract class AuthPlugin {
+  String get pluginId;
+  String get providerName;
+  bool get supportsOAuth;
+
+  Future<void> initialize();
+
+  Future<AuthResult> signIn({
+    String? email,
+    String? password,
+    Map<String, dynamic>? options,
+  });
+
+  Future<AuthResult> signOut();
+  Future<AuthResult> refreshToken(String refreshToken);
+  Future<UserInfo?> getCurrentUser();
+  Future<bool> isSignedIn();
+
+  Stream<AuthState> get authStateChanges;
+}
+
+// Result types
+class AuthResult {
+  final bool success;
+  final String? accessToken;
+  final String? refreshToken;
+  final String? error;
+  final UserInfo? user;
+
+  const AuthResult({
+    required this.success,
+    this.accessToken,
+    this.refreshToken,
+    this.error,
+    this.user,
+  });
+
+  factory AuthResult.success({
+    String? accessToken,
+    String? refreshToken,
+    UserInfo? user,
+  }) {
+    return AuthResult(
+      success: true,
+      accessToken: accessToken,
+      refreshToken: refreshToken,
+      user: user,
+    );
+  }
+
+  factory AuthResult.failure(String error) {
+    return AuthResult(success: false, error: error);
+  }
+}
+
+class UserInfo {
+  final String id;
+  final String? email;
+  final String? displayName;
+  final String? photoUrl;
+  final String provider;
+
+  const UserInfo({
+    required this.id,
+    this.email,
+    this.displayName,
+    this.photoUrl,
+    required this.provider,
+  });
+}
+
+enum AuthState { signedIn, signedOut, loading }
+
+// Concrete plugins
+
+class EmailPasswordAuthPlugin implements AuthPlugin {
+  final _authStateController = StreamController<AuthState>.broadcast();
+  UserInfo? _currentUser;
+
+  @override
+  String get pluginId => 'email_password';
+  @override
+  String get providerName => 'Email & Password';
+  @override
+  bool get supportsOAuth => false;
+
+  @override
+  Future<void> initialize() async {
+    print('EmailAuth: Initialized');
+    _authStateController.add(.signedOut);
+  }
+
+  @override
+  Future<AuthResult> signIn({
+    String? email,
+    String? password,
+    Map<String, dynamic>? options,
+  }) async {
+    if (email == null || password == null) {
+      return AuthResult.failure('Email and password required');
+    }
+
+    print('EmailAuth: Signing in \$email');
+    await Future.delayed(const Duration(milliseconds: 100));
+
+    if (password.length < 6) {
+      return AuthResult.failure('Invalid credentials');
+    }
+
+    _currentUser = UserInfo(
+      id: 'uid_\${email.hashCode.abs()}',
+      email: email,
+      displayName: email.split('@').first,
+      provider: providerName,
+    );
+
+    _authStateController.add(.signedIn);
+
+    return AuthResult.success(
+      accessToken: 'email_token_\${DateTime.now().millisecondsSinceEpoch}',
+      refreshToken: 'refresh_\${email.hashCode}',
+      user: _currentUser,
+    );
+  }
+
+  @override
+  Future<AuthResult> signOut() async {
+    print('EmailAuth: Signing out');
+    _currentUser = null;
+    _authStateController.add(.signedOut);
+    return AuthResult.success();
+  }
+
+  @override
+  Future<AuthResult> refreshToken(String refreshToken) async {
+    print('EmailAuth: Refreshing token');
+    return AuthResult.success(
+      accessToken: 'new_token_\${DateTime.now().millisecondsSinceEpoch}',
+      refreshToken: refreshToken,
+    );
+  }
+
+  @override
+  Future<UserInfo?> getCurrentUser() async => _currentUser;
+
+  @override
+  Future<bool> isSignedIn() async => _currentUser != null;
+
+  @override
+  Stream<AuthState> get authStateChanges => _authStateController.stream;
+}
+
+class GoogleAuthPlugin implements AuthPlugin {
+  final _authStateController = StreamController<AuthState>.broadcast();
+  UserInfo? _currentUser;
+
+  @override
+  String get pluginId => 'google';
+  @override
+  String get providerName => 'Google';
+  @override
+  bool get supportsOAuth => true;
+
+  @override
+  Future<void> initialize() async {
+    print('GoogleAuth: Initialized with OAuth 2.0');
+    _authStateController.add(.signedOut);
+  }
+
+  @override
+  Future<AuthResult> signIn({
+    String? email,
+    String? password,
+    Map<String, dynamic>? options,
+  }) async {
+    print('GoogleAuth: Opening Google sign-in dialog...');
+    await Future.delayed(const Duration(milliseconds: 200));
+
+    // Simulate Google OAuth flow
+    _currentUser = UserInfo(
+      id: 'google_uid_12345',
+      email: 'alice@gmail.com',
+      displayName: 'Alice Johnson',
+      photoUrl: 'https://photo.google.com/alice.jpg',
+      provider: providerName,
+    );
+
+    _authStateController.add(.signedIn);
+
+    return AuthResult.success(
+      accessToken: 'google_token_\${DateTime.now().millisecondsSinceEpoch}',
+      user: _currentUser,
+    );
+  }
+
+  @override
+  Future<AuthResult> signOut() async {
+    print('GoogleAuth: Signing out from Google');
+    _currentUser = null;
+    _authStateController.add(.signedOut);
+    return AuthResult.success();
+  }
+
+  @override
+  Future<AuthResult> refreshToken(String refreshToken) async {
+    print('GoogleAuth: Refreshing via OAuth');
+    return AuthResult.success(
+      accessToken: 'google_new_\${DateTime.now().millisecondsSinceEpoch}',
+    );
+  }
+
+  @override
+  Future<UserInfo?> getCurrentUser() async => _currentUser;
+
+  @override
+  Future<bool> isSignedIn() async => _currentUser != null;
+
+  @override
+  Stream<AuthState> get authStateChanges => _authStateController.stream;
+}
+
+// Plugin registry
+class AuthPluginRegistry {
+  final Map<String, AuthPlugin> _plugins = {};
+  AuthPlugin? _active;
+
+  void register(AuthPlugin plugin) {
+    _plugins[plugin.pluginId] = plugin;
+    print('AuthRegistry: Registered "\${plugin.providerName}"');
+  }
+
+  Future<void> setActive(String pluginId) async {
+    final plugin = _plugins[pluginId];
+    if (plugin == null) throw Exception('Auth plugin not found: \$pluginId');
+
+    _active = plugin;
+    await plugin.initialize();
+    print('AuthRegistry: Active provider: \${plugin.providerName}');
+  }
+
+  AuthPlugin get active {
+    if (_active == null) throw StateError('No active auth plugin');
+    return _active!;
+  }
+
+  List<AuthPlugin> get all => _plugins.values.toList();
+}
+
+// Application auth service - uses plugin, doesn't know which one
+class AuthService {
+  final AuthPluginRegistry _registry;
+
+  AuthService(this._registry);
+
+  Future<AuthResult> login({String? email, String? password}) {
+    return _registry.active.signIn(email: email, password: password);
+  }
+
+  Future<AuthResult> logout() => _registry.active.signOut();
+
+  Future<UserInfo?> get currentUser => _registry.active.getCurrentUser();
+
+  Future<bool> get isLoggedIn => _registry.active.isSignedIn();
+
+  Stream<AuthState> get authState => _registry.active.authStateChanges;
+}
+
+void main() async {
+  print('=== Auth Plugin System ===');
+
+  final registry = AuthPluginRegistry();
+  registry.register(EmailPasswordAuthPlugin());
+  registry.register(GoogleAuthPlugin());
+
+  final auth = AuthService(registry);
+
+  print('=== Email/Password Auth ===');
+  await registry.setActive('email_password');
+
+  final loginResult = await auth.login(
+    email: 'alice@example.com',
+    password: 'SecurePass123',
+  );
+
+  if (loginResult.success) {
+    print('Logged in as: \${loginResult.user?.displayName}');
+    print('Token: \${loginResult.accessToken?.substring(0, 20)}...');
+  }
+
+  final user = await auth.currentUser;
+  print('Current user: \${user?.email}');
+
+  await auth.logout();
+
+  print('=== Google Auth ===');
+  await registry.setActive('google');
+
+  final googleResult = await auth.login();
+
+  if (googleResult.success) {
+    print('Signed in via Google: \${googleResult.user?.displayName}');
+    print('Email: \${googleResult.user?.email}');
+    print('Photo: \${googleResult.user?.photoUrl}');
+  }
+
+  final isLoggedIn = await auth.isLoggedIn;
+  print('Is logged in: \$isLoggedIn');
+
+  print('=== Switching Auth Provider at Runtime ===');
+  await auth.logout();
+  await registry.setActive('email_password');
+  print('Switched back to email/password');
+
+  print('Application code never changed! Only the plugin did.');
+}""",
+        ),
+
+        // Example 3: Advanced - Analytics Plugin Architecture
+        StrCodeBlock("""// Example 3: Advanced - Analytics Plugin Architecture
+// Use case: Multiple analytics providers as interchangeable plugins
+
+// Plugin contract
+abstract class AnalyticsPlugin {
+  String get pluginId;
+  String get providerName;
+  String get version;
+
+  Future<void> initialize(AnalyticsConfig config);
+  Future<void> dispose();
+
+  Future<void> trackEvent(AnalyticsEvent event);
+  Future<void> trackScreen(String screenName, {Map<String, dynamic>? properties});
+  Future<void> setUserProperties(String userId, Map<String, dynamic> properties);
+  Future<void> trackError(AnalyticsError error);
+
+  bool get isEnabled;
+  void setEnabled(bool enabled);
+}
+
+// Data types
+class AnalyticsConfig {
+  final String apiKey;
+  final bool debugMode;
+  final List<String> excludedEvents;
+  final Map<String, dynamic> customConfig;
+
+  const AnalyticsConfig({
+    required this.apiKey,
+    this.debugMode = false,
+    this.excludedEvents = const [],
+    this.customConfig = const {},
+  });
+}
+
+class AnalyticsEvent {
+  final String name;
+  final Map<String, dynamic> properties;
+  final DateTime timestamp;
+  final String? userId;
+
+  AnalyticsEvent({
+    required this.name,
+    this.properties = const {},
+    DateTime? timestamp,
+    this.userId,
+  }) : timestamp = timestamp ?? DateTime.now();
+}
+
+class AnalyticsError {
+  final String message;
+  final String? stackTrace;
+  final bool fatal;
+  final Map<String, dynamic> context;
+
+  const AnalyticsError({
+    required this.message,
+    this.stackTrace,
+    this.fatal = false,
+    this.context = const {},
+  });
+}
+
+// Concrete plugins
+
+class MixpanelPlugin implements AnalyticsPlugin {
+  late AnalyticsConfig _config;
+  bool _isEnabled = true;
+  int _eventCount = 0;
+
+  @override
+  String get pluginId => 'mixpanel';
+  @override
+  String get providerName => 'Mixpanel';
+  @override
+  String get version => '4.0.1';
+
+  @override
+  Future<void> initialize(AnalyticsConfig config) async {
+    _config = config;
+    print('Mixpanel: Initialized with key \${config.apiKey.substring(0, 4)}***');
+    if (config.debugMode) print('Mixpanel: Debug mode ON');
+  }
+
+  @override
+  Future<void> dispose() async {
+    print('Mixpanel: Flushing \$_eventCount events and disposing');
+  }
+
+  @override
+  Future<void> trackEvent(AnalyticsEvent event) async {
+    if (!_isEnabled) return;
+    if (_config.excludedEvents.contains(event.name)) return;
+
+    _eventCount++;
+    print('Mixpanel: track("\${event.name}", \${event.properties})');
+  }
+
+  @override
+  Future<void> trackScreen(String screenName, {Map<String, dynamic>? properties}) async {
+    if (!_isEnabled) return;
+    print('Mixpanel: trackView("\$screenName")');
+  }
+
+  @override
+  Future<void> setUserProperties(String userId, Map<String, dynamic> properties) async {
+    print('Mixpanel: identify("\$userId") + people.set(\$properties)');
+  }
+
+  @override
+  Future<void> trackError(AnalyticsError error) async {
+    print('Mixpanel: track("Error", {message: "\${error.message}", fatal: \${error.fatal}})');
+  }
+
+  @override
+  bool get isEnabled => _isEnabled;
+
+  @override
+  void setEnabled(bool enabled) => _isEnabled = enabled;
+}
+
+class FirebaseAnalyticsPlugin implements AnalyticsPlugin {
+  late AnalyticsConfig _config;
+  bool _isEnabled = true;
+
+  @override
+  String get pluginId => 'firebase';
+  @override
+  String get providerName => 'Firebase Analytics';
+  @override
+  String get version => '10.7.0';
+
+  @override
+  Future<void> initialize(AnalyticsConfig config) async {
+    _config = config;
+    print('Firebase: Analytics initialized, project: \${config.apiKey.substring(0, 6)}');
+  }
+
+  @override
+  Future<void> dispose() async {
+    print('Firebase: Analytics disposed');
+  }
+
+  @override
+  Future<void> trackEvent(AnalyticsEvent event) async {
+    if (!_isEnabled) return;
+
+    // Firebase has naming restrictions (snake_case, max 40 chars)
+    final fbEventName = event.name
+        .replaceAll(RegExp(r'[^a-zA-Z0-9_]'), '_')
+        .toLowerCase();
+
+    print('Firebase: logEvent("\$fbEventName", \${event.properties})');
+  }
+
+  @override
+  Future<void> trackScreen(String screenName, {Map<String, dynamic>? properties}) async {
+    if (!_isEnabled) return;
+    print('Firebase: setCurrentScreen("\$screenName")');
+  }
+
+  @override
+  Future<void> setUserProperties(String userId, Map<String, dynamic> properties) async {
+    print('Firebase: setUserId("\$userId")');
+    for (final entry in properties.entries) {
+      print('Firebase: setUserProperty("\${entry.key}", "\${entry.value}")');
+    }
+  }
+
+  @override
+  Future<void> trackError(AnalyticsError error) async {
+    print('Firebase: Crashlytics.recordError("\${error.message}", fatal: \${error.fatal})');
+  }
+
+  @override
+  bool get isEnabled => _isEnabled;
+
+  @override
+  void setEnabled(bool enabled) => _isEnabled = enabled;
+}
+
+// Multi-plugin manager (broadcasts to all)
+class AnalyticsManager {
+  final List<AnalyticsPlugin> _plugins = [];
+
+  void addPlugin(AnalyticsPlugin plugin) {
+    _plugins.add(plugin);
+    print('AnalyticsManager: Added \${plugin.providerName}');
+  }
+
+  void removePlugin(String pluginId) {
+    _plugins.removeWhere((p) => p.pluginId == pluginId);
+  }
+
+  Future<void> initializeAll(AnalyticsConfig config) async {
+    for (final plugin in _plugins) {
+      await plugin.initialize(config);
+    }
+    print('AnalyticsManager: All \${_plugins.length} plugins initialized');
+  }
+
+  // Broadcast to all plugins
+  Future<void> track(String eventName, {Map<String, dynamic>? properties}) async {
+    final event = AnalyticsEvent(
+      name: eventName,
+      properties: properties ?? {},
+    );
+
+    print('Broadcasting "\$eventName" to \${_plugins.length} plugins...');
+    for (final plugin in _plugins) {
+      await plugin.trackEvent(event);
+    }
+  }
+
+  Future<void> screen(String name) async {
+    for (final plugin in _plugins) {
+      await plugin.trackScreen(name);
+    }
+  }
+
+  Future<void> identify(String userId, Map<String, dynamic> props) async {
+    for (final plugin in _plugins) {
+      await plugin.setUserProperties(userId, props);
+    }
+  }
+
+  Future<void> error(String message, {bool fatal = false}) async {
+    final err = AnalyticsError(message: message, fatal: fatal);
+    for (final plugin in _plugins) {
+      await plugin.trackError(err);
+    }
+  }
+
+  void disablePlugin(String pluginId) {
+    _plugins
+        .firstWhere((p) => p.pluginId == pluginId)
+        .setEnabled(false);
+    print('Disabled plugin: \$pluginId');
+  }
+}
+
+void main() async {
+  print('=== Analytics Plugin System ===');
+
+  final analytics = AnalyticsManager();
+  analytics.addPlugin(MixpanelPlugin());
+  analytics.addPlugin(FirebaseAnalyticsPlugin());
+
+  await analytics.initializeAll(
+    const AnalyticsConfig(
+      apiKey: 'prod_key_xyz789',
+      debugMode: false,
+      excludedEvents: ['debug_event'],
+    ),
+  );
+
+  print('=== Tracking Events ===');
+  await analytics.screen('HomeScreen');
+  await analytics.track('button_tapped', properties: {'button': 'signup'});
+  await analytics.track('purchase_completed', properties: {
+    'product_id': 'prod_001',
+    'amount': 99.99,
+    'currency': 'USD',
+  });
+
+  print('=== User Identification ===');
+  await analytics.identify('usr_alice', {
+    'plan': 'premium',
+    'country': 'US',
+    'signup_date': '2024-01-15',
+  });
+
+  print('=== Error Tracking ===');
+  await analytics.error('Payment gateway timeout', fatal: false);
+
+  print('=== GDPR: Disable analytics ===');
+  analytics.disablePlugin('mixpanel');
+  await analytics.track('some_event'); // Only Firebase receives it
+
+  print('All app code used the same analytics.track() API!');
+}"""),
+
+        // Example 4: Flutter - Payment Plugin System
+        StrCodeBlock("""// Example 4: Flutter - Payment Provider Plugin System
+// Use case: Swappable payment processors in a Flutter shop
+
+// Plugin contract
+abstract class PaymentPlugin {
+  String get pluginId;
+  String get displayName;
+  String get iconAsset;
+  List<String> get supportedCurrencies;
+  bool get supportsRecurring;
+
+  Future<void> initialize();
+
+  Future<PaymentSheet> createPaymentSheet(PaymentDetails details);
+  Future<PaymentResult> processPayment(PaymentSheet sheet);
+  Future<RefundResult> refund(String transactionId, double amount);
+}
+
+// Data classes
+class PaymentDetails {
+  final double amount;
+  final String currency;
+  final String description;
+  final Map<String, dynamic>? metadata;
+
+  const PaymentDetails({
+    required this.amount,
+    required this.currency,
+    required this.description,
+    this.metadata,
+  });
+}
+
+class PaymentSheet {
+  final String sessionId;
+  final String providerData;
+  final PaymentDetails details;
+
+  const PaymentSheet({
+    required this.sessionId,
+    required this.providerData,
+    required this.details,
+  });
+}
+
+class PaymentResult {
+  final bool success;
+  final String? transactionId;
+  final String? error;
+  final Map<String, dynamic>? receipt;
+
+  const PaymentResult({
+    required this.success,
+    this.transactionId,
+    this.error,
+    this.receipt,
+  });
+}
+
+class RefundResult {
+  final bool success;
+  final String? refundId;
+  final String? error;
+
+  const RefundResult({required this.success, this.refundId, this.error});
+}
+
+// Concrete plugins
+
+class StripePlugin implements PaymentPlugin {
+  @override
+  String get pluginId => 'stripe';
+  @override
+  String get displayName => 'Pay with Stripe';
+  @override
+  String get iconAsset => 'assets/icons/stripe.png';
+  @override
+  List<String> get supportedCurrencies => ['USD', 'EUR', 'GBP', 'JPY'];
+  @override
+  bool get supportsRecurring => true;
+
+  @override
+  Future<void> initialize() async {
+    print('Stripe: SDK initialized');
+  }
+
+  @override
+  Future<PaymentSheet> createPaymentSheet(PaymentDetails details) async {
+    print('Stripe: Creating payment intent for \${details.amount} \${details.currency}');
+    await Future.delayed(const Duration(milliseconds: 100));
+
+    return PaymentSheet(
+      sessionId: 'pi_\${DateTime.now().millisecondsSinceEpoch}',
+      providerData: 'stripe_client_secret_xyz',
+      details: details,
+    );
+  }
+
+  @override
+  Future<PaymentResult> processPayment(PaymentSheet sheet) async {
+    print('Stripe: Presenting payment sheet to user');
+    await Future.delayed(const Duration(milliseconds: 200));
+    print('Stripe: Payment confirmed');
+
+    return PaymentResult(
+      success: true,
+      transactionId: 'ch_\${DateTime.now().millisecondsSinceEpoch}',
+      receipt: {
+        'provider': 'stripe',
+        'amount': sheet.details.amount,
+        'currency': sheet.details.currency,
+      },
+    );
+  }
+
+  @override
+  Future<RefundResult> refund(String transactionId, double amount) async {
+    print('Stripe: Refunding \$amount for \$transactionId');
+    await Future.delayed(const Duration(milliseconds: 150));
+
+    return RefundResult(
+      success: true,
+      refundId: 're_\${DateTime.now().millisecondsSinceEpoch}',
+    );
+  }
+}
+
+class PayPalPlugin implements PaymentPlugin {
+  @override
+  String get pluginId => 'paypal';
+  @override
+  String get displayName => 'Pay with PayPal';
+  @override
+  String get iconAsset => 'assets/icons/paypal.png';
+  @override
+  List<String> get supportedCurrencies => ['USD', 'EUR', 'GBP', 'AUD', 'CAD'];
+  @override
+  bool get supportsRecurring => true;
+
+  @override
+  Future<void> initialize() async {
+    print('PayPal: SDK initialized with sandbox mode');
+  }
+
+  @override
+  Future<PaymentSheet> createPaymentSheet(PaymentDetails details) async {
+    print('PayPal: Creating order for \${details.amount} \${details.currency}');
+    await Future.delayed(const Duration(milliseconds: 120));
+
+    return PaymentSheet(
+      sessionId: 'paypal_order_\${DateTime.now().millisecondsSinceEpoch}',
+      providerData: 'paypal_approval_url_xyz',
+      details: details,
+    );
+  }
+
+  @override
+  Future<PaymentResult> processPayment(PaymentSheet sheet) async {
+    print('PayPal: Opening PayPal checkout');
+    await Future.delayed(const Duration(milliseconds: 250));
+    print('PayPal: Payment approved');
+
+    return PaymentResult(
+      success: true,
+      transactionId: 'paypal_txn_\${DateTime.now().millisecondsSinceEpoch}',
+      receipt: {
+        'provider': 'paypal',
+        'order_id': sheet.sessionId,
+      },
+    );
+  }
+
+  @override
+  Future<RefundResult> refund(String transactionId, double amount) async {
+    print('PayPal: Processing refund for \$transactionId');
+    await Future.delayed(const Duration(milliseconds: 200));
+    return RefundResult(success: true, refundId: 'paypal_refund_123');
+  }
+}
+
+// Plugin registry
+class PaymentPluginRegistry {
+  final Map<String, PaymentPlugin> _plugins = {};
+
+  void register(PaymentPlugin plugin) {
+    _plugins[plugin.pluginId] = plugin;
+  }
+
+  List<PaymentPlugin> get all => _plugins.values.toList();
+
+  PaymentPlugin? getById(String id) => _plugins[id];
+}
+
+// Flutter payment selection widget
+class PaymentMethodSelector extends StatefulWidget {
+  final PaymentDetails paymentDetails;
+  final PaymentPluginRegistry registry;
+  final void Function(PaymentResult) onSuccess;
+
+  const PaymentMethodSelector({
+    required this.paymentDetails,
+    required this.registry,
+    required this.onSuccess,
+    super.key,
+  });
+
+  @override
+  State<PaymentMethodSelector> createState() => _PaymentMethodSelectorState();
+}
+
+class _PaymentMethodSelectorState extends State<PaymentMethodSelector> {
+  String? _selectedPlugin;
+  bool _processing = false;
+
+  Future<void> _pay() async {
+    if (_selectedPlugin == null) return;
+
+    final plugin = widget.registry.getById(_selectedPlugin!);
+    if (plugin == null) return;
+
+    setState(() => _processing = true);
+
+    try {
+      await plugin.initialize();
+      final sheet = await plugin.createPaymentSheet(widget.paymentDetails);
+      final result = await plugin.processPayment(sheet);
+
+      if (!mounted) return;
+
+      if (result.success) {
+        widget.onSuccess(result);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Payment successful! TX: \${result.transactionId}'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Payment failed: \${result.error}'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _processing = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final plugins = widget.registry.all;
+
+    return Column(
+      crossAxisAlignment: .start,
+      mainAxisSize: .min,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Text(
+            'Select Payment Method',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+        ),
+        ...plugins.map((plugin) => RadioListTile<String>(
+          value: plugin.pluginId,
+          groupValue: _selectedPlugin,
+          onChanged: (v) => setState(() => _selectedPlugin = v),
+          title: Text(plugin.displayName),
+          subtitle: Text(
+            'Supports: \${plugin.supportedCurrencies.join(", ")}',
+          ),
+        )),
+        const SizedBox(height: 8),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: _selectedPlugin == null || _processing ? null : _pay,
+              child: _processing
+                  ? const SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : Text(
+                      'Pay \${widget.paymentDetails.currency}'
+                      '\${widget.paymentDetails.amount.toStringAsFixed(2)}',
+                    ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 16),
+      ],
+    );
+  }
+}
+
+class ShopDemo extends StatelessWidget {
+  const ShopDemo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final registry = PaymentPluginRegistry();
+    registry.register(StripePlugin());
+    registry.register(PayPalPlugin());
+
+    return Scaffold(
+      appBar: AppBar(title: const Text('Checkout')),
+      body: Column(
+        children: [
+          // Order summary
+          Card(
+            margin: const EdgeInsets.all(16),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: const [
+                  ListTile(
+                    title: Text('Developer Laptop'),
+                    trailing: Text('\$999.00'),
+                  ),
+                  Divider(),
+                  ListTile(
+                    title: Text(
+                      'Total',
+                      style: TextStyle(fontWeight: .bold),
+                    ),
+                    trailing: Text(
+                      '\$999.00',
+                      style: TextStyle(fontWeight: .bold),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          // Payment plugin selection
+          Card(
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            child: PaymentMethodSelector(
+              paymentDetails: const PaymentDetails(
+                amount: 999.00,
+                currency: 'USD',
+                description: 'Developer Laptop',
+              ),
+              registry: registry,
+              onSuccess: (result) {
+                print('App received success: \${result.transactionId}');
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(home: ShopDemo()));
+}"""),
+      ],
+      ar: [],
+    ),
     pros: LocSL(
       en: [
-        "Highly extensible without core changes",
-        "Supports third-party development",
-        "Hot-swappable components",
-        "Modular architecture",
+        "Open/Closed Principle at architectural level - extend without modifying core",
+        "Third parties can contribute without core source access",
+        "Core stays small and focused; features live in plugins",
+        "Plugins can be enabled/disabled at runtime",
+        "Independent versioning and deployment of plugins",
+        "Enables marketplace/ecosystem model (pub.dev is a plugin ecosystem)",
+        "Better separation of concerns across team boundaries",
       ],
       ar: [
-        "قابل للتوسيع بشكل كبير دون تغييرات أساسية",
-        "يدعم تطوير الطرف الثالث",
-        "مكونات قابلة للتبديل السريع",
-        "معمارية معيارية",
+        "مبدأ المفتوح/المغلق على المستوى المعماري - توسع دون تعديل الأساسي",
+        "يمكن لأطراف ثالثة المساهمة دون وصول للمصدر الأساسي",
+        "الأساسي يبقى صغيراً ومركزاً؛ الميزات تعيش في الإضافات",
+        "يمكن تفعيل/إلغاء تفعيل الإضافات في وقت التشغيل",
+        "إصدار ونشر مستقل للإضافات",
+        "يُمكّن نموذج السوق/النظام البيئي (pub.dev هو نظام بيئي للإضافات)",
+        "فصل أفضل للاهتمامات عبر حدود الفرق",
       ],
     ),
     cons: LocSL(
       en: [
-        "Security concerns with third-party plugins",
-        "Version compatibility issues",
-        "Performance overhead from plugin loading",
-        "Complex dependency management",
+        "Complex to design good plugin interfaces",
+        "Plugin API changes can break existing plugins",
+        "Performance overhead from indirection and dynamic loading",
+        "Harder to debug - behavior spread across plugin implementations",
+        "Version compatibility management between core and plugins",
+        "Security risk if plugins from untrusted sources are allowed",
       ],
       ar: [
-        "مخاوف أمنية مع إضافات الطرف الثالث",
-        "مشاكل توافق الإصدارات",
-        "عبء أداء من تحميل الإضافات",
-        "إدارة تبعيات معقدة",
+        "معقد تصميم واجهات إضافات جيدة",
+        "تغييرات واجهة API للإضافات يمكن أن تكسر الإضافات الموجودة",
+        "عبء أداء من عدم المباشرة والتحميل الديناميكي",
+        "أصعب في التنقيح - السلوك منتشر عبر تطبيقات الإضافات",
+        "إدارة توافق الإصدارات بين الأساسي والإضافات",
+        "مخاطر أمنية إذا كانت الإضافات من مصادر غير موثوقة مسموح بها",
       ],
     ),
     whenToUse: LocV(
@@ -6387,39 +12732,58 @@ void main() {
         StrContent("Use Plugin when:"),
         ULContent(
           value: [
-            "Building extensible applications or frameworks",
-            "You want to support third-party extensions",
-            "Features should be added/removed dynamically",
-            "Creating modular, component-based systems",
+            "You need third-party extensibility without source code access",
+            "Features should be independently deployable and versioned",
+            "Building a platform that others will extend",
+            "You need to swap entire subsystems at runtime or configuration",
+            "Different customers need different feature combinations",
+            "Team structure maps to independent plugin ownership",
           ],
+        ),
+        NoteContent(
+          "Plugin pattern adds significant architectural complexity. Only introduce it when you genuinely need extensibility by external parties or independent deployment of features.",
+          type: .warning,
         ),
       ],
       ar: [
-        StrContent("استخدم الإضافة عندما:"),
+        StrContent("استخدم نمط الإضافة عندما:"),
         ULContent(
           value: [
-            "بناء تطبيقات أو أطر قابلة للتوسيع",
-            "تريد دعم توسعات الطرف الثالث",
-            "يجب إضافة/إزالة الميزات ديناميكياً",
-            "إنشاء أنظمة معيارية قائمة على المكونات",
+            "تحتاج قابلية توسيع من طرف ثالث دون وصول للكود المصدري",
+            "الميزات يجب أن تكون قابلة للنشر والإصدار بشكل مستقل",
+            "بناء منصة سيوسعها الآخرون",
+            "تحتاج لتبديل أنظمة فرعية كاملة في وقت التشغيل أو التكوين",
+            "عملاء مختلفون يحتاجون تركيبات ميزات مختلفة",
+            "هيكل الفريق يتوافق مع ملكية إضافات مستقلة",
           ],
+        ),
+        NoteContent(
+          "نمط الإضافة يضيف تعقيداً معمارياً كبيراً. أدخله فقط عندما تحتاج حقاً لقابلية التوسيع من قبل أطراف خارجية أو النشر المستقل للميزات.",
+          type: .warning,
         ),
       ],
     ),
     commonMistakes: LocV(
       en: [
-        "Insufficient plugin isolation (security)",
-        "Poor version management",
-        "Not validating plugin integrity",
-        "Unclear plugin API contracts",
+        "Designing plugin interfaces that are too fine-grained or too coarse-grained",
+        "Not versioning plugin interfaces carefully - breaking changes destroy ecosystem",
+        "Letting plugins depend on each other - creates coupling",
+        "Not sandboxing plugins - allows malicious plugins to corrupt core",
+        "Using plugins when simple Strategy or configuration would suffice",
+        "Not providing a good default implementation as reference",
+        "Forgetting plugin lifecycle management (dispose, cleanup)",
       ],
       ar: [
-        "عزل إضافات غير كافٍ (أمني)",
-        "إدارة إصدارات سيئة",
-        "عدم التحقق من سلامة الإضافة",
-        "عقود API إضافة غير واضحة",
+        "تصميم واجهات إضافات دقيقة جداً أو خشنة جداً",
+        "عدم إصدار واجهات الإضافات بعناية - التغييرات الكسر تدمر النظام البيئي",
+        "السماح للإضافات بالاعتماد على بعضها البعض - يخلق اقتراناً",
+        "عدم عزل الإضافات - يسمح للإضافات الضارة بإفساد الأساسي",
+        "استخدام الإضافات عندما تكفي الاستراتيجية البسيطة أو التكوين",
+        "عدم توفير تطبيق افتراضي جيد كمرجع",
+        "نسيان إدارة دورة حياة الإضافات (التخلص، التنظيف)",
       ],
     ),
-    relatedPatterns: [PK.extensionObject, PK.factoryKit, PK.abstractFactory],
+    relatedPatterns: [PK.extensionObject, PK.strategy, PK.factoryMethod, PK.observer],
+    oftenConfusedWith: [PK.extensionObject, PK.strategy],
   ),
 };

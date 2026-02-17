@@ -180,7 +180,7 @@ class MockHttpClient implements HttpClient {
   @override
   Future<Response> get(String url) async {
     print('Mock GET: \$url');
-    await Future.delayed(.seconds(1));
+    await Future.delayed(Duration(seconds: 1));
     return Response(200, '{"mock": "data"}');
   }
   
@@ -601,7 +601,7 @@ class MockHttpClient implements HttpClient {
   @override
   Future<Response> get(String url) async {
     print('وهمي GET: \$url');
-    await Future.delayed(.seconds(1));
+    await Future.delayed(Duration(seconds: 1));
     return Response(200, '{"mock": "data"}');
   }
   
@@ -2161,7 +2161,7 @@ class HttpRequestBuilder {
   final Map<String, String> _headers = {};
   final Map<String, String> _queryParams = {};
   dynamic _body;
-  Duration _timeout = .seconds(30);
+  Duration _timeout = Duration(seconds: 30);
 
   HttpRequestBuilder(this._url);
 
@@ -2233,7 +2233,7 @@ void main() {
       .queryParam('page', '1')
       .queryParam('limit', '10')
       .body({'name': 'John', 'email': 'john@example.com'})
-      .timeout(.seconds(60))
+      .timeout(Duration(seconds: 60))
       .build();
 
   print(request);
@@ -2954,7 +2954,7 @@ class HttpRequestBuilder {
   final Map<String, String> _headers = {};
   final Map<String, String> _queryParams = {};
   dynamic _body;
-  Duration _timeout = .seconds(30);
+  Duration _timeout = Duration(seconds: 30);
 
   HttpRequestBuilder(this._url);
 
@@ -3026,7 +3026,7 @@ void main() {
       .queryParam('page', '1')
       .queryParam('limit', '10')
       .body({'name': 'John', 'email': 'john@example.com'})
-      .timeout(.seconds(60))
+      .timeout(Duration(seconds: 60))
       .build();
 
   print(request);
@@ -4803,7 +4803,7 @@ class UserRepository {
     
     try {
       conn.execute('SELECT * FROM users WHERE id = \$id');
-      await Future.delayed(.milliseconds(100)); // Simulate work
+      await Future.delayed(Duration(milliseconds: 100)); // Simulate work
     } finally {
       pool.release(conn);
     }
@@ -4819,7 +4819,7 @@ class OrderRepository {
     
     try {
       conn.execute('INSERT INTO orders VALUES (\$orderId)');
-      await Future.delayed(.milliseconds(150));
+      await Future.delayed(Duration(milliseconds: 150));
     } finally {
       pool.release(conn);
     }
@@ -5636,7 +5636,7 @@ class HttpConnection {
     print('[\$id] GET \$baseUrl\$endpoint (request #\$_requestCount)');
     
     // Simulate network delay
-    await Future.delayed(.milliseconds(50));
+    await Future.delayed(Duration(milliseconds: 50));
     
     return '{"status": "success", "data": "response from \$endpoint"}';
   }
@@ -5724,7 +5724,7 @@ class HttpConnectionPool {
     
     // Wait for available connection (simple implementation)
     print('Pool exhausted, waiting for available connection...');
-    await Future.delayed(.milliseconds(100));
+    await Future.delayed(Duration(milliseconds: 100));
     return acquire(); // Retry
   }
   
@@ -6148,7 +6148,7 @@ class _ExpensiveWidgetState extends State<ExpensiveWidget> {
     setState(() => _isProcessing = true);
     
     // Simulate expensive initialization (image processing, data loading, etc.)
-    await Future.delayed(.milliseconds(100));
+    await Future.delayed(Duration(milliseconds: 100));
     
     if (mounted) {
       setState(() => _isProcessing = false);
@@ -6871,7 +6871,7 @@ class LazyAsync {
   
   Future<ExpensiveObject> _initialize() async {
     print('Async initialization started...');
-    await Future.delayed(.seconds(1)); // Simulate async work
+    await Future.delayed(Duration(seconds: 1)); // Simulate async work
     print('Async initialization complete');
     return ExpensiveObject();
   }
@@ -7281,7 +7281,7 @@ class DataProvider extends ChangeNotifier {
   Future<List<ChartData>> get chartData async {
     if (_chartData == null) {
       print('[DataProvider] Loading chart data...');
-      await Future.delayed(.seconds(1)); // Simulate loading
+      await Future.delayed(Duration(seconds: 1)); // Simulate loading
       _chartData = List.generate(
         100,
         (i) => ChartData(date: DateTime.now().subtract(.days(i)), value: i * 10),
@@ -7294,7 +7294,7 @@ class DataProvider extends ChangeNotifier {
   Future<List<UserStats>> get userStats async {
     if (_userStats == null) {
       print('[DataProvider] Loading user stats...');
-      await Future.delayed(.milliseconds(500));
+      await Future.delayed(Duration(milliseconds: 500));
       _userStats = [
         UserStats(metric: 'Sessions', value: 1234),
         UserStats(metric: 'Page Views', value: 5678),
@@ -7838,7 +7838,7 @@ class ApiService {
   
   Future<void> fetchData() async {
     _logger.info('Fetching data from API...');
-    await Future.delayed(.milliseconds(100));
+    await Future.delayed(Duration(milliseconds: 100));
     _logger.warning('Rate limit approaching');
     _logger.info('Data fetched successfully');
   }
@@ -7927,7 +7927,7 @@ class AppConfig {
       .development => AppConfig._(
         environment: env,
         apiBaseUrl: 'http://localhost:3000',
-        apiTimeout: .seconds(60),
+        apiTimeout: Duration(seconds: 60),
         enableLogging: true,
         enableAnalytics: false,
         databaseUrl: 'sqlite:dev.db',
@@ -7940,7 +7940,7 @@ class AppConfig {
       .staging => AppConfig._(
         environment: env,
         apiBaseUrl: 'https://api.staging.example.com',
-        apiTimeout: .seconds(30),
+        apiTimeout: Duration(seconds: 30),
         enableLogging: true,
         enableAnalytics: true,
         databaseUrl: 'postgres://staging.db',
@@ -7953,7 +7953,7 @@ class AppConfig {
       .production => AppConfig._(
         environment: env,
         apiBaseUrl: 'https://api.example.com',
-        apiTimeout: .seconds(30),
+        apiTimeout: Duration(seconds: 30),
         enableLogging: false,
         enableAnalytics: true,
         databaseUrl: 'postgres://prod.db',
@@ -9452,7 +9452,7 @@ class SpeedBoostPowerUp implements PowerUp {
   String get description => 'Increases movement speed by 50%';
   
   @override
-  Duration get duration => .seconds(10);
+  Duration get duration => Duration(seconds: 10);
   
   @override
   IconData get icon => Icons.speed;
@@ -9506,7 +9506,7 @@ class InvincibilityPowerUp implements PowerUp {
   String get description => 'Makes character invincible';
   
   @override
-  Duration get duration => .seconds(5);
+  Duration get duration => Duration(seconds: 5);
   
   @override
   IconData get icon => Icons.shield;
@@ -9530,7 +9530,7 @@ class DoubleDamagePowerUp implements PowerUp {
   String get description => 'Doubles attack damage';
   
   @override
-  Duration get duration => .seconds(8);
+  Duration get duration => Duration(seconds: 8);
   
   @override
   IconData get icon => Icons.whatshot;
