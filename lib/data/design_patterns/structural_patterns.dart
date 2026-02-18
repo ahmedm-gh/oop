@@ -99,8 +99,9 @@ const Map<String, DesignPattern> structuralPatternsData = {
     examples: LocV(
       en: [
         // Example 1: Basic - Third-Party Library Adaptation
-        StrCodeBlock(
-          r'''// Example 1: Basic - Adapting Third-Party Payment Library
+        StrCodeBlock(r'''import 'dart:async';
+
+// Example 1: Basic - Adapting Third-Party Payment Library
 // Use case: Integrating external payment processor with incompatible interface
 
 // Your application's expected interface
@@ -260,7 +261,7 @@ void main() async {
     PayPalAdapter(PayPalSDK()),
   );
   await paypalCheckout.checkout(149.99);
-}''',
+}r''',
         ),
 
         // Example 2: Intermediate - Data Format Adapter
@@ -403,10 +404,13 @@ void main() {
   );
   modernService.displayProduct('67890');
   modernService.searchProducts('product');
-}'''),
+}r'''),
 
         // Example 3: Advanced - Multiple Interface Adaptation
-        StrCodeBlock(r'''// Example 3: Advanced - Two-Way Adapter Pattern
+        StrCodeBlock(r'''import 'dart:io';
+import 'dart:async';
+
+// Example 3: Advanced - Two-Way Adapter Pattern
 // Use case: Adapting between different logging frameworks
 
 // Your application's logging interface
@@ -606,7 +610,7 @@ void main() async {
   } catch (e) {
     print('Caught error (as expected)');
   }
-}'''),
+}r'''),
 
         // Example 4: Flutter - Platform Adapter
         StrCodeBlock(
@@ -998,8 +1002,11 @@ void main() async {
     examples: LocV(
       en: [
         // Example 1: Basic - Shape Rendering
-        StrCodeBlock(
-          r'''// Example 1: Basic - Shape Rendering with Multiple Backends
+        StrCodeBlock(r'''import 'dart:io';
+import 'dart:math';
+import 'package:flutter/material.dart';
+
+// Example 1: Basic - Shape Rendering with Multiple Backends
 // Use case: Drawing shapes with different rendering technologies
 
 // Implementation hierarchy: How to render
@@ -1167,7 +1174,7 @@ void main() {
   rect3.draw();
   
   print('\n✓ Shapes and renderers vary independently!');
-}''',
+}r''',
         ),
 
         // Example 2: Intermediate - Cross-Platform UI
@@ -1355,8 +1362,10 @@ void main() {
         ),
 
         // Example 3: Advanced - Database Abstraction
-        StrCodeBlock(
-          r'''// Example 3: Advanced - Database Access Layer with Multiple Drivers
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+import 'dart:async';
+
+// Example 3: Advanced - Database Access Layer with Multiple Drivers
 // Use case: Application that supports multiple database backends
 
 // Implementation: Database-specific operations
@@ -1631,7 +1640,7 @@ void main() async {
   await sqliteRepo.disconnect();
   
   print('\n✓ Same repository code works with all database drivers!');
-}''',
+}r''',
         ),
 
         // Example 4: Flutter - Theme System
@@ -1666,7 +1675,7 @@ class MaterialThemeRenderer implements ThemeRenderer {
   @override
   TextStyle getHeadlineStyle() => TextStyle(
     fontSize: 24,
-    fontWeight: .bold,
+    fontWeight: FontWeight.bold,
     color: brightness == .light ? Colors.black87 : Colors.white,
   );
   
@@ -1679,7 +1688,7 @@ class MaterialThemeRenderer implements ThemeRenderer {
   @override
   BoxDecoration getCardDecoration() => BoxDecoration(
     color: brightness == .light ? Colors.white : Colors.grey[800],
-    borderRadius: .circular(8),
+    borderRadius: BorderRadius.circular(8),
     boxShadow: [
       BoxShadow(
         color: Colors.black.withOpacity(0.1),
@@ -1706,7 +1715,7 @@ class CupertinoThemeRenderer implements ThemeRenderer {
   @override
   TextStyle getHeadlineStyle() => TextStyle(
     fontSize: 28,
-    fontWeight: .w600,
+    fontWeight: FontWeight.w600,
     color: brightness == .light 
         ? CupertinoColors.label 
         : CupertinoColors.white,
@@ -1725,7 +1734,7 @@ class CupertinoThemeRenderer implements ThemeRenderer {
     color: brightness == .light 
         ? CupertinoColors.systemBackground 
         : CupertinoColors.darkBackgroundGray,
-    borderRadius: .circular(12),
+    borderRadius: BorderRadius.circular(12),
   );
 }
 
@@ -1739,7 +1748,7 @@ class CustomGlassThemeRenderer implements ThemeRenderer {
   @override
   TextStyle getHeadlineStyle() => TextStyle(
     fontSize: 26,
-    fontWeight: .bold,
+    fontWeight: FontWeight.bold,
     color: Colors.white,
     shadows: [
       Shadow(
@@ -1758,7 +1767,7 @@ class CustomGlassThemeRenderer implements ThemeRenderer {
   @override
   BoxDecoration getCardDecoration() => BoxDecoration(
     color: Colors.white.withOpacity(0.1),
-    borderRadius: .circular(16),
+    borderRadius: BorderRadius.circular(16),
     border: Border.all(
       color: Colors.white.withOpacity(0.2),
       width: 1,
@@ -1792,14 +1801,14 @@ class ThemedCard extends ThemedWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: .all(16),
-      padding: .all(16),
+      margin: EdgeInsets.all(16),
+      padding: EdgeInsets.all(16),
       decoration: renderer.getCardDecoration(),
       child: Column(
-        crossAxisAlignment: .start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(title, style: renderer.getHeadlineStyle()),
-          .height(8),
+          SizedBox(height: 8),
           Text(content, style: renderer.getBodyStyle()),
         ],
       ),
@@ -1872,7 +1881,7 @@ class _ThemeSwitcherDemoState extends State<ThemeSwitcherDemo> {
       children: [
         // Theme selector
         Container(
-          padding: .all(8),
+          padding: EdgeInsets.all(8),
           child: Wrap(
             spacing: 8,
             children: [
@@ -2116,7 +2125,9 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - File System
-        StrCodeBlock(r'''// Example 1: Basic - File System Hierarchy
+        StrCodeBlock(r'''import 'dart:io';
+
+// Example 1: Basic - File System Hierarchy
 // Use case: Representing files and folders with uniform operations
 
 // Component: Common interface for files and folders
@@ -2275,10 +2286,11 @@ void main() {
   explorer.searchFiles(root, 'readme');
   
   print('\nTotal files in root: ${root.getFileCount()}');
-}'''),
+}r'''),
 
         // Example 2: Intermediate - UI Component Tree
         StrCodeBlock(r'''// Example 2: Intermediate - UI Component Hierarchy
+import 'package:flutter/material.dart';
 // Use case: Building complex UI from simple and composite components
 
 // Component: Base UI element
@@ -2533,11 +2545,10 @@ void main() {
   loginForm.enable();
   
   print('\nTotal components in form: ${loginForm.componentCount}');
-}'''),
+}r'''),
 
         // Example 3: Advanced - Mathematical Expression Tree
-        StrCodeBlock(
-          r'''// Example 3: Advanced - Mathematical Expression Evaluator
+        StrCodeBlock(r'''// Example 3: Advanced - Mathematical Expression Evaluator
 // Use case: Building and evaluating complex mathematical expressions
 
 // Component: Expression element
@@ -2812,11 +2823,13 @@ void main() {
 }
 
 // Import for math functions
-import 'dart:math';''',
+import 'dart:math';r''',
         ),
 
         // Example 4: Flutter - Nested Menu System
         StrCodeBlock(r'''// Example 4: Flutter - Hierarchical Menu System
+import 'dart:io';
+import 'package:flutter/material.dart';
 // Use case: Building complex nested menus with uniform operations
 
 // Component: Menu item
@@ -3047,11 +3060,11 @@ class MenuDemo extends StatelessWidget {
         children: items.map((item) => item.build(context)).toList(),
       ),
       bottomNavigationBar: Container(
-        padding: .all(8),
+        padding: EdgeInsets.all(8),
         child: Text(
           'Total menu items: ${_countItems(items)}',
-          textAlign: .center,
-          style: .caption,
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.grey),
         ),
       ),
     );
@@ -3072,7 +3085,7 @@ void main() {
   runApp(MaterialApp(
     home: MenuDemo(),
   ));
-}'''),
+}r'''),
       ],
       ar: [
         // Arabic versions would go here
@@ -3280,7 +3293,7 @@ void main() {
     ),
     // ... continues with examples
     // TODO: Add examples
-    examples: LocV(en: [StrCodeBlock(r'''// MISSING EXAMPLES''')], ar: []),
+    examples: LocV(en: [StrCodeBlock(r'''// MISSING EXAMPLESr''')], ar: []),
     pros: LocSL(
       en: [
         "More flexible than static inheritance - add behavior at runtime",
@@ -3616,10 +3629,12 @@ void main() {
   print('=== Direct subsystem access ===');
   projector.on();
   projector.setInput('HDMI-2');
-}'''),
+}r'''),
 
         // Example 2: Intermediate - Database Facade
-        StrCodeBlock(r'''// Example 2: Intermediate - Database Operations Facade
+        StrCodeBlock(r'''import 'dart:async';
+
+// Example 2: Intermediate - Database Operations Facade
 // Use case: Simplifying complex database operations
 
 // Complex subsystem: Connection management
@@ -3921,10 +3936,11 @@ void main() async {
   
   print('');
   db.shutdown();
-}'''),
+}r'''),
 
         // Example 3: Advanced - Payment Processing Facade
         StrCodeBlock(r'''// Example 3: Advanced - Multi-Provider Payment System
+import 'dart:async';
 // Use case: Simplifying payment processing across multiple providers
 
 // Complex subsystem: Payment providers
@@ -4283,10 +4299,13 @@ void main() async {
   );
   
   payment.generateReport();
-}'''),
+}r'''),
 
         // Example 4: Flutter - Camera Facade
-        StrCodeBlock(r'''// Example 4: Flutter - Camera Operations Facade
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+import 'dart:async';
+
+// Example 4: Flutter - Camera Operations Facade
 // Use case: Simplifying complex camera API
 
 // Complex subsystem classes (simulated)
@@ -4522,7 +4541,7 @@ class CameraDemo extends StatelessWidget {
       appBar: AppBar(title: Text('Camera Facade Demo')),
       body: Center(
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
               onPressed: () async {
@@ -4531,7 +4550,7 @@ class CameraDemo extends StatelessWidget {
               },
               child: Text('Quick Photo'),
             ),
-            .height(16),
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: () async {
                 final path = await simpleCam.captureWithProcessing(
@@ -4544,7 +4563,7 @@ class CameraDemo extends StatelessWidget {
               },
               child: Text('Photo with Processing'),
             ),
-            .height(16),
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: () async {
                 final url = await simpleCam.captureAndUpload();
@@ -4563,7 +4582,7 @@ void main() {
   runApp(MaterialApp(
     home: CameraDemo(),
   ));
-}'''),
+}r'''),
       ],
       ar: [
         // Arabic versions would go here
@@ -4780,6 +4799,7 @@ void main() {
       en: [
         // Example 1: Basic - Character Rendering
         StrCodeBlock(r'''// Example 1: Basic - Text Character Flyweights
+import 'package:flutter/material.dart';
 // Use case: Rendering thousands of characters efficiently
 
 // Flyweight: Shared character glyph (intrinsic state)
@@ -4928,14 +4948,14 @@ void main() {
   
   doc.render();
   doc.printMemoryStats();
-}'''),
+}r'''),
 
         // Example 2: Intermediate - Game Particle System
-        StrCodeBlock(
-          r'''// Example 2: Intermediate - Particle System with Flyweight
+        StrCodeBlock(r'''// Example 2: Intermediate - Particle System with Flyweight
 // Use case: Rendering thousands of particles efficiently
 
 import 'dart:math';
+import 'package:flutter/material.dart';
 
 // Flyweight: Shared particle appearance (intrinsic state)
 class ParticleType {
@@ -5132,7 +5152,7 @@ void main() {
   print('Without Flyweight: 270 particles × ~1KB = 270KB');
   print('With Flyweight: 4 types × 1KB + 270 particles × 64 bytes = ~21KB');
   print('Memory saved: ~92%!');
-}''',
+}r''',
         ),
 
         // Example 3: Advanced - Forest Rendering
@@ -5376,10 +5396,12 @@ void main() {
   print('  - Memory reduction: 99.93%!');
 }
 
-import 'dart:math';'''),
+import 'dart:math';r'''),
 
         // Example 4: Flutter - Icon System
-        StrCodeBlock(r'''// Example 4: Flutter - Shared Icon System
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+
+// Example 4: Flutter - Shared Icon System
 // Use case: Efficient icon rendering in Flutter apps
 
 // Flyweight: Icon data (intrinsic state)
@@ -5407,7 +5429,7 @@ class IconData {
       decoration: BoxDecoration(
         color: color.withOpacity(0.1),
         border: Border.all(color: color, width: 2),
-        borderRadius: .circular(size / 4),
+        borderRadius: BorderRadius.circular(size / 4),
       ),
       child: Center(
         child: Text(
@@ -5415,7 +5437,7 @@ class IconData {
           style: TextStyle(
             fontSize: size * 0.6,
             color: color,
-            fontWeight: .bold,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
@@ -5513,23 +5535,23 @@ class IconFlyweightDemo extends StatelessWidget {
         title: Text('Icon Flyweight Demo'),
         actions: [
           AppIcon('search', color: Colors.white),
-          .width(16),
+          SizedBox(width: 16),
           AppIcon('settings', color: Colors.white),
-          .width(16),
+          SizedBox(width: 16),
         ],
       ),
       body: ListView(
-        padding: .all(16),
+        padding: EdgeInsets.all(16),
         children: [
           Text(
             'Same icon data shared across all instances:',
             style: Theme.of(context).textTheme.titleMedium,
           ),
-          .height(24),
+          SizedBox(height: 24),
           
           // Many icons of same type (share flyweight)
           Text('100 home icons (share 1 IconData):'),
-          .height(8),
+          SizedBox(height: 8),
           Wrap(
             spacing: 8,
             runSpacing: 8,
@@ -5542,10 +5564,10 @@ class IconFlyweightDemo extends StatelessWidget {
             }),
           ),
           
-          .height(24),
+          SizedBox(height: 24),
           
           Text('Mixed icons (share 4 IconData objects):'),
-          .height(8),
+          SizedBox(height: 8),
           Wrap(
             spacing: 8,
             runSpacing: 8,
@@ -5557,7 +5579,7 @@ class IconFlyweightDemo extends StatelessWidget {
             ],
           ),
           
-          .height(24),
+          SizedBox(height: 24),
           
           _buildMemoryStats(),
         ],
@@ -5576,26 +5598,33 @@ class IconFlyweightDemo extends StatelessWidget {
     
     return Card(
       child: Padding(
-        padding: .all(16),
+        padding: EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Memory Statistics',
-              style: .titleMedium?.copyWith(fontWeight: .bold),
+
             ),
-            .height(8),
+            SizedBox(height: 8),
             Text('Icon instances: $instanceCount'),
             Text('Shared IconData objects: ${registry.iconCount}'),
-            .height(8),
+            SizedBox(height: 8),
             Text('With Flyweight: ~${(totalMemory / 1024).toStringAsFixed(1)} KB'),
             Text('Without Flyweight: ~${(withoutFlyweight / 1024).toStringAsFixed(1)} KB'),
             Text(
               'Memory saved: ${((1 - totalMemory / withoutFlyweight) * 100).toStringAsFixed(0)}%',
-              style: .titleSmall?.copyWith(
-                color: Colors.green,
-                fontWeight: .bold,
-              ),
+              style: TextStyle(color: Colors.green),
+            ),
+            SizedBox(height: 8),
+            Text('Icon instances: $instanceCount'),
+            Text('Shared IconData objects: ${registry.iconCount}'),
+            SizedBox(height: 8),
+            Text('With Flyweight: ~${(totalMemory / 1024).toStringAsFixed(1)} KB'),
+            Text('Without Flyweight: ~${(withoutFlyweight / 1024).toStringAsFixed(1)} KB'),
+            Text(
+              'Memory saved: ${((1 - totalMemory / withoutFlyweight) * 100).toStringAsFixed(0)}%',
+              style: TextStyle(color: Colors.green),
             ),
           ],
         ),
@@ -5608,7 +5637,7 @@ void main() {
   runApp(MaterialApp(
     home: IconFlyweightDemo(),
   ));
-}'''),
+}r'''),
       ],
       ar: [
         // Arabic versions would go here
@@ -5956,11 +5985,13 @@ void main() {
   gallery.showStatus();
   
   print('\n✓ Images 1, 3, 5 were never loaded - saving memory and time!');
-}'''),
+}r'''),
 
         // Example 2: Intermediate - Protection Proxy
-        StrCodeBlock(
-          r'''// Example 2: Intermediate - Protection Proxy (Access Control)
+        StrCodeBlock(r'''import 'dart:io';
+import 'dart:convert';
+
+// Example 2: Intermediate - Protection Proxy (Access Control)
 // Use case: Role-based access control for sensitive operations
 
 enum UserRole { guest, user, admin, superAdmin }
@@ -6141,11 +6172,12 @@ void main() {
     ProtectedFileSystem(realFileSystem, User('Dave', UserRole.superAdmin)),
     'Super Admin Access',
   );
-}''',
+}r''',
         ),
 
         // Example 3: Advanced - Caching + Logging Proxy
         StrCodeBlock(r'''// Example 3: Advanced - Caching and Logging Proxy
+import 'dart:async';
 // Use case: Transparent caching and audit logging for API calls
 
 // Subject: Data service interface
@@ -6442,10 +6474,15 @@ void main() async {
   print('\nDirect API calls made: ${realService.callCount}');
   print('Total requests made: 7');
   print('API calls saved by cache: ${7 - realService.callCount}');
-}'''),
+}r'''),
 
         // Example 4: Flutter - Network Request Proxy
-        StrCodeBlock(r'''// Example 4: Flutter - Smart API Client Proxy
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+import 'dart:io';
+import 'dart:convert';
+import 'dart:async';
+
+// Example 4: Flutter - Smart API Client Proxy
 // Use case: Transparent retry, auth, and offline support
 
 // Subject: API client interface
@@ -6694,9 +6731,9 @@ class _ApiProxyDemoState extends State<ApiProxyDemo> {
         children: [
           // Controls
           Padding(
-            padding: .all(16),
+            padding: EdgeInsets.all(16),
             child: Row(
-              mainAxisAlignment: .spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   onPressed: _fetchUser,
@@ -6727,7 +6764,7 @@ class _ApiProxyDemoState extends State<ApiProxyDemo> {
           
           // Status
           Container(
-            padding: .symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             color: Colors.grey[100],
             child: Row(
               children: [
@@ -6735,7 +6772,7 @@ class _ApiProxyDemoState extends State<ApiProxyDemo> {
                   _isOnline ? Icons.wifi : Icons.wifi_off,
                   color: _isOnline ? Colors.green : Colors.red,
                 ),
-                .width(8),
+                SizedBox(width: 8),
                 Text(_isOnline ? 'Online' : 'Offline'),
                 Spacer(),
                 Text('Cached: ${_api.cachedEndpoints} endpoints'),
@@ -6746,11 +6783,11 @@ class _ApiProxyDemoState extends State<ApiProxyDemo> {
           // Log
           Expanded(
             child: ListView.builder(
-              padding: .all(16),
+              padding: EdgeInsets.all(16),
               itemCount: _log.length,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: .symmetric(vertical: 2),
+                  padding: EdgeInsets.symmetric(vertical: 2),
                   child: Text(_log[index]),
                 );
               },
@@ -6766,7 +6803,7 @@ void main() {
   runApp(MaterialApp(
     home: ApiProxyDemo(),
   ));
-}'''),
+}r'''),
       ],
       ar: [
         // Arabic versions would go here
@@ -7117,11 +7154,13 @@ void main() {
   );
   combined.fetchData('flutter'); // Auth check → cache miss → fetch
   combined.fetchData('flutter'); // Auth check → cache hit
-}'''),
+}r'''),
 
         // Example 2: Intermediate - Progressive Enhancement
-        StrCodeBlock(
-          r'''// Example 2: Intermediate - Progressive Enhancement with Wrappers
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+import 'dart:async';
+
+// Example 2: Intermediate - Progressive Enhancement with Wrappers
 // Use case: Building up a service with multiple wrapper layers
 
 abstract class HttpClient {
@@ -7281,11 +7320,13 @@ void main() async {
   print('Log entries: ${logged.requestLog.length}');
   print('Cache size: ${cached.cacheSize}');
   print('Total HTTP attempts: ${retried.totalAttempts}');
-}''',
+}r''',
         ),
 
         // Example 3: Advanced - Flutter Widget Wrapper
         StrCodeBlock(r'''// Example 3: Advanced - Flutter Widget Wrappers
+import 'dart:math';
+import 'package:flutter/material.dart';
 // Use case: Applying the wrapper concept to Flutter widgets
 
 // Subject: Widget interface (Flutter's Widget IS the interface)
@@ -7344,7 +7385,7 @@ class LoadingWrapper extends StatelessWidget {
                 children: [
                   CircularProgressIndicator(),
                   if (loadingMessage != null) ...[
-                    .height(16),
+                    SizedBox(height: 16),
                     Text(
                       loadingMessage!,
                       style: TextStyle(color: Colors.white),
@@ -7481,7 +7522,7 @@ class _WrapperDemoState extends State<WrapperDemo> {
         children: [
           // Controls
           Padding(
-            padding: .all(8),
+            padding: EdgeInsets.all(8),
             child: Row(
               mainAxisAlignment: .spaceEvenly,
               children: [
@@ -7526,13 +7567,13 @@ class _WrapperDemoState extends State<WrapperDemo> {
                     // The actual content
                     child: Center(
                       child: Column(
-                        mainAxisAlignment: .center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             'Protected Content',
-                            style: .headlineMedium,
+                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                           ),
-                          .height(16),
+                          SizedBox(height: 16),
                           Text('Tap anywhere to track analytics'),
                         ],
                       ),
@@ -7550,7 +7591,7 @@ class _WrapperDemoState extends State<WrapperDemo> {
 
 void main() {
   runApp(MaterialApp(home: WrapperDemo()));
-}'''),
+}r'''),
       ],
       ar: [
         // Arabic versions would go here
@@ -7756,7 +7797,9 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - JSON API Mapper
-        StrCodeBlock(r'''// Example 1: Basic - JSON API Response Mapper
+        StrCodeBlock(r'''import 'dart:convert';
+
+// Example 1: Basic - JSON API Response Mapper
 // Use case: Mapping API responses to clean domain objects
 
 // Domain Objects: Pure business logic, no JSON knowledge
@@ -7914,10 +7957,12 @@ void main() {
   for (final u in users) {
     print(u);
   }
-}'''),
+}r'''),
 
         // Example 2: Intermediate - SQLite Database Mapper
         StrCodeBlock(r'''// Example 2: Intermediate - SQLite Database Mapper
+import 'dart:async';
+import 'package:flutter/material.dart';
 // Use case: Mapping between domain objects and database rows
 
 // Domain Objects: No SQL knowledge whatsoever
@@ -8162,11 +8207,12 @@ void main() async {
     print('  - ${p.name} (${p.price}) stock: ${p.stockQuantity}');
     if (p.isLowStock) print('    ⚠️ Low stock!');
   }
-}'''),
+}r'''),
 
         // Example 3: Advanced - Multi-Source Mapper with Identity Map
-        StrCodeBlock(
-          r'''// Example 3: Advanced - Multi-Source Mapper with Identity Map
+        StrCodeBlock(r'''import 'dart:convert';
+
+// Example 3: Advanced - Multi-Source Mapper with Identity Map
 // Use case: Mapping from multiple sources with object identity tracking
 
 // Domain Objects
@@ -8432,7 +8478,7 @@ void main() {
   print('=== Same Customer Object? ===');
   // Both orders share exact same Customer instance
   print('Same instance: ${identical(orders[0].customer, orders[1].customer)}');
-}''',
+}r''',
         ),
 
         // Example 4: Flutter - API to Domain Model Mapper
@@ -8618,7 +8664,7 @@ class ArticleCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Column(
-        crossAxisAlignment: .start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (article.imageUrl != null)
             Image.network(
@@ -8635,7 +8681,7 @@ class ArticleCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
-              crossAxisAlignment: .start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -8648,7 +8694,7 @@ class ArticleCard extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           color: Colors.orange,
-                          borderRadius: .circular(12),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Text(
                           '🔥 Trending',
@@ -8666,7 +8712,7 @@ class ArticleCard extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           color: Colors.green,
-                          borderRadius: .circular(12),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Text(
                           'New',
@@ -8682,7 +8728,7 @@ class ArticleCard extends StatelessWidget {
                 Text(
                   article.title,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: .bold,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -8697,7 +8743,7 @@ class ArticleCard extends StatelessWidget {
                   children: [
                     Text(
                       article.author.name,
-                      style: const TextStyle(fontWeight: .w500),
+                      style: const TextStyle(fontWeight: FontWeight.w500),
                     ),
                     const Spacer(),
                     Text(article.timeAgo),
@@ -8946,7 +8992,10 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - API DTOs
-        StrCodeBlock(r'''// Example 1: Basic - API Request/Response DTOs
+        StrCodeBlock(r'''import 'dart:convert';
+import 'dart:async';
+
+// Example 1: Basic - API Request/Response DTOs
 // Use case: Clean data contracts for API communication
 
 // ── REQUEST DTOs ──────────────────────────────────────────────
@@ -9183,7 +9232,7 @@ void main() async {
   final updateRequest = UpdateProfileRequest(bio: 'Flutter developer');
   print('Has changes: ${updateRequest.hasChanges}');
   print('Payload: ${updateRequest.toJson()}');
-}'''),
+}r'''),
 
         // Example 2: Intermediate - Layer DTOs
         StrCodeBlock(
@@ -9462,11 +9511,11 @@ void main() {
         ),
 
         // Example 3: Advanced - Isolate-safe DTOs
-        StrCodeBlock(
-          r'''// Example 3: Advanced - Isolate-Safe DTOs for Heavy Computation
+        StrCodeBlock(r'''// Example 3: Advanced - Isolate-Safe DTOs for Heavy Computation
 // Use case: Passing data safely between Flutter isolates
 
 import 'dart:isolate';
+import 'dart:async';
 
 // DTOs must be simple, serializable types for isolate message passing
 // (No complex objects, no closures, no native handles)
@@ -9699,11 +9748,13 @@ void main() async {
   } else {
     print('Processing failed: ${result.errorMessage}');
   }
-}''',
+}r''',
         ),
 
         // Example 4: Flutter - Form DTO with State Management
         StrCodeBlock(r'''// Example 4: Flutter - Form DTOs with Validation
+import 'dart:async';
+import 'package:flutter/material.dart';
 // Use case: Clean form data handling with DTOs
 
 // ── FORM INPUT DTO ────────────────────────────────────────────
@@ -9877,7 +9928,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildTextField(
               label: 'First Name',
@@ -9968,7 +10019,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     TextInputType keyboardType = TextInputType.text,
   }) {
     return Column(
-      crossAxisAlignment: .start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextField(
           decoration: InputDecoration(
@@ -9987,7 +10038,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
 void main() {
   runApp(const MaterialApp(home: RegistrationScreen()));
-}'''),
+}r'''),
       ],
       ar: [],
     ),
@@ -10189,7 +10240,9 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Widget Capability System
-        StrCodeBlock(r'''// Example 1: Basic - Widget Capability Extensions
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+
+// Example 1: Basic - Widget Capability Extensions
 // Use case: Adding optional capabilities to widgets at runtime
 
 // Extension interface: Base for all extensions
@@ -10401,7 +10454,7 @@ void main() {
 
   // Cleanup
   enhancedWidget.dispose();
-}'''),
+}r'''),
 
         // Example 2: Intermediate - Node Extension System
         StrCodeBlock(
@@ -10640,8 +10693,9 @@ void main() {
         ),
 
         // Example 3: Advanced - Plugin-Based Extension System
-        StrCodeBlock(
-          r'''// Example 3: Advanced - Runtime Plugin Extension System
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+
+// Example 3: Advanced - Runtime Plugin Extension System
 // Use case: Third-party plugins adding capabilities to core entities
 
 // ── CORE INTERFACES ───────────────────────────────────────────
@@ -10962,11 +11016,13 @@ void main() {
   service.printProductCapabilities(usb);
   final usbPrice = service.getPriceForUser(usb, 'user_alice');
   print('USB price: \$${usbPrice.toStringAsFixed(2)}');
-}''',
+}r''',
         ),
 
         // Example 4: Flutter - Widget Extension System
         StrCodeBlock(r'''// Example 4: Flutter - Widget Extension Capabilities
+import 'dart:math';
+import 'package:flutter/material.dart';
 // Use case: Adding optional features to screens at runtime
 
 // Extension interfaces
@@ -11124,7 +11180,7 @@ class TutorialOverlayExtension implements ScreenExtension {
                     Text(
                       steps[_currentStep],
                       style: const TextStyle(color: Colors.white),
-                      textAlign: .center,
+                      textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 12),
                     ElevatedButton(
@@ -11209,7 +11265,7 @@ class ExtensionDemo extends StatelessWidget {
       children: [
         const Text(
           'Extension Object Pattern Demo',
-          style: TextStyle(fontSize: 24, fontWeight: .bold),
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 16),
         const Text(
@@ -11247,7 +11303,7 @@ class ExtensionDemo extends StatelessWidget {
 
 void main() {
   runApp(MaterialApp(home: ExtensionDemo()));
-}'''),
+}r'''),
       ],
       ar: [],
     ),
@@ -11441,7 +11497,9 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Storage Plugin System
-        StrCodeBlock(r'''// Example 1: Basic - Storage Provider Plugin System
+        StrCodeBlock(r'''import 'dart:async';
+
+// Example 1: Basic - Storage Provider Plugin System
 // Use case: Swappable storage backends as plugins
 
 // ── PLUGIN CONTRACT ───────────────────────────────────────────
@@ -11714,7 +11772,7 @@ void main() async {
   await settings.save('sync_enabled', 'true');
   print('sync: ${await settings.load("sync_enabled")}');
   print('keys: ${await registry.active.listKeys()}');
-}'''),
+}r'''),
 
         // Example 2: Intermediate - Authentication Plugin System
         StrCodeBlock(
@@ -12040,7 +12098,10 @@ void main() async {
         ),
 
         // Example 3: Advanced - Analytics Plugin Architecture
-        StrCodeBlock(r'''// Example 3: Advanced - Analytics Plugin Architecture
+        StrCodeBlock(r'''import 'dart:math';
+import 'dart:async';
+
+// Example 3: Advanced - Analytics Plugin Architecture
 // Use case: Multiple analytics providers as interchangeable plugins
 
 // Plugin contract
@@ -12321,10 +12382,13 @@ void main() async {
   await analytics.track('some_event'); // Only Firebase receives it
 
   print('All app code used the same analytics.track() API!');
-}'''),
+}r'''),
 
         // Example 4: Flutter - Payment Plugin System
         StrCodeBlock(r'''// Example 4: Flutter - Payment Provider Plugin System
+import 'dart:async';
+import 'dart:math';
+import 'package:flutter/material.dart';
 // Use case: Swappable payment processors in a Flutter shop
 
 // Plugin contract
@@ -12579,7 +12643,7 @@ class _PaymentMethodSelectorState extends State<PaymentMethodSelector> {
     final plugins = widget.registry.all;
 
     return Column(
-      crossAxisAlignment: .start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: .min,
       children: [
         Padding(
@@ -12652,11 +12716,11 @@ class ShopDemo extends StatelessWidget {
                   ListTile(
                     title: Text(
                       'Total',
-                      style: TextStyle(fontWeight: .bold),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     trailing: Text(
                       '$999.00',
-                      style: TextStyle(fontWeight: .bold),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
@@ -12687,7 +12751,7 @@ class ShopDemo extends StatelessWidget {
 
 void main() {
   runApp(MaterialApp(home: ShopDemo()));
-}'''),
+}r'''),
       ],
       ar: [],
     ),

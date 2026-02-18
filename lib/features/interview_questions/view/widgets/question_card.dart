@@ -22,7 +22,6 @@ class QuestionCard extends StatelessWidget {
 
     return Card(
       child: InkWell(
-        // borderRadius: .circular(16),
         onTap: () {
           Navigator.pushNamed(
             context,
@@ -34,34 +33,36 @@ class QuestionCard extends StatelessWidget {
           padding: const .all(16),
           child: Column(
             crossAxisAlignment: .start,
-            spacing: 10,
+            spacing: 12,
             children: [
+              // Header row: difficulty chip + categories + bookmark
               Row(
-                mainAxisAlignment: .spaceBetween,
                 crossAxisAlignment: .start,
                 children: [
                   Expanded(
-                    child: Row(
-                      spacing: 5,
+                    child: Wrap(
+                      spacing: 6,
+                      runSpacing: 6,
+                      crossAxisAlignment: .center,
                       children: [
                         DifficultyChip(question.difficulty),
-                        Flexible(
-                          child: Text(
-                            <String>[
-                              question.type.label(l10n),
-                              ...question.categories.map((c) => c.label(l10n)),
-                            ].join(" • "),
-                            maxLines: 1,
-                            overflow: .ellipsis,
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: colors.onSurfaceVariant,
-                            ),
+                        Text(
+                          <String>[
+                            question.type.label(l10n),
+                            ...question.categories.map((c) => c.label(l10n)),
+                          ].join(" • "),
+                          maxLines: 1,
+                          overflow: .ellipsis,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: colors.onSurfaceVariant,
+                            fontWeight: .w500,
                           ),
                         ),
                       ],
                     ),
                   ),
+                  const SizedBox(width: 4),
                   BlocSelector<QuestionsCubit, QuestionsState, bool>(
                     selector: (state) {
                       return state.bookmarkedQuestions.contains(question.id);
@@ -80,60 +81,61 @@ class QuestionCard extends StatelessWidget {
                   ),
                 ],
               ),
+
+              // Question text + ID + chevron
               Row(
                 crossAxisAlignment: .end,
                 children: [
                   Expanded(
-                    child: Text.rich(
-                      TextSpan(
-                        text: content.question.safeBidi(),
-                        children: [
-                          TextSpan(
-                            text: "\n${question.id}",
+                    child: Column(
+                      crossAxisAlignment: .start,
+                      spacing: 6,
+                      children: [
+                        Text(
+                          content.question.safeBidi(),
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: .w600,
+                            height: 1.35,
+                          ),
+                        ),
+                        // Question ID badge
+                        Container(
+                          padding: const .symmetric(horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: colors.surfaceContainerHighest.withValues(
+                              alpha: 0.5,
+                            ),
+                            borderRadius: .circular(4),
+                          ),
+                          child: Text(
+                            question.id,
                             style: TextStyle(
                               fontSize: 10,
-                              fontWeight: .normal,
-                              color: colors.secondary,
+                              fontWeight: .w500,
+                              color: colors.onSurfaceVariant,
+                              letterSpacing: 0.3,
                             ),
                           ),
-                        ],
-                      ),
-                      style: const TextStyle(fontSize: 16, fontWeight: .w600),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(width: 5),
-                  Icon(Icons.chevron_right, color: colors.onSurfaceVariant),
+                  const SizedBox(width: 8),
+                  Container(
+                    padding: const .all(4),
+                    decoration: BoxDecoration(
+                      color: colors.primary.withValues(alpha: 0.08),
+                      borderRadius: .circular(8),
+                    ),
+                    child: Icon(
+                      Icons.chevron_right_rounded,
+                      size: 20,
+                      color: colors.primary,
+                    ),
+                  ),
                 ],
               ),
-              // ChipTheme(
-              //   data: ChipThemeData(
-              //     padding: .zero,
-              //     labelPadding: const .symmetric(horizontal: 10),
-              //     shape: RoundedRectangleBorder(borderRadius: .circular(5)),
-              //     color: WidgetStatePropertyAll(colors.surfaceContainerLow),
-              //     side: .none,
-              //   ),
-              //   child: Wrap(
-              //     spacing: 4,
-              //     runSpacing: 4,
-              //     children: [
-              //       ...?question.tags
-              //           ?.take(3)
-              //           .map(
-              //             (tag) => Chip(
-              //               visualDensity: .compact,
-              //               label: Text(
-              //                 tag,
-              //                 style: TextStyle(
-              //                   fontSize: 12,
-              //                   color: colors.onSurface,
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //     ],
-              //   ),
-              // ),
             ],
           ),
         ),

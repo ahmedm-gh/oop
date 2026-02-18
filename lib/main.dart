@@ -220,6 +220,7 @@ class AppBottomBar extends StatelessWidget {
                       Icons.square_rounded,
                       size: 6,
                       color: colors.outlineVariant,
+                      applyTextScaling: false,
                     ),
                     IconButton(
                       onPressed: () {

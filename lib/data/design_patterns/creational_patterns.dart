@@ -92,7 +92,9 @@ const Map<String, DesignPattern> creationalPatternsData = {
     examples: LocV(
       en: [
         // Example 1: Basic - Dialog Factory
-        StrCodeBlock(r'''// Example 1: Basic - Platform-Specific Dialog Factory
+        StrCodeBlock(r'''import 'dart:io';
+
+// Example 1: Basic - Platform-Specific Dialog Factory
 // Use case: Creating platform-specific UI components
 
 abstract class Dialog {
@@ -150,10 +152,13 @@ void main() {
   }
   
   factory.showDialog(); // Creates appropriate dialog
-}'''),
+}r'''),
 
         // Example 2: Intermediate - HTTP Client Factory
         StrCodeBlock(r'''// Example 2: Intermediate - Network Client Factory
+import 'dart:async';
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
 // Use case: Different HTTP clients for different environments
 
 abstract class HttpClient {
@@ -234,10 +239,13 @@ class Response {
 class User {
   User(this.name);
   final String name;
-}'''),
+}r'''),
 
         // Example 3: Advanced - Document Parser Factory
-        StrCodeBlock(r'''// Example 3: Advanced - Document Parser with Cache
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+import 'dart:convert';
+
+// Example 3: Advanced - Document Parser with Cache
 // Use case: Parsing different document formats efficiently
 
 abstract class DocumentParser {
@@ -354,10 +362,13 @@ void main() {
   
   // Parser reused from cache on second call
   print(processor.processDocument('another.json', '{}'));
-}'''),
+}r'''),
 
         // Example 4: Flutter Widget Factory
         StrCodeBlock(r'''// Example 4: Flutter - Theme-Aware Button Factory
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 // Use case: Creating buttons that match app theme
 
 abstract class ThemedButton extends StatelessWidget {
@@ -421,11 +432,11 @@ class CustomThemedButton extends ThemedButton {
         gradient: LinearGradient(
           colors: [Colors.purple, Colors.pink],
         ),
-        borderRadius: .circular(20),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: TextButton(
         onPressed: onPressed,
-        child: Text(text, style: .white),
+        child: Text(text, style: TextStyle(color: Colors.white)),
       ),
     );
   }
@@ -458,7 +469,7 @@ class MaterialButtonFactory extends ButtonFactory {
   );
   
   @override
-  Widget createCard() => Card(child: .empty);
+  Widget createCard() => Card(child: SizedBox.shrink());
 }
 
 class CupertinoButtonFactory extends ButtonFactory {
@@ -477,7 +488,7 @@ class CupertinoButtonFactory extends ButtonFactory {
   Widget createCard() => Container(
     decoration: BoxDecoration(
       color: CupertinoColors.systemGrey6,
-      borderRadius: .circular(10),
+      borderRadius: BorderRadius.circular(10),
     ),
   );
 }
@@ -495,26 +506,28 @@ class ThemedApp extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             factory.createButton(
               text: 'Click Me',
               onPressed: () => print('Clicked!'),
             ),
-            .height(20),
+            SizedBox(height: 20),
             factory.createTextField(),
-            .height(20),
+            SizedBox(height: 20),
             factory.createCard(),
           ],
         ),
       ),
     );
   }
-}'''),
+}r'''),
       ],
       ar: [
         // Same examples with Arabic comments
-        StrCodeBlock(r'''// مثال 1: أساسي - مصنع مربعات الحوار الخاصة بالمنصة
+        StrCodeBlock(r'''import 'dart:io';
+
+// مثال 1: أساسي - مصنع مربعات الحوار الخاصة بالمنصة
 // حالة الاستخدام: إنشاء مكونات واجهة مستخدم خاصة بالمنصة
 
 abstract class Dialog {
@@ -572,9 +585,12 @@ void main() {
   }
   
   factory.showDialog(); // ينشئ مربع الحوار المناسب
-}'''),
+}r'''),
 
         StrCodeBlock(r'''// مثال 2: متوسط - مصنع عميل HTTP
+import 'dart:async';
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
 // حالة الاستخدام: عملاء HTTP مختلفون لبيئات مختلفة
 
 abstract class HttpClient {
@@ -655,9 +671,11 @@ class Response {
 class User {
   User(this.name);
   final String name;
-}'''),
+}r'''),
 
-        StrCodeBlock(r'''// مثال 3: متقدم - محلل المستندات مع التخزين المؤقت
+        StrCodeBlock(r'''import 'dart:convert';
+
+// مثال 3: متقدم - محلل المستندات مع التخزين المؤقت
 // حالة الاستخدام: تحليل تنسيقات مستندات مختلفة بكفاءة
 
 abstract class DocumentParser {
@@ -774,9 +792,12 @@ void main() {
   
   // المحلل يُعاد استخدامه من الذاكرة المؤقتة في الاستدعاء الثاني
   print(processor.processDocument('another.json', '{}'));
-}'''),
+}r'''),
 
         StrCodeBlock(r'''// مثال 4: Flutter - مصنع أزرار واعٍ بالثيم
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 // حالة الاستخدام: إنشاء أزرار تتطابق مع ثيم التطبيق
 
 abstract class ThemedButton extends StatelessWidget {
@@ -840,11 +861,11 @@ class CustomThemedButton extends ThemedButton {
         gradient: LinearGradient(
           colors: [Colors.purple, Colors.pink],
         ),
-        borderRadius: .circular(20),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: TextButton(
         onPressed: onPressed,
-        child: Text(text, style: .white),
+        child: Text(text, style: TextStyle(color: Colors.white)),
       ),
     );
   }
@@ -877,7 +898,7 @@ class MaterialButtonFactory extends ButtonFactory {
   );
   
   @override
-  Widget createCard() => Card(child: .empty);
+  Widget createCard() => Card(child: SizedBox.shrink());
 }
 
 class CupertinoButtonFactory extends ButtonFactory {
@@ -896,7 +917,7 @@ class CupertinoButtonFactory extends ButtonFactory {
   Widget createCard() => Container(
     decoration: BoxDecoration(
       color: CupertinoColors.systemGrey6,
-      borderRadius: .circular(10),
+      borderRadius: BorderRadius.circular(10),
     ),
   );
 }
@@ -914,22 +935,22 @@ class ThemedApp extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             factory.createButton(
               text: 'انقر هنا',
               onPressed: () => print('تم النقر!'),
             ),
-            .height(20),
+            SizedBox(height: 20),
             factory.createTextField(),
-            .height(20),
+            SizedBox(height: 20),
             factory.createCard(),
           ],
         ),
       ),
     );
   }
-}'''),
+}r'''),
       ],
     ),
     pros: LocSL(
@@ -1115,7 +1136,11 @@ class ThemedApp extends StatelessWidget {
     examples: LocV(
       en: [
         // Example 1: Basic UI Factory
-        StrCodeBlock(r'''// Example 1: Basic - Complete UI Theme Factory
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'dart:io';
+
+// Example 1: Basic - Complete UI Theme Factory
 // Use case: Ensuring consistent UI component families
 
 abstract class Button {
@@ -1277,10 +1302,13 @@ void main() {
   runApp(MaterialApp(
     home: LoginScreen(factory),
   ));
-}'''),
+}r'''),
 
         // Example 2: Data Layer Factory
         StrCodeBlock(r'''// Example 2: Intermediate - Data Layer Factory
+import 'dart:async';
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
 // Use case: Complete data layer with matching components
 
 abstract class UserRepository {
@@ -1472,10 +1500,13 @@ class User {
       User(json['id'], json['name']);
   
   Map<String, dynamic> toJson() => {'id': id, 'name': name};
-}'''),
+}r'''),
 
         // Example 3: Advanced - Game Entity Factory
-        StrCodeBlock(r'''// Example 3: Advanced - Game Entity Factory with Pooling
+        StrCodeBlock(r'''import 'dart:math';
+import 'package:flutter/material.dart';
+
+// Example 3: Advanced - Game Entity Factory with Pooling
 // Use case: Creating complete game entity families efficiently
 
 abstract class Sprite {
@@ -1770,12 +1801,15 @@ class Particle {
   final Vector2 position;
   bool isDead = false;
   void update(double dt) {}
-}''',
+}r''',
         ),
       ],
       ar: [
         // Arabic versions with same structure but Arabic comments
         StrCodeBlock(r'''// مثال 1: أساسي - مصنع ثيم UI كامل
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 // حالة الاستخدام: ضمان عائلات مكونات واجهة مستخدم متسقة
 
 abstract class Button {
@@ -1937,7 +1971,7 @@ void main() {
   runApp(MaterialApp(
     home: LoginScreen(factory),
   ));
-}'''),
+}r'''),
         // Add other Arabic examples similarly...
       ],
     ),
@@ -2128,7 +2162,10 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - HTTP Request Builder
-        StrCodeBlock(r'''// Example 1: Basic - HTTP Request Builder
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+import 'dart:convert';
+
+// Example 1: Basic - HTTP Request Builder
 // Use case: Building complex HTTP requests with many optional parameters
 
 class HttpRequest {
@@ -2246,10 +2283,11 @@ void main() {
   //   body: {'name': 'John', 'email': 'john@example.com'},
   //   timeout: Duration(seconds: 60),
   // );
-}'''),
+}r'''),
 
         // Example 2: Intermediate - Widget Builder
         StrCodeBlock(r'''// Example 2: Intermediate - Complex Widget Builder
+import 'package:flutter/material.dart';
 // Use case: Building complex Flutter widgets with many customization options
 
 class CustomCard {
@@ -2323,8 +2361,8 @@ class CustomCardBuilder {
   Widget? _child;
   double _elevation = 4.0;
   Color? _color;
-  BorderRadius _borderRadius = .circular(12);
-  EdgeInsets _padding = .all(16);
+  BorderRadius _borderRadius = BorderRadius.circular(12);
+  EdgeInsets _padding = EdgeInsets.all(16);
   EdgeInsets _margin = .zero;
   double? _width;
   double? _height;
@@ -2394,7 +2432,7 @@ class CustomCardBuilder {
   }
 
   CustomCardBuilder get rounded {
-    _borderRadius = .circular(20);
+    _borderRadius = BorderRadius.circular(20);
     return this;
   }
 
@@ -2443,7 +2481,7 @@ class CardDemo extends StatelessWidget {
 
         // Gradient card with tap
         CustomCardBuilder()
-            .child(Text('Gradient Card', style: .white))
+            .child(Text('Gradient Card', style: TextStyle(color: Colors.white)))
             .gradient(LinearGradient(
               colors: [Colors.purple, Colors.blue],
             ))
@@ -2462,8 +2500,8 @@ class CardDemo extends StatelessWidget {
             ))
             .color(Colors.amber[50])
             .border(color: Colors.amber, width: 2)
-            .padding(.all(24))
-            .margin(.symmetric(vertical: 8))
+            .padding(EdgeInsets.all(24))
+            .margin(EdgeInsets.symmetric(vertical: 8))
             .size(width: 200, height: 150)
             .flat
             .build()
@@ -2471,7 +2509,7 @@ class CardDemo extends StatelessWidget {
       ],
     );
   }
-}'''),
+}r'''),
 
         // Example 3: Advanced - Query Builder with Validation
         StrCodeBlock(r'''// Example 3: Advanced - SQL Query Builder with Validation
@@ -2710,7 +2748,7 @@ void main() {
   print('Cheap products:\n$cheapProducts');
   print('---');
   print('Expensive products:\n$expensiveProducts');
-}''',
+}r''',
         ),
 
         // Example 4: Test Data Builder
@@ -2916,11 +2954,14 @@ void main() {
       .inactive
       .build();
   print('Inactive: ${inactiveUser.name} (active: ${inactiveUser.isActive})');
-}'''),
+}r'''),
       ],
       ar: [
         // Arabic versions
-        StrCodeBlock(r'''// مثال 1: أساسي - بناء طلبات HTTP
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+import 'dart:convert';
+
+// مثال 1: أساسي - بناء طلبات HTTP
 // حالة الاستخدام: بناء طلبات HTTP معقدة مع العديد من المعاملات الاختيارية
 
 class HttpRequest {
@@ -3038,7 +3079,7 @@ void main() {
   //   body: {'name': 'John', 'email': 'john@example.com'},
   //   timeout: Duration(seconds: 60),
   // );
-}'''),
+}r'''),
         // Add other Arabic examples following same pattern...
       ],
     ),
@@ -3244,6 +3285,7 @@ void main() {
       en: [
         // Example 1: Basic - Shape Cloning
         StrCodeBlock(r'''// Example 1: Basic - Shape Cloning System
+import 'dart:math';
 // Use case: Graphics editor with copy/paste functionality
 
 abstract class Shape {
@@ -3405,10 +3447,12 @@ void main() {
   editor.duplicateShape(1); // Duplicate rectangle
   
   editor.drawAll();
-}'''),
+}r'''),
 
         // Example 2: Intermediate - Game Entity System
-        StrCodeBlock(r'''// Example 2: Intermediate - Game Entity Prototype System
+        StrCodeBlock(r'''import 'dart:math';
+
+// Example 2: Intermediate - Game Entity Prototype System
 // Use case: Spawning enemies with preset configurations
 
 class GameEntity {
@@ -3575,11 +3619,12 @@ void main() {
     abilities: ['Quick Attack', 'Dodge', 'Summon Minions', 'Poison'],
   );
   print('Created boss: $bossGoblin');
-}''',
+}r''',
         ),
 
         // Example 3: Advanced - Document Template System
-        StrCodeBlock(r'''// Example 3: Advanced - Document Template with Deep/Shallow Cloning
+        StrCodeBlock(
+          r'''// Example 3: Advanced - Document Template with Deep/Shallow Cloning
 // Use case: Document management system with templates
 
 class DocumentSection {
@@ -3785,7 +3830,10 @@ void main() {
         ),
 
         // Example 4: Flutter State Management
-        StrCodeBlock(r'''// Example 4: Flutter - User Settings Prototype
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+import 'dart:math';
+
+// Example 4: Flutter - User Settings Prototype
 // Use case: Managing app settings with undo/redo using cloning
 
 @immutable
@@ -3985,22 +4033,22 @@ class _SettingsView extends StatelessWidget {
           
           // Presets
           Padding(
-            padding: .all(16),
+            padding: EdgeInsets.all(16),
             child: Column(
-              crossAxisAlignment: .stretch,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text('Presets', style: Theme.of(context).textTheme.titleMedium),
-                .height(8),
+                SizedBox(height: 8),
                 ElevatedButton(
                   onPressed: () => manager.resetToDefault(),
                   child: Text('Reset to Default'),
                 ),
-                .height(8),
+                SizedBox(height: 8),
                 ElevatedButton(
                   onPressed: () => manager.applyPreset(AppSettings.darkModePreset),
                   child: Text('Dark Mode Preset'),
                 ),
-                .height(8),
+                SizedBox(height: 8),
                 ElevatedButton(
                   onPressed: () => manager.applyPreset(AppSettings.accessibilityPreset),
                   child: Text('Accessibility Preset'),
@@ -4012,11 +4060,12 @@ class _SettingsView extends StatelessWidget {
       ),
     );
   }
-}'''),
+}r'''),
       ],
       ar: [
         // Arabic versions
         StrCodeBlock(r'''// مثال 1: أساسي - نظام استنساخ الأشكال
+import 'dart:math';
 // حالة الاستخدام: محرر رسومات مع وظيفة نسخ/لصق
 
 abstract class Shape {
@@ -4178,7 +4227,7 @@ void main() {
   editor.duplicateShape(1); // تكرار المستطيل
   
   editor.drawAll();
-}'''),
+}r'''),
         // Add remaining Arabic examples...
       ],
     ),
@@ -4516,10 +4565,11 @@ void main() {
   final modern1 = ConfigManagerModern.instance;
   final modern2 = ConfigManagerModern();
   print('Are they the same? ${identical(modern1, modern2)}');
-}'''),
+}r'''),
 
         // Example 2: Intermediate - Logger Singleton
-        StrCodeBlock(r'''// Example 2: Intermediate - Thread-Safe Logger Singleton
+        StrCodeBlock(
+          r'''// Example 2: Intermediate - Thread-Safe Logger Singleton
 // Use case: Application-wide logging system
 
 enum LogLevel { debug, info, warning, error }
@@ -4666,7 +4716,9 @@ void main() {
         ),
 
         // Example 3: Advanced - Database Connection Pool
-        StrCodeBlock(r'''// Example 3: Advanced - Singleton with Resource Management
+        StrCodeBlock(r'''import 'dart:async';
+
+// Example 3: Advanced - Singleton with Resource Management
 // Use case: Database connection pool manager
 
 class DatabaseConnection {
@@ -4857,11 +4909,12 @@ void main() async {
   print('${ConnectionPool.instance.getStats()}');
   
   ConnectionPool.instance.shutdown();
-}''',
+}r''',
         ),
 
         // Example 4: Flutter - Analytics Service
         StrCodeBlock(r'''// Example 4: Flutter - Analytics Service Singleton
+import 'package:flutter/material.dart';
 // Use case: Track user events across the app
 
 class AnalyticsEvent {
@@ -4974,7 +5027,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(title: Text('Home')),
       body: Center(
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
               onPressed: () {
@@ -4989,7 +5042,7 @@ class HomeScreen extends StatelessWidget {
               },
               child: Text('View Products'),
             ),
-            .height(20),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 AnalyticsService.instance.trackButtonClick(
@@ -5082,7 +5135,7 @@ class AnalyticsDashboard extends StatelessWidget {
       body: ListView(
         children: [
           Padding(
-            padding: .all(16),
+            padding: EdgeInsets.all(16),
             child: Text(
               'Event Summary',
               style: Theme.of(context).textTheme.headlineSmall,
@@ -5104,11 +5157,14 @@ void main() {
   runApp(MaterialApp(
     home: HomeScreen(),
   ));
-}'''),
+}r'''),
       ],
       ar: [
         // Arabic versions
-        StrCodeBlock(r'''// مثال 1: أساسي - تطبيقات المفرد الكلاسيكية
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+import 'dart:math';
+
+// مثال 1: أساسي - تطبيقات المفرد الكلاسيكية
 // حالة الاستخدام: مدير إعدادات التطبيق
 
 // التطبيق 1: التهيئة الحريصة (Eager Initialization) - يتم إنشاؤها فوراً
@@ -5208,7 +5264,7 @@ void main() {
   final modern1 = ConfigManagerModern.instance;
   final modern2 = ConfigManagerModern();
   print('هل هما نفس الشيء؟ ${identical(modern1, modern2)}');
-}'''),
+}r'''),
         // Add remaining Arabic examples following same pattern...
       ],
     ),
@@ -5599,10 +5655,12 @@ void main() {
   pool.release(buf3);
   
   pool.printStats();
-}'''),
+}r'''),
 
         // Example 2: Intermediate - HTTP Connection Pool
-        StrCodeBlock(r'''// Example 2: Intermediate - HTTP Connection Pool
+        StrCodeBlock(r'''import 'dart:async';
+
+// Example 2: Intermediate - HTTP Connection Pool
 // Use case: Managing expensive HTTP connections
 
 class HttpConnection {
@@ -5807,10 +5865,11 @@ void main() async {
   print('Pool stats: ${stats.inUse} in use, ${stats.available} available');
   
   pool.shutdown();
-}'''),
+}r'''),
 
         // Example 3: Advanced - Particle System Pool
-        StrCodeBlock(r'''// Example 3: Advanced - Game Particle System with Object Pool
+        StrCodeBlock(
+          r'''// Example 3: Advanced - Game Particle System with Object Pool
 // Use case: High-performance particle effects
 
 class Vector2 {
@@ -6097,7 +6156,10 @@ class Random {
         ),
 
         // Example 4: Flutter - Widget Pool for ListView
-        StrCodeBlock(r'''// Example 4: Flutter - Reusable Complex Widget Pool
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+import 'dart:async';
+
+// Example 4: Flutter - Reusable Complex Widget Pool
 // Use case: Expensive widget recycling in custom list
 
 class ExpensiveWidgetData {
@@ -6151,19 +6213,19 @@ class _ExpensiveWidgetState extends State<ExpensiveWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: .all(8),
+      margin: EdgeInsets.all(8),
       child: Padding(
-        padding: .all(16),
+        padding: EdgeInsets.all(16),
         child: _isProcessing
             ? Center(child: CircularProgressIndicator())
             : Column(
-                crossAxisAlignment: .start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     widget.data.title,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  .height(8),
+                  SizedBox(height: 8),
                   Container(
                     height: 150,
                     color: Colors.grey[300],
@@ -6171,9 +6233,9 @@ class _ExpensiveWidgetState extends State<ExpensiveWidget> {
                       child: Text('Image: ${widget.data.imageUrl}'),
                     ),
                   ),
-                  .height(8),
+                  SizedBox(height: 8),
                   Text(widget.data.description),
-                  .height(8),
+                  SizedBox(height: 8),
                   ElevatedButton(
                     onPressed: widget.onRecycle,
                     child: Text('Recycle This Widget'),
@@ -6275,11 +6337,11 @@ class _PooledListViewState extends State<PooledListView> {
         actions: [
           Center(
             child: Padding(
-              padding: .symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 'Pool: ${_poolManager.pooledCount} | ' +
                 'Active: ${_poolManager.activeCount}',
-                style: .white,
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ),
@@ -6307,7 +6369,7 @@ void main() {
   runApp(MaterialApp(
     home: PooledListView(),
   ));
-}'''),
+}r'''),
       ],
       ar: [
         // Arabic versions
@@ -6467,7 +6529,7 @@ void main() {
   pool.release(buf3);
   
   pool.printStats();
-}'''),
+}r'''),
         // Add remaining Arabic examples...
       ],
     ),
@@ -6795,11 +6857,12 @@ void main() {
   print('=== Startup Time Comparison ===');
   print('Eager: Slow startup (resource created immediately)');
   print('Lazy: Fast startup (resource created when needed)');
-}''',
+}r''',
         ),
 
         // Example 2: Intermediate - Manual Lazy Implementation
-        StrCodeBlock(r'''// Example 2: Intermediate - Manual Lazy Initialization Patterns
+        StrCodeBlock(
+          r'''// Example 2: Intermediate - Manual Lazy Initialization Patterns
 // Use case: Different lazy initialization strategies
 
 // Pattern 1: Lazy with nullable + null check
@@ -6919,7 +6982,9 @@ void main() async {
         ),
 
         // Example 3: Advanced - Configuration Manager
-        StrCodeBlock(r'''// Example 3: Advanced - Lazy Configuration Manager
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+
+// Example 3: Advanced - Lazy Configuration Manager
 // Use case: App configuration with lazy-loaded sections
 
 abstract class ConfigSection {
@@ -7113,10 +7178,11 @@ void main() {
   print('Simple app: Fast startup (only loaded API config)');
   print('Complex app: Slower (loaded everything as needed)');
   print('But: Simple app would be slower with eager loading!');
-}'''),
+}r'''),
 
         // Example 4: Flutter - Lazy Widget Loading
-        StrCodeBlock(r'''// Example 4: Flutter - Lazy Screen/Widget Initialization
+        StrCodeBlock(
+          r'''// Example 4: Flutter - Lazy Screen/Widget Initialization
 // Use case: Lazy loading expensive screens in navigation
 
 abstract class Screen extends StatelessWidget {
@@ -7137,10 +7203,10 @@ class HomeScreen extends Screen {
       appBar: AppBar(title: Text(title)),
       body: Center(
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Home Screen'),
-            .height(20),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -7152,7 +7218,7 @@ class HomeScreen extends Screen {
               },
               child: Text('Go to Analytics'),
             ),
-            .height(10),
+            SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -7191,7 +7257,7 @@ class AnalyticsScreen extends Screen {
       appBar: AppBar(title: Text(title)),
       body: Center(
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Analytics Screen'),
             Text('(Expensive charts and graphs loaded)'),
@@ -7221,7 +7287,7 @@ class SettingsScreen extends Screen {
       appBar: AppBar(title: Text(title)),
       body: Center(
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Settings Screen'),
             Text('(User preferences loaded)'),
@@ -7384,7 +7450,7 @@ void main() {
   print('=== مقارنة وقت البدء ===');
   print('الحريص: بدء بطيء (المورد يُنشأ فوراً)');
   print('الكسول: بدء سريع (المورد يُنشأ عند الحاجة)');
-}''',
+}r''',
         ),
         // Add remaining Arabic examples...
       ],
@@ -7716,10 +7782,12 @@ void main() {
   
   print('\nClosing all connections...');
   DatabaseConnection.closeAll();
-}'''),
+}r'''),
 
         // Example 2: Intermediate - Logger Multiton
-        StrCodeBlock(r'''// Example 2: Intermediate - Per-Module Logger System
+        StrCodeBlock(r'''import 'dart:async';
+
+// Example 2: Intermediate - Per-Module Logger System
 // Use case: Different loggers for different application modules
 
 enum LogLevel { debug, info, warning, error }
@@ -7873,10 +7941,11 @@ void main() async {
   print('');
   auth.login('jane_doe'); // Should not log (below ERROR level)
   Logger.auth.error('Critical auth error'); // Should log
-}'''),
+}r'''),
 
         // Example 3: Advanced - Configuration Manager
-        StrCodeBlock(r'''// Example 3: Advanced - Multi-Environment Configuration
+        StrCodeBlock(
+          r'''// Example 3: Advanced - Multi-Environment Configuration
 // Use case: Different configurations for dev/staging/prod environments
 
 enum Environment { development, staging, production }
@@ -8032,10 +8101,13 @@ void main() {
   print('Prod new_ui: ${AppConfig.prod.isFeatureEnabled('new_ui')}');
   print('Dev debug_panel: ${AppConfig.dev.isFeatureEnabled('debug_panel')}');
   print('Prod debug_panel: ${AppConfig.prod.isFeatureEnabled('debug_panel')}');
-}'''),
+}''',
+        ),
 
         // Example 4: Flutter - Theme Manager
-        StrCodeBlock(r'''// Example 4: Flutter - Per-Theme Style Manager
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+
+// Example 4: Flutter - Per-Theme Style Manager
 // Use case: Managing different theme styles (light/dark/custom)
 
 enum ThemeType { light, dark, highContrast, custom }
@@ -8185,37 +8257,37 @@ class ThemeDemo extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               'Current Theme: ${themeManager.currentTheme}',
               style: theme.textTheme.headlineSmall,
             ),
-            .height(32),
+            SizedBox(height: 32),
             Container(
-              padding: .all(16),
+              padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: theme.primaryColor,
-                borderRadius: .circular(8),
+                borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
                 'Primary Color',
                 style: TextStyle(color: theme.colorScheme.onPrimary),
               ),
             ),
-            .height(16),
+            SizedBox(height: 16),
             Container(
-              padding: .all(16),
+              padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: theme.colorScheme.secondary,
-                borderRadius: .circular(8),
+                borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
                 'Accent Color',
                 style: TextStyle(color: theme.colorScheme.onSecondary),
               ),
             ),
-            .height(32),
+            SizedBox(height: 32),
             Wrap(
               spacing: 8,
               children: ThemeStyle.availableThemes.map((type) {
@@ -8230,7 +8302,7 @@ class ThemeDemo extends StatelessWidget {
                 );
               }).toList(),
             ),
-            .height(16),
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: themeManager.toggleDarkMode,
               child: Text('Toggle Light/Dark'),
@@ -8257,7 +8329,7 @@ void main() {
   
   // Run Flutter app
   runApp(ThemedApp());
-}'''),
+}r'''),
       ],
       ar: [
         // Arabic versions
@@ -8342,7 +8414,7 @@ void main() {
   
   print('\nإغلاق جميع الاتصالات...');
   DatabaseConnection.closeAll();
-}'''),
+}r'''),
         // Add remaining Arabic examples...
       ],
     ),
@@ -8595,7 +8667,9 @@ void main() {
     examples: LocV(
       en: [
         // Example 1: Basic - Game Entity Factory Kit
-        StrCodeBlock(r'''// Example 1: Basic - Simple Factory Kit for Game Entities
+        StrCodeBlock(r'''import 'package:flutter/material.dart';
+
+// Example 1: Basic - Simple Factory Kit for Game Entities
 // Use case: Allowing users to register custom enemy types in a game
 
 abstract class Enemy {
@@ -8750,11 +8824,12 @@ void main() {
   
   // Try to create unregistered type
   final zombie = enemyKit.create('zombie');
-}''',
+}r''',
         ),
 
         // Example 2: Intermediate - Widget Factory Kit
-        StrCodeBlock(r'''// Example 2: Intermediate - Custom Widget Factory System
+        StrCodeBlock(
+          r'''// Example 2: Intermediate - Custom Widget Factory System
 // Use case: Plugin system for registering custom form field types
 
 abstract class FormField extends StatelessWidget {
@@ -8821,10 +8896,10 @@ class TextFormField extends FormField {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: .start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: .bold),
-        .height(8),
+        Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
+        SizedBox(height: 8),
         TextField(
           onChanged: onChanged,
           decoration: InputDecoration(
@@ -8847,16 +8922,16 @@ class EmailFormField extends FormField {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: .start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
             Icon(Icons.email, size: 16),
-            .width(4),
-            Text(label, style: .bold),
+            SizedBox(width: 4),
+            Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
           ],
         ),
-        .height(8),
+        SizedBox(height: 8),
         TextField(
           onChanged: onChanged,
           keyboardType: .emailAddress,
@@ -8882,16 +8957,16 @@ class PhoneFormField extends FormField {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: .start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
             Icon(Icons.phone, size: 16),
-            .width(4),
-            Text(label, style: .bold),
+            SizedBox(width: 4),
+            Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
           ],
         ),
-        .height(8),
+        SizedBox(height: 8),
         TextField(
           onChanged: onChanged,
           keyboardType: .phone,
@@ -8916,10 +8991,10 @@ class RatingFormField extends FormField {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: .start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: .bold),
-        .height(8),
+        Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
+        SizedBox(height: 8),
         _RatingWidget(onChanged: onChanged),
       ],
     );
@@ -8980,7 +9055,7 @@ class _DynamicFormBuilderState extends State<DynamicFormBuilder> {
     return Scaffold(
       appBar: AppBar(title: Text('Dynamic Form')),
       body: ListView(
-        padding: .all(16),
+        padding: EdgeInsets.all(16),
         children: [
           ...widget.fieldConfig.map((config) {
             final type = config['type'] ?? 'text';
@@ -8996,12 +9071,12 @@ class _DynamicFormBuilderState extends State<DynamicFormBuilder> {
             
             return field != null
                 ? Padding(
-                    padding: .only(bottom: 16),
+                    padding: EdgeInsets.only(bottom: 16),
                     child: field,
                   )
                 : Text('Unknown field type: $type');
           }),
-          .height(16),
+          SizedBox(height: 16),
           ElevatedButton(
             onPressed: () {
               print('Form data: $_formData');
@@ -9071,7 +9146,9 @@ void main() {
         ),
 
         // Example 3: Advanced - Serialization Factory Kit
-        StrCodeBlock(r'''// Example 3: Advanced - Type-Safe Serialization System
+        StrCodeBlock(r'''import 'dart:convert';
+
+// Example 3: Advanced - Type-Safe Serialization System
 // Use case: Extensible JSON serialization with custom type support
 
 abstract class JsonSerializer<T> {
@@ -9342,10 +9419,12 @@ void main() {
   for (final obj in allObjects) {
     print('  - $obj (${obj.runtimeType})');
   }
-}'''),
+}r'''),
 
         // Example 4: Game Plugin System
         StrCodeBlock(r'''// Example 4: Flutter Game - Extensible Power-Up System
+import 'dart:async';
+import 'package:flutter/material.dart';
 // Use case: Allow mod creators to add custom power-ups
 
 abstract class PowerUp {
@@ -9578,24 +9657,24 @@ class _PowerUpDemoState extends State<PowerUpDemo> {
         children: [
           // Character stats
           Container(
-            padding: .all(16),
+            padding: EdgeInsets.all(16),
             color: Colors.grey[200],
             child: Column(
-              crossAxisAlignment: .start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Character Stats',
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
-                .height(8),
+                SizedBox(height: 8),
                 Text('Health: ${_character.health}/100'),
                 Text('Speed: ${_character.speed.toStringAsFixed(1)}'),
                 Text('Damage: ${_character.damage}'),
                 Text('Invincible: ${_character.isInvincible}'),
-                .height(8),
+                SizedBox(height: 8),
                 Text(
                   'Active Power-Ups: ${_character.activePowerUps.map((p) => p.name).join(', ')}',
-                  style: .caption,
+                  style: TextStyle(color: Colors.grey),
                 ),
               ],
             ),
@@ -9604,7 +9683,7 @@ class _PowerUpDemoState extends State<PowerUpDemo> {
           // Power-up buttons
           Expanded(
             child: ListView(
-              padding: .all(16),
+              padding: EdgeInsets.all(16),
               children: widget.powerUpKit.allPowerUps.map((id) {
                 final powerUp = widget.powerUpKit.create(id)!;
                 return Card(
@@ -9669,7 +9748,7 @@ void main() {
   runApp(MaterialApp(
     home: PowerUpDemo(powerUpKit: powerUpKit),
   ));
-}'''),
+}r'''),
       ],
       ar: [
         // Arabic versions
@@ -9828,7 +9907,7 @@ void main() {
   
   // محاولة إنشاء نوع غير مُسجل
   final zombie = enemyKit.create('zombie');
-}'''),
+}r'''),
         // Add remaining Arabic examples...
       ],
     ),

@@ -31,12 +31,13 @@ class InterviewQuestionsScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: .stretch,
         children: [
-          // Search bar
+          // Search & filters area
           Padding(
-            padding: const .only(right: 16, left: 16, bottom: 16),
+            padding: const .only(right: 16, left: 16, bottom: 12),
             child: Column(
               mainAxisSize: .min,
               children: [
+                // Search bar
                 Row(
                   children: [
                     Expanded(
@@ -67,7 +68,7 @@ class InterviewQuestionsScreen extends StatelessWidget {
 
                 const SizedBox(height: DL.compactListSeparatorHeight),
 
-                // Filter chips
+                // Filter chips row
                 SizedBox(
                   width: .infinity,
                   child: SingleChildScrollView(
@@ -109,13 +110,6 @@ class InterviewQuestionsScreen extends StatelessWidget {
                                     animated: true,
                                   ),
                                 ),
-                                // AppFilterChip(
-                                //   label: l10n.onlyBookmarked,
-                                //   selected: state.onlyBookmarked,
-                                //   onSelected: cubit.toggleOnlyBookmarked,
-                                //   animated: true,
-                                //   color: colors.primary,
-                                // ),
                               ],
                             );
                           },
@@ -124,6 +118,48 @@ class InterviewQuestionsScreen extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+
+          // Results count indicator
+          BlocSelector<QuestionsCubit, QuestionsState, int>(
+            selector: (state) => state.questions.length,
+            builder: (context, count) {
+              return Padding(
+                padding: const .symmetric(horizontal: 16, vertical: 6),
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 200),
+                  child: Row(
+                    key: ValueKey(count),
+                    children: [
+                      Container(
+                        padding: const .symmetric(horizontal: 8, vertical: 3),
+                        decoration: BoxDecoration(
+                          color: colors.primary.withValues(alpha: 0.1),
+                          borderRadius: .circular(6),
+                        ),
+                        child: Text(
+                          '$count',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: .bold,
+                            color: colors.primary,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        l10n.interviewQuestions,
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: colors.onSurfaceVariant,
+                          fontWeight: .w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
 
           const LiteDivider(),
@@ -135,9 +171,15 @@ class InterviewQuestionsScreen extends StatelessWidget {
                 return state.questions.isEmpty;
               },
               builder: (context, isEmpty) {
-                return isEmpty
-                    ? Center(child: Text(l10n.noResults))
-                    : const _QuestionsList();
+                return AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  child: isEmpty
+                      ? Center(
+                          key: const ValueKey('empty'),
+                          child: _EmptyState(message: l10n.noResults),
+                        )
+                      : const _QuestionsList(key: ValueKey('list')),
+                );
               },
             ),
           ),
@@ -147,8 +189,37 @@ class InterviewQuestionsScreen extends StatelessWidget {
   }
 }
 
+class _EmptyState extends StatelessWidget {
+  const _EmptyState({required this.message});
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colorScheme;
+    return Column(
+      mainAxisSize: .min,
+      children: [
+        Icon(
+          Icons.search_off_rounded,
+          size: 56,
+          color: colors.onSurfaceVariant.withValues(alpha: 0.4),
+        ),
+        const SizedBox(height: 12),
+        Text(
+          message,
+          style: TextStyle(
+            fontSize: 15,
+            color: colors.onSurfaceVariant,
+            fontWeight: .w500,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _QuestionsList extends StatelessWidget {
-  const _QuestionsList();
+  const _QuestionsList({super.key});
 
   @override
   Widget build(BuildContext context) {

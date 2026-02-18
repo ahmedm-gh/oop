@@ -13,7 +13,6 @@ class HomeScreen extends StatelessWidget {
     final l10n = context.l10n;
     final colors = context.colorScheme;
     final textTheme = context.textTheme;
-    final isDark = context.isDark;
 
     return Material(
       child: CustomPaint(
@@ -164,8 +163,20 @@ class _GreetingHeader extends StatelessWidget {
             fontWeight: .w500,
           ),
         ),
-        Text(
-          l10n.appTitle,
+        Text.rich(
+          TextSpan(
+            text: l10n.appTitle,
+            children: [
+              TextSpan(
+                text: "\nv1.0.0",
+                style: TextStyle(
+                  fontWeight: .w300,
+                  color: colors.onSurfaceVariant.withAlpha(180),
+                  fontSize: 12,
+                ),
+              ),
+            ],
+          ),
           textDirection: .ltr,
           style: const TextStyle(fontSize: 26, fontWeight: .bold, height: 1),
         ),

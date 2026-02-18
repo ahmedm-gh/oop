@@ -15,9 +15,10 @@ class QuestionCardsWrapper extends StatelessWidget {
       color: colors.surfaceContainerLow,
       shape: RoundedRectangleBorder(
         borderRadius: DL.inListCardBorderRadius,
-        side: BorderSide(color: colors.outlineVariant.withValues(alpha: 0.35)),
+        side: BorderSide(color: colors.outlineVariant.withValues(alpha: 0.3)),
       ),
       clipBehavior: .hardEdge,
+      margin: .zero,
       child: child,
     );
   }
